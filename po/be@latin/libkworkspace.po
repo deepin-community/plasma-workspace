@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libkworkspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-08-03 00:48+0000\n"
 "PO-Revision-Date: 2008-10-26 00:42+0300\n"
 "Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
 "Language-Team: Belarusian Latin <i18n@mova.org>\n"
@@ -16,10 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n"
+"%100>=11 && n%100<=14 ? 2 : 3);\n"
 
-#: kdisplaymanager.cpp:769
+#: kdisplaymanager.cpp:777
 #, fuzzy, kde-format
 #| msgctxt "user: ..."
 #| msgid "%1: TTY login"
@@ -27,7 +28,7 @@ msgctxt "user: …"
 msgid "%1: TTY login"
 msgstr "%1: Uvachod z „TTY”"
 
-#: kdisplaymanager.cpp:774
+#: kdisplaymanager.cpp:782
 #, fuzzy, kde-format
 #| msgctxt "... location (TTY or X display)"
 #| msgid "Unused"
@@ -35,12 +36,12 @@ msgctxt "… location (TTY or X display)"
 msgid "Unused"
 msgstr "Niaŭžytaje"
 
-#: kdisplaymanager.cpp:775
+#: kdisplaymanager.cpp:783
 #, kde-format
 msgid "X login on remote host"
 msgstr "Uvachod u dalokuju systemu „X”"
 
-#: kdisplaymanager.cpp:775
+#: kdisplaymanager.cpp:783
 #, fuzzy, kde-format
 #| msgctxt "... host"
 #| msgid "X login on %1"
@@ -48,14 +49,29 @@ msgctxt "… host"
 msgid "X login on %1"
 msgstr "Uvachod u systemu „X” na „%1”"
 
-#: kdisplaymanager.cpp:777
+#: kdisplaymanager.cpp:785
 #, kde-format
 msgctxt "user: session type"
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: kdisplaymanager.cpp:788
+#: kdisplaymanager.cpp:796
 #, kde-format
 msgctxt "session (location)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
+
+#~ msgctxt ""
+#~ "Action that reorganizes the windows to try to have them less cluttered"
+#~ msgid "Unclutter Windows"
+#~ msgstr "Sparadkuj vokny"
+
+#~ msgctxt "Action that reorganizes the windows so that they are in cascade"
+#~ msgid "Cascade Windows"
+#~ msgstr "Raskidaj vokny kaskadam"
+
+#~ msgid "On All Desktops"
+#~ msgstr "Na ŭsich rabočych stałach"
+
+#~ msgid "No Windows"
+#~ msgstr "Niama voknaŭ"

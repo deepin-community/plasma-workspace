@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2014-02-18 01:08+0100\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-doc@kde.org>\n"
@@ -23,6 +23,12 @@ msgstr ""
 #, kde-format
 msgid "Appearance"
 msgstr "Utsehn"
+
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
 
 #: contents/ui/configGeneral.qml:23
 #, kde-format
@@ -39,3 +45,39 @@ msgstr "Allmeen"
 #, kde-format
 msgid "Show time zone"
 msgstr "Tietrebeet wiesen"
+
+#~ msgid "Show the seconds"
+#~ msgstr "De Sekunnen wiesen"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "Maak dit an, wenn Du den Sekunnenwieser bruken wullt."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "&Sekunnenwieser bruken"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "Tietrebeet binnen den Text wiesen"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "Maak dit an, wenn Du dat Tietrebeet binnen den Text wiesen wullt."
+
+#~ msgid "Show &time zone"
+#~ msgstr "&Tietrebeet wiesen"
+
+#~ msgid "Also show the Timezone as text"
+#~ msgstr "Dat Tietrebeet ok as Text wiesen"
+
+#~ msgid "Timezones"
+#~ msgstr "Tietrebeden"
+
+#~ msgid "Use &local timezone"
+#~ msgstr "&Lokaal Tiet bruken"
+
+#~ msgid "Area"
+#~ msgstr "Rebeet"
+
+#~ msgid "Region"
+#~ msgstr "Regioon"
+
+#~ msgid "Comment"
+#~ msgstr "Kommentar"

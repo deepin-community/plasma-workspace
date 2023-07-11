@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_settings\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-08 00:48+0000\n"
 "PO-Revision-Date: 2003-12-27 15:03+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -17,18 +17,21 @@ msgstr ""
 "X-Generator: KBabel 1.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: kio_applications.cpp:121
+#: kio_applications.cpp:122
 #, kde-format
 msgid "Applications"
 msgstr "Cymhwysiadau"
 
-#: kio_applications.cpp:121
+#: kio_applications.cpp:122
 #, kde-format
 msgid "Programs"
 msgstr "Rhaglenni"
 
-#: kio_applications.cpp:130
+#: kio_applications.cpp:131
 #, fuzzy, kde-format
 #| msgid "Unknown settings folder"
 msgid "Unknown application folder"
 msgstr "Plygell osodiadau anhysbys"
+
+#~ msgid "Settings"
+#~ msgstr "Gosodiadau"

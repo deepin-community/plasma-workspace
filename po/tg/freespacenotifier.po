@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-20 01:43+0000\n"
+"POT-Creation-Date: 2022-10-17 00:48+0000\n"
 "PO-Revision-Date: 2019-10-06 20:59+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -81,7 +81,7 @@ msgstr ""
 "Фазои диски барои ҷузвадони асосии шумо кифоя нест, зеро ки танҳо %1 МБ боқӣ "
 "мондааст (%2%)"
 
-#: module.cpp:46
+#: module.cpp:45
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "Warns the user that the system is running low on space on his home "
@@ -96,8 +96,34 @@ msgstr ""
 "Фазои диски барои ҷузвадони асосии шумо кифоя нест, зеро ки танҳо %1 МБ боқӣ "
 "мондааст (%2%)"
 
-#: module.cpp:63
+#: module.cpp:62
 #, kde-format
 msgctxt "The settings dialog main page name, as in 'general settings'"
 msgid "General"
 msgstr "Умумӣ"
+
+#~ msgid "Low Disk Space"
+#~ msgstr "Фазои диск кифоя нест"
+
+#~ msgid "Remaining space in your Home folder: %1 MiB"
+#~ msgstr "Фазои боқимонда дар ҷузвадони асосии шумо: %1 МБ"
+
+#~ msgctxt "Allows the user to hide this notifier item"
+#~ msgid "Hide"
+#~ msgstr "Пинҳон кардан"
+
+#~ msgctxt ""
+#~ "Warns the user that the system is running low on space on his home "
+#~ "folder, indicating the percentage and absolute MiB size remaining, and "
+#~ "asks if the user wants to do something about it"
+#~ msgid ""
+#~ "You are running low on disk space on your home folder (currently %2%, %1 "
+#~ "MiB free).\n"
+#~ "Would you like to run a file manager to free some disk space?"
+#~ msgstr ""
+#~ "Хотираи диски компютерӣ ба итмом мерасад (хотираи озод %2%, %1 MiB).\n"
+#~ "Оё шумо мехоҳед барои холӣ кардани хотира, мудири файлҳоро истифода баред?"
+
+#~ msgctxt "Closes the notification"
+#~ msgid "Do Nothing"
+#~ msgstr "Ягон чиз накунед"

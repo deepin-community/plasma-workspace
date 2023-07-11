@@ -28,3 +28,6 @@ msgstr "Намуди вазифа барои %1 ёфт нашуд"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/сония"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Вазифа бо корбар қатъ карда шуд"

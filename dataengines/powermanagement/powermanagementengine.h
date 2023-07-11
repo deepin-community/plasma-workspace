@@ -52,6 +52,7 @@ private Q_SLOTS:
     void deviceRemoved(const QString &udi);
     void deviceAdded(const QString &udi);
     void batteryRemainingTimeChanged(qulonglong time);
+    void smoothedBatteryRemainingTimeChanged(qulonglong time);
     void screenBrightnessChanged(int brightness);
     void maximumScreenBrightnessChanged(int maximumBrightness);
     void keyboardBrightnessChanged(int brightness);
@@ -67,8 +68,14 @@ private Q_SLOTS:
     void updatePowerProfileHolds(const QList<QVariantMap> &holds);
 
 private:
+    template<typename ReplyType>
+    inline void createPowerManagementDBusMethodCallAndNotifyChanged(const QString &method, std::function<void(ReplyType)> &&callback);
+
+    template<typename ReplyType>
+    inline void createPowerProfileDBusMethodCallAndNotifyChanged(const QString &method, std::function<void(ReplyType)> &&callback);
+
     void populateApplicationData(const QString &name, QString *prettyName, QString *icon);
-    QString batteryType(const Solid::Battery *battery) const;
+    QString batteryTypeToString(const Solid::Battery *battery) const;
     QStringList basicSourceNames() const;
     QString batteryStateToString(int newState) const;
 

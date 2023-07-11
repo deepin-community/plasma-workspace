@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_desktoptheme\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2017-05-16 06:52-0400\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -19,33 +19,12 @@ msgstr ""
 "X-Generator: Zanata 3.9.6\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "צוות התרגום של KDE ישראל"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "kde-l10n-he@kde.org"
-
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
 #, fuzzy, kde-format
 #| msgid "Get new Theme"
 msgid "Name of the current Plasma Style"
 msgstr "קבל ערכות חדשות..."
-
-#: kcm.cpp:51
-#, fuzzy, kde-format
-#| msgid "Get new Theme"
-msgid "Plasma Style"
-msgstr "קבל ערכות חדשות..."
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr "David Rosca"
 
 #: kcm.cpp:110
 #, kde-format
@@ -67,7 +46,7 @@ msgstr "ערכת הנושא הותקנה בהצלחה."
 msgid "Theme installation failed."
 msgstr "התקנת ערכת הנושא נכשלה."
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr ""
@@ -134,12 +113,12 @@ msgstr "התקן מקובץ"
 msgid "Get New Plasma Styles…"
 msgstr "קבל ערכות חדשות..."
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgid "Open Theme"
 msgstr "פתח ערכת נושא"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr "קובצי ערכת נושא (*.zip *.tar.gz *.tar.bz2)"
@@ -188,3 +167,35 @@ msgstr ""
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
 msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "צוות התרגום של KDE ישראל"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "kde-l10n-he@kde.org"
+
+#, fuzzy
+#~| msgid "Get new Theme"
+#~ msgid "Plasma Style"
+#~ msgstr "קבל ערכות חדשות..."
+
+#~ msgid "David Rosca"
+#~ msgstr "David Rosca"
+
+#, fuzzy
+#~| msgid "Get new Theme"
+#~ msgid "Plasma Styles"
+#~ msgstr "קבל ערכות חדשות..."
+
+#, fuzzy
+#~| msgid "Configure Desktop Theme"
+#~ msgid "Download New Plasma Styles"
+#~ msgstr "הגדר ערכת נושא של שולחן העבודה"
+
+#~ msgid "Configure Desktop Theme"
+#~ msgstr "הגדר ערכת נושא של שולחן העבודה"
+
+#~ msgid "Theme removal failed."
+#~ msgstr "הסרת ערכת הנושא נכשלה."

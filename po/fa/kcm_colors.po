@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmcolors\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
+"POT-Creation-Date: 2023-02-22 02:35+0000\n"
 "PO-Revision-Date: 2007-09-02 12:20+0330\n"
 "Last-Translator: Nazanin Kazemi <kazemi@itland.ir>\n"
 "Language-Team: Persian <kde-i18n-fa@kde.org>\n"
@@ -28,42 +28,32 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kazemi@itland.ir"
 
-#: colors.cpp:65 editor/scmeditordialog.cpp:66
-#, kde-format
-msgid "Colors"
-msgstr "رنگها"
-
-#: colors.cpp:67
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr ""
-
-#: colors.cpp:192
+#: colors.cpp:235
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr ""
 
-#: colors.cpp:205
+#: colors.cpp:248
 #, fuzzy, kde-format
 msgid "Unable to download the color scheme: %1"
 msgstr "نامی برای طرحواره رنگ وارد کنید:"
 
-#: colors.cpp:223
+#: colors.cpp:266
 #, fuzzy, kde-format
 msgid "This file is not a color scheme file."
 msgstr "طرحواره رنگ"
 
-#: colors.cpp:242
+#: colors.cpp:285
 #, kde-format
 msgid "Failed to create 'color-scheme' data folder."
 msgstr ""
 
-#: colors.cpp:249
+#: colors.cpp:292
 #, kde-format
 msgid "Failed to copy color scheme into 'color-scheme' data folder."
 msgstr ""
 
-#: colors.cpp:266
+#: colors.cpp:309
 #, kde-format
 msgid "Color scheme installed successfully."
 msgstr ""
@@ -81,61 +71,75 @@ msgstr "ذخیره طرحواره رنگ"
 msgid "Accent color"
 msgstr "پنجره غیرفعال"
 
-#: editor/kcolorschemeeditor.cpp:23
+#. i18n: ectx: label, entry (lastUsedCustomAccentColor), group (General)
+#: colorssettings.kcfg:17
+#, kde-format
+msgid ""
+"The last used custom accent color before user switched to wallpaper "
+"generated color or default color"
+msgstr ""
+
+#. i18n: ectx: label, entry (accentColorFromWallpaper), group (General)
+#: colorssettings.kcfg:21
+#, kde-format
+msgid "Whether accent color from wallpaper should be applied"
+msgstr ""
+
+#: editor/kcolorschemeeditor.cpp:25
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "KColorSchemeEditor"
 msgstr "ذخیره طرحواره رنگ"
 
-#: editor/kcolorschemeeditor.cpp:25
+#: editor/kcolorschemeeditor.cpp:27
 #, fuzzy, kde-format
 msgid "Utility to edit and create color schemes"
 msgstr "ذخیره طرحواره رنگ"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Olivier Churlaud"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Utility creation"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:28
+#: editor/kcolorschemeeditor.cpp:30
 #, kde-format
 msgid "Jeremy Whiting"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:28 editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:30 editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "KCM code (reused in here)"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:33
+#: editor/kcolorschemeeditor.cpp:35
 #, kde-format
 msgid "Scheme to edit or to use as a base."
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:35
+#: editor/kcolorschemeeditor.cpp:37
 #, kde-format
 msgid ""
 "Show 'Apply' button that saves changes without asking (unlike 'Save As' "
 "button)"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:39
+#: editor/kcolorschemeeditor.cpp:41
 #, kde-format
 msgid ""
 "Makes the dialog transient for another application window specified by handle"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:55
+#: editor/kcolorschemeeditor.cpp:57
 #, kde-format
 msgid "Scheme not found, falling back to current one.\n"
 msgstr ""
@@ -634,47 +638,42 @@ msgstr "ترکیب عنوان غیرفعال"
 msgid "Inactive Titlebar Secondary"
 msgstr "ترکیب عنوان غیرفعال"
 
-#: editor/scmeditordialog.cpp:65
+#: editor/scmeditordialog.cpp:60
 #, kde-format
 msgid "Options"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:67
+#: editor/scmeditordialog.cpp:61
+#, kde-format
+msgid "Colors"
+msgstr "رنگها"
+
+#: editor/scmeditordialog.cpp:62
 #, fuzzy, kde-format
 msgid "Disabled"
 msgstr "دکمه عنوان غیرفعال"
 
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "This colour scheme was not saved. Continue?"
-msgstr ""
-
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "Do you really want to upload?"
-msgstr ""
-
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:94
 #, kde-format
 msgid "You have unsaved changes. Do you really want to quit?"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:95
 #, kde-format
 msgid "Unsaved changes"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:133 editor/scmeditordialog.cpp:158
+#: editor/scmeditordialog.cpp:115 editor/scmeditordialog.cpp:140
 #, kde-format
 msgid "Save Color Scheme"
 msgstr "ذخیره طرحواره رنگ"
 
-#: editor/scmeditordialog.cpp:133
+#: editor/scmeditordialog.cpp:115
 #, fuzzy, kde-format
 msgid "&Enter a name for the color scheme:"
 msgstr "نامی برای طرحواره رنگ وارد کنید:"
 
-#: editor/scmeditordialog.cpp:157
+#: editor/scmeditordialog.cpp:139
 #, fuzzy, kde-format
 msgid ""
 "A color scheme with that name already exists.\n"
@@ -683,32 +682,20 @@ msgstr ""
 "طرحواره رنگی با نام »%1« از قبل وجود دارد.\n"
 "می‌خواهید آن را جای‌نوشت کنید؟\n"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "You do not have permission to overwrite that scheme"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "Error"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:209
+#: editor/scmeditordialog.cpp:191
 #, fuzzy, kde-format
 msgid "Inactive"
 msgstr "پنجره غیرفعال"
-
-#. i18n: ectx: property (toolTip), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:42
-#, fuzzy, kde-format
-msgid "Share the selected scheme on the Internet"
-msgstr "طرحواره رنگ"
-
-#. i18n: ectx: property (text), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:45
-#, fuzzy, kde-format
-msgid "Upload Scheme"
-msgstr "طرحواره رنگ"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: editor/scmeditoreffects.ui:17
@@ -865,32 +852,50 @@ msgstr ""
 msgid "Shade sorted column &in lists"
 msgstr "سایه‌دار کردن ستون مرتب در فهرستها"
 
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (text), widget (QCheckBox, tintColors)
 #: editor/scmeditoroptions.ui:38
+#, fuzzy, kde-format
+msgid "Tint all colors with accent color"
+msgstr "پنجره غیرفعال"
+
+#. i18n: ectx: property (text), widget (QCheckBox, accentTitlebar)
+#: editor/scmeditoroptions.ui:45
+#, kde-format
+msgid "Make window titlebars a&ccent-colored"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: editor/scmeditoroptions.ui:52
+#, kde-format
+msgid "Tint strength:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#: editor/scmeditoroptions.ui:69
 #, kde-format
 msgid "Shading of frames and lighting (\"3D\") effects"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:41
+#: editor/scmeditoroptions.ui:72
 #, fuzzy, kde-format
 msgid "Shading"
 msgstr "ذخیره"
 
-#. i18n: ectx: property (text), widget (QLabel, label_9)
-#: editor/scmeditoroptions.ui:53
-#, kde-format
-msgid "Minimum"
-msgstr ""
-
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: editor/scmeditoroptions.ui:73
+#: editor/scmeditoroptions.ui:97
 #, kde-format
 msgid "Maximum"
 msgstr ""
 
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: editor/scmeditoroptions.ui:117
+#, kde-format
+msgid "Minimum"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: editor/scmeditoroptions.ui:80
+#: editor/scmeditoroptions.ui:124
 #, fuzzy, kde-format
 msgid "Contrast"
 msgstr "&سایه‌روشن‌"
@@ -1157,88 +1162,99 @@ msgid "From current color scheme"
 msgstr "ذخیره طرحواره رنگ"
 
 #: package/contents/ui/main.qml:157
+#, fuzzy, kde-format
+msgctxt "@option:radio wallpaper accent color option"
+msgid "From current wallpaper"
+msgstr "ذخیره طرحواره رنگ"
+
+#: package/contents/ui/main.qml:266
 #, kde-format
 msgid "Custom:"
 msgstr ""
 
-#: package/contents/ui/main.qml:268
+#: package/contents/ui/main.qml:273
+#, kde-format
+msgid "Choose custom accent color"
+msgstr ""
+
+#: package/contents/ui/main.qml:361
 #, fuzzy, kde-format
 msgid "Window Title"
 msgstr "پنجره"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:383
 #, fuzzy, kde-format
 msgid "Window text"
 msgstr "پنجره"
 
-#: package/contents/ui/main.qml:297
+#: package/contents/ui/main.qml:390
 #, fuzzy, kde-format
 msgid "Button"
 msgstr "دکمه"
 
-#: package/contents/ui/main.qml:331
+#: package/contents/ui/main.qml:427
 #, fuzzy, kde-format
 #| msgid "link"
 msgctxt "Hyperlink"
 msgid "link"
 msgstr "پیوند"
 
-#: package/contents/ui/main.qml:333
+#: package/contents/ui/main.qml:429
 #, kde-format
 msgctxt "Visited hyperlink"
 msgid "visited"
 msgstr ""
 
-#: package/contents/ui/main.qml:340
+#: package/contents/ui/main.qml:436
 #, kde-format
 msgid "Normal text"
 msgstr ""
 
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:444
 #, fuzzy, kde-format
 #| msgid "Selected text"
 msgid "Highlighted text"
 msgstr "متن برگزیده"
 
-#: package/contents/ui/main.qml:355
+#: package/contents/ui/main.qml:451
 #, fuzzy, kde-format
 msgid "Disabled text"
 msgstr "دکمه عنوان غیرفعال"
 
-#: package/contents/ui/main.qml:373
+#: package/contents/ui/main.qml:469
 #, fuzzy, kde-format
 msgid "Edit Color Scheme…"
 msgstr "طرحواره رنگ"
 
-#: package/contents/ui/main.qml:379
+#: package/contents/ui/main.qml:475
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Remove Color Scheme"
 msgstr "ذخیره طرحواره رنگ"
 
-#: package/contents/ui/main.qml:386
+#: package/contents/ui/main.qml:482
 #, fuzzy, kde-format
 msgid "Restore Color Scheme"
 msgstr "طرحواره رنگ"
 
-#: package/contents/ui/main.qml:430
+#: package/contents/ui/main.qml:526
 #, kde-format
 msgid "Install from File…"
 msgstr ""
 
-#: package/contents/ui/main.qml:435
+#: package/contents/ui/main.qml:531
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Get New Color Schemes…"
 msgstr "ذخیره طرحواره رنگ"
 
-#: package/contents/ui/main.qml:486
+#: package/contents/ui/main.qml:549
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Open Color Scheme"
 msgstr "ذخیره طرحواره رنگ"
 
-#: package/contents/ui/main.qml:488
+#: package/contents/ui/main.qml:551
 #, kde-format
 msgid "Color Scheme Files (*.colors)"
 msgstr ""
@@ -1258,52 +1274,349 @@ msgid ""
 "(passing a full path will only use the last part of the path)"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:45
+#: plasma-apply-colorscheme.cpp:46
 #, kde-format
 msgid ""
 "Show all the color schemes available on the system (and which is the current "
 "theme)"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:69
+#: plasma-apply-colorscheme.cpp:51
+#, kde-format
+msgid ""
+"The name of the accent color you want to set. SVG color names (https://www."
+"w3.org/TR/SVG11/types.html#ColorKeywords) and hex color codes are supported. "
+"Quote the hex code if there is possibility of shell expansion"
+msgstr ""
+
+#: plasma-apply-colorscheme.cpp:78
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
 "Plasma session."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:92
+#: plasma-apply-colorscheme.cpp:111
 #, kde-format
 msgid "Successfully applied the color scheme %1 to your current Plasma session"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:94
+#: plasma-apply-colorscheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
 "options: %2"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:101
+#: plasma-apply-colorscheme.cpp:120
 #, kde-format
 msgid ""
 "You have managed to pass an empty color scheme name, which isn't supported "
 "behavior."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:105
+#: plasma-apply-colorscheme.cpp:124
 #, kde-format
 msgid ""
 "The file you attempted to set as your scheme, %1, could not be identified as "
 "a color scheme."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:110
+#: plasma-apply-colorscheme.cpp:147
+#, kde-format
+msgid "Successfully applied the accent color %1"
+msgstr ""
+
+#: plasma-apply-colorscheme.cpp:149
+#, fuzzy, kde-format
+msgid "Invalid accent color "
+msgstr "پنجره غیرفعال"
+
+#: plasma-apply-colorscheme.cpp:154
 #, kde-format
 msgid "You have the following color schemes on your system:"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:115
+#: plasma-apply-colorscheme.cpp:159
 #, fuzzy, kde-format
 msgid " * %1 (current color scheme)"
 msgstr "ذخیره طرحواره رنگ"
+
+#, fuzzy
+#~ msgid "Apply a&ccent color to active window titlebars"
+#~ msgstr "پنجره غیرفعال"
+
+#, fuzzy
+#~ msgid "Apply acce&nt color to inactive window titlebars"
+#~ msgstr "پنجره غیرفعال"
+
+#, fuzzy
+#~ msgid "Share the selected scheme on the Internet"
+#~ msgstr "طرحواره رنگ"
+
+#, fuzzy
+#~ msgid "Upload Scheme"
+#~ msgstr "طرحواره رنگ"
+
+#, fuzzy
+#~| msgid "Save Color Scheme"
+#~ msgid "Download New Color Schemes"
+#~ msgstr "ذخیره طرحواره رنگ"
+
+#, fuzzy
+#~| msgid "Edit"
+#~ msgid "Edit..."
+#~ msgstr "ویرایش"
+
+#, fuzzy
+#~ msgid "Remove the selected scheme"
+#~ msgstr "طرحواره رنگ"
+
+#, fuzzy
+#~| msgid "Color Scheme"
+#~ msgid "Remove"
+#~ msgstr "طرحواره رنگ"
+
+#, fuzzy
+#~ msgid "Import a color scheme from a file"
+#~ msgstr "طرحواره رنگ"
+
+#, fuzzy
+#~ msgid "Get new color schemes from the Internet"
+#~ msgstr "طرحواره رنگ"
+
+#, fuzzy
+#~| msgid "Save Color Scheme"
+#~ msgid "Get &New Color Schemes..."
+#~ msgstr "ذخیره طرحواره رنگ"
+
+#, fuzzy
+#~ msgid "Apply colors to &non-Qt applications"
+#~ msgstr "اعمال رنگها به کاربردهای &غیر KDE‌"
+
+#, fuzzy
+#~ msgctxt "Default color scheme"
+#~ msgid "Default"
+#~ msgstr "پیش‌فرض KDE"
+
+#, fuzzy
+#~ msgctxt "Current color scheme"
+#~ msgid "Current"
+#~ msgstr "طرحواره جاری"
+
+#, fuzzy
+#~ msgctxt "@title:tab color transformations on inactive elements"
+#~ msgid "Inactive"
+#~ msgstr "پنجره غیرفعال"
+
+#, fuzzy
+#~ msgid "Inactive intensity effect type"
+#~ msgstr "دکمه عنوان غیرفعال"
+
+#, fuzzy
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Shade"
+#~ msgstr "ذخیره"
+
+#, fuzzy
+#~ msgid "Inactive intensity effect amount"
+#~ msgstr "دکمه عنوان غیرفعال"
+
+#, fuzzy
+#~ msgid "Inactive color effect type"
+#~ msgstr "پنجره غیرفعال"
+
+#, fuzzy
+#~ msgid "Inactive color amount"
+#~ msgstr "دکمه عنوان غیرفعال"
+
+#, fuzzy
+#~ msgid "Inactive contrast effect type"
+#~ msgstr "دکمه عنوان غیرفعال"
+
+#, fuzzy
+#~ msgid "Inactive contrast effect amount"
+#~ msgstr "دکمه عنوان غیرفعال"
+
+#, fuzzy
+#~ msgid "Import Scheme..."
+#~ msgstr "طرحواره رنگ"
+
+#, fuzzy
+#~ msgid "&Save..."
+#~ msgstr "&ذخیره طرحوار‌ه...‌"
+
+#, fuzzy
+#~ msgid "I&mport..."
+#~ msgstr "&واردات طرحواره...‌"
+
+#, fuzzy
+#~| msgid "Active window"
+#~ msgid "Active Window"
+#~ msgstr "پنجره فعال"
+
+#, fuzzy
+#~| msgid "Active Window Frame"
+#~ msgid "Active Window Text"
+#~ msgstr "قابک پنجره فعال"
+
+#, fuzzy
+#~| msgid "Inactive Window Frame"
+#~ msgid "Inactive Window"
+#~ msgstr "قابک پنجره غیرفعال"
+
+#, fuzzy
+#~| msgid "Inactive Title Bar"
+#~ msgid "InactiveWindowText"
+#~ msgstr "میله عنوان غیرفعال"
+
+#~ msgid ""
+#~ "<p><h1>Colors</h1> This module allows you to choose the color scheme used "
+#~ "for the KDE desktop. The different elements of the desktop, such as title "
+#~ "bars, menu text, etc., are called \"widgets\". You can choose the widget "
+#~ "whose color you want to change by selecting it from a list, or by "
+#~ "clicking on a graphical representation of the desktop.</p><p> You can "
+#~ "save color settings as complete color schemes, which can also be modified "
+#~ "or deleted. KDE comes with several predefined color schemes on which you "
+#~ "can base your own.</p><p> All KDE applications will obey the selected "
+#~ "color scheme. Non-KDE applications may also obey some or all of the color "
+#~ "settings, if this option is enabled.</p>"
+#~ msgstr ""
+#~ "<p><h1>رنگها</h1> این پیمانه به شما اجازه می‌دهد که طرحواره رنگ استفاده‌شده "
+#~ "برای رومیزی KDE را انتخاب کنید. عناصر مختلف رومیزی، نظیر میله عنوانها، "
+#~ "متن گزینگان و غیره، »عنصر« نامیده می‌شوند. می‌توانید عنصری را که می‌‌خواهید "
+#~ "رنگ آن را با گزینش از فهرست، یا فشار روی نمایش گرافیکی رومیزی تغییر دهید، "
+#~ "انتخاب کنید.</p><p>می‌‌توانید تنظیمات رنگ را به عنوان طرحواره‌های رنگ کامل "
+#~ "ذخیره کنید؛ همچنین می‌‌توان آنها را تغییر داده یا حذف کرد. KDE به همراه "
+#~ "چندین طرحواره رنگ از پیش تعریف‌شده می‌‌آید که می‌‌توانید آن را مبنای کار خود "
+#~ "قرار دهید.</p><p> همه کاربردهای KDE از طرحواره رنگ برگزیده اطاعت می‌کنند. "
+#~ "در صورت فعال‌سازی این گزینه، ممکن است کاربردهای غیر KDE از برخی یا همه "
+#~ "تنظیمات رنگ اطاعت کنند.</p>"
+
+#~ msgid ""
+#~ "This is a preview of the color settings which will be applied if you "
+#~ "click \"Apply\" or \"OK\". You can click on different parts of this "
+#~ "preview image. The widget name in the \"Widget color\" box will change to "
+#~ "reflect the part of the preview image you clicked."
+#~ msgstr ""
+#~ "یک پیش‌نمایش از تنظیمات رنگی است که در صورت فشار »اعمال« یا »تأیید«، اعمال "
+#~ "می‌شود. می‌‌توانید روی بخشهای مختلف این تصویر پیش‌نمایش فشار دهید. نام عنصر "
+#~ "در جعبه »رنگ عنصر« برای بازتاب بخشهایی از تصویر پیش‌نمایشی که فشار می‌‌دهید، "
+#~ "تغییر می‌کند."
+
+#~ msgid ""
+#~ "<p>This is a list of predefined color schemes, including any that you may "
+#~ "have created. You can preview an existing color scheme by selecting it "
+#~ "from the list. The current scheme will be replaced by the selected color "
+#~ "scheme.</p><p> Warning: if you have not yet applied any changes you may "
+#~ "have made to the current scheme, those changes will be lost if you select "
+#~ "another color scheme.</p>"
+#~ msgstr ""
+#~ "<p>فهرستی از طرحواره‌های رنگ از پیش تعریف‌شده، شامل هر چیزی که ممکن است "
+#~ "ایجاد کرده باشید، می‌باشد. می‌‌توانید با برگزیدن طرحواره رنگ موجود از فهرست، "
+#~ "آن را پیش‌نمایش دهید. طرحواره جاری با طرحواره رنگ انتخاب‌شده جایگزین می‌‌شود."
+#~ "</p><p> اخطار: اگر تاکنون هیچ یک از تغییراتی که احتمالاً در طرحواره جاری "
+#~ "داده‌اید را اعمال نکرده‌اید، در صورت انتخاب طرحواره رنگ دیگر، آن تغییرات از "
+#~ "بین می‌روند.</p>"
+
+#~ msgid ""
+#~ "Press this button if you want to save the current color settings as a "
+#~ "color scheme. You will be prompted for a name."
+#~ msgstr ""
+#~ "اگر می‌‌خواهید تنظیمات رنگ جاری را به عنوان یک طرحواره رنگ ذخیره کنید، این "
+#~ "دکمه را فشار دهید. برای نامی به شما اعلان داده می‌‌شود."
+
+#~ msgid ""
+#~ "Press this button to remove the selected color scheme. Note that this "
+#~ "button is disabled if you do not have permission to delete the color "
+#~ "scheme."
+#~ msgstr ""
+#~ "این دکمه را فشار دهید تا طرحواره رنگ انتخاب‌شده حذف شود. توجه داشته باشید "
+#~ "که اگر مجوز حذف طرحواره رنگ را نداشته باشید، این دکمه غیرفعال است."
+
+#~ msgid ""
+#~ "Press this button to import a new color scheme. Note that the color "
+#~ "scheme will only be available for the current user."
+#~ msgstr ""
+#~ "برای واردات طرحواره جدید، این دکمه را فشار دهید. توجه داشته باشید که "
+#~ "طرحواره رنگ فقط برای کاربر جاری وجود دارد."
+
+#~ msgid "Standard"
+#~ msgstr "استاندارد"
+
+#~ msgid "Active Title Button"
+#~ msgstr "دکمه عنوان فعال"
+
+#~ msgid "Active Window Handle"
+#~ msgstr "گرداننده پنجره فعال"
+
+#~ msgid "Inactive Window Handle"
+#~ msgstr "گرداننده پنجره غیرفعال"
+
+#~ msgid "Followed Link"
+#~ msgstr "پیوند دنباله"
+
+#~ msgid ""
+#~ "Check this box to show the sorted column in a list with a shaded "
+#~ "background"
+#~ msgstr ""
+#~ "این جعبه را علامت بزنید تا ستون مرتب در فهرست، با زمینه‌ای سایه‌دار نمایش "
+#~ "داده شود"
+
+#~ msgid ""
+#~ "Use this slider to change the contrast level of the current color scheme. "
+#~ "Contrast does not affect all of the colors, only the edges of 3D objects."
+#~ msgstr ""
+#~ "از این لغزان برای تغییر سطح سایه‌روشن طرحواره رنگ جاری استفاده کنید. "
+#~ "سایه‌روشن بر همه رنگها اثر نمی‌کند و فقط روی لبه‌های اشیای سه بعدی تأثیر "
+#~ "دارد."
+
+#~ msgctxt "Low Contrast"
+#~ msgid "Low"
+#~ msgstr "کم"
+
+#~ msgctxt "High Contrast"
+#~ msgid "High"
+#~ msgstr "زیاد"
+
+#~ msgid ""
+#~ "Check this box to apply the current color scheme to non-KDE applications."
+#~ msgstr ""
+#~ "برای اعمال طرحواره رنگ جاری در کاربردهای غیر KDE، این جعبه را علامت بزنید."
+
+#~ msgid ""
+#~ "This color scheme could not be removed.\n"
+#~ "Perhaps you do not have permission to alter the filesystem where the "
+#~ "color scheme is stored."
+#~ msgstr ""
+#~ "این طرحواره رنگ را نمی‌توان حذف کرد.\n"
+#~ "شاید مجوز تغییر سیستم پرونده، یعنی جایی که طرحواره رنگ ذخیره شده است را "
+#~ "ندارید."
+
+#~ msgid "Overwrite"
+#~ msgstr "جای‌نوشت"
+
+#~ msgid "Import failed."
+#~ msgstr "خرابی در واردات."
+
+#~ msgid "Untitled Theme"
+#~ msgstr "چهره بدون عنوان"
+
+#~ msgid "Role"
+#~ msgstr "نقش"
+
+#~ msgid "Foreground"
+#~ msgstr "پیش‌زمینه"
+
+#~ msgid "File"
+#~ msgstr "پرونده"
+
+#~ msgid "Standard text"
+#~ msgstr "متن استاندارد"
+
+#~ msgid "followed link"
+#~ msgstr "پیوند دنباله"
+
+#~ msgctxt "Menu item"
+#~ msgid "Open"
+#~ msgstr "باز"

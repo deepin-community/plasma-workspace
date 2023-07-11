@@ -12,8 +12,12 @@
 #include "tasksmodel.h"
 #include "virtualdesktopinfo.h"
 
+#include <KConfigGroup>
+#include <KPluginFactory>
+
 #include <QAction>
 #include <QMenu>
+#include <QVariantMap>
 
 using namespace TaskManager;
 
@@ -108,7 +112,7 @@ void SwitchWindow::makeMenu()
         return;
     }
 
-    QMultiMap<QVariant, QAction *> desktops;
+    QMultiMap<QString, QAction *> desktops;
     QList<QAction *> allDesktops;
 
     // Make all the window actions.
@@ -129,9 +133,9 @@ void SwitchWindow::makeMenu()
         action->setIcon(idx.data(Qt::DecorationRole).value<QIcon>());
         action->setData(idx.data(AbstractTasksModel::WinIdList).toList());
 
-        const QVariantList &desktopList = idx.data(AbstractTasksModel::VirtualDesktops).toList();
+        const QStringList &desktopList = idx.data(AbstractTasksModel::VirtualDesktops).toStringList();
 
-        for (const QVariant &desktop : desktopList) {
+        for (const QString &desktop : desktopList) {
             desktops.insert(desktop, action);
         }
 
@@ -146,7 +150,7 @@ void SwitchWindow::makeMenu()
 
     // Sort into menu(s).
     if (m_mode == CurrentDesktop) {
-        const QVariant &currentDesktop = m_virtualDesktopInfo->currentDesktop();
+        const QString &currentDesktop = m_virtualDesktopInfo->currentDesktop().toString();
 
         QAction *a = new QAction(i18nc("plasma_containmentactions_switchwindow", "Windows"), this);
         a->setSeparator(true);
@@ -160,7 +164,7 @@ void SwitchWindow::makeMenu()
 
         if (m_mode == AllFlat) {
             for (int i = 0; i < desktopIds.count(); ++i) {
-                const QVariant &desktop = desktopIds.at(i);
+                const QString &desktop = desktopIds.at(i).toString();
 
                 if (desktops.contains(desktop)) {
                     const QString &name = QStringLiteral("%1: %2").arg(QString::number(i + 1), desktopNames.at(i));
@@ -179,7 +183,7 @@ void SwitchWindow::makeMenu()
             }
         } else { // Submenus.
             for (int i = 0; i < desktopIds.count(); ++i) {
-                const QVariant &desktop = desktopIds.at(i);
+                const QString &desktop = desktopIds.at(i).toString();
 
                 if (desktops.contains(desktop)) {
                     const QString &name = QStringLiteral("%1: %2").arg(QString::number(i + 1), desktopNames.at(i));

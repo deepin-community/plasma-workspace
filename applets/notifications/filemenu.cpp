@@ -11,7 +11,6 @@
 #include <QIcon>
 #include <QMenu>
 #include <QMimeData>
-#include <QQuickItem>
 #include <QQuickWindow>
 #include <QTimer>
 
@@ -30,6 +29,7 @@
 #include <KIO/FileUndoManager>
 #include <KIO/JobUiDelegate>
 #include <KIO/OpenFileManagerWindowJob>
+#include <KIO/WidgetsAskUserActionHandler>
 
 FileMenu::FileMenu(QObject *parent)
     : QObject(parent)
@@ -47,7 +47,7 @@ void FileMenu::setUrl(const QUrl &url)
 {
     if (m_url != url) {
         m_url = url;
-        emit urlChanged();
+        Q_EMIT urlChanged();
     }
 }
 
@@ -69,7 +69,7 @@ void FileMenu::setVisualParent(QQuickItem *visualParent)
     if (m_visualParent) {
         connect(m_visualParent.data(), &QObject::destroyed, this, &FileMenu::visualParentChanged);
     }
-    emit visualParentChanged();
+    Q_EMIT visualParentChanged();
 }
 
 bool FileMenu::visible() const
@@ -108,7 +108,7 @@ void FileMenu::open(int x, int y)
 
     connect(menu, &QMenu::aboutToHide, this, [this] {
         m_visible = false;
-        emit visibleChanged();
+        Q_EMIT visibleChanged();
     });
 
     if (KProtocolManager::supportsListing(m_url)) {
@@ -134,7 +134,7 @@ void FileMenu::open(int x, int y)
         QApplication::clipboard()->setMimeData(data);
     });
 
-    QAction *copyPathAction = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18nc("@action:incontextmenu", "Copy Location"));
+    QAction *copyPathAction = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-copy-path")), i18nc("@action:incontextmenu", "Copy Location"));
     connect(copyPathAction, &QAction::triggered, this, [fileItem] {
         QString path = fileItem.localPath();
         if (path.isEmpty()) {
@@ -148,14 +148,16 @@ void FileMenu::open(int x, int y)
     const bool canTrash = itemProperties.isLocal() && itemProperties.supportsMoving();
     if (canTrash) {
         auto moveToTrashLambda = [this] {
-            const QList<QUrl> urls{m_url};
-
-            KIO::JobUiDelegate uiDelegate;
-            if (uiDelegate.askDeleteConfirmation(urls, KIO::JobUiDelegate::Trash, KIO::JobUiDelegate::DefaultConfirmation)) {
-                auto *job = KIO::trash(urls);
-                job->uiDelegate()->setAutoErrorHandlingEnabled(true);
-                KIO::FileUndoManager::self()->recordJob(KIO::FileUndoManager::Trash, urls, QUrl(QStringLiteral("trash:/")), job);
-            }
+            auto handler = new KIO::WidgetsAskUserActionHandler(this);
+            connect(handler, &KIO::WidgetsAskUserActionHandler::askUserDeleteResult, [handler](bool allow, const QList<QUrl> &urls) {
+                if (allow) {
+                    auto job = KIO::trash(urls);
+                    job->uiDelegate()->setAutoErrorHandlingEnabled(true);
+                    KIO::FileUndoManager::self()->recordJob(KIO::FileUndoManager::Trash, urls, QUrl(QStringLiteral("trash:/")), job);
+                }
+                handler->deleteLater();
+            });
+            handler->askUserDelete({m_url}, KIO::AskUserActionInterface::Trash, KIO::AskUserActionInterface::DefaultConfirmation);
         };
         QAction *moveToTrashAction = KStandardAction::moveToTrash(this, moveToTrashLambda, menu);
         moveToTrashAction->setShortcut({}); // Can't focus notification to press Delete
@@ -167,13 +169,15 @@ void FileMenu::open(int x, int y)
 
     if (itemProperties.supportsDeleting() && (!canTrash || showDeleteCommand)) {
         auto deleteLambda = [this] {
-            const QList<QUrl> urls{m_url};
-
-            KIO::JobUiDelegate uiDelegate;
-            if (uiDelegate.askDeleteConfirmation(urls, KIO::JobUiDelegate::Delete, KIO::JobUiDelegate::DefaultConfirmation)) {
-                auto *job = KIO::del(urls);
-                job->uiDelegate()->setAutoErrorHandlingEnabled(true);
-            }
+            auto handler = new KIO::WidgetsAskUserActionHandler(this);
+            connect(handler, &KIO::WidgetsAskUserActionHandler::askUserDeleteResult, [handler](bool allow, const QList<QUrl> &urls) {
+                if (allow) {
+                    auto job = KIO::del(urls);
+                    job->uiDelegate()->setAutoErrorHandlingEnabled(true);
+                }
+                handler->deleteLater();
+            });
+            handler->askUserDelete({m_url}, KIO::AskUserActionInterface::Delete, KIO::AskUserActionInterface::DefaultConfirmation);
         };
         QAction *deleteAction = KStandardAction::deleteFile(this, deleteLambda, menu);
         deleteAction->setShortcut({});
@@ -229,5 +233,5 @@ void FileMenu::open(int x, int y)
     menu->popup(pos);
 
     m_visible = true;
-    emit visibleChanged();
+    Q_EMIT visibleChanged();
 }

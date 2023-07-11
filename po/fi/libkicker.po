@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2023-02-11 02:38+0000\n"
 "PO-Revision-Date: 2021-06-04 23:03+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -18,82 +18,82 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 20.04.2\n"
 
-#: plugin/actionlist.cpp:83
+#: plugin/actionlist.cpp:86
 #, kde-format
 msgid "Open with:"
 msgstr "Avaa ohjelmalla:"
 
-#: plugin/actionlist.cpp:96
+#: plugin/actionlist.cpp:99
 #, kde-format
 msgid "Properties"
 msgstr "Ominaisuudet"
 
-#: plugin/actionlist.cpp:143
+#: plugin/actionlist.cpp:146
 #, kde-format
 msgid "Add to Desktop"
 msgstr "Lisää työpöydälle"
 
-#: plugin/actionlist.cpp:148
+#: plugin/actionlist.cpp:151
 #, kde-format
 msgid "Add to Panel (Widget)"
 msgstr "Lisää paneeliin (sovelma)"
 
-#: plugin/actionlist.cpp:153
+#: plugin/actionlist.cpp:156
 #, kde-format
 msgid "Pin to Task Manager"
 msgstr "Kiinnitä tehtävienhallintaan"
 
-#: plugin/actionlist.cpp:304 plugin/rootmodel.cpp:431
+#: plugin/actionlist.cpp:307 plugin/rootmodel.cpp:429
 #, kde-format
 msgid "Recent Files"
 msgstr "Viimeisimmät tiedostot"
 
-#: plugin/actionlist.cpp:314
+#: plugin/actionlist.cpp:317
 #, kde-format
 msgid "Forget Recent Files"
 msgstr "Unohda viimeisimmät tiedostot"
 
-#: plugin/actionlist.cpp:393
+#: plugin/actionlist.cpp:395
 #, kde-format
 msgid "Edit Application…"
 msgstr "Muokkaa sovellusta…"
 
-#: plugin/actionlist.cpp:437
+#: plugin/actionlist.cpp:429
 #, kde-format
 msgctxt "@action opens a software center with the application"
 msgid "Uninstall or Manage Add-Ons…"
 msgstr "Lisäosien hallinta ja asennuksen poisto…"
 
-#: plugin/appentry.cpp:185
+#: plugin/appentry.cpp:308
 #, kde-format
 msgid "Hide Application"
 msgstr "Piilota sovellus"
 
-#: plugin/appentry.cpp:249
+#: plugin/appentry.cpp:367
 #, kde-format
 msgctxt "App name (Generic name)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: plugin/appentry.cpp:251
+#: plugin/appentry.cpp:369
 #, kde-format
 msgctxt "Generic name (App name)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: plugin/appsmodel.cpp:31 plugin/appsmodel.cpp:55 plugin/computermodel.cpp:98
-#: plugin/computermodel.cpp:226 plugin/recentusagemodel.cpp:156
-#: plugin/recentusagemodel.cpp:218
+#: plugin/appsmodel.cpp:34 plugin/appsmodel.cpp:58 plugin/computermodel.cpp:98
+#: plugin/computermodel.cpp:226 plugin/recentusagemodel.cpp:153
+#: plugin/recentusagemodel.cpp:216
 #, kde-format
 msgid "Applications"
 msgstr "Sovellukset"
 
-#: plugin/appsmodel.cpp:150
+#: plugin/appsmodel.cpp:151
 #, kde-format
 msgid "Unhide Applications in this Submenu"
 msgstr "Kumoa sovellusten piilottaminen tässä alivalikossa"
 
-#: plugin/appsmodel.cpp:159
+#: plugin/appsmodel.cpp:160
 #, kde-format
 msgid "Unhide Applications in '%1'"
 msgstr "Kumoa sovellusten piilottaminen valikossa ”%1”"
@@ -113,13 +113,13 @@ msgstr "Etsi, laske tai suorita komento"
 msgid "Computer"
 msgstr "Tietokone"
 
-#: plugin/contactentry.cpp:107 plugin/recentcontactsmodel.cpp:82
+#: plugin/contactentry.cpp:106 plugin/recentcontactsmodel.cpp:82
 #, kde-format
 msgid "Show Contact Information…"
 msgstr "Näytä yhteystiedon tiedot…"
 
 #. i18n.
-#: plugin/kastatsfavoritesmodel.cpp:467 plugin/rootmodel.cpp:418
+#: plugin/kastatsfavoritesmodel.cpp:548 plugin/rootmodel.cpp:416
 #: plugin/simplefavoritesmodel.cpp:31
 #, kde-format
 msgid "Favorites"
@@ -140,42 +140,42 @@ msgstr "Unohda yhteystieto"
 msgid "Forget All Contacts"
 msgstr "Unohda kaikki yhteystiedot"
 
-#: plugin/recentusagemodel.cpp:154
+#: plugin/recentusagemodel.cpp:151
 #, kde-format
 msgid "Recently Used"
 msgstr "Viimeisimmät"
 
-#: plugin/recentusagemodel.cpp:159 plugin/recentusagemodel.cpp:292
+#: plugin/recentusagemodel.cpp:156 plugin/recentusagemodel.cpp:298
 #, kde-format
 msgid "Files"
 msgstr "Tiedostot"
 
-#: plugin/recentusagemodel.cpp:236
+#: plugin/recentusagemodel.cpp:238
 #, kde-format
 msgid "Forget Application"
 msgstr "Unohda sovellus"
 
-#: plugin/recentusagemodel.cpp:326
+#: plugin/recentusagemodel.cpp:332
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Avaa yläkansio"
 
-#: plugin/recentusagemodel.cpp:329
+#: plugin/recentusagemodel.cpp:335
 #, kde-format
 msgid "Forget File"
 msgstr "Unohda tiedosto"
 
-#: plugin/recentusagemodel.cpp:475
+#: plugin/recentusagemodel.cpp:472
 #, kde-format
 msgid "Forget All"
 msgstr "Unohda kaikki"
 
-#: plugin/recentusagemodel.cpp:477
+#: plugin/recentusagemodel.cpp:474
 #, kde-format
 msgid "Forget All Applications"
 msgstr "Unohda kaikki sovellukset"
 
-#: plugin/recentusagemodel.cpp:480
+#: plugin/recentusagemodel.cpp:477
 #, kde-format
 msgid "Forget All Files"
 msgstr "Unohda kaikki tiedostot"
@@ -185,130 +185,130 @@ msgstr "Unohda kaikki tiedostot"
 msgid "Hide %1"
 msgstr "Piilota %1"
 
-#: plugin/rootmodel.cpp:400
+#: plugin/rootmodel.cpp:398
 #, kde-format
 msgid "All Applications"
 msgstr "Kaikki sovellukset"
 
-#: plugin/rootmodel.cpp:412
+#: plugin/rootmodel.cpp:410
 #, kde-format
 msgid "This shouldn't be visible! Use KICKER_FAVORITES_MODEL"
 msgstr "Tämän ei tulisi näkyä! Käytä: KICKER_FAVORITES_MODEL"
 
-#: plugin/rootmodel.cpp:424
+#: plugin/rootmodel.cpp:422
 #, kde-format
 msgid "Recent Contacts"
 msgstr "Viimeisimmät yhteystiedot"
 
-#: plugin/rootmodel.cpp:431
+#: plugin/rootmodel.cpp:429
 #, kde-format
 msgid "Often Used Files"
 msgstr "Usein käytetyt tiedostot"
 
-#: plugin/rootmodel.cpp:440
+#: plugin/rootmodel.cpp:438
 #, kde-format
 msgid "Recent Applications"
 msgstr "Viimeisimmät sovellukset"
 
-#: plugin/rootmodel.cpp:440
+#: plugin/rootmodel.cpp:438
 #, kde-format
 msgid "Often Used Applications"
 msgstr "Usein käytetyt sovellukset"
 
-#: plugin/rootmodel.cpp:454
+#: plugin/rootmodel.cpp:453
 #, kde-format
 msgid "Power / Session"
 msgstr "Virta / istunto"
 
-#: plugin/runnermodel.cpp:226
+#: plugin/runnermodel.cpp:231
 #, kde-format
 msgid "Search results"
 msgstr "Hakutulokset"
 
-#: plugin/systementry.cpp:194
+#: plugin/systementry.cpp:195
 #, kde-format
 msgid "Lock"
 msgstr "Lukitse"
 
-#: plugin/systementry.cpp:197
+#: plugin/systementry.cpp:198
 #, kde-format
 msgid "Log Out"
 msgstr "Kirjaudu ulos"
 
-#: plugin/systementry.cpp:200 plugin/systementry.cpp:268
+#: plugin/systementry.cpp:201 plugin/systementry.cpp:269
 #, kde-format
 msgid "Save Session"
 msgstr "Tallenna istunto"
 
-#: plugin/systementry.cpp:203
+#: plugin/systementry.cpp:204
 #, kde-format
 msgid "Switch User"
 msgstr "Vaihda käyttäjää"
 
-#: plugin/systementry.cpp:206
+#: plugin/systementry.cpp:207
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "Siirry valmiustilaan"
 
-#: plugin/systementry.cpp:209
+#: plugin/systementry.cpp:210
 #, kde-format
 msgid "Hibernate"
 msgstr "Siirry lepotilaan"
 
-#: plugin/systementry.cpp:212
+#: plugin/systementry.cpp:213
 #, kde-format
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
 
-#: plugin/systementry.cpp:215
+#: plugin/systementry.cpp:216
 #, kde-format
 msgid "Shut Down"
 msgstr "Sammuta"
 
-#: plugin/systementry.cpp:228 plugin/systementry.cpp:231
-#: plugin/systementry.cpp:234 plugin/systementry.cpp:237
+#: plugin/systementry.cpp:229 plugin/systementry.cpp:232
+#: plugin/systementry.cpp:235 plugin/systementry.cpp:238
 #, kde-format
 msgid "Session"
 msgstr "Istunto"
 
-#: plugin/systementry.cpp:240 plugin/systementry.cpp:243
-#: plugin/systementry.cpp:246 plugin/systementry.cpp:249
+#: plugin/systementry.cpp:241 plugin/systementry.cpp:244
+#: plugin/systementry.cpp:247 plugin/systementry.cpp:250
 #, kde-format
 msgid "System"
 msgstr "Järjestelmä"
 
-#: plugin/systementry.cpp:262
+#: plugin/systementry.cpp:263
 #, kde-format
 msgid "Lock screen"
 msgstr "Lukitse näyttö"
 
-#: plugin/systementry.cpp:265
+#: plugin/systementry.cpp:266
 #, kde-format
 msgid "End session"
 msgstr "Lopeta istunto"
 
-#: plugin/systementry.cpp:271
+#: plugin/systementry.cpp:272
 #, kde-format
 msgid "Start a parallel session as a different user"
 msgstr "Aloita rinnakkaisistunto toisena käyttäjänä"
 
-#: plugin/systementry.cpp:274
+#: plugin/systementry.cpp:275
 #, kde-format
 msgid "Suspend to RAM"
 msgstr "Keskeytä muistiin"
 
-#: plugin/systementry.cpp:277
+#: plugin/systementry.cpp:278
 #, kde-format
 msgid "Suspend to disk"
 msgstr "Keskeytä levylle"
 
-#: plugin/systementry.cpp:280
+#: plugin/systementry.cpp:281
 #, kde-format
 msgid "Restart computer"
 msgstr "Käynnistä tietokone uudelleen"
 
-#: plugin/systementry.cpp:283
+#: plugin/systementry.cpp:284
 #, kde-format
 msgid "Turn off computer"
 msgstr "Sammuta tietokone"
@@ -317,3 +317,187 @@ msgstr "Sammuta tietokone"
 #, kde-format
 msgid "System actions"
 msgstr "Järjestelmän toiminnot"
+
+#~ msgid "Documents"
+#~ msgstr "Tiedostot"
+
+#~ msgid "Forget Document"
+#~ msgstr "Unohda tiedosto"
+
+#~ msgid "Forget All Documents"
+#~ msgstr "Unohda kaikki tiedostot"
+
+#~ msgid "General"
+#~ msgstr "Yleiset"
+
+#~ msgid "Remove from Favorites"
+#~ msgstr "Poista suosikeista"
+
+#~ msgid "Add to Favorites"
+#~ msgstr "Lisää suosikkeihin"
+
+#~ msgid "On All Activities"
+#~ msgstr "Kaikissa aktiviteeteissa"
+
+#~ msgid "On The Current Activity"
+#~ msgstr "Nykyisessä aktiviteetissa"
+
+#~ msgid "Show In Favorites"
+#~ msgstr "Näytä suosikeissa"
+
+#~ msgid "Icon:"
+#~ msgstr "Kuvake:"
+
+#~ msgctxt "@item:inmenu Open icon chooser dialog"
+#~ msgid "Choose..."
+#~ msgstr "Valitse…"
+
+#~ msgctxt "@item:inmenu Reset icon to default"
+#~ msgid "Clear Icon"
+#~ msgstr "Poista kuvake"
+
+#~ msgid "Show applications as:"
+#~ msgstr "Näytä sovellukset muodossa:"
+
+#~ msgid "Name only"
+#~ msgstr "Vain nimi"
+
+#~ msgid "Description only"
+#~ msgstr "Vain kuvaus"
+
+#~ msgid "Name (Description)"
+#~ msgstr "Nimi (Kuvaus)"
+
+#~ msgid "Description (Name)"
+#~ msgstr "Kuvaus (Nimi)"
+
+#~ msgid "Behavior:"
+#~ msgstr "Toiminta:"
+
+#~ msgid "Sort applications alphabetically"
+#~ msgstr "Aakkosta sovellukset"
+
+#~ msgid "Flatten sub-menus to a single level"
+#~ msgstr "Tasoita alivalikot yhteen tasoon"
+
+#~ msgid "Show categories:"
+#~ msgstr "Näytä luokat:"
+
+#~ msgid "Recent applications"
+#~ msgstr "Viimeisimmät sovellukset"
+
+#~ msgid "Often used applications"
+#~ msgstr "Usein käytetyt sovellukset"
+
+#~ msgid "Recent documents"
+#~ msgstr "Viimeisimmät tiedostot"
+
+#~ msgid "Often used documents"
+#~ msgstr "Usein käytetyt tiedostot"
+
+#~ msgid "Recent contacts"
+#~ msgstr "Viimeisimmät yhteystiedot"
+
+#~ msgid "Often used contacts"
+#~ msgstr "Usein käytetyt yhteystiedot"
+
+#~ msgid "Sort items in categories by:"
+#~ msgstr "Lajittele luokat:"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Sort items in categories by [Recently used | Often used]"
+#~ msgid "Recently used"
+#~ msgstr "Äskettäin käytetyt"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Sort items in categories by [Recently used | Ofetn used]"
+#~ msgid "Often used"
+#~ msgstr "Usein käytetyt"
+
+#~ msgid "Search:"
+#~ msgstr "Etsi:"
+
+#~ msgid "Expand search to bookmarks, files and emails"
+#~ msgstr "Laajenna haku kirjanmerkkeihin, tiedostoihin ja sähköposteihin"
+
+#~ msgid "Align search results to bottom"
+#~ msgstr "Tasaa hakutulokset alareunaan"
+
+#~ msgid "Searching for '%1'"
+#~ msgstr "Haetaan: %1"
+
+#~ msgid "Type to search..."
+#~ msgstr "Hae kirjoittamalla…"
+
+#~ msgid "Widgets"
+#~ msgstr "Sovelmat"
+
+#~ msgid "Apps & Docs"
+#~ msgstr "Sovellukset ja tiedostot"
+
+#~ msgid "Edit Applications..."
+#~ msgstr "Muokkaa sovelluksia…"
+
+#~ msgid "Search..."
+#~ msgstr "Hae…"
+
+#~ msgctxt "@action opens a software center with the application"
+#~ msgid "Manage '%1'..."
+#~ msgstr "Hallitse sovellusta %1…"
+
+#~ msgid "Run Command..."
+#~ msgstr "Suorita komento…"
+
+#~ msgid "Run a command or a search query"
+#~ msgstr "Etsi tai suorita"
+
+#~ msgid "Show:"
+#~ msgstr "Näytä:"
+
+#~ msgid "Show recent applications"
+#~ msgstr "Näytä viimeisimmät sovellukset"
+
+#~ msgid "Show often used applications"
+#~ msgstr "Näytä usein käytetyt sovellukset"
+
+#~ msgid "Show recent documents"
+#~ msgstr "Näytä viimeisimmät tiedostot"
+
+#~ msgid "Show often used documents"
+#~ msgstr "Näytä usein käytetyt tiedostot"
+
+#~ msgid "Show recent contacts"
+#~ msgstr "Näytä viimeisimmät yhteystiedot"
+
+#~ msgid "Removable Storage"
+#~ msgstr "Irrotettava tallennusväline"
+
+#~ msgid "Places"
+#~ msgstr "Sijainnit"
+
+#~ msgid "Logout"
+#~ msgstr "Kirjaudu ulos"
+
+#~ msgid "Suspend"
+#~ msgstr "Valmiustila"
+
+#~ msgid "Reboot"
+#~ msgstr "Käynnistä uudelleen"
+
+#~ msgid "Use custom image:"
+#~ msgstr "Käytä omaa kuvaa:"
+
+#~ msgid "Choose an image"
+#~ msgstr "Valitse kuva"
+
+#~ msgid "Image Files (*.png *.jpg *.jpeg *.bmp *.svg *.svgz)"
+#~ msgstr "Kuvatiedostot (*.png *.jpg *.jpeg *.bmp *.svg *.svgz)"
+
+#~ msgid "Add as Launcher"
+#~ msgstr "Lisää käynnistimenä"
+
+#~ msgid "New Session"
+#~ msgstr "Uusi istunto"
+
+#~ msgid "(Empty)"
+#~ msgstr "(tyhjä)"

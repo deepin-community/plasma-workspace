@@ -27,3 +27,18 @@ msgstr "نازنین کاظمی"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kazemi@itland.ir"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt>ناتوان از استفاده از پشتیبان چندرسانه‌ای <b>%1</b>: <br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "قادر به یافتن پایانه پشتیابی چندرسانه‌ای نیست"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "قادر به یافتن پایانه پشتیبانی چندرسانه‌ای درخواست‌شده نیست"
+
+#~ msgid "create method returned 0"
+#~ msgstr "روش ایجاد ۰ برگرداند"
+
+#~ msgid "Unable to use the <b>%1</b> Multimedia Backend:"
+#~ msgstr "قادر به استفاده از پایانه پشتیبانی چندرسانه‌ای <b>%1</b> نیست:"

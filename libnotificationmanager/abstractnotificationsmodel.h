@@ -10,6 +10,7 @@
 #include <QDateTime>
 #include <QScopedPointer>
 #include <QSharedPointer>
+#include <QWindow>
 
 #include "notification.h"
 #include "notifications.h"
@@ -20,12 +21,16 @@ namespace NotificationManager
 class Q_DECL_EXPORT AbstractNotificationsModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(QWindow *window READ window WRITE setWindow NOTIFY windowChanged)
 
 public:
     ~AbstractNotificationsModel() override;
 
     QDateTime lastRead() const;
     void setLastRead(const QDateTime &lastRead);
+
+    QWindow *window() const;
+    void setWindow(QWindow *window);
 
     QVariant data(const QModelIndex &index, int role) const override;
     bool setData(const QModelIndex &index, const QVariant &value, int role) override;
@@ -38,9 +43,9 @@ public:
     // Currently configure actions are not exposed in AbstractNotificationsModel to keep it very minimal
     // if usecase for this comes up in future, we can revisit it.
 
-    virtual void invokeDefaultAction(uint notificationId) = 0;
-    virtual void invokeAction(uint notificationId, const QString &actionName) = 0;
-    virtual void reply(uint notificationId, const QString &text) = 0;
+    virtual void invokeDefaultAction(uint notificationId, Notifications::InvokeBehavior behavior) = 0;
+    virtual void invokeAction(uint notificationId, const QString &actionName, Notifications::InvokeBehavior behavior) = 0;
+    virtual void reply(uint notificationId, const QString &text, Notifications::InvokeBehavior behavior) = 0;
 
     void startTimeout(uint notificationId);
     void stopTimeout(uint notificationId);
@@ -49,6 +54,7 @@ public:
 
 Q_SIGNALS:
     void lastReadChanged();
+    void windowChanged(QWindow *window);
 
 protected:
     AbstractNotificationsModel();

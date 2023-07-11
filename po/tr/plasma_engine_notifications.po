@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_notifications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2014-10-21 09:49+0000\n"
 "Last-Translator: Necdet <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -27,7 +27,7 @@ msgstr "Bildirim veri motoru ayarlanmamış."
 msgid "Invalid destination: %1"
 msgstr "Geçersiz hedef: %1"
 
-#: notificationsengine.cpp:87
+#: notificationsengine.cpp:88
 #, kde-format
 msgid "Unknown Application"
 msgstr "Bilinmeyen Uygulama"

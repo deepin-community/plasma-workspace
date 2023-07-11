@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-01-22 00:46+0000\n"
 "PO-Revision-Date: 2021-08-20 15:59+0000\n"
 "Last-Translator: Vivek K J <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -82,11 +82,17 @@ msgid "QML component for choosing an alternate applet"
 msgstr "ഒരു ഇതര ആപ്ലെറ്റ് തിരഞ്ഞെടുക്കുന്നതിനുള്ള ക്യുഎംഎൽ ഘടകം"
 
 #: shellpackage.cpp:63
+#, fuzzy, kde-format
+#| msgid "QML component for the configuration dialog for containments"
+msgid "QML component for the configuration dialog of containments"
+msgstr "കണ്ടെയ്നറുകൾക്കായുള്ള ക്രമീകരണ ഡയലോഗിനുള്ള ക്യുഎംഎൽ ഘടകം"
+
+#: shellpackage.cpp:66
 #, kde-format
 msgid "Widgets explorer UI"
 msgstr ""
 
-#: shellpackage.cpp:67
+#: shellpackage.cpp:70
 #, kde-format
 msgid ""
 "A UI for writing, loading and running desktop scripts in the current live "

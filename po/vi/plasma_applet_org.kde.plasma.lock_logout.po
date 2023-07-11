@@ -120,3 +120,27 @@ msgstr "Ngủ (lưu trạng thái vào RAM)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Ngủ đông (lưu trạng thái vào đĩa)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "Tắt…"
+
+#~ msgid "Logout..."
+#~ msgstr "Đăng xuất…"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Bạn có muốn lưu trạng thái vào đĩa (ngủ đông) không?"
+
+#~ msgid "Yes"
+#~ msgstr "Có"
+
+#~ msgid "No"
+#~ msgstr "Không"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Bạn có muốn lưu trạng thái vào RAM (ngủ) không?"
+
+#~ msgid "Leave"
+#~ msgstr "Thoát"
+
+#~ msgid "Leave..."
+#~ msgstr "Thoát…"

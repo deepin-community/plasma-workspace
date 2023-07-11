@@ -28,3 +28,6 @@ msgstr "Jobbvisning för %1 kan inte hittas"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Jobb avbrutet av användaren."

@@ -49,3 +49,23 @@ msgstr "Visa dagen i månaden"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Visa veckonummer"
+
+#~ msgid "Working Day"
+#~ msgstr "Arbetsdag"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Börjar klockan 9"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Slutar klockan 17"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "Ikon:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "Dag i månaden"
+
+#~ msgid "Agenda"
+#~ msgstr "Agenda"

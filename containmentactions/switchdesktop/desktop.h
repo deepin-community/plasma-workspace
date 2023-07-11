@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <QHash>
 #include <plasma/containmentactions.h>
 
 class QAction;
@@ -33,5 +34,5 @@ private Q_SLOTS:
 
 private:
     QHash<int, QAction *> m_actions;
-    TaskManager::VirtualDesktopInfo *m_virtualDesktopInfo;
+    TaskManager::VirtualDesktopInfo *const m_virtualDesktopInfo;
 };

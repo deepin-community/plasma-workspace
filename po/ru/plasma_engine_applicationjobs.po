@@ -34,3 +34,6 @@ msgstr "Не найдено представления задачи для %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/с"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Задание отменено пользователем."

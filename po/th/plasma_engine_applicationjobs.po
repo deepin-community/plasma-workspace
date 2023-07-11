@@ -32,3 +32,6 @@ msgstr "ไม่พบตัวดูงานของ %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/วินาที"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "งานถูกยกเลิกโดยผู้ใช้"

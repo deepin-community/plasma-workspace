@@ -52,3 +52,23 @@ msgstr ""
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Αριθμός εβδομάδας"
+
+#~ msgid "Working Day"
+#~ msgstr "Εργάσιμη ημέρα "
+
+#~ msgid "Starts at 9"
+#~ msgstr "Ξεκινά στις 9"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Τελειώνει στις 5"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "Εικονίδιο:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "Ημέρα του μήνα"
+
+#~ msgid "Agenda"
+#~ msgstr "Ατζέντα"

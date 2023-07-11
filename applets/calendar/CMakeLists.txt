@@ -1,7 +1,6 @@
-kcoreaddons_add_plugin(plasma_applet_calendar SOURCES calendarapplet.cpp INSTALL_NAMESPACE "plasma/applets")
-kcoreaddons_desktop_to_json(plasma_applet_calendar package/metadata.desktop)
+kcoreaddons_add_plugin(org.kde.plasma.calendar SOURCES calendarapplet.cpp calendarapplet.h INSTALL_NAMESPACE "plasma/applets")
 
-target_link_libraries(plasma_applet_calendar
+target_link_libraries(org.kde.plasma.calendar
                       KF5::Plasma)
 
 plasma_install_package(package org.kde.plasma.calendar)

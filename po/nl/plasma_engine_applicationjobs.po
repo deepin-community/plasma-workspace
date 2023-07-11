@@ -28,3 +28,6 @@ msgstr "De JobView voor %1 is niet gevonden"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Taak door gebruiker afgebroken."

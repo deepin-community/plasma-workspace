@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_desktopthemedetails\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2021-09-15 18:47+0200\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -18,31 +18,11 @@ msgstr ""
 "X-Generator: Lokalize 21.08.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "sparc3,Michal Šulek"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "sparc3@azet.sk,misurel@gmail.com"
-
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
 #, kde-format
 msgid "Name of the current Plasma Style"
 msgstr "Názov aktuálneho Plasma štýlu"
-
-#: kcm.cpp:51
-#, kde-format
-msgid "Plasma Style"
-msgstr "Štýl Plasma"
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr "David Rosca"
 
 #: kcm.cpp:110
 #, kde-format
@@ -64,7 +44,7 @@ msgstr "Téma nainštalovaná úspešne."
 msgid "Theme installation failed."
 msgstr "Inštalácia témy zlyhala."
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr "Odstraňovanie témy zlyhalo: %1"
@@ -124,12 +104,12 @@ msgstr "Nainštalovať zo súboru..."
 msgid "Get New Plasma Styles…"
 msgstr "Získať nové štýly Plasma..."
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgid "Open Theme"
 msgstr "Otvoriť tému"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr "Súbory tém (*.zip *.tar.gz *.tar.bz2)"
@@ -186,3 +166,280 @@ msgstr ""
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
 msgstr "Vo vašom systéme máte nasledujúce Plasma témy:"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "sparc3,Michal Šulek"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "sparc3@azet.sk,misurel@gmail.com"
+
+#~ msgid "Plasma Style"
+#~ msgstr "Štýl Plasma"
+
+#~ msgid "David Rosca"
+#~ msgstr "David Rosca"
+
+#~ msgid "Search..."
+#~ msgstr "Hľadať..."
+
+#, fuzzy
+#~| msgid "Plasma Style"
+#~ msgid "Plasma Styles"
+#~ msgstr "Štýl Plasma"
+
+#~ msgid "Download New Plasma Styles"
+#~ msgstr "Stiahnuť nové štýly Plasma"
+
+#~ msgid "Choose the Plasma theme"
+#~ msgstr "Vybrať Plasma tému"
+
+#~ msgid "Configure Desktop Theme"
+#~ msgstr "Nastaviť tému plochy"
+
+#~ msgid "Theme removal failed."
+#~ msgstr "Odstránenie témy zlyhalo."
+
+#~ msgid ""
+#~ "<h1>Desktop Theme</h1>This module allows you to modify the visual "
+#~ "appearance of the desktop."
+#~ msgstr "<h1>Téma plochy</h1>Tento modul umožňuje upraviť vzhľad plochy."
+
+#~ msgid "KDE Desktop Theme Module"
+#~ msgstr "Modul témy plochy KDE"
+
+#~ msgid "(c) 2002 Karol Szwed, Daniel Molkentin"
+#~ msgstr "(c) 2002 Karol Szwed, Daniel Molkentin"
+
+#~ msgid "Theme installation failed. (%1)"
+#~ msgstr "Inštalácia témy zlyhala. (%1)"
+
+#~ msgid "Details"
+#~ msgstr "Detaily"
+
+#~ msgctxt "plasma name"
+#~ msgid "Panel Background"
+#~ msgstr "Pozadie panelu"
+
+#~ msgctxt "plasma name"
+#~ msgid "Kickoff"
+#~ msgstr "Kickoff"
+
+#~ msgctxt "plasma name"
+#~ msgid "Task Items"
+#~ msgstr "Položky úloh"
+
+#~ msgctxt "plasma name"
+#~ msgid "Widget Background"
+#~ msgstr "Pozadie widgetu"
+
+#~ msgctxt "plasma name"
+#~ msgid "Translucent Background"
+#~ msgstr "Priesvitné pozadie"
+
+#~ msgctxt "plasma name"
+#~ msgid "Dialog Background"
+#~ msgstr "Pozadie dialógu"
+
+#~ msgctxt "plasma name"
+#~ msgid "Analog Clock"
+#~ msgstr "Analógové hodiny"
+
+#~ msgctxt "plasma name"
+#~ msgid "Notes"
+#~ msgstr "Poznámky"
+
+#~ msgctxt "plasma name"
+#~ msgid "Tooltip"
+#~ msgstr "Rady"
+
+#~ msgctxt "plasma name"
+#~ msgid "Pager"
+#~ msgstr "Prepínač plôch"
+
+#~ msgctxt "plasma name"
+#~ msgid "Run Command Dialog"
+#~ msgstr "Dialóg pre spúšťanie príkazov"
+
+#~ msgctxt "plasma name"
+#~ msgid "Shutdown Dialog"
+#~ msgstr "Dialóg vypnutia"
+
+#~ msgctxt "plasma name"
+#~ msgid "Icons"
+#~ msgstr "Ikony"
+
+#~ msgid "(Customized)"
+#~ msgstr "(Prispôsobené)"
+
+#~ msgid "User customized theme"
+#~ msgstr "Užívateľom prispôsobená téma"
+
+#~ msgid ""
+#~ "Theme items have been changed.  Do you still wish remove the \"%1\" theme?"
+#~ msgstr "Položky témy boli zmenené. Naozaj chcete odstrániť tému \"%1\"?"
+
+#~ msgid "Removal of the default desktop theme is not allowed."
+#~ msgstr "Odstránenie štandardnej témy nie je povolené."
+
+#~ msgid "Are you sure you wish remove the \"%1\" theme?"
+#~ msgstr "Naozaj chcete odstrániť tému \"%1\"?"
+
+#~ msgid ""
+#~ "Please apply theme item changes (with a new theme name) before attempting "
+#~ "to export theme."
+#~ msgstr "Použite zmeny témy (s novým názvom témy) pred exportom."
+
+#~ msgid "Export Desktop Theme"
+#~ msgstr "Exportovať tému plochy"
+
+#~ msgid "Export theme to file"
+#~ msgstr "Exportovať tému do súboru"
+
+#~ msgid "Archive (*.zip)"
+#~ msgstr "Archív (*.zip)"
+
+#~ msgid "Theme Item"
+#~ msgstr "Položka témy"
+
+#~ msgid "Source"
+#~ msgstr "Zdroj"
+
+#~ msgctxt ""
+#~ "%1 is the name of the theme, %2 is the type of the element (background, "
+#~ "icon, note, etc)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgid "File..."
+#~ msgstr "Súbor..."
+
+#~ msgid "Select File to Use for %1"
+#~ msgstr "Vyberte súbor na použitie pre %1"
+
+#~ msgid " Author: %1"
+#~ msgstr " Autor: %1"
+
+#~ msgid "Version: %1"
+#~ msgstr "Verzia:  %1"
+
+#~ msgid "Desktop Theme Details"
+#~ msgstr "Detaily témy plochy"
+
+#~ msgid "Choose an item and customize it by assigning it a theme"
+#~ msgstr "Vyberte položku a upravte ju pomocou pridelenia témy"
+
+#~ msgid ""
+#~ "You can set any theme to any item. The available themes for the item are "
+#~ "in the dropdown box on the right."
+#~ msgstr ""
+#~ "Pre akúkoľvek položku môžete nastaviť akúkoľvek tému. Dostupné témy pre "
+#~ "položku sa nachádzajú vpravo v rozbaľovacom zozname."
+
+#~ msgid "Enable more options"
+#~ msgstr "Povoliť viac možností"
+
+#~ msgid ""
+#~ "This will expand the dialog and give you options to export your custom "
+#~ "theme as well as to remove a theme."
+#~ msgstr ""
+#~ "Týmto rozšírite dialóg, čím získate možnosť exportovať svoju vlastnú tému "
+#~ "prípadne odstrániť určitú tému."
+
+#~ msgid "More"
+#~ msgstr "Viac"
+
+#~ msgid "Remove the selected theme"
+#~ msgstr "Odstrániť vybranú tému"
+
+#~ msgid ""
+#~ "Clicking this button will remove the selected theme. You will be asked "
+#~ "for confirmation."
+#~ msgstr ""
+#~ "Kliknutím na toto tlačidlo odstránite vybranú tému. Bude vyžadované "
+#~ "potvrdenie."
+
+#~ msgid "Save your theme in a zip archive"
+#~ msgstr "Uložiť vašu tému do archívu zip"
+
+#~ msgid ""
+#~ "You can save your theme in a zip archive in order to share it with the "
+#~ "community."
+#~ msgstr ""
+#~ "Svoju tému môžete uložiť do archívu zip, aby ste ju mohli zdielať s "
+#~ "komunitou."
+
+#~ msgid "Export Theme to File..."
+#~ msgstr "Exportovať tému do súboru..."
+
+#~ msgid "New theme name:"
+#~ msgstr "Nový názov témy:"
+
+#~ msgid "Custom theme name"
+#~ msgstr "Názov vlastnej témy"
+
+#~ msgid "Give a name to your custom theme."
+#~ msgstr "Zadajte názov svojej vlastnej témy."
+
+#~ msgid "Author:"
+#~ msgstr "Autor:"
+
+#~ msgid "Custom theme author "
+#~ msgstr "Autor vlastnej témy "
+
+#~ msgid "Enter the author name of your custom theme."
+#~ msgstr "Zadajte meno autora svojej vlastnej témy."
+
+#~ msgid "Version:"
+#~ msgstr "Verzia:"
+
+#~ msgid "Custom theme version number"
+#~ msgstr "Číslo verzie vlastnej témy"
+
+#~ msgid "Enter the version number of your custom theme."
+#~ msgstr "Zadajte číslo verzie svojej vlastnej témy."
+
+#~ msgid "Description:"
+#~ msgstr "Popis:"
+
+#~ msgid "Custom theme description"
+#~ msgstr "Popis vlastnej témy"
+
+#~ msgid "Enter a description which will explain your custom theme."
+#~ msgstr "Zadajte popis svojej vlastnej témy."
+
+#~ msgid "Select theme from above to customize"
+#~ msgstr "Vyberte tému, ktorú chcete prispôsobiť"
+
+#~ msgid "Theme Author"
+#~ msgstr "Autor témy"
+
+#~ msgid "Theme Name"
+#~ msgstr "Názov témy"
+
+#~ msgid "Theme Version"
+#~ msgstr "Verzia témy"
+
+#~ msgid "The theme description goes here..."
+#~ msgstr "Sem pôjde popis témy..."
+
+#~ msgid ""
+#~ "Choose a start theme in this list then customize some items below. All "
+#~ "less important items not listed below will use this start theme."
+#~ msgstr ""
+#~ "Vyberte si počiatočnú tému z tohto zoznamu a potom upravte niektoré "
+#~ "položky nižšie. Všetky menej dôležité položky, ktoré sa nižšie "
+#~ "nenachádzajú sa použijú z počiatočnej témy."
+
+#~ msgid "Karol Szwed"
+#~ msgstr "Karol Szwed"
+
+#~ msgid "Daniel Molkentin"
+#~ msgstr "Daniel Molkentin"
+
+#~ msgid "Ralf Nolden"
+#~ msgstr "Ralf Nolden"
+
+#~ msgid "KCMDesktopTheme"
+#~ msgstr "KCMDesktopTheme"

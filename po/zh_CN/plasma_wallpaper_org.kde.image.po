@@ -1,17 +1,9 @@
-# translation of plasma_wallpaper_image.po to 简体中文
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-#
-# Ni Hui <shuizhuyuanluo@126.com>, 2008, 2009, 2010.
-# Feng Chao <rainofchaos@gmail.com>, 2011, 2013, 2014.
-# Xuetian Weng <xweng@cs.stonybrook.edu>, 2014.
-# Weng Xuetian <wengxt@gmail.com>, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-31 00:22+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"POT-Creation-Date: 2022-12-02 00:48+0000\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -26,181 +18,83 @@ msgstr ""
 "kde.image.pot\n"
 "X-Crowdin-File-ID: 7141\n"
 
-#: image.cpp:253
 #, kde-format
-msgid "Recommended wallpaper file"
-msgstr "推荐的壁纸文件"
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Guo Yunhe, Tyson Tan"
 
-#: image.cpp:414
 #, kde-format
-msgid "Directory with the wallpaper to show slides from"
-msgstr "选择幻灯片的壁纸目录"
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "i@guoyunhe.me, tysontan@tysontan.com"
 
-#: image.cpp:716
-#, kde-format
-msgid "Open Image"
-msgstr "打开图像"
-
-#: image.cpp:716
-#, kde-format
-msgid "Image Files"
-msgstr "图像文件"
-
-#: imagepackage/contents/ui/config.qml:98
+#: imagepackage/contents/ui/config.qml:94
 #, kde-format
 msgid "Positioning:"
 msgstr "位置："
 
-#: imagepackage/contents/ui/config.qml:101
+#: imagepackage/contents/ui/config.qml:97
 #, kde-format
 msgid "Scaled and Cropped"
 msgstr "缩放并裁剪"
 
-#: imagepackage/contents/ui/config.qml:105
+#: imagepackage/contents/ui/config.qml:101
 #, kde-format
 msgid "Scaled"
 msgstr "缩放"
 
-#: imagepackage/contents/ui/config.qml:109
+#: imagepackage/contents/ui/config.qml:105
 #, kde-format
 msgid "Scaled, Keep Proportions"
 msgstr "缩放，保持比例"
 
-#: imagepackage/contents/ui/config.qml:113
+#: imagepackage/contents/ui/config.qml:109
 #, kde-format
 msgid "Centered"
 msgstr "居中"
 
-#: imagepackage/contents/ui/config.qml:117
+#: imagepackage/contents/ui/config.qml:113
 #, kde-format
 msgid "Tiled"
 msgstr "平铺"
 
-#: imagepackage/contents/ui/config.qml:146
+#: imagepackage/contents/ui/config.qml:141
 #, kde-format
 msgid "Background:"
 msgstr "背景色："
 
-#: imagepackage/contents/ui/config.qml:147
+#: imagepackage/contents/ui/config.qml:142
 #, kde-format
 msgid "Blur"
 msgstr "虚化"
 
-#: imagepackage/contents/ui/config.qml:156
+#: imagepackage/contents/ui/config.qml:151
 #, kde-format
 msgid "Solid color"
 msgstr "纯色"
 
-#: imagepackage/contents/ui/config.qml:166
+#: imagepackage/contents/ui/config.qml:161
 #, kde-format
 msgid "Select Background Color"
 msgstr "选择背景色"
 
-#: imagepackage/contents/ui/config.qml:190
-#, kde-format
-msgid "Order:"
-msgstr "排序："
-
-#: imagepackage/contents/ui/config.qml:197
-#, kde-format
-msgid "Random"
-msgstr "随机"
-
-#: imagepackage/contents/ui/config.qml:201
-#, kde-format
-msgid "A to Z"
-msgstr "A 到 Z"
-
-#: imagepackage/contents/ui/config.qml:205
-#, kde-format
-msgid "Z to A"
-msgstr "Z 到 A"
-
-#: imagepackage/contents/ui/config.qml:209
-#, kde-format
-msgid "Date modified (newest first)"
-msgstr "修改日期 (最新在前)"
-
-#: imagepackage/contents/ui/config.qml:213
-#, kde-format
-msgid "Date modified (oldest first)"
-msgstr "修改日期 (最旧在前)"
-
-#: imagepackage/contents/ui/config.qml:237
-#, kde-format
-msgid "Group by folders"
-msgstr "按文件夹分组"
-
-#: imagepackage/contents/ui/config.qml:249
-#, kde-format
-msgid "Change every:"
-msgstr "壁纸更换间隔："
-
-#: imagepackage/contents/ui/config.qml:259
-#, kde-format
-msgid "%1 hour"
-msgid_plural "%1 hours"
-msgstr[0] "%1 小时"
-
-#: imagepackage/contents/ui/config.qml:278
-#, kde-format
-msgid "%1 minute"
-msgid_plural "%1 minutes"
-msgstr[0] "%1 分钟"
-
-#: imagepackage/contents/ui/config.qml:297
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 秒"
-
-#: imagepackage/contents/ui/config.qml:310
-#, kde-format
-msgid "Folders"
-msgstr "文件夹"
-
-#: imagepackage/contents/ui/config.qml:358
-#, kde-format
-msgid "Remove Folder"
-msgstr "移除文件夹"
-
-#: imagepackage/contents/ui/config.qml:363
-#, kde-format
-msgid "Open Folder"
-msgstr "打开文件夹"
-
-#: imagepackage/contents/ui/config.qml:373
-#, kde-format
-msgid "There are no wallpaper locations configured"
-msgstr "未配置壁纸位置"
-
-#: imagepackage/contents/ui/config.qml:386
-#, kde-format
-msgid "Add Folder…"
-msgstr "添加文件夹…"
-
-#: imagepackage/contents/ui/config.qml:392
-#: imagepackage/contents/ui/config.qml:486
-#, kde-format
-msgid "Get New Wallpapers…"
-msgstr "获取新壁纸…"
-
-#: imagepackage/contents/ui/config.qml:435
-#, kde-format
-msgid "There are no wallpapers in this slideshow"
-msgstr "幻灯片尚未包含壁纸"
-
-#: imagepackage/contents/ui/config.qml:480
+#: imagepackage/contents/ui/config.qml:207
 #, kde-format
 msgid "Add Image…"
 msgstr "添加图像…"
 
-#: imagepackage/contents/ui/main.qml:55
+#: imagepackage/contents/ui/config.qml:213
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:257
+#, kde-format
+msgid "Get New Wallpapers…"
+msgstr "获取新壁纸…"
+
+#: imagepackage/contents/ui/main.qml:66
 #, kde-format
 msgid "Open Wallpaper Image"
 msgstr "打开壁纸图像"
 
-#: imagepackage/contents/ui/main.qml:56
+#: imagepackage/contents/ui/main.qml:67
 #, kde-format
 msgid "Next Wallpaper Image"
 msgstr "下一张壁纸图像"
@@ -243,25 +137,128 @@ msgstr ""
 "此壁纸的文件名包含一个未封闭的单引号 (') - 请联系壁纸的作者来解决这个问题，或"
 "者自行重命名该文件：%1"
 
-#: plasma-apply-wallpaperimage.cpp:82
+#: plasma-apply-wallpaperimage.cpp:85
 #, kde-format
 msgid "An error occurred while attempting to set the Plasma wallpaper:\n"
 msgstr "尝试设置 Plasma 壁纸时出错：\n"
 
-#: plasma-apply-wallpaperimage.cpp:86
+#: plasma-apply-wallpaperimage.cpp:89
 #, kde-format
 msgid ""
 "Successfully set the wallpaper for all desktops to the KPackage based %1"
 msgstr "已将所有桌面壁纸设置为基于 KPackage 的 %1"
 
-#: plasma-apply-wallpaperimage.cpp:88
+#: plasma-apply-wallpaperimage.cpp:91
 #, kde-format
 msgid "Successfully set the wallpaper for all desktops to the image %1"
 msgstr "已将所有桌面的壁纸设置为图像 %1"
 
-#: plasma-apply-wallpaperimage.cpp:94
+#: plasma-apply-wallpaperimage.cpp:97
 #, kde-format
 msgid ""
 "The file passed to be set as wallpaper does not exist, or we cannot identify "
 "it as a wallpaper: %1"
 msgstr "要设为壁纸的文件不存在，或者无法识别为壁纸：%1"
+
+#: plugin/finder/packagefinder.cpp:148
+#, kde-format
+msgid "Recommended wallpaper file"
+msgstr "推荐的壁纸文件"
+
+#: plugin/imagebackend.cpp:243
+#, kde-format
+msgid "Directory with the wallpaper to show slides from"
+msgstr "选择幻灯片的壁纸目录"
+
+#: plugin/imagebackend.cpp:353
+#, kde-format
+msgid "Open Image"
+msgstr "打开图像"
+
+#: plugin/imagebackend.cpp:353
+#, kde-format
+msgid "Image Files"
+msgstr "图像文件"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:38
+#, kde-format
+msgid "Order:"
+msgstr "排序："
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:45
+#, kde-format
+msgid "Random"
+msgstr "随机"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:49
+#, kde-format
+msgid "A to Z"
+msgstr "A 到 Z"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:53
+#, kde-format
+msgid "Z to A"
+msgstr "Z 到 A"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:57
+#, kde-format
+msgid "Date modified (newest first)"
+msgstr "修改日期 (最新在前)"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:61
+#, kde-format
+msgid "Date modified (oldest first)"
+msgstr "修改日期 (最旧在前)"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:86
+#, kde-format
+msgid "Group by folders"
+msgstr "按文件夹分组"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:98
+#, kde-format
+msgid "Change every:"
+msgstr "壁纸更换间隔："
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:108
+#, kde-format
+msgid "%1 hour"
+msgid_plural "%1 hours"
+msgstr[0] "%1 小时"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:128
+#, kde-format
+msgid "%1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "%1 分钟"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:148
+#, kde-format
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 秒"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:162
+#, kde-format
+msgid "Folders"
+msgstr "文件夹"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:220
+#, kde-format
+msgid "Remove Folder"
+msgstr "移除文件夹"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:225
+#, kde-format
+msgid "Open Folder"
+msgstr "打开文件夹"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:235
+#, kde-format
+msgid "There are no wallpaper locations configured"
+msgstr "未配置壁纸位置"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:250
+#, kde-format
+msgid "Add Folder…"
+msgstr "添加文件夹…"

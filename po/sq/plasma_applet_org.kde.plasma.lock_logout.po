@@ -122,3 +122,17 @@ msgstr ""
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Leave..."
+#~ msgid "Leave"
+#~ msgstr "Largohu..."
+
+#~ msgid "Leave..."
+#~ msgstr "Largohu..."
+
+#~ msgid "Suspend"
+#~ msgstr "Pezullo"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Konfiguro Bllokimin/Daljen"

@@ -9,6 +9,7 @@
 #include "sortproxymodel.h"
 #include <QPointer>
 #include <QQuickPaintedItem>
+#include <QTimer>
 
 class CursorTheme;
 class PreviewCursor;
@@ -48,7 +49,11 @@ protected:
     void paint(QPainter *) override;
     void hoverMoveEvent(QHoverEvent *event) override;
     void hoverLeaveEvent(QHoverEvent *e) override;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#else
+    void geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#endif
 
 private:
     void layoutItems();
@@ -59,4 +64,6 @@ private:
     QPointer<SortProxyModel> m_themeModel;
     int m_currentIndex;
     int m_currentSize;
+    QTimer m_animationTimer;
+    size_t nextAnimationFrame;
 };

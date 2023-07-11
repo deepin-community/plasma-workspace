@@ -2,54 +2,55 @@
 #
 # Karl Ove Hufthammer <karl@huftis.org>, 2007, 2008.
 # Eirik U. Birkeland <eirbir@gmail.com>, 2008.
+# Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: libkworkspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2008-12-03 21:38+0100\n"
-"Last-Translator: Eirik U. Birkeland <eirbir@gmail.com>\n"
+"POT-Creation-Date: 2022-08-03 00:48+0000\n"
+"PO-Revision-Date: 2021-12-16 12:53+0100\n"
+"Last-Translator: Oystein Steffensen-Alvaervik <ystein@posteo.net>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: Lokalize 21.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: kdisplaymanager.cpp:769
+#: kdisplaymanager.cpp:777
 #, kde-format
 msgctxt "user: …"
 msgid "%1: TTY login"
-msgstr ""
+msgstr "%1: TTY-innlogging"
 
-#: kdisplaymanager.cpp:774
+#: kdisplaymanager.cpp:782
 #, kde-format
 msgctxt "… location (TTY or X display)"
 msgid "Unused"
-msgstr ""
+msgstr "Ubrukt"
 
-#: kdisplaymanager.cpp:775
+#: kdisplaymanager.cpp:783
 #, kde-format
 msgid "X login on remote host"
 msgstr "X-innlogging på ekstern tenar"
 
-#: kdisplaymanager.cpp:775
+#: kdisplaymanager.cpp:783
 #, kde-format
 msgctxt "… host"
 msgid "X login on %1"
-msgstr ""
+msgstr "X-innlogging på %1"
 
-#: kdisplaymanager.cpp:777
+#: kdisplaymanager.cpp:785
 #, kde-format
 msgctxt "user: session type"
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: kdisplaymanager.cpp:788
+#: kdisplaymanager.cpp:796
 #, kde-format
 msgctxt "session (location)"
 msgid "%1 (%2)"

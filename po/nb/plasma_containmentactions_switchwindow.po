@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2014-08-28 20:51+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -37,19 +37,19 @@ msgstr "Vis en undermeny for hvert skrivebord"
 msgid "Display only the current desktop's windows"
 msgstr "Vis bare vinduene for gjeldende skrivebord"
 
-#: switch.cpp:71
+#: switch.cpp:75
 #, kde-format
 msgctxt "plasma_containmentactions_switchwindow"
 msgid "Configure Switch Window Plugin"
 msgstr "Sett opp programtillegget for vindusbytte"
 
-#: switch.cpp:151
+#: switch.cpp:155
 #, kde-format
 msgctxt "plasma_containmentactions_switchwindow"
 msgid "Windows"
 msgstr "Vinduer"
 
-#: switch.cpp:175 switch.cpp:196 switch.cpp:198
+#: switch.cpp:179 switch.cpp:200 switch.cpp:202
 #, kde-format
 msgctxt "plasma_containmentactions_switchwindow"
 msgid "All Desktops"

@@ -11,7 +11,11 @@
 #include <QCursor>
 #include <QDir>
 #include <QImage>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 
 #include <X11/Xcursor/Xcursor.h>
 #include <X11/Xlib.h>
@@ -204,4 +208,33 @@ QImage XCursorTheme::loadImage(const QString &name, int size) const
     XcursorImageDestroy(xcimage);
 
     return image;
+}
+
+std::vector<CursorTheme::CursorImage> XCursorTheme::loadImages(const QString &name, int size) const
+{
+    if (size <= 0)
+        size = defaultCursorSize();
+
+    // Load the images
+    XcursorImages *xcimages = xcLoadImages(name, size);
+
+    if (!xcimages)
+        xcimages = xcLoadImages(findAlternative(name), size);
+
+    if (!xcimages) {
+        return {};
+    }
+
+    std::vector<CursorImage> images;
+    images.reserve(xcimages->nimage);
+    for (int i = 0; i < xcimages->nimage; ++i) {
+        // Convert the XcursorImage to a QImage, and auto-crop it
+        const XcursorImage *xcimage = xcimages->images[i];
+        QImage image(reinterpret_cast<unsigned char *>(xcimage->pixels), xcimage->width, xcimage->height, QImage::Format_ARGB32_Premultiplied);
+        images.push_back(CursorImage{autoCropImage(image), std::chrono::milliseconds{xcimage->delay}});
+    }
+
+    XcursorImagesDestroy(xcimages);
+
+    return images;
 }

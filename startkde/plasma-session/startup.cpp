@@ -16,21 +16,18 @@
 
 #include "debug.h"
 
+#include <unistd.h>
+
 #include "kcminit_interface.h"
 #include "kded_interface.h"
 #include "ksmserver_interface.h"
 
 #include <KCompositeJob>
+#include <KConfig>
 #include <KConfigGroup>
-#include <KIO/DesktopExecParser>
-#include <KNotifyConfig>
+#include <KIO/ApplicationLauncherJob>
 #include <KProcess>
 #include <KService>
-#include <Kdelibs4Migration>
-
-#include <phonon/audiooutput.h>
-#include <phonon/mediaobject.h>
-#include <phonon/mediasource.h>
 
 #include <QDBusConnection>
 #include <QDBusMessage>
@@ -40,9 +37,11 @@
 #include <QStandardPaths>
 #include <QTimer>
 
+#include "sessiontrack.h"
 #include "startupadaptor.h"
 
 #include "../config-startplasma.h"
+#include "startplasma.h"
 
 class Phase : public KCompositeJob
 {
@@ -113,12 +112,10 @@ public:
         : Phase(autostart, parent)
     {
     }
-    void migrateKDE4Autostart();
 
     void start() override
     {
         qCDebug(PLASMA_SESSION) << "Phase 2";
-        migrateKDE4Autostart();
         addSubjob(new AutoStartAppsJob(m_autostart, 2));
         addSubjob(new KDEDInitJob());
     }
@@ -137,75 +134,18 @@ void SleepJob::start()
     t->start(100);
 }
 
-// Put the notification in its own thread as it can happen that
-// PulseAudio will start initializing with this, so let's not
-// block the main thread with waiting for PulseAudio to start
-class NotificationThread : public QThread
-{
-    Q_OBJECT
-    void run() override
-    {
-        // We cannot parent to the thread itself so let's create
-        // a QObject on the stack and parent everything to it
-        QObject parent;
-        KNotifyConfig notifyConfig(QStringLiteral("plasma_workspace"), QList<QPair<QString, QString>>(), QStringLiteral("startkde"));
-        const QString action = notifyConfig.readEntry(QStringLiteral("Action"));
-        if (action.isEmpty() || !action.split(QLatin1Char('|')).contains(QLatin1String("Sound"))) {
-            // no startup sound configured
-            return;
-        }
-        Phonon::AudioOutput *m_audioOutput = new Phonon::AudioOutput(Phonon::NotificationCategory, &parent);
-
-        QString soundFilename = notifyConfig.readEntry(QStringLiteral("Sound"));
-        if (soundFilename.isEmpty()) {
-            qCWarning(PLASMA_SESSION) << "Audio notification requested, but no sound file provided in notifyrc file, aborting audio notification";
-            return;
-        }
-
-        QUrl soundURL;
-        const auto dataLocations = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
-        for (const QString &dataLocation : dataLocations) {
-            soundURL = QUrl::fromUserInput(soundFilename, dataLocation + QStringLiteral("/sounds"), QUrl::AssumeLocalFile);
-            if (soundURL.isLocalFile() && QFile::exists(soundURL.toLocalFile())) {
-                break;
-            } else if (!soundURL.isLocalFile() && soundURL.isValid()) {
-                break;
-            }
-            soundURL.clear();
-        }
-        if (soundURL.isEmpty()) {
-            qCWarning(PLASMA_SESSION) << "Audio notification requested, but sound file from notifyrc file was not found, aborting audio notification";
-            return;
-        }
-
-        Phonon::MediaObject *m = new Phonon::MediaObject(&parent);
-        connect(m, &Phonon::MediaObject::finished, this, &NotificationThread::quit);
-
-        Phonon::createPath(m, m_audioOutput);
-
-        m->setCurrentSource(soundURL);
-        m->play();
-        exec();
-    }
-
-private:
-    // Prevent application exit until the thread (and hence the sound) completes
-    QEventLoopLocker m_locker;
-};
-
 Startup::Startup(QObject *parent)
     : QObject(parent)
 {
+    Q_ASSERT(!s_self);
+    s_self = this;
     new StartupAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/Startup"), QStringLiteral("org.kde.Startup"), this);
     QDBusConnection::sessionBus().registerService(QStringLiteral("org.kde.Startup"));
 
     const AutoStart autostart;
 
-    // Keep for KF5; remove in KF6 (KInit will be gone then)
-    QProcess::execute(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/start_kdeinit_wrapper"), QStringList());
-
-    KJob *windowManagerJob = nullptr;
+    KJob *x11WindowManagerJob = nullptr;
     if (qEnvironmentVariable("XDG_SESSION_TYPE") != QLatin1String("wayland")) {
         QString windowManager;
         if (qEnvironmentVariableIsSet("KDEWM")) {
@@ -216,17 +156,35 @@ Startup::Startup(QObject *parent)
         }
 
         if (windowManager == QLatin1String(KWIN_BIN)) {
-            windowManagerJob = new StartServiceJob(windowManager, {}, QStringLiteral("org.kde.KWin"));
+            x11WindowManagerJob = new StartServiceJob(windowManager, {}, QStringLiteral("org.kde.KWin"));
         } else {
-            windowManagerJob = new StartServiceJob(windowManager, {}, {});
+            x11WindowManagerJob = new StartServiceJob(windowManager, {}, {});
+        }
+    } else {
+        // This must block until started as it sets the WAYLAND_DISPLAY/DISPLAY env variables needed for the rest of the boot
+        // fortunately it's very fast as it's just starting a wrapper
+        StartServiceJob kwinWaylandJob(QStringLiteral("kwin_wayland_wrapper"), {QStringLiteral("--xwayland")}, QStringLiteral("org.kde.KWinWrapper"));
+        kwinWaylandJob.exec();
+        // kslpash is only launched in plasma-session from the wayland mode, for X it's in startplasma-x11
+
+        const KConfig cfg(QStringLiteral("ksplashrc"));
+        // the splashscreen and progress indicator
+        KConfigGroup ksplashCfg = cfg.group("KSplash");
+        if (ksplashCfg.readEntry("Engine", QStringLiteral("KSplashQML")) == QLatin1String("KSplashQML")) {
+            QProcess::startDetached(QStringLiteral("ksplashqml"), {});
         }
     }
 
+    // Keep for KF5; remove in KF6 (KInit will be gone then)
+    QProcess::execute(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/start_kdeinit_wrapper"), QStringList());
+
     KJob *phase1 = nullptr;
+    m_lock.reset(new QEventLoopLocker);
+
     const QVector<KJob *> sequence = {
         new StartProcessJob(QStringLiteral("kcminit_startup"), {}),
         new StartServiceJob(QStringLiteral("kded5"), {}, QStringLiteral("org.kde.kded5"), {}),
-        windowManagerJob,
+        x11WindowManagerJob,
         new StartServiceJob(QStringLiteral("ksmserver"), QCoreApplication::instance()->arguments().mid(1), QStringLiteral("org.kde.ksmserver")),
         new StartupPhase0(autostart, this),
         phase1 = new StartupPhase1(autostart, this),
@@ -243,12 +201,6 @@ Startup::Startup(QObject *parent)
         }
         last = job;
     }
-
-    connect(phase1, &KJob::finished, this, []() {
-        NotificationThread *loginSound = new NotificationThread();
-        connect(loginSound, &NotificationThread::finished, loginSound, &NotificationThread::deleteLater);
-        loginSound->start();
-    });
 
     connect(sequence.last(), &KJob::finished, this, &Startup::finishStartup);
     sequence.first()->start();
@@ -270,12 +222,29 @@ void Startup::finishStartup()
 {
     qCDebug(PLASMA_SESSION) << "Finished";
     upAndRunning(QStringLiteral("ready"));
+
+    playStartupSound();
+    new SessionTrack(m_processes);
+    deleteLater();
 }
 
 void Startup::updateLaunchEnv(const QString &key, const QString &value)
 {
     qputenv(key.toLatin1(), value.toLatin1());
 }
+
+bool Startup::startDetached(QProcess *process)
+{
+    process->setProcessChannelMode(QProcess::ForwardedChannels);
+    process->start();
+    const bool ret = process->waitForStarted();
+    if (ret) {
+        m_processes << process;
+    }
+    return ret;
+}
+
+Startup *Startup::s_self = nullptr;
 
 KCMInitJob::KCMInitJob()
     : KJob()
@@ -329,50 +298,6 @@ void RestoreSessionJob::start()
     connect(watcher, &QDBusPendingCallWatcher::finished, watcher, &QObject::deleteLater);
 }
 
-void StartupPhase2::migrateKDE4Autostart()
-{
-    // Migrate user autostart from kde4
-    Kdelibs4Migration migration;
-    if (!migration.kdeHomeFound()) {
-        return;
-    }
-
-    const QString autostartFolder =
-        QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QDir::separator() + QStringLiteral("autostart-scripts");
-    QDir dir(autostartFolder);
-    if (!dir.exists()) {
-        dir.mkpath(QStringLiteral("."));
-    }
-
-    // KDEHOME/Autostart was the default value for KGlobalSettings::autostart()
-    QString oldAutostart = migration.kdeHome() + QStringLiteral("/Autostart");
-    // That path could be customized in kdeglobals
-    const QString oldKdeGlobals = migration.locateLocal("config", QStringLiteral("kdeglobals"));
-    if (!oldKdeGlobals.isEmpty()) {
-        oldAutostart = KConfig(oldKdeGlobals).group("Paths").readEntry("Autostart", oldAutostart);
-    }
-
-    const QDir oldFolder(oldAutostart);
-    qCDebug(PLASMA_SESSION) << "Copying autostart files from" << oldFolder.path();
-    const QStringList entries = oldFolder.entryList(QDir::Files);
-    for (const QString &file : entries) {
-        const QString src = oldFolder.absolutePath() + QLatin1Char('/') + file;
-        const QString dest = autostartFolder + QLatin1Char('/') + file;
-        QFileInfo info(src);
-        bool success;
-        if (info.isSymLink()) {
-            // This will only work with absolute symlink targets
-            success = QFile::link(info.symLinkTarget(), dest);
-        } else {
-            success = QFile::copy(src, dest);
-        }
-        if (!success) {
-            qCWarning(PLASMA_SESSION) << "Error copying" << src << "to" << dest;
-        }
-    }
-    return;
-}
-
 AutoStartAppsJob::AutoStartAppsJob(const AutoStart &autostart, int phase)
     : m_autoStart(autostart)
 {
@@ -394,23 +319,15 @@ void AutoStartAppsJob::start()
                 emitResult();
                 return;
             }
-            KService service(serviceName);
-            auto arguments = KIO::DesktopExecParser(service, QList<QUrl>()).resultingArguments();
-            if (arguments.isEmpty()) {
-                qCWarning(PLASMA_SESSION) << "failed to parse" << serviceName << "for autostart";
-                continue;
-            }
-            qCInfo(PLASMA_SESSION) << "Starting autostart service " << serviceName << arguments;
-            auto program = arguments.takeFirst();
-            if (!QProcess::startDetached(program, arguments))
-                qCWarning(PLASMA_SESSION) << "could not start" << serviceName << ":" << program << arguments;
+            auto job = new KIO::ApplicationLauncherJob(KService::Ptr(new KService(serviceName)), this);
+            job->start();
         } while (true);
     });
 }
 
 StartServiceJob::StartServiceJob(const QString &process, const QStringList &args, const QString &serviceId, const QProcessEnvironment &additionalEnv)
     : KJob()
-    , m_process(new QProcess(this))
+    , m_process(new QProcess)
     , m_serviceId(serviceId)
     , m_additionalEnv(additionalEnv)
 {
@@ -433,7 +350,7 @@ void StartServiceJob::start()
         return;
     }
     qCDebug(PLASMA_SESSION) << "Starting " << m_process->program() << m_process->arguments();
-    if (!m_process->startDetached()) {
+    if (!Startup::self()->startDetached(m_process)) {
         qCWarning(PLASMA_SESSION) << "error starting process" << m_process->program() << m_process->arguments();
         emitResult();
     }
@@ -449,11 +366,12 @@ StartProcessJob::StartProcessJob(const QString &process, const QStringList &args
 {
     m_process->setProgram(process);
     m_process->setArguments(args);
+    m_process->setProcessChannelMode(QProcess::ForwardedChannels);
     auto env = QProcessEnvironment::systemEnvironment();
     env.insert(additionalEnv);
     m_process->setProcessEnvironment(env);
 
-    connect(m_process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [this](int exitCode) {
+    connect(m_process, &QProcess::finished, [this](int exitCode) {
         qCInfo(PLASMA_SESSION) << "process job " << m_process->program() << "finished with exit code " << exitCode;
         emitResult();
     });

@@ -5,17 +5,18 @@
 */
 
 #include "fileinfo.h"
+#include "notifications_debug.h"
 
 #include <QAction>
 #include <QMimeDatabase>
 
 #include <KApplicationTrader>
 #include <KAuthorized>
-#include <KLocalizedString>
 #include <KIO/ApplicationLauncherJob>
-#include <KIO/JobUiDelegate>
+#include <KIO/JobUiDelegateFactory>
 #include <KIO/MimeTypeFinderJob>
 #include <KIO/OpenUrlJob>
+#include <KLocalizedString>
 #include <KNotificationJobUiDelegate>
 
 FileInfo::FileInfo(QObject *parent)
@@ -35,7 +36,7 @@ void FileInfo::setUrl(const QUrl &url)
     if (m_url != url) {
         m_url = url;
         reload();
-        emit urlChanged(url);
+        Q_EMIT urlChanged(url);
     }
 }
 
@@ -48,7 +49,7 @@ void FileInfo::setBusy(bool busy)
 {
     if (m_busy != busy) {
         m_busy = busy;
-        emit busyChanged(busy);
+        Q_EMIT busyChanged(busy);
     }
 }
 
@@ -61,7 +62,7 @@ void FileInfo::setError(int error)
 {
     if (m_error != error) {
         m_error = error;
-        emit errorChanged(error);
+        Q_EMIT errorChanged(error);
     }
 }
 
@@ -116,7 +117,7 @@ void FileInfo::reload()
     connect(m_job, &KIO::MimeTypeFinderJob::result, this, [this, url] {
         setError(m_job->error());
         if (m_job->error()) {
-            qWarning() << "Failed to determine mime type for" << url << m_job->errorString();
+            qCWarning(PLASMA_APPLET_NOTIFICATIONS_DEBUG) << "Failed to determine mime type for" << url << m_job->errorString();
         } else {
             mimeTypeFound(m_job->mimeType());
         }
@@ -144,7 +145,7 @@ void FileInfo::mimeTypeFound(const QString &mimeType)
                 job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
             } else {
                 // needs KIO::JobUiDelegate for open with handler
-                job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled, nullptr /*widget*/));
+                job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled, nullptr /*widget*/));
             }
             job->setUrls({m_url});
             job->start();
@@ -172,7 +173,7 @@ void FileInfo::mimeTypeFound(const QString &mimeType)
     } else {
         m_openAction->setText(i18n("Open with…"));
         m_openAction->setIcon(QIcon::fromTheme(QStringLiteral("system-run")));
-        m_openAction->setEnabled(KAuthorized::authorizeAction(QStringLiteral("openwith")));
+        m_openAction->setEnabled(KAuthorized::authorizeAction(KAuthorized::OPEN_WITH));
     }
 
     Q_EMIT mimeTypeChanged();
@@ -184,3 +185,5 @@ void FileInfo::mimeTypeFound(const QString &mimeType)
         Q_EMIT openActionIconNameChanged();
     }
 }
+
+#include "moc_fileinfo.cpp"

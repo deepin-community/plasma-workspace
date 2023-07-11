@@ -9,11 +9,16 @@
 
 #include <QDebug>
 
+#include <KApplicationTrader>
+#include <KConfigGroup>
+#include <KDesktopFile>
 #include <KIO/CommandLauncherJob>
 #include <KLocalizedString>
 #include <KNotificationJobUiDelegate>
+#include <KService>
 #include <kmacroexpander.h>
 #include <solid/block.h>
+#include <solid/device.h>
 #include <solid/storageaccess.h>
 
 class MacroExpander : public KMacroExpanderBase
@@ -38,7 +43,7 @@ class DelayedExecutor : public QObject
 public:
     DelayedExecutor(const KServiceAction &service, Solid::Device &device);
 
-private slots:
+private Q_SLOTS:
     void _k_storageSetupDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
 
 private:
@@ -46,22 +51,6 @@ private:
 
     KServiceAction m_service;
 };
-
-DeviceServiceAction::DeviceServiceAction()
-    : DeviceAction()
-{
-    DeviceAction::setIconName(QStringLiteral("dialog-cancel"));
-    DeviceAction::setLabel(i18nc("A default name for an action without proper label", "Unknown"));
-}
-
-QString DeviceServiceAction::id() const
-{
-    if (m_service.name().isEmpty() && m_service.exec().isEmpty()) {
-        return QString();
-    } else {
-        return "#Service:" + m_service.name() + m_service.exec();
-    }
-}
 
 void DeviceServiceAction::execute(Solid::Device &device)
 {
@@ -79,9 +68,6 @@ void DelayedExecutor::_k_storageSetupDone(Solid::ErrorType error, QVariant error
 
 void DeviceServiceAction::setService(const KServiceAction &service)
 {
-    DeviceAction::setIconName(service.icon());
-    DeviceAction::setLabel(service.text());
-
     m_service = service;
 }
 
@@ -149,6 +135,18 @@ void DelayedExecutor::delayedExecute(const QString &udi)
     KIO::CommandLauncherJob *job = new KIO::CommandLauncherJob(exec);
     job->setIcon(m_service.icon());
     job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled));
+
+    // To make xdg-activation and startup feedback work we need to pass the desktop file name of what we are launching
+    if (m_service.service()->storageId().endsWith(QLatin1String("test-predicate-openinwindow.desktop"))) {
+        // We know that we are going to launch the default file manager, so query the desktop file name of that
+        const KService::Ptr defaultFileManager = KApplicationTrader::preferredService(QStringLiteral("inode/directory"));
+        job->setDesktopName(defaultFileManager->desktopEntryName());
+    } else {
+        // Read the app that will be launched from the desktop file
+        KDesktopFile desktopFile(m_service.service()->storageId());
+        job->setDesktopName(desktopFile.desktopGroup().readEntry("X-KDE-AliasFor"));
+    }
+
     job->start();
 
     deleteLater();

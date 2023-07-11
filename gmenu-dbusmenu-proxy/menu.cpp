@@ -63,7 +63,7 @@ void Menu::start(uint id)
         QDBusPendingReply<GMenuItemList> reply = *watcherPtr;
         if (reply.isError()) {
             qCWarning(DBUSMENUPROXY) << "Failed to start subscription to" << id << "on" << m_serviceName << "at" << m_objectPath << reply.error();
-            emit failedToSubscribe(id);
+            Q_EMIT failedToSubscribe(id);
         } else {
             const bool hadMenu = !m_menus.isEmpty();
 
@@ -83,10 +83,10 @@ void Menu::start(uint id)
 
             // do we have a menu now? let's tell everyone
             if (!hadMenu && !m_menus.isEmpty()) {
-                emit menuAppeared();
+                Q_EMIT menuAppeared();
             }
 
-            emit subscribed(id);
+            Q_EMIT subscribed(id);
         }
     });
 }
@@ -109,11 +109,15 @@ void Menu::stop(const QList<uint> &ids)
             // TODO is there a nicer algorithm for that?
             // TODO remove all m_menus also?
             m_subscriptions.erase(
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
                 std::remove_if(m_subscriptions.begin(), m_subscriptions.end(), std::bind(&QList<uint>::contains, m_subscriptions, std::placeholders::_1)),
+#else
+                std::remove_if(m_subscriptions.begin(), m_subscriptions.end(), std::bind(&QList<uint>::contains<uint>, m_subscriptions, std::placeholders::_1)),
+#endif
                 m_subscriptions.end());
 
             if (m_subscriptions.isEmpty()) {
-                emit menuDisappeared();
+                Q_EMIT menuDisappeared();
             }
         }
         watcher->deleteLater();
@@ -144,7 +148,7 @@ GMenuItem Menu::getSection(int subscription, int section, bool *ok) const
     const auto menu = m_menus.value(subscription);
 
     auto it = std::find_if(menu.begin(), menu.end(), [section](const GMenuItem &item) {
-        return item.section == section;
+        return static_cast<int>(item.section) == section;
     });
 
     if (it == menu.end()) {
@@ -201,7 +205,7 @@ void Menu::onMenuChanged(const GMenuChangeList &changes)
             // Check if the amount of inserted items is identical to the items to be removed,
             // just update the existing items and signal a change for that.
             // LibreOffice tends to do that e.g. to update its Undo menu entry
-            if (change.itemsToRemoveCount == change.itemsToInsert.count()) {
+            if (change.itemsToRemoveCount == static_cast<uint>(change.itemsToInsert.count())) {
                 for (int i = 0; i < change.itemsToInsert.count(); ++i) {
                     const auto &newItem = change.itemsToInsert.at(i);
 
@@ -211,7 +215,7 @@ void Menu::onMenuChanged(const GMenuChangeList &changes)
                     dirtyItems.append(Utils::treeStructureToInt(change.subscription, change.menu, change.changePosition + i + 1));
                 }
             } else {
-                for (int i = 0; i < change.itemsToRemoveCount; ++i) {
+                for (uint i = 0; i < change.itemsToRemoveCount; ++i) {
                     section.items.removeAt(change.changePosition); // TODO bounds check
                 }
 
@@ -265,16 +269,16 @@ void Menu::onMenuChanged(const GMenuChangeList &changes)
 
     // do we have a menu now? let's tell everyone
     if (!hadMenu && !m_menus.isEmpty()) {
-        emit menuAppeared();
+        Q_EMIT menuAppeared();
     } else if (hadMenu && m_menus.isEmpty()) {
-        emit menuDisappeared();
+        Q_EMIT menuDisappeared();
     }
 
     if (!dirtyItems.isEmpty()) {
-        emit itemsChanged(dirtyItems);
+        Q_EMIT itemsChanged(dirtyItems);
     }
 
-    emit menusChanged(dirtyMenus);
+    Q_EMIT menusChanged(dirtyMenus);
 }
 
 void Menu::actionsChanged(const QStringList &dirtyActions, const QString &prefix)
@@ -304,7 +308,7 @@ void Menu::actionsChanged(const QStringList &dirtyActions, const QString &prefix
         return;
     };
 
-    // now find in which menus these actions are and emit a change accordingly
+    // now find in which menus these actions are and Q_EMIT a change accordingly
     QVector<uint> dirtyItems;
 
     for (const QString &action : dirtyActions) {
@@ -323,6 +327,6 @@ void Menu::actionsChanged(const QStringList &dirtyActions, const QString &prefix
     }
 
     if (!dirtyItems.isEmpty()) {
-        emit itemsChanged(dirtyItems);
+        Q_EMIT itemsChanged(dirtyItems);
     }
 }

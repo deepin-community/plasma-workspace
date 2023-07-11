@@ -10,7 +10,6 @@ import QtQuick.Window 2.12
 import QtQuick.Layouts 1.1
 import QtQml 2.15
 
-import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.kirigami 2.11 as Kirigami
@@ -62,13 +61,13 @@ QtObject {
 
     // Some parts of the code rely on plasmoid.nativeInterface and since we're in a singleton here
     // this is named "plasmoid"
-    property QtObject plasmoid: plasmoids[0]
+    property var plasmoid: null
 
     // HACK When a plasmoid is destroyed, QML sets its value to "null" in the Array
     // so we then remove it so we have a working "plasmoid" again
     onPlasmoidChanged: {
         if (!plasmoid) {
-            // this doesn't emit a change, only in ratePlasmoids() it will detect the change
+            // this doesn't Q_EMIT a change, only in ratePlasmoids() it will detect the change
             plasmoids.splice(0, 1); // remove first
             ratePlasmoids();
         }
@@ -91,6 +90,7 @@ QtObject {
             }
 
             var alignment = 0;
+            // NOTE this is our "plasmoid" property from above, don't port this to Plasmoid attached property!
             if (plasmoid.location === PlasmaCore.Types.LeftEdge) {
                 alignment |= Qt.AlignLeft;
             } else if (plasmoid.location === PlasmaCore.Types.RightEdge) {
@@ -128,6 +128,7 @@ QtObject {
             return Qt.rect(0, 0, -1, -1);
         }
 
+        // NOTE this is our "plasmoid" property from above, don't port this to Plasmoid attached property!
         let rect = Qt.rect(plasmoid.screenGeometry.x + plasmoid.availableScreenRect.x,
                            plasmoid.screenGeometry.y + plasmoid.availableScreenRect.y,
                            plasmoid.availableScreenRect.width,
@@ -153,14 +154,23 @@ QtObject {
         if (!plasmoid) {
             return null;
         }
-        return plasmoid.nativeInterface.systemTrayRepresentation
+        // NOTE this is our "plasmoid" property from above, don't port this to Plasmoid attached property!
+        return (plasmoid.nativeInterface && plasmoid.nativeInterface.systemTrayRepresentation)
             || plasmoid.compactRepresentationItem
             || plasmoid.fullRepresentationItem;
     }
     onVisualParentChanged: positionPopups()
 
-    readonly property QtObject focusDialog: plasmoid.nativeInterface.focussedPlasmaDialog
-    onFocusDialogChanged: positionPopups()
+    property QtObject obstructingDialog: null
+    readonly property QtObject focusDialog: plasmoid.nativeInterface ? plasmoid.nativeInterface.focussedPlasmaDialog : null
+    onFocusDialogChanged: {
+        if (focusDialog && !(focusDialog instanceof NotificationPopup)) {
+            // keep around the last focusDialog so notifications don't jump around if there is an open but unfocused (eg pinned) Plasma dialog
+            // and exclude NotificationPopups so that notifications don't jump down on close when the focusDialog becomes NotificationPopup
+            obstructingDialog = focusDialog;
+        }
+        positionPopups()
+    }
 
     // The raw width of the popup's content item, the Dialog itself adds some margins
     // Make it wider when on the top or the bottom center, since there's more horizontal
@@ -180,7 +190,7 @@ QtObject {
     Component.onCompleted: checkInhibition()
 
     function adopt(plasmoid) {
-        // this doesn't emit a change, only in ratePlasmoids() it will detect the change
+        // this doesn't Q_EMIT a change, only in ratePlasmoids() it will detect the change
         globals.plasmoids.push(plasmoid);
         ratePlasmoids();
     }
@@ -195,6 +205,7 @@ QtObject {
             var score = 0;
 
             // Prefer plasmoids in a panel, prefer horizontal panels over vertical ones
+            // NOTE this is our "plasmoid" property from above, don't port this to Plasmoid attached property!
             if (plasmoid.location === PlasmaCore.Types.LeftEdge
                     || plasmoid.location === PlasmaCore.Types.RightEdge) {
                 score += 1;
@@ -230,6 +241,7 @@ QtObject {
             }
         });
         globals.plasmoids = newPlasmoids;
+        globals.plasmoid = newPlasmoids[0];
     }
 
     function checkInhibition() {
@@ -346,9 +358,9 @@ QtObject {
             if (effectivePopupLocation & Qt.AlignTop) {
                 // We want to calculate the new position based on its original target position to avoid positioning it and then
                 // positioning it again, hence the temporary Qt.rect with explicit "y" and not just the popup as a whole
-                if (focusDialog && focusDialog.visible && !(focusDialog instanceof NotificationPopup)
-                        && rectIntersect(focusDialog, Qt.rect(popup.x, y, popup.width, popup.height))) {
-                    y = focusDialog.y + focusDialog.height + popupEdgeDistance;
+                if (obstructingDialog && obstructingDialog.visible
+                        && rectIntersect(obstructingDialog, Qt.rect(popup.x, y, popup.width, popup.height))) {
+                    y = obstructingDialog.y + obstructingDialog.height + popupEdgeDistance;
                 }
                 popup.y = y;
                 // If the popup isn't ready yet, ignore its occupied space for now.
@@ -356,9 +368,9 @@ QtObject {
                 y += popup.height + (popup.height > 0 ? popupSpacing : 0);
             } else {
                 y -= popup.height;
-                if (focusDialog && focusDialog.visible && !(focusDialog instanceof NotificationPopup)
-                        && rectIntersect(focusDialog, Qt.rect(popup.x, y, popup.width, popup.height))) {
-                    y = focusDialog.y - popup.height - popupEdgeDistance;
+                if (obstructingDialog && obstructingDialog.visible
+                        && rectIntersect(obstructingDialog, Qt.rect(popup.x, y, popup.width, popup.height))) {
+                    y = obstructingDialog.y - popup.height - popupEdgeDistance;
                 }
                 popup.y = y;
                 if (popup.height > 0) {
@@ -392,6 +404,7 @@ QtObject {
         sortMode: NotificationManager.Notifications.SortByTypeAndUrgency
         sortOrder: Qt.AscendingOrder
         groupMode: NotificationManager.Notifications.GroupDisabled
+        window: visualParent.Window.window
         urgencies: {
             var urgencies = 0;
 
@@ -438,6 +451,7 @@ QtObject {
     property Instantiator popupInstantiator: Instantiator {
         model: popupNotificationsModel
         delegate: NotificationPopup {
+            id: popup
             // so Instantiator can access that after the model row is gone
             readonly property var notificationId: model.notificationId
 
@@ -465,6 +479,7 @@ QtObject {
 
             summary: model.summary
             body: model.body || ""
+            accessibleDescription: model.accessibleDescription
             icon: model.image || model.iconName
             hasDefaultAction: model.hasDefaultAction || false
             timeout: model.timeout
@@ -551,22 +566,16 @@ QtObject {
                     return;
                 }
 
-                popupNotificationsModel.invokeDefaultAction(popupNotificationsModel.index(index, 0))
-                if (!model.resident) {
-                    popupNotificationsModel.close(popupNotificationsModel.index(index, 0))
-                }
+                const behavior = model.resident ? NotificationManager.Notifications.None : NotificationManager.Notifications.Close;
+                popupNotificationsModel.invokeDefaultAction(popupNotificationsModel.index(index, 0), behavior)
             }
             onActionInvoked: {
-                popupNotificationsModel.invokeAction(popupNotificationsModel.index(index, 0), actionName)
-                if (!model.resident) {
-                    popupNotificationsModel.close(popupNotificationsModel.index(index, 0))
-                }
+                const behavior = model.resident ? NotificationManager.Notifications.None : NotificationManager.Notifications.Close;
+                popupNotificationsModel.invokeAction(popupNotificationsModel.index(index, 0), actionName, behavior)
             }
             onReplied: {
-                popupNotificationsModel.reply(popupNotificationsModel.index(index, 0), text);
-                if (!model.resident) {
-                    popupNotificationsModel.close(popupNotificationsModel.index(index, 0))
-                }
+                const behavior = model.resident ? NotificationManager.Notifications.None : NotificationManager.Notifications.Close;
+                popupNotificationsModel.reply(popupNotificationsModel.index(index, 0), text, behavior);
             }
             onOpenUrl: {
                 Qt.openUrlExternally(url);
@@ -584,6 +593,10 @@ QtObject {
                 } else {
                     model.expired = true;
                 }
+            }
+            onForceActiveFocusRequested: {
+                // NOTE this is our "plasmoid" property from above, don't port this to Plasmoid attached property!
+                plasmoid.nativeInterface.forceActivateWindow(popup);
             }
 
             onSuspendJobClicked: popupNotificationsModel.suspendJob(popupNotificationsModel.index(index, 0))

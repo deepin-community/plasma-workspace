@@ -9,7 +9,6 @@
 
 #include <QPointer>
 #include <QQuickPaintedItem>
-#include <QScopedPointer>
 
 #include "ui_stylepreview.h"
 
@@ -47,7 +46,11 @@ protected:
     void hoverMoveEvent(QHoverEvent *event) override;
     void hoverLeaveEvent(QHoverEvent *event) override;
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#else
+    void geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#endif
 
 private:
     void sendHoverEvent(QHoverEvent *event);
@@ -57,8 +60,8 @@ private:
 
     Ui::StylePreview m_ui;
 
-    QScopedPointer<QWidget> m_widget;
+    std::unique_ptr<QWidget> m_widget;
     QPointer<QWidget> m_lastWidgetUnderMouse;
 
-    QScopedPointer<QStyle> m_style;
+    std::unique_ptr<QStyle> m_style;
 };

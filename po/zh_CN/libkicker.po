@@ -1,16 +1,9 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-#
-# Weng Xuetian <wengxt@gmail.com>, 2012, 2013, 2015, 2016.
-# FengChao <rainofchaos@gmail.com>, 2013.
-# Xuetian Weng <xweng@cs.stonybrook.edu>, 2014, 2015.
-# Guo Yunhe <guoyunhebrave@gmail.com>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"POT-Creation-Date: 2023-02-11 02:38+0000\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -24,82 +17,82 @@ msgstr ""
 "X-Crowdin-File: /kf5-stable/messages/plasma-workspace/libkicker.pot\n"
 "X-Crowdin-File-ID: 10976\n"
 
-#: plugin/actionlist.cpp:83
+#: plugin/actionlist.cpp:86
 #, kde-format
 msgid "Open with:"
 msgstr "打开方式："
 
-#: plugin/actionlist.cpp:96
+#: plugin/actionlist.cpp:99
 #, kde-format
 msgid "Properties"
 msgstr "属性"
 
-#: plugin/actionlist.cpp:143
+#: plugin/actionlist.cpp:146
 #, kde-format
 msgid "Add to Desktop"
 msgstr "添加到桌面"
 
-#: plugin/actionlist.cpp:148
+#: plugin/actionlist.cpp:151
 #, kde-format
 msgid "Add to Panel (Widget)"
-msgstr "添加到面板 (部件)"
+msgstr "添加到面板 (挂件)"
 
-#: plugin/actionlist.cpp:153
+#: plugin/actionlist.cpp:156
 #, kde-format
 msgid "Pin to Task Manager"
 msgstr "固定到任务管理器"
 
-#: plugin/actionlist.cpp:304 plugin/rootmodel.cpp:431
+#: plugin/actionlist.cpp:307 plugin/rootmodel.cpp:429
 #, kde-format
 msgid "Recent Files"
-msgstr "最近的文件"
+msgstr "最近文件"
 
-#: plugin/actionlist.cpp:314
+#: plugin/actionlist.cpp:317
 #, kde-format
 msgid "Forget Recent Files"
-msgstr "遗忘最近的文件"
+msgstr "清除最近文件"
 
-#: plugin/actionlist.cpp:393
+#: plugin/actionlist.cpp:395
 #, kde-format
 msgid "Edit Application…"
 msgstr "编辑应用程序…"
 
-#: plugin/actionlist.cpp:437
+#: plugin/actionlist.cpp:429
 #, kde-format
 msgctxt "@action opens a software center with the application"
 msgid "Uninstall or Manage Add-Ons…"
 msgstr "卸载或管理附加组件…"
 
-#: plugin/appentry.cpp:185
+#: plugin/appentry.cpp:308
 #, kde-format
 msgid "Hide Application"
 msgstr "隐藏应用程序"
 
-#: plugin/appentry.cpp:249
+#: plugin/appentry.cpp:367
 #, kde-format
 msgctxt "App name (Generic name)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: plugin/appentry.cpp:251
+#: plugin/appentry.cpp:369
 #, kde-format
 msgctxt "Generic name (App name)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: plugin/appsmodel.cpp:31 plugin/appsmodel.cpp:55 plugin/computermodel.cpp:98
-#: plugin/computermodel.cpp:226 plugin/recentusagemodel.cpp:156
-#: plugin/recentusagemodel.cpp:218
+#: plugin/appsmodel.cpp:34 plugin/appsmodel.cpp:58 plugin/computermodel.cpp:98
+#: plugin/computermodel.cpp:226 plugin/recentusagemodel.cpp:153
+#: plugin/recentusagemodel.cpp:216
 #, kde-format
 msgid "Applications"
 msgstr "应用程序"
 
-#: plugin/appsmodel.cpp:150
+#: plugin/appsmodel.cpp:151
 #, kde-format
 msgid "Unhide Applications in this Submenu"
 msgstr "取消隐藏此子菜单的应用程序"
 
-#: plugin/appsmodel.cpp:159
+#: plugin/appsmodel.cpp:160
 #, kde-format
 msgid "Unhide Applications in '%1'"
 msgstr "取消隐藏“%1”中的应用程序"
@@ -112,20 +105,20 @@ msgstr "显示 KRunner"
 #: plugin/computermodel.cpp:96
 #, kde-format
 msgid "Search, calculate, or run a command"
-msgstr "搜索，计算，或者运行命令"
+msgstr "查找、计算、或者运行命令"
 
 #: plugin/computermodel.cpp:149
 #, kde-format
 msgid "Computer"
-msgstr "计算机"
+msgstr "电脑"
 
-#: plugin/contactentry.cpp:107 plugin/recentcontactsmodel.cpp:82
+#: plugin/contactentry.cpp:106 plugin/recentcontactsmodel.cpp:82
 #, kde-format
 msgid "Show Contact Information…"
 msgstr "显示联系人信息…"
 
 #. i18n.
-#: plugin/kastatsfavoritesmodel.cpp:467 plugin/rootmodel.cpp:418
+#: plugin/kastatsfavoritesmodel.cpp:548 plugin/rootmodel.cpp:416
 #: plugin/simplefavoritesmodel.cpp:31
 #, kde-format
 msgid "Favorites"
@@ -144,180 +137,180 @@ msgstr "忘记联系人"
 #: plugin/recentcontactsmodel.cpp:77 plugin/recentcontactsmodel.cpp:153
 #, kde-format
 msgid "Forget All Contacts"
-msgstr "忘记所有联系人"
+msgstr "忘记全部联系人"
 
-#: plugin/recentusagemodel.cpp:154
+#: plugin/recentusagemodel.cpp:151
 #, kde-format
 msgid "Recently Used"
 msgstr "最近使用"
 
-#: plugin/recentusagemodel.cpp:159 plugin/recentusagemodel.cpp:292
+#: plugin/recentusagemodel.cpp:156 plugin/recentusagemodel.cpp:298
 #, kde-format
 msgid "Files"
 msgstr "文件"
 
-#: plugin/recentusagemodel.cpp:236
+#: plugin/recentusagemodel.cpp:238
 #, kde-format
 msgid "Forget Application"
-msgstr "清除最近应用程序"
+msgstr "忘记应用程序"
 
-#: plugin/recentusagemodel.cpp:326
+#: plugin/recentusagemodel.cpp:332
 #, kde-format
 msgid "Open Containing Folder"
-msgstr "打开包含文件夹"
+msgstr "打开所在文件夹"
 
-#: plugin/recentusagemodel.cpp:329
+#: plugin/recentusagemodel.cpp:335
 #, kde-format
 msgid "Forget File"
-msgstr "遗忘文件"
+msgstr "忘记文件"
 
-#: plugin/recentusagemodel.cpp:475
+#: plugin/recentusagemodel.cpp:472
 #, kde-format
 msgid "Forget All"
-msgstr "清除全部"
+msgstr "忘记全部"
+
+#: plugin/recentusagemodel.cpp:474
+#, kde-format
+msgid "Forget All Applications"
+msgstr "忘记全部应用程序"
 
 #: plugin/recentusagemodel.cpp:477
 #, kde-format
-msgid "Forget All Applications"
-msgstr "清除所有最近应用程序"
-
-#: plugin/recentusagemodel.cpp:480
-#, kde-format
 msgid "Forget All Files"
-msgstr "遗忘所有文件"
+msgstr "忘记全部文件"
 
 #: plugin/rootmodel.cpp:95
 #, kde-format
 msgid "Hide %1"
 msgstr "隐藏 %1"
 
-#: plugin/rootmodel.cpp:400
+#: plugin/rootmodel.cpp:398
 #, kde-format
 msgid "All Applications"
 msgstr "全部应用程序"
 
-#: plugin/rootmodel.cpp:412
+#: plugin/rootmodel.cpp:410
 #, kde-format
 msgid "This shouldn't be visible! Use KICKER_FAVORITES_MODEL"
 msgstr "这不应该可见！请用 KICKER_FAVORITES_MODEL"
 
-#: plugin/rootmodel.cpp:424
+#: plugin/rootmodel.cpp:422
 #, kde-format
 msgid "Recent Contacts"
 msgstr "最近联系人"
 
-#: plugin/rootmodel.cpp:431
+#: plugin/rootmodel.cpp:429
 #, kde-format
 msgid "Often Used Files"
-msgstr "常用的文件"
+msgstr "常用文件"
 
-#: plugin/rootmodel.cpp:440
+#: plugin/rootmodel.cpp:438
 #, kde-format
 msgid "Recent Applications"
-msgstr "最近使用的程序"
+msgstr "最近应用程序"
 
-#: plugin/rootmodel.cpp:440
+#: plugin/rootmodel.cpp:438
 #, kde-format
 msgid "Often Used Applications"
 msgstr "常用应用"
 
-#: plugin/rootmodel.cpp:454
+#: plugin/rootmodel.cpp:453
 #, kde-format
 msgid "Power / Session"
-msgstr "电源"
+msgstr "电源 / 会话"
 
-#: plugin/runnermodel.cpp:226
+#: plugin/runnermodel.cpp:231
 #, kde-format
 msgid "Search results"
-msgstr "搜索结果"
+msgstr "查找结果"
 
-#: plugin/systementry.cpp:194
+#: plugin/systementry.cpp:195
 #, kde-format
 msgid "Lock"
 msgstr "锁定"
 
-#: plugin/systementry.cpp:197
+#: plugin/systementry.cpp:198
 #, kde-format
 msgid "Log Out"
 msgstr "注销"
 
-#: plugin/systementry.cpp:200 plugin/systementry.cpp:268
+#: plugin/systementry.cpp:201 plugin/systementry.cpp:269
 #, kde-format
 msgid "Save Session"
 msgstr "保存会话"
 
-#: plugin/systementry.cpp:203
+#: plugin/systementry.cpp:204
 #, kde-format
 msgid "Switch User"
 msgstr "切换用户"
 
-#: plugin/systementry.cpp:206
+#: plugin/systementry.cpp:207
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "睡眠"
 
-#: plugin/systementry.cpp:209
+#: plugin/systementry.cpp:210
 #, kde-format
 msgid "Hibernate"
 msgstr "休眠"
 
-#: plugin/systementry.cpp:212
+#: plugin/systementry.cpp:213
 #, kde-format
 msgid "Restart"
 msgstr "重启"
 
-#: plugin/systementry.cpp:215
+#: plugin/systementry.cpp:216
 #, kde-format
 msgid "Shut Down"
 msgstr "关机"
 
-#: plugin/systementry.cpp:228 plugin/systementry.cpp:231
-#: plugin/systementry.cpp:234 plugin/systementry.cpp:237
+#: plugin/systementry.cpp:229 plugin/systementry.cpp:232
+#: plugin/systementry.cpp:235 plugin/systementry.cpp:238
 #, kde-format
 msgid "Session"
 msgstr "会话"
 
-#: plugin/systementry.cpp:240 plugin/systementry.cpp:243
-#: plugin/systementry.cpp:246 plugin/systementry.cpp:249
+#: plugin/systementry.cpp:241 plugin/systementry.cpp:244
+#: plugin/systementry.cpp:247 plugin/systementry.cpp:250
 #, kde-format
 msgid "System"
 msgstr "系统"
 
-#: plugin/systementry.cpp:262
+#: plugin/systementry.cpp:263
 #, kde-format
 msgid "Lock screen"
 msgstr "锁定屏幕"
 
-#: plugin/systementry.cpp:265
+#: plugin/systementry.cpp:266
 #, kde-format
 msgid "End session"
 msgstr "结束会话"
 
-#: plugin/systementry.cpp:271
+#: plugin/systementry.cpp:272
 #, kde-format
 msgid "Start a parallel session as a different user"
-msgstr "以不同的用户启动并行会话"
+msgstr "作为另一个用户启动并行会话"
 
-#: plugin/systementry.cpp:274
+#: plugin/systementry.cpp:275
 #, kde-format
 msgid "Suspend to RAM"
 msgstr "挂起到内存"
 
-#: plugin/systementry.cpp:277
+#: plugin/systementry.cpp:278
 #, kde-format
 msgid "Suspend to disk"
 msgstr "挂起到磁盘"
 
-#: plugin/systementry.cpp:280
+#: plugin/systementry.cpp:281
 #, kde-format
 msgid "Restart computer"
-msgstr "重启计算机"
+msgstr "重新启动电脑"
 
-#: plugin/systementry.cpp:283
+#: plugin/systementry.cpp:284
 #, kde-format
 msgid "Turn off computer"
-msgstr "关闭计算机"
+msgstr "关闭电脑"
 
 #: plugin/systemmodel.cpp:31
 #, kde-format

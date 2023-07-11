@@ -9,7 +9,7 @@ msgstr ""
 "POT-Creation-Date: 2021-08-15 00:20+0000\n"
 "PO-Revision-Date: 2021-09-27 21:00+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
-"Language-Team: Danish <kde-i18n-doc@kde.org>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -119,3 +119,54 @@ msgstr "Slumre (suspendér til ram)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Dvale (suspendér til disk)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Vil du suspendere til disk (dvale)?"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nej"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Vil du suspendere til ram (slumre)?"
+
+#~ msgid "Leave"
+#~ msgstr "Forlad"
+
+#~ msgid "Leave..."
+#~ msgstr "Forlad..."
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Handlinger"
+
+#~ msgid "Suspend"
+#~ msgstr "Suspendér"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Indstilling af Lås/log ud"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Indstil lås/log ud"
+
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "Vælg et eller flere elementer på listen nedenfor."
+
+#~ msgid "Entries"
+#~ msgstr "Indgange"
+
+#, fuzzy
+#~| msgid "Show sleep button"
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Vis soveknap"
+
+#~ msgid "Show logout button"
+#~ msgstr "Vis log ud-knap"
+
+#~ msgid "Show hibernate button"
+#~ msgstr "Vis dvaleknap"
+
+#~ msgid "Show sleep button"
+#~ msgstr "Vis soveknap"

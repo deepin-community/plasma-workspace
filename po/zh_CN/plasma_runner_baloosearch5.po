@@ -1,14 +1,9 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-#
-# Weng Xuetian <wengxt@gmail.com>, 2014, 2016.
-# Xuetian Weng <xweng@cs.stonybrook.edu>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"POT-Creation-Date: 2022-09-05 00:46+0000\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -23,47 +18,52 @@ msgstr ""
 "plasma_runner_baloosearch5.pot\n"
 "X-Crowdin-File-ID: 6158\n"
 
-#: baloosearchrunner.cpp:63
+#: baloosearchrunner.cpp:65
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "打开所在文件夹"
 
-#: baloosearchrunner.cpp:79
+#: baloosearchrunner.cpp:87
 #, kde-format
 msgid "Audio"
 msgstr "音频"
 
-#: baloosearchrunner.cpp:80
+#: baloosearchrunner.cpp:88
 #, kde-format
 msgid "Image"
 msgstr "图像"
 
-#: baloosearchrunner.cpp:81
+#: baloosearchrunner.cpp:89
 #, kde-format
 msgid "Video"
 msgstr "视频"
 
-#: baloosearchrunner.cpp:82
+#: baloosearchrunner.cpp:90
 #, kde-format
 msgid "Spreadsheet"
-msgstr "数据表"
+msgstr "电子表格"
 
-#: baloosearchrunner.cpp:83
+#: baloosearchrunner.cpp:91
 #, kde-format
 msgid "Presentation"
-msgstr "演示"
+msgstr "演示文稿"
 
-#: baloosearchrunner.cpp:84
+#: baloosearchrunner.cpp:92
 #, kde-format
 msgid "Folder"
 msgstr "文件夹"
 
-#: baloosearchrunner.cpp:85
+#: baloosearchrunner.cpp:93
 #, kde-format
 msgid "Document"
 msgstr "文档"
 
-#: baloosearchrunner.cpp:86
+#: baloosearchrunner.cpp:94
 #, kde-format
 msgid "Archive"
-msgstr "存档"
+msgstr "压缩包"
+
+#: baloosearchrunner.cpp:95
+#, kde-format
+msgid "Text"
+msgstr "文字"

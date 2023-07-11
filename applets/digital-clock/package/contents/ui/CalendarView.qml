@@ -10,254 +10,151 @@ import QtQuick.Layouts 1.1
 import QtQml 2.15
 
 import org.kde.kquickcontrolsaddons 2.0 // For kcmshell
+import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.calendar 2.0 as PlasmaCalendar
+import org.kde.plasma.workspace.calendar 2.0 as PlasmaCalendar
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.private.digitalclock 1.0
 
 // Top-level layout containing:
-// - Left column with world clock and agenda view
-// - Right column with current date header and calendar
+// - Leading column with world clock and agenda view
+// - Trailing column with current date header and calendar
+//
+// Trailing column fills exactly half of the popup width, then there's 1
+// logical pixel wide separator, and the rest is left for the Leading.
+// Representation's header is intentionally zero-sized, because Calendar view
+// brings its own header, and there's currently no other way to stack them.
 PlasmaExtras.Representation {
     id: calendar
 
-    // The "sensible" values
-    property int _minimumWidth: (calendar.showAgenda || calendar.showClocks) ? PlasmaCore.Units.gridUnit * 45 : PlasmaCore.Units.gridUnit * 22
-    property int _minimumHeight: PlasmaCore.Units.gridUnit * 25
+    readonly property var appletInterface: Plasmoid.self
 
-    Layout.minimumWidth: _minimumWidth
-    Layout.minimumHeight: _minimumHeight
-    Layout.preferredWidth: _minimumWidth
-    Layout.preferredHeight: _minimumHeight
-    Layout.maximumWidth: _minimumWidth
-    Layout.maximumHeight: _minimumHeight
+    PlasmaCore.ColorScope.inherit: false
+    PlasmaCore.ColorScope.colorGroup: PlasmaCore.Theme.NormalColorGroup
+
+    Layout.minimumWidth: (calendar.showAgenda || calendar.showClocks) ? PlasmaCore.Units.gridUnit * 45 : PlasmaCore.Units.gridUnit * 22
+    Layout.maximumWidth: PlasmaCore.Units.gridUnit * 80
+
+    Layout.minimumHeight: PlasmaCore.Units.gridUnit * 25
+    Layout.maximumHeight: PlasmaCore.Units.gridUnit * 40
 
     collapseMarginsHint: true
 
-    readonly property int paddings: PlasmaCore.Units.smallSpacing
-    readonly property bool showAgenda: PlasmaCalendar.EventPluginsManager.enabledPlugins.length > 0
-    readonly property bool showClocks: plasmoid.configuration.selectedTimeZones.length > 1
+    readonly property int paddings: PlasmaCore.Units.smallSpacing * 2
+    readonly property bool showAgenda: eventPluginsManager.enabledPlugins.length > 0
+    readonly property bool showClocks: Plasmoid.configuration.selectedTimeZones.length > 1
 
     property alias borderWidth: monthView.borderWidth
     property alias monthView: monthView
 
     property bool debug: false
 
-    property bool isExpanded: plasmoid.expanded
+    Keys.onDownPressed: monthView.Keys.onDownPressed(event);
 
-    onIsExpandedChanged: {
-        // clear all the selections when the plasmoid is showing/hiding
-        monthView.resetToToday();
-    }
+    Connections {
+        target: Plasmoid.self
 
-    // Header containing date and pin button
-    header: PlasmaExtras.PlasmoidHeading {
-        id: headerArea
-        implicitHeight: calendarHeader.implicitHeight
-
-        // Agenda view header
-        // -----------------
-        ColumnLayout {
-            id: eventHeader
-
-            anchors.left: parent.left
-            width: visible ? parent.width / 2 - 1 : 0
-
-            visible: calendar.showAgenda || calendar.showClocks
-            RowLayout {
-                PlasmaExtras.Heading {
-                    Layout.fillWidth: true
-                    Layout.leftMargin: calendar.paddings // Match calendar title
-
-                    text: monthView.currentDate.toLocaleDateString(Qt.locale(), Locale.LongFormat)
-                }
-            }
-            RowLayout {
-                // Heading text
-                PlasmaExtras.Heading {
-                    visible: agenda.visible
-
-                    Layout.fillWidth: true
-                    Layout.leftMargin: calendar.paddings
-
-                    level: 2
-
-                    text: i18n("Events")
-                    maximumLineCount: 1
-                    elide: Text.ElideRight
-                }
-                PlasmaComponents3.ToolButton {
-                    visible: agenda.visible && ApplicationIntegration.korganizerInstalled
-                    text: i18nc("@action:button Add event", "Add…")
-                    Layout.rightMargin: calendar.paddings
-                    icon.name: "list-add"
-                    onClicked: ApplicationIntegration.launchKorganizer()
-                }
-            }
-        }
-
-        // Vertical separator line between columns
-        // =======================================
-        PlasmaCore.SvgItem {
-            id: headerSeparator
-            anchors.left: eventHeader.right
-            anchors.bottomMargin: PlasmaCore.Units.smallSpacing * 2
-            width: visible ? 1 : 0
-            height: calendarHeader.height - PlasmaCore.Units.smallSpacing * 2
-            visible: eventHeader.visible
-
-            elementId: "vertical-line"
-            svg: PlasmaCore.Svg {
-                imagePath: "widgets/line"
-            }
-        }
-
-        GridLayout {
-            id: calendarHeader
-            width: calendar.showAgenda || calendar.showClocks ? parent.width / 2 : parent.width
-            anchors.left: headerSeparator.right
-            columns: 6
-            rows: 2
-
-            PlasmaExtras.Heading {
-                Layout.row: 0
-                Layout.column: 0
-                Layout.columnSpan: 3
-                Layout.fillWidth: true
-                Layout.leftMargin: calendar.paddings + PlasmaCore.Units.smallSpacing
-                text: monthView.selectedYear === (new Date()).getFullYear() ? monthView.selectedMonth : i18nc("Format: month year", "%1 %2", monthView.selectedMonth, monthView.selectedYear.toString())
-            }
-
-            PlasmaComponents3.ToolButton {
-                Layout.row: 0
-                Layout.column: 4
-                Layout.alignment: Qt.AlignRight
-                visible: plasmoid.action("configure").enabled
-                icon.name: "configure"
-                onClicked: plasmoid.action("configure").trigger()
-                PlasmaComponents3.ToolTip {
-                    text: plasmoid.action("configure").text
-                }
-            }
-
-            // Allows the user to keep the calendar open for reference
-            PlasmaComponents3.ToolButton {
-                Layout.row: 0
-                Layout.column: 5
-                checkable: true
-                checked: plasmoid.configuration.pin
-                onToggled: plasmoid.configuration.pin = checked
-                icon.name: "window-pin"
-                PlasmaComponents3.ToolTip {
-                    text: i18n("Keep Open")
-                }
-            }
-
-            PlasmaComponents3.TabBar {
-                id: tabbar
-                currentIndex: monthView.currentIndex
-                Layout.row: 1
-                Layout.column: 0
-                Layout.columnSpan: 3
-                Layout.topMargin: PlasmaCore.Units.smallSpacing
-                Layout.fillWidth: true
-                Layout.leftMargin: PlasmaCore.Units.smallSpacing
-
-                PlasmaComponents3.TabButton {
-                    text: i18n("Days");
-                    onClicked: monthView.showMonthView();
-                    display: PlasmaComponents3.AbstractButton.TextOnly
-                }
-                PlasmaComponents3.TabButton {
-                    text: i18n("Months");
-                    onClicked: monthView.showYearView();
-                    display: PlasmaComponents3.AbstractButton.TextOnly
-                }
-                PlasmaComponents3.TabButton {
-                    text: i18n("Years");
-                    onClicked: monthView.showDecadeView();
-                    display: PlasmaComponents3.AbstractButton.TextOnly
-                }
-            }
-
-            PlasmaComponents3.ToolButton {
-                id: previousButton
-                property string tooltip
-                Layout.row: 1
-                Layout.column: 3
-
-                Layout.leftMargin: PlasmaCore.Units.smallSpacing
-                Layout.bottomMargin: PlasmaCore.Units.smallSpacing
-                icon.name: Qt.application.layoutDirection === Qt.RightToLeft ? "go-next" : "go-previous"
-                onClicked: monthView.previousView()
-                Accessible.name: tooltip
-                PlasmaComponents3.ToolTip {
-                    text: {
-                        switch(monthView.calendarViewDisplayed) {
-                            case PlasmaCalendar.MonthView.CalendarView.DayView:
-                                return i18n("Previous month")
-                            case PlasmaCalendar.MonthView.CalendarView.MonthView:
-                                return i18n("Previous year")
-                            case PlasmaCalendar.MonthView.CalendarView.YearView:
-                                return i18n("Previous decade")
-                            default:
-                                return "";
-                        }
-                    }
-                }
-            }
-
-            PlasmaComponents3.ToolButton {
-                Layout.bottomMargin: PlasmaCore.Units.smallSpacing
-                Layout.row: 1
-                Layout.column: 4
-                onClicked: monthView.resetToToday()
-                text: i18ndc("libplasma5", "Reset calendar to today", "Today")
-                Accessible.description: i18nd("libplasma5", "Reset calendar to today")
-            }
-
-            PlasmaComponents3.ToolButton {
-                id: nextButton
-                property string tooltip
-                Layout.bottomMargin: PlasmaCore.Units.smallSpacing
-                Layout.row: 1
-                Layout.column: 5
-
-                icon.name: Qt.application.layoutDirection === Qt.RightToLeft ? "go-previous" : "go-next"
-                onClicked: monthView.nextView()
-                Accessible.name: tooltip
-                PlasmaComponents3.ToolTip {
-                    text: {
-                        switch(monthView.calendarViewDisplayed) {
-                            case PlasmaCalendar.MonthView.CalendarView.DayView:
-                                return i18n("Next month")
-                            case PlasmaCalendar.MonthView.CalendarView.MonthView:
-                                return i18n("Next year")
-                            case PlasmaCalendar.MonthView.CalendarView.YearView:
-                                return i18n("Next decade")
-                            default:
-                                return "";
-                        }
-                    }
-                }
-            }
+        function onExpandedChanged() {
+            // clear all the selections when the plasmoid is showing/hiding
+            monthView.resetToToday();
         }
     }
 
-    // Left column containing agenda view and time zones
+    PlasmaCalendar.EventPluginsManager {
+        id: eventPluginsManager
+        enabledPlugins: Plasmoid.configuration.enabledCalendarPlugins
+    }
+
+    // Having this in place helps preserving top margins for Pin and Configure
+    // buttons somehow. Actual headers are spread across leading and trailing
+    // columns.
+    header: Item {}
+
+    // Leading column containing agenda view and time zones
     // ==================================================
     ColumnLayout {
-        id: leftColumn
+        id: leadingColumn
 
         visible: calendar.showAgenda || calendar.showClocks
-        width: parent.width / 2 - 1
+
         anchors {
-            left: parent.left
             top: parent.top
+            left: parent.left
+            right: mainSeparator.left
             bottom: parent.bottom
         }
 
+        spacing: 0
+
+        PlasmaExtras.PlasmoidHeading {
+            Layout.fillWidth: true
+            Layout.preferredHeight: monthView.viewHeader.height
+
+            // Agenda view header
+            // -----------------
+            contentItem: ColumnLayout {
+                spacing: 0
+
+                PlasmaExtras.Heading {
+                    Layout.alignment: Qt.AlignTop
+                    // Match calendar title
+                    Layout.leftMargin: calendar.paddings
+                    Layout.rightMargin: calendar.paddings
+                    Layout.fillWidth: true
+
+                    text: monthView.currentDate.toLocaleDateString(Qt.locale(), Locale.LongFormat)
+                }
+
+                PlasmaComponents3.Label {
+                    visible: monthView.currentDateAuxilliaryText.length > 0
+
+                    Layout.leftMargin: calendar.paddings
+                    Layout.rightMargin: calendar.paddings
+                    Layout.fillWidth: true
+
+                    font.pixelSize: PlasmaCore.Theme.smallestFont.pixelSize
+                    text: monthView.currentDateAuxilliaryText
+                }
+
+                RowLayout {
+                    spacing: PlasmaCore.Units.smallSpacing
+
+                    Layout.alignment: Qt.AlignBottom
+                    Layout.bottomMargin: Math.round(PlasmaCore.Units.smallSpacing * 1.5)
+
+                    // Heading text
+                    PlasmaExtras.Heading {
+                        visible: agenda.visible
+
+                        Layout.fillWidth: true
+                        Layout.leftMargin: calendar.paddings
+                        Layout.rightMargin: calendar.paddings
+
+                        level: 2
+
+                        text: i18n("Events")
+                        maximumLineCount: 1
+                        elide: Text.ElideRight
+                    }
+                    PlasmaComponents3.ToolButton {
+                        id: addEventButton
+
+                        visible: agenda.visible && ApplicationIntegration.calendarInstalled
+                        text: i18nc("@action:button Add event", "Add…")
+                        Layout.rightMargin: PlasmaCore.Units.smallSpacing
+                        icon.name: "list-add"
+
+                        Accessible.description: i18nc("@info:tooltip", "Add a new event")
+                        KeyNavigation.down: KeyNavigation.tab
+                        KeyNavigation.right: monthView.viewHeader.tabBar
+
+                        onClicked: ApplicationIntegration.launchCalendar()
+                        KeyNavigation.tab: calendar.showAgenda && holidaysList.count ? holidaysList : holidaysList.KeyNavigation.down
+                    }
+                }
+            }
+        }
 
         // Agenda view itself
         Item {
@@ -323,18 +220,10 @@ PlasmaExtras.Representation {
                 }
             }
 
-            Connections {
-                target: plasmoid.configuration
-
-                onEnabledCalendarPluginsChanged: {
-                    PlasmaCalendar.EventPluginsManager.enabledPlugins = plasmoid.configuration.enabledCalendarPlugins;
-                }
-            }
-
             Binding {
-                target: plasmoid
+                target: Plasmoid.self
                 property: "hideOnWindowDeactivate"
-                value: !plasmoid.configuration.pin
+                value: !Plasmoid.configuration.pin
                 restoreMode: Binding.RestoreBinding
             }
 
@@ -353,17 +242,40 @@ PlasmaExtras.Representation {
                 id: holidaysView
                 anchors.fill: parent
 
+                // HACK: workaround for https://bugreports.qt.io/browse/QTBUG-83890
+                PlasmaComponents3.ScrollBar.horizontal.policy: PlasmaComponents3.ScrollBar.AlwaysOff
+
                 ListView {
                     id: holidaysList
-                    highlight: Item {}
+
+                    focus: false
+                    activeFocusOnTab: true
+                    highlight: null
+                    currentIndex: -1
+
+                    KeyNavigation.down: switchTimeZoneButton.visible ? switchTimeZoneButton : clocksList
+                    Keys.onRightPressed: switchTimeZoneButton.Keys.onRightPressed(event);
+
+                    onCurrentIndexChanged: if (!activeFocus) {
+                        currentIndex = -1;
+                    }
+ 
+                    onActiveFocusChanged: if (activeFocus) {
+                        currentIndex = 0;
+                    } else {
+                        currentIndex = -1;
+                    }
 
                     delegate: PlasmaComponents3.ItemDelegate {
                         id: eventItem
                         width: holidaysList.width
-                        padding: calendar.paddings
-                        leftPadding: calendar.paddings + PlasmaCore.Units.smallSpacing * 2
+
+                        leftPadding: calendar.paddings
+
                         text: eventTitle.text
                         hoverEnabled: true
+                        highlighted: ListView.isCurrentItem
+                        Accessible.description: modelData.description
                         property bool hasTime: {
                             // Explicitly all-day event
                             if (modelData.isAllDay) {
@@ -467,17 +379,15 @@ PlasmaExtras.Representation {
                 }
             }
 
-            PlasmaExtras.Heading {
-                anchors.fill: holidaysView
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                anchors.leftMargin: PlasmaCore.Units.largeSpacing
-                anchors.rightMargin: PlasmaCore.Units.largeSpacing
-                text: monthView.isToday(monthView.currentDate) ? i18n("No events for today")
-                                                            : i18n("No events for this day");
-                level: 3
-                enabled: false
+            PlasmaExtras.PlaceholderMessage {
+                anchors.centerIn: holidaysView
+                width: holidaysView.width - (PlasmaCore.Units.gridUnit * 8)
+
                 visible: holidaysList.count == 0
+
+                iconName: "checkmark"
+                text: monthView.isToday(monthView.currentDate) ? i18n("No events for today")
+                                                               : i18n("No events for this day");
             }
         }
 
@@ -499,12 +409,20 @@ PlasmaExtras.Representation {
         // Header text + button to change time & timezone
         PlasmaExtras.PlasmoidHeading {
             visible: worldClocks.visible
+
+            // Normally gets some positive/negative values from base component.
+            topInset: 0
+            topPadding: PlasmaCore.Units.smallSpacing
+
             leftInset: 0
             rightInset: 0
-            rightPadding: PlasmaCore.Units.smallSpacing
+            leftPadding: mirrored ? PlasmaCore.Units.smallSpacing : calendar.paddings
+            rightPadding: mirrored ? calendar.paddings : PlasmaCore.Units.smallSpacing
+
             contentItem: RowLayout {
+                spacing: PlasmaCore.Units.smallSpacing
+
                 PlasmaExtras.Heading {
-                    Layout.leftMargin: calendar.paddings + PlasmaCore.Units.smallSpacing * 2
                     Layout.fillWidth: true
 
                     level: 2
@@ -515,13 +433,21 @@ PlasmaExtras.Representation {
                 }
 
                 PlasmaComponents3.ToolButton {
-                    visible: KCMShell.authorize("clock.desktop").length > 0
+                    id: switchTimeZoneButton
+
+                    visible: KCMShell.authorize("kcm_clock.desktop").length > 0
                     text: i18n("Switch…")
+                    Accessible.name: i18n("Switch to another timezone")
                     icon.name: "preferences-system-time"
-                    onClicked: KCMShell.openSystemSettings("clock")
+
+                    Accessible.description: i18n("Switch to another timezone")
+                    KeyNavigation.down: clocksList
+                    Keys.onRightPressed: monthView.Keys.onDownPressed(event)
+
+                    onClicked: KCMShell.openSystemSettings("kcm_clock")
 
                     PlasmaComponents3.ToolTip {
-                        text: i18n("Switch to another timezone")
+                        text: parent.Accessible.description
                     }
                 }
             }
@@ -537,32 +463,68 @@ PlasmaExtras.Representation {
             Layout.minimumHeight: visible ? PlasmaCore.Units.gridUnit * 7 : 0
             Layout.maximumHeight: agenda.visible ? PlasmaCore.Units.gridUnit * 10 : -1
 
+            // HACK: workaround for https://bugreports.qt.io/browse/QTBUG-83890
+            PlasmaComponents3.ScrollBar.horizontal.policy: PlasmaComponents3.ScrollBar.AlwaysOff
+
             ListView {
                 id: clocksList
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.rightMargin: PlasmaCore.Units.smallSpacing * 2
+                activeFocusOnTab: true
 
-                highlight: Item {}
+                highlight: null
+                currentIndex: -1
+                onActiveFocusChanged: if (activeFocus) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex = -1;
+                }
+
+                Keys.onRightPressed: switchTimeZoneButton.Keys.onRightPressed(event);
+
+                // Can't use KeyNavigation.tab since the focus won't go to config button, instead it will be redirected to somewhere else because of
+                // some existing code. Since now the header was in this file and this was not a problem. Now the header is also implicitly
+                // inside the monthViewWrapper.
+                Keys.onTabPressed: {
+                    monthView.viewHeader.configureButton.forceActiveFocus(Qt.BacktabFocusReason);
+                }
 
                 model: {
                     let timezones = [];
-                    for (let i = 0; i < plasmoid.configuration.selectedTimeZones.length; i++) {
-                        timezones.push(plasmoid.configuration.selectedTimeZones[i]);
-                    }
+                    for (let i = 0; i < Plasmoid.configuration.selectedTimeZones.length; i++) {
+                        let thisTzData = Plasmoid.configuration.selectedTimeZones[i];
 
+                        /* Don't add this item if it's the same as the local time zone, which
+                         * would indicate that the user has deliberately added a dedicated entry
+                         * for the city of their normal time zone. This is not an error condition
+                         * because the user may have done this on purpose so that their normal
+                         * local time zone shows up automatically while they're traveling and
+                         * they've switched the current local time zone to something else. But
+                         * with this use case, when they're back in their normal local time zone,
+                         * the clocks list would show two entries for the same city. To avoid
+                         * this, let's suppress the duplicate.
+                         */
+                        if (!(thisTzData !== "Local" && root.nameForZone(thisTzData) === root.nameForZone("Local"))) {
+                            timezones.push(Plasmoid.configuration.selectedTimeZones[i]);
+                        }
+                    }
                     return timezones;
                 }
 
                 delegate: PlasmaComponents3.ItemDelegate {
                     id: listItem
-                    readonly property bool isCurrentTimeZone: modelData === plasmoid.configuration.lastSelectedTimezone
-                    width: clocksList.width
-                    padding: calendar.paddings
-                    leftPadding: calendar.paddings + PlasmaCore.Units.smallSpacing * 2
+                    readonly property bool isCurrentTimeZone: modelData === Plasmoid.configuration.lastSelectedTimezone
+                    width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
+
+                    leftPadding: calendar.paddings
+                    rightPadding: calendar.paddings
+
+                    highlighted: ListView.isCurrentItem
+                    Accessible.name: root.nameForZone(modelData)
+                    Accessible.description: root.timeForZone(modelData)
+                    hoverEnabled: false
 
                     contentItem: RowLayout {
                         PlasmaComponents3.Label {
+                            Layout.fillWidth: true
                             text: root.nameForZone(modelData)
                             font.weight: listItem.isCurrentTimeZone ? Font.Bold : Font.Normal
                             maximumLineCount: 1
@@ -570,7 +532,6 @@ PlasmaExtras.Representation {
                         }
 
                         PlasmaComponents3.Label {
-                            Layout.fillWidth: true
                             horizontalAlignment: Qt.AlignRight
                             text: root.timeForZone(modelData)
                             font.weight: listItem.isCurrentTimeZone ? Font.Bold : Font.Normal
@@ -587,13 +548,18 @@ PlasmaExtras.Representation {
     // =======================================
     PlasmaCore.SvgItem {
         id: mainSeparator
-        visible: leftColumn.visible
+
         anchors {
-            right: monthViewWrapper.left
             top: parent.top
+            right: monthViewWrapper.left
             bottom: parent.bottom
+            // Stretch all the way to the top of a dialog. This magic comes
+            // from PlasmaCore.Dialog::margins and CompactApplet containment.
+            topMargin: calendar.parent ? -calendar.parent.y : 0
         }
-        width: 1
+
+        width: naturalSize.width
+        visible: calendar.showAgenda || calendar.showClocks
 
         elementId: "vertical-line"
         svg: PlasmaCore.Svg {
@@ -601,24 +567,50 @@ PlasmaExtras.Representation {
         }
     }
 
-    // Right column containing calendar
+    // Trailing column containing calendar
     // ===============================
     FocusScope {
         id: monthViewWrapper
-        width: calendar.showAgenda || calendar.showClocks ? parent.width / 2 : parent.width
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
+
+        anchors {
+            top: parent.top
+            right: parent.right
+            bottom: parent.bottom
+        }
+
+        // Not anchoring to horizontalCenter to avoid sub-pixel misalignments
+        width: (calendar.showAgenda || calendar.showClocks) ? Math.round(parent.width / 2) : parent.width
+
+        onActiveFocusChanged: if (activeFocus) {
+            monthViewWrapper.nextItemInFocusChain().forceActiveFocus();
+        }
+
         PlasmaCalendar.MonthView {
             id: monthView
-            anchors.margins: PlasmaCore.Units.smallSpacing
+
+            anchors {
+                leftMargin: PlasmaCore.Units.smallSpacing
+                rightMargin: PlasmaCore.Units.smallSpacing
+                bottomMargin: PlasmaCore.Units.smallSpacing
+            }
+
             borderOpacity: 0.25
+
+            eventPluginsManager: eventPluginsManager
             today: root.tzDate
-            firstDayOfWeek: plasmoid.configuration.firstDayOfWeek > -1
-                ? plasmoid.configuration.firstDayOfWeek
+            firstDayOfWeek: Plasmoid.configuration.firstDayOfWeek > -1
+                ? Plasmoid.configuration.firstDayOfWeek
                 : Qt.locale().firstDayOfWeek
-            showWeekNumbers: plasmoid.configuration.showWeekNumbers
-            showCustomHeader: true
+            showWeekNumbers: Plasmoid.configuration.showWeekNumbers
+
+            showDigitalClockHeader: true
+            digitalClock: Plasmoid.self
+            eventButton: addEventButton
+
+            KeyNavigation.left: KeyNavigation.tab
+            KeyNavigation.tab: addEventButton.visible ? addEventButton : addEventButton.KeyNavigation.down
+            Keys.onUpPressed: viewHeader.tabBar.currentItem.forceActiveFocus(Qt.BacktabFocusReason);
+            onUpPressed: Keys.onUpPressed(event)
         }
     }
 }

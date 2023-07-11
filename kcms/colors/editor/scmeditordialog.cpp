@@ -20,21 +20,18 @@
 #include <KStandardGuiItem>
 #include <KWindowSystem>
 
-#include <KNS3/UploadDialog>
-
 SchemeEditorDialog::SchemeEditorDialog(KSharedConfigPtr config, QWidget *parent)
     : QDialog(parent)
+    , m_config(config)
 {
-    m_config = config;
     init();
 }
 
 SchemeEditorDialog::SchemeEditorDialog(const QString &path, QWidget *parent)
     : QDialog(parent)
     , m_filePath(path)
+    , m_config(KSharedConfig::openConfig(path, KSharedConfig::SimpleConfig))
 {
-    m_config = KSharedConfig::openConfig(path);
-
     m_schemeName = KConfigGroup(m_config, "General").readEntry("Name");
     this->setWindowTitle(m_schemeName);
     init();
@@ -55,8 +52,6 @@ void SchemeEditorDialog::setShowApplyOverwriteButton(bool show)
 void SchemeEditorDialog::init()
 {
     setupUi(this);
-
-    schemeKnsUploadButton->setIcon(QIcon::fromTheme(QStringLiteral("get-hot-new-stuff")));
 
     m_optionTab = new SchemeEditorOptions(m_config);
     m_colorTab = new SchemeEditorColors(m_config);
@@ -82,22 +77,6 @@ void SchemeEditorDialog::init()
     updateTabs();
 }
 
-void SchemeEditorDialog::on_schemeKnsUploadButton_clicked()
-{
-    if (m_unsavedChanges) {
-        KMessageBox::ButtonCode reallyUpload =
-            KMessageBox::questionYesNo(this, i18n("This colour scheme was not saved. Continue?"), i18n("Do you really want to upload?"));
-        if (reallyUpload == KMessageBox::No) {
-            return;
-        }
-    }
-
-    // upload
-    KNS3::UploadDialog dialog(QStringLiteral("colorschemes.knsrc"), this);
-    dialog.setUploadFile(QUrl::fromLocalFile(m_config->name()));
-    dialog.exec();
-}
-
 void SchemeEditorDialog::on_buttonBox_clicked(QAbstractButton *button)
 {
     if (buttonBox->standardButton(button) == QDialogButtonBox::Reset) {
@@ -111,9 +90,12 @@ void SchemeEditorDialog::on_buttonBox_clicked(QAbstractButton *button)
         saveScheme(true /*overwrite*/);
     } else if (buttonBox->standardButton(button) == QDialogButtonBox::Close) {
         if (m_unsavedChanges) {
-            KMessageBox::ButtonCode ans =
-                KMessageBox::questionYesNo(this, i18n("You have unsaved changes. Do you really want to quit?"), i18n("Unsaved changes"));
-            if (ans == KMessageBox::No) {
+            KMessageBox::ButtonCode ans = KMessageBox::questionTwoActions(this,
+                                                                          i18n("You have unsaved changes. Do you really want to quit?"),
+                                                                          i18n("Unsaved changes"),
+                                                                          KStandardGuiItem::quit(),
+                                                                          KStandardGuiItem::cancel());
+            if (ans == KMessageBox::SecondaryAction) {
                 return;
             }
         }
@@ -138,10 +120,10 @@ void SchemeEditorDialog::saveScheme(bool overwrite)
 
     QString filename = name;
     filename.remove(QLatin1Char('\'')); // So Foo's does not become FooS
-    QRegExp fixer(QStringLiteral("[\\W,.-]+(.?)"));
-    int offset;
-    while ((offset = fixer.indexIn(filename)) >= 0)
-        filename.replace(offset, fixer.matchedLength(), fixer.cap(1).toUpper());
+    QRegularExpression fixer(QStringLiteral("[\\W,.-]+(.?)"));
+    for (auto match = fixer.match(filename); match.hasMatch(); match = fixer.match(filename)) {
+        filename.replace(match.capturedStart(), match.capturedLength(), match.captured(1).toUpper());
+    }
     filename.replace(0, 1, filename.at(0).toUpper());
 
     // check if that name is already in the list
@@ -153,14 +135,14 @@ void SchemeEditorDialog::saveScheme(bool overwrite)
     // or if we can overwrite it if it exists
     if (path.isEmpty() || !file.exists() || canWrite) {
         if (canWrite && !overwrite) {
-            int ret = KMessageBox::questionYesNo(this,
-                                                 i18n("A color scheme with that name already exists.\nDo you want to overwrite it?"),
-                                                 i18n("Save Color Scheme"),
-                                                 KStandardGuiItem::overwrite(),
-                                                 KStandardGuiItem::cancel());
+            int ret = KMessageBox::questionTwoActions(this,
+                                                      i18n("A color scheme with that name already exists.\nDo you want to overwrite it?"),
+                                                      i18n("Save Color Scheme"),
+                                                      KStandardGuiItem::overwrite(),
+                                                      KStandardGuiItem::cancel());
 
             // on don't overwrite, call again the function
-            if (ret == KMessageBox::No) {
+            if (ret == KMessageBox::SecondaryAction) {
                 this->saveScheme(overwrite);
                 return;
             }

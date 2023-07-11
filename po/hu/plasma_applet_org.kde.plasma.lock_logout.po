@@ -121,3 +121,67 @@ msgstr "Alvó állapot (felfüggesztés memóriába)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Hibernálás (felfüggesztés merevlemezre)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "Leállítás…"
+
+#~ msgid "Logout..."
+#~ msgstr "Kijelentkezés…"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Szeretne felfüggeszteni a merevlemezre (hibernálás)?"
+
+#~ msgid "Yes"
+#~ msgstr "Igen"
+
+#~ msgid "No"
+#~ msgstr "Nem"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Szeretne felfüggeszteni a memóriába (alvó állapot)?"
+
+#~ msgid "Leave"
+#~ msgstr "Kilépés"
+
+#~ msgid "Leave..."
+#~ msgstr "Kilépés…"
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Műveletek"
+
+#~ msgid "Suspend"
+#~ msgstr "Felfüggesztés"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Zárolás/kijelentkezés beállításai"
+
+#~ msgid "SystemTray Settings"
+#~ msgstr "A paneltálca beállításai"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Beállítás: Zárolás/kijelentkezés"
+
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "Válasszon ki egy vagy több elemet az alábbi listából."
+
+#~ msgid "Entries"
+#~ msgstr "Bejegyzések"
+
+#, fuzzy
+#~| msgid "Show lock button"
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Képernyőzároló gomb"
+
+#~ msgid "Show logout button"
+#~ msgstr "Kijelentkezés gomb"
+
+#, fuzzy
+#~| msgid "Show logout button"
+#~ msgid "Show hibernate button"
+#~ msgstr "Kijelentkezés gomb"
+
+#, fuzzy
+#~| msgid "Show lock button"
+#~ msgid "Show sleep button"
+#~ msgstr "Képernyőzároló gomb"

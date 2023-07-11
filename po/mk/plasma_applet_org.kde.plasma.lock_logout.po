@@ -123,3 +123,37 @@ msgstr "Спиење (суспендирање во RAM)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Хибернација (суспендирање на диск)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Дали сакате да суспендирате на диск (хибернација)?"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Дали сакате да суспендирате во RAM (спиење)?"
+
+#, fuzzy
+#~| msgid "Leave..."
+#~ msgid "Leave"
+#~ msgstr "Напушти..."
+
+#~ msgid "Leave..."
+#~ msgstr "Напушти..."
+
+#~ msgid "Suspend"
+#~ msgstr "Суспендирај"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Конфигурација на заклучување/одјавување"
+
+#, fuzzy
+#~| msgid "Show sleep button"
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Прикажи копче за заспивање"
+
+#~ msgid "Show logout button"
+#~ msgstr "Прикажи копче за одјавување"
+
+#~ msgid "Show hibernate button"
+#~ msgstr "Прикажи копче за хибернација"
+
+#~ msgid "Show sleep button"
+#~ msgstr "Прикажи копче за заспивање"

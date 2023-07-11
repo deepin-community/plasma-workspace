@@ -3,6 +3,9 @@ dbusmenuimporter.cpp
 dbusmenushortcut_p.cpp
 dbusmenutypes_p.cpp
 utils.cpp
+dbusmenuimporter.h
+dbusmenushortcut_p.h
+dbusmenutypes_p.h
 )
 
 ecm_qt_declare_logging_category(libdbusmenu_SRCS HEADER debug.h
@@ -23,5 +26,7 @@ target_link_libraries(dbusmenuqt
     Qt::DBus
     Qt::Widgets
 )
+
+set_property(TARGET dbusmenuqt PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 add_subdirectory(test)

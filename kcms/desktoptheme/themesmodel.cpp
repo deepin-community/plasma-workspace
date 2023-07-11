@@ -16,6 +16,7 @@
 
 #include <KColorScheme>
 #include <KDesktopFile>
+#include <KPluginMetaData>
 
 #include <KConfigGroup>
 #include <KSharedConfig>
@@ -76,7 +77,7 @@ bool ThemesModel::setData(const QModelIndex &index, const QVariant &value, int r
 
         if (item.pendingDeletion != pendingDeletion) {
             item.pendingDeletion = pendingDeletion;
-            emit dataChanged(index, index, {PendingDeletionRole});
+            Q_EMIT dataChanged(index, index, {PendingDeletionRole});
 
             if (index.row() == selectedThemeIndex() && pendingDeletion) {
                 // move to the next non-pending theme
@@ -86,7 +87,7 @@ bool ThemesModel::setData(const QModelIndex &index, const QVariant &value, int r
                 }
             }
 
-            emit pendingDeletionsChanged();
+            Q_EMIT pendingDeletionsChanged();
             return true;
         }
     }
@@ -119,9 +120,9 @@ void ThemesModel::setSelectedTheme(const QString &pluginName)
 
     m_selectedTheme = pluginName;
 
-    emit selectedThemeChanged(pluginName);
+    Q_EMIT selectedThemeChanged(pluginName);
 
-    emit selectedThemeIndexChanged();
+    Q_EMIT selectedThemeIndexChanged();
 }
 
 int ThemesModel::pluginIndex(const QString &pluginName) const
@@ -155,7 +156,15 @@ void ThemesModel::load()
         const QDir cd(ppath);
         const QStringList &entries = cd.entryList(QDir::Dirs | QDir::Hidden | QDir::NoDotAndDotDot);
         for (const QString &pack : entries) {
-            const QString _metadata = ppath + QLatin1Char('/') + pack + QStringLiteral("/metadata.desktop");
+            const QString prefix = QStringLiteral("%1%2%3%4metadata.").arg(ppath, QDir::separator(), pack, QDir::separator());
+
+            QString _metadata = QStringLiteral("%1json").arg(prefix);
+            if (QFile::exists(_metadata)) {
+                themes << _metadata;
+                continue;
+            }
+
+            _metadata = QStringLiteral("%1desktop").arg(prefix);
             if (QFile::exists(_metadata)) {
                 themes << _metadata;
             }
@@ -168,15 +177,25 @@ void ThemesModel::load()
         int themeNameSepIndex = themeRoot.lastIndexOf(QLatin1Char('/'), -1);
         const QString packageName = themeRoot.right(themeRoot.length() - themeNameSepIndex - 1);
 
-        KDesktopFile df(theme);
+        QString name;
+        QString comment;
 
-        if (df.noDisplay()) {
-            continue;
-        }
+        if (theme.endsWith(QLatin1String(".json"))) {
+            KPluginMetaData data = KPluginMetaData::fromJsonFile(theme);
+            name = data.name();
+            comment = data.description();
+        } else {
+            KDesktopFile df(theme);
 
-        QString name = df.readName();
-        if (name.isEmpty()) {
-            name = packageName;
+            if (df.noDisplay()) {
+                continue;
+            }
+
+            name = df.readName();
+            if (name.isEmpty()) {
+                name = packageName;
+            }
+            comment = df.readComment();
         }
         const bool isLocal = QFileInfo(theme).isWritable();
         bool hasPluginName = std::any_of(m_data.begin(), m_data.end(), [&](const ThemesModelData &item) {
@@ -184,7 +203,7 @@ void ThemesModel::load()
         });
         if (!hasPluginName) {
             // Plasma Theme creates a KColorScheme out of the "color" file and falls back to system colors if there is none
-            const QString colorsPath = themeRoot + QLatin1String("/colors");
+            const QString colorsPath = themeRoot + QStringLiteral("/colors");
             const bool followsSystemColors = !QFileInfo::exists(colorsPath);
             ColorType type = FollowsColorTheme;
             if (!followsSystemColors) {
@@ -197,7 +216,7 @@ void ThemesModel::load()
                     type = LightTheme;
                 }
             }
-            ThemesModelData item{name, packageName, df.readComment(), type, isLocal, false};
+            ThemesModelData item{name, packageName, comment, type, isLocal, false};
             m_data.append(item);
         }
     }
@@ -213,7 +232,7 @@ void ThemesModel::load()
 
     // an item might have been added before the currently selected one
     if (oldCount != m_data.count()) {
-        emit selectedThemeIndexChanged();
+        Q_EMIT selectedThemeIndexChanged();
     }
 }
 

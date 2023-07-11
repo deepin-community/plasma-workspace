@@ -9,7 +9,12 @@
 #include "Utils.h"
 #include "WritingSystems.h"
 #include "fontinstadaptor.h"
-#include <KAuth>
+#include "kfontinst_debug.h"
+
+#include <KAuth/Action>
+#include <KAuth/ActionReply>
+#include <KAuth/ExecuteJob>
+#include <KAuth/HelperSupport>
 #include <QDebug>
 #include <QTimer>
 #include <fontconfig/fontconfig.h>
@@ -25,7 +30,7 @@ static void decompose(const QString &name, QString &family, QString &style)
     int commaPos = name.lastIndexOf(',');
 
     family = -1 == commaPos ? name : name.left(commaPos);
-    style = -1 == commaPos ? KFI_WEIGHT_REGULAR : name.mid(commaPos + 2);
+    style = -1 == commaPos ? KFI_WEIGHT_REGULAR.untranslatedText() : name.mid(commaPos + 2);
 }
 
 static bool isSystem = false;
@@ -95,12 +100,12 @@ FontInst::FontInst()
     }
 
     registerSignalHandler(signalHander);
-    itsConnectionsTimer = new QTimer(this);
-    itsFontListTimer = new QTimer(this);
-    connect(itsConnectionsTimer, &QTimer::timeout, this, &FontInst::connectionsTimeout);
-    connect(itsFontListTimer, &QTimer::timeout, this, &FontInst::fontListTimeout);
-    itsConnectionsTimer->start(constConnectionsTimeout);
-    itsFontListTimer->start(constFontListTimeout);
+    m_connectionsTimer = new QTimer(this);
+    m_fontListTimer = new QTimer(this);
+    connect(m_connectionsTimer, &QTimer::timeout, this, &FontInst::connectionsTimeout);
+    connect(m_fontListTimer, &QTimer::timeout, this, &FontInst::fontListTimeout);
+    m_connectionsTimer->start(constConnectionsTimeout);
+    m_fontListTimer->start(constFontListTimeout);
 
     for (int i = 0; i < (isSystem ? 1 : FOLDER_COUNT); ++i) {
         theFolders[i].init(FOLDER_SYS == i, isSystem);
@@ -120,7 +125,7 @@ void FontInst::list(int folders, int pid)
 {
     // qDebug() << folders << pid;
 
-    itsConnections.insert(pid);
+    m_connections.insert(pid);
     updateFontList(false);
     QList<KFI::Families> fonts;
 
@@ -130,9 +135,9 @@ void FontInst::list(int folders, int pid)
         }
     }
 
-    itsConnectionsTimer->start(constConnectionsTimeout);
-    itsFontListTimer->start(constFontListTimeout);
-    emit fontList(pid, fonts);
+    m_connectionsTimer->start(constConnectionsTimeout);
+    m_fontListTimer->start(constFontListTimeout);
+    Q_EMIT fontList(pid, fonts);
 }
 
 void FontInst::statFont(const QString &name, int folders, int pid)
@@ -143,15 +148,15 @@ void FontInst::statFont(const QString &name, int folders, int pid)
     FamilyCont::ConstIterator fam;
     StyleCont::ConstIterator st;
 
-    itsConnections.insert(pid);
+    m_connections.insert(pid);
     if ((checkSystem && findFont(name, FOLDER_SYS, fam, st)) || (checkUser && findFont(name, FOLDER_USER, fam, st, !checkSystem))) {
         Family rv((*fam).name());
         rv.add(*st);
-        // qDebug() << "Found font, emit details...";
-        emit fontStat(pid, rv);
+        // qDebug() << "Found font, Q_EMIT details...";
+        Q_EMIT fontStat(pid, rv);
     } else {
-        // qDebug() << "Font not found, emit empty details...";
-        emit fontStat(pid, Family(name));
+        // qDebug() << "Font not found, Q_EMIT empty details...";
+        Q_EMIT fontStat(pid, Family(name));
     }
 }
 
@@ -159,7 +164,7 @@ void FontInst::install(const QString &file, bool createAfm, bool toSystem, int p
 {
     // qDebug() << file << createAfm << toSystem << pid << checkConfig;
 
-    itsConnections.insert(pid);
+    m_connections.insert(pid);
 
     if (checkConfig) {
         updateFontList();
@@ -221,22 +226,22 @@ void FontInst::install(const QString &file, bool createAfm, bool toSystem, int p
                     (*st).add(df);
                     theFolders[folder].add(font);
                     theFolders[folder].addModifiedDir(destFolder);
-                    emit fontsAdded(Families(font, FOLDER_SYS == folder));
+                    Q_EMIT fontsAdded(Families(font, FOLDER_SYS == folder));
                 }
             }
         }
     }
 
-    emit status(pid, result);
-    itsConnectionsTimer->start(constConnectionsTimeout);
-    itsFontListTimer->start(constFontListTimeout);
+    Q_EMIT status(pid, result);
+    m_connectionsTimer->start(constConnectionsTimeout);
+    m_fontListTimer->start(constFontListTimeout);
 }
 
 void FontInst::uninstall(const QString &family, quint32 style, bool fromSystem, int pid, bool checkConfig)
 {
     // qDebug() << family << style << fromSystem << pid << checkConfig;
 
-    itsConnections.insert(pid);
+    m_connections.insert(pid);
 
     if (checkConfig) {
         updateFontList();
@@ -309,13 +314,13 @@ void FontInst::uninstall(const QString &family, quint32 style, bool fromSystem, 
             }
             del.add(s);
         }
-        emit fontsRemoved(Families(del, FOLDER_SYS == folder));
+        Q_EMIT fontsRemoved(Families(del, FOLDER_SYS == folder));
     }
     // qDebug() << "status" << result;
-    emit status(pid, result);
+    Q_EMIT status(pid, result);
 
-    itsConnectionsTimer->start(constConnectionsTimeout);
-    itsFontListTimer->start(constFontListTimeout);
+    m_connectionsTimer->start(constConnectionsTimeout);
+    m_fontListTimer->start(constFontListTimeout);
 }
 
 void FontInst::uninstall(const QString &name, bool fromSystem, int pid, bool checkConfig)
@@ -327,7 +332,7 @@ void FontInst::uninstall(const QString &name, bool fromSystem, int pid, bool che
     if (findFont(name, fromSystem || isSystem ? FOLDER_SYS : FOLDER_USER, fam, st)) {
         uninstall((*fam).name(), (*st).value(), fromSystem, pid, checkConfig);
     } else {
-        emit status(pid, KIO::ERR_DOES_NOT_EXIST);
+        Q_EMIT status(pid, KIO::ERR_DOES_NOT_EXIST);
     }
 }
 
@@ -335,13 +340,13 @@ void FontInst::move(const QString &family, quint32 style, bool toSystem, int pid
 {
     // qDebug() << family << style << toSystem << pid << checkConfig;
 
-    itsConnections.insert(pid);
+    m_connections.insert(pid);
     if (checkConfig) {
         updateFontList();
     }
 
     if (isSystem) {
-        emit status(pid, KIO::ERR_UNSUPPORTED_ACTION);
+        Q_EMIT status(pid, KIO::ERR_UNSUPPORTED_ACTION);
     } else {
         FamilyCont::ConstIterator fam;
         StyleCont::ConstIterator st;
@@ -371,15 +376,15 @@ void FontInst::move(const QString &family, quint32 style, bool toSystem, int pid
             if (STATUS_OK == result) {
                 updateFontList();
             }
-            emit status(pid, result);
+            Q_EMIT status(pid, result);
         } else {
             // qDebug() << "does not exist";
-            emit status(pid, KIO::ERR_DOES_NOT_EXIST);
+            Q_EMIT status(pid, KIO::ERR_DOES_NOT_EXIST);
         }
     }
 
-    itsConnectionsTimer->start(constConnectionsTimeout);
-    itsFontListTimer->start(constFontListTimeout);
+    m_connectionsTimer->start(constConnectionsTimeout);
+    m_fontListTimer->start(constFontListTimeout);
 }
 
 static bool renameFontFile(const QString &from, const QString &to, int uid = -1, int gid = -1)
@@ -412,7 +417,7 @@ void FontInst::removeFile(const QString &family, quint32 style, const QString &f
 {
     // qDebug() << family << style << file << fromSystem << pid << checkConfig;
 
-    itsConnections.insert(pid);
+    m_connections.insert(pid);
 
     if (checkConfig) {
         updateFontList();
@@ -455,7 +460,7 @@ void FontInst::removeFile(const QString &family, quint32 style, const QString &f
         }
     }
 
-    emit status(pid, result);
+    Q_EMIT status(pid, result);
 }
 
 void FontInst::reconfigure(int pid, bool force)
@@ -481,11 +486,11 @@ void FontInst::reconfigure(int pid, bool force)
         }
     }
 
-    itsConnectionsTimer->start(constConnectionsTimeout);
-    itsFontListTimer->start(constFontListTimeout);
+    m_connectionsTimer->start(constConnectionsTimeout);
+    m_fontListTimer->start(constFontListTimeout);
 
     updateFontList();
-    emit status(pid, isSystem ? constSystemReconfigured : STATUS_OK);
+    Q_EMIT status(pid, isSystem ? constSystemReconfigured : STATUS_OK);
 }
 
 QString FontInst::folderName(bool sys)
@@ -527,11 +532,11 @@ void FontInst::connectionsTimeout()
         theFolders[i].saveDisabled();
     }
 
-    if (0 == itsConnections.count()) {
+    if (0 == m_connections.count()) {
         if (canExit) {
             qApp->exit(0);
         } else { // Try again later...
-            itsConnectionsTimer->start(constConnectionsTimeout);
+            m_connectionsTimer->start(constConnectionsTimeout);
         }
     }
 }
@@ -539,7 +544,7 @@ void FontInst::connectionsTimeout()
 void FontInst::fontListTimeout()
 {
     updateFontList(true);
-    itsFontListTimer->start(constFontListTimeout);
+    m_fontListTimer->start(constFontListTimeout);
 }
 
 void FontInst::updateFontList(bool emitChanges)
@@ -648,12 +653,12 @@ void FontInst::updateFontList(bool emitChanges)
                 Families families = onlyNew.build(isSystem || i == FOLDER_SYS);
 
                 if (!families.items.isEmpty()) {
-                    emit fontsAdded(families);
+                    Q_EMIT fontsAdded(families);
                 }
 
                 families = old[i].build(isSystem || i == FOLDER_SYS);
                 if (!families.items.isEmpty()) {
-                    emit fontsRemoved(families);
+                    Q_EMIT fontsRemoved(families);
                 }
             }
         }
@@ -663,7 +668,7 @@ void FontInst::updateFontList(bool emitChanges)
 
 void FontInst::toggle(bool enable, const QString &family, quint32 style, bool inSystem, int pid, bool checkConfig)
 {
-    itsConnections.insert(pid);
+    m_connections.insert(pid);
 
     if (checkConfig) {
         updateFontList();
@@ -740,8 +745,8 @@ void FontInst::toggle(bool enable, const QString &family, quint32 style, bool in
             (*st).setFiles(toggledFiles);
 
             theFolders[folder].addModifiedDirs(modifiedDirs);
-            emit fontsAdded(Families(addFam, FOLDER_SYS == folder));
-            emit fontsRemoved(Families(delFam, FOLDER_SYS == folder));
+            Q_EMIT fontsAdded(Families(addFam, FOLDER_SYS == folder));
+            Q_EMIT fontsRemoved(Families(delFam, FOLDER_SYS == folder));
 
             theFolders[folder].setDisabledDirty();
         } else // un-move fonts!
@@ -757,10 +762,10 @@ void FontInst::toggle(bool enable, const QString &family, quint32 style, bool in
             }
         }
     }
-    emit status(pid, result);
+    Q_EMIT status(pid, result);
 
-    itsConnectionsTimer->start(constConnectionsTimeout);
-    itsFontListTimer->start(constFontListTimeout);
+    m_connectionsTimer->start(constConnectionsTimeout);
+    m_fontListTimer->start(constFontListTimeout);
 }
 
 void FontInst::addModifedSysFolders(const Family &family)
@@ -778,7 +783,7 @@ void FontInst::addModifedSysFolders(const Family &family)
 
 void FontInst::checkConnections()
 {
-    QSet<int>::ConstIterator it(itsConnections.begin()), end(itsConnections.end());
+    QSet<int>::ConstIterator it(m_connections.begin()), end(m_connections.end());
     QSet<int> remove;
 
     for (; it != end; ++it) {
@@ -786,7 +791,7 @@ void FontInst::checkConnections()
             remove.insert(*it);
         }
     }
-    itsConnections.subtract(remove);
+    m_connections.subtract(remove);
 }
 
 bool FontInst::findFontReal(const QString &family, const QString &style, EFolder folder, FamilyCont::ConstIterator &fam, StyleCont::ConstIterator &st)
@@ -860,13 +865,13 @@ int FontInst::performAction(const QVariantMap &args)
     action.setHelperId("org.kde.fontinst");
     action.setArguments(args);
     // qDebug() << "Call " << args["method"].toString() << " on helper";
-    itsFontListTimer->stop();
-    itsConnectionsTimer->stop();
+    m_fontListTimer->stop();
+    m_connectionsTimer->stop();
 
     KAuth::ExecuteJob *j = action.execute();
     j->exec();
     if (j->error()) {
-        qWarning() << "kauth action failed" << j->errorString() << j->errorText();
+        qCWarning(KFONTINST_DEBUG) << "kauth action failed" << j->errorString() << j->errorText();
         // error is a KAuth::ActionReply::Error rest of this code expects KIO error codes which are extended by EStatus
         switch (j->error()) {
         case KAuth::ActionReply::Error::UserCancelledError:

@@ -49,3 +49,12 @@ msgstr "Hiện ngày trong tháng"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Hiện số tuần"
+
+#~ msgid "Working Day"
+#~ msgstr "Ngày làm việc"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Bắt đầu lúc 9 giờ"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Kết thúc lúc 5 giờ"

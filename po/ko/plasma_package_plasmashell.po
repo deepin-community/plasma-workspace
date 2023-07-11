@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2014.
+# Shinjo Park <kde@peremen.name>, 2014, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2014-09-08 20:03+0900\n"
+"POT-Creation-Date: 2022-01-22 00:46+0000\n"
+"PO-Revision-Date: 2022-02-20 22:30+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 21.08.1\n"
 
 #: shellpackage.cpp:26 shellpackage.cpp:27
 #, kde-format
@@ -83,10 +83,15 @@ msgstr "대체 애플릿을 선택하는 QML 구성 요소"
 
 #: shellpackage.cpp:63
 #, kde-format
+msgid "QML component for the configuration dialog of containments"
+msgstr "컨테이너 설정 대화 상자에 사용할 QML 구성 요소"
+
+#: shellpackage.cpp:66
+#, kde-format
 msgid "Widgets explorer UI"
 msgstr "위젯 탐색기 UI"
 
-#: shellpackage.cpp:67
+#: shellpackage.cpp:70
 #, kde-format
 msgid ""
 "A UI for writing, loading and running desktop scripts in the current live "

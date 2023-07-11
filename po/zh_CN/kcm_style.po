@@ -1,21 +1,9 @@
-# Simp. Chinese Translation for kcmstyle.
-# Copyright (C) 2001 Free Software Foundation, Inc.
-#
-# Gou Zhuang <gouzhuang@bigfoot.com>, 2001.
-# Funda Wang <fundawang@linux.net.cn>, 2002, 2003, 2007.
-# Lie Ex <lilith.ex@gmail.com>, 2008, 2009.
-# Ni Hui <shuizhuyuanluo@126.com>, 2010.
-# Feng Chao <rainofchaos@gmail.com>, 2011.
-# Weng Xuetian <wengxt@gmail.com>, 2012.
-# Wang Jiajun <amesists@gmail.com>, 2012.
-# Guo Yunhe <guoyunhebrave@gmail.com>, 2017.
-# Chao Feng <chaofeng111@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-18 00:19+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"POT-Creation-Date: 2023-04-24 03:15+0000\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -29,52 +17,17 @@ msgstr ""
 "X-Crowdin-File: /kf5-stable/messages/plasma-workspace/kcm_style.pot\n"
 "X-Crowdin-File-ID: 11905\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "KDE China"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "kde-china@kde.org"
-
-#: gtkpage.cpp:65
+#: gtkpage.cpp:59
 #, kde-format
 msgid "%1 is not a valid GTK Theme archive."
 msgstr "%1 并非有效的 GTK 应用程序风格包。"
 
-#: kcmstyle.cpp:79
-#, kde-format
-msgid "Application Style"
-msgstr "应用程序风格"
-
-#: kcmstyle.cpp:83
-#, kde-format
-msgid "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik "
-msgstr "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik "
-
-#: kcmstyle.cpp:85
-#, kde-format
-msgid "Karol Szwed"
-msgstr "Karol Szwed"
-
-#: kcmstyle.cpp:86
-#, kde-format
-msgid "Daniel Molkentin"
-msgstr "Daniel Molkentin"
-
-#: kcmstyle.cpp:87
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "Kai Uwe Broulik"
-
-#: kcmstyle.cpp:176 kcmstyle.cpp:183
+#: kcmstyle.cpp:161 kcmstyle.cpp:168
 #, kde-format
 msgid "There was an error loading the configuration dialog for this style."
 msgstr "装入此样式的配置对话框出错。"
 
-#: kcmstyle.cpp:296
+#: kcmstyle.cpp:274
 #, kde-format
 msgid "Failed to apply selected style '%1'."
 msgstr "无法应用选择的样式 '%1'."
@@ -134,27 +87,27 @@ msgstr "GNOME/GTK 应用程序风格"
 msgid "GTK theme:"
 msgstr "GTK 应用程序风格："
 
-#: package/contents/ui/GtkStylePage.qml:76
+#: package/contents/ui/GtkStylePage.qml:69
 #, kde-format
 msgid "Preview…"
 msgstr "预览…"
 
-#: package/contents/ui/GtkStylePage.qml:95
+#: package/contents/ui/GtkStylePage.qml:88
 #, kde-format
 msgid "Install from File…"
 msgstr "从文件安装…"
 
-#: package/contents/ui/GtkStylePage.qml:100
+#: package/contents/ui/GtkStylePage.qml:93
 #, kde-format
 msgid "Get New GNOME/GTK Application Styles…"
 msgstr "获取新 GNOME/GTK 应用程序风格…"
 
-#: package/contents/ui/GtkStylePage.qml:149
+#: package/contents/ui/GtkStylePage.qml:109
 #, kde-format
 msgid "Select GTK Theme Archive"
 msgstr "选择 GTK 应用程序风格包"
 
-#: package/contents/ui/GtkStylePage.qml:151
+#: package/contents/ui/GtkStylePage.qml:111
 #, kde-format
 msgid "GTK Theme Archive (*.tar.xz *.tar.gz *.tar.bz2)"
 msgstr "GTK 应用程序风格包 (*.tar.xz *.tar.gz *.tar.bz2)"
@@ -215,10 +168,16 @@ msgstr "复选框"
 #: stylepreview.ui:106 stylepreview.ui:116
 #, kde-format
 msgid "Radio button"
-msgstr "单选钮"
+msgstr "单选按钮"
+
+#. i18n: ectx: property (format), widget (QProgressBar, progressBar)
+#: stylepreview.ui:128
+#, no-c-format, kde-format
+msgid "%p%"
+msgstr "%p%"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
-#: stylepreview.ui:133
+#: stylepreview.ui:136
 #, kde-format
 msgid "Tab 2"
 msgstr "标签 2"

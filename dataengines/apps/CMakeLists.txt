@@ -3,6 +3,10 @@ set(apps_engine_SRCS
     appsource.cpp
     appservice.cpp
     appjob.cpp
+    appsengine.h
+    appsource.h
+    appservice.h
+    appjob.h
 )
 
 add_library(plasma_engine_apps MODULE ${apps_engine_SRCS})
@@ -13,8 +17,6 @@ target_link_libraries(plasma_engine_apps
     KF5::KIOCore
     KF5::KIOWidgets
 )
-
-kcoreaddons_desktop_to_json(plasma_engine_apps plasma-dataengine-apps.desktop)
 
 install(TARGETS plasma_engine_apps DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/dataengine)
 install(FILES apps.operations DESTINATION ${PLASMA_DATA_INSTALL_DIR}/services)

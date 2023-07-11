@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freespacenotifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-20 01:43+0000\n"
+"POT-Creation-Date: 2022-10-17 00:48+0000\n"
 "PO-Revision-Date: 2021-05-27 09:13+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -77,7 +77,7 @@ msgstr ""
 "Vaši domači mapi zmanjkuje prostora. Na voljo imate še %1 MiB neporabljenega "
 "prostora (%2%)"
 
-#: module.cpp:46
+#: module.cpp:45
 #, kde-format
 msgid ""
 "Your Root partition is running out of disk space, you have %1 MiB remaining "
@@ -86,8 +86,36 @@ msgstr ""
 "Vaši korenski mapi zmanjkuje prostora. Na voljo imate še %1 MiB "
 "neporabljenega prostora (%2%)"
 
-#: module.cpp:63
+#: module.cpp:62
 #, kde-format
 msgctxt "The settings dialog main page name, as in 'general settings'"
 msgid "General"
 msgstr "Splošno"
+
+#~ msgid "Low Disk Space"
+#~ msgstr "Prostora na disku je malo"
+
+#~ msgid "Remaining space in your Home folder: %1 MiB"
+#~ msgstr "V vaši domači mapi preostaja %1 MiB prostora"
+
+#~ msgctxt "Allows the user to hide this notifier item"
+#~ msgid "Hide"
+#~ msgstr "Skrij"
+
+#~ msgctxt ""
+#~ "Warns the user that the system is running low on space on his home "
+#~ "folder, indicating the percentage and absolute MiB size remaining, and "
+#~ "asks if the user wants to do something about it"
+#~ msgid ""
+#~ "You are running low on disk space on your home folder (currently %2%, %1 "
+#~ "MiB free).\n"
+#~ "Would you like to run a file manager to free some disk space?"
+#~ msgstr ""
+#~ "V domači mapi vam zmanjkuje prostora (trenutno je neporabljenega %2 %, %1 "
+#~ "MiB).\n"
+#~ "Ali želite zagnati upravljalnik datotek in sprostiti nekaj prostora na "
+#~ "disku?"
+
+#~ msgctxt "Closes the notification"
+#~ msgid "Do Nothing"
+#~ msgstr "Ne naredi ničesar"

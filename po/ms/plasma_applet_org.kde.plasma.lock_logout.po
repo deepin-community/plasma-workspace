@@ -122,3 +122,31 @@ msgstr "Tidur (gantung ke RAM)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Hibernasi (gantung ke cakera)"
+
+#, fuzzy
+#~| msgid "Leave..."
+#~ msgid "Leave"
+#~ msgstr "Tinggalkan..."
+
+#~ msgid "Leave..."
+#~ msgstr "Tinggalkan..."
+
+#~ msgid "Suspend"
+#~ msgstr "Gantung"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Tetapkan Kunci/Logkeluar"
+
+#, fuzzy
+#~| msgid "Show sleep button"
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Papar butang tidur"
+
+#~ msgid "Show logout button"
+#~ msgstr "Papar butang logkeluar"
+
+#~ msgid "Show hibernate button"
+#~ msgstr "Papar butang hibernasi"
+
+#~ msgid "Show sleep button"
+#~ msgstr "Papar butang tidur"

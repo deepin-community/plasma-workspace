@@ -53,3 +53,20 @@ msgstr "Erakutsi hilabeteko eguna"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Erakutsi asteko zenbakia"
+
+#~ msgid "Working Day"
+#~ msgstr "Laneguna"
+
+#~ msgid "Starts at 9"
+#~ msgstr "9:00etan hasten da"
+
+#~ msgid "Ends at 5"
+#~ msgstr "17:00etan amaitzen da"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "Ikonoa:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "Hileko eguna"

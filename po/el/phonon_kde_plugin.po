@@ -28,3 +28,35 @@ msgstr "Τούσης Μανώλης"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "manolis@koppermind.homelinux.org"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt>Αδυναμία χρήσης του συστήματος πολυμέσων <b>%1</b>:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Αδυναμία εύρεσης ενός συστήματος πολυμέσων"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Αδυναμία εύρεσης του ζητούμενου συστήματος πολυμέσων"
+
+#~ msgid "create method returned 0"
+#~ msgstr "η μέθοδος δημιουργίας επέστρεψε 0"
+
+#~ msgid "%1 (OSS)"
+#~ msgstr "%1 (OSS)"
+
+#~ msgid "%1 (ALSA)"
+#~ msgstr "%1 (ALSA)"
+
+#~ msgid ""
+#~ "<html>This device is currently not available (either it is unplugged or "
+#~ "the driver is not loaded).</html>"
+#~ msgstr ""
+#~ "<html>Η συσκευή αυτή δεν είναι διαθέσιμη αυτή τη στιγμή (είτε δεν είναι "
+#~ "συνδεδεμένη ή ο οδηγός δεν έχει φορτωθεί).</html>"
+
+#~ msgid ""
+#~ "<html>This will try the following devices and use the first that works: "
+#~ "<ol><li>%1</li></ol></html>"
+#~ msgstr ""
+#~ "<html>Θα γίνει δοκιμή των παρακάτω συσκευών και θα γίνει χρήση της πρώτης "
+#~ "που λειτουργεί: <ol><li>%1</li></ol></html>"

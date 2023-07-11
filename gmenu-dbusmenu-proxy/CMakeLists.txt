@@ -35,15 +35,19 @@ set_package_properties(XCB PROPERTIES TYPE REQUIRED)
 
 target_link_libraries(gmenudbusmenuproxy
     Qt::Core
-    Qt::X11Extras
     Qt::DBus
     KF5::CoreAddons
     KF5::ConfigCore
     KF5::WindowSystem
     XCB::XCB
 )
+if (QT_MAJOR_VERSION EQUAL "5")
+    target_link_libraries(gmenudbusmenuproxy Qt::X11Extras)
+else()
+    target_link_libraries(gmenudbusmenuproxy Qt::GuiPrivate)
+endif()
 
 install(TARGETS gmenudbusmenuproxy ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES gmenudbusmenuproxy.desktop DESTINATION ${KDE_INSTALL_AUTOSTARTDIR})
 
-ecm_install_configured_files(INPUT plasma-gmenudbusmenuproxy.service.in @ONLY DESTINATION ${SYSTEMD_USER_UNIT_INSTALL_DIR})
+ecm_install_configured_files(INPUT plasma-gmenudbusmenuproxy.service.in @ONLY DESTINATION ${KDE_INSTALL_SYSTEMDUSERUNITDIR})

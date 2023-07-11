@@ -124,3 +124,38 @@ msgstr "Doirmi (mete doirmi sol RAM)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Fordoirmi (mete fordoirmi sol plake)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Voloz vs mete fordoirmi sol plake ?"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Voloz vs mete doirmi sol RAM ?"
+
+#~ msgid "Leave"
+#~ msgstr "End aler"
+
+#~ msgid "Leave..."
+#~ msgstr "End aler..."
+
+#~ msgid "Suspend"
+#~ msgstr "Mete doirmi"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Apontyî Eclawer/Dislodjî"
+
+#~ msgid "Entries"
+#~ msgstr "Intrêyes"
+
+#, fuzzy
+#~| msgid "Show sleep button"
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Mostrer boton d' edoirmaedje"
+
+#~ msgid "Show logout button"
+#~ msgstr "Mostrer boton d' dislodjaedje"
+
+#~ msgid "Show hibernate button"
+#~ msgstr "Mostrer boton d' hibernaedje"
+
+#~ msgid "Show sleep button"
+#~ msgstr "Mostrer boton d' edoirmaedje"

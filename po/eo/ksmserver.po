@@ -2,6 +2,7 @@
 # Copyright (C) 2000, 2007, 2008 Free Software Foundation, Inc.
 # Wolfram Diestel <wolfram@steloj.de>, 2000.
 # Cindy McKee <cfmckee@gmail.com>, 2007, 2008.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 # Minuskloj: ĉ ĝ ĵ ĥ ŝ ŭ   Majuskloj: Ĉ Ĝ Ĵ Ĥ Ŝ Ŭ
 #
@@ -9,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksmserver\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2008-01-02 08:02-0600\n"
-"Last-Translator: Cindy McKee <cfmckee@gmail.com>\n"
+"POT-Creation-Date: 2023-01-11 01:00+0000\n"
+"PO-Revision-Date: 2023-01-03 11:05+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -20,140 +21,144 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: logout.cpp:350
+#: logout.cpp:340
 #, kde-format
 msgid "Logout canceled by '%1'"
 msgstr "'%1' nuligis la elsaluton"
 
-#: main.cpp:37
-#, fuzzy, kde-format
-#| msgid ""
-#| "The reliable KDE session manager that talks the standard X11R6 \n"
-#| "session management protocol (XSMP)."
-msgid ""
-"The reliable Plasma session manager that talks the standard X11R6 \n"
-"session management protocol (XSMP)."
-msgstr ""
-"La fidinda KDE-seancadministrilo kiu parolas la norman X11R6-"
-"seancadministran protokolon XSMP."
-
-#: main.cpp:113
+#: main.cpp:118
 #, kde-format
 msgid "$HOME not set!"
-msgstr ""
+msgstr "$HOME nedifinita!"
 
-#: main.cpp:117 main.cpp:123
+#: main.cpp:122 main.cpp:128
 #, kde-format
 msgid "$HOME directory (%1) does not exist."
-msgstr ""
+msgstr "$HOME dosierujo (%1) ne ekzistas."
 
-#: main.cpp:119
+#: main.cpp:124
 #, kde-format
 msgid "No write access to $HOME directory (%1)."
-msgstr ""
+msgstr "Neniu skribaliro al $HOME dosierujo (%1)."
 
-#: main.cpp:125
+#: main.cpp:130
 #, kde-format
 msgid "No read access to $HOME directory (%1)."
-msgstr ""
+msgstr "Neniu leg-aliro al $HOME dosierujo (%1)."
 
-#: main.cpp:129
+#: main.cpp:134
 #, kde-format
 msgid "$HOME directory (%1) is out of disk space."
-msgstr ""
+msgstr "$HOME dosierujo (%1) ne plu havas diskospacon."
 
-#: main.cpp:132
+#: main.cpp:137
 #, kde-format
 msgid "Writing to the $HOME directory (%2) failed with the error '%1'"
-msgstr ""
+msgstr "Skribo al $HOME dosierujo (%2) malsukcesis kun la eraro '%1'"
 
-#: main.cpp:145 main.cpp:180
+#: main.cpp:150 main.cpp:185
 #, kde-format
 msgid "No write access to '%1'."
-msgstr ""
+msgstr "Neniu skribaliro al '%1'."
 
-#: main.cpp:147 main.cpp:182
+#: main.cpp:152 main.cpp:187
 #, kde-format
 msgid "No read access to '%1'."
-msgstr ""
+msgstr "Neniu leg-aliro al '%1'."
 
-#: main.cpp:155 main.cpp:168
+#: main.cpp:160 main.cpp:173
 #, kde-format
 msgid "Temp directory (%1) is out of disk space."
-msgstr ""
+msgstr "Dumtempdosierujo (%1) ne plu havas diskospacon."
 
-#: main.cpp:158 main.cpp:171
+#: main.cpp:163 main.cpp:176
 #, kde-format
 msgid ""
 "Writing to the temp directory (%2) failed with\n"
 "    the error '%1'"
 msgstr ""
+"Skribo al la dumtempdosierujo (%2) malsukcesis kun\n"
+"    la eraro '%1'"
 
-#: main.cpp:186
+#: main.cpp:191
 #, kde-format
 msgid ""
 "The following installation problem was detected\n"
 "while trying to start Plasma:"
 msgstr ""
+"La sekva instalproblemo estis detektita\n"
+"dum provo startigi Plasma:"
 
-#: main.cpp:189
+#: main.cpp:194
 #, kde-format
 msgid ""
 "\n"
 "\n"
 "Plasma is unable to start.\n"
 msgstr ""
+"\n"
+"\n"
+"Plasma estas nekapabla starti.\n"
 
-#: main.cpp:196
+#: main.cpp:201
 #, kde-format
 msgid "Plasma Workspace installation problem!"
-msgstr ""
+msgstr "Plasma-Laborspaca instalproblemo!"
 
-#: main.cpp:236
+#: main.cpp:237
+#, kde-format
+msgid ""
+"The reliable Plasma session manager that talks the standard X11R6 \n"
+"session management protocol (XSMP)."
+msgstr ""
+"La fidinda Plasma-seancadministrilo kiu parolas la norman X11R6-\n"
+"seancadministran protokolon XSMP."
+
+#: main.cpp:241
 #, kde-format
 msgid "Restores the saved user session if available"
 msgstr "Restarigas la antaŭan uzantoseancon, se ekzistas"
 
-#: main.cpp:239
+#: main.cpp:244
 #, kde-format
 msgid "Also allow remote connections"
 msgstr "Permesi ankaŭ forajn konektojn"
 
-#: main.cpp:242
+#: main.cpp:247
 #, kde-format
 msgid "Starts the session in locked mode"
-msgstr ""
+msgstr "Startigas la seancon en ŝlosita reĝimo"
 
-#: main.cpp:246
+#: main.cpp:251
 #, kde-format
 msgid ""
 "Starts without lock screen support. Only needed if other component provides "
 "the lock screen."
 msgstr ""
+"Startas sen ekranŝlosa subteno. Nur bezonata se alia komponanto provizas la "
+"ekranŝloson."
 
-#: server.cpp:857
-#, fuzzy, kde-format
-#| msgid "The KDE Session Manager"
+#: server.cpp:884
+#, kde-format
 msgid "Session Management"
-msgstr "La KDE-seanco-administrilo"
+msgstr "Seanc-Administrado"
 
-#: server.cpp:860
-#, fuzzy, kde-format
-#| msgid "Logout"
+#: server.cpp:887
+#, kde-format
 msgid "Log Out"
 msgstr "Elsaluto"
 
-#: server.cpp:865
+#: server.cpp:892
 #, kde-format
 msgid "Log Out Without Confirmation"
 msgstr "Elsaluti sen konfirmo"
 
-#: server.cpp:870
+#: server.cpp:897
 #, kde-format
 msgid "Halt Without Confirmation"
 msgstr "Ĉesi sen konfirmo"
 
-#: server.cpp:875
+#: server.cpp:902
 #, kde-format
 msgid "Reboot Without Confirmation"
 msgstr "Reŝargi sen konfirmo"

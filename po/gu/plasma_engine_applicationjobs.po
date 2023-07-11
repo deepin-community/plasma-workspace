@@ -30,3 +30,6 @@ msgstr "%1 માટે કાર્યદર્શક મળતું નથી
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/સે"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "કાર્ય વપરાશકર્તા દ્વારા રદ કરવામાં આવ્યું."

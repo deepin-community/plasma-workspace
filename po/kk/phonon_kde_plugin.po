@@ -28,3 +28,19 @@ msgstr "Сайран Киккарин"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sairan@computer.org"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt><b>%1</b> мультимедиа бағдарламасын қолдануға болмайды:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Мультимедиа бағдарламасы табылмады"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Сұралған мультимедиа бағдарламасы табылмады"
+
+#~ msgid "create method returned 0"
+#~ msgstr "құру әдісі қайтарғаны 0"
+
+#~ msgid "Unable to use the <b>%1</b> Multimedia Backend:"
+#~ msgstr "<b>%1</b> мультимедиа бағдарламасын қолдануға болмайды:"

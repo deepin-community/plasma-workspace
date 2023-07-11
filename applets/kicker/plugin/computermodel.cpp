@@ -9,13 +9,13 @@
 #include "actionlist.h"
 #include "simplefavoritesmodel.h"
 
+#include <QConcatenateTablesProxyModel>
 #include <QIcon>
 
 #include <KAuthorized>
-#include <KConcatenateRowsProxyModel>
 #include <KFilePlacesModel>
+#include <KIO/OpenUrlJob>
 #include <KLocalizedString>
-#include <KRun>
 #include <Solid/Device>
 
 #include "krunner_interface.h"
@@ -123,7 +123,7 @@ Q_INVOKABLE bool RunCommandModel::trigger(int row, const QString &actionId, cons
 
 ComputerModel::ComputerModel(QObject *parent)
     : ForwardingModel(parent)
-    , m_concatProxy(new KConcatenateRowsProxyModel(this))
+    , m_concatProxy(new QConcatenateTablesProxyModel(this))
     , m_runCommandModel(new RunCommandModel(this))
     , m_systemAppsModel(new SimpleFavoritesModel(this))
     , m_filteredPlacesModel(new FilteredPlacesModel(this))
@@ -161,7 +161,7 @@ void ComputerModel::setAppNameFormat(int format)
 
         m_systemAppsModel->refresh();
 
-        emit appNameFormatChanged();
+        Q_EMIT appNameFormatChanged();
     }
 }
 
@@ -175,7 +175,7 @@ void ComputerModel::setAppletInterface(QObject *appletInterface)
     if (m_appletInterface != appletInterface) {
         m_appletInterface = appletInterface;
 
-        emit appletInterfaceChanged();
+        Q_EMIT appletInterfaceChanged();
     }
 }
 
@@ -239,7 +239,8 @@ bool ComputerModel::trigger(int row, const QString &actionId, const QVariant &ar
         const QUrl &url = m_filteredPlacesModel->url(sourceIndex);
 
         if (url.isValid()) {
-            new KRun(url, nullptr);
+            auto job = new KIO::OpenUrlJob(url);
+            job->start();
 
             return true;
         }
@@ -281,5 +282,6 @@ void ComputerModel::onSetupDone(Solid::ErrorType error, QVariant errorData, cons
 
     Q_ASSERT(access);
 
-    new KRun(QUrl::fromLocalFile(access->filePath()), nullptr);
+    auto job = new KIO::OpenUrlJob(QUrl::fromLocalFile(access->filePath()));
+    job->start();
 }

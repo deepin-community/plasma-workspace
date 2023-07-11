@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_settings\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-08 00:48+0000\n"
 "PO-Revision-Date: 2008-12-03 16:35+0200\n"
 "Last-Translator: Sergiu Bivol <sergiu@ase.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@lists.kde.org>\n"
@@ -18,17 +18,20 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
 
-#: kio_applications.cpp:121
+#: kio_applications.cpp:122
 #, kde-format
 msgid "Applications"
 msgstr "Aplicații"
 
-#: kio_applications.cpp:121
+#: kio_applications.cpp:122
 #, kde-format
 msgid "Programs"
 msgstr "Programe"
 
-#: kio_applications.cpp:130
+#: kio_applications.cpp:131
 #, kde-format
 msgid "Unknown application folder"
 msgstr "Dosar cu aplicații necunoscut"
+
+#~ msgid "Settings"
+#~ msgstr "Configurări"

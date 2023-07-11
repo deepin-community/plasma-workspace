@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-workspace package.
 #
-# Phu Hung Nguyen <phu.nguyen@kdemail.net>, 2020, 2021.
+# Phu Hung Nguyen <phu.nguyen@kdemail.net>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-31 00:22+0000\n"
-"PO-Revision-Date: 2021-08-10 22:06+0200\n"
+"POT-Creation-Date: 2022-12-02 00:48+0000\n"
+"PO-Revision-Date: 2022-05-23 13:27+0200\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
 "Language: vi\n"
@@ -15,183 +15,85 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 20.12.2\n"
+"X-Generator: Lokalize 21.12.2\n"
 
-#: image.cpp:253
 #, kde-format
-msgid "Recommended wallpaper file"
-msgstr "Tệp phông nền được giới thiệu"
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Nguyễn Hùng Phú"
 
-#: image.cpp:414
 #, kde-format
-msgid "Directory with the wallpaper to show slides from"
-msgstr "Thư mục với phông nền để từ đó hiển thị các trang trình chiếu"
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "phu.nguyen@kdemail.net"
 
-#: image.cpp:716
-#, kde-format
-msgid "Open Image"
-msgstr "Mở ảnh"
-
-#: image.cpp:716
-#, kde-format
-msgid "Image Files"
-msgstr "Tệp ảnh"
-
-#: imagepackage/contents/ui/config.qml:98
+#: imagepackage/contents/ui/config.qml:94
 #, kde-format
 msgid "Positioning:"
 msgstr "Bố trí:"
 
-#: imagepackage/contents/ui/config.qml:101
+#: imagepackage/contents/ui/config.qml:97
 #, kde-format
 msgid "Scaled and Cropped"
 msgstr "Đổi cỡ và xén cạnh"
 
-#: imagepackage/contents/ui/config.qml:105
+#: imagepackage/contents/ui/config.qml:101
 #, kde-format
 msgid "Scaled"
 msgstr "Đổi cỡ"
 
-#: imagepackage/contents/ui/config.qml:109
+#: imagepackage/contents/ui/config.qml:105
 #, kde-format
 msgid "Scaled, Keep Proportions"
 msgstr "Đổi cỡ, giữ tỉ lệ"
 
-#: imagepackage/contents/ui/config.qml:113
+#: imagepackage/contents/ui/config.qml:109
 #, kde-format
 msgid "Centered"
 msgstr "Đặt vào giữa"
 
-#: imagepackage/contents/ui/config.qml:117
+#: imagepackage/contents/ui/config.qml:113
 #, kde-format
 msgid "Tiled"
 msgstr "Lát gạch"
 
-#: imagepackage/contents/ui/config.qml:146
+#: imagepackage/contents/ui/config.qml:141
 #, kde-format
 msgid "Background:"
 msgstr "Nền:"
 
-#: imagepackage/contents/ui/config.qml:147
+#: imagepackage/contents/ui/config.qml:142
 #, kde-format
 msgid "Blur"
 msgstr "Mờ"
 
-#: imagepackage/contents/ui/config.qml:156
+#: imagepackage/contents/ui/config.qml:151
 #, kde-format
 msgid "Solid color"
 msgstr "Đồng màu"
 
-#: imagepackage/contents/ui/config.qml:166
+#: imagepackage/contents/ui/config.qml:161
 #, kde-format
 msgid "Select Background Color"
 msgstr "Chọn màu nền"
 
-#: imagepackage/contents/ui/config.qml:190
-#, kde-format
-msgid "Order:"
-msgstr "Thứ tự:"
-
-#: imagepackage/contents/ui/config.qml:197
-#, kde-format
-msgid "Random"
-msgstr "Ngẫu nhiên"
-
-#: imagepackage/contents/ui/config.qml:201
-#, kde-format
-msgid "A to Z"
-msgstr "A đến Z"
-
-#: imagepackage/contents/ui/config.qml:205
-#, kde-format
-msgid "Z to A"
-msgstr "Z đến A"
-
-#: imagepackage/contents/ui/config.qml:209
-#, kde-format
-msgid "Date modified (newest first)"
-msgstr "Ngày chỉnh sửa (mới nhất trước)"
-
-#: imagepackage/contents/ui/config.qml:213
-#, kde-format
-msgid "Date modified (oldest first)"
-msgstr "Ngày chỉnh sửa (cũ nhất trước)"
-
-#: imagepackage/contents/ui/config.qml:237
-#, kde-format
-msgid "Group by folders"
-msgstr "Nhóm theo thư mục"
-
-#: imagepackage/contents/ui/config.qml:249
-#, kde-format
-msgid "Change every:"
-msgstr "Thay đổi mỗi:"
-
-#: imagepackage/contents/ui/config.qml:259
-#, kde-format
-msgid "%1 hour"
-msgid_plural "%1 hours"
-msgstr[0] "%1 tiếng"
-
-#: imagepackage/contents/ui/config.qml:278
-#, kde-format
-msgid "%1 minute"
-msgid_plural "%1 minutes"
-msgstr[0] "%1 phút"
-
-#: imagepackage/contents/ui/config.qml:297
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 giây"
-
-#: imagepackage/contents/ui/config.qml:310
-#, kde-format
-msgid "Folders"
-msgstr "Thư mục"
-
-#: imagepackage/contents/ui/config.qml:358
-#, kde-format
-msgid "Remove Folder"
-msgstr "Xoá thư mục"
-
-#: imagepackage/contents/ui/config.qml:363
-#, kde-format
-msgid "Open Folder"
-msgstr "Mở thư mục"
-
-#: imagepackage/contents/ui/config.qml:373
-#, kde-format
-msgid "There are no wallpaper locations configured"
-msgstr "Chưa cấu hình địa điểm chứa phông nền nào"
-
-#: imagepackage/contents/ui/config.qml:386
-#, kde-format
-msgid "Add Folder…"
-msgstr "Thêm thư mục…"
-
-#: imagepackage/contents/ui/config.qml:392
-#: imagepackage/contents/ui/config.qml:486
-#, kde-format
-msgid "Get New Wallpapers…"
-msgstr "Lấy phông nền mới…"
-
-#: imagepackage/contents/ui/config.qml:435
-#, kde-format
-msgid "There are no wallpapers in this slideshow"
-msgstr "Không có phông nền nào trong chuỗi trình chiếu này"
-
-#: imagepackage/contents/ui/config.qml:480
+#: imagepackage/contents/ui/config.qml:207
 #, kde-format
 msgid "Add Image…"
 msgstr "Thêm ảnh…"
 
-#: imagepackage/contents/ui/main.qml:55
+#: imagepackage/contents/ui/config.qml:213
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:257
+#, kde-format
+msgid "Get New Wallpapers…"
+msgstr "Lấy phông nền mới…"
+
+#: imagepackage/contents/ui/main.qml:66
 #, kde-format
 msgid "Open Wallpaper Image"
 msgstr "Mở ảnh phông nền"
 
-#: imagepackage/contents/ui/main.qml:56
+#: imagepackage/contents/ui/main.qml:67
 #, kde-format
 msgid "Next Wallpaper Image"
 msgstr "Ảnh phông nền tiếp theo"
@@ -236,12 +138,12 @@ msgstr ""
 "Có một dấu nháy đơn bất thường trong tên tệp của phông nền này (') - vui "
 "lòng liên hệ với tác giả của phông nền để sửa, hoặc tự đổi tên tệp: %1"
 
-#: plasma-apply-wallpaperimage.cpp:82
+#: plasma-apply-wallpaperimage.cpp:85
 #, kde-format
 msgid "An error occurred while attempting to set the Plasma wallpaper:\n"
 msgstr "Một lỗi xảy ra khi đang đặt phông nền Plasma:\n"
 
-#: plasma-apply-wallpaperimage.cpp:86
+#: plasma-apply-wallpaperimage.cpp:89
 #, kde-format
 msgid ""
 "Successfully set the wallpaper for all desktops to the KPackage based %1"
@@ -249,12 +151,12 @@ msgstr ""
 "Đặt phông nền cho tất cả các bàn làm việc thành gói %1 dựa trên KPackage "
 "thành công"
 
-#: plasma-apply-wallpaperimage.cpp:88
+#: plasma-apply-wallpaperimage.cpp:91
 #, kde-format
 msgid "Successfully set the wallpaper for all desktops to the image %1"
 msgstr "Đặt phông nền cho tất cả các bàn làm việc thành ảnh %1 thành công"
 
-#: plasma-apply-wallpaperimage.cpp:94
+#: plasma-apply-wallpaperimage.cpp:97
 #, kde-format
 msgid ""
 "The file passed to be set as wallpaper does not exist, or we cannot identify "
@@ -262,3 +164,118 @@ msgid ""
 msgstr ""
 "Tệp được truyền vào để đặt làm phông nền không tồn tại, hoặc không thể được "
 "nhận diện là một phông nền: %1"
+
+#: plugin/finder/packagefinder.cpp:148
+#, kde-format
+msgid "Recommended wallpaper file"
+msgstr "Tệp phông nền được giới thiệu"
+
+#: plugin/imagebackend.cpp:243
+#, kde-format
+msgid "Directory with the wallpaper to show slides from"
+msgstr "Thư mục với phông nền để từ đó hiển thị các trang trình chiếu"
+
+#: plugin/imagebackend.cpp:353
+#, kde-format
+msgid "Open Image"
+msgstr "Mở ảnh"
+
+#: plugin/imagebackend.cpp:353
+#, kde-format
+msgid "Image Files"
+msgstr "Tệp ảnh"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:38
+#, kde-format
+msgid "Order:"
+msgstr "Thứ tự:"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:45
+#, kde-format
+msgid "Random"
+msgstr "Ngẫu nhiên"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:49
+#, kde-format
+msgid "A to Z"
+msgstr "A đến Z"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:53
+#, kde-format
+msgid "Z to A"
+msgstr "Z đến A"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:57
+#, kde-format
+msgid "Date modified (newest first)"
+msgstr "Ngày chỉnh sửa (mới nhất trước)"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:61
+#, kde-format
+msgid "Date modified (oldest first)"
+msgstr "Ngày chỉnh sửa (cũ nhất trước)"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:86
+#, kde-format
+msgid "Group by folders"
+msgstr "Nhóm theo thư mục"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:98
+#, kde-format
+msgid "Change every:"
+msgstr "Thay đổi mỗi:"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:108
+#, kde-format
+msgid "%1 hour"
+msgid_plural "%1 hours"
+msgstr[0] "%1 tiếng"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:128
+#, kde-format
+msgid "%1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "%1 phút"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:148
+#, kde-format
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 giây"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:162
+#, kde-format
+msgid "Folders"
+msgstr "Thư mục"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:220
+#, kde-format
+msgid "Remove Folder"
+msgstr "Xoá thư mục"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:225
+#, kde-format
+msgid "Open Folder"
+msgstr "Mở thư mục"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:235
+#, kde-format
+msgid "There are no wallpaper locations configured"
+msgstr "Chưa cấu hình địa điểm chứa phông nền nào"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:250
+#, kde-format
+msgid "Add Folder…"
+msgstr "Thêm thư mục…"
+
+#~ msgid "There are no wallpapers in this slideshow"
+#~ msgstr "Không có phông nền nào trong chuỗi trình chiếu này"
+
+#~ msgid "Add Custom Wallpaper"
+#~ msgstr "Thêm phông nền tuỳ biến"
+
+#~ msgid "Remove wallpaper"
+#~ msgstr "Xoá phông nền"
+
+#~ msgid "%1 by %2"
+#~ msgstr "%1, do %2"

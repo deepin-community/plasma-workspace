@@ -49,3 +49,23 @@ msgstr "ਮਹੀਨੇ ਦਾ ਦਿਨ ਵੇਖਾਓ"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "ਹਫ਼ਤੇ ਦਾ ਨੰਬਰ ਵੇਖਾਓ"
+
+#~ msgid "Working Day"
+#~ msgstr "ਕਾਰਜਕਾਰੀ ਦਿਨ"
+
+#~ msgid "Starts at 9"
+#~ msgstr "9 ਵਜੇ ਸ਼ੁਰੂ"
+
+#~ msgid "Ends at 5"
+#~ msgstr "5 ਵਜੇ ਖ਼ਤਮ"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "ਆਈਕਾਨ:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "ਮਹੀਨੇ 'ਚ ਦਿਨ"
+
+#~ msgid "Agenda"
+#~ msgstr "ਏਜੰਡਾ"

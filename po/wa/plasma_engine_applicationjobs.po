@@ -30,3 +30,6 @@ msgstr "Dji n' sai trover l' Vuwe d' bouye po %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "L' uzeu a rnoncî al bouye."

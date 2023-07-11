@@ -7,6 +7,7 @@
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
+import QtQuick.Window 2.15
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 // We still need PC2 here for that version of Menu, as PC2 Menu is still very problematic with QActions
@@ -14,24 +15,19 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PC2
 import org.kde.plasma.components 3.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
+import org.kde.plasma.plasmoid 2.0
 
 Item {
     id: popup
-    //set width/height to avoid useless Dialog resize
-    readonly property int defaultWidth: PlasmaCore.Units.gridUnit * 24
-    readonly property int defaultHeight: PlasmaCore.Units.gridUnit * 24
 
-    width: defaultWidth
-    Layout.minimumWidth: defaultWidth
-    Layout.preferredWidth: defaultWidth
-    Layout.maximumWidth: defaultWidth
+    Layout.minimumWidth: PlasmaCore.Units.gridUnit * 24
+    Layout.maximumWidth: PlasmaCore.Units.gridUnit * 80
 
-    height: defaultHeight
-    Layout.minimumHeight: defaultHeight
-    Layout.preferredHeight: defaultHeight
-    Layout.maximumHeight: defaultHeight
+    Layout.minimumHeight: PlasmaCore.Units.gridUnit * 24
+    Layout.maximumHeight: PlasmaCore.Units.gridUnit * 40
 
     property alias hiddenLayout: hiddenItemsView.layout
+    property alias plasmoidContainer: container
 
     // Header
     PlasmaExtras.PlasmoidHeading {
@@ -63,6 +59,12 @@ Item {
                 id: backButton
                 visible: systemTrayState.activeApplet && systemTrayState.activeApplet.expanded && (hiddenLayout.itemCount > 0)
                 icon.name: LayoutMirroring.enabled ? "go-previous-symbolic-rtl" : "go-previous-symbolic"
+
+                display: PlasmaComponents.AbstractButton.IconOnly
+                text: i18nc("@action:button", "Go Back")
+
+                KeyNavigation.down: hiddenItemsView.visible ? hiddenLayout : container
+
                 onClicked: systemTrayState.setActiveApplet(null)
             }
 
@@ -72,6 +74,53 @@ Item {
 
                 level: 1
                 text: systemTrayState.activeApplet ? systemTrayState.activeApplet.title : i18n("Status and Notifications")
+            }
+
+            Repeater {
+                id: primaryActionButtons
+
+                model: {
+                    const primaryActions = [];
+                    actionsButton.applet.contextualActions.forEach(action => {
+                        if (action.priority == Plasmoid.HighPriorityAction) {
+                            primaryActions.push(action);
+                        }
+                    })
+                    return primaryActions;
+                }
+
+                delegate: PlasmaComponents.ToolButton {
+                    // We cannot use `action` as it is already a QQuickAction property of the button
+                    property QtObject qAction: model.modelData
+
+                    visible: qAction && qAction.visible
+
+                    // NOTE: it needs an IconItem because QtQuickControls2 buttons cannot load QIcons as their icon
+                    contentItem: PlasmaCore.IconItem {
+                        anchors.centerIn: parent
+                        active: parent.hovered
+                        implicitWidth: PlasmaCore.Units.iconSizes.smallMedium
+                        implicitHeight: implicitWidth
+                        source: parent.qAction ? parent.qAction.icon : ""
+                    }
+
+                    checkable: qAction && qAction.checkable
+                    checked: qAction && qAction.checked
+                    display: PlasmaComponents.AbstractButton.IconOnly
+                    text: qAction ? qAction.text : ""
+
+                    KeyNavigation.down: backButton.KeyNavigation.down
+                    KeyNavigation.left: (index > 0) ? primaryActionButtons.itemAt(index - 1) : backButton
+                    KeyNavigation.right: (index < primaryActionButtons.count - 1) ? primaryActionButtons.itemAt(index + 1) :
+                                                            actionsButton.visible ? actionsButton : actionsButton.KeyNavigation.right
+
+                    PlasmaComponents.ToolTip {
+                        text: parent.text
+                    }
+
+                    onClicked: qAction.trigger();
+                    onToggled: qAction.toggle();
+                }
             }
 
             PlasmaComponents.ToolButton {
@@ -85,6 +134,15 @@ Item {
                 icon.name: "application-menu"
                 checkable: visibleActions > 1 || (singleAction && singleAction.checkable)
                 contentItem.opacity: visibleActions > 1
+
+                display: PlasmaComponents.AbstractButton.IconOnly
+                text: actionsButton.singleAction ? actionsButton.singleAction.text : i18n("More actions")
+
+                Accessible.role: actionsButton.singleAction ? Accessible.Button : Accessible.ButtonMenu
+
+                KeyNavigation.down: backButton.KeyNavigation.down
+                KeyNavigation.right: configureButton.visible ? configureButton : configureButton.KeyNavigation.right
+
                 // NOTE: it needs an IconItem because QtQuickControls2 buttons cannot load QIcons as their icon
                 PlasmaCore.IconItem {
                     parent: actionsButton
@@ -110,7 +168,7 @@ Item {
                     }
                 }
                 PlasmaComponents.ToolTip {
-                    text: actionsButton.singleAction ? actionsButton.singleAction.text : i18n("More actions")
+                    text: parent.text
                 }
                 PC2.Menu {
                     id: configMenu
@@ -125,7 +183,10 @@ Item {
                         let actions = [];
                         for (let i in actionsButton.applet.contextualActions) {
                             const action = actionsButton.applet.contextualActions[i];
-                            if (action.visible && action !== actionsButton.applet.action("configure")) {
+                            if (action.visible
+                                    && action.priority > Plasmoid.LowPriorityAction
+                                    && !primaryActionButtons.model.includes(action)
+                                    && action !== actionsButton.applet.action("configure")) {
                                 actions.push(action);
                             }
                         }
@@ -141,10 +202,19 @@ Item {
                 }
             }
             PlasmaComponents.ToolButton {
+                id: configureButton
                 icon.name: "configure"
                 visible: actionsButton.applet && actionsButton.applet.action("configure")
+
+                display: PlasmaComponents.AbstractButton.IconOnly
+                text: actionsButton.applet.action("configure") ? actionsButton.applet.action("configure").text : ""
+
+                KeyNavigation.down: backButton.KeyNavigation.down
+                KeyNavigation.left: actionsButton.visible ? actionsButton : actionsButton.KeyNavigation.left
+                KeyNavigation.right: pinButton
+
                 PlasmaComponents.ToolTip {
-                    text: parent.visible ? actionsButton.applet.action("configure").text : ""
+                    text: parent.visible ? parent.text : ""
                 }
                 onClicked: actionsButton.applet.action("configure").trigger();
             }
@@ -152,11 +222,18 @@ Item {
             PlasmaComponents.ToolButton {
                 id: pinButton
                 checkable: true
-                checked: plasmoid.configuration.pin
-                onToggled: plasmoid.configuration.pin = checked
+                checked: Plasmoid.configuration.pin
+                onToggled: Plasmoid.configuration.pin = checked
                 icon.name: "window-pin"
+
+                display: PlasmaComponents.AbstractButton.IconOnly
+                text: i18n("Keep Open")
+
+                KeyNavigation.down: backButton.KeyNavigation.down
+                KeyNavigation.left: configureButton.visible ? configureButton : configureButton.KeyNavigation.left
+
                 PlasmaComponents.ToolTip {
-                    text: i18n("Keep Open")
+                    text: parent.text
                 }
             }
         }
@@ -168,6 +245,15 @@ Item {
             Layout.fillHeight: true
             Layout.topMargin: PlasmaCore.Units.smallSpacing
             visible: !systemTrayState.activeApplet
+
+            KeyNavigation.up: pinButton
+
+            onVisibleChanged: {
+                if (visible) {
+                    layout.forceActiveFocus();
+                    systemTrayState.oldVisualIndex = systemTrayState.newVisualIndex = -1;
+                }
+            }
         }
 
         // Container for currently visible item
@@ -179,6 +265,15 @@ Item {
 
             // We need to add margin on the top so it matches the dialog's own margin
             Layout.topMargin: mergeHeadings ? 0 : dialog.margins.top
+
+            KeyNavigation.up: pinButton
+            KeyNavigation.backtab: pinButton
+
+            onVisibleChanged: {
+                if (visible) {
+                    forceActiveFocus();
+                }
+            }
         }
     }
 

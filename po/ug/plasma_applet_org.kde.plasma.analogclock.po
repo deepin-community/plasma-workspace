@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -21,6 +21,12 @@ msgstr ""
 #, kde-format
 msgid "Appearance"
 msgstr "كۆرۈنۈشى"
+
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
 
 #: contents/ui/configGeneral.qml:23
 #, fuzzy, kde-format
@@ -38,3 +44,21 @@ msgstr ""
 #| msgid "Show &time zone"
 msgid "Show time zone"
 msgstr "ۋاقىت رايونىنى كۆرسەت(&T)"
+
+#~ msgid "Show the seconds"
+#~ msgstr "سېكۇنتنى كۆرسىتىدۇ"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "سېكۇنتنى كۆرسەتمەكچى بولسىڭىز بۇ يەرنى تاللاپ قويۇڭ."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "سېكۇنت تىلىنى كۆرسەت(&S)"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "تېكىستتە ۋاقىت رايونىنى كۆرسەت"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "ئەگەر تېكىستتە ۋاقىت رايونىنى كۆرسەتسىڭىز بۇنى تاللاڭ."
+
+#~ msgid "Show &time zone"
+#~ msgstr "ۋاقىت رايونىنى كۆرسەت(&T)"

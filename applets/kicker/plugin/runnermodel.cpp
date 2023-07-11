@@ -13,6 +13,9 @@
 #include <KLocalizedString>
 #include <KRunner/AbstractRunner>
 #include <KRunner/RunnerManager>
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 RunnerModel::RunnerModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -23,7 +26,7 @@ RunnerModel::RunnerModel(QObject *parent)
     , m_deleteWhenEmpty(false)
 {
     m_queryTimer.setSingleShot(true);
-    m_queryTimer.setInterval(10);
+    m_queryTimer.setInterval(10ms);
     connect(&m_queryTimer, &QTimer::timeout, this, &RunnerModel::startQuery);
 }
 
@@ -52,7 +55,7 @@ void RunnerModel::setFavoritesModel(AbstractModel *model)
             m_queryTimer.start();
         }
 
-        emit favoritesModelChanged();
+        Q_EMIT favoritesModelChanged();
     }
 }
 
@@ -72,7 +75,7 @@ void RunnerModel::setAppletInterface(QObject *appletInterface)
             m_queryTimer.start();
         }
 
-        emit appletInterfaceChanged();
+        Q_EMIT appletInterfaceChanged();
     }
 }
 
@@ -92,7 +95,7 @@ void RunnerModel::setDeleteWhenEmpty(bool deleteWhenEmpty)
             m_queryTimer.start();
         }
 
-        emit deleteWhenEmptyChanged();
+        Q_EMIT deleteWhenEmptyChanged();
     }
 }
 
@@ -112,7 +115,7 @@ void RunnerModel::setMergeResults(bool merge)
             m_queryTimer.start();
         }
 
-        emit mergeResultsChanged();
+        Q_EMIT mergeResultsChanged();
     }
 }
 
@@ -162,7 +165,7 @@ void RunnerModel::setRunners(const QStringList &runners)
             m_runnerManager->setAllowedRunners(runners);
         }
 
-        emit runnersChanged();
+        Q_EMIT runnersChanged();
     }
 }
 
@@ -178,7 +181,7 @@ void RunnerModel::setQuery(const QString &query)
 
         m_queryTimer.start();
 
-        emit queryChanged();
+        Q_EMIT queryChanged();
     }
 }
 
@@ -219,16 +222,19 @@ void RunnerModel::matchesChanged(const QList<Plasma::QueryMatch> &matches)
         std::sort(list.rbegin(), list.rend());
     }
 
+    bool countHasChanged = false;
+
     if (m_mergeResults) {
         RunnerMatchesModel *matchesModel = nullptr;
 
         if (m_models.isEmpty()) {
             matchesModel = new RunnerMatchesModel(QString(), i18n("Search results"), m_runnerManager, this);
+            connect(matchesModel, &RunnerMatchesModel::requestUpdateQueryString, this, &RunnerModel::requestUpdateQuery);
 
             beginInsertRows(QModelIndex(), 0, 0);
             m_models.append(matchesModel);
             endInsertRows();
-            emit countChanged();
+            countHasChanged = true;
         } else {
             matchesModel = m_models.at(0);
         }
@@ -238,6 +244,7 @@ void RunnerModel::matchesChanged(const QList<Plasma::QueryMatch> &matches)
         const static QStringList runnerIds = {
             QStringLiteral("desktopsessions"),
             QStringLiteral("services"),
+            QStringLiteral("krunner_systemsettings"),
             QStringLiteral("places"),
             QStringLiteral("PowerDevil"),
             QStringLiteral("calculator"),
@@ -266,6 +273,10 @@ void RunnerModel::matchesChanged(const QList<Plasma::QueryMatch> &matches)
 
         matchesModel->setMatches(matches);
 
+        if (countHasChanged) {
+            Q_EMIT countChanged();
+        }
+
         return;
     }
 
@@ -279,7 +290,7 @@ void RunnerModel::matchesChanged(const QList<Plasma::QueryMatch> &matches)
             m_models.removeAt(row);
             delete matchesModel;
             endRemoveRows();
-            emit countChanged();
+            countHasChanged = true;
         } else {
             matchesModel->setMatches(matches);
         }
@@ -290,7 +301,9 @@ void RunnerModel::matchesChanged(const QList<Plasma::QueryMatch> &matches)
     if (!matchesForRunner.isEmpty()) {
         auto it = matchesForRunner.constBegin();
         auto end = matchesForRunner.constEnd();
-        int appendCount = 0;
+
+        QList<RunnerMatchesModel *> toPrepend;
+        QList<RunnerMatchesModel *> toAppend;
 
         for (; it != end; ++it) {
             QList<Plasma::QueryMatch> matches = it.value();
@@ -299,21 +312,31 @@ void RunnerModel::matchesChanged(const QList<Plasma::QueryMatch> &matches)
             matchesModel->setMatches(matches);
 
             if (it.key() == QLatin1String("services")) {
-                beginInsertRows(QModelIndex(), 0, 0);
-                m_models.prepend(matchesModel);
-                endInsertRows();
-                emit countChanged();
+                toPrepend.append(matchesModel);
             } else {
-                m_models.append(matchesModel);
-                ++appendCount;
+                toAppend.append(matchesModel);
             }
         }
 
-        if (appendCount > 0) {
-            beginInsertRows(QModelIndex(), rowCount() - appendCount, rowCount() - 1);
+        if (!toPrepend.isEmpty()) {
+            beginInsertRows(QModelIndex(), 0, toPrepend.count() - 1);
+            for (auto match : std::as_const(toPrepend)) {
+                m_models.prepend(match);
+            }
             endInsertRows();
-            emit countChanged();
+            countHasChanged = true;
         }
+
+        if (!toAppend.isEmpty()) {
+            beginInsertRows(QModelIndex(), m_models.count(), m_models.count() + toAppend.count() - 1);
+            m_models.append(toAppend);
+            endInsertRows();
+            countHasChanged = true;
+        }
+    }
+
+    if (countHasChanged) {
+        Q_EMIT countChanged();
     }
 }
 
@@ -327,6 +350,7 @@ void RunnerModel::createManager()
             m_runnerManager->setAllowedRunners(m_runners);
         }
         connect(m_runnerManager, &Plasma::RunnerManager::matchesChanged, this, &RunnerModel::matchesChanged);
+        connect(m_runnerManager, &Plasma::RunnerManager::queryFinished, this, &RunnerModel::queryFinished);
     }
 }
 
@@ -348,5 +372,5 @@ void RunnerModel::clear()
 
     endResetModel();
 
-    emit countChanged();
+    Q_EMIT countChanged();
 }

@@ -7,13 +7,17 @@
 #pragma once
 
 #include <QAbstractItemModel>
-#include <QRegExp>
+
+#include <KConfigWatcher>
 
 #include <Plasma/Containment>
+
+#include "config-WaylandProtocols.h"
 
 class QDBusPendingCallWatcher;
 class QDBusServiceWatcher;
 class QQuickItem;
+
 namespace Plasma
 {
 class Service;
@@ -24,6 +28,7 @@ class SystemTraySettings;
 class StatusNotifierModel;
 class SystemTrayModel;
 class SortedSystemTrayModel;
+class KJob;
 
 class SystemTray : public Plasma::Containment
 {
@@ -32,7 +37,7 @@ class SystemTray : public Plasma::Containment
     Q_PROPERTY(QAbstractItemModel *configSystemTrayModel READ configSystemTrayModel CONSTANT)
 
 public:
-    SystemTray(QObject *parent, const QVariantList &args);
+    SystemTray(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
     ~SystemTray() override;
 
     void init() override;
@@ -67,6 +72,21 @@ public:
      */
     Q_INVOKABLE bool isSystemTrayApplet(const QString &appletId);
 
+    /**
+     * @brief Emits the "onPressed(mouse)" signal of a MouseArea
+     *
+     * This is needed because calling mouseArea.pressed from QML
+     * only sees the "pressed" property, not the signal
+     */
+    Q_INVOKABLE void emitPressed(QQuickItem *mouseArea, QObject /*QQuickMouseEvent*/ *mouseEvent);
+
+    /**
+     * Needed to preserve keyboard navigation
+     */
+    Q_INVOKABLE void stackItemBefore(QQuickItem *newItem, QQuickItem *beforeItem);
+
+    Q_INVOKABLE void stackItemAfter(QQuickItem *newItem, QQuickItem *afterItem);
+
 private Q_SLOTS:
     // synchronizes with configuration and deletes not allowed applets
     void onEnabledAppletsChanged();
@@ -78,14 +98,20 @@ private Q_SLOTS:
 private:
     SystemTrayModel *systemTrayModel();
 
+#if HAVE_WaylandProtocols
+    std::unique_ptr<class FractionalScaleManagerV1> m_fractionalScaleManagerV1;
+    KConfigWatcher::Ptr m_configWatcher;
+#endif
+    bool m_xwaylandClientsScale = true;
+
     QPointer<SystemTraySettings> m_settings;
     QPointer<PlasmoidRegistry> m_plasmoidRegistry;
 
-    PlasmoidModel *m_plasmoidModel;
-    StatusNotifierModel *m_statusNotifierModel;
-    SystemTrayModel *m_systemTrayModel;
-    SortedSystemTrayModel *m_sortedSystemTrayModel;
-    SortedSystemTrayModel *m_configSystemTrayModel;
+    PlasmoidModel *m_plasmoidModel = nullptr;
+    StatusNotifierModel *m_statusNotifierModel = nullptr;
+    SystemTrayModel *m_systemTrayModel = nullptr;
+    SortedSystemTrayModel *m_sortedSystemTrayModel = nullptr;
+    SortedSystemTrayModel *m_configSystemTrayModel = nullptr;
 
     QHash<QString /*plugin id*/, int /*config group*/> m_configGroupIds;
 };

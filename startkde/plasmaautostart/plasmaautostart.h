@@ -5,8 +5,7 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#ifndef KDELIBS_KAUTOSTART_H
-#define KDELIBS_KAUTOSTART_H
+#pragma once
 
 #include <QObject>
 #include <QStringList>
@@ -185,7 +184,7 @@ public:
      * Checks that a given autostart configuration condition is met.
      * @param condition: config in the format "rcfile:group:entry:default"
      */
-    static bool isStartConditionMet(const QString &condition);
+    static bool isStartConditionMet(QStringView condition);
 
 private:
     bool checkStartCondition() const;
@@ -196,4 +195,3 @@ private:
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(PlasmaAutostart::Conditions)
-#endif

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_lookandfeel_org\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-11-09 01:47+0000\n"
-"PO-Revision-Date: 2021-09-04 18:53+0100\n"
+"POT-Creation-Date: 2023-04-27 02:45+0000\n"
+"PO-Revision-Date: 2022-10-11 17:14+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -13,45 +13,45 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-POFile-SpellExtra: Lock Caps TTY firmware KRunner\n"
 
-#: ../sddm-theme/KeyboardButton.qml:13
+#: ../sddm-theme/KeyboardButton.qml:19
 #, kde-format
 msgid "Keyboard Layout: %1"
 msgstr "Disposição do Teclado: %1"
 
-#: ../sddm-theme/Login.qml:59
+#: ../sddm-theme/Login.qml:85
 #, kde-format
 msgid "Username"
 msgstr "Nome do Utilizador"
 
-#: ../sddm-theme/Login.qml:75 contents/lockscreen/MainBlock.qml:49
+#: ../sddm-theme/Login.qml:102 contents/lockscreen/MainBlock.qml:61
 #, kde-format
 msgid "Password"
 msgstr "Senha"
 
-#: ../sddm-theme/Login.qml:116 ../sddm-theme/Login.qml:122
+#: ../sddm-theme/Login.qml:144 ../sddm-theme/Login.qml:150
 #, kde-format
 msgid "Log In"
 msgstr "Ligar"
 
-#: ../sddm-theme/Main.qml:198 contents/lockscreen/LockScreenUi.qml:243
+#: ../sddm-theme/Main.qml:201 contents/lockscreen/LockScreenUi.qml:301
 #, kde-format
 msgid "Caps Lock is on"
 msgstr "O Caps Lock está ligado"
 
-#: ../sddm-theme/Main.qml:210 ../sddm-theme/Main.qml:462
+#: ../sddm-theme/Main.qml:213 ../sddm-theme/Main.qml:462
 #: contents/logout/Logout.qml:163
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "Suspender"
 
-#: ../sddm-theme/Main.qml:218 ../sddm-theme/Main.qml:470
+#: ../sddm-theme/Main.qml:220 ../sddm-theme/Main.qml:469
 #: contents/logout/Logout.qml:181
 #, kde-format
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: ../sddm-theme/Main.qml:226 ../sddm-theme/Main.qml:478
+#: ../sddm-theme/Main.qml:227 ../sddm-theme/Main.qml:476
 #: contents/logout/Logout.qml:191
 #, kde-format
 msgid "Shut Down"
@@ -63,134 +63,158 @@ msgctxt "For switching to a username and password prompt"
 msgid "Other…"
 msgstr "Outro…"
 
-#: ../sddm-theme/Main.qml:450
+#: ../sddm-theme/Main.qml:449
 #, kde-format
 msgid "Type in Username and Password"
 msgstr "Escreva o Utilizador e Senha"
 
-#: ../sddm-theme/Main.qml:486
+#: ../sddm-theme/Main.qml:483
 #, kde-format
 msgid "List Users"
 msgstr "Listar os Utilizadores"
 
-#: ../sddm-theme/Main.qml:559 contents/lockscreen/LockScreenUi.qml:511
+#: ../sddm-theme/Main.qml:550 contents/lockscreen/LockScreenUi.qml:576
 #, kde-format
 msgctxt "Button to show/hide virtual keyboard"
 msgid "Virtual Keyboard"
 msgstr "Teclado Virtual"
 
-#: ../sddm-theme/Main.qml:588
+#: ../sddm-theme/Main.qml:596
 #, kde-format
 msgid "Login Failed"
 msgstr "Autenticação sem Sucesso"
 
-#: ../sddm-theme/SessionButton.qml:22
+#: ../sddm-theme/SessionButton.qml:18
 #, kde-format
 msgid "Desktop Session: %1"
 msgstr "Sessão do Ecrã: %1"
 
-#: contents/components/Battery.qml:40
+#: contents/components/Battery.qml:53
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: contents/components/Battery.qml:41
+#: contents/components/Battery.qml:54
 #, kde-format
 msgid "Battery at %1%"
 msgstr "Bateria a %1%"
 
-#: contents/components/UserList.qml:51
+#: contents/components/UserList.qml:71
 #, kde-format
 msgctxt "Nobody logged in on that session"
 msgid "Unused"
 msgstr "Não utilizado"
 
-#: contents/components/UserList.qml:57
+#: contents/components/UserList.qml:77
 #, kde-format
 msgctxt "User logged in on console number"
 msgid "TTY %1"
 msgstr "TTY %1"
 
-#: contents/components/UserList.qml:59
+#: contents/components/UserList.qml:79
 #, kde-format
 msgctxt "User logged in on console (X display number)"
 msgid "on TTY %1 (Display %2)"
 msgstr "no TTY %1 (Ecrã %2)"
 
-#: contents/components/UserList.qml:63
+#: contents/components/UserList.qml:83
 #, kde-format
 msgctxt "Username (location)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: contents/lockscreen/config.qml:17
+#: contents/lockscreen/config.qml:19
 #, kde-format
-msgctxt "verb, to show something"
-msgid "Show:"
-msgstr "Mostrar:"
+msgctxt "@title: group"
+msgid "Clock:"
+msgstr "Relógio:"
 
-#: contents/lockscreen/config.qml:18
+#: contents/lockscreen/config.qml:22
 #, kde-format
-msgid "Clock"
-msgstr "Relógio"
+msgctxt "@option:check"
+msgid "Keep visible when unlocking prompt disappears"
+msgstr "Manter visível quando a mensagem de desbloqueio desaparece"
 
-#: contents/lockscreen/config.qml:26
+#: contents/lockscreen/config.qml:33
 #, kde-format
-msgid "Media Controls"
-msgstr "Controlos Multimédia"
+msgctxt "@title: group"
+msgid "Media controls:"
+msgstr "Controlos multimédia:"
 
-#: contents/lockscreen/LockScreenUi.qml:32
+#: contents/lockscreen/config.qml:36
+#, kde-format
+msgctxt "@option:check"
+msgid "Show under unlocking prompt"
+msgstr "Mostrar sob a mensagem de desbloqueio"
+
+#: contents/lockscreen/LockScreenUi.qml:37
 #, kde-format
 msgid "Unlocking failed"
 msgstr "O desbloqueio foi mal-sucedido"
 
-#: contents/lockscreen/LockScreenUi.qml:259
+#: contents/lockscreen/LockScreenUi.qml:315
+#, kde-format
+msgid "Sleep"
+msgstr "Suspender"
+
+#: contents/lockscreen/LockScreenUi.qml:321 contents/logout/Logout.qml:172
+#, kde-format
+msgid "Hibernate"
+msgstr "Hibernar"
+
+#: contents/lockscreen/LockScreenUi.qml:327
 #, kde-format
 msgid "Switch User"
 msgstr "Mudar de Utilizador"
 
-#: contents/lockscreen/LockScreenUi.qml:458
+#: contents/lockscreen/LockScreenUi.qml:523
 #, kde-format
 msgid "Switch to This Session"
 msgstr "Mudar para Esta Sessão"
 
-#: contents/lockscreen/LockScreenUi.qml:466
+#: contents/lockscreen/LockScreenUi.qml:531
 #, kde-format
 msgid "Start New Session"
 msgstr "Iniciar uma Nova Sessão"
 
-#: contents/lockscreen/LockScreenUi.qml:479
+#: contents/lockscreen/LockScreenUi.qml:544
 #, kde-format
 msgid "Back"
 msgstr "Recuar"
 
-#: contents/lockscreen/LockScreenUi.qml:525
+#: contents/lockscreen/LockScreenUi.qml:590
 #, kde-format
 msgctxt "Button to change keyboard layout"
 msgid "Switch layout"
 msgstr "Mudar de disposição"
 
-#: contents/lockscreen/MainBlock.qml:92
+#: contents/lockscreen/MainBlock.qml:101
+#: contents/lockscreen/NoPasswordUnlock.qml:17
 #, kde-format
 msgid "Unlock"
 msgstr "Desbloquear"
 
-#: contents/lockscreen/MediaControls.qml:105
+#: contents/lockscreen/MediaControls.qml:109
+#, kde-format
+msgid "No title"
+msgstr "Sem título"
+
+#: contents/lockscreen/MediaControls.qml:110
 #, kde-format
 msgid "No media playing"
 msgstr "Nada em reprodução"
 
-#: contents/lockscreen/MediaControls.qml:134
+#: contents/lockscreen/MediaControls.qml:139
 #, kde-format
 msgid "Previous track"
 msgstr "Faixa anterior"
 
-#: contents/lockscreen/MediaControls.qml:146
+#: contents/lockscreen/MediaControls.qml:151
 #, kde-format
 msgid "Play or Pause media"
 msgstr "Tocar ou pausar"
 
-#: contents/lockscreen/MediaControls.qml:160
+#: contents/lockscreen/MediaControls.qml:165
 #, kde-format
 msgid "Next track"
 msgstr "Faixa seguinte"
@@ -217,11 +241,6 @@ msgid "When restarted, the computer will enter the firmware setup screen."
 msgstr ""
 "Quando reiniciar, o computador irá entrar no ecrã de configuração do "
 "'firmware'."
-
-#: contents/logout/Logout.qml:172
-#, kde-format
-msgid "Hibernate"
-msgstr "Hibernar"
 
 #: contents/logout/Logout.qml:201
 #, kde-format
@@ -259,79 +278,22 @@ msgstr "OK"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: contents/osd/OsdItem.qml:62
+#: contents/osd/OsdItem.qml:66
 #, kde-format
 msgid "100%"
 msgstr "100%"
 
-#: contents/osd/OsdItem.qml:76
+#: contents/osd/OsdItem.qml:80
 #, kde-format
 msgctxt "Percentage value"
 msgid "%1%"
 msgstr "%1%"
 
-#: contents/runcommand/RunCommand.qml:74
-#, kde-format
-msgid "Configure"
-msgstr "Configurar"
-
-#: contents/runcommand/RunCommand.qml:75
-#, kde-format
-msgid "Configure Search Plugins"
-msgstr "Configurar os 'Plugins' de Pesquisa"
-
-#: contents/runcommand/RunCommand.qml:78
-#, kde-format
-msgid "Configure KRunner…"
-msgstr "Configurar o KRunner…"
-
-#: contents/runcommand/RunCommand.qml:94
-#, kde-format
-msgctxt "Textfield placeholder text, query specific KRunner"
-msgid "Search '%1'…"
-msgstr "Procurar por '%1'…"
-
-#: contents/runcommand/RunCommand.qml:96
-#, kde-format
-msgctxt "Textfield placeholder text"
-msgid "Search…"
-msgstr "Procurar…"
-
-#: contents/runcommand/RunCommand.qml:222
-#, kde-format
-msgid "Pin"
-msgstr "Fixar"
-
-#: contents/runcommand/RunCommand.qml:223
-#, kde-format
-msgid "Pin Search"
-msgstr "Fixar a Pesquisa"
-
-#: contents/runcommand/RunCommand.qml:225
-#, kde-format
-msgid "Keep Open"
-msgstr "Manter Aberto"
-
-#: contents/runcommand/RunCommand.qml:291
-#, kde-format
-msgid "Recent Queries"
-msgstr "Pesquisas Recentes"
-
-#: contents/runcommand/RunCommand.qml:294
-#, kde-format
-msgid "Remove"
-msgstr "Remover"
-
-#: contents/runcommand/RunCommand.qml:296
-#, kde-format
-msgid "in category recent queries"
-msgstr "nas pesquisas recentes por categorias"
-
-#: contents/splash/Splash.qml:80
+#: contents/splash/Splash.qml:81
 #, kde-format
 msgctxt ""
 "This is the first text the user sees while starting in the splash screen, "
 "should be translated as something short, is a form that can be seen on a "
 "product. Plasma is the project name so shouldn't be translated."
-msgid "Plasma 25th Anniversary Edition by KDE"
-msgstr "Plasma do KDE - Edição do 25º Aniversário"
+msgid "Plasma made by KDE"
+msgstr "Plasma do KDE"

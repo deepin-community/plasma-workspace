@@ -5,6 +5,7 @@
 */
 
 #include "paste.h"
+#include "containmentactions_paste_debug.h"
 
 #include <QClipboard>
 #include <QGuiApplication>
@@ -17,22 +18,21 @@
 
 Paste::Paste(QObject *parent, const QVariantList &args)
     : Plasma::ContainmentActions(parent, args)
+    , m_action(new QAction(this))
 {
-    m_action = new QAction(this);
     QObject::connect(m_action, &QAction::triggered, this, &Paste::doPaste);
 }
 
 QList<QAction *> Paste::contextualActions()
 {
-    QList<QAction *> actions;
-    actions << m_action;
+    const QList<QAction *> actions{m_action};
 
     return actions;
 }
 
 void Paste::doPaste()
 {
-    qWarning() << "Paste at" << m_action->data();
+    qCWarning(CONTAINMENTACTIONS_PASTE_DEBUG) << "Paste at" << m_action->data();
 
     if (!m_action->data().canConvert<QPoint>()) {
         return;

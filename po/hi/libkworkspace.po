@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libkworkspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-08-03 00:48+0000\n"
 "PO-Revision-Date: 2021-07-02 19:20+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -19,37 +19,56 @@ msgstr ""
 "X-Generator: Lokalize 21.04.2\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: kdisplaymanager.cpp:769
+#: kdisplaymanager.cpp:777
 #, kde-format
 msgctxt "user: …"
 msgid "%1: TTY login"
 msgstr "%1: टीटीवाई लॉगइन"
 
-#: kdisplaymanager.cpp:774
+#: kdisplaymanager.cpp:782
 #, kde-format
 msgctxt "… location (TTY or X display)"
 msgid "Unused"
 msgstr "उपयोग में नहीं"
 
-#: kdisplaymanager.cpp:775
+#: kdisplaymanager.cpp:783
 #, kde-format
 msgid "X login on remote host"
 msgstr "दूरवर्ती होस्ट पर एक्स लॉगइन"
 
-#: kdisplaymanager.cpp:775
+#: kdisplaymanager.cpp:783
 #, kde-format
 msgctxt "… host"
 msgid "X login on %1"
 msgstr "%1 पर एक्स लॉगइन"
 
-#: kdisplaymanager.cpp:777
+#: kdisplaymanager.cpp:785
 #, kde-format
 msgctxt "user: session type"
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: kdisplaymanager.cpp:788
+#: kdisplaymanager.cpp:796
 #, kde-format
 msgctxt "session (location)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
+
+#, fuzzy
+#~| msgid "Unclutter Windows"
+#~ msgctxt ""
+#~ "Action that reorganizes the windows to try to have them less cluttered"
+#~ msgid "Unclutter Windows"
+#~ msgstr "विंडो व्यवस्थित करें"
+
+#, fuzzy
+#~| msgid "Cascade Windows"
+#~ msgctxt "Action that reorganizes the windows so that they are in cascade"
+#~ msgid "Cascade Windows"
+#~ msgstr "विंडो एक के बाद एक रखें"
+
+#~ msgid "On All Desktops"
+#~ msgstr "सभी डेस्कटॉप पर"
+
+#~ msgid "No Windows"
+#~ msgstr "कोई विंडोज़ नहीं"

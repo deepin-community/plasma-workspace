@@ -11,6 +11,8 @@
 #include <KService>
 #include <KServiceGroup>
 
+#include <QPointer>
+
 class AppsModel;
 class MenuEntryEditor;
 
@@ -39,6 +41,7 @@ public:
     QString name() const override;
     QString description() const override;
     KService::Ptr service() const;
+    QString group() const override;
 
     QString id() const override;
     QUrl url() const override;
@@ -50,7 +53,7 @@ public:
 
     QString menuId() const;
 
-    static QString nameFromService(const KService::Ptr service, NameFormat nameFormat);
+    static QString nameFromService(const KService::Ptr &service, NameFormat nameFormat);
     static KService::Ptr defaultAppByName(const QString &name);
 
 private:
@@ -59,6 +62,8 @@ private:
     QString m_id;
     QString m_name;
     QString m_description;
+    // Not an actual group name, but the first character for transliterated name.
+    mutable QString m_group;
     mutable QIcon m_icon;
     KService::Ptr m_service;
     static MenuEntryEditor *m_menuEntryEditor;

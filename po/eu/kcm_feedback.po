@@ -1,16 +1,16 @@
 # Translation for kcm_feedback to Euskara/Basque (eu).
-# Copyright (C) 2019-2021, This file is copyright:
+# Copyright (C) 2019-2022, This file is copyright:
 # This file is distributed under the same license as the plasma-workspace package.
-# KDE euskaratzeko proiektauren arduraduna <xalba@ni.eus>.
+# KDE euskaratzeko proiektako arduraduna <xalba@ni.eus>.
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2019, 2020, 2021.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-26 00:18+0000\n"
-"PO-Revision-Date: 2021-09-11 21:57+0200\n"
+"POT-Creation-Date: 2022-08-28 00:47+0000\n"
+"PO-Revision-Date: 2022-08-11 20:08+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,27 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.08.1\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Iñigo Salvador Azurmendi"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "xalba@ni.eus"
-
-#: feedback.cpp:50
-#, kde-format
-msgid "User Feedback"
-msgstr "Erabiltzaileen berrelikadura"
-
-#: feedback.cpp:52
-#, kde-format
-msgid "Configure user feedback settings"
-msgstr "Konfiguratu erabiltzaileen berrelikadura ezarpenak"
+"X-Generator: Lokalize 22.04.3\n"
 
 #: package/contents/ui/main.qml:34
 #, kde-format
@@ -48,12 +28,12 @@ msgstr ""
 "Erabiltzaileen berrelikadura erdigunetik ezgaitu da. Jar zaitez zure "
 "banatzailearekin harremanean."
 
-#: package/contents/ui/main.qml:38 package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:44 package/contents/ui/main.qml:77
 #, kde-format
 msgid "Plasma:"
 msgstr "Plasma:"
 
-#: package/contents/ui/main.qml:45
+#: package/contents/ui/main.qml:51
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -61,28 +41,46 @@ msgid ""
 "it, so we can focus on things that matter to you.<nl/><nl/>Contributing this "
 "information is optional and entirely anonymous. We never collect your "
 "personal data, files you use, websites you visit, or information that could "
-"identify you.<nl/><nl/>You can read about our privacy policy in the "
-"following link:"
+"identify you.<nl/><nl/>You can read about <link url='https://kde.org/"
+"privacypolicy-apps.php'>our privacy policy here.</link>"
 msgstr ""
 "KDEri lagundu diezaiokezu Plasma hobetzen, berau nola erabiltzen duzun "
 "inguruko informazioa emanez, fokua zuri inporta zaizkizun gauzetan ipini "
 "ahal izan dezagun.<nl/><nl/>Informazio hori ematea aukerakoa da, eta erabat "
 "anonimoa. Ez dugu biltzen zure datu pertsonalik, erabiltzen duzun "
 "fitxategirik, bisitatzen duzun webgunerik, edo zu identifika zaitzakeen "
-"informaziorik.<nl/><nl/>Gure pribatutasun gidalerroei buruz irakur dezakezu "
-"ondoko estekan:"
+"informaziorik.<nl/><nl/><link url='https://kde.org/privacypolicy-apps."
+"php'>Hemen gure pribatutasun gidalerroei</link> buruz irakur dezakezu."
 
-#: package/contents/ui/main.qml:99
+#: package/contents/ui/main.qml:112
 #, kde-format
 msgid "Plasma"
 msgstr "Plasma"
 
-#: package/contents/ui/main.qml:117
+#: package/contents/ui/main.qml:133
 #, kde-format
 msgid "The following information will be sent:"
 msgstr "Ondoko informazioa bidaliko da:"
 
-#: package/contents/ui/main.qml:162
+#: package/contents/ui/main.qml:178
 #, kde-format
 msgid "View sent data:"
 msgstr "Ikusi bidalitako datuak:"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Iñigo Salvador Azurmendi"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "xalba@ni.eus"
+
+#~ msgid "User Feedback"
+#~ msgstr "Erabiltzaileen berrelikadura"
+
+#~ msgid "Configure user feedback settings"
+#~ msgstr "Konfiguratu erabiltzaileen berrelikadura ezarpenak"
+
+#~ msgctxt "@info"
+#~ msgid "You can read about our policy in the following link:"
+#~ msgstr "Gure gidalerroaren gainekoak irakur ditzakezu esteka honetan:"

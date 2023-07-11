@@ -49,3 +49,23 @@ msgstr "Dag van de maand tonen"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Weeknummer tonen"
+
+#~ msgid "Working Day"
+#~ msgstr "Werkdag"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Begint om 9"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Eindigt om 5"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "Pictogram:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "Dag in maand"
+
+#~ msgid "Agenda"
+#~ msgstr "Agenda"

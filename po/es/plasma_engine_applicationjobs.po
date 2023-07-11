@@ -30,3 +30,6 @@ msgstr "No se puede encontrar la vista del trabajo para %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Trabajo cancelado por el usuario."

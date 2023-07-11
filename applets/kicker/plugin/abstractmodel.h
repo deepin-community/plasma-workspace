@@ -21,6 +21,11 @@ class AbstractModel : public QAbstractListModel
     Q_PROPERTY(int iconSize READ iconSize WRITE setIconSize NOTIFY iconSizeChanged)
     Q_PROPERTY(AbstractModel *favoritesModel READ favoritesModel WRITE setFavoritesModel NOTIFY favoritesModelChanged)
 
+    /**
+     * @return all sections in the model
+     */
+    Q_PROPERTY(QVariantList sections READ sections NOTIFY sectionsChanged)
+
 public:
     explicit AbstractModel(QObject *parent = nullptr);
     ~AbstractModel() override;
@@ -31,8 +36,6 @@ public:
 
     int count() const;
     virtual int separatorCount() const;
-
-    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 
     int iconSize() const;
     void setIconSize(int size);
@@ -53,6 +56,8 @@ public:
     virtual void setFavoritesModel(AbstractModel *model);
     AbstractModel *rootModel();
 
+    virtual QVariantList sections() const;
+
     virtual void entryChanged(AbstractEntry *entry);
 
 Q_SIGNALS:
@@ -61,10 +66,11 @@ Q_SIGNALS:
     void separatorCountChanged() const;
     void iconSizeChanged() const;
     void favoritesModelChanged() const;
+    void sectionsChanged() const;
 
 protected:
-    AbstractModel *m_favoritesModel;
+    AbstractModel *m_favoritesModel = nullptr;
 
 private:
-    int m_iconSize;
+    int m_iconSize = 32;
 };

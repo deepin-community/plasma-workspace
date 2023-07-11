@@ -19,6 +19,8 @@
 
 #include <algorithm>
 
+#include "colorsapplicator.h"
+
 ColorsModel::ColorsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
@@ -50,6 +52,8 @@ QVariant ColorsModel::data(const QModelIndex &index, int role) const
         return item.schemeName;
     case PaletteRole:
         return item.palette;
+    case DisabledText:
+        return item.palette.color(QPalette::Disabled, QPalette::Text);
     case ActiveTitleBarBackgroundRole:
         return item.activeTitleBarBackground;
     case ActiveTitleBarForegroundRole:
@@ -58,6 +62,12 @@ QVariant ColorsModel::data(const QModelIndex &index, int role) const
         return item.pendingDeletion;
     case RemovableRole:
         return item.removable;
+    case AccentActiveTitlebarRole:
+        return item.accentActiveTitlebar;
+    case Tints:
+        return item.tints;
+    case TintFactor:
+        return item.tintFactor;
     }
 
     return QVariant();
@@ -76,7 +86,7 @@ bool ColorsModel::setData(const QModelIndex &index, const QVariant &value, int r
 
         if (item.pendingDeletion != pendingDeletion) {
             item.pendingDeletion = pendingDeletion;
-            emit dataChanged(index, index, {PendingDeletionRole});
+            Q_EMIT dataChanged(index, index, {PendingDeletionRole});
 
             if (index.row() == selectedSchemeIndex() && pendingDeletion) {
                 // move to the next non-pending theme
@@ -86,7 +96,7 @@ bool ColorsModel::setData(const QModelIndex &index, const QVariant &value, int r
                 }
             }
 
-            emit pendingDeletionsChanged();
+            Q_EMIT pendingDeletionsChanged();
             return true;
         }
     }
@@ -102,8 +112,12 @@ QHash<int, QByteArray> ColorsModel::roleNames() const
         {PaletteRole, QByteArrayLiteral("palette")},
         {ActiveTitleBarBackgroundRole, QByteArrayLiteral("activeTitleBarBackground")},
         {ActiveTitleBarForegroundRole, QByteArrayLiteral("activeTitleBarForeground")},
+        {DisabledText, QByteArrayLiteral("disabledText")},
         {RemovableRole, QByteArrayLiteral("removable")},
+        {AccentActiveTitlebarRole, QByteArrayLiteral("accentActiveTitlebar")},
         {PendingDeletionRole, QByteArrayLiteral("pendingDeletion")},
+        {Tints, QByteArrayLiteral("tints")},
+        {TintFactor, QByteArrayLiteral("tintFactor")},
     };
 }
 
@@ -120,8 +134,8 @@ void ColorsModel::setSelectedScheme(const QString &scheme)
 
     m_selectedScheme = scheme;
 
-    emit selectedSchemeChanged(scheme);
-    emit selectedSchemeIndexChanged();
+    Q_EMIT selectedSchemeChanged(scheme);
+    Q_EMIT selectedSchemeIndexChanged();
 }
 
 int ColorsModel::indexOfScheme(const QString &scheme) const
@@ -190,6 +204,8 @@ void ColorsModel::load()
             activeTitleBarForeground = wmConfig.readEntry("activeForeground", palette.color(QPalette::Active, QPalette::HighlightedText));
         }
 
+        const bool colorActiveTitleBar = group.readEntry("accentActiveTitlebar", false);
+
         ColorsModelData item{
             name,
             baseName,
@@ -197,7 +213,10 @@ void ColorsModel::load()
             activeTitleBarBackground,
             activeTitleBarForeground,
             fi.isWritable(),
+            colorActiveTitleBar,
             false, // pending deletion
+            group.hasKey("TintFactor"),
+            group.readEntry<qreal>("TintFactor", DefaultTintFactor),
         };
 
         m_data.append(item);
@@ -214,7 +233,7 @@ void ColorsModel::load()
 
     // an item might have been added before the currently selected one
     if (oldCount != m_data.count()) {
-        emit selectedSchemeIndexChanged();
+        Q_EMIT selectedSchemeIndexChanged();
     }
 }
 

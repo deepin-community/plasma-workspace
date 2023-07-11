@@ -1,18 +1,17 @@
 # Translation of plasma_applet_org.kde.plasma.lock_logout.po to Catalan (Valencian)
-# Copyright (C) 2014-2019 This_file_is_part_of_KDE
+# Copyright (C) 2014-2022 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014.
-# Josep Ma. Ferrer <txemaq@gmail.com>, 2015, 2019.
-# Empar Montoro Martín <montoro_mde@gva.es>, 2019.
+# Josep M. Ferrer <txemaq@gmail.com>, 2015, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2019-07-18 09:31+0200\n"
-"Last-Translator: Empar Montoro Martín <montoro_mde@gva.es>\n"
+"PO-Revision-Date: 2022-04-11 21:52+0200\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 19.04.2\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #: contents/config/config.qml:13
 #, kde-format
@@ -37,17 +36,17 @@ msgstr "Mostra les accions:"
 #: contents/ui/ConfigGeneral.qml:37
 #, kde-format
 msgid "Logout"
-msgstr ""
+msgstr "Eixida"
 
 #: contents/ui/ConfigGeneral.qml:43
 #, kde-format
 msgid "Shutdown"
-msgstr ""
+msgstr "Para"
 
 #: contents/ui/ConfigGeneral.qml:48
 #, kde-format
 msgid "Reboot"
-msgstr ""
+msgstr "Reinicia"
 
 #: contents/ui/ConfigGeneral.qml:53 contents/ui/data.js:5
 #, kde-format
@@ -88,40 +87,39 @@ msgstr "Inicia una sessió en paral·lel amb un usuari diferent"
 #: contents/ui/data.js:18
 #, kde-format
 msgid "Shutdown…"
-msgstr ""
+msgstr "Para…"
 
 #: contents/ui/data.js:19
-#, fuzzy, kde-format
-#| msgid "Log out, turn off or restart the computer"
+#, kde-format
 msgid "Turn off the computer"
-msgstr "Ix, apaga o reinicia l'ordinador"
+msgstr "Apaga l'ordinador"
 
 #: contents/ui/data.js:25
 #, kde-format
 msgid "Restart…"
-msgstr ""
+msgstr "Reinicia…"
 
 #: contents/ui/data.js:26
 #, kde-format
 msgid "Reboot the computer"
-msgstr ""
+msgstr "Reinicia l'ordinador"
 
 #: contents/ui/data.js:32
 #, kde-format
 msgid "Logout…"
-msgstr ""
+msgstr "Eixida…"
 
 #: contents/ui/data.js:33
 #, kde-format
 msgid "End the session"
-msgstr ""
+msgstr "Finalitza la sessió"
 
 #: contents/ui/data.js:40
 #, kde-format
 msgid "Sleep (suspend to RAM)"
-msgstr "Adorm (suspén en la RAM)"
+msgstr "Adorm (suspén a la RAM)"
 
 #: contents/ui/data.js:47
 #, kde-format
 msgid "Hibernate (suspend to disk)"
-msgstr "Hiberna (suspén en el disc)"
+msgstr "Hiberna (suspén al disc)"

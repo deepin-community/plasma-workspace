@@ -23,11 +23,9 @@
 #include <KService>
 #include <KWindowEffects>
 #include <KWindowSystem>
+#include <KX11Extras>
 
 #include <kdeclarative/qmlobject.h>
-
-#include <KPackage/Package>
-#include <KPackage/PackageLoader>
 
 #include <KWayland/Client/connection_thread.h>
 #include <KWayland/Client/registry.h>
@@ -40,7 +38,6 @@ View::View(QWindow *)
     , m_offset(.5)
     , m_floating(false)
 {
-    setClearBeforeRendering(true);
     setColor(QColor(Qt::transparent));
     setFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 
@@ -59,6 +56,8 @@ View::View(QWindow *)
         Q_UNUSED(names);
         if (group.name() == QLatin1String("General")) {
             loadConfig();
+        } else if (group.name() == QLatin1String("Plugins")) {
+            Q_EMIT helpEnabledChanged();
         }
     });
 
@@ -71,15 +70,8 @@ View::View(QWindow *)
     m_qmlObj->setInitializationDelayed(true);
     connect(m_qmlObj, &KDeclarative::QmlObject::finished, this, &View::objectIncubated);
 
-    KPackage::Package package = KPackage::PackageLoader::self()->loadPackage(QStringLiteral("Plasma/LookAndFeel"));
-    KConfigGroup cg(KSharedConfig::openConfig(), "KDE");
-    const QString packageName = cg.readEntry("LookAndFeelPackage", QString());
-    if (!packageName.isEmpty()) {
-        package.setPath(packageName);
-    }
-
     m_qmlObj->engine()->rootContext()->setContextProperty(QStringLiteral("runnerWindow"), this);
-    m_qmlObj->setSource(package.fileUrl("runcommandmainscript"));
+    m_qmlObj->setSource(QUrl(QStringLiteral("qrc:/krunner/RunCommand.qml")));
     m_qmlObj->completeInitialization();
 
     auto screenRemoved = [this](QScreen *screen) {
@@ -101,7 +93,7 @@ View::View(QWindow *)
     connect(qGuiApp, &QGuiApplication::screenAdded, this, screenAdded);
     connect(qGuiApp, &QGuiApplication::screenRemoved, this, screenRemoved);
 
-    connect(KWindowSystem::self(), &KWindowSystem::workAreaChanged, this, &View::resetScreenPos);
+    connect(KX11Extras::self(), &KX11Extras::workAreaChanged, this, &View::resetScreenPos);
 
     connect(qGuiApp, &QGuiApplication::focusWindowChanged, this, &View::slotFocusWindowChanged);
 }
@@ -119,6 +111,10 @@ void View::objectIncubated()
 
 void View::slotFocusWindowChanged()
 {
+    if (QGuiApplication::focusWindow() && m_requestedClipboardSelection) {
+        displayWithClipboardContents();
+    }
+
     if (!QGuiApplication::focusWindow() && !m_pinned) {
         setVisible(false);
     }
@@ -186,7 +182,7 @@ void View::resizeEvent(QResizeEvent *event)
 
 void View::showEvent(QShowEvent *event)
 {
-    KWindowSystem::setOnAllDesktops(winId(), true);
+    KX11Extras::setOnAllDesktops(winId(), true);
     Dialog::showEvent(event);
     positionOnScreen();
     requestActivate();
@@ -214,9 +210,17 @@ void View::positionOnScreen()
 
     QScreen *shownOnScreen = QGuiApplication::primaryScreen();
 
+    auto message = QDBusMessage::createMethodCall("org.kde.KWin", "/KWin", "org.kde.KWin", "activeOutputName");
+    QDBusReply<QString> reply = QDBusConnection::sessionBus().call(message);
+
     const auto screens = QGuiApplication::screens();
     for (QScreen *screen : screens) {
-        if (screen->geometry().contains(QCursor::pos(screen))) {
+        if (reply.isValid()) {
+            if (screen->name() == reply.value()) {
+                shownOnScreen = screen;
+                break;
+            }
+        } else if (screen->geometry().contains(QCursor::pos(screen))) {
             shownOnScreen = screen;
             break;
         }
@@ -225,7 +229,7 @@ void View::positionOnScreen()
     // in wayland, QScreen::availableGeometry() returns QScreen::geometry()
     // we could get a better value from plasmashell
     // BUG: 386114
-    auto message = QDBusMessage::createMethodCall("org.kde.plasmashell", "/StrutManager", "org.kde.PlasmaShell.StrutManager", "availableScreenRect");
+    message = QDBusMessage::createMethodCall("org.kde.plasmashell", "/StrutManager", "org.kde.PlasmaShell.StrutManager", "availableScreenRect");
     message.setArguments({shownOnScreen->name()});
     QDBusPendingCall call = QDBusConnection::sessionBus().asyncCall(message);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(call, this);
@@ -256,26 +260,24 @@ void View::positionOnScreen()
         y = qBound(r.top(), y, r.bottom() - height());
 
         setPosition(x, y);
+        setLocation(m_floating ? Plasma::Types::Floating : Plasma::Types::TopEdge);
         PlasmaQuick::Dialog::setVisible(true);
 
         if (m_floating) {
-            KWindowSystem::setOnDesktop(winId(), KWindowSystem::currentDesktop());
+            KX11Extras::setOnDesktop(winId(), KX11Extras::currentDesktop());
             KWindowSystem::setType(winId(), NET::Normal);
-            // Turn the sliding effect off
-            setLocation(Plasma::Types::Floating);
         } else {
-            KWindowSystem::setOnAllDesktops(winId(), true);
-            setLocation(Plasma::Types::TopEdge);
+            KX11Extras::setOnAllDesktops(winId(), true);
         }
 
-        KWindowSystem::forceActiveWindow(winId());
+        KX11Extras::forceActiveWindow(winId());
     });
 }
 
 void View::toggleDisplay()
 {
     if (isVisible() && !QGuiApplication::focusWindow()) {
-        KWindowSystem::forceActiveWindow(winId());
+        KX11Extras::forceActiveWindow(winId());
         return;
     }
     setVisible(!isVisible());
@@ -298,8 +300,14 @@ void View::displayWithClipboardContents()
 {
     setVisible(true);
 
-    m_qmlObj->rootObject()->setProperty("runner", QString());
-    m_qmlObj->rootObject()->setProperty("query", QGuiApplication::clipboard()->text(QClipboard::Selection));
+    // On Wayland we cannot retrieve the clipboard selection until we get the focus
+    if (QGuiApplication::focusWindow()) {
+        m_requestedClipboardSelection = false;
+        m_qmlObj->rootObject()->setProperty("runner", QString());
+        m_qmlObj->rootObject()->setProperty("query", QGuiApplication::clipboard()->text(QClipboard::Selection));
+    } else {
+        m_requestedClipboardSelection = true;
+    }
 }
 
 void View::query(const QString &term)
@@ -328,23 +336,8 @@ void View::switchUser()
 
 void View::displayConfiguration()
 {
-    const QString systemSettings = QStringLiteral("systemsettings");
-    const QStringList kcmToOpen = QStringList(QStringLiteral("kcm_plasmasearch"));
-    KIO::CommandLauncherJob *job = nullptr;
-
-    if (KService::serviceByDesktopName(systemSettings)) {
-        job = new KIO::CommandLauncherJob(QStringLiteral("systemsettings5"), kcmToOpen);
-        job->setDesktopName(systemSettings);
-    } else {
-        job = new KIO::CommandLauncherJob(QStringLiteral("kcmshell5"), kcmToOpen);
-    }
-
+    auto job = new KIO::CommandLauncherJob(QStringLiteral("kcmshell5"), {QStringLiteral("plasma/kcms/desktop/kcm_krunnersettings")});
     job->start();
-}
-
-bool View::canConfigure() const
-{
-    return KAuthorized::authorizeControlModule(QStringLiteral("kcm_plasmasearch.desktop"));
 }
 
 void View::setVisible(bool visible)
@@ -370,17 +363,4 @@ void View::setPinned(bool pinned)
         m_stateData.writeEntry("Pinned", pinned);
         Q_EMIT pinnedChanged();
     }
-}
-
-void View::removeFromHistory(int index)
-{
-    if (m_manager) {
-        m_manager->removeFromHistory(index);
-        Q_EMIT historyChanged();
-    }
-}
-
-QStringList View::history() const
-{
-    return m_manager ? m_manager->history() : QStringList();
 }

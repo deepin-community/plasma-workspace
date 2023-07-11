@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksmserver\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2023-01-11 01:00+0000\n"
 "PO-Revision-Date: 2010-07-16 11:51+0100\n"
 "Last-Translator: Berend Ytsma <berendy@gmail.com>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -16,12 +16,84 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: logout.cpp:350
+#: logout.cpp:340
 #, kde-format
 msgid "Logout canceled by '%1'"
 msgstr "Ofmelding ôfbrutsen troch '%1'"
 
-#: main.cpp:37
+#: main.cpp:118
+#, kde-format
+msgid "$HOME not set!"
+msgstr ""
+
+#: main.cpp:122 main.cpp:128
+#, kde-format
+msgid "$HOME directory (%1) does not exist."
+msgstr ""
+
+#: main.cpp:124
+#, kde-format
+msgid "No write access to $HOME directory (%1)."
+msgstr ""
+
+#: main.cpp:130
+#, kde-format
+msgid "No read access to $HOME directory (%1)."
+msgstr ""
+
+#: main.cpp:134
+#, kde-format
+msgid "$HOME directory (%1) is out of disk space."
+msgstr ""
+
+#: main.cpp:137
+#, kde-format
+msgid "Writing to the $HOME directory (%2) failed with the error '%1'"
+msgstr ""
+
+#: main.cpp:150 main.cpp:185
+#, kde-format
+msgid "No write access to '%1'."
+msgstr ""
+
+#: main.cpp:152 main.cpp:187
+#, kde-format
+msgid "No read access to '%1'."
+msgstr ""
+
+#: main.cpp:160 main.cpp:173
+#, kde-format
+msgid "Temp directory (%1) is out of disk space."
+msgstr ""
+
+#: main.cpp:163 main.cpp:176
+#, kde-format
+msgid ""
+"Writing to the temp directory (%2) failed with\n"
+"    the error '%1'"
+msgstr ""
+
+#: main.cpp:191
+#, kde-format
+msgid ""
+"The following installation problem was detected\n"
+"while trying to start Plasma:"
+msgstr ""
+
+#: main.cpp:194
+#, kde-format
+msgid ""
+"\n"
+"\n"
+"Plasma is unable to start.\n"
+msgstr ""
+
+#: main.cpp:201
+#, kde-format
+msgid "Plasma Workspace installation problem!"
+msgstr ""
+
+#: main.cpp:237
 #, fuzzy, kde-format
 #| msgid ""
 #| "The reliable KDE session manager that talks the standard X11R6 \n"
@@ -33,122 +105,137 @@ msgstr ""
 "De betroubere KDE-sesjebehearder die it standert X11R6-\n"
 "sesjebehearprotokol (XSMP) brûkt."
 
-#: main.cpp:113
-#, kde-format
-msgid "$HOME not set!"
-msgstr ""
-
-#: main.cpp:117 main.cpp:123
-#, kde-format
-msgid "$HOME directory (%1) does not exist."
-msgstr ""
-
-#: main.cpp:119
-#, kde-format
-msgid "No write access to $HOME directory (%1)."
-msgstr ""
-
-#: main.cpp:125
-#, kde-format
-msgid "No read access to $HOME directory (%1)."
-msgstr ""
-
-#: main.cpp:129
-#, kde-format
-msgid "$HOME directory (%1) is out of disk space."
-msgstr ""
-
-#: main.cpp:132
-#, kde-format
-msgid "Writing to the $HOME directory (%2) failed with the error '%1'"
-msgstr ""
-
-#: main.cpp:145 main.cpp:180
-#, kde-format
-msgid "No write access to '%1'."
-msgstr ""
-
-#: main.cpp:147 main.cpp:182
-#, kde-format
-msgid "No read access to '%1'."
-msgstr ""
-
-#: main.cpp:155 main.cpp:168
-#, kde-format
-msgid "Temp directory (%1) is out of disk space."
-msgstr ""
-
-#: main.cpp:158 main.cpp:171
-#, kde-format
-msgid ""
-"Writing to the temp directory (%2) failed with\n"
-"    the error '%1'"
-msgstr ""
-
-#: main.cpp:186
-#, kde-format
-msgid ""
-"The following installation problem was detected\n"
-"while trying to start Plasma:"
-msgstr ""
-
-#: main.cpp:189
-#, kde-format
-msgid ""
-"\n"
-"\n"
-"Plasma is unable to start.\n"
-msgstr ""
-
-#: main.cpp:196
-#, kde-format
-msgid "Plasma Workspace installation problem!"
-msgstr ""
-
-#: main.cpp:236
+#: main.cpp:241
 #, kde-format
 msgid "Restores the saved user session if available"
 msgstr "Herstelt, as beskikber is, de foarige sesje"
 
-#: main.cpp:239
+#: main.cpp:244
 #, kde-format
 msgid "Also allow remote connections"
 msgstr "Ek eksterne ferbiningen tastean"
 
-#: main.cpp:242
+#: main.cpp:247
 #, kde-format
 msgid "Starts the session in locked mode"
 msgstr ""
 
-#: main.cpp:246
+#: main.cpp:251
 #, kde-format
 msgid ""
 "Starts without lock screen support. Only needed if other component provides "
 "the lock screen."
 msgstr ""
 
-#: server.cpp:857
+#: server.cpp:884
 #, fuzzy, kde-format
 #| msgid "The KDE Session Manager"
 msgid "Session Management"
 msgstr "De KDE Sesjebehearder"
 
-#: server.cpp:860
+#: server.cpp:887
 #, kde-format
 msgid "Log Out"
 msgstr "Utlogge"
 
-#: server.cpp:865
+#: server.cpp:892
 #, kde-format
 msgid "Log Out Without Confirmation"
 msgstr "Utlogge sûnder befêstiging"
 
-#: server.cpp:870
+#: server.cpp:897
 #, kde-format
 msgid "Halt Without Confirmation"
 msgstr "Ophâlde sûnder befêstiging"
 
-#: server.cpp:875
+#: server.cpp:902
 #, kde-format
 msgid "Reboot Without Confirmation"
 msgstr "Op 'e nij opstarte sûnder befêstiging"
+
+#, fuzzy
+#~| msgid ""
+#~| "Starts 'wm' in case no other window manager is \n"
+#~| "participating in the session. Default is 'kwin'"
+#~ msgid ""
+#~ "Starts <wm> in case no other window manager is \n"
+#~ "participating in the session. Default is 'kwin'"
+#~ msgstr ""
+#~ "Start 'wm' as der gjin oare finstermanager \n"
+#~ "Meidocht yn de sesje. standert is 'kwin'"
+
+#, fuzzy
+#~| msgid "&Logout"
+#~ msgid "Logout"
+#~ msgstr "&Utlogge"
+
+#, fuzzy
+#~| msgid "Logging out in 1 second."
+#~| msgid_plural "Logging out in %1 seconds."
+#~ msgid "Sleeping in 1 second"
+#~ msgid_plural "Sleeping in %1 seconds"
+#~ msgstr[0] "Nei 1 sekonde útlogge."
+#~ msgstr[1] "Nei %1 sekonden útlogge."
+
+#~ msgid "Logging out in 1 second."
+#~ msgid_plural "Logging out in %1 seconds."
+#~ msgstr[0] "Nei 1 sekonde útlogge."
+#~ msgstr[1] "Nei %1 sekonden útlogge."
+
+#~ msgid "Turning off computer in 1 second."
+#~ msgid_plural "Turning off computer in %1 seconds."
+#~ msgstr[0] "Kompjûter yn 1 sekonde útskeakelje."
+#~ msgstr[1] "Kompjûter yn %1 sekonden útskeakelje."
+
+#~ msgid "Restarting computer in 1 second."
+#~ msgid_plural "Restarting computer in %1 seconds."
+#~ msgstr[0] "Kompjûter yn 1 sekonde herstarte."
+#~ msgstr[1] "Kompjûter yn %1 sekonden herstarte."
+
+#, fuzzy
+#~| msgid "&Turn Off Computer"
+#~ msgid "Turn Off Computer"
+#~ msgstr "Kompjûter ú&tsskeakelje"
+
+#, fuzzy
+#~| msgid "&Restart Computer"
+#~ msgid "Restart Computer"
+#~ msgstr "Kompjûter he&rstarten"
+
+#~ msgctxt "default option in boot loader"
+#~ msgid " (default)"
+#~ msgstr " (standert)"
+
+#, fuzzy
+#~| msgid "&Cancel"
+#~ msgid "Cancel"
+#~ msgstr "Ofbre&kke"
+
+#~ msgid "&Standby"
+#~ msgstr "&Wachtstân"
+
+#~ msgid "Suspend to &RAM"
+#~ msgstr "Unthâld-&sliepstân"
+
+#~ msgid "Suspend to &Disk"
+#~ msgstr "S&kiif-sliepstân"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Rinse de Vries,Berend Ytsma"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "rinsedevries@kde.nl,berendy@gmail.com"
+
+#~ msgid "(C) 2000, The KDE Developers"
+#~ msgstr "(c) 2000, De KDE úntwikkelders"
+
+#~ msgid "Matthias Ettrich"
+#~ msgstr "Matthias Ettrich"
+
+#~ msgid "Luboš Luňák"
+#~ msgstr "Luboš Luňák"
+
+#~ msgid "Maintainer"
+#~ msgstr "Underhâlder"

@@ -7,7 +7,6 @@
 
 #include "appmenumodel.h"
 
-#include <QAction>
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
 #include <QDBusServiceWatcher>
@@ -40,8 +39,8 @@ protected:
 
 AppMenuModel::AppMenuModel(QObject *parent)
     : QAbstractListModel(parent)
-    , m_serviceWatcher(new QDBusServiceWatcher(this))
     , m_tasksModel(new TaskManager::TasksModel(this))
+    , m_serviceWatcher(new QDBusServiceWatcher(this))
 {
     m_tasksModel->setFilterByScreen(true);
     connect(m_tasksModel, &TaskManager::TasksModel::activeTaskChanged, this, &AppMenuModel::onActiveWindowChanged);
@@ -75,7 +74,7 @@ AppMenuModel::AppMenuModel(QObject *parent)
     connect(m_serviceWatcher, &QDBusServiceWatcher::serviceUnregistered, this, [this](const QString &serviceName) {
         if (serviceName == m_serviceName) {
             setMenuAvailable(false);
-            emit modelNeedsUpdate();
+            Q_EMIT modelNeedsUpdate();
         }
     });
 
@@ -98,9 +97,9 @@ AppMenuModel::AppMenuModel(QObject *parent)
         connect(searchBar, &QLineEdit::textChanged, [=]() mutable {
             insertSearchActionsIntoMenu(searchBar->text());
         });
-        connect(searchBar, &QLineEdit::returnPressed, [=]() mutable {
-            if (m_currentSearchActions.first()) {
-                m_currentSearchActions.first()->trigger();
+        connect(searchBar, &QLineEdit::returnPressed, [this]() mutable {
+            if (!m_currentSearchActions.empty()) {
+                m_currentSearchActions.constFirst()->trigger();
             }
         });
         connect(this, &AppMenuModel::modelNeedsUpdate, this, [this, searchBar]() mutable {
@@ -125,7 +124,7 @@ void AppMenuModel::setMenuAvailable(bool set)
     if (m_menuAvailable != set) {
         m_menuAvailable = set;
         setVisible(true);
-        emit menuAvailableChanged();
+        Q_EMIT menuAvailableChanged();
     }
 }
 
@@ -138,7 +137,7 @@ void AppMenuModel::setVisible(bool visible)
 {
     if (m_visible != visible) {
         m_visible = visible;
-        emit visibleChanged();
+        Q_EMIT visibleChanged();
     }
 }
 
@@ -159,12 +158,12 @@ int AppMenuModel::rowCount(const QModelIndex &parent) const
         return 0;
     }
 
-    return m_menu->actions().count() + (KWindowSystem::isPlatformWayland() ? 1 : 0);
+    return m_menu->actions().count() + (m_searchAction ? 1 : 0);
 }
 
 void AppMenuModel::removeSearchActionsFromMenu()
 {
-    for (const auto &action : m_currentSearchActions) {
+    for (auto action : std::as_const(m_currentSearchActions)) {
         m_searchAction->menu()->removeAction(action);
     }
     m_currentSearchActions = QList<QAction *>();
@@ -194,6 +193,12 @@ void AppMenuModel::update()
 
 void AppMenuModel::onActiveWindowChanged()
 {
+    // Do not change active window when panel gets focus
+    // See ShellCorona::init() in shell/shellcorona.cpp
+    if (m_containmentStatus == Plasma::Types::AcceptingInputStatus) {
+        return;
+    }
+
     const QModelIndex activeTaskIndex = m_tasksModel->activeTask();
     const QString objectPath = m_tasksModel->data(activeTaskIndex, TaskManager::AbstractTasksModel::ApplicationMenuObjectPath).toString();
     const QString serviceName = m_tasksModel->data(activeTaskIndex, TaskManager::AbstractTasksModel::ApplicationMenuServiceName).toString();
@@ -202,7 +207,7 @@ void AppMenuModel::onActiveWindowChanged()
         setMenuAvailable(true);
         updateApplicationMenu(serviceName, objectPath);
         setVisible(true);
-        emit modelNeedsUpdate();
+        Q_EMIT modelNeedsUpdate();
     } else {
         setMenuAvailable(false);
         setVisible(false);
@@ -234,17 +239,25 @@ QList<QAction *> AppMenuModel::flatActionList()
 
 QVariant AppMenuModel::data(const QModelIndex &index, int role) const
 {
-    const int row = index.row();
-    if (row < 0 || !m_menuAvailable || !m_menu) {
+    if (!m_menuAvailable || !m_menu) {
         return QVariant();
     }
 
+    if (!index.isValid()) {
+        if (role == MenuRole) {
+            return QString();
+        } else if (role == ActionRole) {
+            return QVariant::fromValue(m_menu->menuAction());
+        }
+    }
+
     const auto actions = m_menu->actions();
-    if (row == actions.count() && KWindowSystem::isPlatformWayland()) {
+    const int row = index.row();
+    if (row == actions.count() && m_searchAction) {
         if (role == MenuRole) {
             return m_searchAction->text();
         } else if (role == ActionRole) {
-            return QVariant::fromValue((void *)m_searchAction);
+            return QVariant::fromValue(m_searchAction.data());
         }
     }
     if (row >= actions.count()) {
@@ -254,7 +267,7 @@ QVariant AppMenuModel::data(const QModelIndex &index, int role) const
     if (role == MenuRole) { // TODO this should be Qt::DisplayRole
         return actions.at(row)->text();
     } else if (role == ActionRole) {
-        return QVariant::fromValue((void *)actions.at(row));
+        return QVariant::fromValue(actions.at(row));
     }
 
     return QVariant();
@@ -282,6 +295,7 @@ void AppMenuModel::updateApplicationMenu(const QString &serviceName, const QStri
     QMetaObject::invokeMethod(m_importer, "updateMenu", Qt::QueuedConnection);
 
     connect(m_importer.data(), &DBusMenuImporter::menuUpdated, this, [=](QMenu *menu) {
+
         m_menu = m_importer->menu();
         if (m_menu.isNull() || menu != m_menu) {
             return;
@@ -296,7 +310,7 @@ void AppMenuModel::updateApplicationMenu(const QString &serviceName, const QStri
                     const int actionIdx = m_menu->actions().indexOf(a);
                     if (actionIdx > -1) {
                         const QModelIndex modelIdx = index(actionIdx, 0);
-                        emit dataChanged(modelIdx, modelIdx);
+                        Q_EMIT dataChanged(modelIdx, modelIdx);
                     }
                 }
             });
@@ -309,7 +323,7 @@ void AppMenuModel::updateApplicationMenu(const QString &serviceName, const QStri
         }
 
         setMenuAvailable(true);
-        emit modelNeedsUpdate();
+        Q_EMIT modelNeedsUpdate();
     });
 
     connect(m_importer.data(), &DBusMenuImporter::actionActivationRequested, this, [this](QAction *action) {

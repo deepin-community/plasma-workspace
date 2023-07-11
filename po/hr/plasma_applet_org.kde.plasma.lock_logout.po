@@ -126,3 +126,43 @@ msgstr "Spavanje (zaustavljanje u RAM)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Hibernacija (zaustavljanje na disk) "
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Da li želite zaustavljanje na disk (hibernacija)?"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Da li želite zaustavljanje u RAM (spavanje)?"
+
+#~ msgid "Leave"
+#~ msgstr "Napusti"
+
+#~ msgid "Leave..."
+#~ msgstr "Napusti …"
+
+#~ msgid "Suspend"
+#~ msgstr "Zaustavi"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Konfiguriraj Zaključavanje/Odlogiravanje"
+
+#, fuzzy
+#~| msgid "Please select one or more items on the list below"
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "Molim odaberite jednu ili više stavki iz donje liste"
+
+#~ msgid "Entries"
+#~ msgstr "Unosi"
+
+#, fuzzy
+#~| msgid "Show sleep button"
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Pokaži gumb spavanja"
+
+#~ msgid "Show logout button"
+#~ msgstr "Pokaži gumb odlogiravanja"
+
+#~ msgid "Show hibernate button"
+#~ msgstr "Pokaži gumb hibernacije"
+
+#~ msgid "Show sleep button"
+#~ msgstr "Pokaži gumb spavanja"

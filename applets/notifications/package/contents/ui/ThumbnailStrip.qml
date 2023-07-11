@@ -16,6 +16,8 @@ import org.kde.kquickcontrolsaddons 2.0 as KQCAddons
 
 import org.kde.plasma.private.notifications 2.0 as Notifications
 
+import "global"
+
 DraggableFileArea {
     id: thumbnailArea
 
@@ -35,14 +37,17 @@ DraggableFileArea {
     property int topPadding: 0
     property int bottomPadding: 0
 
+    property alias actionContainer: thumbnailActionContainer
+
     signal openUrl(string url)
     signal fileActionInvoked(QtObject action)
 
     dragParent: previewPixmap
     dragUrl: thumbnailer.url
-    dragPixmap: thumbnailer.pixmap
+    dragPixmap: thumbnailer.hasPreview ? thumbnailer.pixmap : thumbnailer.iconName
+    dragPixmapSize: previewIcon.height
 
-    implicitHeight: Math.max(menuButton.height + 2 * menuButton.anchors.topMargin,
+    implicitHeight: Math.max(thumbnailActionRow.implicitHeight + 2 * thumbnailActionRow.anchors.topMargin,
                              Math.round(Math.min(width / 3, width / thumbnailer.ratio)))
                     + topPadding + bottomPadding
 
@@ -69,7 +74,9 @@ DraggableFileArea {
 
         url: urls[0]
         // height is dynamic, so request a "square" size and then show it fitting to aspect ratio
-        size: Qt.size(thumbnailArea.width, thumbnailArea.width)
+        // Also use popupWidth instead of our width to ensure it is fixed and doesn't
+        // change temporarily during (re)layouting
+        size: Qt.size(Globals.popupWidth, Globals.popupWidth)
     }
 
     KQCAddons.QPixmapItem {
@@ -104,6 +111,7 @@ DraggableFileArea {
         }
 
         PlasmaCore.IconItem {
+            id: previewIcon
             anchors.centerIn: parent
             width: height
             height: PlasmaCore.Units.roundToIconSize(parent.height)
@@ -117,33 +125,49 @@ DraggableFileArea {
             visible: thumbnailer.busy
         }
 
-        PlasmaComponents3.Button {
-            id: menuButton
+        RowLayout {
+            id: thumbnailActionRow
             anchors {
                 top: parent.top
+                left: parent.left
                 right: parent.right
                 margins: PlasmaCore.Units.smallSpacing
             }
-            Accessible.name: tooltip.text
-            icon.name: "application-menu"
-            checkable: true
+            spacing: PlasmaCore.Units.smallSpacing
 
-            onPressedChanged: {
-                if (pressed) {
-                    // fake "pressed" while menu is open
-                    checked = Qt.binding(function() {
-                        return fileMenu.visible;
-                    });
+            Item {
+                id: thumbnailActionContainer
+                Layout.alignment: Qt.AlignTop
+                Layout.fillWidth: true
+                Layout.preferredHeight: childrenRect.height
 
-                    fileMenu.visualParent = this;
-                    // -1 tells it to "align bottom left of visualParent (this)"
-                    fileMenu.open(-1, -1);
-                }
+                // actionFlow is reparented here
             }
 
-            PlasmaComponents3.ToolTip {
-                id: tooltip
-                text: i18nd("plasma_applet_org.kde.plasma.notifications", "More Options…")
+            PlasmaComponents3.Button {
+                id: menuButton
+                Layout.alignment: Qt.AlignTop
+                Accessible.name: tooltip.text
+                icon.name: "application-menu"
+                checkable: true
+
+                onPressedChanged: {
+                    if (pressed) {
+                        // fake "pressed" while menu is open
+                        checked = Qt.binding(function() {
+                            return fileMenu.visible;
+                        });
+
+                        fileMenu.visualParent = this;
+                        // -1 tells it to "align bottom left of visualParent (this)"
+                        fileMenu.open(-1, -1);
+                    }
+                }
+
+                PlasmaComponents3.ToolTip {
+                    id: tooltip
+                    text: i18nd("plasma_applet_org.kde.plasma.notifications", "More Options…")
+                }
             }
         }
     }

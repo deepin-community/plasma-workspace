@@ -28,3 +28,17 @@ msgstr "KDE Shqip, Launchpad Contributions: Vilson Gjeci"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-shqip@yahoogroups.com,vilsongjeci@gmail.com"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Nuk jemi në gjendje të përdorim <b>%1</b> Multimedia Backend:<br/>%2</"
+#~ "qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Nuk mund të gjejmë një Multimedia Backend"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Nuk mund të gjejmë Multimedia Backend të kërkuar"
+
+#~ msgid "create method returned 0"
+#~ msgstr "metoda e krijimit dha përgjigjen 0"

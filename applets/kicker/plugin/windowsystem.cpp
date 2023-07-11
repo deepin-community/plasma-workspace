@@ -9,6 +9,7 @@
 #include <QQuickItem>
 
 #include <KWindowSystem>
+#include <KX11Extras>
 
 WindowSystem::WindowSystem(QObject *parent)
     : QObject(parent)
@@ -23,7 +24,7 @@ bool WindowSystem::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() == QEvent::FocusIn) {
         removeEventFilter(watched);
-        emit focusIn(qobject_cast<QQuickWindow *>(watched));
+        Q_EMIT focusIn(qobject_cast<QQuickWindow *>(watched));
     }
 
     return false;
@@ -35,7 +36,7 @@ void WindowSystem::forceActive(QQuickItem *item)
         return;
     }
 
-    KWindowSystem::forceActiveWindow(item->window()->winId());
+    KX11Extras::forceActiveWindow(item->window()->winId());
     KWindowSystem::raiseWindow(item->window()->winId());
 }
 
@@ -72,6 +73,6 @@ void WindowSystem::monitoredWindowVisibilityChanged(QWindow::Visibility visibili
     QQuickWindow *w = static_cast<QQuickWindow *>(QObject::sender());
 
     if (!visible) {
-        emit hidden(w);
+        Q_EMIT hidden(w);
     }
 }

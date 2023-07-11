@@ -13,8 +13,9 @@
 #include <QIcon>
 #include <QUrlQuery>
 
+#include <KIO/ApplicationLauncherJob>
 #include <KLocalizedString>
-#include <KRun>
+#include <KNotificationJobUiDelegate>
 #include <KRunner/RunnerManager>
 
 #include <Plasma/Plasma>
@@ -25,6 +26,7 @@ RunnerMatchesModel::RunnerMatchesModel(const QString &runnerId, const QString &n
     , m_name(name)
     , m_runnerManager(manager)
 {
+    connect(m_runnerManager, &Plasma::RunnerManager::setSearchTerm, this, &RunnerMatchesModel::requestUpdateQueryString);
 }
 
 QString RunnerMatchesModel::description() const
@@ -55,28 +57,15 @@ QVariant RunnerMatchesModel::data(const QModelIndex &index, int role) const
             return match.data().toString();
         }
     } else if (role == Kicker::UrlRole) {
-        const QString &runnerId = match.runner()->id();
-        if (runnerId == QLatin1String("baloosearch") || runnerId == QLatin1String("bookmarks")) {
-            return QUrl(match.data().toString());
-        } else if (runnerId == QLatin1String("recentdocuments") || runnerId == QLatin1String("services")) {
-            KService::Ptr service = KService::serviceByStorageId(match.data().toString());
-            if (service) {
-                return QUrl::fromLocalFile(Kicker::resolvedServiceEntryPath(service));
-            }
+        const QList<QUrl> urls = match.urls();
+
+        if (!urls.isEmpty()) {
+            return urls.first();
         }
     } else if (role == Kicker::HasActionListRole) {
-        // Hack to expose the protected Plasma::AbstractRunner::actions() method.
-        class MyRunner : public Plasma::AbstractRunner
-        {
-        public:
-            using Plasma::AbstractRunner::actions;
-        };
-
-        MyRunner *runner = static_cast<MyRunner *>(match.runner());
-
-        Q_ASSERT(runner);
-
-        return match.runner()->id() == QLatin1String("services") || !runner->actions().isEmpty();
+        return match.runner()->id() == QLatin1String("services") || !match.runner()->findChildren<QAction *>().isEmpty();
+    } else if (role == Kicker::IsMultilineTextRole) {
+        return match.isMultiLine();
     } else if (role == Kicker::ActionListRole) {
         QVariantList actionList;
         const QList<QAction *> actions = m_runnerManager->actionsForMatch(match);
@@ -97,7 +86,11 @@ QVariant RunnerMatchesModel::data(const QModelIndex &index, int role) const
             return actionList;
         }
 
-        const QUrl dataUrl(match.data().toUrl());
+        QUrl dataUrl(match.data().toUrl());
+        if (dataUrl.isEmpty() && !match.urls().isEmpty()) {
+            // needed for systemsettigs runner
+            dataUrl = match.urls().constFirst();
+        }
         if (dataUrl.scheme() != QLatin1String("applications")) {
             return actionList;
         }
@@ -127,13 +120,25 @@ QVariant RunnerMatchesModel::data(const QModelIndex &index, int role) const
             }
 
             const QVariantList &addLauncherActions = Kicker::createAddLauncherActionList(appletInterface, service);
+            bool needsSeparator = false;
             if (!systemImmutable && !addLauncherActions.isEmpty()) {
-                actionList << addLauncherActions << Kicker::createSeparatorActionItem();
+                actionList << addLauncherActions;
+                needsSeparator = true;
             }
 
             const QVariantList &recentDocuments = Kicker::recentDocumentActions(service);
             if (!recentDocuments.isEmpty()) {
-                actionList << recentDocuments << Kicker::createSeparatorActionItem();
+                actionList << recentDocuments;
+                needsSeparator = false;
+            }
+
+            if (needsSeparator) {
+                actionList << Kicker::createSeparatorActionItem();
+            }
+
+            const QVariantList &additionalActions = Kicker::additionalAppActions(service);
+            if (!additionalActions.isEmpty()) {
+                actionList << additionalActions << Kicker::createSeparatorActionItem();
             }
 
             // Don't allow adding launchers, editing, hiding, or uninstalling applications
@@ -171,41 +176,51 @@ bool RunnerMatchesModel::trigger(int row, const QString &actionId, const QVarian
         return false;
     }
 
+    // BUG 442970: Skip creating KService if there is no actionId, or the action is from a runner.
+    if (actionId.isEmpty() || actionId == QLatin1String("runnerAction")) {
+        if (!actionId.isEmpty()) {
+            QObject *obj = argument.value<QObject *>();
+
+            if (!obj) {
+                return false;
+            }
+
+            QAction *action = qobject_cast<QAction *>(obj);
+
+            if (!action) {
+                return false;
+            }
+            match.setSelectedAction(action);
+        }
+
+        return m_runnerManager->runMatch(match);
+    }
+
     QObject *appletInterface = static_cast<RunnerModel *>(parent())->appletInterface();
 
-    const KService::Ptr service = KService::serviceByStorageId(match.data().toUrl().toString(QUrl::RemoveScheme));
+    KService::Ptr service = KService::serviceByStorageId(match.data().toUrl().toString(QUrl::RemoveScheme));
+    if (!service && !match.urls().isEmpty()) {
+        // needed for systemsettigs runner
+        service = KService::serviceByStorageId(match.urls().constFirst().toString(QUrl::RemoveScheme));
+    }
 
     if (Kicker::handleAddLauncherAction(actionId, appletInterface, service)) {
         return false; // We don't want to close Kicker, BUG: 390585
     } else if (Kicker::handleEditApplicationAction(actionId, service)) {
         return true;
-    } else if (Kicker::handleAppstreamActions(actionId, argument)) {
+    } else if (Kicker::handleAppstreamActions(actionId, service)) {
         return true;
     } else if (actionId == QLatin1String("_kicker_jumpListAction")) {
-        return KRun::run(argument.toString(), {}, nullptr, service ? service->name() : QString(), service ? service->icon() : QString());
+        auto job = new KIO::ApplicationLauncherJob(argument.value<KServiceAction>());
+        job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled));
+        return job->exec();
     } else if (actionId == QLatin1String("_kicker_recentDocument") || actionId == QLatin1String("_kicker_forgetRecentDocuments")) {
         return Kicker::handleRecentDocumentAction(service, actionId, argument);
+    } else if (Kicker::handleAdditionalAppActions(actionId, service, argument)) {
+        return true;
     }
 
-    if (!actionId.isEmpty()) {
-        QObject *obj = argument.value<QObject *>();
-
-        if (!obj) {
-            return false;
-        }
-
-        QAction *action = qobject_cast<QAction *>(obj);
-
-        if (!action) {
-            return false;
-        }
-
-        match.setSelectedAction(action);
-    }
-
-    m_runnerManager->run(match);
-
-    return true;
+    return false;
 }
 
 void RunnerMatchesModel::setMatches(const QList<Plasma::QueryMatch> &matches)
@@ -226,7 +241,7 @@ void RunnerMatchesModel::setMatches(const QList<Plasma::QueryMatch> &matches)
     }
 
     if (emitDataChange) {
-        emit dataChanged(index(0, 0), index(ceiling - 1, 0));
+        Q_EMIT dataChanged(index(0, 0), index(ceiling - 1, 0));
     }
 
     if (newCount > oldCount) {
@@ -244,7 +259,7 @@ void RunnerMatchesModel::setMatches(const QList<Plasma::QueryMatch> &matches)
     }
 
     if (emitCountChange) {
-        emit countChanged();
+        Q_EMIT countChanged();
     }
 }
 
@@ -252,3 +267,5 @@ AbstractModel *RunnerMatchesModel::favoritesModel()
 {
     return static_cast<RunnerModel *>(parent())->favoritesModel();
 }
+
+Q_DECLARE_METATYPE(KServiceAction)

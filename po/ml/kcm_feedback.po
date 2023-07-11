@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-26 00:18+0000\n"
+"POT-Creation-Date: 2022-08-28 00:47+0000\n"
 "PO-Revision-Date: 2020-11-25 19:54+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -19,26 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Weblate 4.3.2\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "വിവേക് കെ ജെ"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "vivekkj2004@gmail.com"
-
-#: feedback.cpp:50
-#, kde-format
-msgid "User Feedback"
-msgstr "ഉപയോക്തൃ അഭിപ്രായം"
-
-#: feedback.cpp:52
-#, kde-format
-msgid "Configure user feedback settings"
-msgstr "ഉപയോക്തൃ അഭിപ്രായ സജ്ജീകരണങ്ങൾ ക്രമീകരിക്കുക"
-
 #: package/contents/ui/main.qml:34
 #, kde-format
 msgid ""
@@ -46,12 +26,12 @@ msgid ""
 msgstr ""
 "ഉപയോക്തൃ അഭിപ്രായം കേന്ദ്രീകൃതമായി അപ്രാപ്‌തമാക്കി. നിങ്ങളുടെ വിതരണക്കാരനുമായി ബന്ധപ്പെടുക."
 
-#: package/contents/ui/main.qml:38 package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:44 package/contents/ui/main.qml:77
 #, kde-format
 msgid "Plasma:"
 msgstr "പ്ലാസ്മ:"
 
-#: package/contents/ui/main.qml:45
+#: package/contents/ui/main.qml:51
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -67,8 +47,8 @@ msgid ""
 "it, so we can focus on things that matter to you.<nl/><nl/>Contributing this "
 "information is optional and entirely anonymous. We never collect your "
 "personal data, files you use, websites you visit, or information that could "
-"identify you.<nl/><nl/>You can read about our privacy policy in the "
-"following link:"
+"identify you.<nl/><nl/>You can read about <link url='https://kde.org/"
+"privacypolicy-apps.php'>our privacy policy here.</link>"
 msgstr ""
 "നിങ്ങൾ എങ്ങനെ പ്ലാസ്മ ഉപയോഗിക്കുന്നുവെന്നതിനെക്കുറിച്ചുള്ള വിവരങ്ങൾ സംഭാവന ചെയ്യുന്നതിലൂടെ കെ."
 "ഡി.ഇയെ മെച്ചപ്പെടുത്താൻ നിങ്ങൾക്ക് സഹായിക്കാനാകും, അതിനാൽ നിങ്ങൾക്ക് പ്രാധാന്യമുള്ള "
@@ -78,17 +58,31 @@ msgstr ""
 "കഴിയുന്ന വിവരങ്ങൾ ഞങ്ങൾ ഒരിക്കലും ശേഖരിക്കുന്നില്ല.<nl/><nl/>ഞങ്ങളുടെ നയം ചുവടെയുള്ള "
 "ലിങ്കിലൂടെ വായിക്കാം:"
 
-#: package/contents/ui/main.qml:99
+#: package/contents/ui/main.qml:112
 #, kde-format
 msgid "Plasma"
 msgstr "പ്ലാസ്മ"
 
-#: package/contents/ui/main.qml:117
+#: package/contents/ui/main.qml:133
 #, kde-format
 msgid "The following information will be sent:"
 msgstr "ഈ പറയുന്ന വിവരങ്ങൾ അയക്കും:"
 
-#: package/contents/ui/main.qml:162
+#: package/contents/ui/main.qml:178
 #, kde-format
 msgid "View sent data:"
 msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "വിവേക് കെ ജെ"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "vivekkj2004@gmail.com"
+
+#~ msgid "User Feedback"
+#~ msgstr "ഉപയോക്തൃ അഭിപ്രായം"
+
+#~ msgid "Configure user feedback settings"
+#~ msgstr "ഉപയോക്തൃ അഭിപ്രായ സജ്ജീകരണങ്ങൾ ക്രമീകരിക്കുക"

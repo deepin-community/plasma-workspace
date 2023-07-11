@@ -87,13 +87,9 @@ void NotificationGroupingProxyModel::adjustMap(int anchor, int delta)
 {
     for (int i = 0; i < rowMap.count(); ++i) {
         QVector<int> *sourceRows = rowMap.at(i);
-        QMutableVectorIterator<int> it(*sourceRows);
-
-        while (it.hasNext()) {
-            it.next();
-
-            if (it.value() >= anchor) {
-                it.setValue(it.value() + delta);
+        for (auto it = sourceRows->begin(); it != sourceRows->end(); ++it) {
+            if ((*it) >= anchor) {
+                *it += delta;
             }
         }
     }
@@ -233,7 +229,7 @@ void NotificationGroupingProxyModel::setSourceModel(QAbstractItemModel *sourceMo
                             Q_EMIT dataChanged(parent, parent);
 
                             // Signal children count change for all other items in the group.
-                            emit dataChanged(index(0, 0, parent), index(rowMap.count() - 1, 0, parent), {Notifications::GroupChildrenCountRole});
+                            Q_EMIT dataChanged(index(0, 0, parent), index(rowMap.count() - 1, 0, parent), {Notifications::GroupChildrenCountRole});
                         }
 
                         break;
@@ -459,7 +455,8 @@ QVariant NotificationGroupingProxyModel::data(const QModelIndex &proxyIndex, int
             return false;
 
         // Combine all notifications into one for some basic grouping
-        case Notifications::BodyRole: {
+        case Notifications::BodyRole:
+        case Qt::AccessibleDescriptionRole: {
             QString body;
             for (int i = 0; i < rowCount(proxyIndex); ++i) {
                 const QString stringData = index(i, 0, proxyIndex).data(role).toString();

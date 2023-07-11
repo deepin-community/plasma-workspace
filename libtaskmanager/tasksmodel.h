@@ -57,6 +57,7 @@ class TASKMANAGER_EXPORT TasksModel : public QSortFilterProxyModel, public Abstr
     Q_PROPERTY(bool filterByVirtualDesktop READ filterByVirtualDesktop WRITE setFilterByVirtualDesktop NOTIFY filterByVirtualDesktopChanged)
     Q_PROPERTY(bool filterByScreen READ filterByScreen WRITE setFilterByScreen NOTIFY filterByScreenChanged)
     Q_PROPERTY(bool filterByActivity READ filterByActivity WRITE setFilterByActivity NOTIFY filterByActivityChanged)
+    Q_PROPERTY(bool filterMinimized READ filterMinimized WRITE setFilterMinimized NOTIFY filterMinimizedChanged)
     Q_PROPERTY(bool filterNotMinimized READ filterNotMinimized WRITE setFilterNotMinimized NOTIFY filterNotMinimizedChanged)
     Q_PROPERTY(bool filterNotMaximized READ filterNotMaximized WRITE setFilterNotMaximized NOTIFY filterNotMaximizedChanged)
     Q_PROPERTY(bool filterHidden READ filterHidden WRITE setFilterHidden NOTIFY filterHiddenChanged)
@@ -72,6 +73,7 @@ class TASKMANAGER_EXPORT TasksModel : public QSortFilterProxyModel, public Abstr
     Q_PROPERTY(QStringList groupingAppIdBlacklist READ groupingAppIdBlacklist WRITE setGroupingAppIdBlacklist NOTIFY groupingAppIdBlacklistChanged)
     Q_PROPERTY(QStringList groupingLauncherUrlBlacklist READ groupingLauncherUrlBlacklist WRITE setGroupingLauncherUrlBlacklist NOTIFY
                    groupingLauncherUrlBlacklistChanged)
+    Q_PROPERTY(bool taskReorderingEnabled READ taskReorderingEnabled WRITE setTaskReorderingEnabled NOTIFY taskReorderingEnabledChanged)
     Q_PROPERTY(QModelIndex activeTask READ activeTask NOTIFY activeTaskChanged)
 
 public:
@@ -81,6 +83,7 @@ public:
         SortAlpha, /**< Tasks are sorted alphabetically, by AbstractTasksModel::AppName and Qt::DisplayRole. */
         SortVirtualDesktop, /**< Tasks are sorted by the virtual desktop they are on. */
         SortActivity, /**< Tasks are sorted by the number of tasks on the activities they're on. */
+        SortLastActivated, /**< Tasks are sorted by the last time they were active. */
     };
     Q_ENUM(SortMode)
 
@@ -264,6 +267,25 @@ public:
      * @param filter Whether tasks should be filtered by activity.
      **/
     void setFilterByActivity(bool filter);
+
+    /**
+     * Whether minimized tasks should be filtered out. Defaults to
+     * @c false.
+     *
+     * @returns @c true if minimized tasks should be filtered out.
+     * @see setFilterMinimized
+     * @since 5.27
+     **/
+    bool filterMinimized() const;
+
+    /**
+     * Sets whether non-minimized tasks should be filtered out.
+     *
+     * @param filter Whether minimized tasks should be filtered out.
+     * @see filterMinimized
+     * @since 5.27
+     **/
+    void setFilterMinimized(bool filter);
 
     /**
      * Whether non-minimized tasks should be filtered. Defaults to
@@ -532,6 +554,20 @@ public:
      * @param list a blacklist of launcher URLs to be consulted before grouping a task.
      **/
     void setGroupingLauncherUrlBlacklist(const QStringList &list);
+
+    /**
+     * Enables or disables tasks reordering.
+     *
+     * @param enabled enables tasks reordering if @c true; disables it otherwise.
+     */
+    void setTaskReorderingEnabled(bool enabled);
+
+    /**
+     * Returns whether tasks reordering is enabled or not.
+     *
+     * @returns whether tasks reordering is enabled or not.
+     */
+    bool taskReorderingEnabled() const;
 
     /**
      * Finds the first active (AbstractTasksModel::IsActive) task in the model
@@ -868,6 +904,7 @@ Q_SIGNALS:
     void filterByVirtualDesktopChanged() const;
     void filterByScreenChanged() const;
     void filterByActivityChanged() const;
+    void filterMinimizedChanged();
     void filterNotMinimizedChanged() const;
     void filterNotMaximizedChanged() const;
     void filterHiddenChanged() const;
@@ -879,6 +916,7 @@ Q_SIGNALS:
     void groupingWindowTasksThresholdChanged() const;
     void groupingAppIdBlacklistChanged() const;
     void groupingLauncherUrlBlacklistChanged() const;
+    void taskReorderingEnabledChanged() const;
     void activeTaskChanged() const;
 
 protected:

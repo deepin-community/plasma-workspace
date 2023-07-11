@@ -47,7 +47,13 @@ int AbstractItem::running() const
 
 bool AbstractItem::matches(const QString &pattern) const
 {
-    return name().contains(pattern, Qt::CaseInsensitive) || description().contains(pattern, Qt::CaseInsensitive);
+    if (name().contains(pattern, Qt::CaseInsensitive) || description().contains(pattern, Qt::CaseInsensitive)) {
+        return true;
+    }
+    const QStringList itemKeywords = keywords();
+    return std::any_of(itemKeywords.begin(), itemKeywords.end(), [&pattern](const QString &keyword) {
+        return keyword.startsWith(pattern, Qt::CaseInsensitive);
+    });
 }
 
 // DefaultFilterModel
@@ -185,7 +191,7 @@ void DefaultItemFilterProxyModel::setSearchTerm(const QString &pattern)
 {
     m_searchPattern = pattern;
     invalidateFilter();
-    emit searchTermChanged(pattern);
+    Q_EMIT searchTermChanged(pattern);
 }
 
 QString DefaultItemFilterProxyModel::searchTerm() const
@@ -197,14 +203,14 @@ void DefaultItemFilterProxyModel::setFilter(const Filter &filter)
 {
     m_filter = filter;
     invalidateFilter();
-    emit filterChanged();
+    Q_EMIT filterChanged();
 }
 
-void DefaultItemFilterProxyModel::setFilterType(const QString type)
+void DefaultItemFilterProxyModel::setFilterType(const QString &type)
 {
     m_filter.first = type;
     invalidateFilter();
-    emit filterChanged();
+    Q_EMIT filterChanged();
 }
 
 QString DefaultItemFilterProxyModel::filterType() const
@@ -212,11 +218,11 @@ QString DefaultItemFilterProxyModel::filterType() const
     return m_filter.first;
 }
 
-void DefaultItemFilterProxyModel::setFilterQuery(const QVariant query)
+void DefaultItemFilterProxyModel::setFilterQuery(const QVariant &query)
 {
     m_filter.second = query;
     invalidateFilter();
-    emit filterChanged();
+    Q_EMIT filterChanged();
 }
 
 QVariant DefaultItemFilterProxyModel::filterQuery() const

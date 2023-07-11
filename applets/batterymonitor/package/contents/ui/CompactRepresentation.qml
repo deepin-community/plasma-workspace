@@ -6,84 +6,99 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-import QtQuick 2.0
-import org.kde.plasma.core 2.0 as PlasmaCore
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+
+import org.kde.plasma.plasmoid 2.0
+import org.kde.plasma.core 2.1 as PlasmaCore
 import org.kde.plasma.workspace.components 2.0 as WorkspaceComponents
 
 MouseArea {
     id: root
 
     property real itemSize: Math.min(root.height, root.width/view.count)
-    readonly property bool isConstrained: plasmoid.formFactor === PlasmaCore.Types.Vertical || plasmoid.formFactor === PlasmaCore.Types.Horizontal
+    readonly property bool isConstrained: Plasmoid.formFactor === PlasmaCore.Types.Vertical || Plasmoid.formFactor === PlasmaCore.Types.Horizontal
     property real brightnessError: 0
+    property QtObject batteries
+    property bool hasBatteries: false
+    required property bool isHeldOnPerformanceMode
+    required property bool isHeldOnPowerSaveMode
+    required property bool isSomehowFullyCharged
 
+    activeFocusOnTab: true
+    hoverEnabled: true
 
-    onClicked: plasmoid.expanded = !plasmoid.expanded
-    
-    onWheel: {
-        var delta = wheel.angleDelta.y || wheel.angleDelta.x
+    property bool wasExpanded
 
-        var maximumBrightness = batterymonitor.maximumScreenBrightness
-        // Don't allow the UI to turn off the screen
-        // Please see https://git.reviewboard.kde.org/r/122505/ for more information
-        var minimumBrightness = (maximumBrightness > 100 ? 1 : 0)
-        var stepSize = Math.max(1, maximumBrightness / 20)
+    Accessible.name: Plasmoid.title
+    Accessible.description: `${Plasmoid.toolTipMainText}; ${Plasmoid.toolTipSubText}`
+    Accessible.role: Accessible.Button
 
-        if (Math.abs(delta) < 120) {
-            // Touchpad scrolling
-            brightnessError += delta * stepSize / 120
-            var change = Math.round(brightnessError);
-            var newBrightness = batterymonitor.screenBrightness + change
-            brightnessError -= change
-        } else {
-            // Discrete/wheel scrolling
-            var newBrightness = Math.round(batterymonitor.screenBrightness/stepSize + delta/120) * stepSize
-        }
-        batterymonitor.screenBrightness = Math.max(minimumBrightness, Math.min(maximumBrightness, newBrightness));
+    onPressed: wasExpanded = Plasmoid.expanded
+    onClicked: Plasmoid.expanded = !wasExpanded
+
+    // "No Batteries" case
+    PlasmaCore.IconItem {
+        anchors.fill: parent
+        visible: !root.hasBatteries
+        source: Plasmoid.icon
+        active: parent.containsMouse
     }
 
-
-
+    // We have any batteries; show their status
     //Should we consider turning this into a Flow item?
     Row {
+        visible: root.hasBatteries
         anchors.centerIn: parent
         Repeater {
             id: view
 
-            property bool hasBattery: batterymonitor.pmSource.data["Battery"]["Has Cumulative"]
-            property bool singleBattery: root.isConstrained || !view.hasBattery
-
-            model: singleBattery ? 1 : batterymonitor.batteries
+            model: root.isConstrained ? 1 : root.batteries
 
             Item {
                 id: batteryContainer
 
-                property bool hasBattery: view.singleBattery ? view.hasBattery : model["Plugged in"]
-                property int percent: view.singleBattery ? pmSource.data["Battery"]["Percent"] : model["Percent"]
-                property bool pluggedIn: pmSource.data["AC Adapter"] && pmSource.data["AC Adapter"]["Plugged in"] && (view.singleBattery || model["Is Power Supply"])
+                property int percent: root.isConstrained ? pmSource.data["Battery"]["Percent"] : model["Percent"]
+                property bool pluggedIn: pmSource.data["AC Adapter"] && pmSource.data["AC Adapter"]["Plugged in"] && (root.isConstrained || model["Is Power Supply"])
 
                 height: root.itemSize
                 width: root.width/view.count
 
                 property real iconSize: Math.min(width, height)
 
+                // "Held on a Power Profile mode while plugged in" use case; show the
+                // icon of the active mode so the user can notice this at a glance
+                PlasmaCore.SvgItem {
+                    id: powerProfileModeIcon
+
+                    anchors.centerIn: parent
+                    height: batteryContainer.iconSize
+                    width: height
+
+                    visible: batteryContainer.pluggedIn && (root.isHeldOnPowerSaveMode || root.isHeldOnPerformanceMode)
+                    svg: PlasmaCore.Svg { imagePath: "icons/battery" }
+                    elementId: root.isHeldOnPerformanceMode ? "profile-performance" : "profile-powersave"
+                }
+
+                // Show normal battery icon
                 WorkspaceComponents.BatteryIcon {
                     id: batteryIcon
 
                     anchors.centerIn: parent
-                    height: root.isConstrained ? batteryContainer.iconSize : batteryContainer.iconSize - batteryLabel.height
+                    height: batteryContainer.iconSize
                     width: height
 
-                    hasBattery: batteryContainer.hasBattery
+                    visible: !powerProfileModeIcon.visible
+                    hasBattery: root.hasBatteries
                     percent: batteryContainer.percent
                     pluggedIn: batteryContainer.pluggedIn
                 }
 
-                BadgeOverlay {
+                WorkspaceComponents.BadgeOverlay {
                     anchors.bottom: parent.bottom
                     anchors.right: parent.right
 
-                    visible: plasmoid.configuration.showPercentage && batteryContainer.hasBattery
+                    visible: Plasmoid.configuration.showPercentage && !root.isSomehowFullyCharged
 
                     text: i18nc("battery percentage below battery icon", "%1%", percent)
                     icon: batteryIcon

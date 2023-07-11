@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2017.
-# Tommi Nieminen <translator@legisign.org>, 2021.
+# Tommi Nieminen <translator@legisign.org>, 2021, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-06-04 23:04+0300\n"
+"POT-Creation-Date: 2022-09-22 00:47+0000\n"
+"PO-Revision-Date: 2022-08-08 12:25+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #: package/contents/config/config.qml:13
 #, kde-format
@@ -33,12 +33,38 @@ msgstr "Näytä sovellusvalikko yhtenä painikkeena"
 msgid "Show full application menu"
 msgstr "Näytä koko sovellusvalikko"
 
-#: plugin/appmenumodel.cpp:85
+#: package/contents/ui/MenuDelegate.qml:62
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Open a menu"
+msgstr "Avaa valikko"
+
+#: plugin/appmenumodel.cpp:84
 #, kde-format
 msgid "Search"
 msgstr "Etsi"
 
-#: plugin/appmenumodel.cpp:92
+#: plugin/appmenumodel.cpp:91
 #, kde-format
 msgid "Search…"
 msgstr "Etsi…"
+
+#~ msgid "Search..."
+#~ msgstr "Etsi…"
+
+#~ msgid "application-menu"
+#~ msgstr "application-menu"
+
+#~ msgid "Application Menu Widget is disabled"
+#~ msgstr "Sovellusvalikkosovelma ei ole käytössä"
+
+#~ msgctxt "it being the 'Application Menu Widget'"
+#~ msgid ""
+#~ "Go to System Settings > Application Style > Fine Tuning (tab) to enable "
+#~ "it."
+#~ msgstr ""
+#~ "Ota se käyttöön avaamalla Järjestelmäasetukset > Sovellusten tyyli > "
+#~ "Hienosäätö (välilehti)."
+
+#~ msgid "emblem-warning"
+#~ msgstr "emblem-warning"

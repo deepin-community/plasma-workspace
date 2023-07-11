@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2014, 2015, 2016, 2019, 2020.
+# Shinjo Park <kde@peremen.name>, 2014, 2015, 2016, 2019, 2020, 2022.
 #
 msgid ""
 msgstr ""
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 19.04.3\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: package/contents/config/config.qml:13
 #, kde-format
@@ -49,3 +49,23 @@ msgstr "일자 번호 표시"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "주 번호 표시"
+
+#~ msgid "Working Day"
+#~ msgstr "근무일"
+
+#~ msgid "Starts at 9"
+#~ msgstr "9시에 시작"
+
+#~ msgid "Ends at 5"
+#~ msgstr "5시에 종료"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "아이콘:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "일자"
+
+#~ msgid "Agenda"
+#~ msgstr "일정"

@@ -21,40 +21,72 @@ KCM.ScrollViewKCM {
 
     header: Kirigami.InlineMessage {
         id: errorMessage
-        type: Kirigami.MessageType.Error
         showCloseButton: true
+
 
         Connections {
             target: kcm.model
             function onError(message) {
+                errorMessage.type = Kirigami.MessageType.Error
                 errorMessage.visible = true
                 errorMessage.text = message
             }
         }
+
+        Connections {
+            target: kcm.model
+            property var fixItAction: Kirigami.Action {
+                property string fileName
+                text: i18n("Make Executable")
+                icon.name: "dialog-ok"
+                onTriggered: {
+                    kcm.model.makeFileExecutable(fileName)
+                    errorMessage.visible = false
+                }
+            }
+            function onNonExecutableScript(fileName, kind) {
+                fixItAction.fileName = fileName
+                errorMessage.type = Kirigami.MessageType.Warning
+                errorMessage.visible = true
+                errorMessage.actions = [fixItAction]
+
+                if (kind === AutostartModel.PlasmaShutdown) {
+                    errorMessage.text = i18nd("kcm_autostart", "The file '%1' must be executable to run at logout.", fileName)
+                } else {                                                 '  '
+                    errorMessage.text = i18nd("kcm_autostart", "The file '%1' must be executable to run at login.", fileName)
+                }
+            }
+        }
+
     }
 
     view: ListView {
+        id: listView
         clip: true
         model: kcm.model
 
         delegate: Kirigami.SwipeListItem {
+            id: baseListItem
+            width: listView.width
+            // content item includes its own padding
+            padding: 0
+            // Don't want a background highlight effect or click highlight effect, but we can't just
+            // set hoverEnabled to false, because it still shows highlight color when clicked
+            // never appear!
+            activeBackgroundColor: "transparent"
+            activeTextColor: Kirigami.Theme.textColor
 
-            Item {
-                Kirigami.Icon {
-                    id: appIcon
-                    source: model.iconName
-                    width: Kirigami.Units.iconSizes.medium
-                    height: Kirigami.Units.iconSizes.medium
-                }
-
-                Label {
-                    height: appIcon.height
-                    text: model.name
-                    elide: Text.ElideRight
-                    anchors.left: appIcon.right
-                    anchors.leftMargin: Kirigami.Units.largeSpacing
-                    anchors.right: parent.right
-                }
+            contentItem: Kirigami.BasicListItem {
+                width: listView.width - baseListItem.overlayWidth
+                icon: model.iconName
+                iconSelected: false // prevent icon flickering now that we've disabled background color changes
+                reserveSpaceForSubtitle: true
+                //same reason as parent for disabling highlight this way
+                activeBackgroundColor: "transparent"
+                activeTextColor: Kirigami.Theme.textColor
+                separatorVisible: false
+                label: model.name
+                subtitle: model.source === AutostartModel.PlasmaShutdown || model.source === AutostartModel.XdgScripts ? model.targetFileDirPath : ""
             }
 
             actions: [
@@ -152,23 +184,12 @@ KCM.ScrollViewKCM {
 
             checkable: true
             checked: menu.opened
-
-            onPressed: {
-                // Appear above the button, not below it, since the button is at
-                // the bottom of the window and QQC2 items can't leave the window
-
-                // HACK: since we want to position the menu above the button,
-                // we need to know the menu's height, but it only has a height
-                // after the first time it's been shown, so until then, we need
-                // to provide an artificially-synthesized-and-hopefully-good-enough
-                // height value
-                var menuHeight = menu.height && menu.height > 0 ? menu.height : Kirigami.Units.gridUnit * 3
-                menu.popup(menuButton, 0, -menuHeight)
-            }
+            onClicked: menu.opened? menu.close() : menu.open()
         }
 
         Menu {
             id: menu
+            y: -height
 
             modal: true
             dim: false

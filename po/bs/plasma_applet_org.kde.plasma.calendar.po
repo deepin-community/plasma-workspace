@@ -52,3 +52,15 @@ msgstr ""
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr ""
+
+#~ msgid "Working Day"
+#~ msgstr "Radni dan"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Počinje u  9"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Završava u 17"
+
+#~ msgid "Agenda"
+#~ msgstr "Dnevni red"

@@ -15,7 +15,6 @@
 #include <KLocalizedString>
 #include <Plasma/Applet>
 #include <Plasma/DataContainer>
-#include <Plasma/Service>
 #include <PluginLoader>
 
 #include <QIcon>
@@ -88,7 +87,7 @@ static QString plasmoidCategoryForMetadata(const KPluginMetaData &metadata)
     return category;
 }
 
-PlasmoidModel::PlasmoidModel(QPointer<SystemTraySettings> settings, QPointer<PlasmoidRegistry> plasmoidRegistry, QObject *parent)
+PlasmoidModel::PlasmoidModel(const QPointer<SystemTraySettings> &settings, const QPointer<PlasmoidRegistry> &plasmoidRegistry, QObject *parent)
     : BaseModel(settings, parent)
     , m_plasmoidRegistry(plasmoidRegistry)
 {
@@ -97,7 +96,7 @@ PlasmoidModel::PlasmoidModel(QPointer<SystemTraySettings> settings, QPointer<Pla
 
     const auto appletMetaDataList = m_plasmoidRegistry->systemTrayApplets();
     for (const auto &info : appletMetaDataList) {
-        if (!info.isValid() || info.value(QStringLiteral("X-Plasma-NotificationArea")) != "true") {
+        if (!info.isValid() || info.value(QStringLiteral("X-Plasma-NotificationArea")) != QLatin1String("true")) {
             continue;
         }
         appendRow(info);
@@ -117,12 +116,7 @@ QVariant PlasmoidModel::data(const QModelIndex &index, int role) const
     if (role <= Qt::UserRole) {
         switch (role) {
         case Qt::DisplayRole: {
-            const QString dbusactivation = pluginMetaData.value(QStringLiteral("X-Plasma-DBusActivationService"));
-            if (dbusactivation.isEmpty()) {
-                return pluginMetaData.name();
-            } else {
-                return i18nc("Suffix added to the applet name if the applet is autoloaded via DBus activation", "%1 (Automatic load)", pluginMetaData.name());
-            }
+            return pluginMetaData.name();
         }
         case Qt::DecorationRole: {
             QIcon icon = QIcon::fromTheme(pluginMetaData.iconName());
@@ -299,8 +293,6 @@ QVariant StatusNotifierModel::data(const QModelIndex &index, int role) const
     StatusNotifierModel::Item item = m_items[index.row()];
     StatusNotifierItemSource *sniData = m_sniHost->itemForService(item.source);
 
-    const QString itemId = extractItemId(sniData);
-
     if (role <= Qt::UserRole) {
         switch (role) {
         case Qt::DisplayRole:
@@ -311,6 +303,8 @@ QVariant StatusNotifierModel::data(const QModelIndex &index, int role) const
             return QVariant();
         }
     }
+
+    const QString itemId = extractItemId(sniData);
 
     if (role < static_cast<int>(Role::DataEngineSource)) {
         switch (static_cast<BaseRole>(role)) {

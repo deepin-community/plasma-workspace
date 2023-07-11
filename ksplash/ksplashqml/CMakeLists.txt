@@ -1,5 +1,3 @@
-add_subdirectory(themes)
-
 set(ksplashqml_SRCS
     main.cpp
     splashapp.cpp
@@ -15,7 +13,6 @@ target_link_libraries(ksplashqml
     KF5::Package
     KF5::QuickAddons
     KF5::WindowSystem
-    KF5::QuickAddons
     PW::KWorkspace
     LayerShellQt::Interface
    )
@@ -23,3 +20,4 @@ target_link_libraries(ksplashqml
 install(TARGETS ksplashqml ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES org.kde.KSplash.xml DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR})
 
+ecm_install_configured_files(INPUT plasma-ksplash.service.in @ONLY DESTINATION  ${KDE_INSTALL_SYSTEMDUSERUNITDIR})

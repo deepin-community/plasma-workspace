@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-11-09 01:47+0000\n"
+"POT-Creation-Date: 2023-04-27 02:45+0000\n"
 "PO-Revision-Date: 2019-11-26 23:03+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -18,45 +18,45 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 19.08.3\n"
 
-#: ../sddm-theme/KeyboardButton.qml:13
+#: ../sddm-theme/KeyboardButton.qml:19
 #, kde-format
 msgid "Keyboard Layout: %1"
 msgstr "Disposición do teclado: %1"
 
-#: ../sddm-theme/Login.qml:59
+#: ../sddm-theme/Login.qml:85
 #, kde-format
 msgid "Username"
 msgstr "Nome de usuario"
 
-#: ../sddm-theme/Login.qml:75 contents/lockscreen/MainBlock.qml:49
+#: ../sddm-theme/Login.qml:102 contents/lockscreen/MainBlock.qml:61
 #, kde-format
 msgid "Password"
 msgstr "Contrasinal"
 
-#: ../sddm-theme/Login.qml:116 ../sddm-theme/Login.qml:122
+#: ../sddm-theme/Login.qml:144 ../sddm-theme/Login.qml:150
 #, kde-format
 msgid "Log In"
 msgstr "Acceder"
 
-#: ../sddm-theme/Main.qml:198 contents/lockscreen/LockScreenUi.qml:243
+#: ../sddm-theme/Main.qml:201 contents/lockscreen/LockScreenUi.qml:301
 #, kde-format
 msgid "Caps Lock is on"
 msgstr "As maiúsculas están bloqueadas"
 
-#: ../sddm-theme/Main.qml:210 ../sddm-theme/Main.qml:462
+#: ../sddm-theme/Main.qml:213 ../sddm-theme/Main.qml:462
 #: contents/logout/Logout.qml:163
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "Durmir"
 
-#: ../sddm-theme/Main.qml:218 ../sddm-theme/Main.qml:470
+#: ../sddm-theme/Main.qml:220 ../sddm-theme/Main.qml:469
 #: contents/logout/Logout.qml:181
 #, kde-format
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: ../sddm-theme/Main.qml:226 ../sddm-theme/Main.qml:478
+#: ../sddm-theme/Main.qml:227 ../sddm-theme/Main.qml:476
 #: contents/logout/Logout.qml:191
 #, kde-format
 msgid "Shut Down"
@@ -70,138 +70,162 @@ msgctxt "For switching to a username and password prompt"
 msgid "Other…"
 msgstr "Outro…"
 
-#: ../sddm-theme/Main.qml:450
+#: ../sddm-theme/Main.qml:449
 #, kde-format
 msgid "Type in Username and Password"
 msgstr "Escriba o usuario e o contrasinal"
 
-#: ../sddm-theme/Main.qml:486
+#: ../sddm-theme/Main.qml:483
 #, kde-format
 msgid "List Users"
 msgstr "Listar os usuarios"
 
-#: ../sddm-theme/Main.qml:559 contents/lockscreen/LockScreenUi.qml:511
+#: ../sddm-theme/Main.qml:550 contents/lockscreen/LockScreenUi.qml:576
 #, kde-format
 msgctxt "Button to show/hide virtual keyboard"
 msgid "Virtual Keyboard"
 msgstr "Teclado virtual"
 
-#: ../sddm-theme/Main.qml:588
+#: ../sddm-theme/Main.qml:596
 #, kde-format
 msgid "Login Failed"
 msgstr "Fallou o acceso"
 
-#: ../sddm-theme/SessionButton.qml:22
+#: ../sddm-theme/SessionButton.qml:18
 #, kde-format
 msgid "Desktop Session: %1"
 msgstr "Sesión de escritorio: %1"
 
-#: contents/components/Battery.qml:40
+#: contents/components/Battery.qml:53
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: contents/components/Battery.qml:41
+#: contents/components/Battery.qml:54
 #, kde-format
 msgid "Battery at %1%"
 msgstr "Batería ao %1%"
 
-#: contents/components/UserList.qml:51
+#: contents/components/UserList.qml:71
 #, kde-format
 msgctxt "Nobody logged in on that session"
 msgid "Unused"
 msgstr "Non usado"
 
-#: contents/components/UserList.qml:57
+#: contents/components/UserList.qml:77
 #, kde-format
 msgctxt "User logged in on console number"
 msgid "TTY %1"
 msgstr "TTY %1"
 
-#: contents/components/UserList.qml:59
+#: contents/components/UserList.qml:79
 #, kde-format
 msgctxt "User logged in on console (X display number)"
 msgid "on TTY %1 (Display %2)"
 msgstr "no terminal (TTY) %1 (pantalla %2)"
 
-#: contents/components/UserList.qml:63
+#: contents/components/UserList.qml:83
 #, kde-format
 msgctxt "Username (location)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: contents/lockscreen/config.qml:17
-#, fuzzy, kde-format
-#| msgctxt "verb, to show something"
-#| msgid "Show"
-msgctxt "verb, to show something"
-msgid "Show:"
-msgstr "Mostrar"
-
-#: contents/lockscreen/config.qml:18
+#: contents/lockscreen/config.qml:19
 #, fuzzy, kde-format
 #| msgid "Clock:"
-msgid "Clock"
+msgctxt "@title: group"
+msgid "Clock:"
 msgstr "Reloxo:"
 
-#: contents/lockscreen/config.qml:26
+#: contents/lockscreen/config.qml:22
+#, kde-format
+msgctxt "@option:check"
+msgid "Keep visible when unlocking prompt disappears"
+msgstr ""
+
+#: contents/lockscreen/config.qml:33
 #, fuzzy, kde-format
 #| msgid "Media controls:"
-msgid "Media Controls"
+msgctxt "@title: group"
+msgid "Media controls:"
 msgstr "Controis de reprodución:"
 
-#: contents/lockscreen/LockScreenUi.qml:32
+#: contents/lockscreen/config.qml:36
+#, kde-format
+msgctxt "@option:check"
+msgid "Show under unlocking prompt"
+msgstr ""
+
+#: contents/lockscreen/LockScreenUi.qml:37
 #, kde-format
 msgid "Unlocking failed"
 msgstr "Fallou o desbloqueo"
 
-#: contents/lockscreen/LockScreenUi.qml:259
+#: contents/lockscreen/LockScreenUi.qml:315
+#, fuzzy, kde-format
+#| msgctxt "Suspend to RAM"
+#| msgid "Sleep"
+msgid "Sleep"
+msgstr "Durmir"
+
+#: contents/lockscreen/LockScreenUi.qml:321 contents/logout/Logout.qml:172
+#, kde-format
+msgid "Hibernate"
+msgstr "Hibernar"
+
+#: contents/lockscreen/LockScreenUi.qml:327
 #, kde-format
 msgid "Switch User"
 msgstr "Cambiar de usuario"
 
-#: contents/lockscreen/LockScreenUi.qml:458
+#: contents/lockscreen/LockScreenUi.qml:523
 #, kde-format
 msgid "Switch to This Session"
 msgstr "Cambiar a esta sesión"
 
-#: contents/lockscreen/LockScreenUi.qml:466
+#: contents/lockscreen/LockScreenUi.qml:531
 #, kde-format
 msgid "Start New Session"
 msgstr "Comezar unha sesión nova"
 
-#: contents/lockscreen/LockScreenUi.qml:479
+#: contents/lockscreen/LockScreenUi.qml:544
 #, kde-format
 msgid "Back"
 msgstr "Volver"
 
-#: contents/lockscreen/LockScreenUi.qml:525
+#: contents/lockscreen/LockScreenUi.qml:590
 #, kde-format
 msgctxt "Button to change keyboard layout"
 msgid "Switch layout"
 msgstr "Cambiar a disposición"
 
-#: contents/lockscreen/MainBlock.qml:92
+#: contents/lockscreen/MainBlock.qml:101
+#: contents/lockscreen/NoPasswordUnlock.qml:17
 #, kde-format
 msgid "Unlock"
 msgstr "Desbloquear"
 
-#: contents/lockscreen/MediaControls.qml:105
+#: contents/lockscreen/MediaControls.qml:109
+#, kde-format
+msgid "No title"
+msgstr ""
+
+#: contents/lockscreen/MediaControls.qml:110
 #, kde-format
 msgid "No media playing"
 msgstr "Non se está a reproducir nada."
 
-#: contents/lockscreen/MediaControls.qml:134
+#: contents/lockscreen/MediaControls.qml:139
 #, kde-format
 msgid "Previous track"
 msgstr "Pista anterior"
 
-#: contents/lockscreen/MediaControls.qml:146
+#: contents/lockscreen/MediaControls.qml:151
 #, kde-format
 msgid "Play or Pause media"
 msgstr "Reproducir ou deter o contido multimedia"
 
-#: contents/lockscreen/MediaControls.qml:160
+#: contents/lockscreen/MediaControls.qml:165
 #, kde-format
 msgid "Next track"
 msgstr "Seguinte pista"
@@ -226,11 +250,6 @@ msgstr[1] ""
 msgid "When restarted, the computer will enter the firmware setup screen."
 msgstr ""
 "Ao reinicialo, o computador entrará na pantalla de configuración do firmware."
-
-#: contents/logout/Logout.qml:172
-#, kde-format
-msgid "Hibernate"
-msgstr "Hibernar"
 
 #: contents/logout/Logout.qml:201
 #, kde-format
@@ -268,86 +287,176 @@ msgstr "Aceptar"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: contents/osd/OsdItem.qml:62
+#: contents/osd/OsdItem.qml:66
 #, kde-format
 msgid "100%"
 msgstr ""
 
-#: contents/osd/OsdItem.qml:76
+#: contents/osd/OsdItem.qml:80
 #, fuzzy, kde-format
 #| msgid "%1%"
 msgctxt "Percentage value"
 msgid "%1%"
 msgstr "%1%"
 
-#: contents/runcommand/RunCommand.qml:74
-#, kde-format
-msgid "Configure"
-msgstr "Configurar"
-
-#: contents/runcommand/RunCommand.qml:75
-#, kde-format
-msgid "Configure Search Plugins"
-msgstr "Configurar os complementos de busca"
-
-#: contents/runcommand/RunCommand.qml:78
-#, fuzzy, kde-format
-#| msgid "Configure KRunner..."
-msgid "Configure KRunner…"
-msgstr "Configurar KRunner…"
-
-#: contents/runcommand/RunCommand.qml:94
-#, fuzzy, kde-format
-#| msgctxt "Textfield placeholder text, query specific KRunner"
-#| msgid "Search '%1'..."
-msgctxt "Textfield placeholder text, query specific KRunner"
-msgid "Search '%1'…"
-msgstr "Buscar «%1»…"
-
-#: contents/runcommand/RunCommand.qml:96
-#, fuzzy, kde-format
-#| msgctxt "Textfield placeholder text"
-#| msgid "Search..."
-msgctxt "Textfield placeholder text"
-msgid "Search…"
-msgstr "Buscar…"
-
-#: contents/runcommand/RunCommand.qml:222
-#, kde-format
-msgid "Pin"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:223
-#, fuzzy, kde-format
-#| msgid "Close Search"
-msgid "Pin Search"
-msgstr "Pechar a busca"
-
-#: contents/runcommand/RunCommand.qml:225
-#, kde-format
-msgid "Keep Open"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:291
-#, kde-format
-msgid "Recent Queries"
-msgstr "Consultas recentes"
-
-#: contents/runcommand/RunCommand.qml:294
-#, kde-format
-msgid "Remove"
-msgstr "Retirar"
-
-#: contents/runcommand/RunCommand.qml:296
-#, kde-format
-msgid "in category recent queries"
-msgstr "na categoría de consultas recentes"
-
-#: contents/splash/Splash.qml:80
+#: contents/splash/Splash.qml:81
 #, kde-format
 msgctxt ""
 "This is the first text the user sees while starting in the splash screen, "
 "should be translated as something short, is a form that can be seen on a "
 "product. Plasma is the project name so shouldn't be translated."
-msgid "Plasma 25th Anniversary Edition by KDE"
-msgstr ""
+msgid "Plasma made by KDE"
+msgstr "Plasma, por KDE"
+
+#~ msgid "Configure"
+#~ msgstr "Configurar"
+
+#, fuzzy
+#~| msgid "Configure KRunner..."
+#~ msgid "Configure KRunner Behavior"
+#~ msgstr "Configurar KRunner…"
+
+#, fuzzy
+#~| msgid "Configure KRunner..."
+#~ msgid "Configure KRunner…"
+#~ msgstr "Configurar KRunner…"
+
+#, fuzzy
+#~| msgctxt "Textfield placeholder text, query specific KRunner"
+#~| msgid "Search '%1'..."
+#~ msgctxt "Textfield placeholder text, query specific KRunner"
+#~ msgid "Search '%1'…"
+#~ msgstr "Buscar «%1»…"
+
+#, fuzzy
+#~| msgctxt "Textfield placeholder text"
+#~| msgid "Search..."
+#~ msgctxt "Textfield placeholder text"
+#~ msgid "Search…"
+#~ msgstr "Buscar…"
+
+#, fuzzy
+#~| msgid "Close Search"
+#~ msgid "Pin Search"
+#~ msgstr "Pechar a busca"
+
+#~ msgid "Recent Queries"
+#~ msgstr "Consultas recentes"
+
+#~ msgid "Remove"
+#~ msgstr "Retirar"
+
+#~ msgid "in category recent queries"
+#~ msgstr "na categoría de consultas recentes"
+
+#, fuzzy
+#~| msgctxt "verb, to show something"
+#~| msgid "Show"
+#~ msgctxt "verb, to show something"
+#~ msgid "Show:"
+#~ msgstr "Mostrar"
+
+#~ msgid "Configure Search Plugins"
+#~ msgstr "Configurar os complementos de busca"
+
+#~ msgid "Close"
+#~ msgstr "Pechar"
+
+#~ msgctxt "verb, to show something"
+#~ msgid "Always show"
+#~ msgstr "Mostrar sempre"
+
+#~ msgid "Suspend"
+#~ msgstr "Suspender"
+
+#~ msgid "Reboot"
+#~ msgstr "Reiniciar"
+
+#~ msgid "Logout"
+#~ msgstr "Saír"
+
+#~ msgid "Type User"
+#~ msgstr "Escriba o usuario"
+
+#~ msgid "Different User"
+#~ msgstr "Usuario distinto"
+
+#~ msgid "Log in as a different user"
+#~ msgstr "Acceder como un usuario distinto"
+
+#~ msgid "Password..."
+#~ msgstr "Contrasinal…"
+
+#~ msgid "Login"
+#~ msgstr "Identificación"
+
+#~ msgid "Shutdown"
+#~ msgstr "Apagar"
+
+#~ msgid "Switch"
+#~ msgstr "Cambiar"
+
+#~ msgid "New Session"
+#~ msgstr "Nova sesión"
+
+#~ msgid "%1%. Charging"
+#~ msgstr "%1%. Cargándose."
+
+#~ msgid "Fully charged"
+#~ msgstr "Carga completa"
+
+#~ msgid "%1%. Plugged in, not charging"
+#~ msgstr "%1%. Enchufado, sen cargar."
+
+#~ msgid "%1% battery remaining"
+#~ msgstr "%1% restante de batería"
+
+#~ msgid "Change Session"
+#~ msgstr "Cambiar de sesión"
+
+#~ msgid "Create Session"
+#~ msgstr "Crear unha sesión"
+
+#~ msgid "Change Session..."
+#~ msgstr "Cambiar de sesión…"
+
+#~ msgid "There are currently no other active sessions."
+#~ msgstr "Non hai ningunha outra sesión activa."
+
+#~ msgctxt "Username (logged in on console)"
+#~ msgid "%1 (TTY)"
+#~ msgstr "%1 (TTY)"
+
+#~ msgctxt "Unused session, nobody logged in there"
+#~ msgid "Unused"
+#~ msgstr "Non usado"
+
+#~ msgctxt "Username (on display number)"
+#~ msgid "%1 (on Display %2)"
+#~ msgstr "%1 (na pantalla %2)"
+
+#~ msgctxt "Button to restart the computer"
+#~ msgid "Reboot"
+#~ msgstr "Reiniciar"
+
+#~ msgctxt "Button to shut down the computer"
+#~ msgid "Shut down"
+#~ msgstr "Apagar"
+
+#~ msgctxt "Dialog heading, confirm log out, not a status label"
+#~ msgid "Logging out"
+#~ msgstr "Saíndo"
+
+#~ msgctxt "Dialog heading, confirm reboot, not a status label"
+#~ msgid "Rebooting"
+#~ msgstr "Reiniciando"
+
+#, fuzzy
+#~| msgctxt "Title of dialog"
+#~| msgid "Switch User"
+#~ msgid "Search for User"
+#~ msgstr "Cambiar de usuario"
+
+#~ msgctxt "Username (on display number)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"

@@ -1,15 +1,322 @@
-plasma-workspace (4:5.23.3-2+deepin1) UNRELEASED; urgency=medium
+plasma-workspace (4:5.27.5-2) unstable; urgency=medium
 
-  * update
-  * update
+  * Release to unstable.
 
- -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri, 09 Dec 2022 10:33:06 +0800
+ -- Aurélien COUDERC <coucouf@debian.org>  Sat, 27 May 2023 18:23:46 +0200
 
-plasma-workspace (4:5.23.3-2) unstable; urgency=medium
+plasma-workspace (4:5.27.5-1) experimental; urgency=medium
 
-  * fix up make error.
+  [ Patrick Franz ]
+  * New upstream release (5.27.5).
+  * Update build-deps and deps with the info from cmake.
+  * Update symbols from buildlogs.
 
- -- wangxiangyu <wangxiangyu@uniontech.com>  Thu, 28 Jul 2022 17:36:42 +0900
+ -- Patrick Franz <deltaone@debian.org>  Tue, 09 May 2023 23:28:49 +0200
+
+plasma-workspace (4:5.27.3-1) experimental; urgency=medium
+
+  [ Patrick Franz ]
+  * New upstream release (5.27.3).
+  * Update build-deps and deps with the info from cmake.
+
+ -- Patrick Franz <deltaone@debian.org>  Wed, 22 Mar 2023 23:19:30 +0100
+
+plasma-workspace (4:5.27.2-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.27.1).
+  * Update build-deps and deps with the info from cmake.
+  * New upstream release (5.27.2).
+  * Update build-deps and deps with the info from cmake.
+  * Update symbols from build for 5.27.2.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Tue, 28 Feb 2023 15:01:19 +0100
+
+plasma-workspace (4:5.27.0-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.27.0).
+  * Update build-deps and deps with the info from cmake.
+  * Update symbols from build for 5.27.0.
+  * Update breaks/replaces against plasma-desktop-data.
+  * Add optional build dependency on wayland-protocols.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Sat, 18 Feb 2023 17:08:46 +0100
+
+plasma-workspace (4:5.26.90-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.26.90).
+  * Update build-deps and deps with the info from cmake.
+  * Bump Standards-Version to 4.6.2, no change required.
+  * Refresh patch add_sddm_debian_breeze.patch.
+  * Update the list of installed files from build logs.
+  * Update cross-plasma versioned dependencies.
+  * Update symbols from build for 5.26.90.
+  * Refresh copyright information.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Mon, 23 Jan 2023 21:50:58 +0100
+
+plasma-workspace (4:5.26.5-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.26.5).
+  * Update build-deps and deps with the info from cmake.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Sat, 07 Jan 2023 00:22:29 +0100
+
+plasma-workspace (4:5.26.4.1-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.26.4.1).
+  * Update build-deps and deps with the info from cmake.
+  * Refresh patches.
+  * Drop backported upstream fix for a Wayland crasher, it seems to cause
+    shell freezes.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Tue, 29 Nov 2022 16:09:02 +0100
+
+plasma-workspace (4:5.26.3-3) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * Backport upstream fix for a Wayland crasher.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Wed, 23 Nov 2022 22:40:05 +0100
+
+plasma-workspace (4:5.26.3-2) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * Tighten dependency on breeze-dev.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Wed, 09 Nov 2022 23:14:41 +0100
+
+plasma-workspace (4:5.26.3-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.26.3).
+  * Update build-deps and deps with the info from cmake.
+  * Drop patch upstream_9ec6cf47_fix-xwayland-scaling.patch, applied
+    upstream.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Tue, 08 Nov 2022 16:04:30 +0100
+
+plasma-workspace (4:5.26.2-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.26.1).
+  * Update build-deps and deps with the info from cmake.
+  * New upstream release (5.26.2).
+  * Update build-deps and deps with the info from cmake.
+  * Tighten cross-plasma components dependencies.
+  * Add libkpipewire-dev as a build dependency
+  * Add qml-module-org-kde-pipewire as a runtime recommends. (Closes:
+    #1023174)
+  * Backport upstream commit to fix scayling issues with XWayland.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Thu, 03 Nov 2022 00:41:59 +0100
+
+plasma-workspace (4:5.26.0-2) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * Really fix the login screen issue.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Fri, 14 Oct 2022 15:01:15 +0200
+
+plasma-workspace (4:5.26.0-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.26.0).
+  * Update build-deps and deps with the info from cmake.
+  * Fix Debian-themed sddm login screen.
+  * Release to unstable.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Tue, 11 Oct 2022 15:44:24 +0200
+
+plasma-workspace (4:5.25.90-2) experimental; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * Tighten cross-plasma components dependencies.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Fri, 07 Oct 2022 11:47:07 +0200
+
+plasma-workspace (4:5.25.90-1) experimental; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.25.90).
+  * Update build-deps and deps with the info from cmake.
+  * Refresh patches.
+  * Drop patch upstream_c7ba560c_widgetexplorer-Dont-recurse-into-
+    applets-containments.patch, applied upstream.
+  * Update the list of installed files from build logs.
+  * Update symbols from build for 5.25.90.
+  * Refresh copyright information.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Sun, 25 Sep 2022 00:14:26 +0200
+
+plasma-workspace (4:5.25.5-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.25.5).
+  * Update build-deps and deps with the info from cmake.
+  * Drop patch upstream-e64c1372-
+    Fix_systemmonitor_preferences_being_reset.patch applied upstream.
+  * Backport upstream patch to fix some plasmashell crashes
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Fri, 09 Sep 2022 23:22:28 +0200
+
+plasma-workspace (4:5.25.4-3) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * Add missing Breaks/Replaces against plasma-desktop (<< 4:5.24.0~).
+    (Closes: #1017580)
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Thu, 18 Aug 2022 18:34:12 +0200
+
+plasma-workspace (4:5.25.4-2) unstable; urgency=medium
+
+  * Backport upstream commit to fix systemmonitor applet preferences
+    being reset.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Wed, 10 Aug 2022 07:58:04 +0200
+
+plasma-workspace (4:5.25.4-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.25.4).
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Tue, 02 Aug 2022 17:34:53 +0200
+
+plasma-workspace (4:5.25.3.1-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.25.2).
+  * Drop now unused build dependencies on libfreetype-dev,
+    libkf5kdelibs4support-dev, libkf5su-dev and qttools5-dev.
+  * Refresh lintian overrides.
+  * Add a Recommends on systemsettings used to invoke KCMs.
+  * Remove mentions of Plasma 4 from package description.
+  * Review copyright information.
+  * New upstream release (5.25.3.1).
+  * Release to unstable
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Sun, 17 Jul 2022 15:29:24 +0200
+
+plasma-workspace (4:5.25.1-1) experimental; urgency=medium
+
+  [ Patrick Franz ]
+  * New upstream release (5.25.1).
+  * Update build-deps and deps with the info from cmake.
+  * Tighten inter-Plasma dependencies.
+
+ -- Patrick Franz <deltaone@debian.org>  Tue, 21 Jun 2022 21:47:32 +0200
+
+plasma-workspace (4:5.25.0-1) experimental; urgency=medium
+
+  * New upstream release (5.25.0).
+  * Update build-deps and deps with the info from cmake.
+  * Tighten cross-plasma components dependencies.
+  * Bump Standards-Version to 4.6.1, no change required.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Tue, 14 Jun 2022 21:27:01 +0200
+
+plasma-workspace (4:5.24.90-2) experimental; urgency=medium
+
+  * Tighten build dependencies to >= 5.24.90~ for kscreenlocker-dev, kwin-dev,
+    libkf5screen-dev, libkf5sysguard-dev and liblayershellqtinterface-dev.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Tue, 31 May 2022 22:41:38 +0200
+
+plasma-workspace (4:5.24.90-1) experimental; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.24.90).
+  * Update symbols from build for 5.24.90.
+  * Add explicit build dependency to libicu-dev.
+  * Bump libkf5config-dev build-dependency to 5.94.0 to ensure we have
+    libkf5configqml available.
+  * Refresh patch adding Debian theme for SDDM.
+  * Drop patches applied upstream.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Fri, 20 May 2022 11:47:36 +0200
+
+plasma-workspace (4:5.24.5-2) unstable; urgency=medium
+
+  [ Patrick Franz ]
+  * Add patch to fix top-level menu text coloration.
+  * Add patch to find metadata in json format.
+
+ -- Patrick Franz <deltaone@debian.org>  Fri, 27 May 2022 12:14:54 +0200
+
+plasma-workspace (4:5.24.5-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.24.5).
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Thu, 12 May 2022 21:40:39 +0200
+
+plasma-workspace (4:5.24.4-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.24.4).
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Wed, 30 Mar 2022 14:08:17 +0200
+
+plasma-workspace (4:5.24.3-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.24.3).
+  * Added myself to the uploaders.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Thu, 10 Mar 2022 08:04:47 +0100
+
+plasma-workspace (4:5.24.2-2) unstable; urgency=medium
+
+  [ Pino Toscano ]
+  * Bump the plasma-desktop-data breaks/replaces of plasma-workspace-data to
+    4:5.24.0. (Closes: #1006538)
+
+ -- Patrick Franz <deltaone@debian.org>  Sun, 27 Feb 2022 12:41:51 +0100
+
+plasma-workspace (4:5.24.2-1) unstable; urgency=medium
+
+  [ Patrick Franz ]
+  * New upstream release (5.24.2).
+  * Re-export signing key without extra signatures.
+  * Update B-Ds and deps with the info from cmake.
+  * Remove autopkgtest.
+  * Update list of installed files.
+  * Update symbols from buildlogs.
+  * Update d/copyright.
+  * Add kde-mimeapps.list to plasma-workspace in order to set Okular and
+    Gwenview as default applications for documents and images (Closes:
+    #1005074).
+
+ -- Patrick Franz <deltaone@debian.org>  Sat, 26 Feb 2022 21:59:51 +0100
+
+plasma-workspace (4:5.23.5-1) unstable; urgency=medium
+
+  [ Patrick Franz ]
+  * New upstream release (5.23.5).
+  * Update B-Ds.
+
+ -- Patrick Franz <deltaone@debian.org>  Fri, 07 Jan 2022 18:19:12 +0100
+
+plasma-workspace (4:5.23.4-2) unstable; urgency=medium
+
+  [ Norbert Preining ]
+  * Cherry-pick upstream fix for crash on USB unmount.
+
+ -- Norbert Preining <norbert@preining.info>  Tue, 21 Dec 2021 09:45:32 +0900
+
+plasma-workspace (4:5.23.4-1) unstable; urgency=medium
+
+  [ Norbert Preining ]
+  * New upstream release (5.23.4).
+
+  [ Patrick Franz ]
+  * Update B-Ds.
+
+ -- Patrick Franz <deltaone@debian.org>  Thu, 02 Dec 2021 22:41:41 +0100
 
 plasma-workspace (4:5.23.3-1) unstable; urgency=medium
 

@@ -30,3 +30,13 @@ msgstr "Jean-Jacques Finazzi"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mrjay01@users.sourceforge.net"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Impossible d'utiliser le moteur multimédia <b>%1</b> : <br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Impossible de trouver un moteur multimédia"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Impossible de trouver le moteur multimédia demandé"

@@ -27,8 +27,8 @@ QString viewService()
 }
 }
 
-AppMenuApplet::AppMenuApplet(QObject *parent, const QVariantList &data)
-    : Plasma::Applet(parent, data)
+AppMenuApplet::AppMenuApplet(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : Plasma::Applet(parent, data, args)
 {
     ++s_refs;
     // if we're the first, register the service
@@ -67,16 +67,16 @@ void AppMenuApplet::init()
 {
 }
 
-AppMenuModel *AppMenuApplet::model() const
+QAbstractItemModel *AppMenuApplet::model() const
 {
     return m_model;
 }
 
-void AppMenuApplet::setModel(AppMenuModel *model)
+void AppMenuApplet::setModel(QAbstractItemModel *model)
 {
     if (m_model != model) {
         m_model = model;
-        emit modelChanged();
+        Q_EMIT modelChanged();
     }
 }
 
@@ -89,7 +89,7 @@ void AppMenuApplet::setView(int type)
 {
     if (m_viewType != type) {
         m_viewType = type;
-        emit viewChanged();
+        Q_EMIT viewChanged();
     }
 }
 
@@ -102,7 +102,7 @@ void AppMenuApplet::setCurrentIndex(int currentIndex)
 {
     if (m_currentIndex != currentIndex) {
         m_currentIndex = currentIndex;
-        emit currentIndexChanged();
+        Q_EMIT currentIndexChanged();
     }
 }
 
@@ -115,29 +115,21 @@ void AppMenuApplet::setButtonGrid(QQuickItem *buttonGrid)
 {
     if (m_buttonGrid != buttonGrid) {
         m_buttonGrid = buttonGrid;
-        emit buttonGridChanged();
+        Q_EMIT buttonGridChanged();
     }
 }
 
 QMenu *AppMenuApplet::createMenu(int idx) const
 {
     QMenu *menu = nullptr;
-    QAction *action = nullptr;
 
     if (view() == CompactView) {
-        menu = new QMenu();
-        for (int i = 0; i < m_model->rowCount(); i++) {
-            const QModelIndex index = m_model->index(i, 0);
-            const QVariant data = m_model->data(index, AppMenuModel::ActionRole);
-            action = (QAction *)data.value<void *>();
-            menu->addAction(action);
+        if (QAction *menuAction = m_model->data(QModelIndex(), AppMenuModel::ActionRole).value<QAction *>()) {
+            menu = menuAction->menu();
         }
-        menu->setAttribute(Qt::WA_DeleteOnClose);
     } else if (view() == FullView) {
         const QModelIndex index = m_model->index(idx, 0);
-        const QVariant data = m_model->data(index, AppMenuModel::ActionRole);
-        action = (QAction *)data.value<void *>();
-        if (action) {
+        if (QAction *action = m_model->data(index, AppMenuModel::ActionRole).value<QAction *>()) {
             menu = action->menu();
         }
     }
@@ -225,9 +217,7 @@ void AppMenuApplet::trigger(QQuickItem *ctx, int idx)
         // FIXME TODO connect only once
         connect(actionMenu, &QMenu::aboutToHide, this, &AppMenuApplet::onMenuAboutToHide, Qt::UniqueConnection);
     } else { // is it just an action without a menu?
-        const QVariant data = m_model->index(idx, 0).data(AppMenuModel::ActionRole);
-        QAction *action = static_cast<QAction *>(data.value<void *>());
-        if (action) {
+        if (QAction *action = m_model->index(idx, 0).data(AppMenuModel::ActionRole).value<QAction *>()) {
             Q_ASSERT(!action->menu());
             action->trigger();
         }
@@ -248,7 +238,7 @@ bool AppMenuApplet::eventFilter(QObject *watched, QEvent *event)
         // TODO right to left languages
         if (e->key() == Qt::Key_Left) {
             int desiredIndex = m_currentIndex - 1;
-            emit requestActivateIndex(desiredIndex);
+            Q_EMIT requestActivateIndex(desiredIndex);
             return true;
         } else if (e->key() == Qt::Key_Right) {
             if (menu->activeAction() && menu->activeAction()->menu()) {
@@ -256,7 +246,7 @@ bool AppMenuApplet::eventFilter(QObject *watched, QEvent *event)
             }
 
             int desiredIndex = m_currentIndex + 1;
-            emit requestActivateIndex(desiredIndex);
+            Q_EMIT requestActivateIndex(desiredIndex);
             return true;
         }
 
@@ -281,12 +271,13 @@ bool AppMenuApplet::eventFilter(QObject *watched, QEvent *event)
             return false;
         }
 
-        emit requestActivateIndex(buttonIndex);
+        Q_EMIT requestActivateIndex(buttonIndex);
     }
 
     return false;
 }
 
-K_PLUGIN_CLASS_WITH_JSON(AppMenuApplet, "metadata.json")
+K_PLUGIN_CLASS(AppMenuApplet)
 
 #include "appmenuapplet.moc"
+#include "moc_appmenuapplet.cpp"

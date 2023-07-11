@@ -23,9 +23,9 @@ KCM.SimpleKCM {
     Kirigami.Action {
         id: kscreenAction
         visible: KCMShell.authorize("kcm_kscreen.desktop").length > 0
-        text: i18n("Change Display Scaling…")
+        text: i18n("Adjust Global Scale…")
         iconName: "preferences-desktop-display"
-        onTriggered: KCMShell.open("kcm_kscreen.desktop")
+        onTriggered: KCMShell.open("kcm_kscreen")
     }
 
     ColumnLayout {
@@ -48,7 +48,7 @@ KCM.SimpleKCM {
             id: hugeFontsMessage
             Layout.fillWidth: true
             showCloseButton: true
-            text: i18n("Very large fonts may produce odd-looking results. Consider adjusting the global screen scale instead of using a very large font size.")
+            text: i18n("Very large fonts may produce odd-looking results. Instead of using a very large font size, consider adjusting the global screen scale.")
 
             Connections {
                 target: kcm
@@ -62,6 +62,29 @@ KCM.SimpleKCM {
             }
 
             actions: [ kscreenAction ]
+        }
+
+        Kirigami.InlineMessage {
+            id: fractionalFontSizeWarning
+            Layout.fillWidth: true
+            showCloseButton: true
+            type: Kirigami.MessageType.Warning
+            text: i18n("Decimal font sizes can cause text layout problems in some applications. Consider using only integer font sizes.")
+            // Specifically, it will trigger https://bugreports.qt.io/browse/QTBUG-92006,
+            // but we don't mention that in the message because that would be too technical
+            // for users.
+
+            Connections {
+                target: kcm
+                function onFontsHaveChanged() {
+                    fractionalFontSizeWarning.visible =
+                    !Number.isInteger(generalFontWidget.font.pointSize)
+                    || !Number.isInteger(fixedWidthFontWidget.font.pointSize)
+                    || !Number.isInteger(smallFontWidget.font.pointSize)
+                    || !Number.isInteger(toolbarFontWidget.font.pointSize)
+                    || !Number.isInteger(menuFontWidget.font.pointSize)
+                }
+            }
         }
 
         Kirigami.InlineMessage {
@@ -396,7 +419,7 @@ KCM.SimpleKCM {
                     }
                 }
                 KCM.ContextualHelpButton {
-                    toolTipText: xi18nc("@info:tooltip Force fonts DPI", "<para>This option forces a specific DPI value for fonts. It may be useful when the real DPI of the hardware is not detected properly and it is also often misused when poor quality fonts are used that do not look well with DPI values other than 96 or 120 DPI.</para><para>The use of this option is generally discouraged.</para><para>If you are using the <emphasis>X Window System</emphasis>, for selecting the proper DPI value a better option is explicitly configuring it for the whole X server if possible (e.g. DisplaySize in xorg.conf). When fonts do not render properly with the real DPI value better fonts should be used or configuration of font hinting should be checked.</para>")
+                    toolTipText: xi18nc("@info:tooltip Force fonts DPI", "<para>Enter your screen's DPI here to make on-screen fonts match their physical sizes when printed. Changing this option from its default value will conflict with many apps; some icons and images may not scale as expected.</para><para>To increase text size, change the size of the fonts above. To scale everything, use the scaling slider on the <interface>Display & Monitor</interface> page.</para>")
                 }
             }
 

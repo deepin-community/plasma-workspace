@@ -12,8 +12,9 @@
 #include <KLocalizedString>
 #include <KNotificationJobUiDelegate>
 #include <KShell>
-#include <KToolInvocation>
+#include <KTerminalLauncherJob>
 #include <QAction>
+#include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QStandardPaths>
 
@@ -28,7 +29,7 @@ ShellRunner::ShellRunner(QObject *parent, const KPluginMetaData &metaData, const
     // The results from the services runner are preferred, consequently we set a low priority
     setPriority(AbstractRunner::LowestPriority);
     // If the runner is not authorized we can suspend it
-    bool enabled = KAuthorized::authorize(QStringLiteral("run_command")) && KAuthorized::authorize(QStringLiteral("shell_access"));
+    bool enabled = KAuthorized::authorize(QStringLiteral("run_command")) && KAuthorized::authorize(KAuthorized::SHELL_ACCESS);
     suspendMatching(!enabled);
 
     addSyntax(Plasma::RunnerSyntax(QStringLiteral(":q:"), i18n("Finds commands that match :q:, using common shell syntax")));
@@ -62,7 +63,16 @@ void ShellRunner::run(const Plasma::RunnerContext &context, const Plasma::QueryM
 {
     if (match.selectedAction()) {
         const QVariantList data = match.data().toList();
-        KToolInvocation::invokeTerminal(data.at(0).toString(), data.at(1).toStringList());
+        const QStringList list = data.at(1).toStringList();
+        QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+        for (const auto &str : list) {
+            const int pos = str.indexOf('=');
+            env.insert(str.left(pos), str.mid(pos + 1));
+        }
+        auto job = new KTerminalLauncherJob(data.at(0).toString());
+        job->setProcessEnvironment(env);
+        job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled));
+        job->start();
         return;
     }
 

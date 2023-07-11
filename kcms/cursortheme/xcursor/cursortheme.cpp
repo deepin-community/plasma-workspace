@@ -9,7 +9,11 @@
 #include <QFile>
 #include <QImage>
 #include <QStyle>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 
 #include "cursortheme.h"
 
@@ -60,15 +64,6 @@ QImage CursorTheme::autoCropImage(const QImage &image) const
 
     // Normalize the rectangle
     return image.copy(r.normalized());
-}
-
-QPixmap CursorTheme::loadPixmap(const QString &name, int size) const
-{
-    QImage image = loadImage(name, size);
-    if (image.isNull())
-        return QPixmap();
-
-    return QPixmap::fromImage(image);
 }
 
 static int nominalCursorSize(int iconSize)

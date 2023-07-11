@@ -49,9 +49,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2021-04-17</date>
+>2022-05-05</date>
 <releaseinfo
->Plasma 5.20</releaseinfo>
+>Plasma 5.25</releaseinfo>
 
 <abstract>
 <para
@@ -160,14 +160,14 @@
 <para
 >Om du inte vill utföra någon åtgärd med klippbordets innehåll, välj <guimenuitem
 >Inaktivera den här rutan</guimenuitem
-> i menyn för att återgå till vad du höll på med tidigare. Om du lämnar menyn försvinner den, och låter dig fortsätta med ditt arbete. Du kan ändra tiden som menyn blir kvar i inställningsdialogrutan, med alternativet <guilabel
->Tidsgräns för poppuppåtgärder</guilabel
-> under fliken <guilabel
+> i den sammanhangsberoende menyn för att återgå till vad du höll på med tidigare. Om du lämnar menyn försvinner den, och låter dig fortsätta med ditt arbete. Du kan ändra tiden som menyn blir kvar i inställningsdialogrutan, med alternativet <guilabel
+>Visa sammanhangsberoende åtgärdsmeny</guilabel
+> på sidan <guilabel
 >Allmänt</guilabel
 >. Du kan inaktivera delen med filsökväg separat, genom att använda alternativet <guilabel
->Aktivera Mime-baserade åtgärder</guilabel
+>Inkludera MIME-åtgärder</guilabel
 > på sidan <guilabel
->Åtgärder</guilabel
+>Åtgärdsmeny</guilabel
 >.</para>
 
 <para
@@ -237,11 +237,11 @@
 > i &klipper;s sammanhangsberoende meny, och välj sidan <guilabel
 >Allmänt</guilabel
 > i dialogrutan som visas. Avmarkeras <guilabel
->Synkronisera klippbordets innehåll och markeringen</guilabel
+>Markering och klippbord</guilabel
 > gör klippbordet och markeringsfunktionen till helt skilda buffrar, som beskrivs ovan. Med alternativet valt, förhindrar alternativet <guilabel
->Ignorera markering</guilabel
+>Ignorera</guilabel
 > att &klipper; inkluderar markeringens innehåll i klippbordshistoriken och att åtgärder utförs på markeringens innehåll. Att välja <guilabel
->Synkronisera klippbordets innehåll och markeringen</guilabel
+>Markering och klippbord</guilabel
 > gör att klippbords- och markeringsbuffern alltid är likadana, vilket betyder att text i markeringen antingen kan klistras in med musens <mousebutton
 >mitten</mousebutton
 >knapp eller snabbtangenten <keycombo
@@ -275,99 +275,46 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 
 <variablelist>
 
-<varlistentry>
-<term
+<varlistentry
+><term
 ><guilabel
->Spara klippbordets innehåll vid avslut</guilabel
-></term
-> <listitem
-><para
->Om alternativet är på, sparas klippbordshistoriken när &klipper; avslutas, vilket låter dig använda den nästa gång &klipper; startas.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Förhindra tomt klippbord</guilabel
+>Markering och klippbord</guilabel
 ></term>
 <listitem
 ><para
->Om markerat, kommer klippbordet aldrig att vara tomt: &klipper; lägger till det senaste objektet från klippbordet i klippbordshistoriken istället för att låta den vara tom.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Ignorera bilder</guilabel
-></term>
-<listitem
-><para
->När ett område av skärmen väljes med musen eller tangentbordet, kallas det <quote
+>När ett område av skärmen markeras med musen eller tangentbordet, kallas det <quote
 >markeringen</quote
->. Om det här alternativet är valt, lagras bara textmarkeringar i historiken, medan bilder och andra markeringar inte lagras. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Ignorera markering</guilabel
-></term>
-<listitem
+>. Den kan klistras in med musens mittenknapp.</para
 ><para
->Ställer in klippbordets läge. Alternativet förhindrar &klipper; från att inkludera innehållet i markeringen i klippbordshistoriken och från att utföra åtgärder för innehållet i markeringen. Se <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Bara markerad text</guilabel
-></term>
-<listitem
+>Om markeringen explicit kopieras genom att använda åtgärden <guimenuitem
+>Kopera</guimenuitem
+> eller <guimenuitem
+>Klipp ut</guimenuitem
+>, sparas den på <emphasis
+>klippbordet</emphasis
+>. Den kan klistras in genom att använda åtgärden <guimenuitem
+>Klistra in</guimenuitem
+>.</para
 ><para
->När ett område av skärmen väljes med musen eller tangentbordet, kallas det <quote
->markeringen</quote
->. Om det här alternativet är valt, lagras bara textmarkeringar i historiken, medan bilder och andra markeringar inte lagras. Se <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Synkronisera klippbordets innehåll och markeringen</guilabel
-></term>
-<listitem
-><para
->Ställer in klippbordsläget. När ett område av skärmen väljes med musen eller tangentbordet, kallas det <quote
->markeringen</quote
->. Om alternativet är valt hålls markeringen och klippbordet likadana, så att allting i markeringen omedelbart är tillgängligt att klistra in någon annanstans, med vilken metod som helst, inklusive den traditionella med musens mittenknapp. Annars lagras markeringen i klippbordets historik, men markeringen kan bara klistras in med musens mittenknapp. Se också alternativet <guilabel
->Ignorera markering</guilabel
->. Se <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Tidsgräns för åtgärdsfönster</guilabel
-></term>
-<listitem
-><para
->Anger tiden som en meny förblir synlig om du inte gör något med den.</para
+>När alternativet är påslaget, gör det att markeringen och klippbordet är likadana, så att vilken markering som helst är omedelbart tillgänglig att klistra in på alla möjliga sätt. Om det är avstängt, kan markeringen ändå sparas i klippbordshistoriken (i enlighet med alternativen nedanför), men den kan bara klistras in genom att använda musens mittenknapp.</para
 ></listitem>
 </varlistentry>
 
 <varlistentry
 ><term
 ><guilabel
->Storlek på klippbordshistorik</guilabel
+>Klippbordshistorik</guilabel
+></term>
+<listitem
+><para
+>Visar eller döljer klippbordshistorik</para
+></listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Antal poster</guilabel
 ></term>
 <listitem
 ><para
@@ -375,15 +322,65 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 ></listitem>
 </varlistentry>
 
+<varlistentry>
+<term
+><guilabel
+>Textmarkering</guilabel
+></term>
+<listitem
+><para
+>När ett område på skärmen markeras med musen eller tangentbordet, kallas det <quote
+>markeringen</quote
+>. Alternativet bestämmer om textmarkeringar sparas i klippbordshistoriken. Det är möjligt att välja mellan <guilabel
+>Spara alltid i historik</guilabel
+> och <guilabel
+>Bara om explicit kopierad</guilabel
+>. Alternativet <guilabel
+>Spara alltid i historik</guilabel
+> är inte tillgängligt om synkronisering av markering och klippbord är avstängd: i detta fall sparas markeringen aldrig automatiskt i klippbordshistoriken. Se <xref linkend="clipboard-modes"/>. </para>
+</listitem>
+</varlistentry
+> 
+
+<varlistentry>
+<term
+><guilabel
+>Icke-text markering</guilabel
+></term>
+<listitem
+><para
+>Alternativet bestämmer om icke-textmarkeringar (såsom bilder) sparas i klippbordshistoriken Det är möjligt att välja mellan <guilabel
+>Spara alltid i historik</guilabel
+> och <guilabel
+>Bara om explicit kopierad</guilabel
+>. Alternativet <guilabel
+>Spara alltid i historik</guilabel
+> är inte tillgängligt om synkronisering av markering och klippbord är avstängd: i detta fall sparas markeringen aldrig automatiskt i klippbordshistoriken. Se <xref linkend="clipboard-modes"/>. </para>
+</listitem>
+</varlistentry
+> 
+
 </variablelist>
 
 </sect1>
 
-<sect1 id="actions-page">
+<sect1 id="action-menu-page">
 <title
->Alternativ för åtgärder</title>
+>Åtgärdsmeny</title>
 
 <variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Visa sammanhangsberoende åtgärdsmeny</guilabel
+></term>
+<listitem
+><para
+>Anger tiden som en meny förblir synlig om du inte gör något med den.</para
+></listitem>
+</varlistentry>
+
 <varlistentry>
 <term
 ><guilabel
@@ -392,6 +389,48 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 <listitem
 ><para
 >Om det här är aktiverat, kommer &klipper; att visa åtgärdsmenyn när man väljer något i historiken, om det är möjligt.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guibutton
+>Undanta fönster</guibutton
+></term>
+<listitem
+><para
+>Visar dialogrutan <guilabel
+>Stäng av åtgärder för fönster av typ WM_CLASS</guilabel
+></para>
+<para
+>Vissa program, som &konqueror;, använder klippbordet internt. Om du får oönskade &klipper;-menyer hela tiden när du använder ett särskilt program, gör då följande:</para>
+
+<orderedlist>
+<listitem
+><para
+>Öppna programmet.</para
+></listitem>
+<listitem
+><para
+>Kör <userinput
+><command
+>xprop</command
+> | <command
+>grep</command
+> <parameter
+>WM_CLASS</parameter
+></userinput
+> från en terminal, och klicka sedan på fönstret för programmet som du använder.</para
+></listitem
+> 
+<listitem
+><para
+>Den första strängen efter likhetstecknet är den som ska skrivas in.</para
+></listitem>
+</orderedlist>
+
+<para
+>När väl WM_CLASS har lagts till, kommer inga fler åtgärder skapas för fönster i det här programmet.</para>
 </listitem>
 </varlistentry>
 
@@ -409,14 +448,21 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 <varlistentry>
 <term
 ><guilabel
->Aktivera Mime-baserade åtgärder</guilabel
+>Inkludera MIME-åtgärder</guilabel
 ></term>
 <listitem
 ><para
->Om markerad visas en lista med program för den detekterade Mime-typen i den sammanhangsberoende menyn, förutom de definierade åtgärderna.</para>
+>Om markerad, inkluderas program som kan hantera dess &MIME;-typ för ett filnamn eller en webbadress markerat i åtgärdsrutan.</para>
 </listitem>
 </varlistentry>
+</variablelist>
+</sect1>
 
+<sect1 id="actions-configuration-page">
+<title
+>Inställning av åtgärder</title>
+
+<variablelist>
 <varlistentry>
 <term
 >Redigera uttryck/åtgärder</term>
@@ -485,49 +531,18 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 >%s</token
 > oförändrat på kommandoraden, skriv in ett bakstreck framför, så här: <userinput
 >\%s</userinput
->.</para
-></listitem>
-</varlistentry>
+>.</para>
 
-<varlistentry
-><term
-><guibutton
->Avancerat</guibutton
-></term>
-<listitem
-><para
->Visar dialogrutan <guilabel
->Stäng av åtgärder för fönster av typ WM_CLASS</guilabel
-></para>
 <para
->Vissa program, som &konqueror;, använder klippbordet internt. Om du får oönskade &klipper;-menyer hela tiden när du använder ett särskilt program, gör då följande:</para>
-
-<orderedlist>
-<listitem
-><para
->Öppna programmet.</para
-></listitem>
-<listitem
-><para
->Kör <userinput
-><command
->xprop</command
-> | <command
->grep</command
-> <parameter
->WM_CLASS</parameter
+>Posterna <userinput
+><token
+>%0</token
 ></userinput
-> från en terminal, och klicka sedan på fönstret för programmet som du använder.</para
-></listitem
-> 
-<listitem
-><para
->Den första strängen efter likhetstecknet är den som ska skrivas in.</para
-></listitem>
-</orderedlist>
-
-<para
->När väl WM_CLASS har lagts till, kommer inga fler åtgärder skapas för fönster i det här programmet.</para>
+> till <userinput
+><token
+>%9</token
+></userinput
+> ersätts med motsvarande lagrade texter från matchningsmönstret. </para>
 </listitem>
 </varlistentry>
 </variablelist>

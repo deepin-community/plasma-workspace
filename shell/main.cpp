@@ -17,9 +17,9 @@
 #include <QQmlDebuggingEnabler>
 #include <QQuickWindow>
 #include <QSessionManager>
+#include <QSurfaceFormat>
 
 #include <KAboutData>
-#include <KQuickAddons/QtQuickSettings>
 
 #ifdef WITH_KUSERFEEDBACKCORE
 #include "userfeedback.h"
@@ -31,6 +31,7 @@
 #include <kworkspace.h>
 
 #include "coronatesthelper.h"
+#include "debug.h"
 #include "shellcorona.h"
 #include "softwarerendernotifier.h"
 #include "standaloneappcorona.h"
@@ -38,26 +39,18 @@
 #include <QDBusConnectionInterface>
 #include <QDir>
 
-static QLoggingCategory::CategoryFilter oldCategoryFilter;
-
-// Qt 5.15 introduces a new syntax for connections
-// framework code can't port away due to needing Qt5.12
-// this filters out the warnings
-// Remove this once we depend on Qt5.15 in frameworks
-void filterConnectionSyntaxWarning(QLoggingCategory *category)
-{
-    if (qstrcmp(category->categoryName(), "qt.qml.connections") == 0) {
-        category->setEnabled(QtWarningMsg, false);
-    } else if (oldCategoryFilter) {
-        oldCategoryFilter(category);
-    }
-}
-
 int main(int argc, char *argv[])
 {
+#if QT_CONFIG(qml_debug)
     if (qEnvironmentVariableIsSet("PLASMA_ENABLE_QML_DEBUG")) {
         QQmlDebuggingEnabler debugger;
     }
+#endif
+
+    auto format = QSurfaceFormat::defaultFormat();
+    format.setOption(QSurfaceFormat::ResetNotification);
+    QSurfaceFormat::setDefaultFormat(format);
+
     // Plasma scales itself to font DPI
     // on X, where we don't have compositor scaling, this generally works fine.
     // also there are bugs on older Qt, especially when it comes to fractional scaling
@@ -72,11 +65,11 @@ int main(int argc, char *argv[])
     } else {
         QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     }
+    QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
 
     QQuickWindow::setDefaultAlphaBuffer(true);
 
-    oldCategoryFilter = QLoggingCategory::installFilter(filterConnectionSyntaxWarning);
-
+    qputenv("QT_WAYLAND_DISABLE_FIXED_POSITIONS", {});
     const bool qpaVariable = qEnvironmentVariableIsSet("QT_QPA_PLATFORM");
     KWorkSpace::detectPlatform(argc, argv);
     QApplication app(argc, argv);
@@ -84,13 +77,13 @@ int main(int argc, char *argv[])
         // don't leak the env variable to processes we start
         qunsetenv("QT_QPA_PLATFORM");
     }
+    qunsetenv("QT_WAYLAND_DISABLE_FIXED_POSITIONS");
+
     KLocalizedString::setApplicationDomain("plasmashell");
 
     // The executable's path is added to the library/plugin paths.
     // This does not make much sense for plasmashell.
     app.removeLibraryPath(QCoreApplication::applicationDirPath());
-
-    KQuickAddons::QtQuickSettings::init();
 
     KAboutData aboutData(QStringLiteral("plasmashell"), i18n("Plasma"), QStringLiteral(PROJECT_VERSION), i18n("Plasma Shell"), KAboutLicense::GPL);
 
@@ -141,7 +134,11 @@ int main(int argc, char *argv[])
         cliOptions.process(app);
         aboutData.processCommandLine(&cliOptions);
 
+        // don't let the first KJob terminate us
+        QCoreApplication::setQuitLockEnabled(false);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         QGuiApplication::setFallbackSessionManagementEnabled(false);
+#endif
 
         auto disableSessionManagement = [](QSessionManager &sm) {
             sm.setRestartHint(QSessionManager::RestartNever);
@@ -173,7 +170,7 @@ int main(int argc, char *argv[])
         if (cliOptions.isSet(testOption)) {
             const QUrl layoutUrl = QUrl::fromUserInput(cliOptions.value(testOption), {}, QUrl::AssumeLocalFile);
             if (!layoutUrl.isLocalFile()) {
-                qWarning() << "ensure the layout file is local" << layoutUrl;
+                qCWarning(PLASMASHELL) << "ensure the layout file is local" << layoutUrl;
                 cliOptions.showHelp(1);
             }
 

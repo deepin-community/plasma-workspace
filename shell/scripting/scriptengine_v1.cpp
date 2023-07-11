@@ -5,6 +5,7 @@
 */
 
 #include "scriptengine_v1.h"
+#include "debug.h"
 
 #include <QDir>
 #include <QDirIterator>
@@ -17,11 +18,10 @@
 #include <KApplicationTrader>
 #include <QDebug>
 #include <klocalizedstring.h>
-#include <kservicetypetrader.h>
 #include <kshell.h>
 
 // KIO
-//#include <kemailsettings.h> // no camelcase include
+// #include <kemailsettings.h> // no camelcase include
 
 #include <KPackage/Package>
 #include <KPackage/PackageLoader>
@@ -188,10 +188,13 @@ QJSValue ScriptEngine::V1::desktopForScreen(const QJSValue &param) const
     }
 
     const uint screen = param.toInt();
-    const auto containments = m_engine->m_corona->containmentsForScreen(screen);
-    return m_engine->wrap(containments.empty() ? nullptr : containments[0]);
+    // "null": don't create a containment if it doesn't exist,
+    //         return nullptr instead.
+    const auto containment = m_engine->m_corona->containmentForScreen(screen, currentActivity(), QStringLiteral("null"));
+    return m_engine->wrap(containment);
 }
 
+// TODO Plasma6: remove this
 QJSValue ScriptEngine::V1::screenForConnector(const QJSValue &param) const
 {
     // this needs to work also for string of numerals, like "20"
@@ -202,7 +205,7 @@ QJSValue ScriptEngine::V1::screenForConnector(const QJSValue &param) const
     const QString connector = param.toString();
     ShellCorona *sc = qobject_cast<ShellCorona *>(m_engine->m_corona);
     if (sc) {
-        return m_engine->toScriptValue<int>(sc->screenPool()->id(connector));
+        return m_engine->toScriptValue<int>(sc->screenPool()->idForName(connector));
     }
     return m_engine->toScriptValue<int>(-1);
 }
@@ -505,8 +508,7 @@ bool ScriptEngine::V1::loadTemplate(const QString &layout)
     }
 
     auto filter = [&layout](const KPluginMetaData &md) -> bool {
-        return md.pluginId() == layout
-            && KPluginMetaData::readStringList(md.rawData(), QStringLiteral("X-Plasma-ContainmentCategories")).contains(QLatin1String("panel"));
+        return md.pluginId() == layout && md.value(QStringLiteral("X-Plasma-ContainmentCategories"), QStringList()).contains(QLatin1String("panel"));
     };
     QList<KPluginMetaData> offers = KPackage::PackageLoader::self()->findPackages(QStringLiteral("Plasma/LayoutTemplate"), QString(), filter);
 
@@ -557,7 +559,7 @@ bool ScriptEngine::V1::loadTemplate(const QString &layout)
 
     QFile file(scriptFile);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qWarning() << i18n("Unable to load script file: %1", path);
+        qCWarning(PLASMASHELL) << "Unable to load script file:" << path;
         return false;
     }
 
@@ -598,16 +600,10 @@ bool ScriptEngine::V1::applicationExists(const QString &application) const
     }
 
     // next, consult ksycoca for an app by that name
-    if (!KServiceTypeTrader::self()->query(QStringLiteral("Application"), QStringLiteral("Name =~ '%1'").arg(application)).isEmpty()) {
-        return true;
-    }
-
-    // next, consult ksycoca for an app by that generic name
-    if (!KServiceTypeTrader::self()->query(QStringLiteral("Application"), QStringLiteral("GenericName =~ '%1'").arg(application)).isEmpty()) {
-        return true;
-    }
-
-    return false;
+    const auto servciesByName = KApplicationTrader::query([&application](const KService::Ptr &service) {
+        return service->name().compare(application, Qt::CaseInsensitive) == 0 || service->genericName().compare(application, Qt::CaseInsensitive) == 0;
+    });
+    return !servciesByName.isEmpty();
 }
 
 QJSValue ScriptEngine::V1::defaultApplication(const QString &application, bool storageId) const
@@ -676,31 +672,6 @@ QJSValue ScriptEngine::V1::defaultApplication(const QString &application, bool s
 
     } else if (KService::Ptr service = KApplicationTrader::preferredService(application)) {
         return storageId ? service->storageId() : onlyExec(service->exec());
-
-    } else {
-        // try the files in share/apps/kcm_componentchooser/
-        const QStringList services = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("kcm_componentchooser/"));
-        qDebug() << "ok, trying in" << services;
-        foreach (const QString &service, services) {
-            if (!service.endsWith(QLatin1String(".desktop"))) {
-                continue;
-            }
-            KConfig config(service, KConfig::SimpleConfig);
-            KConfigGroup cg = config.group(QByteArray());
-            const QString type = cg.readEntry("valueName", QString());
-            // qDebug() << "    checking" << service << type << application;
-            if (matches(type, application)) {
-                KConfig store(cg.readPathEntry("storeInFile", QStringLiteral("null")));
-                KConfigGroup storeCg(&store, cg.readEntry("valueSection", QString()));
-                const QString exec =
-                    storeCg.readPathEntry(cg.readEntry("valueName", "kcm_componenchooser_null"), cg.readEntry("defaultImplementation", QString()));
-                if (!exec.isEmpty()) {
-                    return exec;
-                }
-
-                break;
-            }
-        }
     }
 
     return false;
@@ -728,11 +699,9 @@ QJSValue ScriptEngine::V1::applicationPath(const QString &application) const
     }
 
     // next, consult ksycoca for an app by that name
-    KService::List offers = KServiceTypeTrader::self()->query(QStringLiteral("Application"), QStringLiteral("Name =~ '%1'").arg(application));
-    if (offers.isEmpty()) {
-        // next, consult ksycoca for an app by that generic name
-        offers = KServiceTypeTrader::self()->query(QStringLiteral("Application"), QStringLiteral("GenericName =~ '%1'").arg(application));
-    }
+    const auto offers = KApplicationTrader::query([&application](const KService::Ptr &service) {
+        return service->name().compare(application, Qt::CaseInsensitive) == 0 || service->genericName().compare(application, Qt::CaseInsensitive) == 0;
+    });
 
     if (!offers.isEmpty()) {
         KService::Ptr offer = offers.first();

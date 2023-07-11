@@ -29,7 +29,15 @@ class QMenu;
 class QMimeData;
 class HistoryItem;
 class KNotification;
-class SystemClipboard;
+class KSystemClipboard;
+
+namespace KWayland
+{
+namespace Client
+{
+class PlasmaShell;
+}
+}
 
 enum class KlipperMode {
     Standalone,
@@ -65,6 +73,8 @@ public:
     Klipper(QObject *parent, const KSharedConfigPtr &config, KlipperMode mode = KlipperMode::Standalone);
     ~Klipper() override;
 
+    bool eventFilter(QObject *object, QEvent *event) override;
+
     /**
      * Get clipboard history (the "document")
      */
@@ -79,6 +89,11 @@ public:
     }
 
     void saveSettings() const;
+
+    QMenu *actionsPopup() const
+    {
+        return m_actionsPopup;
+    }
 
     KlipperPopup *popup()
     {
@@ -131,7 +146,7 @@ protected:
     /**
      * Enter clipboard data in the history.
      */
-    QSharedPointer<HistoryItem> applyClipChanges(const QMimeData *data);
+    QSharedPointer<HistoryItem> applyClipChanges(const QMimeData *data, bool selectionMode);
 
     void setClipboard(const HistoryItem &item, int mode, ClipboardUpdateReason updateReason = ClipboardUpdateReason::UpdateClipboard);
     bool ignoreClipboardChanges() const;
@@ -148,10 +163,11 @@ Q_SIGNALS:
 public Q_SLOTS:
     void slotPopupMenu();
     void slotAskClearHistory();
+    void setURLGrabberEnabled(bool);
+
 protected Q_SLOTS:
     void showPopupMenu(QMenu *);
     void slotRepeatAction();
-    void setURLGrabberEnabled(bool);
     void disableURLGrabber();
 
 private Q_SLOTS:
@@ -171,7 +187,7 @@ private Q_SLOTS:
 private:
     static void updateTimestamp();
 
-    SystemClipboard *m_clip;
+    KSystemClipboard *m_clip;
 
     QElapsedTimer m_showTimer;
 
@@ -206,7 +222,8 @@ private:
      * Don't manupulate this object directly... use the Ignore struct
      * instead
      */
-    int m_locklevel;
+    int m_selectionLocklevel;
+    int m_clipboardLocklevel;
 
     URLGrabber *m_myURLGrabber;
     QString m_lastURLGrabberTextSelection;
@@ -219,7 +236,9 @@ private:
     bool blockFetchingNewData();
     QString cycleText() const;
     KActionCollection *m_collection;
+    QMenu *m_actionsPopup;
     KlipperMode m_mode;
-    QTimer *m_saveFileTimer = nullptr;
+    QTimer *m_saveFileTimer;
     QPointer<KNotification> m_notification;
+    KWayland::Client::PlasmaShell *m_plasmashell;
 };

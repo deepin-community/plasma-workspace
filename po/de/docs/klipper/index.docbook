@@ -63,9 +63,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2020-04-03</date>
+>2021-04-17</date>
 <releaseinfo
->Plasma 5.19</releaseinfo>
+>Plasma 5.20</releaseinfo>
 
 <abstract>
 <para
@@ -142,55 +142,17 @@
 </screenshot>
 
 <para
->Hover an entry with the mouse pointer and four icons appear which enable you to invoke an action, show the barcode, edit the content or remove the entry from the history. Use &ksnapshot; to capture the barcodes and save them. </para>
+>Führen Sie den Mauszeiger über einen Eintrag, werden vier Symbole angezeigt. Mit Klicken auf diese Symbole können Sie eine Aktion aufrufen,den Barcode des Eintrags anzeigen, den Inhalt bearbeiten oder den Eintrag aus dem Verlauf entfernen. Mit &spectacle; können Sie Barcodes aufnehmen oder speichern. </para>
 
 <para
 >Sie können den Verlauf des Zwischenspeichers durchsuchen, indem Sie diesen Anzeigen (durch einen Mausklick auf &klipper;) und Ihren Suchbegriff eingeben. Die Ergebnisse werden noch während der Eingabe angezeigt. Um den den Zwischenspeicher-Verlauf zu leeren, klicken Sie auf das Symbol rechts neben dem Suchfeld. </para>
 
 <para
->The <guilabel
->Configure</guilabel
-> action in the context menu opens the <link linkend="preferences"
->settings dialog</link
+>Mit der Aktion <guilabel
+>Zwischenablage einrichten</guilabel
+> im Kontextmenü öffnen Sie den <link linkend="preferences"
+>Einrichtungsdialog</link
 >. </para>
-
-<para
->To disable the &klipper; widget, deselect it in the <guilabel
->General</guilabel
-> page of the <guilabel
->System Tray Settings</guilabel
-> (<keycombo action="simul"
->&Alt;<keycap
->D</keycap
-></keycombo
->, <keycap
->S</keycap
->).</para>
-
-</sect2>
-
-<sect2 id="klipper-application">
-<title
->&klipper; Application</title>
-<screenshot>
-<screeninfo
->The &klipper; Application.</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="klipper-application.png" format="PNG"/>
-</imageobject>
-<textobject>
-<phrase
->The &klipper; Application</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
-
-<para
->At the top of the available menu actions previous clipboard entries are shown. Selecting one of these copies it to the clipboard, from where it can be pasted into any &kde; or X application as usual.</para>
-
-<para
->You can search through the clipboard history by typing your query in the search field at the top. The results are updated as you type. </para>
 
 </sect2>
 </sect1>
@@ -278,58 +240,29 @@
 > in einem Kontextmenü auswählen.</para>
 </note>
 
-<!-- &klipper; can be used to set the clipboard mode for the whole of &kde;. The
-first mode will be familiar to &Microsoft; &Windows; and &Mac; users: Text is
-inserted into the clipboard using an application's cut/copy (or generally
-<keycombo
->&Ctrl;<keycap
->X</keycap
-></keycombo
-> and
-<keycombo
->&Ctrl;<keycap
->C</keycap
-></keycombo
-> respectively)
-function, and the application's paste (or generally 
-<keycombo
->&Ctrl;<keycap
->V</keycap
-></keycombo
->) function pastes the
-contents of this clipboard.
-</para>
-<para>
-The second mode will be more familiar to longtime &UNIX; users: Selected text
-is copied to this clipboard, and clicking the <mousebutton
->middle</mousebutton
-> 
-mouse button pastes the
-contents of this clipboard.
--->
 </sect2>
 
 <sect2 id="changing-clipboard-modes">
 <title
 >Verhalten der Zwischenablage und von Markierungen ändern</title>
 <para
->In order to change clipboard/selection behavior, select <guimenuitem
->Configure &klipper;...</guimenuitem
-> from the &klipper; context menu, and in the dialog box that appears, select the <guilabel
->General</guilabel
-> page. Unchecking <guilabel
->Synchronize contents of the clipboard and the selection</guilabel
-> makes the clipboard and selection function as completely separate buffers as described above. With this option set, the option <guilabel
->Ignore selection</guilabel
-> will prevent &klipper; from including the contents of the selection in its clipboard history and from performing actions on the contents of the selection. Selecting <guilabel
->Synchronize contents of the clipboard and the selection</guilabel
-> causes the clipboard and selection buffers to always be the same, meaning that text in the selection can be pasted with either the <mousebutton
->middle</mousebutton
-> mouse button or the key combination <keycombo
+>Um das Verhalten der Zwischenablage und der Auswahl zu ändern, wählen Sie <guimenuitem
+>Zwischenablage einrichten ...</guimenuitem
+> im Kontextmenü und dann in dem aufgerufenen Dialog die Seite <guilabel
+>Allgemein</guilabel
+>. Durch Markieren von <guilabel
+>Inhalt von Zwischenablage und aktueller Auswahl getrennt vorhalten</guilabel
+> erreichen Sie, dass beide Puffer unabhängig voneinander sind, so wie es bereits beschreiben wurde. Ist gleichzeitig die Option <guilabel
+>Auswahl ignorieren</guilabel
+> markiert, wird markierter Text nicht in den Verlauf der Zwischenablage kopiert und es werden keine Aktionen mit dem betreffenden Text ausgeführt. Durch Markieren von <guilabel
+>Inhalt von Zwischenablage und aktueller Auswahl angleichen</guilabel
+> erreichen Sie, dass beide Puffer den gleichen Inhalt haben. Das bedeutet, ausgewählter Text kann entweder über die <mousebutton
+>mittlere</mousebutton
+> Maustaste oder die Tastenkombination <keycombo
 >&Ctrl;<keycap
 >V</keycap
-> </keycombo
->, and similarly for text in the clipboard buffer. </para>
+></keycombo
+> eingefügt werden. Dasselbe gilt für den Text in der Zwischenablage. </para>
 
  <!-- The
 <guilabel

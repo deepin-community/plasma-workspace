@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_weather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
 "PO-Revision-Date: 2009-12-12 20:54+0100\n"
 "Last-Translator: Mark Kwidzińśczi <mark@linuxcsb.org>\n"
 "Language-Team: Kaszëbsczi <i18n-csb@linuxcsb.org>\n"
@@ -2738,82 +2738,95 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr ""
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "UK"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "USA"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr ""
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, fuzzy, kde-format
 #| msgid "Night"
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "Noc"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, fuzzy, kde-format
 #| msgid "Sat"
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "Sob"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, fuzzy, kde-format
 #| msgid "Sun"
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "Nie"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, fuzzy, kde-format
 #| msgid "Mon"
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "Pòn"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, fuzzy, kde-format
 #| msgid "Tue"
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "Wtó"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, fuzzy, kde-format
 #| msgid "Wed"
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "Str"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, fuzzy, kde-format
 #| msgid "Thu"
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "Czw"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, fuzzy, kde-format
 #| msgid "Fri"
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "Pią"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
+msgstr ""
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
 msgstr ""
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
@@ -4952,3 +4965,218 @@ msgstr ""
 msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr ""
+
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "stón wiodra"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "No"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNE"
+#~ msgstr "NoNoPò"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "NoPò"
+
+#~ msgctxt "wind direction"
+#~ msgid "ENE"
+#~ msgstr "PòNoPò"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "Pò"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSE"
+#~ msgstr "PôPôPò"
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "PôPò"
+
+#~ msgctxt "wind direction"
+#~ msgid "ESE"
+#~ msgstr "PòPôPò"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "Pô"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNW"
+#~ msgstr "NoNoZô"
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "NoZô"
+
+#~ msgctxt "wind direction"
+#~ msgid "WNW"
+#~ msgstr "ZôNoZô"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "Zô"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSW"
+#~ msgstr "PôPôZô"
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "PôZô"
+
+#~ msgctxt "wind direction"
+#~ msgid "WSW"
+#~ msgstr "ZôPôZô"
+
+#~ msgctxt "wind direction"
+#~ msgid "VR"
+#~ msgstr "nie dô sã òpisac"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "roscąco"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "malijąco"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "bez zmianë"
+
+#~ msgctxt "wind speed"
+#~ msgid "Calm"
+#~ msgstr "Spòkójno"
+
+#~ msgid "N"
+#~ msgstr "No"
+
+#~ msgid "NNE"
+#~ msgstr "NoNoPò"
+
+#~ msgid "NE"
+#~ msgstr "NoPò"
+
+#~ msgid "ENE"
+#~ msgstr "PòNoPò"
+
+#~ msgid "E"
+#~ msgstr "Pò"
+
+#~ msgid "SSE"
+#~ msgstr "PôPôPò"
+
+#~ msgid "SE"
+#~ msgstr "PôPò"
+
+#~ msgid "ESE"
+#~ msgstr "PòPôPò"
+
+#~ msgid "S"
+#~ msgstr "Pô"
+
+#~ msgid "NNW"
+#~ msgstr "NoNoZô"
+
+#~ msgid "NW"
+#~ msgstr "NoZô"
+
+#~ msgid "WNW"
+#~ msgstr "ZôNoZô"
+
+#~ msgid "W"
+#~ msgstr "Zô"
+
+#~ msgid "SSW"
+#~ msgstr "PôPôZô"
+
+#~ msgid "SW"
+#~ msgstr "PôZô"
+
+#~ msgid "WSW"
+#~ msgstr "ZôPôZô"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "Wiodrowé pòdôwczi pòdóné przez Environment Canada"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr ""
+#~ "Wspiéróné przez backstage.bbc.co.uk / Pòdôwczi z wiodrowégò biura UK MET"
+
+#~ msgctxt "Degree, unit symbol"
+#~ msgid "°"
+#~ msgstr "°"
+
+#~ msgctxt "Celsius, temperature unit"
+#~ msgid "°C"
+#~ msgstr "°C"
+
+#~ msgctxt "Fahrenheit, temperature unit"
+#~ msgid "°F"
+#~ msgstr "°F"
+
+#~ msgctxt "Kelvin, temperature unit"
+#~ msgid "K"
+#~ msgstr "K"
+
+#~ msgctxt "kilometers per hour, windspeed unit"
+#~ msgid "km/h"
+#~ msgstr "km/h"
+
+#~ msgctxt "meters per second, windspeed unit"
+#~ msgid "m/s"
+#~ msgstr "m/s"
+
+#~ msgctxt "miles per hour, windspeed unit"
+#~ msgid "mph"
+#~ msgstr "mph"
+
+#~ msgctxt "knots, wind speed unit"
+#~ msgid "kt"
+#~ msgstr "kt"
+
+#~ msgctxt "beaufort, wind speed unit"
+#~ msgid "Bft"
+#~ msgstr "Bft"
+
+#~ msgctxt "kilometers, distance unit"
+#~ msgid "km"
+#~ msgstr "km"
+
+#~ msgctxt "miles, distance unit"
+#~ msgid "mi"
+#~ msgstr "mi"
+
+#~ msgctxt "centimeters, length unit"
+#~ msgid "cm"
+#~ msgstr "cm"
+
+#~ msgctxt "millimeters, length unit"
+#~ msgid "mm"
+#~ msgstr "mm"
+
+#~ msgctxt "inches, length unit"
+#~ msgid "in"
+#~ msgstr "in"
+
+#~ msgctxt "kilopascals, airpressure unit"
+#~ msgid "kPa"
+#~ msgstr "kPa"
+
+#~ msgctxt "inches hg, airpressure unit"
+#~ msgid "inHg"
+#~ msgstr "inHg"
+
+#~ msgctxt "millibars, airpressure unit"
+#~ msgid "mbar"
+#~ msgstr "mbar"
+
+#~ msgctxt "hectopascals, airpressure unit"
+#~ msgid "hPa"
+#~ msgstr "hPa"

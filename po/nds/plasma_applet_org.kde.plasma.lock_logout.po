@@ -122,3 +122,30 @@ msgstr "Slapen (in't RAM)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Infreren (op Fastplaat)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Wullt Du den Reekner infreren (op de Fastplaat)?"
+
+#~ msgid "Yes"
+#~ msgstr "Jo"
+
+#~ msgid "No"
+#~ msgstr "Nee"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Wullt Du den Reekner inslapen laten (in't RAM)?"
+
+#~ msgid "Leave"
+#~ msgstr "Verlaten"
+
+#~ msgid "Leave..."
+#~ msgstr "Weggahn..."
+
+#~ msgid "Suspend"
+#~ msgstr "Utsetten"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Afsluten/Afmellen instellen"
+
+#~ msgid "SystemTray Settings"
+#~ msgstr "Systeemafsnitt instellen"

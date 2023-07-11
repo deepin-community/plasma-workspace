@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2017, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2017, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.plasma.appmenu\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-05-26 08:58+0300\n"
+"POT-Creation-Date: 2022-09-22 00:47+0000\n"
+"PO-Revision-Date: 2022-07-26 09:41+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -35,12 +35,38 @@ msgstr "Використовувати одну кнопку для меню п�
 msgid "Show full application menu"
 msgstr "Показувати меню програми повністю"
 
-#: plugin/appmenumodel.cpp:85
+#: package/contents/ui/MenuDelegate.qml:62
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Open a menu"
+msgstr "Відкрити меню"
+
+#: plugin/appmenumodel.cpp:84
 #, kde-format
 msgid "Search"
 msgstr "Пошук"
 
-#: plugin/appmenumodel.cpp:92
+#: plugin/appmenumodel.cpp:91
 #, kde-format
 msgid "Search…"
 msgstr "Шукати…"
+
+#~ msgid "Search..."
+#~ msgstr "Шукати…"
+
+#~ msgid "application-menu"
+#~ msgstr "application-menu"
+
+#~ msgid "Application Menu Widget is disabled"
+#~ msgstr "Віджет меню програми вимкнено"
+
+#~ msgctxt "it being the 'Application Menu Widget'"
+#~ msgid ""
+#~ "Go to System Settings > Application Style > Fine Tuning (tab) to enable "
+#~ "it."
+#~ msgstr ""
+#~ "Перейдіть на вкладку Системні параметри > Стиль програм > Точне "
+#~ "налаштування, щоб його увімкнути."
+
+#~ msgid "emblem-warning"
+#~ msgstr "emblem-warning"

@@ -8,7 +8,6 @@
 #include <stdlib.h>
 
 #include <KAboutData>
-#include <KConfigDialogManager>
 #include <KDBusService>
 #include <KLocalizedString>
 
@@ -27,7 +26,7 @@ int main(int argc, char *argv[])
     KAboutData aboutData(QStringLiteral("klipper"),
                          i18n("Klipper"),
                          QStringLiteral(KLIPPER_VERSION_STRING),
-                         i18n("KDE cut & paste history utility"),
+                         i18n("Plasma cut & paste history utility"),
                          KAboutLicense::GPL,
                          i18n("(c) 1998, Andrew Stanley-Jones\n"
                               "1998-2002, Carsten Pfeiffer\n"
@@ -48,7 +47,9 @@ int main(int argc, char *argv[])
 
     KAboutData::setApplicationData(aboutData);
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QGuiApplication::setFallbackSessionManagementEnabled(false);
+#endif
 
     auto disableSessionManagement = [](QSessionManager &sm) {
         sm.setRestartHint(QSessionManager::RestartNever);
@@ -63,9 +64,6 @@ int main(int argc, char *argv[])
     aboutData.processCommandLine(&parser);
 
     KDBusService service(KDBusService::Unique);
-
-    // make KConfigDialog "know" when our actions page is changed
-    KConfigDialogManager::changedMap()->insert(QStringLiteral("ActionsTreeWidget"), SIGNAL(changed()));
 
     KlipperTray klipper;
     return app.exec();

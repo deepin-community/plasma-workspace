@@ -16,7 +16,6 @@
 #include <KQuickAddons/ManagedConfigModule>
 
 #include <QCache>
-#include <QScopedPointer>
 
 class KIconTheme;
 class IconsSettings;
@@ -42,7 +41,7 @@ class IconModule : public KQuickAddons::ManagedConfigModule
     Q_PROPERTY(bool downloadingFile READ downloadingFile NOTIFY downloadingFileChanged)
 
 public:
-    IconModule(QObject *parent, const QVariantList &args);
+    IconModule(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
     ~IconModule() override;
 
     enum Roles {
@@ -95,8 +94,6 @@ private:
     bool installThemes(const QStringList &themes, const QString &archiveName);
     void installThemeFile(const QString &path);
 
-    void exportToKDE4();
-
     static QPixmap getBestIcon(KIconTheme &theme, const QStringList &iconNames, int size, qreal dpr);
 
     IconsData *m_data;
@@ -105,6 +102,6 @@ private:
 
     mutable QCache<QString, KIconTheme> m_kiconThemeCache;
 
-    QScopedPointer<QTemporaryFile> m_tempInstallFile;
+    std::unique_ptr<QTemporaryFile> m_tempInstallFile;
     QPointer<KIO::FileCopyJob> m_tempCopyJob;
 };

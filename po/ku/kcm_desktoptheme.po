@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_desktopthemedetails\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2008-12-28 08:00+0200\n"
 "Last-Translator: Omer Ensari <oensari@gmail.com>\n"
 "Language-Team: Kurdish <kde-i18n-doc@lists.kde.org>\n"
@@ -18,33 +18,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Kurdish\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Omer Ensari"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "oensari@gmail.com"
-
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
 #, fuzzy, kde-format
 #| msgid "Get New Theme..."
 msgid "Name of the current Plasma Style"
 msgstr "Temaya Nû Bîne..."
-
-#: kcm.cpp:51
-#, fuzzy, kde-format
-#| msgid "Get New Theme..."
-msgid "Plasma Style"
-msgstr "Temaya Nû Bîne..."
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr ""
 
 #: kcm.cpp:110
 #, fuzzy, kde-format
@@ -68,7 +47,7 @@ msgstr ""
 msgid "Theme installation failed."
 msgstr ""
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr ""
@@ -135,13 +114,13 @@ msgstr ""
 msgid "Get New Plasma Styles…"
 msgstr "Temaya Nû Bîne..."
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, fuzzy, kde-format
 #| msgid "Theme Item"
 msgid "Open Theme"
 msgstr "Hêmana Dirbê"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr ""
@@ -190,3 +169,222 @@ msgstr ""
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
 msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Omer Ensari"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "oensari@gmail.com"
+
+#, fuzzy
+#~| msgid "Get New Theme..."
+#~ msgid "Plasma Style"
+#~ msgstr "Temaya Nû Bîne..."
+
+#, fuzzy
+#~| msgid "Get New Theme..."
+#~ msgid "Plasma Styles"
+#~ msgstr "Temaya Nû Bîne..."
+
+#, fuzzy
+#~| msgid "How to Change Desktop Theme"
+#~ msgid "Download New Plasma Styles"
+#~ msgstr "Çawa Dirba Sermasê Biguherînin"
+
+#, fuzzy
+#~| msgid "Remove Desktop Theme"
+#~ msgid "Configure Desktop Theme"
+#~ msgstr "Dirba Sermasê Rake"
+
+#, fuzzy
+#~| msgid "Export Desktop Theme"
+#~ msgid "KDE Desktop Theme Module"
+#~ msgstr "Dirbê Sermasê Derxe Derve"
+
+#~ msgctxt "plasma name"
+#~ msgid "Panel Background"
+#~ msgstr "Rûerdê Panelê"
+
+#~ msgctxt "plasma name"
+#~ msgid "Kickoff"
+#~ msgstr "Kickoff"
+
+#~ msgctxt "plasma name"
+#~ msgid "Task Items"
+#~ msgstr "Hêmanên Peywirê"
+
+#~ msgctxt "plasma name"
+#~ msgid "Widget Background"
+#~ msgstr "Rûerdê Alavê"
+
+#~ msgctxt "plasma name"
+#~ msgid "Translucent Background"
+#~ msgstr "Rûerdê Zelalî"
+
+#~ msgctxt "plasma name"
+#~ msgid "Dialog Background"
+#~ msgstr "Rûerdê Paceyê"
+
+#~ msgctxt "plasma name"
+#~ msgid "Analog Clock"
+#~ msgstr "Saeta Analog"
+
+#~ msgctxt "plasma name"
+#~ msgid "Notes"
+#~ msgstr "Têbînî"
+
+#~ msgctxt "plasma name"
+#~ msgid "Tooltip"
+#~ msgstr "Qutiya Amûran"
+
+#~ msgctxt "plasma name"
+#~ msgid "Pager"
+#~ msgstr "Rûpelker"
+
+#~ msgctxt "plasma name"
+#~ msgid "Run Command Dialog"
+#~ msgstr "Paceya Ferman Xebitandinê"
+
+#~ msgctxt "plasma name"
+#~ msgid "Shutdown Dialog"
+#~ msgstr "Paceya Girtina Komputerê"
+
+#~ msgid "(Customized)"
+#~ msgstr "(Taybet9"
+
+#~ msgid "User customized theme"
+#~ msgstr "Dirba bikarhêner taybetî kirî"
+
+#~ msgid ""
+#~ "Theme items have been changed.  Do you still wish remove the \"%1\" theme?"
+#~ msgstr ""
+#~ "Hêmanên dirbê hatin guherandin. Tu hêj jî dixwazî dirba \"%1\" rakî?"
+
+#, fuzzy
+#~| msgid "Removal of the default KDE theme is not allowed."
+#~ msgid "Removal of the default desktop theme is not allowed."
+#~ msgstr "Ji bo rakirina dirbê KDE yê standard destûr tune ye."
+
+#~ msgid "Are you sure you wish remove the \"%1\" theme?"
+#~ msgstr "Tu bi rastî dixwazî dirba \"%1\" rakî?"
+
+#~ msgid ""
+#~ "Please apply theme item changes (with a new theme name) before attempting "
+#~ "to export theme."
+#~ msgstr ""
+#~ "Jê kerema xwe guherandinên hêmanê dirbê bisepîne (bi navê nû re) berî ya "
+#~ "derxistina dirbê derve."
+
+#~ msgid "Export Desktop Theme"
+#~ msgstr "Dirbê Sermasê Derxe Derve"
+
+#~ msgid "Export theme to file"
+#~ msgstr "Dirbê derxe pelê"
+
+#~ msgid "Theme Item"
+#~ msgstr "Hêmana Dirbê"
+
+#~ msgid "Source"
+#~ msgstr "Çavkanî"
+
+#, fuzzy
+#~| msgid "%1 %2"
+#~ msgctxt ""
+#~ "%1 is the name of the theme, %2 is the type of the element (background, "
+#~ "icon, note, etc)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgid "File..."
+#~ msgstr "Pel..."
+
+#~ msgid "Select File to Use for %1"
+#~ msgstr "Pel Hilbijêre ji bo Bi Kar Anîna %1"
+
+#~ msgid " Author: %1"
+#~ msgstr " Nivîskar: %1"
+
+#~ msgid "Version: %1"
+#~ msgstr "Versiyon: %1"
+
+#~ msgid "Desktop Theme Details"
+#~ msgstr "Kitekitên Dirba Sermasê"
+
+#~ msgid "More"
+#~ msgstr "Zêdetir"
+
+#, fuzzy
+#~| msgid "Remove Desktop Theme"
+#~ msgid "Remove the selected theme"
+#~ msgstr "Dirba Sermasê Rake"
+
+#~ msgid "Export Theme to File..."
+#~ msgstr "Dirbê Derxe Pelê..."
+
+#~ msgid "New theme name:"
+#~ msgstr "Navê temaya nû:"
+
+#, fuzzy
+#~| msgid "New theme name:"
+#~ msgid "Custom theme name"
+#~ msgstr "Navê temaya nû:"
+
+#~ msgid "Author:"
+#~ msgstr "Nivîskar:"
+
+#, fuzzy
+#~| msgid "Theme Author"
+#~ msgid "Custom theme author "
+#~ msgstr "Nivîskarê Temayê"
+
+#~ msgid "Version:"
+#~ msgstr "Versiyon:"
+
+#, fuzzy
+#~| msgid "New theme name:"
+#~ msgid "Custom theme version number"
+#~ msgstr "Navê temaya nû:"
+
+#~ msgid "Description:"
+#~ msgstr "Rave:"
+
+#, fuzzy
+#~| msgid "The theme description goes here..."
+#~ msgid "Custom theme description"
+#~ msgstr "Rave ya dirbê diçe li vir..."
+
+#~ msgid "Theme Author"
+#~ msgstr "Nivîskarê Temayê"
+
+#~ msgid "Theme Name"
+#~ msgstr "Navê Temayê"
+
+#~ msgid "Theme Version"
+#~ msgstr "Versiyona Temayê"
+
+#~ msgid "The theme description goes here..."
+#~ msgstr "Rave ya dirbê diçe li vir..."
+
+#, fuzzy
+#~| msgid "Remove Desktop Theme"
+#~ msgid "KCMDesktopTheme"
+#~ msgstr "Dirba Sermasê Rake"
+
+#, fuzzy
+#~| msgid ""
+#~| "To change your desktop theme to \"%1\", open\n"
+#~| "Desktop Settings and select \"%2\" from the droplist."
+#~ msgid ""
+#~ "To change your desktop theme to \"%1\", go back to the 'General' tab of "
+#~ "System Settings; choose 'Appearance', and then 'Style'; and finally "
+#~ "select \"%2\" from the drop-down list at the top of the window."
+#~ msgstr ""
+#~ "Ji bo guherandina dirba sermasê bi \"%1\" re,\n"
+#~ "Mîhengên Sermasê veke û jê lîsteya jêr ve fireh dibe \"%2\" hilbijêre."
+
+#, fuzzy
+#~| msgid "Removal of the default KDE theme is not allowed."
+#~ msgid "Removal of the active desktop theme is not allowed."
+#~ msgstr "Ji bo rakirina dirbê KDE yê standard destûr tune ye."

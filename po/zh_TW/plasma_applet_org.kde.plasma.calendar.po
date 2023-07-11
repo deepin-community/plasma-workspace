@@ -51,3 +51,12 @@ msgstr "顯示月天數"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "顯示週數"
+
+#~ msgid "Working Day"
+#~ msgstr "工作日"
+
+#~ msgid "Starts at 9"
+#~ msgstr "從 9 點開始"
+
+#~ msgid "Ends at 5"
+#~ msgstr "於 5 點結束"

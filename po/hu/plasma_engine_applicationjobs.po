@@ -29,3 +29,6 @@ msgstr "Nem található feladatnézet ehhez: %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "A felhasználó megszakította a feladatot."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_bookmarksrunner\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2009-11-23 00:23+0200\n"
 "Last-Translator: Sergiu Bivol <sergiu.bivol@jurnaltv.md>\n"
 "Language-Team: Română <kde-i18n-ro@kde.org>\n"
@@ -17,24 +17,27 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
 
-#: bookmarksrunner.cpp:34
+#: bookmarksrunner.cpp:35
 #, kde-format
 msgid "Finds web browser bookmarks matching :q:."
 msgstr "Găsește semnele de carte ale navigatorului web ce se potrivesc cu :q:."
 
-#: bookmarksrunner.cpp:35
+#: bookmarksrunner.cpp:36
 #, kde-format
 msgctxt "list of all web browser bookmarks"
 msgid "bookmarks"
 msgstr "semne de carte"
 
-#: bookmarksrunner.cpp:35
+#: bookmarksrunner.cpp:36
 #, kde-format
 msgid "List all web browser bookmarks"
 msgstr "Enumeră toate semnele de carte ale navigatorului web"
 
-#: bookmarksrunner.cpp:58
+#: bookmarksrunner.cpp:59
 #, kde-format
 msgctxt "list of all konqueror bookmarks"
 msgid "bookmarks"
 msgstr "semne de carte"
+
+#~ msgid "List all bookmarks of the browser"
+#~ msgstr "Enumeră toate semnele de carte ale navigatorului"

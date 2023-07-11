@@ -1,7 +1,7 @@
 add_definitions(
   -DQT_USE_QSTRINGBUILDER
   -DQT_NO_CAST_TO_ASCII
-# -DQT_NO_CAST_FROM_ASCII
+  -DQT_NO_CAST_FROM_ASCII
   -DQT_STRICT_ITERATORS
   -DQT_NO_CAST_FROM_BYTEARRAY
   -DQT_USE_FAST_OPERATOR_PLUS
@@ -37,10 +37,11 @@ set(kickerplugin_SRCS
     plugin/systementry.cpp
     plugin/systemmodel.cpp
     plugin/systemsettings.cpp
-    plugin/trianglemousefilter.cpp
     plugin/wheelinterceptor.cpp
     plugin/windowsystem.cpp
     plugin/funnelmodel.cpp
+    plugin/kickercompattrianglemousefilter.cpp
+    ../../components/trianglemousefilter/trianglemousefilter.cpp
 )
 
 ecm_qt_declare_logging_category(kickerplugin_SRCS
@@ -55,11 +56,14 @@ install(FILES plugin/qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/plasma/pri
 
 add_library(kickerplugin SHARED ${kickerplugin_SRCS})
 
+if (BUILD_TESTING)
+    set_target_properties(kickerplugin PROPERTIES CXX_VISIBILITY_PRESET default)
+endif()
+
 target_link_libraries(kickerplugin
                       Qt::Core
                       Qt::Qml
                       Qt::Quick
-                      Qt::X11Extras
                       KF5::Activities
                       KF5::ActivitiesStats
                       KF5::ConfigCore
@@ -83,6 +87,13 @@ if (${HAVE_APPSTREAMQT})
 target_link_libraries(kickerplugin AppStreamQt)
 endif()
 
-add_subdirectory(plugin/autotests)
+if (${HAVE_ICU})
+    target_link_libraries(kickerplugin ICU::i18n ICU::uc)
+    target_compile_definitions(kickerplugin PRIVATE "-DHAVE_ICU")
+endif()
+
+if (BUILD_TESTING)
+    add_subdirectory(plugin/autotests)
+endif()
 
 install(TARGETS kickerplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/plasma/private/kicker)

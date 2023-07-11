@@ -1,5 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2015 Martin Klapetek <mklapetek@kde.org>
+    SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
 
     SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
 */
@@ -7,7 +8,8 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.4 as QtControls
 import QtQuick.Layouts 1.0 as QtLayouts
-import org.kde.plasma.calendar 2.0 as PlasmaCalendar
+import org.kde.plasma.plasmoid 2.0
+import org.kde.plasma.workspace.calendar 2.0 as PlasmaCalendar
 import org.kde.kirigami 2.5 as Kirigami
 
 Item {
@@ -22,7 +24,14 @@ Item {
 
     function saveConfig()
     {
-        plasmoid.configuration.enabledCalendarPlugins = PlasmaCalendar.EventPluginsManager.enabledPlugins;
+        Plasmoid.configuration.enabledCalendarPlugins = eventPluginsManager.enabledPlugins;
+    }
+
+    PlasmaCalendar.EventPluginsManager {
+        id: eventPluginsManager
+        Component.onCompleted: {
+            populateEnabledPluginsList(Plasmoid.configuration.enabledCalendarPlugins);
+        }
     }
 
     Kirigami.FormLayout {
@@ -62,12 +71,14 @@ Item {
         }
 
         QtLayouts.ColumnLayout {
+            id: calendarPluginsLayout
+
             Kirigami.FormData.label: i18n("Available Plugins:")
-            Kirigami.FormData.buddyFor: children[1] // 0 is the Repeater
 
             Repeater {
                 id: calendarPluginsRepeater
-                model: PlasmaCalendar.EventPluginsManager.model
+
+                model: eventPluginsManager.model
                 delegate: QtLayouts.RowLayout {
                     QtControls.CheckBox {
                         text: model.display
@@ -79,12 +90,16 @@ Item {
                         }
                     }
                 }
+
+                onItemAdded: (index, item) => {
+                    if (index === 0) {
+                        // Set buddy once, for an item in the first row.
+                        // No, it doesn't work as a binding on children list.
+                        calendarPluginsLayout.Kirigami.FormData.buddyFor = item;
+                    }
+                }
             }
         }
-    }
-
-    Component.onCompleted: {
-        PlasmaCalendar.EventPluginsManager.populateEnabledPluginsList(plasmoid.configuration.enabledCalendarPlugins);
     }
 }
 

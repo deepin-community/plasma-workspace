@@ -4,6 +4,8 @@ add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 set(plasmawindowed-app_SRCS
     plasmawindowedcorona.cpp
     plasmawindowedview.cpp
+    plasmawindowedcorona.h
+    plasmawindowedview.h
     main.cpp
 )
 
@@ -17,13 +19,14 @@ target_link_libraries(
     KF5::I18n
     KF5::IconThemes
     KF5::XmlGui
-    KF5::QuickAddons
     KF5::PlasmaQuick
     KF5::Plasma
     KF5::DBusAddons
     KF5::Notifications
+    KF5::Package
 )
 
 install(TARGETS plasmawindowed ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 #even if hidden, the desktop file is needed anyways for kdbusservice::unique
-install(FILES plasma-windowed.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+configure_file(org.kde.plasmawindowed.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.plasmawindowed.desktop @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.plasmawindowed.desktop DESTINATION ${KDE_INSTALL_APPDIR})

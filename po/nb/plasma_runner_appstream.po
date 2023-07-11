@@ -1,11 +1,11 @@
 # Translation of plasma_runner_appstream to Norwegian Bokmål
 #
-# Øystein Steffensen-Alværvik <ystein@posteo.net>, 2018.
+# Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-02-11 00:46+0000\n"
 "PO-Revision-Date: 2018-06-27 18:31+0100\n"
 "Last-Translator: Øystein Steffensen-Alværvik <ystein@posteo.net>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -19,12 +19,12 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: appstreamrunner.cpp:32
+#: appstreamrunner.cpp:34
 #, kde-format
 msgid "Looks for non-installed components according to :q:"
 msgstr "Ser etter ikke-installerte komponenter ifølge :q:"
 
-#: appstreamrunner.cpp:126
+#: appstreamrunner.cpp:133
 #, kde-format
 msgid "Get %1…"
 msgstr ""

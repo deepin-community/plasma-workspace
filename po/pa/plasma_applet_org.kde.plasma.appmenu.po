@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-09-22 00:47+0000\n"
 "PO-Revision-Date: 2021-06-08 22:41-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -32,12 +32,24 @@ msgstr "ਐਪਲੀਕੇਸ਼ਨ ਮੇਨੂ ਲਈ ਇਕੱਲਾ ਬਟਨ �
 msgid "Show full application menu"
 msgstr "ਪੂਰਾ ਐਪਲੀਕੇਸ਼ਨ ਮੇਨੂ ਵੇਖਾਓ"
 
-#: plugin/appmenumodel.cpp:85
+#: package/contents/ui/MenuDelegate.qml:62
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Open a menu"
+msgstr ""
+
+#: plugin/appmenumodel.cpp:84
 #, kde-format
 msgid "Search"
 msgstr "ਖੋਜੋ"
 
-#: plugin/appmenumodel.cpp:92
+#: plugin/appmenumodel.cpp:91
 #, kde-format
 msgid "Search…"
 msgstr "…ਖੋਜੋ"
+
+#~ msgid "Search..."
+#~ msgstr "...ਖੋਜੋ"
+
+#~ msgid "application-menu"
+#~ msgstr "ਐਪਲੀਕੇਸ਼ਨ-ਮੀਨੂ"

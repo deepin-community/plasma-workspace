@@ -48,3 +48,20 @@ msgstr "Tampilkan hari dalam sebulan"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Tampilkan nomor pekan"
+
+#~ msgid "Working Day"
+#~ msgstr "Hari Kerja"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Awal di 9"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Akhir di 5"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "Ikon:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "Hari dalam sebulan"

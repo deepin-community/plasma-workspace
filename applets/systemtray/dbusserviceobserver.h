@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <QDBusError>
 #include <QHash>
 #include <QObject>
 #include <QPointer>
@@ -14,7 +15,6 @@
 
 class KPluginMetaData;
 class SystemTraySettings;
-class QDBusPendingCallWatcher;
 class QDBusServiceWatcher;
 
 /**
@@ -24,7 +24,7 @@ class DBusServiceObserver : public QObject
 {
     Q_OBJECT
 public:
-    explicit DBusServiceObserver(QPointer<SystemTraySettings> settings, QObject *parent = nullptr);
+    explicit DBusServiceObserver(const QPointer<SystemTraySettings> &settings, QObject *parent = nullptr);
 
     void registerPlugin(const KPluginMetaData &pluginMetaData);
     void unregisterPlugin(const QString &pluginId);
@@ -37,8 +37,13 @@ Q_SIGNALS:
 public Q_SLOTS:
     void initDBusActivatables();
 
+private Q_SLOTS:
+    void sessionBusNameFetchFinished(const QStringList &list);
+    void systemBusNameFetchFinished(const QStringList &list);
+    void sessionBusNameFetchError(const QDBusError &error);
+    void systemBusNameFetchError(const QDBusError &error);
+
 private:
-    void serviceNameFetchFinished(QDBusPendingCallWatcher *watcher);
     void serviceRegistered(const QString &service);
     void serviceUnregistered(const QString &service);
 

@@ -32,3 +32,13 @@ msgstr "Teemu Rytilahti"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr " "
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Ei voitu käyttää <b>%1</b>-multimediataustajärjestelmää:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Multimediataustajärjestelmää ei löytynyt"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Haluttua multimediataustajärjestelmää ei löytynyt"

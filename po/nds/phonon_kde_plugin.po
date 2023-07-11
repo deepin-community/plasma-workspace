@@ -28,3 +28,13 @@ msgstr "Sönke Dibbern"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "s_dibbern@web.de"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Multimedia-Hülpprogramm <b>%1</b> lett sik nich bruken:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Keen Multimedia-Hülpprogramm funnen"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Nafraagt Multimedia-Hülpprogramm lett sik nich finnen"

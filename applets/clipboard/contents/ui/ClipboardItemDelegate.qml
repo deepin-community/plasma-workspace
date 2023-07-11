@@ -9,11 +9,12 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
 
+import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaExtras
+import org.kde.plasma.components 3.0 as PlasmaComponents
 import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
 
-PlasmaExtras.ListItem {
+PlasmaComponents.ItemDelegate {
     id: menuItem
 
     property bool supportsBarcodes
@@ -29,7 +30,7 @@ PlasmaExtras.ListItem {
     signal remove(string uuid)
     signal edit(string uuid)
     signal barcode(string text)
-    signal action(string uuid)
+    signal triggerAction(string uuid)
 
     // the 1.6 comes from ToolButton's default height
     height: Math.max(label.height, Math.round(PlasmaCore.Units.gridUnit * 1.6)) + 2 * PlasmaCore.Units.smallSpacing
@@ -38,16 +39,13 @@ PlasmaExtras.ListItem {
 
     onClicked: {
         menuItem.itemSelected(UuidRole);
-        if (plasmoid.hideOnWindowDeactivate)
-            plasmoid.expanded = false;
-    }
-    onContainsMouseChanged: {
-        if (containsMouse) {
-            menuListView.currentIndex = index
+        if (Plasmoid.hideOnWindowDeactivate) {
+            Plasmoid.expanded = false;
         } else {
-            menuListView.currentIndex = -1
+            forceActiveFocus(); // Or activeFocus will always be false after clicking buttons in the heading
         }
     }
+
     Keys.onDeletePressed: {
         remove(UuidRole);
     }
@@ -95,6 +93,7 @@ PlasmaExtras.ListItem {
             left: parent.left
             leftMargin: PlasmaCore.Units.gridUnit / 2 - listMargins.left
             right: parent.right
+            rightMargin: PlasmaCore.Units.gridUnit / 2 - listMargins.right
             verticalCenter: parent.verticalCenter
         }
 
@@ -110,6 +109,8 @@ PlasmaExtras.ListItem {
         anchors {
             right: label.right
             verticalCenter: parent.verticalCenter
+            // This is here because you can't assign to it in AnchorChanges below
+            topMargin: PlasmaCore.Units.gridUnit / 2 - listMargins.top
         }
         source: "DelegateToolButtons.qml"
         active: menuItem.ListView.isCurrentItem
@@ -130,6 +131,8 @@ PlasmaExtras.ListItem {
 
         onActiveChanged: {
             if (active) {
+                menuItem.KeyNavigation.tab =  toolButtonsLoader.item.children[0]
+                menuItem.KeyNavigation.right = toolButtonsLoader.item.children[0]
                 // break binding, once it was loaded, never unload
                 active = true;
             }

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-26 01:42+0000\n"
-"PO-Revision-Date: 2021-05-27 09:52+0200\n"
+"POT-Creation-Date: 2023-01-02 01:06+0000\n"
+"PO-Revision-Date: 2021-11-01 20:40+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -18,87 +18,77 @@ msgstr ""
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Lokalize 20.12.2\n"
 
-#: contents/ui/BarcodePage.qml:28
+#: contents/ui/BarcodePage.qml:36
 #, kde-format
 msgid "Return to Clipboard"
 msgstr "Vrni na odložišče"
 
-#: contents/ui/BarcodePage.qml:49
+#: contents/ui/BarcodePage.qml:57
 #, kde-format
 msgid "QR Code"
 msgstr "Koda QR"
 
-#: contents/ui/BarcodePage.qml:50
+#: contents/ui/BarcodePage.qml:58
 #, kde-format
 msgid "Data Matrix"
 msgstr "Podatkovna matrika"
 
-#: contents/ui/BarcodePage.qml:51
+#: contents/ui/BarcodePage.qml:59
 #, kde-format
 msgctxt "Aztec barcode"
 msgid "Aztec"
 msgstr "Aztec"
 
-#: contents/ui/BarcodePage.qml:52
+#: contents/ui/BarcodePage.qml:60
 #, kde-format
 msgid "Code 39"
 msgstr "Koda 39"
 
-#: contents/ui/BarcodePage.qml:53
+#: contents/ui/BarcodePage.qml:61
 #, kde-format
 msgid "Code 93"
 msgstr "Koda 93"
 
-#: contents/ui/BarcodePage.qml:54
+#: contents/ui/BarcodePage.qml:62
 #, kde-format
 msgid "Code 128"
 msgstr "Koda 128"
 
-#: contents/ui/BarcodePage.qml:77
+#: contents/ui/BarcodePage.qml:85
 #, kde-format
-msgid "Change the barcode type"
-msgstr "Spremeni vrsto črtne kode"
+msgid "Change the QR code type"
+msgstr "Spremeni vrsto kode QR"
 
-#: contents/ui/BarcodePage.qml:101
+#: contents/ui/BarcodePage.qml:114
 #, kde-format
-msgid "Creating barcode failed"
-msgstr "Ustvarjanje črtne kode ni uspelo"
+msgid "Creating QR code failed"
+msgstr "Ustvarjanje kode QR ni uspelo"
 
-#: contents/ui/BarcodePage.qml:110
+#: contents/ui/BarcodePage.qml:123
 #, kde-format
-msgid "The barcode is too large to be displayed"
-msgstr "Črtna koda je prevelika, da bi jo lahko prikazal"
+msgid "The QR code is too large to be displayed"
+msgstr "QR koda je prevelika, da bi jo lahko prikazal"
 
-#: contents/ui/clipboard.qml:26
+#: contents/ui/clipboard.qml:27
 #, kde-format
 msgid "Clipboard Contents"
 msgstr "Vsebina odložišča"
 
-#: contents/ui/clipboard.qml:27 contents/ui/Menu.qml:58
+#: contents/ui/clipboard.qml:28 contents/ui/Menu.qml:126
 #, kde-format
 msgid "Clipboard is empty"
 msgstr "Odložišče je prazno"
 
-#: contents/ui/clipboard.qml:55
+#: contents/ui/clipboard.qml:56
 #, kde-format
 msgid "Configure Clipboard…"
 msgstr "Nastavi odložišče…"
 
-#: contents/ui/clipboard.qml:57
+#: contents/ui/clipboard.qml:58
 #, kde-format
 msgid "Clear History"
-msgstr "Počisti zgodovino"
-
-#: contents/ui/ClipboardPage.qml:76
-#, kde-format
-msgid "Search…"
-msgstr "Poišči…"
-
-#: contents/ui/ClipboardPage.qml:112
-#, kde-format
-msgid "Clear history"
 msgstr "Počisti zgodovino"
 
 #: contents/ui/DelegateToolButtons.qml:23
@@ -106,22 +96,34 @@ msgstr "Počisti zgodovino"
 msgid "Invoke action"
 msgstr "Vpoklic aktivnosti"
 
-#: contents/ui/DelegateToolButtons.qml:33
+#: contents/ui/DelegateToolButtons.qml:38
 #, kde-format
-msgid "Show barcode"
-msgstr "Prikaži črtno kodo"
+msgid "Show QR code"
+msgstr "Prikaži kodo"
 
-#: contents/ui/DelegateToolButtons.qml:43
+#: contents/ui/DelegateToolButtons.qml:54
 #, kde-format
 msgid "Edit contents"
 msgstr "Uredi vsebino"
 
-#: contents/ui/DelegateToolButtons.qml:51
+#: contents/ui/DelegateToolButtons.qml:68
 #, kde-format
 msgid "Remove from history"
 msgstr "Odstrani iz zgodovine"
 
-#: contents/ui/Menu.qml:58
+#: contents/ui/EditPage.qml:86
+#, kde-format
+msgctxt "@action:button"
+msgid "Save"
+msgstr "Shrani"
+
+#: contents/ui/EditPage.qml:94
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: contents/ui/Menu.qml:126
 #, kde-format
 msgid "No matches"
 msgstr "Ni zadetkov"
@@ -132,3 +134,15 @@ msgctxt ""
 "Indicator that there are more urls in the clipboard than previews shown"
 msgid "+%1"
 msgstr "+%1"
+
+#~ msgid "Clear history"
+#~ msgstr "Počisti zgodovino"
+
+#~ msgid "Search…"
+#~ msgstr "Poišči…"
+
+#~ msgid "Clipboard history is empty."
+#~ msgstr "Zgodovina odložišča je prazna."
+
+#~ msgid "Configure"
+#~ msgstr "Nastavi"

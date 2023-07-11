@@ -53,14 +53,18 @@ set_package_properties(XCB PROPERTIES TYPE REQUIRED)
 
 target_link_libraries(xembedsniproxy
     Qt::Core
-    Qt::X11Extras
     Qt::DBus
     KF5::WindowSystem
     ${XCB_LIBS}
     X11::Xtst
 )
+if (QT_MAJOR_VERSION EQUAL "5")
+    target_link_libraries(xembedsniproxy Qt::X11Extras)
+else()
+    target_link_libraries(xembedsniproxy Qt::GuiPrivate)
+endif()
 
 install(TARGETS xembedsniproxy ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES xembedsniproxy.desktop DESTINATION ${KDE_INSTALL_AUTOSTARTDIR})
 
-ecm_install_configured_files(INPUT plasma-xembedsniproxy.service.in @ONLY DESTINATION  ${SYSTEMD_USER_UNIT_INSTALL_DIR})
+ecm_install_configured_files(INPUT plasma-xembedsniproxy.service.in @ONLY DESTINATION  ${KDE_INSTALL_SYSTEMDUSERUNITDIR})

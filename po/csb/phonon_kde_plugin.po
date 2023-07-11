@@ -29,3 +29,35 @@ msgstr "Michôł Òstrowsczi, Mark Kwidzińsczi"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "michol@linuxcsb.org, mark@linuxcsb.org"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt>Ni mòże brëkòwac <b>%1</b> interfejsu mùltimediów:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Ni mòże nalezc interfejsu mùltimediów"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Ni mòże nalezc żądónégò interfejsu mùltimediów"
+
+#~ msgid "create method returned 0"
+#~ msgstr "ùsôdzonô metoda dała nazôd 0"
+
+#~ msgid "%1 (OSS)"
+#~ msgstr "%1 (OSS)"
+
+#~ msgid "%1 (ALSA)"
+#~ msgstr "%1 (ALSA)"
+
+#~ msgid ""
+#~ "<html>This device is currently not available (either it is unplugged or "
+#~ "the driver is not loaded).</html>"
+#~ msgstr ""
+#~ "<html>Ne ùrządzenié nie je terô przëstãpné (abò je òdłączoné abò "
+#~ "czerownik nie je załadowóny).</html>"
+
+#~ msgid ""
+#~ "<html>This will try the following devices and use the first that works: "
+#~ "<ol><li>%1</li></ol></html>"
+#~ msgstr ""
+#~ "<html>No spróbùje pòstãpné ùrządzenia ë ùżëje pierszégò jaczi bãdze "
+#~ "robił: <ol><li>%1</li></ol></html>"

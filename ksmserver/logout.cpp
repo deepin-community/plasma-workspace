@@ -41,7 +41,6 @@
 #endif
 
 #include <QApplication>
-#include <QDesktopWidget>
 #include <QFile>
 #include <QFutureWatcher>
 #include <QTimer>
@@ -55,7 +54,6 @@
 #include <KLocalizedString>
 #include <KNotification>
 #include <KSharedConfig>
-#include <KUserTimestamp>
 #include <kdisplaymanager.h>
 
 #include "kwinsession_interface.h"
@@ -99,11 +97,7 @@ bool KSMServer::closeSession()
 
 bool KSMServer::canShutdown()
 {
-    KSharedConfig::Ptr config = KSharedConfig::openConfig();
-    config->reparseConfiguration(); // config may have changed in the KControl module
-    KConfigGroup cg(config, "General");
-
-    return cg.readEntry("offerShutdown", true) && KDisplayManager().canShutdown();
+    return KDisplayManager().canShutdown();
 }
 
 bool KSMServer::isShuttingDown() const
@@ -188,11 +182,6 @@ void KSMServer::performLogout()
     if (saveSession)
         sessionGroup = QStringLiteral("Session: ") + QString::fromLocal8Bit(SESSION_PREVIOUS_LOGOUT);
 
-    // Set the real desktop background to black so that exit looks
-    // clean regardless of what was on "our" desktop.
-    QPalette palette;
-    palette.setColor(QApplication::desktop()->backgroundRole(), Qt::black);
-    QApplication::setPalette(palette);
     saveType = saveSession ? SmSaveBoth : SmSaveGlobal;
 #ifndef NO_LEGACY_SESSION_MANAGEMENT
     performLegacySessionSave();
@@ -249,6 +238,7 @@ void KSMServer::saveCurrentSession()
 
     const auto pendingClients = clients;
     for (KSMClient *c : pendingClients) {
+        c->resetState();
         SmsSaveYourself(c->connection(), saveType, false, SmInteractStyleNone, false);
     }
     if (clients.isEmpty())
@@ -344,7 +334,7 @@ void KSMServer::cancelShutdown(KSMClient *c)
     if (state == ClosingSubSession) {
         clientsToKill.clear();
         clientsToSave.clear();
-        emit subSessionCloseCanceled();
+        Q_EMIT subSessionCloseCanceled();
     } else {
         qCDebug(KSMSERVER) << "Client " << c->program() << " (" << c->clientId() << ") canceled shutdown.";
         KNotification::event(QStringLiteral("cancellogout"), i18n("Logout canceled by '%1'", c->program()), QPixmap(), nullptr, KNotification::DefaultEvent);
@@ -362,7 +352,7 @@ void KSMServer::cancelShutdown(KSMClient *c)
 
     m_kwinInterface->setState(KWinSessionState::Normal);
 
-    emit logoutFinished(false);
+    Q_EMIT logoutFinished(false);
 }
 
 void KSMServer::startProtection()
@@ -496,7 +486,7 @@ void KSMServer::completeKilling()
 // shutdown is fully complete
 void KSMServer::killingCompleted()
 {
-    emit logoutFinished(true);
+    Q_EMIT logoutFinished(true);
     qApp->quit();
 }
 
@@ -576,5 +566,5 @@ void KSMServer::signalSubSessionClosed()
     // so that plasma can close its stuff
     state = Idle;
     qCDebug(KSMSERVER) << state;
-    emit subSessionClosed();
+    Q_EMIT subSessionClosed();
 }

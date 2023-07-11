@@ -12,31 +12,28 @@
 #include "kastatsfavoritesmodel.h"
 #include <kio_version.h>
 
-#include <config-X11.h>
-
+#include <QApplication>
 #include <QDir>
 #include <QIcon>
 #include <QMimeDatabase>
 #include <QQmlEngine>
 #include <QTimer>
-#if HAVE_X11
-#include <QX11Info>
-#endif
 
 #include <KActivities/ResourceInstance>
 #include <KFileItem>
 #include <KIO/ApplicationLauncherJob>
+#include <KIO/JobUiDelegate>
+#include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenFileManagerWindowJob>
+#include <KIO/OpenUrlJob>
 #include <KLocalizedString>
 #include <KNotificationJobUiDelegate>
-#include <KRun>
 #include <KService/KApplicationTrader>
 #include <KService>
-#include <KStartupInfo>
 
 #include <KActivities/Stats/Cleaning>
-#include <KActivities/Stats/ResultModel>
 #include <KActivities/Stats/Terms>
+#include <KWindowSystem>
 
 namespace KAStats = KActivities::Stats;
 
@@ -138,7 +135,7 @@ void RecentUsageModel::setShownItems(IncludeUsage usage)
 
     m_usage = usage;
 
-    emit shownItemsChanged();
+    Q_EMIT shownItemsChanged();
     refresh();
 }
 
@@ -187,7 +184,8 @@ QVariant RecentUsageModel::data(const QModelIndex &index, int role) const
     if (resource.startsWith(QLatin1String("applications:"))) {
         return appData(resource, role);
     } else {
-        return docData(resource, role);
+        const QString &mimeType = rowValueAt(index.row(), ResultModel::MimeType).toString();
+        return docData(resource, role, mimeType);
     }
 }
 
@@ -225,12 +223,16 @@ QVariant RecentUsageModel::appData(const QString &resource, int role) const
 
         const QVariantList &jumpList = Kicker::jumpListActions(service);
         if (!jumpList.isEmpty()) {
-            actionList << jumpList << Kicker::createSeparatorActionItem();
+            actionList << jumpList;
         }
 
         const QVariantList &recentDocuments = Kicker::recentDocumentActions(service);
         if (!recentDocuments.isEmpty()) {
-            actionList << recentDocuments << Kicker::createSeparatorActionItem();
+            actionList << recentDocuments;
+        }
+
+        if (!actionList.isEmpty()) {
+            actionList << Kicker::createSeparatorActionItem();
         }
 
         const QVariantMap &forgetAction = Kicker::createActionItem(i18n("Forget Application"), QStringLiteral("edit-clear-history"), QStringLiteral("forget"));
@@ -257,7 +259,7 @@ QModelIndex RecentUsageModel::findPlaceForKFileItem(const KFileItem &fileItem) c
     return QModelIndex();
 }
 
-QVariant RecentUsageModel::docData(const QString &resource, int role) const
+QVariant RecentUsageModel::docData(const QString &resource, int role, const QString &mimeType) const
 {
     QUrl url(resource);
 
@@ -267,7 +269,11 @@ QVariant RecentUsageModel::docData(const QString &resource, int role) const
 
     auto getFileItem = [=]() {
         // Avoid calling QT_LSTAT and accessing recent documents
-        return KFileItem(url, KFileItem::SkipMimeTypeFromContent);
+        if (mimeType.simplified().isEmpty()) {
+            return KFileItem(url, KFileItem::SkipMimeTypeFromContent);
+        } else {
+            return KFileItem(url, mimeType);
+        }
     };
 
     if (!url.isValid()) {
@@ -304,12 +310,12 @@ QVariant RecentUsageModel::docData(const QString &resource, int role) const
                 // if the current item is a place
                 return QString();
             }
-            desc.truncate(desc.lastIndexOf(QChar('/')));
+            desc.truncate(desc.lastIndexOf(QLatin1Char('/')));
             const auto text = m_placesModel->text(index);
             desc.replace(0, parentUrl.path().length(), text);
         } else {
             // remove filename
-            desc.truncate(desc.lastIndexOf(QChar('/')));
+            desc.truncate(desc.lastIndexOf(QLatin1Char('/')));
         }
         return desc;
     } else if (role == Kicker::UrlRole) {
@@ -349,10 +355,12 @@ bool RecentUsageModel::trigger(int row, const QString &actionId, const QVariant 
         const QString &mimeType = rowValueAt(row, ResultModel::MimeType).toString();
 
         if (!resource.startsWith(QLatin1String("applications:"))) {
-            const QUrl resourceUrl = docData(resource, Kicker::UrlRole).toUrl();
+            const QUrl resourceUrl = docData(resource, Kicker::UrlRole, mimeType).toUrl();
 
-            KRun *run = new KRun(resourceUrl, nullptr);
-            run->setRunExecutables(false);
+            auto job = new KIO::OpenUrlJob(resourceUrl);
+            job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, QApplication::activeWindow()));
+            job->setShowOpenOrExecuteDialog(true);
+            job->start();
 
             return true;
         }
@@ -364,17 +372,9 @@ bool RecentUsageModel::trigger(int row, const QString &actionId, const QVariant 
             return false;
         }
 
-        quint32 timeStamp = 0;
-
-#if HAVE_X11
-        if (QX11Info::isPlatformX11()) {
-            timeStamp = QX11Info::appUserTime();
-        }
-#endif
-
         // prevents using a service file that does not support opening a mime type for a file it created
         // for instance a screenshot tool
-        if (!mimeType.isEmpty()) {
+        if (!mimeType.simplified().isEmpty()) {
             if (!service->hasMimeType(mimeType)) {
                 // needs to find the application that supports this mimetype
                 service = KApplicationTrader::preferredService(mimeType);
@@ -390,7 +390,6 @@ bool RecentUsageModel::trigger(int row, const QString &actionId, const QVariant 
 
         auto *job = new KIO::ApplicationLauncherJob(service);
         job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled));
-        job->setStartupId(KStartupInfo::createNewStartupIdForTimestamp(timeStamp));
         job->start();
 
         KActivities::ResourceInstance::notifyAccessed(QUrl(QStringLiteral("applications:") + storageId), QStringLiteral("org.kde.plasma.kicker"));
@@ -420,10 +419,8 @@ bool RecentUsageModel::trigger(int row, const QString &actionId, const QVariant 
 
         return false;
     } else if (actionId == QLatin1String("_kicker_jumpListAction")) {
-        const QString storageId = sourceModel()->data(sourceModel()->index(row, 0), ResultModel::ResourceRole).toString().section(QLatin1Char(':'), 1);
-        KService::Ptr service = KService::serviceByStorageId(storageId);
-        service->setExec(argument.toString());
-        KIO::ApplicationLauncherJob *job = new KIO::ApplicationLauncherJob(service);
+        KIO::ApplicationLauncherJob *job = new KIO::ApplicationLauncherJob(argument.value<KServiceAction>());
+        job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled));
         job->start();
         return true;
     } else if (withinBounds) {
@@ -489,7 +486,7 @@ void RecentUsageModel::setOrdering(int ordering)
     m_ordering = (Ordering)ordering;
     refresh();
 
-    emit orderingChanged(ordering);
+    Q_EMIT orderingChanged(ordering);
 }
 
 int RecentUsageModel::ordering() const
@@ -561,3 +558,5 @@ void RecentUsageModel::refresh()
 
     setSourceModel(model);
 }
+
+Q_DECLARE_METATYPE(KServiceAction)

@@ -1,12 +1,12 @@
 # Copyright (C) 2021 Free Software Foundation, Inc.
 #
-# Kishore G <kishore96@gmail.com>, 2021.
+# Kishore G <kishore96@gmail.com>, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcminput\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-15 00:20+0000\n"
-"PO-Revision-Date: 2021-08-08 17:45+0530\n"
+"POT-Creation-Date: 2023-01-10 00:58+0000\n"
+"PO-Revision-Date: 2023-01-03 21:29+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -14,17 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.07.90\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "tamilpc team"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "tamilpc@ambalam.com"
+"X-Generator: Lokalize 22.12.0\n"
 
 #. i18n: ectx: label, entry (cursorTheme), group (Mouse)
 #: cursorthemesettings.kcfg:9
@@ -38,53 +28,33 @@ msgstr "தற்போதைய சுட்டிக்குறி திட�
 msgid "Current cursor size"
 msgstr "தற்போதைய சுட்டிக்குறி அளவு"
 
-#: kcmcursortheme.cpp:62
-#, kde-format
-msgid "Cursors"
-msgstr "சுட்டிக்குறிகள்"
-
-#: kcmcursortheme.cpp:66
-#, kde-format
-msgid "(c) 2003-2007 Fredrik Höglund"
-msgstr ""
-
-#: kcmcursortheme.cpp:67
-#, kde-format
-msgid "Fredrik Höglund"
-msgstr ""
-
-#: kcmcursortheme.cpp:68
-#, kde-format
-msgid "Marco Martin"
-msgstr ""
-
-#: kcmcursortheme.cpp:311
+#: kcmcursortheme.cpp:308
 #, kde-format
 msgid ""
 "You have to restart the Plasma session for these changes to take effect."
 msgstr "இந்த மாற்றங்கள் செயல்பட பிளாஸ்மாவை நீங்கள் மீள்துவக்க வேண்டும்."
 
-#: kcmcursortheme.cpp:389
+#: kcmcursortheme.cpp:382
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr "தற்காலிக கோப்பை உருவாக்க முடியவில்லை.."
 
-#: kcmcursortheme.cpp:400
+#: kcmcursortheme.cpp:393
 #, kde-format
 msgid "Unable to download the icon theme archive: %1"
 msgstr "தோற்றத்திட்ட பெட்டகத்தை பதிவிறக்க முடியவில்லை: %1"
 
-#: kcmcursortheme.cpp:431
+#: kcmcursortheme.cpp:424
 #, kde-format
 msgid "The file is not a valid icon theme archive."
 msgstr "இக்கோப்பு ஒரு முறையான திட்டமுறையை கொண்ட பெட்டகம் போல் தெரியவில்லை."
 
-#: kcmcursortheme.cpp:438
+#: kcmcursortheme.cpp:431
 #, kde-format
 msgid "Failed to create 'icons' folder."
 msgstr "'icons' அடைவை உருவாக்க முடியவில்லை."
 
-#: kcmcursortheme.cpp:447
+#: kcmcursortheme.cpp:440
 #, kde-format
 msgid ""
 "A theme named %1 already exists in your icon theme folder. Do you want "
@@ -92,15 +62,22 @@ msgid ""
 msgstr ""
 "%1 என்ற பெயருள்ள தோற்றத்திட்டம் ஏற்கனவே உள்ளது. அதற்கு பதிலாக இதை நிறுவ வேண்டுமா?"
 
-#: kcmcursortheme.cpp:451
+#: kcmcursortheme.cpp:444
 #, kde-format
 msgid "Overwrite Theme?"
 msgstr "திட்டமுறையை மேலெழுதலாமா?"
 
-#: kcmcursortheme.cpp:475
+#: kcmcursortheme.cpp:468
 #, kde-format
 msgid "Theme installed successfully."
 msgstr "திட்டம் வெற்றிகரமாக நிறுவப்பட்டது."
+
+#. i18n: ectx: label, entry (cursorTimeout), group (BusyCursorSettings)
+#. i18n: ectx: label, entry (taskbarTimeout), group (TaskbarButtonSettings)
+#: launchfeedbacksettings.kcfg:19 launchfeedbacksettings.kcfg:33
+#, kde-format
+msgid "Timeout in seconds"
+msgstr "காலாவதியாகும் நேரம், நொடிகளில்"
 
 #: package/contents/ui/Delegate.qml:54
 #, kde-format
@@ -111,6 +88,74 @@ msgstr "திட்டமுறையை நீக்கு"
 #, kde-format
 msgid "Restore Cursor Theme"
 msgstr "சுட்டிக்குறி திட்டமுறையை மீள்"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:16
+#, kde-format
+msgctxt "@title"
+msgid "Launch Feedback"
+msgstr "தொடக்கப் பின்னூட்டம்"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:25
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Configure the animations played while an application is launching."
+msgstr "ஏதாவதொரு செயலி துவக்கப்படும்போது காட்டப்படும் அசைவூட்டங்களை அமையுங்கள்."
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:46
+#, kde-format
+msgctxt "@label"
+msgid "Cursor feedback:"
+msgstr "சுட்டிக்குறி பின்னூட்டம்:"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:47
+#, kde-format
+msgctxt "@option:radio No cursor feedback when launching apps"
+msgid "None"
+msgstr "ஏதுமில்லை"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:56
+#, kde-format
+msgctxt "@option:radio"
+msgid "Static"
+msgstr "நகராத‍து"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:65
+#, kde-format
+msgctxt "@option:radio"
+msgid "Blinking"
+msgstr "மின்னுவது"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:74
+#, kde-format
+msgctxt "@option:radio"
+msgid "Bouncing"
+msgstr "துள்ளுவது"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:89
+#, kde-format
+msgctxt "@label"
+msgid "Task Manager feedback:"
+msgstr "பணி மேலாளரிலுள்ள பின்னூட்டம்:"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:91
+#, kde-format
+msgctxt "@option:check"
+msgid "Enable animation"
+msgstr "அசைவூட்டத்தை இயக்கு"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:110
+#, kde-format
+msgctxt "@label"
+msgid "Stop animations after:"
+msgstr "இவ்வளவு நேரங்கழித்து அசைவூட்டங்களை நிறுத்து:"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:124
+#: package/contents/ui/LaunchFeedbackDialog.qml:136
+#, kde-format
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 நொடி"
+msgstr[1] "%1 நொடிகள்"
 
 #: package/contents/ui/main.qml:20
 #, kde-format
@@ -124,59 +169,83 @@ msgstr "அளவு:"
 
 #: package/contents/ui/main.qml:134
 #, kde-format
+msgctxt "@action:button"
+msgid "&Configure Launch Feedback…"
+msgstr "&தொடக்க பின்னூட்டத்தை அமை…"
+
+#: package/contents/ui/main.qml:145
+#, kde-format
 msgid "&Install from File…"
 msgstr "கோப்பிலிருந்து &நிறுவு…"
 
-#: package/contents/ui/main.qml:140
+#: package/contents/ui/main.qml:151
 #, kde-format
 msgid "&Get New Cursors…"
 msgstr "புதிய சுட்டிக்குறிகளை &பெறு…"
 
-#: package/contents/ui/main.qml:190
+#: package/contents/ui/main.qml:168
 #, kde-format
 msgid "Open Theme"
 msgstr "திட்டமுறையை திற"
 
-#: package/contents/ui/main.qml:192
+#: package/contents/ui/main.qml:170
 #, kde-format
 msgid "Cursor Theme Files (*.tar.gz *.tar.bz2)"
 msgstr "சுட்டிக்குறி திட்டமுறை கோப்புகள் (*.tar.gz *.tar.bz2)"
 
-#: plasma-apply-cursortheme.cpp:36
+#: plasma-apply-cursortheme.cpp:42
+#, kde-format
+msgid "The requested size '%1' is not available, using %2 instead."
+msgstr "கோரிய '%1' அளவு கிடைக்கவில்லை; பதிலாக %2 பயன்படுத்தப்படும்."
+
+#: plasma-apply-cursortheme.cpp:63
 #, kde-format
 msgid ""
 "This tool allows you to set the mouse cursor theme for the current Plasma "
 "session, without accidentally setting it to one that is either not "
 "available, or which is already set."
 msgstr ""
+"தவறுதலாக, இல்லாத ஒன்றையொ ஏற்கனவே செயலில் உள்ளதையோ தேர்ந்தெடுக்காமல், தற்போதைய பிளாஸ்மா "
+"அமர்வின் சுட்டிக்குறி தோற்றத்திட்டத்தை நீங்கள் மாற்ற இந்த கருவி உதவும்."
 
-#: plasma-apply-cursortheme.cpp:40
+#: plasma-apply-cursortheme.cpp:67
 #, kde-format
 msgid ""
 "The name of the cursor theme you wish to set for your current Plasma session "
 "(passing a full path will only use the last part of the path)"
 msgstr ""
+"தற்போதைய பிளாஸ்மா அமர்வில் நீங்கள் பயன்படுத்த விரும்பும் தோற்றத்திட்டத்தின் பெயர் (ஒரு பாதையை "
+"வழங்கினால், அதன் கடைசி பாகம் மட்டுமே பயன்படுத்தப்படும்)"
 
-#: plasma-apply-cursortheme.cpp:41
+#: plasma-apply-cursortheme.cpp:68
 #, kde-format
 msgid ""
 "Show all the themes available on the system (and which is the current theme)"
 msgstr ""
+"கணினியில் கிட்டுகின்ற அனைத்து தோற்றத்திட்டங்களை (மற்றும் இப்போது எது செயலில் உள்ளதென) "
+"காட்டும்"
 
-#: plasma-apply-cursortheme.cpp:62
+#: plasma-apply-cursortheme.cpp:69
+#, kde-format
+msgid "Use a specific size, rather than the theme default size"
+msgstr "தோற்றத்திட்டத்தின் இயல்பிருப்பு அளவுக்கு பதிலாக ஓர் குறிப்பிட்ட அளவையே பயன்படுத்து"
+
+#: plasma-apply-cursortheme.cpp:90
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
 "Plasma session."
 msgstr ""
+"கோரப்பட்ட \"%1\" என்ற தோற்றத்திட்டம், தற்போதைய பிளாஸ்மா அமர்வில் ஏற்கனவே செயலில் உள்ளது."
 
-#: plasma-apply-cursortheme.cpp:73
+#: plasma-apply-cursortheme.cpp:101
 #, kde-format
 msgid ""
 "Successfully applied the mouse cursor theme %1 to your current Plasma session"
 msgstr ""
+"%1 எனும் தோற்றத்திட்டம் வெற்றிகரமாக தற்போதைய பிளாஸ்மா அமர்வுக்கானதாக அமைக்கப்பட்டுள்ளது"
 
-#: plasma-apply-cursortheme.cpp:75
+#: plasma-apply-cursortheme.cpp:103
 #, kde-format
 msgid ""
 "You have to restart the Plasma session for your newly applied mouse cursor "
@@ -185,32 +254,489 @@ msgstr ""
 "சுட்டிக்குறி திட்டத்தை நீங்கள் மாற்றியது சரியாக செயல்பட, நீங்கள் பிளாஸ்மாவை மீள்துவக்க "
 "வேண்டும்."
 
-#: plasma-apply-cursortheme.cpp:85
+#: plasma-apply-cursortheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
 "options: %2"
 msgstr ""
+"\"%1\" என்ற தோற்றத்திட்டத்தை கண்டுபிடிக்க முடியவில்லை. தோற்றத்திட்டம் பின்வருபவற்றில் ஒன்றாக "
+"இருக்க வேண்டும்: %2"
 
-#: plasma-apply-cursortheme.cpp:93
+#: plasma-apply-cursortheme.cpp:121
 #, kde-format
 msgid "You have the following mouse cursor themes on your system:"
-msgstr ""
+msgstr "உங்கள் கணினியில் கீழ்காணும் சுட்டிக்குறி தோற்றத்திட்டங்கள் உள்ளன:"
 
-#: xcursor/thememodel.cpp:67
+#: plasma-apply-cursortheme.cpp:126
 #, kde-format
-msgid "Name"
-msgstr "பெயர்"
+msgid "(Current theme for this Plasma session)"
+msgstr "(தற்போதைய அமர்வுக்கான தோற்றத்திட்டம்)"
 
-#: xcursor/thememodel.cpp:70
-#, kde-format
-msgid "Description"
-msgstr "விவரணம்"
-
-#: xcursor/xcursortheme.cpp:56
+#: xcursor/xcursortheme.cpp:60
 #, kde-format
 msgctxt ""
 "@info The argument is the list of available sizes (in pixel). Example: "
 "'Available sizes: 24' or 'Available sizes: 24, 36, 48'"
 msgid "(Available sizes: %1)"
 msgstr "(உள்ள அளவுகள்: %1)"
+
+#~ msgid "Name"
+#~ msgstr "பெயர்"
+
+#~ msgid "Description"
+#~ msgstr "விவரணம்"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "tamilpc team"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "tamilpc@ambalam.com"
+
+#~ msgid "Cursors"
+#~ msgstr "சுட்டிக்குறிகள்"
+
+#, fuzzy
+#~| msgid ""
+#~| "<qt>Are you sure you want to remove the <strong>%1</strong> cursor theme?"
+#~| "<br>This will delete all the files installed by this theme.</qt>"
+#~ msgid ""
+#~ "<qt>Are you sure you want to remove the <i>%1</i> cursor theme?<br />This "
+#~ "will delete all the files installed by this theme.</qt>"
+#~ msgstr ""
+#~ "<strong>%1</strong> காட்டி தலைப்பை உறுதியாக நீக்க வேண்டுமா? இது இந்த தலைப்பால் "
+#~ "நிறுவப்பட்ட கோப்புகள் அனைத்தையும் நீக்கிவிடும்."
+
+#~ msgid "Confirmation"
+#~ msgstr "உறுதிப்படுத்தல்"
+
+#~ msgid "Cursor Settings Changed"
+#~ msgstr "காட்டி அமைப்புகள் மாற்றப்பட்டுள்ளது"
+
+#~ msgid "Drag or Type Theme URL"
+#~ msgstr "வலைமனை தலைப்பை இழு அல்லது உள்ளிடு"
+
+#~ msgid ""
+#~ "Unable to download the cursor theme archive; please check that the "
+#~ "address %1 is correct."
+#~ msgstr "காட்டி தலைப்புக்காப்பை இறக்க இயலவில்லை.  முகவரி %1ஐ சரிப் பார்க்கவும்."
+
+#~ msgid ""
+#~ "Select the cursor theme you want to use (hover preview to test cursor):"
+#~ msgstr ""
+#~ "தாங்கள் பயன்படுத்த விரும்பும் காட்டி தலைப்பை தேர்வு செய்.(சுட்டி சோதனைக்கு ஹோவர் "
+#~ "முன்காட்சி):"
+
+#~ msgid "Select the cursor theme you want to use:"
+#~ msgstr "தாங்கள் பயன்படுத்த விரும்பும் காட்டி தலைப்பை தேர்வு செய்."
+
+#~ msgid "Small black"
+#~ msgstr "சிறிய கருப்பு"
+
+#~ msgid "Small black cursors"
+#~ msgstr "சிறிய கருப்பு காட்டிகள்"
+
+#~ msgid "Large black"
+#~ msgstr "பெரிய கருப்பு"
+
+#~ msgid "Large black cursors"
+#~ msgstr "பெரிய கருப்பு காட்டிகள்"
+
+#~ msgid "Small white"
+#~ msgstr "சிறிய வெள்ளை"
+
+#~ msgid "Small white cursors"
+#~ msgstr "வெள்ளை வெள்ளை காட்டிகள்"
+
+#~ msgid "Large white"
+#~ msgstr "பெரிய வெள்ளை"
+
+#~ msgid "Large white cursors"
+#~ msgstr "பெரிய வெள்ளை காட்டிகள்"
+
+#~ msgid "Button Order"
+#~ msgstr "பொத்தான் முறை"
+
+#~ msgid "Righ&t handed"
+#~ msgstr "வலதுக்கை பழக்கமுள்ள"
+
+#~ msgid "Le&ft handed"
+#~ msgstr "இடதுகை பழக்கமுள்ள"
+
+#~ msgid ""
+#~ "Change the direction of scrolling for the mouse wheel or the 4th and 5th "
+#~ "mouse buttons."
+#~ msgstr ""
+#~ "சுட்டி சக்கரம் அல்லது 4 வது மற்றும் 5 வது சுட்டி பட்டன்களுக்கான உருளும் திசையை "
+#~ "மாற்றுக."
+
+#~ msgid "Re&verse scroll direction"
+#~ msgstr "காந்தப்போக்கு உருளை திருப்புக"
+
+#~ msgid "Icons"
+#~ msgstr "குறும்படங்கள்"
+
+#~ msgid ""
+#~ "Dou&ble-click to open files and folders (select icons on first click)"
+#~ msgstr ""
+#~ "கோப்புகள்/அடைவுகளைத் திறக்க இருமுறை க்ளிக் செய்க (முதல் க்ளிக்கில் குறும்படங்களைத் "
+#~ "தேர்வு செய்யும்)"
+
+#~ msgid "&Single-click to open files and folders"
+#~ msgstr "&கோப்புகள் மற்றும் அடைவுகளைத் திறக்க ஒற்றைக் க்ளிக் செய்க "
+
+#~ msgid "Cha&nge pointer shape over icons"
+#~ msgstr "குறும்படத்தின் மேல் செல்கையில் சின்னத்தின் வடிவத்தை மாற்று"
+
+#~ msgid "A&utomatically select icons"
+#~ msgstr "குறும்படங்களை தன்னியக்கமாக தேர்வு செய்யவும்"
+
+#, fuzzy
+#~| msgid "Dela&y:"
+#~ msgctxt "label. delay (on milliseconds) to automatically select icons"
+#~ msgid "Delay"
+#~ msgstr "தாமதம்:"
+
+#, fuzzy
+#~| msgid " msec"
+#~ msgctxt "milliseconds. time to automatically select the items"
+#~ msgid " ms"
+#~ msgstr "மில்லி விநாடி"
+
+#~ msgid ""
+#~ "<h1>Mouse</h1> This module allows you to choose various options for the "
+#~ "way in which your pointing device works. Your pointing device may be a "
+#~ "mouse, trackball, or some other hardware that performs a similar function."
+#~ msgstr ""
+#~ "<h1>சுட்டி</h1> உங்கள் சுட்டும் சாதனம் வேலை செய்யும் இடத்தின் வழிக்கான பலவித விருப்பத் "
+#~ "தேர்வுகளை தேர்ந்தெடுக்க இந்த பகுதி அனுமதிக்கிறது. உங்கள் சுட்டும் சாதனம், ஒரு சுட்டி, "
+#~ "தடப் பந்து, அல்லது வன்பொருள் செய்யும் ஒரே மாதிரியான இயக்கமாக இருக்கலாம்."
+
+#~ msgid "&General"
+#~ msgstr "பொதுவான"
+
+#~ msgid ""
+#~ "If you are left-handed, you may prefer to swap the functions of the left "
+#~ "and right buttons on your pointing device by choosing the 'left-handed' "
+#~ "option. If your pointing device has more than two buttons, only those "
+#~ "that function as the left and right buttons are affected. For example, if "
+#~ "you have a three-button mouse, the middle button is unaffected."
+#~ msgstr ""
+#~ "நீங்கள் இடது-கை பழக்கமுள்ளவராக இருந்தால், சுட்டி சாதனத்தில் இடது மற்றும் வலது "
+#~ "பொத்தான்களின் செயல்களை, 'இடது-கை பழக்கமுள்ள' என்ற விருப்பத்தை தேர்வு செய்து "
+#~ "மாற்றியமைக்கலாம். உங்கள் சுட்டி சாதனத்தில் இரண்டு பொத்தான்களுக்கு மேல் இருந்தால், வலது "
+#~ "மற்றும் இடது பொத்தான்களாக இயங்கும் பொத்தான்கள் மட்டும் தான் பாதிக்கபடும். உதாரணமாக, "
+#~ "நீங்கள் மூன்று-பொத்தான் சுட்டி வைத்திருந்தால், நடு பொத்தான் பாதிக்கப்படாது."
+
+#~ msgid ""
+#~ "The default behavior in KDE is to select and activate icons with a single "
+#~ "click of the left button on your pointing device. This behavior is "
+#~ "consistent with what you would expect when you click links in most web "
+#~ "browsers. If you would prefer to select with a single click, and activate "
+#~ "with a double click, check this option."
+#~ msgstr ""
+#~ "குறும்படங்களை தேர்வு செய்யவும் செயல்படுத்தவும் உங்கள் சுட்டிச் சாதனத்தை இடப்பொத்தானைக் "
+#~ "க்ளிக் செய்வதே கேடியின் முன்னிருப்பாகும். இது வலை மேலோடிகளின் இணைப்புளைக் க்ளிக் "
+#~ "செய்வதற்கு ஒப்பானது. நீங்கள் விருப்பினால், தேர்வு செய்ய ஒரு க்ளிக், செயற்படுத்த இரு "
+#~ "க்ளிக் என இதன்மூலம் அமைத்துக்கொள்ளலாம்."
+
+#~ msgid "Activates and opens a file or folder with a single click."
+#~ msgstr "கோப்பை/அடைவை திறக்க மற்றும் இயக்க ஒற்றை கிளிக் பயன்படுத்து."
+
+#~ msgid ""
+#~ "If you check this option, pausing the mouse pointer over an icon on the "
+#~ "screen will automatically select that icon. This may be useful when "
+#~ "single clicks activate icons, and you want only to select the icon "
+#~ "without activating it."
+#~ msgstr ""
+#~ "இந்த விருப்பத்தை தேர்வு செய்தால், சுட்டியை ஒரு குறும்படத்தின் மெல் நகர்த்தினால், அந்த "
+#~ "குறும்படம் தானாகவே தேர்வு செய்யபடும். ஒரு க்ளிக் தான் குறும்படங்களை இயக்கும் என்றால் "
+#~ "மற்றும் அவைகளை செயல்படுத்தாமல் தேர்வு செய்தால் போதும் என்றால் இது பயனுள்ளதாக இருக்கும்."
+
+#~ msgid ""
+#~ "If you have checked the option to automatically select icons, this slider "
+#~ "allows you to select how long the mouse pointer must be paused over the "
+#~ "icon before it is selected."
+#~ msgstr ""
+#~ "குறும்படங்களை தன்னியக்கமாக தேர்வு செய்ய, இந்த விருப்பத்தை தேர்வு செய்தால், எவ்வளவு "
+#~ "நேரம் சுட்டி, குறும்படத்தை தேர்வு செய்வதற்கு முன், அதன் மேல் இடைநிறுத்தம் செய்யவேண்டும் "
+#~ "என்பதை, இந்த சறுக்கி அனுமதிக்கும்."
+
+#~ msgid "Advanced"
+#~ msgstr "மேம்பட்ட"
+
+#~ msgid "Pointer acceleration:"
+#~ msgstr "சுட்டி துரிதப்படுத்தல்:"
+
+#, fuzzy
+#~| msgid ""
+#~| "This option allows you to change the relationship between the distance "
+#~| "that the mouse pointer moves on the screen and the relative movement of "
+#~| "the physical device itself (which may be a mouse, trackball, or some "
+#~| "other pointing device.)<p> A high value for the acceleration will lead "
+#~| "to large movements of the mouse pointer on the screen even when you only "
+#~| "make a small movement with the physical device. Selecting very high "
+#~| "values may result in the mouse pointer flying across the screen, making "
+#~| "it hard to control."
+#~ msgid ""
+#~ "<p>This option allows you to change the relationship between the distance "
+#~ "that the mouse pointer moves on the screen and the relative movement of "
+#~ "the physical device itself (which may be a mouse, trackball, or some "
+#~ "other pointing device.)</p><p> A high value for the acceleration will "
+#~ "lead to large movements of the mouse pointer on the screen even when you "
+#~ "only make a small movement with the physical device. Selecting very high "
+#~ "values may result in the mouse pointer flying across the screen, making "
+#~ "it hard to control.</p>"
+#~ msgstr ""
+#~ "சுட்டி திரையில் நகரும் தொலைவு மற்றும் அதற்கு தொடர்பான பருநிலை சாதனத்தின் (சுட்டி "
+#~ "காட்டும் சாதனம், அல்லது தடப் பந்து) நகர்வு, ஆகியவையின் தொடர்பை மாற்ற இந்த விருப்பம் "
+#~ "அனுமதிக்கும்.<p> துரிதபடுத்துதலுக்கு  அதிக மதிப்பு இருந்தால், பருநிலை சாதனத்தை "
+#~ "சிறிது நகர்த்தினாலும் திரையில் சுட்டி பெரிய நகர்வுகள் தெரியும். மிக பெரிய மதிப்பு "
+#~ "தேர்வு செய்தால், சுட்டி திரையில் பறக்கும், இதனால் அதை கட்டுபடுத்துவது ரொம்ப "
+#~ "கடினமாகும்!<p> துரிதபடுத்துதல் மதிப்பை மாற்ற, சறுக்கி பட்டனை நகர்த்தி அல்லது "
+#~ "சறுக்கியின் இடது பக்கத்தில் உள்ள சுழற்சி பட்டனில் இருக்கும் மேல்/கீழ் அம்புகளை க்ளிக் "
+#~ "செய்து, நீங்கள் அமைக்கலாம்."
+
+#~ msgid "Pointer threshold:"
+#~ msgstr "சுட்டி எல்லையளவு:"
+
+#, fuzzy
+#~| msgid ""
+#~| "The threshold is the smallest distance that the mouse pointer must move "
+#~| "on the screen before acceleration has any effect. If the movement is "
+#~| "smaller than the threshold, the mouse pointer moves as if the "
+#~| "acceleration was set to 1X;<p> thus, when you make small movements with "
+#~| "the physical device, there is no acceleration at all, giving you a "
+#~| "greater degree of control over the mouse pointer. With larger movements "
+#~| "of the physical device, you can move the mouse pointer rapidly to "
+#~| "different areas on the screen."
+#~ msgid ""
+#~ "<p>The threshold is the smallest distance that the mouse pointer must "
+#~ "move on the screen before acceleration has any effect. If the movement is "
+#~ "smaller than the threshold, the mouse pointer moves as if the "
+#~ "acceleration was set to 1X;</p><p> thus, when you make small movements "
+#~ "with the physical device, there is no acceleration at all, giving you a "
+#~ "greater degree of control over the mouse pointer. With larger movements "
+#~ "of the physical device, you can move the mouse pointer rapidly to "
+#~ "different areas on the screen.</p>"
+#~ msgstr ""
+#~ "எல்லையளவு என்பது துரிதபடுத்துதல், சுட்டியில் பாதிப்பு ஏற்படுத்தும் முன், எலி சுட்டி "
+#~ "நகரும் சிறிய தொலைவு. அந்த நகர்வு, எல்லையளவை விட சிறியதாக இருந்தால், "
+#~ "துரிதபடுத்துதல் 1X க்கு அமைக்கபட்டது போல்,  சுட்டி நகரும்.<p> அதனால், பருநிலை "
+#~ "சாதனத்தை சிறிது நகர்த்தினாலும், துரிதபடுத்துதல் இல்லை, ஆனாலும் சுட்டியை "
+#~ "கட்டுபடுத்துதலில் அதிக கட்டுபாடு இருக்கும்.  பருநிலை சாதனத்தில் அதிக நகர்வு "
+#~ "இருந்தால், சுட்டியை திரையில் அனைத்து இடங்களிலும் வேகமாக நகர்த்தலாம்.<p>எல்லையளவை "
+#~ "மாற்ற, சறுக்கி பொத்தானை நகர்த்தி அல்லது சறுக்கியின் இடது பக்கத்தில் உள்ள சுழற்சி "
+#~ "பட்டனில் இருக்கும் மேல்/கீழ் அம்புகளை க்ளிக் செய்து, நீங்கள் அமைக்கலாம்"
+
+#~ msgid " msec"
+#~ msgstr "மில்லி விநாடி"
+
+#~ msgid "Double click interval:"
+#~ msgstr "இரட்டை க்ளிக் இடைவெளி:"
+
+#~ msgid ""
+#~ "The double click interval is the maximal time (in milliseconds) between "
+#~ "two mouse clicks which turns them into a double click. If the second "
+#~ "click happens later than this time interval after the first click, they "
+#~ "are recognized as two separate clicks."
+#~ msgstr ""
+#~ "இரு க்ளிக் இடைவெளி என்பது, இரண்டு க்ளிக்களுக்கு இடையேயுள்ள உச்ச நேர இடைவெளி "
+#~ "(மில்லிசெக்கன்களில்) ஆகும். முதல் க்ளிக் பிறகு இரண்டாவது க்ளிக், இந்த இடைவெளியை விட "
+#~ "அதிகமாக இருந்தால், அவை இரண்டும் இரண்டு தனித் தனி க்ளிக்களாக உணரப்படும்."
+
+#~ msgid "Drag start time:"
+#~ msgstr "இழு தொடக்க நேரம்:"
+
+#~ msgid ""
+#~ "If you click with the mouse (e.g. in a multi-line editor) and begin to "
+#~ "move the mouse within the drag start time, a drag operation will be "
+#~ "initiated."
+#~ msgstr ""
+#~ "நீங்கள் சுட்டியால் க்ளிக் செய்தவுடன் (உ.ம். ஒரு பன்மை வரித் தொகுப்பாளரில்), அடுத்த "
+#~ "இழுப்புத் தொடக்க நேரத்திற்குள், சுட்டியை நகர்த்தினால், ஒரு இழுப்பு இயக்கம் தொடங்கும்."
+
+#~ msgid "Drag start distance:"
+#~ msgstr "இழு தொடக்கத் தெலைவு:"
+
+#~ msgid ""
+#~ "If you click with the mouse and begin to move the mouse at least the drag "
+#~ "start distance, a drag operation will be initiated."
+#~ msgstr ""
+#~ "நீங்கள் சுட்டியை க்ளிக் செய்து தொடக்க தொலைவில் சுட்டியை நகர்த்தினால், ஒரு இழுக்கும் "
+#~ "இயக்கம் ஆரம்பிக்கபடும்."
+
+#~ msgid "Mouse wheel scrolls by:"
+#~ msgstr "சுட்டி சக்கரங்கள் உருளுகிறது:"
+
+#~ msgid ""
+#~ "If you use the wheel of a mouse, this value determines the number of "
+#~ "lines to scroll for each wheel movement. Note that if this number exceeds "
+#~ "the number of visible lines, it will be ignored and the wheel movement "
+#~ "will be handled as a page up/down movement."
+#~ msgstr ""
+#~ "சுட்டியின் சக்கரத்தைப் பயன்படுத்தினால், ஒவ்வொரு சக்கர நகர்வுக்கான உருளலுக்கு வரிகளின் "
+#~ "எண்ணிக்கையை உறுதிசெய்கிறது. தெரியும் வரிகளின் எண்ணிக்கையை விட இந்த எண்ணிக்கை "
+#~ "அதிகமானால், அது தவிர்க்கப்பட்டு சக்கர நகர்வு பக்க மேல்/கீழ் நகர்வாக கையாளப்படும்."
+
+#~ msgid "Mouse Navigation"
+#~ msgstr "சுட்டி நாவிகேஷன்"
+
+#~ msgid "&Move pointer with keyboard (using the num pad)"
+#~ msgstr "&விசைப்பலகை மூலம் சுட்டியை நகர்த்து  (எண் அட்டையைப் பயன்படுத்து)"
+
+#~ msgid "&Acceleration delay:"
+#~ msgstr "&விரைவுப்படுத்தலில் தாமதம்:"
+
+#~ msgid "R&epeat interval:"
+#~ msgstr "மீள்செயல் இடைவெளி "
+
+#~ msgid "Acceleration &time:"
+#~ msgstr "விரைவுப்படுத்துதல் நேரம்:"
+
+#, fuzzy
+#~ msgid " pixel/sec"
+#~ msgstr "படத்துணுக்குகள்"
+
+#~ msgid "Ma&ximum speed:"
+#~ msgstr "அதிகபட்ச வேகம்: "
+
+#~ msgid "Acceleration &profile:"
+#~ msgstr "விரைவிப்படுத்தல் விளக்கக்குறிப்பு:"
+
+#~ msgid "Mouse"
+#~ msgstr "சுட்டி"
+
+#~ msgid "(c) 1997 - 2005 Mouse developers"
+#~ msgstr "(c) 1997 - 2005 சுட்டி தயாரிப்பாளர்கள்"
+
+#~ msgid "Mouse type: %1"
+#~ msgstr "சுட்டி வகை: %1"
+
+#~ msgid ""
+#~ "RF channel 1 has been set. Please press Connect button on mouse to re-"
+#~ "establish link"
+#~ msgstr ""
+#~ "ஆர் எஃப் வழிமுறை 1 அமைக்கப்பட்டது. இணைப்பை திரும்ப பெற சுட்டியில் உள்ள இணைப்பு பட்டனை "
+#~ "அழுத்தவும்."
+
+#~ msgid "Press Connect Button"
+#~ msgstr "இணைப்பு பட்டனை அழுத்தவும்"
+
+#~ msgid ""
+#~ "RF channel 2 has been set. Please press Connect button on mouse to re-"
+#~ "establish link"
+#~ msgstr ""
+#~ "ஆர் எஃப் வழிமுறை 2 அமைக்கப்பட்டது. இணைப்பை திரும்ப பெற சுட்டியில் உள்ள இணைப்பு பட்டனை "
+#~ "அழுத்தவும்."
+
+#, fuzzy
+#~| msgid "none"
+#~ msgctxt "no cordless mouse"
+#~ msgid "none"
+#~ msgstr "எதுவுமில்லை "
+
+#~ msgid "Cordless Mouse"
+#~ msgstr "கார்ட்லெஸ் சுட்டி"
+
+#~ msgid "Cordless Wheel Mouse"
+#~ msgstr "கார்ட்லெஸ் சக்கர சுட்டி"
+
+#~ msgid "Cordless MouseMan Wheel"
+#~ msgstr "கார்ட்லெஸ் சுட்டி சக்கரம்"
+
+#~ msgid "Cordless TrackMan Wheel"
+#~ msgstr "கார்ட்லெஸ் ட்ராக்மான் சக்கரம்"
+
+#~ msgid "TrackMan Live"
+#~ msgstr "ட்ராக்மான் லைவ்"
+
+#~ msgid "Cordless TrackMan FX"
+#~ msgstr "கார்ட்லெஸ் ட்ராக்மான் எஃப் எக்ஸ்"
+
+#~ msgid "Cordless MouseMan Optical"
+#~ msgstr "கார்ட்லெஸ் மெளஸ்மான் ஆப்டிகல்"
+
+#~ msgid "Cordless Optical Mouse"
+#~ msgstr "கார்ட்லெஸ் ஆப்டிகல் சுட்டி"
+
+#~ msgid "Cordless MouseMan Optical (2ch)"
+#~ msgstr "கார்ட்லெள் மெளஸ்மான் ஆப்டிகள் (2ch)"
+
+#~ msgid "Cordless Optical Mouse (2ch)"
+#~ msgstr "கார்ட்லெஸ் ஆப்டிகல் சுட்டி (2ch)"
+
+#~ msgid "Cordless Mouse (2ch)"
+#~ msgstr "கார்ட்லெஸ் சுட்டி (2ch)"
+
+#~ msgid "Cordless Optical TrackMan"
+#~ msgstr "கார்ட்லெஸ் ஆப்டிகல் ட்ராக்மன்"
+
+#~ msgid "MX700 Cordless Optical Mouse"
+#~ msgstr "MX700 கார்ட்லெஸ் ஆப்டிகல் சுட்டி"
+
+#~ msgid "MX700 Cordless Optical Mouse (2ch)"
+#~ msgstr "MX700 கார்ட்லெஸ் ஆப்டிகல் சுட்டி (2ch)"
+
+#~ msgid "Unknown mouse"
+#~ msgstr "தெரியாத சுட்டி"
+
+#~ msgid "Cordless Name"
+#~ msgstr "கார்ட்லெஸ் பெயர்"
+
+#~ msgid "Sensor Resolution"
+#~ msgstr "சென்சார் தெளிவுத்திறன்"
+
+#~ msgid "400 counts per inch"
+#~ msgstr "ஒவ்வொரு அங்குலத்துக்கும் 400 எண்ணிக்கைகள்"
+
+#~ msgid "800 counts per inch"
+#~ msgstr "ஒவ்வொரு அங்குலத்துக்கும் 800 எண்ணிக்கைகள்"
+
+#~ msgid "Battery Level"
+#~ msgstr "பாட்டரி எல்லை"
+
+#~ msgid "RF Channel"
+#~ msgstr "ஆர் எஃப் வழிமுறை"
+
+#~ msgid "Channel 1"
+#~ msgstr "வழிமுறை 1"
+
+#~ msgid "Channel 2"
+#~ msgstr "வழிமுறை 2"
+
+#~ msgid ""
+#~ "You have a Logitech Mouse connected, and libusb was found at compile "
+#~ "time, but it was not possible to access this mouse. This is probably "
+#~ "caused by a permissions problem - you should consult the manual on how to "
+#~ "fix this."
+#~ msgstr ""
+#~ "உங்களுக்கு லாஜிடெக் சுட்டி இணைக்கப்பட்டுள்ளது. தொகுக்கும் நேரத்தில் libusb "
+#~ "கண்டுபிடிக்கப்பட்டுள்ளது. இந்த சுட்டியை அணுக முடியாது. இது அனுமதி சிக்கலாக "
+#~ "இருக்கலாம் - இதை சரிப்படுத்த கையேடை தொடர்பு கொள்ளவும்."
+
+#~ msgid "No description available"
+#~ msgstr "விவரிப்பு இல்லை."
+
+#~ msgid "Short"
+#~ msgstr "குறுகிய"
+
+#~ msgid "Long"
+#~ msgstr "நீண்ட"
+
+#~ msgid "Show feedback when clicking an icon"
+#~ msgstr "ஒரு குறும்படத்தை கிளிக் செய்யும்போது, கருத்து காட்டு"
+
+#~ msgid "Visual f&eedback on activation"
+#~ msgstr "இயக்கும் போது அறிவிப்பைக் காட்டு "
+
+#~ msgid "No theme"
+#~ msgstr "தலைப்பு இல்லை"
+
+#~ msgid "The old classic X cursors"
+#~ msgstr "பழைய மரபு X காட்டிகள்"
+
+#~ msgid "System theme"
+#~ msgstr "அமைப்பு தலைப்பு"

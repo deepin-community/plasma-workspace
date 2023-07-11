@@ -29,3 +29,6 @@ msgstr "VizualizareSarcină pentru %1 nu poate fi găsită"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Sarcină anulată de utilizator."

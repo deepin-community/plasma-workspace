@@ -14,11 +14,16 @@
 
 #include <QDebug>
 #include <QProcess>
+#include <QTextDocumentFragment>
 
+#include <KLocalizedString>
 #include <KShell>
 
 #include <algorithm>
+#include <chrono>
 #include <functional>
+
+using namespace std::chrono_literals;
 
 static const int s_notificationsLimit = 1000;
 
@@ -29,7 +34,7 @@ AbstractNotificationsModel::Private::Private(AbstractNotificationsModel *q)
     , lastRead(QDateTime::currentDateTimeUtc())
 {
     pendingRemovalTimer.setSingleShot(true);
-    pendingRemovalTimer.setInterval(50);
+    pendingRemovalTimer.setInterval(50ms);
     connect(&pendingRemovalTimer, &QTimer::timeout, q, [this, q] {
         QVector<int> rowsToBeRemoved;
         rowsToBeRemoved.reserve(pendingRemovals.count());
@@ -100,7 +105,7 @@ void AbstractNotificationsModel::Private::onNotificationReplaced(uint replacedId
 
     notifications[row] = newNotification;
     const QModelIndex idx = q->index(row, 0);
-    emit q->dataChanged(idx, idx);
+    Q_EMIT q->dataChanged(idx, idx);
 }
 
 void AbstractNotificationsModel::Private::onNotificationRemoved(uint removedId, Server::CloseReason reason)
@@ -124,9 +129,9 @@ void AbstractNotificationsModel::Private::onNotificationRemoved(uint removedId, 
         notification.setActions(QStringList());
 
         // clang-format off
-        emit q->dataChanged(idx, idx, {
+        Q_EMIT q->dataChanged(idx, idx, {
             Notifications::ExpiredRole,
-            // TODO only emit those if actually changed?
+            // TODO only Q_EMIT those if actually changed?
             Notifications::ActionNamesRole,
             Notifications::ActionLabelsRole,
             Notifications::HasDefaultActionRole,
@@ -251,8 +256,30 @@ void AbstractNotificationsModel::setLastRead(const QDateTime &lastRead)
 {
     if (d->lastRead != lastRead) {
         d->lastRead = lastRead;
-        emit lastReadChanged();
+        Q_EMIT lastReadChanged();
     }
+}
+
+QWindow *AbstractNotificationsModel::window() const
+{
+    return d->window;
+}
+
+void AbstractNotificationsModel::setWindow(QWindow *window)
+{
+    if (d->window == window) {
+        return;
+    }
+    if (d->window) {
+        disconnect(d->window, &QObject::destroyed, this, nullptr);
+    }
+    d->window = window;
+    if (d->window) {
+        connect(d->window, &QObject::destroyed, this, [this] {
+            setWindow(nullptr);
+        });
+    }
+    Q_EMIT windowChanged(window);
 }
 
 QVariant AbstractNotificationsModel::data(const QModelIndex &index, int role) const
@@ -283,6 +310,11 @@ QVariant AbstractNotificationsModel::data(const QModelIndex &index, int role) co
         return notification.summary();
     case Notifications::BodyRole:
         return notification.body();
+    case Qt::AccessibleDescriptionRole:
+        return i18nc("@info %1 notification body %2 application name",
+                     "%1 from %2",
+                     QTextDocumentFragment::fromHtml(notification.body()).toPlainText(),
+                     notification.applicationName());
     case Notifications::IconNameRole:
         if (notification.image().isNull()) {
             return notification.icon();
@@ -438,11 +470,9 @@ void AbstractNotificationsModel::clear(Notifications::ClearFlags flags)
         const Notification &notification = d->notifications.at(i);
 
         if (flags.testFlag(Notifications::ClearExpired) && notification.expired()) {
-            rowsToRemove.append(i);
+            close(notification.id());
         }
     }
-
-    d->removeRows(rowsToRemove);
 }
 
 void AbstractNotificationsModel::onNotificationAdded(const Notification &notification)

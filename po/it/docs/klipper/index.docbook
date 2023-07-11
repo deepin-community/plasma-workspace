@@ -63,9 +63,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->17/4/2021</date>
+>05/05/2022</date>
 <releaseinfo
->Plasma 5.20</releaseinfo>
+>Plasma 5.25</releaseinfo>
 
 <abstract>
 <para
@@ -174,14 +174,14 @@
 <para
 >Se non vuoi eseguire alcuna azione sui contenuti degli appunti, seleziona <guimenuitem
 >Disabilita questo menu a comparsa</guimenuitem
-> dal menu a comparsa per ritornare a ciò che stavi facendo prima. Se lasci il menu, esso scomparirà, permettendoti di continuare a lavorare. Puoi cambiare il tempo di permanenza del menu nella finestra di dialogo delle preferenze, con l'opzione <guilabel
->Tempo massimo per il menu delle azioni</guilabel
+> dal menu a comparsa per ritornare a ciò che stavi facendo prima. Se lasci il menu, esso scomparirà, permettendoti di continuare a lavorare. Puoi cambiare il tempo di permanenza del menu nella finestra delle preferenze, con l'opzione <guilabel
+>Mostra il menu a comparsa delle azioni</guilabel
 > nella pagina <guilabel
 >Generale</guilabel
->. Puoi disabilitare separatamente la parte del percorso di file usando l'opzione <guilabel
->Abilita le azioni basate su tipi MIME</guilabel
-> nella scheda <guilabel
->Azioni</guilabel
+>. Puoi disabilitare separatamente la parte del percorso dei file usando l'opzione <guilabel
+>Includi le azioni MIME</guilabel
+> nella pagina <guilabel
+>Menu azioni</guilabel
 >.</para>
 
 <para
@@ -248,17 +248,17 @@
 <para
 >Per cambiare il comportamento degli appunti/selezione, seleziona <guimenuitem
 >Configura gli appunti...</guimenuitem
-> dal menu contestuale di &klipper; e, nella finestra che appare, apri la pagina <guilabel
+> dal menu contestuale di &klipper; e, nella finestra che appare, seleziona la pagina <guilabel
 >Generale</guilabel
 >. La disattivazione di <guilabel
->Sincronizza i contenuti degli appunti e della selezione</guilabel
+>Selezione e appunti</guilabel
 > farà sì che gli appunti e la selezione lavorino come due buffer completamente separati come descritto sopra. Con quest'opzione impostata, l'opzione <guilabel
->Ignora la selezione</guilabel
+>Ignora</guilabel
 > impedirà a &klipper; di includere i contenuti della selezione nella sua cronologia di appunti e di eseguire le azioni sui contenuti della selezione. Selezionando <guilabel
->Sincronizza i contenuti degli appunti e della selezione</guilabel
-> gli appunti e la selezione saranno sempre gli stessi, e quindi sia il testo nella selezione sia testo nel buffer degli appunti possono essere incollati usando indifferentemente il tasto <mousebutton
+>Selezione e Appunti</guilabel
+>, i buffer degli appunti e delle selezioni saranno sempre gli stessi, il che significa che il testo nella selezione può essere incollato con il pulsante <mousebutton
 >centrale</mousebutton
-> del mouse o la combinazione di tasti <keycombo
+> del mouse o con la combinazione di tasti <keycombo
 >&Ctrl;<keycap
 >V</keycap
 > </keycombo
@@ -289,99 +289,46 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 
 <variablelist>
 
-<varlistentry>
-<term
+<varlistentry
+><term
 ><guilabel
->Salva il contenuto degli appunti quando esci</guilabel
-></term
-> <listitem
-><para
->Se quest'opzione è attiva, la cronologia degli appunti sarà salvata all'uscita da &klipper;, permettendoti di usarla al prossimo avvio di &klipper;.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Evita gli appunti vuoti</guilabel
+>Selezione e appunti</guilabel
 ></term>
 <listitem
 ><para
->Se quest'opzione è selezionata, gli appunti non saranno mai vuoti: &klipper; inserirà negli appunti la voce più recente nella cronologia degli appunti per non avere appunti vuoti.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Ignora le immagini</guilabel
-></term>
-<listitem
+>Quando del testo o un'area dello schermo viene selezionato con il mouse o con la tastiera, questa viene chiamata <emphasis
+>selezione</emphasis
+>. Può essere incollata utilizzando il pulsante centrale del mouse.</para
 ><para
->Quando un'area dello schermo viene selezionata con il mouse o la tastiera, questa è chiamata <quote
->selezione</quote
->. Se questa opzione è attivata, solo selezioni di testo sono memorizzate nella cronologia, mentre immagini e altri tipi di selezioni non lo sono. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Ignora la selezione</guilabel
-></term>
-<listitem
+>Se la selezione viene copiata in modo esplicito utilizzando un'azione <guimenuitem
+>Copia</guimenuitem
+> o <guimenuitem
+>Taglia</guimenuitem
+>, viene salvata negli <emphasis
+>appunti</emphasis
+>. Può essere incollata usando un'azione <guimenuitem
+>Incolla</guimenuitem
+>.</para
 ><para
->Imposta la modalità degli appunti. Questa opzione farà sì che &klipper; non includa il contenuto della selezione nella sua cronologia degli appunti e che non esegua azioni sul contenuto della selezione. Vedi <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Solo selezione di testo</guilabel
-></term>
-<listitem
-><para
->Quando un'area dello schermo viene selezionata con il mouse o la tastiera, questa è chiamata <quote
->selezione</quote
->. Se questa opzione è attivata, solo selezioni di testo sono memorizzate nella cronologia, mentre immagini e altri tipi di selezioni non lo sono. Vedi anche <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Sincronizza i contenuti degli appunti e della selezione</guilabel
-></term>
-<listitem
-><para
->Imposta la modalità degli appunti. Quando un'area dello schermo viene selezionata con il mouse o la tastiera, questa è chiamata <quote
->selezione</quote
->. Se questa opzione è attivata, la selezione e gli appunti sono mantenuti sincronizzati, quindi qualsiasi cosa nella selezione è immediatamente disponibile per essere incollata in qualsiasi modo, anche con il classico pulsante centrale del mouse. Altrimenti, la selezione è aggiunta nella cronologia degli appunti, ma può essere incollata solamente con il tasto centrale del mouse. Guarda anche l'opzione <guilabel
->Ignora la selezione</guilabel
->. Vedi anche <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Tempo massimo per il menu delle azioni</guilabel
-></term>
-<listitem
-><para
->Imposta il tempo di permanenza di un menu a comparsa se non lo usi.</para
+>Quando è attivata, questa opzione mantiene la selezione e gli appunti invariati, in modo che qualsiasi selezione sia immediatamente disponibile per essere incollata con qualsiasi mezzo. Se è disattivata, la selezione può ancora essere salvata nella cronologia degli appunti (fatte salve le opzioni seguenti), ma può essere incollata solo utilizzando il pulsante centrale del mouse.</para
 ></listitem>
 </varlistentry>
 
 <varlistentry
 ><term
 ><guilabel
->Dimensione della cronologia degli appunti</guilabel
+>Cronologia degli appunti</guilabel
+></term>
+<listitem
+><para
+>Commuta la cronologia degli appunti.</para
+></listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Numero di voci</guilabel
 ></term>
 <listitem
 ><para
@@ -389,15 +336,67 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 ></listitem>
 </varlistentry>
 
+<varlistentry>
+<term
+><guilabel
+>Selezione del testo</guilabel
+></term>
+<listitem
+><para
+>Quando un'area dello schermo viene selezionata con il mouse o la tastiera, questa viene chiamata <quote
+>selezione</quote
+>. Questa opzione determina se le selezioni di testo vengono salvate nella cronologia degli appunti. È possibile scegliere tra <guilabel
+>Salva sempre nella cronologia</guilabel
+> e <guilabel
+>Solo se copiato esplicitamente</guilabel
+>. L'opzione <guilabel
+>Salva sempre nella cronologia</guilabel
+> non è disponibile se la sincronizzazione della selezione/appunti è disattivata &dash; in questo caso la selezione non viene mai salvata automaticamente nella cronologia degli appunti. Vedi <xref linkend="clipboard-modes"/>. </para>
+</listitem>
+</varlistentry
+> 
+
+<varlistentry>
+<term
+><guilabel
+>Selezione non testuale</guilabel
+></term>
+<listitem
+><para
+>Questa opzione determina se le selezioni non testuali (come le immagini) vengono salvate nella cronologia degli appunti. È possibile scegliere tra <guilabel
+>Salva sempre nella cronologia</guilabel
+>, <guilabel
+>Solo se copiato esplicitamente</guilabel
+> e <guilabel
+>Non salvare mai nella cronologia</guilabel
+>. L'opzione <guilabel
+>Salva sempre nella cronologia</guilabel
+> non è disponibile se la selezione/sincronizzazione degli appunti è disattivata &dash; in questo caso la selezione non viene mai salvata automaticamente nella cronologia degli appunti. Vedi <xref linkend="clipboard-modes"/>. </para>
+</listitem>
+</varlistentry
+> 
+
 </variablelist>
 
 </sect1>
 
-<sect1 id="actions-page">
+<sect1 id="action-menu-page">
 <title
->Opzioni delle azioni</title>
+>Menu delle azioni</title>
 
 <variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Mostra il menu a comparsa delle azioni</guilabel
+></term>
+<listitem
+><para
+>Imposta il tempo di permanenza di un menu a comparsa se non lo usi.</para
+></listitem>
+</varlistentry>
+
 <varlistentry>
 <term
 ><guilabel
@@ -406,6 +405,48 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 <listitem
 ><para
 >Se quest'opzione è attivata, quando si seleziona un elemento dalla cronologia, &klipper; farà comparire il menu a comparsa delle azioni per quell'elemento, se ve ne sono di adatte.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guibutton
+>Escludi le finestre</guibutton
+></term>
+<listitem
+><para
+>Fa comparire la finestra di dialogo <guilabel
+>Disabilita le azioni per le finestre di tipo WM_CLASS</guilabel
+></para>
+<para
+>Alcuni programmi, come &konqueror;, usano gli appunti internamente. Se non vuoi che appaiano i menu a comparsa di &klipper; ogni volta che usi una certa applicazione, fai le seguenti cose:</para>
+
+<orderedlist>
+<listitem
+><para
+>Apri l'applicazione.</para
+></listitem>
+<listitem
+><para
+>Da un terminale, esegui <userinput
+><command
+>xprop</command
+> | <command
+>grep</command
+> <parameter
+>WM_CLASS</parameter
+></userinput
+> e quindi fai clic sulla finestra dell'applicazione che hai avviato.</para
+></listitem
+> 
+<listitem
+><para
+>Devi inserire la prima stringa dopo il segno di uguale.</para
+></listitem>
+</orderedlist>
+
+<para
+>Una volta che WM_CLASS è stato aggiunto, nessuna altra azione sarà generata per le finestre di quell'applicazione.</para>
 </listitem>
 </varlistentry>
 
@@ -423,14 +464,21 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 <varlistentry>
 <term
 ><guilabel
->Abilita le azioni basate su tipi MIME</guilabel
+>Includi le azioni MIME</guilabel
 ></term>
 <listitem
 ><para
->Se selezionata, oltre alle azioni che hai definito apparirà nel menu contestuale una lista di applicazioni per il tipo MIME rilevato.</para>
+>Se selezionata, includi le applicazioni che possono accettare il suo tipo &MIME; di un nome file o URL selezionato nel menu a comparsa.</para>
 </listitem>
 </varlistentry>
+</variablelist>
+</sect1>
 
+<sect1 id="actions-configuration-page">
+<title
+>Configurazione delle azioni</title>
+
+<variablelist>
 <varlistentry>
 <term
 >Modificare espressioni/azioni</term>
@@ -499,49 +547,18 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 >%s</token
 > nella riga di comando, usa la barra inversa di escape, così: <userinput
 >\%s</userinput
->.</para
-></listitem>
-</varlistentry>
+>.</para>
 
-<varlistentry
-><term
-><guibutton
->Avanzate</guibutton
-></term>
-<listitem
-><para
->Fa comparire la finestra di dialogo <guilabel
->Disabilita le azioni per le finestre di tipo WM_CLASS</guilabel
-></para>
 <para
->Alcuni programmi, come &konqueror;, usano gli appunti internamente. Se non vuoi che appaiano i menu a comparsa di &klipper; ogni volta che usi una certa applicazione, fai le seguenti cose:</para>
-
-<orderedlist>
-<listitem
-><para
->Apri l'applicazione.</para
-></listitem>
-<listitem
-><para
->Da un terminale, esegui <userinput
-><command
->xprop</command
-> | <command
->grep</command
-> <parameter
->WM_CLASS</parameter
+>Voci da <userinput
+><token
+>%0</token
 ></userinput
-> e quindi fai clic sulla finestra dell'applicazione che hai avviato.</para
-></listitem
-> 
-<listitem
-><para
->Devi inserire la prima stringa dopo il segno di uguale.</para
-></listitem>
-</orderedlist>
-
-<para
->Una volta che WM_CLASS è stato aggiunto, nessuna altra azione sarà generata per le finestre di quell'applicazione.</para>
+> a <userinput
+><token
+>%9</token
+></userinput
+> saranno sostituite da testi acquisiti corrispondenti dal modello di corrispondenza. </para>
 </listitem>
 </varlistentry>
 </variablelist>

@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-workspace package.
 #
-# Kishore G <kishore96@gmail.com>, 2021.
+# Kishore G <kishore96@gmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-08-12 21:24+0530\n"
+"POT-Creation-Date: 2023-02-11 02:38+0000\n"
+"PO-Revision-Date: 2022-02-24 21:53+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,84 +15,84 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.07.90\n"
+"X-Generator: Lokalize 21.12.2\n"
 
-#: plugin/actionlist.cpp:83
+#: plugin/actionlist.cpp:86
 #, kde-format
 msgid "Open with:"
 msgstr "இதனால் திற:"
 
-#: plugin/actionlist.cpp:96
+#: plugin/actionlist.cpp:99
 #, kde-format
 msgid "Properties"
 msgstr "பண்புகள்"
 
-#: plugin/actionlist.cpp:143
+#: plugin/actionlist.cpp:146
 #, kde-format
 msgid "Add to Desktop"
 msgstr "பணிமேடையில் சேர்"
 
-#: plugin/actionlist.cpp:148
+#: plugin/actionlist.cpp:151
 #, kde-format
 msgid "Add to Panel (Widget)"
 msgstr "பலகையில் சேர் (பிளாஸ்மாய்ட்)"
 
-#: plugin/actionlist.cpp:153
+#: plugin/actionlist.cpp:156
 #, kde-format
 msgid "Pin to Task Manager"
 msgstr "பணி மேலாளரில் தக்கவை"
 
-#: plugin/actionlist.cpp:304 plugin/rootmodel.cpp:431
+#: plugin/actionlist.cpp:307 plugin/rootmodel.cpp:429
 #, kde-format
 msgid "Recent Files"
 msgstr "சமீப கோப்புகள்"
 
-#: plugin/actionlist.cpp:314
+#: plugin/actionlist.cpp:317
 #, kde-format
 msgid "Forget Recent Files"
 msgstr "சமீப கோப்புகளை மறந்துவிடு"
 
-#: plugin/actionlist.cpp:393
+#: plugin/actionlist.cpp:395
 #, kde-format
 msgid "Edit Application…"
 msgstr "செயலியை திருத்து…"
 
-#: plugin/actionlist.cpp:437
+#: plugin/actionlist.cpp:429
 #, kde-format
 msgctxt "@action opens a software center with the application"
 msgid "Uninstall or Manage Add-Ons…"
 msgstr "துணை நிரல்களை நீக்கு அல்லது நிர்வகி…"
 
-#: plugin/appentry.cpp:185
+#: plugin/appentry.cpp:308
 #, kde-format
 msgid "Hide Application"
 msgstr "செயலியை மறை"
 
-#: plugin/appentry.cpp:249
+#: plugin/appentry.cpp:367
 #, kde-format
 msgctxt "App name (Generic name)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: plugin/appentry.cpp:251
+#: plugin/appentry.cpp:369
 #, kde-format
 msgctxt "Generic name (App name)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: plugin/appsmodel.cpp:31 plugin/appsmodel.cpp:55 plugin/computermodel.cpp:98
-#: plugin/computermodel.cpp:226 plugin/recentusagemodel.cpp:156
-#: plugin/recentusagemodel.cpp:218
+#: plugin/appsmodel.cpp:34 plugin/appsmodel.cpp:58 plugin/computermodel.cpp:98
+#: plugin/computermodel.cpp:226 plugin/recentusagemodel.cpp:153
+#: plugin/recentusagemodel.cpp:216
 #, kde-format
 msgid "Applications"
 msgstr "செயலிகள்"
 
-#: plugin/appsmodel.cpp:150
+#: plugin/appsmodel.cpp:151
 #, kde-format
 msgid "Unhide Applications in this Submenu"
 msgstr "இந்த துணைப்பட்டியில் உள்ள செயலிகளை மறைந்திருந்தாலும் காட்டு"
 
-#: plugin/appsmodel.cpp:159
+#: plugin/appsmodel.cpp:160
 #, kde-format
 msgid "Unhide Applications in '%1'"
 msgstr "'%1' என்பதில் உள்ள செயலிகளை மறைந்திருந்தாலும் காட்டு"
@@ -112,13 +112,13 @@ msgstr "தேடு, கணி, அல்லது கட்டளையை இ
 msgid "Computer"
 msgstr "கணினி"
 
-#: plugin/contactentry.cpp:107 plugin/recentcontactsmodel.cpp:82
+#: plugin/contactentry.cpp:106 plugin/recentcontactsmodel.cpp:82
 #, kde-format
 msgid "Show Contact Information…"
 msgstr "தொடர்புகளின் விவரங்களை காட்டு…"
 
 #. i18n.
-#: plugin/kastatsfavoritesmodel.cpp:467 plugin/rootmodel.cpp:418
+#: plugin/kastatsfavoritesmodel.cpp:548 plugin/rootmodel.cpp:416
 #: plugin/simplefavoritesmodel.cpp:31
 #, kde-format
 msgid "Favorites"
@@ -139,42 +139,42 @@ msgstr "தொடர்பை மறந்துவிடு"
 msgid "Forget All Contacts"
 msgstr "அனைத்து தொடர்புகளையும் மறந்துவிடு"
 
-#: plugin/recentusagemodel.cpp:154
+#: plugin/recentusagemodel.cpp:151
 #, kde-format
 msgid "Recently Used"
 msgstr "சமீபத்தில் பயன்படுத்தியவை"
 
-#: plugin/recentusagemodel.cpp:159 plugin/recentusagemodel.cpp:292
+#: plugin/recentusagemodel.cpp:156 plugin/recentusagemodel.cpp:298
 #, kde-format
 msgid "Files"
 msgstr "கோப்புகள்"
 
-#: plugin/recentusagemodel.cpp:236
+#: plugin/recentusagemodel.cpp:238
 #, kde-format
 msgid "Forget Application"
 msgstr "செயலியை மறந்துவிடு"
 
-#: plugin/recentusagemodel.cpp:326
+#: plugin/recentusagemodel.cpp:332
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "கொண்டுள்ள அடைவைத் திற"
 
-#: plugin/recentusagemodel.cpp:329
+#: plugin/recentusagemodel.cpp:335
 #, kde-format
 msgid "Forget File"
 msgstr "கோப்பை மறந்துவிடு"
 
-#: plugin/recentusagemodel.cpp:475
+#: plugin/recentusagemodel.cpp:472
 #, kde-format
 msgid "Forget All"
 msgstr "அனைத்தையும் மறந்துவிடு"
 
-#: plugin/recentusagemodel.cpp:477
+#: plugin/recentusagemodel.cpp:474
 #, kde-format
 msgid "Forget All Applications"
 msgstr "அனைத்து செயலிகளையும் மறந்துவிடு"
 
-#: plugin/recentusagemodel.cpp:480
+#: plugin/recentusagemodel.cpp:477
 #, kde-format
 msgid "Forget All Files"
 msgstr "அனைத்து கோப்புகளையும் மறந்துவிடு"
@@ -184,130 +184,130 @@ msgstr "அனைத்து கோப்புகளையும் மறந�
 msgid "Hide %1"
 msgstr "%1 என்பதை மறை"
 
-#: plugin/rootmodel.cpp:400
+#: plugin/rootmodel.cpp:398
 #, kde-format
 msgid "All Applications"
 msgstr "அனைத்து செயலிகள்"
 
-#: plugin/rootmodel.cpp:412
+#: plugin/rootmodel.cpp:410
 #, kde-format
 msgid "This shouldn't be visible! Use KICKER_FAVORITES_MODEL"
 msgstr "இது தெரியக் கூடாதது! KICKER_FAVORITES_MODEL என்பதை பயன்படுத்துங்கள்"
 
-#: plugin/rootmodel.cpp:424
+#: plugin/rootmodel.cpp:422
 #, kde-format
 msgid "Recent Contacts"
 msgstr "சமீப தொடர்புகள்"
 
-#: plugin/rootmodel.cpp:431
+#: plugin/rootmodel.cpp:429
 #, kde-format
 msgid "Often Used Files"
 msgstr "அடிக்கடி பயன்படுத்தப்படும் கோப்புகள்"
 
-#: plugin/rootmodel.cpp:440
+#: plugin/rootmodel.cpp:438
 #, kde-format
 msgid "Recent Applications"
 msgstr "சமீப செயலிகள்"
 
-#: plugin/rootmodel.cpp:440
+#: plugin/rootmodel.cpp:438
 #, kde-format
 msgid "Often Used Applications"
 msgstr "அடிக்கடி பயன்படுத்தப்படும் செயலிகள்"
 
-#: plugin/rootmodel.cpp:454
+#: plugin/rootmodel.cpp:453
 #, kde-format
 msgid "Power / Session"
 msgstr "ஆற்றல் / அமர்வு"
 
-#: plugin/runnermodel.cpp:226
+#: plugin/runnermodel.cpp:231
 #, kde-format
 msgid "Search results"
 msgstr "தேடலின் முடிவுகள்"
 
-#: plugin/systementry.cpp:194
+#: plugin/systementry.cpp:195
 #, kde-format
 msgid "Lock"
 msgstr "பூட்டு"
 
-#: plugin/systementry.cpp:197
+#: plugin/systementry.cpp:198
 #, kde-format
 msgid "Log Out"
 msgstr "அமர்விலிருந்து வெளியேறு"
 
-#: plugin/systementry.cpp:200 plugin/systementry.cpp:268
+#: plugin/systementry.cpp:201 plugin/systementry.cpp:269
 #, kde-format
 msgid "Save Session"
 msgstr "அமர்வை சேமி"
 
-#: plugin/systementry.cpp:203
+#: plugin/systementry.cpp:204
 #, kde-format
 msgid "Switch User"
 msgstr "பயனரை மாற்று"
 
-#: plugin/systementry.cpp:206
+#: plugin/systementry.cpp:207
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "தூக்கம்"
 
-#: plugin/systementry.cpp:209
+#: plugin/systementry.cpp:210
 #, kde-format
 msgid "Hibernate"
-msgstr ""
+msgstr "ஆழுறக்கம்"
 
-#: plugin/systementry.cpp:212
+#: plugin/systementry.cpp:213
 #, kde-format
 msgid "Restart"
 msgstr "மீள்துவக்கு"
 
-#: plugin/systementry.cpp:215
+#: plugin/systementry.cpp:216
 #, kde-format
 msgid "Shut Down"
 msgstr "கணினியை நிறுத்து"
 
-#: plugin/systementry.cpp:228 plugin/systementry.cpp:231
-#: plugin/systementry.cpp:234 plugin/systementry.cpp:237
+#: plugin/systementry.cpp:229 plugin/systementry.cpp:232
+#: plugin/systementry.cpp:235 plugin/systementry.cpp:238
 #, kde-format
 msgid "Session"
 msgstr "அமர்வு"
 
-#: plugin/systementry.cpp:240 plugin/systementry.cpp:243
-#: plugin/systementry.cpp:246 plugin/systementry.cpp:249
+#: plugin/systementry.cpp:241 plugin/systementry.cpp:244
+#: plugin/systementry.cpp:247 plugin/systementry.cpp:250
 #, kde-format
 msgid "System"
 msgstr "கணினி"
 
-#: plugin/systementry.cpp:262
+#: plugin/systementry.cpp:263
 #, kde-format
 msgid "Lock screen"
 msgstr "பூட்டு திரை"
 
-#: plugin/systementry.cpp:265
+#: plugin/systementry.cpp:266
 #, kde-format
 msgid "End session"
 msgstr "அமர்வை நிறுத்து"
 
-#: plugin/systementry.cpp:271
+#: plugin/systementry.cpp:272
 #, kde-format
 msgid "Start a parallel session as a different user"
 msgstr "இன்னொரு பயனராக வேறொரு (இணையான) அமர்வைத் தொடக்கும்"
 
-#: plugin/systementry.cpp:274
+#: plugin/systementry.cpp:275
 #, kde-format
 msgid "Suspend to RAM"
 msgstr "RAM-க்கு இடைநிறுத்து"
 
-#: plugin/systementry.cpp:277
+#: plugin/systementry.cpp:278
 #, kde-format
 msgid "Suspend to disk"
 msgstr "வட்டுக்கு இடைநிறுத்து"
 
-#: plugin/systementry.cpp:280
+#: plugin/systementry.cpp:281
 #, kde-format
 msgid "Restart computer"
 msgstr "கணினியை மீள்துவக்கு"
 
-#: plugin/systementry.cpp:283
+#: plugin/systementry.cpp:284
 #, kde-format
 msgid "Turn off computer"
 msgstr "கணினியை நிறுத்து"

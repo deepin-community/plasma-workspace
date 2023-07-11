@@ -9,47 +9,67 @@
 #include <QAbstractNativeEventFilter>
 #include <QHash>
 #include <QObject>
+#include <QSet>
 #include <QString>
 #include <QTimer>
 
 #include <KConfigGroup>
 #include <KSharedConfig>
 
-class ScreenPool : public QObject, public QAbstractNativeEventFilter
+class QScreen;
+class OutputOrderWatcher;
+
+class ScreenPool : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit ScreenPool(const KSharedConfig::Ptr &config, QObject *parent = nullptr);
-    void load();
+    explicit ScreenPool(QObject *parent = nullptr);
     ~ScreenPool() override;
 
-    QString primaryConnector() const;
-    void setPrimaryConnector(const QString &primary);
+    int idForName(const QString &connector) const;
+    int idForScreen(QScreen *screen) const;
 
-    void insertScreenMapping(int id, const QString &connector);
+    QScreen *screenForId(int id) const;
 
-    int id(const QString &connector) const;
+    QList<QScreen *> screenOrder() const;
+    QScreen *primaryScreen() const;
+    bool noRealOutputsConnected() const;
 
-    QString connector(int id) const;
-
-    int firstAvailableId() const;
-
-    // all ids that are known, included screens not enabled at the moment
-    QList<int> knownIds() const;
-
-protected:
-    bool nativeEventFilter(const QByteArray &eventType, void *message, long *result) override;
+Q_SIGNALS:
+    void screenRemoved(QScreen *screen); // TODO: necessary?
+    void screenOrderChanged(const QList<QScreen *> &screens);
 
 private:
-    void save();
+    void insertScreenMapping(int id, const QString &connector);
+    int firstAvailableId() const;
 
-    KConfigGroup m_configGroup;
-    QString m_primaryConnector;
-    // order is important
-    QMap<int, QString> m_connectorForId;
-    QHash<QString, int> m_idForConnector;
+    QScreen *outputRedundantTo(QScreen *screen) const;
+    void reconsiderOutputs();
+    void reconsiderOutputOrder();
+    bool isOutputFake(QScreen *screen) const;
 
-    QTimer m_configSaveTimer;
-    int m_xrandrExtensionOffset;
+    void insertSortedScreen(QScreen *screen);
+    void handleScreenAdded(QScreen *screen);
+    void handleScreenRemoved(QScreen *screen);
+    void handleOutputOrderChanged(const QStringList &newOrder);
+    void handleScreenGeometryChanged(QScreen *screen);
+
+    void screenInvariants();
+
+
+    // List correspondent to qGuiApp->screens(), but sorted first by size then by Id,
+    // determines the screen importance while figuring out the reduntant ones
+    QList<QScreen *> m_sizeSortedScreens;
+    // This will always be true: m_availableScreens + m_redundantScreens + m_fakeScreens == qGuiApp->screens()
+    QList<QScreen *> m_availableScreens; // Those are all the screen that are available to Corona, ordered by id coming from the protocol
+    QHash<QScreen *, QScreen *> m_redundantScreens;
+    QSet<QScreen *> m_fakeScreens;
+
+    bool m_orderChangedPendingSignal = false;
+
+    OutputOrderWatcher *m_outputOrderWatcher;
+    friend QDebug operator<<(QDebug d, const ScreenPool *pool);
 };
+
+QDebug operator<<(QDebug d, const ScreenPool *pool);

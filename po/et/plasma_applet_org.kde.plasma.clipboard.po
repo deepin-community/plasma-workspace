@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-26 01:42+0000\n"
+"POT-Creation-Date: 2023-01-02 01:06+0000\n"
 "PO-Revision-Date: 2020-10-08 10:12+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -18,88 +18,80 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 20.08.1\n"
 
-#: contents/ui/BarcodePage.qml:28
+#: contents/ui/BarcodePage.qml:36
 #, kde-format
 msgid "Return to Clipboard"
 msgstr "Tagasi lõikepuhvrisse"
 
-#: contents/ui/BarcodePage.qml:49
+#: contents/ui/BarcodePage.qml:57
 #, kde-format
 msgid "QR Code"
 msgstr "QR-kood"
 
-#: contents/ui/BarcodePage.qml:50
+#: contents/ui/BarcodePage.qml:58
 #, kde-format
 msgid "Data Matrix"
 msgstr "Andmemaatriks"
 
-#: contents/ui/BarcodePage.qml:51
+#: contents/ui/BarcodePage.qml:59
 #, kde-format
 msgctxt "Aztec barcode"
 msgid "Aztec"
 msgstr "Aztec"
 
-#: contents/ui/BarcodePage.qml:52
+#: contents/ui/BarcodePage.qml:60
 #, kde-format
 msgid "Code 39"
 msgstr "Code 39"
 
-#: contents/ui/BarcodePage.qml:53
+#: contents/ui/BarcodePage.qml:61
 #, kde-format
 msgid "Code 93"
 msgstr "Code 93"
 
-#: contents/ui/BarcodePage.qml:54
+#: contents/ui/BarcodePage.qml:62
 #, kde-format
 msgid "Code 128"
 msgstr "Code 128"
 
-#: contents/ui/BarcodePage.qml:77
-#, kde-format
-msgid "Change the barcode type"
+#: contents/ui/BarcodePage.qml:85
+#, fuzzy, kde-format
+#| msgid "Change the barcode type"
+msgid "Change the QR code type"
 msgstr "Muuda ribakoodi tüüpi"
 
-#: contents/ui/BarcodePage.qml:101
-#, kde-format
-msgid "Creating barcode failed"
+#: contents/ui/BarcodePage.qml:114
+#, fuzzy, kde-format
+#| msgid "Creating barcode failed"
+msgid "Creating QR code failed"
 msgstr "Ribakoodi loomine nurjus"
 
-#: contents/ui/BarcodePage.qml:110
-#, kde-format
-msgid "The barcode is too large to be displayed"
+#: contents/ui/BarcodePage.qml:123
+#, fuzzy, kde-format
+#| msgid "The barcode is too large to be displayed"
+msgid "The QR code is too large to be displayed"
 msgstr "Ribakood on kuvamiseks liiga suur"
 
-#: contents/ui/clipboard.qml:26
+#: contents/ui/clipboard.qml:27
 #, kde-format
 msgid "Clipboard Contents"
 msgstr "Lõikepuhvri sisu"
 
-#: contents/ui/clipboard.qml:27 contents/ui/Menu.qml:58
+#: contents/ui/clipboard.qml:28 contents/ui/Menu.qml:126
 #, kde-format
 msgid "Clipboard is empty"
 msgstr "Lõikepuhver on tühi"
 
-#: contents/ui/clipboard.qml:55
+#: contents/ui/clipboard.qml:56
 #, fuzzy, kde-format
 #| msgid "Configure Clipboard..."
 msgid "Configure Clipboard…"
 msgstr "Seadista lõikepuhvrit ..."
 
-#: contents/ui/clipboard.qml:57
+#: contents/ui/clipboard.qml:58
 #, fuzzy, kde-format
 #| msgid "Clear history"
 msgid "Clear History"
-msgstr "Ajaloo puhastamine"
-
-#: contents/ui/ClipboardPage.qml:76
-#, fuzzy, kde-format
-#| msgid "Search..."
-msgid "Search…"
-msgstr "Otsi ..."
-
-#: contents/ui/ClipboardPage.qml:112
-#, kde-format
-msgid "Clear history"
 msgstr "Ajaloo puhastamine"
 
 #: contents/ui/DelegateToolButtons.qml:23
@@ -107,22 +99,35 @@ msgstr "Ajaloo puhastamine"
 msgid "Invoke action"
 msgstr "Toimingu rakendamine"
 
-#: contents/ui/DelegateToolButtons.qml:33
-#, kde-format
-msgid "Show barcode"
+#: contents/ui/DelegateToolButtons.qml:38
+#, fuzzy, kde-format
+#| msgid "Show barcode"
+msgid "Show QR code"
 msgstr "Ribakoodi näitamine"
 
-#: contents/ui/DelegateToolButtons.qml:43
+#: contents/ui/DelegateToolButtons.qml:54
 #, kde-format
 msgid "Edit contents"
 msgstr "Sisu muutmine"
 
-#: contents/ui/DelegateToolButtons.qml:51
+#: contents/ui/DelegateToolButtons.qml:68
 #, kde-format
 msgid "Remove from history"
 msgstr "Eemaldamine ajaloost"
 
-#: contents/ui/Menu.qml:58
+#: contents/ui/EditPage.qml:86
+#, kde-format
+msgctxt "@action:button"
+msgid "Save"
+msgstr ""
+
+#: contents/ui/EditPage.qml:94
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr ""
+
+#: contents/ui/Menu.qml:126
 #, kde-format
 msgid "No matches"
 msgstr ""
@@ -133,3 +138,14 @@ msgctxt ""
 "Indicator that there are more urls in the clipboard than previews shown"
 msgid "+%1"
 msgstr "+%1"
+
+#~ msgid "Clear history"
+#~ msgstr "Ajaloo puhastamine"
+
+#, fuzzy
+#~| msgid "Search..."
+#~ msgid "Search…"
+#~ msgstr "Otsi ..."
+
+#~ msgid "Clipboard history is empty."
+#~ msgstr "Lõikepuhvri ajalugu on tühi"

@@ -3,7 +3,8 @@ set(kcm_fontinst_PART_SRCS ${libkfontinstview_SRCS} ${libkfontinstjobrunner_SRCS
     FontFilter.cpp FontFilterProxyStyle.cpp FcQuery.cpp PreviewList.cpp)
 # qt_add_dbus_interface(kcm_fontinst_PART_SRCS ../dbus/org.kde.fontinst.xml FontinstIface)
 
-add_library(kcm_fontinst MODULE ${kcm_fontinst_PART_SRCS})
+kcoreaddons_add_plugin(kcm_fontinst SOURCES ${kcm_fontinst_PART_SRCS} INSTALL_NAMESPACE "plasma/kcms/systemsettings_qwidgets")
+kcmutils_generate_desktop_file(kcm_fontinst)
 
 target_link_libraries(kcm_fontinst
     KF5::Archive
@@ -12,14 +13,12 @@ target_link_libraries(kcm_fontinst
     KF5::KIOCore
     KF5::KIOWidgets
     KF5::XmlGui
-    KF5::NewStuff
+    KF5::NewStuffWidgets
     kfontinstui
     kfontinst
     X11::X11
 )
 
-install(TARGETS kcm_fontinst  DESTINATION ${KDE_INSTALL_PLUGINDIR})
-install( FILES fontinst.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
 install( FILES kfontinst.knsrc DESTINATION  ${KDE_INSTALL_KNSRCDIR} )
 
 ecm_install_icons( ICONS

@@ -30,3 +30,11 @@ msgstr "Η προβολή εργασίας %1 δεν μπορεί να βρεθ�
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/δ"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Η εργασία ακυρώθηκε από τον χρήστη."
+
+#~ msgid "1 file"
+#~ msgid_plural "%1 files"
+#~ msgstr[0] "1 αρχείο"
+#~ msgstr[1] "%1 αρχεία"

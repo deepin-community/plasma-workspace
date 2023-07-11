@@ -27,3 +27,6 @@ msgstr "Vardan Gevorgyan"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vardangevorgyan@yahoo.com"
+
+#~ msgid "create method returned 0"
+#~ msgstr "ստեղծեք մեթոդ, որը կվերադարձնի 0"

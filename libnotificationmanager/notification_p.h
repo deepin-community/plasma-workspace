@@ -10,7 +10,6 @@
 #include <QDateTime>
 #include <QImage>
 #include <QList>
-#include <QScopedPointer>
 #include <QString>
 #include <QUrl>
 
@@ -84,6 +83,7 @@ public:
     QString replySubmitButtonIconName;
 
     QString category;
+    QString xdgTokenAppId;
 
     QList<QUrl> urls;
     QVariantMap hints = QVariantMap();

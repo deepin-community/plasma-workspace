@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_sessions\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-12-17 11:11+0000\n"
 "PO-Revision-Date: 2010-01-29 16:24+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <maithili.sf.net>\n"
@@ -23,156 +23,202 @@ msgstr ""
 "\n"
 "\n"
 
-#: sessionrunner.cpp:28 sessionrunner.cpp:64
+#: sessionrunner.cpp:23
 #, kde-format
-msgctxt "log out command"
-msgid "logout"
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to log out of the "
+"session"
+msgid "logout;log out"
 msgstr ""
 
-#: sessionrunner.cpp:28
+#: sessionrunner.cpp:26
 #, fuzzy, kde-format
 msgid "Logs out, exiting the current desktop session"
 msgstr "मोजुदा सत्र"
 
-#: sessionrunner.cpp:29 sessionrunner.cpp:81
-#, kde-format
-msgctxt "shut down computer command"
-msgid "shut down"
-msgstr ""
-
-#: sessionrunner.cpp:29
-#, fuzzy, kde-format
-#| msgid "Restart the computer"
-msgid "Turns off the computer"
-msgstr "बन्न"
-
-#: sessionrunner.cpp:33 sessionrunner.cpp:90
-#, kde-format
-msgctxt "lock screen command"
-msgid "lock"
-msgstr ""
-
 #: sessionrunner.cpp:33
-#, fuzzy, kde-format
-msgid "Locks the current sessions and starts the screen saver"
-msgstr "मोजुदा आओर"
-
-#: sessionrunner.cpp:36 sessionrunner.cpp:72
 #, kde-format
-msgctxt "restart computer command"
-msgid "restart"
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to shut down the "
+"computer"
+msgid "shutdown;shut down"
 msgstr ""
 
 #: sessionrunner.cpp:36
 #, fuzzy, kde-format
 #| msgid "Restart the computer"
+msgid "Turns off the computer"
+msgstr "बन्न"
+
+#: sessionrunner.cpp:43
+#, kde-format
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to restart the "
+"computer"
+msgid "restart;reboot"
+msgstr ""
+
+#: sessionrunner.cpp:46
+#, fuzzy, kde-format
+#| msgid "Restart the computer"
 msgid "Reboots the computer"
 msgstr "कंप्यूटर फिनु आरंभ करू"
 
-#: sessionrunner.cpp:37 sessionrunner.cpp:73
-#, kde-format
-msgctxt "restart computer command"
-msgid "reboot"
-msgstr "reboot"
+#: sessionrunner.cpp:54
+#, fuzzy, kde-format
+#| msgid "Lock the screen"
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to lock the screen"
+msgid "lock;lock screen"
+msgstr "स्क्रीन लाक करू"
 
-#: sessionrunner.cpp:40
+#: sessionrunner.cpp:56
+#, fuzzy, kde-format
+msgid "Locks the current sessions and starts the screen saver"
+msgstr "मोजुदा आओर"
+
+#: sessionrunner.cpp:63
+#, fuzzy, kde-format
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to save the "
+"desktop session"
+msgid "save;save session"
+msgstr "नवीन सत्र"
+
+#: sessionrunner.cpp:66
 #, kde-format
-msgctxt "switch user command"
-msgid "switch"
+msgid "Saves the current session for session restoration"
 msgstr ""
 
-#: sessionrunner.cpp:41
-#, kde-format
-msgctxt "switch user command"
-msgid "switch :q:"
+#: sessionrunner.cpp:73
+#, fuzzy, kde-format
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to switch user "
+"sessions"
+msgid "switch user;new session"
+msgstr "प्रयोक्ता"
+
+#: sessionrunner.cpp:76
+#, fuzzy, kde-format
+msgid "Starts a new session as a different user"
+msgstr "a नवीन सत्र रूपेँ a प्रयोक्ता"
+
+#: sessionrunner.cpp:83
+#, fuzzy, kde-format
+msgctxt "KRunner keyword to list user sessions"
+msgid "sessions"
+msgstr "नवीन सत्र"
+
+#: sessionrunner.cpp:84
+#, fuzzy, kde-format
+msgid "Lists all sessions"
+msgstr "सूची सबहि"
+
+#: sessionrunner.cpp:87
+#, fuzzy, kde-format
+#| msgctxt "switch user command"
+#| msgid "switch :q:"
+msgctxt "KRunner keyword to switch user sessions"
+msgid "switch"
 msgstr "switch :q:"
 
-#: sessionrunner.cpp:42
+#: sessionrunner.cpp:89
 #, fuzzy, kde-format
 msgid ""
 "Switches to the active session for the user :q:, or lists all active "
 "sessions if :q: is not provided"
 msgstr "स्विच मे क्रियाशील सत्र क'लेल प्रयोक्ता अथवा सबहि क्रियाशील अछि नहि"
 
-#: sessionrunner.cpp:45 sessionrunner.cpp:130
-#, fuzzy, kde-format
-msgid "switch user"
-msgstr "प्रयोक्ता"
-
-#: sessionrunner.cpp:45
-#, fuzzy, kde-format
-msgid "Starts a new session as a different user"
-msgstr "a नवीन सत्र रूपेँ a प्रयोक्ता"
-
-#: sessionrunner.cpp:46 sessionrunner.cpp:130
-#, fuzzy, kde-format
-msgid "new session"
-msgstr "नवीन सत्र"
-
-#: sessionrunner.cpp:50
-#, fuzzy, kde-format
-msgid "Lists all sessions"
-msgstr "सूची सबहि"
-
-#: sessionrunner.cpp:64
-#, kde-format
-msgid "log out"
-msgstr ""
-
-#: sessionrunner.cpp:66
+#: sessionrunner.cpp:111
 #, kde-format
 msgctxt "log out command"
-msgid "Logout"
-msgstr "लाग आउट"
-
-#: sessionrunner.cpp:75
-#, kde-format
-msgid "Restart the computer"
-msgstr "कंप्यूटर फिनु आरंभ करू"
-
-#: sessionrunner.cpp:82
-#, kde-format
-msgctxt "shut down computer command"
-msgid "shutdown"
+msgid "Log Out"
 msgstr ""
 
-#: sessionrunner.cpp:84
-#, fuzzy, kde-format
-msgid "Shut down the computer"
-msgstr "बन्न करू"
-
-#: sessionrunner.cpp:93
+#: sessionrunner.cpp:121
 #, kde-format
-msgid "Lock the screen"
-msgstr "स्क्रीन लाक करू"
+msgctxt "turn off computer command"
+msgid "Shut Down"
+msgstr ""
 
-#: sessionrunner.cpp:115
+#: sessionrunner.cpp:131
+#, kde-format
+msgctxt "restart computer command"
+msgid "Restart"
+msgstr ""
+
+#: sessionrunner.cpp:141
+#, kde-format
+msgctxt "lock screen command"
+msgid "Lock"
+msgstr ""
+
+#: sessionrunner.cpp:151
 #, fuzzy, kde-format
-msgctxt "User sessions"
-msgid "sessions"
+msgid "Save Session"
 msgstr "नवीन सत्र"
 
-#: sessionrunner.cpp:136
+#: sessionrunner.cpp:194
 #, fuzzy, kde-format
-msgid "New Session"
-msgstr "नवीन सत्र"
+msgid "Switch User"
+msgstr "प्रयोक्ता"
 
-#: sessionrunner.cpp:211
-#, fuzzy, kde-format
-msgid "Warning - New Session"
-msgstr "चेतावनी नवीन सत्र"
-
-#: sessionrunner.cpp:212
-#, fuzzy, kde-format
+#: sessionrunner.cpp:278
+#, kde-format
 msgid ""
-"<p>You have chosen to open another desktop session.<br />The current session "
-"will be hidden and a new login screen will be displayed.<br />An F-key is "
-"assigned to each session; F%1 is usually assigned to the first session, F%2 "
-"to the second session and so on. You can switch between sessions by pressing "
-"Ctrl, Alt and the appropriate F-key at the same time. Additionally, the "
-"Plasma Panel and Desktop menus have actions for switching between sessions.</"
-"p>"
+"<p>You are about to enter a new desktop session.</p><p>A login screen will "
+"be displayed and the current session will be hidden.</p><p>You can switch "
+"between desktop sessions using:</p><ul><li>Ctrl+Alt+F{number of session}</"
+"li><li>Plasma search (type '%1')</li><li>Plasma widgets (such as the "
+"application launcher)</li></ul>"
 msgstr ""
-"<p> अहाँ मे खोलू सत्र<br /> द मोजुदा सत्र नुकाएल  आओर a नवीन<br /> F अछि मे सत्र F "
-"अछि मे पहिल सत्र F मे सकेण्ड सत्र आओर पर अहाँ बीचमे सँ Ctrl Alt आओर F एट केडीई पटल आओर "
-"डेस्कटाप क'लेल बीचमे</p>"
+
+#: sessionrunner.cpp:287
+#, fuzzy, kde-format
+msgid "New Desktop Session"
+msgstr "नवीन सत्र"
+
+#~ msgctxt "restart computer command"
+#~ msgid "reboot"
+#~ msgstr "reboot"
+
+#, fuzzy
+#~ msgid "new session"
+#~ msgstr "नवीन सत्र"
+
+#~ msgctxt "log out command"
+#~ msgid "Logout"
+#~ msgstr "लाग आउट"
+
+#~ msgid "Restart the computer"
+#~ msgstr "कंप्यूटर फिनु आरंभ करू"
+
+#, fuzzy
+#~ msgid "Shut down the computer"
+#~ msgstr "बन्न करू"
+
+#, fuzzy
+#~ msgid "Save the session"
+#~ msgstr "नवीन सत्र"
+
+#, fuzzy
+#~ msgid "Warning - New Session"
+#~ msgstr "चेतावनी नवीन सत्र"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>You have chosen to open another desktop session.<br />The current "
+#~ "session will be hidden and a new login screen will be displayed.<br />An "
+#~ "F-key is assigned to each session; F%1 is usually assigned to the first "
+#~ "session, F%2 to the second session and so on. You can switch between "
+#~ "sessions by pressing Ctrl, Alt and the appropriate F-key at the same "
+#~ "time. Additionally, the Plasma Panel and Desktop menus have actions for "
+#~ "switching between sessions.</p>"
+#~ msgstr ""
+#~ "<p> अहाँ मे खोलू सत्र<br /> द मोजुदा सत्र नुकाएल  आओर a नवीन<br /> F अछि मे सत्र F "
+#~ "अछि मे पहिल सत्र F मे सकेण्ड सत्र आओर पर अहाँ बीचमे सँ Ctrl Alt आओर F एट केडीई पटल "
+#~ "आओर डेस्कटाप क'लेल बीचमे</p>"
+
+#, fuzzy
+#~ msgid "&Start New Session"
+#~ msgstr "नव सत्र प्रारंभ करू (&S)"

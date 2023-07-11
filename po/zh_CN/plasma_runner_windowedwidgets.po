@@ -1,13 +1,9 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-# Lie Ex <lilith.ex@gmail.com>, 2010.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -25,7 +21,7 @@ msgstr ""
 #: windowedwidgetsrunner.cpp:30
 #, kde-format
 msgid "Finds Plasma widgets whose name or description match :q:"
-msgstr "查找名称或描述符合 :q: 的 Plasma 部件"
+msgstr "查找名称或描述与 :q: 匹配的 Plasma 挂件"
 
 #: windowedwidgetsrunner.cpp:31 windowedwidgetsrunner.cpp:52
 #, kde-format
@@ -36,4 +32,4 @@ msgstr "移动设备程序"
 #: windowedwidgetsrunner.cpp:32
 #, kde-format
 msgid "list all Plasma widgets that can run as standalone applications"
-msgstr "列出所有可独立运行的 Plasma 部件"
+msgstr "列出所有可独立运行的 Plasma 挂件"

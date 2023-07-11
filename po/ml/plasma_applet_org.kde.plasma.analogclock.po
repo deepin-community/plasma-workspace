@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdebase\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2021-02-26 16:23+0000\n"
 "Last-Translator: Akhil Varkey <akhilvarkey@disroot.org>\n"
 "Language-Team: SMC <smc.org.in>\n"
@@ -23,6 +23,12 @@ msgstr ""
 msgid "Appearance"
 msgstr "ബാഹ്യരൂപം"
 
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
+
 #: contents/ui/configGeneral.qml:23
 #, kde-format
 msgid "Show seconds hand"
@@ -37,3 +43,40 @@ msgstr "പൊതുവായ:"
 #, kde-format
 msgid "Show time zone"
 msgstr "സമയ മേഖല കാണിയ്ക്കുക"
+
+#~ msgid "Show the seconds"
+#~ msgstr "സെക്കന്റുകള്‍ കാണിക്കുക"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "സെക്കന്റുകള്‍ കൂടി കാണാന്‍ നിങ്ങളിതു് തെരഞ്ഞെടുക്കണം."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "&സെക്കന്റ് സൂചി കാണിയ്ക്കുക "
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "പദാവലിയായി സമയമേഖല കാണിയ്ക്കുക"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "ഘടികാരത്തിനകത്തു് പദാവലിയായും സമയമേഖല കാണിയ്ക്കാന്‍ ഇതു് തെരഞ്ഞെടുക്കുക."
+
+#~ msgid "Show &time zone"
+#~ msgstr "&സമയമേഖല കാണിയ്ക്കുക"
+
+#, fuzzy
+#~ msgid "Also show the Timezone as text"
+#~ msgstr "പദാവലിയായും സമയം കാണിയ്ക്കുക "
+
+#~ msgid "Timezones"
+#~ msgstr "സമയ-മേഖലകള്‍"
+
+#~ msgid "Use &local timezone"
+#~ msgstr "ഉപയോഗിക്കുക &പ്രാദേശിക സമയ-മേഖല"
+
+#~ msgid "Area"
+#~ msgstr "ഏരിയ"
+
+#~ msgid "Region"
+#~ msgstr "മേഖല"
+
+#~ msgid "Comment"
+#~ msgstr "അഭിപ്രായം"

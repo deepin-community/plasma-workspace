@@ -4,20 +4,20 @@
 #
 # Ravishankar Shrivastava <raviratlami@yahoo.com>, 2007.
 # G Karunakar <karunakar@indlinux.org>, 2010.
-# Raghavendra Kamath <raghu@raghukamath.com>, 2021.
+# Raghavendra Kamath <raghu@raghukamath.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmcolors\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
-"PO-Revision-Date: 2021-09-07 11:16+0530\n"
+"POT-Creation-Date: 2023-02-22 02:35+0000\n"
+"PO-Revision-Date: 2022-02-17 22:54+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
-"Language-Team: kde-hindi\n"
+"Language-Team: Hindi <kde-l10n-hi@kde.org>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.1\n"
+"X-Generator: Lokalize 21.12.2\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #, kde-format
@@ -30,42 +30,32 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "raviratlami@aol.in, raghu@raghukamath.com"
 
-#: colors.cpp:65 editor/scmeditordialog.cpp:66
-#, kde-format
-msgid "Colors"
-msgstr "रंग"
-
-#: colors.cpp:67
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "काइ ऊवे ब्रौलिक"
-
-#: colors.cpp:192
+#: colors.cpp:235
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr "अस्थायी फ़ाइल बनाने में अक्षम ।"
 
-#: colors.cpp:205
+#: colors.cpp:248
 #, kde-format
 msgid "Unable to download the color scheme: %1"
 msgstr "रंग योजना फ़ाइल डाउनलोड नहीं कर सका : %1"
 
-#: colors.cpp:223
+#: colors.cpp:266
 #, kde-format
 msgid "This file is not a color scheme file."
 msgstr "यह फ़ाइल से एक रंग योजना फ़ाइल नहीं है ।"
 
-#: colors.cpp:242
+#: colors.cpp:285
 #, kde-format
 msgid "Failed to create 'color-scheme' data folder."
 msgstr "'रंग योजना' डाटा फ़ोल्डर बनाने में विफल ।"
 
-#: colors.cpp:249
+#: colors.cpp:292
 #, kde-format
 msgid "Failed to copy color scheme into 'color-scheme' data folder."
 msgstr "'रंग योजना' डाटा फ़ोल्डर में रंग योजना की नक़ल करने में विफल ।"
 
-#: colors.cpp:266
+#: colors.cpp:309
 #, kde-format
 msgid "Color scheme installed successfully."
 msgstr "रंग योजना सफलतापूर्वक स्थापित ।"
@@ -78,52 +68,65 @@ msgstr "रंग योजना नाम"
 
 #. i18n: ectx: label, entry (accentColor), group (General)
 #: colorssettings.kcfg:13
-#, fuzzy, kde-format
-#| msgid "Inactive color"
+#, kde-format
 msgid "Accent color"
-msgstr "निष्क्रिय रंग"
+msgstr "प्रभावी रंग"
 
-#: editor/kcolorschemeeditor.cpp:23
+#. i18n: ectx: label, entry (lastUsedCustomAccentColor), group (General)
+#: colorssettings.kcfg:17
+#, kde-format
+msgid ""
+"The last used custom accent color before user switched to wallpaper "
+"generated color or default color"
+msgstr ""
+
+#. i18n: ectx: label, entry (accentColorFromWallpaper), group (General)
+#: colorssettings.kcfg:21
+#, kde-format
+msgid "Whether accent color from wallpaper should be applied"
+msgstr ""
+
+#: editor/kcolorschemeeditor.cpp:25
 #, kde-format
 msgid "KColorSchemeEditor"
 msgstr "के-कलरस्कीमएडिटर"
 
-#: editor/kcolorschemeeditor.cpp:25
+#: editor/kcolorschemeeditor.cpp:27
 #, kde-format
 msgid "Utility to edit and create color schemes"
 msgstr "रंग योजनाओं को संपादित करने और बनाने की उपयोगिता"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Olivier Churlaud"
 msgstr "ओलिविएर चर्लौड"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Utility creation"
 msgstr "उपयोगिता निर्माण"
 
-#: editor/kcolorschemeeditor.cpp:28
+#: editor/kcolorschemeeditor.cpp:30
 #, kde-format
 msgid "Jeremy Whiting"
 msgstr "जेरेमी व्हिटिंग"
 
-#: editor/kcolorschemeeditor.cpp:28 editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:30 editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "KCM code (reused in here)"
 msgstr "केसीएम कोड (यहां पुन: उपयोग किया गया)"
 
-#: editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "मैथ्यू वोहके"
 
-#: editor/kcolorschemeeditor.cpp:33
+#: editor/kcolorschemeeditor.cpp:35
 #, kde-format
 msgid "Scheme to edit or to use as a base."
 msgstr "आधार के रूप में संपादित करने या उपयोग करने की योजना ।"
 
-#: editor/kcolorschemeeditor.cpp:35
+#: editor/kcolorschemeeditor.cpp:37
 #, kde-format
 msgid ""
 "Show 'Apply' button that saves changes without asking (unlike 'Save As' "
@@ -131,13 +134,13 @@ msgid ""
 msgstr ""
 "'लागू करें' बटन दिखाएं जो बिना पूछे परिवर्तनों को सहेजता है ('ऐसे सहेजें' बटन के विपरीत)"
 
-#: editor/kcolorschemeeditor.cpp:39
+#: editor/kcolorschemeeditor.cpp:41
 #, kde-format
 msgid ""
 "Makes the dialog transient for another application window specified by handle"
 msgstr "हैंडल द्वारा निर्दिष्ट किसी अन्य अनुप्रयोग विंडो के लिए संवाद को क्षणिक बनाता है ।"
 
-#: editor/kcolorschemeeditor.cpp:55
+#: editor/kcolorschemeeditor.cpp:57
 #, kde-format
 msgid "Scheme not found, falling back to current one.\n"
 msgstr "योजना नहीं मिली, वर्तमान वाली पर वापस आ रही है ।\n"
@@ -634,47 +637,42 @@ msgstr "निष्क्रिय शीर्षकपट्टी पाठ"
 msgid "Inactive Titlebar Secondary"
 msgstr "निष्क्रिय अमुख्य शीर्षकपट्टी"
 
-#: editor/scmeditordialog.cpp:65
+#: editor/scmeditordialog.cpp:60
 #, kde-format
 msgid "Options"
 msgstr "विकल्प"
 
-#: editor/scmeditordialog.cpp:67
+#: editor/scmeditordialog.cpp:61
+#, kde-format
+msgid "Colors"
+msgstr "रंग"
+
+#: editor/scmeditordialog.cpp:62
 #, kde-format
 msgid "Disabled"
 msgstr "अक्षम"
 
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "This colour scheme was not saved. Continue?"
-msgstr "यह रंग योजना सहेजी नहीं गई थी। जारी रखें?"
-
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "Do you really want to upload?"
-msgstr "क्या आप सचमुच अपलोड करना चाहते हैं?"
-
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:94
 #, kde-format
 msgid "You have unsaved changes. Do you really want to quit?"
 msgstr "आपके पास बिना सहेजे नहीं गए परिवर्तन हैं. क्या आप सचमुच में छोड़ना चाहते हैं?"
 
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:95
 #, kde-format
 msgid "Unsaved changes"
 msgstr "सहेजे नहीं गए परिवर्तन"
 
-#: editor/scmeditordialog.cpp:133 editor/scmeditordialog.cpp:158
+#: editor/scmeditordialog.cpp:115 editor/scmeditordialog.cpp:140
 #, kde-format
 msgid "Save Color Scheme"
 msgstr "रंग योजना सहेजें"
 
-#: editor/scmeditordialog.cpp:133
+#: editor/scmeditordialog.cpp:115
 #, kde-format
 msgid "&Enter a name for the color scheme:"
 msgstr "रंग योजना के लिए एक नाम भरें: (&E)"
 
-#: editor/scmeditordialog.cpp:157
+#: editor/scmeditordialog.cpp:139
 #, kde-format
 msgid ""
 "A color scheme with that name already exists.\n"
@@ -683,32 +681,20 @@ msgstr ""
 "इस नाम की रंग योजना पहले ही मौजूद है.\n"
 "क्या आप इसे मिटाकर लिखना चाहते हैं?"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "You do not have permission to overwrite that scheme"
 msgstr "उक्त स्कीम को मिटाकर लिखने के लिए आपके पास अनुमति नहीं है."
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "Error"
 msgstr "त्रुटि"
 
-#: editor/scmeditordialog.cpp:209
+#: editor/scmeditordialog.cpp:191
 #, kde-format
 msgid "Inactive"
 msgstr "निष्क्रिय"
-
-#. i18n: ectx: property (toolTip), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:42
-#, kde-format
-msgid "Share the selected scheme on the Internet"
-msgstr "चयनित योजना को इंटरनेट पर साझा करें"
-
-#. i18n: ectx: property (text), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:45
-#, kde-format
-msgid "Upload Scheme"
-msgstr "योजना अपलोड करें"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: editor/scmeditoreffects.ui:17
@@ -865,32 +851,51 @@ msgstr "निष्क्रिय चयनों के लिए विभ�
 msgid "Shade sorted column &in lists"
 msgstr "छांटे गए स्तम्भ &i को सूची में छायाबद्ध करें"
 
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (text), widget (QCheckBox, tintColors)
 #: editor/scmeditoroptions.ui:38
+#, fuzzy, kde-format
+#| msgid "Invalid accent color "
+msgid "Tint all colors with accent color"
+msgstr "अवैध प्रभावी रंग"
+
+#. i18n: ectx: property (text), widget (QCheckBox, accentTitlebar)
+#: editor/scmeditoroptions.ui:45
+#, kde-format
+msgid "Make window titlebars a&ccent-colored"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: editor/scmeditoroptions.ui:52
+#, kde-format
+msgid "Tint strength:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#: editor/scmeditoroptions.ui:69
 #, kde-format
 msgid "Shading of frames and lighting (\"3D\") effects"
 msgstr "फ़्रेम और प्रकाश व्यवस्था की छायांकन (\"३डी\") प्रभाव"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:41
+#: editor/scmeditoroptions.ui:72
 #, kde-format
 msgid "Shading"
 msgstr "छाया"
 
-#. i18n: ectx: property (text), widget (QLabel, label_9)
-#: editor/scmeditoroptions.ui:53
-#, kde-format
-msgid "Minimum"
-msgstr "न्यूनतम"
-
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: editor/scmeditoroptions.ui:73
+#: editor/scmeditoroptions.ui:97
 #, kde-format
 msgid "Maximum"
 msgstr "अधिकतम"
 
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: editor/scmeditoroptions.ui:117
+#, kde-format
+msgid "Minimum"
+msgstr "न्यूनतम"
+
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: editor/scmeditoroptions.ui:80
+#: editor/scmeditoroptions.ui:124
 #, kde-format
 msgid "Contrast"
 msgstr "कंट्रास्ट"
@@ -1165,7 +1170,7 @@ msgstr "गहरे रंग की योजनाएं"
 #: package/contents/ui/main.qml:143
 #, kde-format
 msgid "Use accent color:"
-msgstr ""
+msgstr "प्रभावी रंग का उपयोग करें :"
 
 #: package/contents/ui/main.qml:144
 #, kde-format
@@ -1173,83 +1178,95 @@ msgid "From current color scheme"
 msgstr "वर्तमान रंग योजना से"
 
 #: package/contents/ui/main.qml:157
+#, fuzzy, kde-format
+#| msgid "From current color scheme"
+msgctxt "@option:radio wallpaper accent color option"
+msgid "From current wallpaper"
+msgstr "वर्तमान रंग योजना से"
+
+#: package/contents/ui/main.qml:266
 #, kde-format
 msgid "Custom:"
 msgstr "तदनुकूल :"
 
-#: package/contents/ui/main.qml:268
+#: package/contents/ui/main.qml:273
+#, kde-format
+msgid "Choose custom accent color"
+msgstr "तदनुकूल प्रभावी रंग चुनें"
+
+#: package/contents/ui/main.qml:361
 #, kde-format
 msgid "Window Title"
 msgstr "विंडो शीर्षक"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:383
 #, kde-format
 msgid "Window text"
 msgstr "विंडो पाठ"
 
-#: package/contents/ui/main.qml:297
+#: package/contents/ui/main.qml:390
 #, kde-format
 msgid "Button"
 msgstr "बटन"
 
-#: package/contents/ui/main.qml:331
+#: package/contents/ui/main.qml:427
 #, kde-format
 msgctxt "Hyperlink"
 msgid "link"
 msgstr "कडी"
 
-#: package/contents/ui/main.qml:333
+#: package/contents/ui/main.qml:429
 #, kde-format
 msgctxt "Visited hyperlink"
 msgid "visited"
 msgstr "देखा गया"
 
-#: package/contents/ui/main.qml:340
+#: package/contents/ui/main.qml:436
 #, kde-format
 msgid "Normal text"
 msgstr "सामान्य पाठ"
 
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:444
 #, kde-format
 msgid "Highlighted text"
 msgstr "चिह्नांकित पाठ"
 
-#: package/contents/ui/main.qml:355
+#: package/contents/ui/main.qml:451
 #, kde-format
 msgid "Disabled text"
 msgstr "अक्षम पाठ"
 
-#: package/contents/ui/main.qml:373
+#: package/contents/ui/main.qml:469
 #, kde-format
 msgid "Edit Color Scheme…"
 msgstr "रंग योजना संपादित करें..."
 
-#: package/contents/ui/main.qml:379
+#: package/contents/ui/main.qml:475
 #, kde-format
 msgid "Remove Color Scheme"
 msgstr "रंग योजना हटाएँ"
 
-#: package/contents/ui/main.qml:386
+#: package/contents/ui/main.qml:482
 #, kde-format
 msgid "Restore Color Scheme"
 msgstr "रंग योजना पुनर्स्थापित करें"
 
-#: package/contents/ui/main.qml:430
+#: package/contents/ui/main.qml:526
 #, kde-format
 msgid "Install from File…"
 msgstr "फाइल से संस्थापित करें..."
 
-#: package/contents/ui/main.qml:435
+#: package/contents/ui/main.qml:531
 #, kde-format
 msgid "Get New Color Schemes…"
 msgstr "नई रंग योजनाएँ प्राप्त करें..."
 
-#: package/contents/ui/main.qml:486
+#: package/contents/ui/main.qml:549
 #, kde-format
 msgid "Open Color Scheme"
 msgstr "रंग योजना खोलें"
 
-#: package/contents/ui/main.qml:488
+#: package/contents/ui/main.qml:551
 #, kde-format
 msgid "Color Scheme Files (*.colors)"
 msgstr "रंग योजनाओं की फ़ाइलें (*.colors)"
@@ -1273,14 +1290,25 @@ msgstr ""
 "रंग योजना का नाम जिसे आप अपने वर्तमान प्लाज़्मा सत्र के लिए सेट करना चाहते हैं (एक पूर्ण पथ "
 "देने से पथ के अंतिम भाग का ही उपयोग होगा)"
 
-#: plasma-apply-colorscheme.cpp:45
+#: plasma-apply-colorscheme.cpp:46
 #, kde-format
 msgid ""
 "Show all the color schemes available on the system (and which is the current "
 "theme)"
 msgstr "तंत्र पर उपलब्ध सभी रंग योजनाएं दिखाएं (और जो वर्तमान प्रसंग है)"
 
-#: plasma-apply-colorscheme.cpp:69
+#: plasma-apply-colorscheme.cpp:51
+#, kde-format
+msgid ""
+"The name of the accent color you want to set. SVG color names (https://www."
+"w3.org/TR/SVG11/types.html#ColorKeywords) and hex color codes are supported. "
+"Quote the hex code if there is possibility of shell expansion"
+msgstr ""
+"उस प्रभावी रंग का नाम जिसे आप नियत करना चाहते हैं। एलवीजी रंग नाम (https://www.w3."
+"org/TR/SVG11/types.html#ColorKeywords) और हेक्स रंग कोड समर्थित हैं। यदि शेल विस्तार "
+"की संभावना है तो हेक्स कोड को उद्धृत करें"
+
+#: plasma-apply-colorscheme.cpp:78
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
@@ -1288,26 +1316,26 @@ msgid ""
 msgstr ""
 "अनुरोधित प्रसंग \"%1\" पहले से ही वर्तमान प्लाज़्मा सत्र के लिए प्रसंग के रूप में नियत है।"
 
-#: plasma-apply-colorscheme.cpp:92
+#: plasma-apply-colorscheme.cpp:111
 #, kde-format
 msgid "Successfully applied the color scheme %1 to your current Plasma session"
 msgstr "आपके वर्तमान प्लाज़्मा सत्र में रंग योजना %1 को सफलतापूर्वक लागू किया गया है"
 
-#: plasma-apply-colorscheme.cpp:94
+#: plasma-apply-colorscheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
 "options: %2"
 msgstr "प्रसंग \"%1\" नहीं मिल सका। प्रसंग निम्न विकल्पों में से एक होनी चाहिए : %2"
 
-#: plasma-apply-colorscheme.cpp:101
+#: plasma-apply-colorscheme.cpp:120
 #, kde-format
 msgid ""
 "You have managed to pass an empty color scheme name, which isn't supported "
 "behavior."
 msgstr "आप एक खाली रंग योजना नाम देने में कामयाब रहे हैं, जो समर्थित व्यवहार नहीं है।"
 
-#: plasma-apply-colorscheme.cpp:105
+#: plasma-apply-colorscheme.cpp:124
 #, kde-format
 msgid ""
 "The file you attempted to set as your scheme, %1, could not be identified as "
@@ -1316,12 +1344,188 @@ msgstr ""
 "आपने जिस फ़ाइल को अपनी योजना %1 के रूप में नियत करने का प्रयास किया, उसे रंग योजना के "
 "रूप में पहचाना नहीं जा सका।"
 
-#: plasma-apply-colorscheme.cpp:110
+#: plasma-apply-colorscheme.cpp:147
+#, kde-format
+msgid "Successfully applied the accent color %1"
+msgstr "प्रभावी रंग %1 को सफलतापूर्वक लागू किया गया"
+
+#: plasma-apply-colorscheme.cpp:149
+#, kde-format
+msgid "Invalid accent color "
+msgstr "अवैध प्रभावी रंग"
+
+#: plasma-apply-colorscheme.cpp:154
 #, kde-format
 msgid "You have the following color schemes on your system:"
 msgstr "आपके सिस्टम पर निम्नलिखित रंग योजनाएं हैं:"
 
-#: plasma-apply-colorscheme.cpp:115
+#: plasma-apply-colorscheme.cpp:159
 #, kde-format
 msgid " * %1 (current color scheme)"
 msgstr " * %1(मौज़ूदा रंग योजना)"
+
+#~ msgid "Apply a&ccent color to active window titlebars"
+#~ msgstr "सक्रिय विंडो शीर्षकपट्टी पर प्रभावी रंग लागू करें"
+
+#~ msgid "Apply acce&nt color to inactive window titlebars"
+#~ msgstr "निष्क्रिय विंडो शीर्षकपट्टी पर प्रभावी रंग लागू करें"
+
+#~ msgid "Kai Uwe Broulik"
+#~ msgstr "काइ ऊवे ब्रौलिक"
+
+#~ msgid "This colour scheme was not saved. Continue?"
+#~ msgstr "यह रंग योजना सहेजी नहीं गई थी। जारी रखें?"
+
+#~ msgid "Do you really want to upload?"
+#~ msgstr "क्या आप सचमुच अपलोड करना चाहते हैं?"
+
+#~ msgid "Share the selected scheme on the Internet"
+#~ msgstr "चयनित योजना को इंटरनेट पर साझा करें"
+
+#~ msgid "Upload Scheme"
+#~ msgstr "योजना अपलोड करें"
+
+#, fuzzy
+#~| msgid "Get &New Schemes..."
+#~ msgid "Download New Color Schemes"
+#~ msgstr "नए प्रसंग प्राप्त करें (&N)..."
+
+#~ msgid "Remove the selected scheme"
+#~ msgstr "चयनित रंग योजना मिटाएँ"
+
+#, fuzzy
+#~| msgid "Remove Scheme"
+#~ msgid "Remove"
+#~ msgstr " योजन हटाएँा"
+
+#, fuzzy
+#~| msgid "Get new color schemes from the Internet"
+#~ msgid "Import a color scheme from a file"
+#~ msgstr "इटरनेटइल से रंग योज प्राप्तात करें"
+
+#~ msgid "Get new color schemes from the Internet"
+#~ msgstr "इटरनेटइल से रंग योज प्राप्तात करें"
+
+#, fuzzy
+#~| msgid "Get &New Schemes..."
+#~ msgid "Get &New Color Schemes..."
+#~ msgstr "नए प्रसंग प्राप्त करें (&N)..."
+
+#, fuzzy
+#~| msgid "Apply colors to &non-KDE4 applications"
+#~ msgid "Apply colors to &non-Qt applications"
+#~ msgstr "रंगों को गैर केडीई अनुप्रयोगों मे भी लागू करें (&n)"
+
+#~ msgid "(c) 2007 Matthew Woehlke"
+#~ msgstr "(c) 2007 मैथ्यू वोहके"
+
+#~ msgctxt "Default color scheme"
+#~ msgid "Default"
+#~ msgstr "डिफ़ॉल्ट"
+
+#~ msgctxt "Current color scheme"
+#~ msgid "Current"
+#~ msgstr "मौज़ूदा"
+
+#~ msgid "You do not have permission to delete that scheme"
+#~ msgstr "उक्त स्कीम को मिटाने के लिए आपके पास अनुमति नहीं है."
+
+#~ msgid "Notice"
+#~ msgstr "सूचना"
+
+#~ msgid "In&active selection changes color"
+#~ msgstr "अक्रिय चयन से रंग परिवर्तित होता है (&a)"
+
+#~ msgid "Selecting another scheme will discard any changes you have made"
+#~ msgstr "अन्य स्कीम को चुनने पर जो भी परिवर्तन आपने यहाँ किए हैं वो मिट जाएंगे"
+
+#~ msgid "Are you sure?"
+#~ msgstr "क्या आप सुनिश्चित हैं?"
+
+#~ msgctxt "@title:tab color transformations on inactive elements"
+#~ msgid "Inactive"
+#~ msgstr "निष्क्रिय"
+
+#~ msgid "Inactive intensity effect type"
+#~ msgstr "निष्क्रिय तीव्रता प्रभाव क़िस्म"
+
+#~ msgctxt "no inactive intensity effect"
+#~ msgid "None"
+#~ msgstr "कोई नहीं"
+
+#, fuzzy
+#~| msgid "Shade"
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Shade"
+#~ msgstr "छाया"
+
+#, fuzzy
+#~| msgid "Darken"
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Darken"
+#~ msgstr "गहरा करें"
+
+#, fuzzy
+#~| msgid "Lighten"
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Lighten"
+#~ msgstr "हल्का करें"
+
+#~ msgid "Inactive intensity effect amount"
+#~ msgstr "निष्क्रिय तीव्रता प्रभाव मात्रा"
+
+#~ msgid "Inactive color effect type"
+#~ msgstr "निष्क्रिय रंग प्रभाव क़िस्म"
+
+#~ msgctxt "no inactive color effect"
+#~ msgid "None"
+#~ msgstr "कोई नहीं"
+
+#, fuzzy
+#~| msgid "Desaturate"
+#~ msgctxt "inactive color effect"
+#~ msgid "Desaturate"
+#~ msgstr "डि-सेचुरेट"
+
+#, fuzzy
+#~| msgid "Fade"
+#~ msgctxt "inactive color effect"
+#~ msgid "Fade"
+#~ msgstr "फीका"
+
+#, fuzzy
+#~| msgid "Tint"
+#~ msgctxt "inactive color effect"
+#~ msgid "Tint"
+#~ msgstr "टिंट"
+
+#~ msgid "Inactive color amount"
+#~ msgstr "निष्क्रिय रंग मात्रा"
+
+#~ msgid "Inactive contrast effect type"
+#~ msgstr "निष्क्रिय कंट्रास्ट प्रभाव क़िस्म"
+
+#~ msgctxt "no inactive contrast effect"
+#~ msgid "None"
+#~ msgstr "कोई नहीं"
+
+#, fuzzy
+#~| msgid "Fade"
+#~ msgctxt "inactive contrast effect"
+#~ msgid "Fade"
+#~ msgstr "फीका"
+
+#, fuzzy
+#~| msgid "Tint"
+#~ msgctxt "inactive contrast effect"
+#~ msgid "Tint"
+#~ msgstr "टिंट"
+
+#~ msgid "Inactive contrast effect amount"
+#~ msgstr "निष्क्रिय कंट्रास्ट प्रभाव मात्रा"
+
+#~ msgid "Preview"
+#~ msgstr "पूर्वालोकन"
+
+#~ msgid "Import Scheme..."
+#~ msgstr " योजना आयात करे...ं"

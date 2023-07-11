@@ -23,6 +23,7 @@ import "global"
 RowLayout {
     id: notificationHeading
     property bool inGroup
+    property bool inHistory
     property int notificationType
 
     property var applicationIconSource
@@ -78,11 +79,14 @@ RowLayout {
         visible: valid
     }
 
-    PlasmaExtras.DescriptiveLabel {
+    PlasmaExtras.Heading {
         id: applicationNameLabel
         Layout.fillWidth: true
+        level: 5
+        opacity: 0.9
         textFormat: Text.PlainText
         elide: Text.ElideLeft
+        maximumLineCount: 2
         text: notificationHeading.applicationName + (notificationHeading.originName ? " · " + notificationHeading.originName : "")
     }
 
@@ -91,24 +95,31 @@ RowLayout {
         Layout.fillWidth: true
     }
 
-    PlasmaExtras.DescriptiveLabel {
+    PlasmaExtras.Heading {
         id: ageLabel
 
         // the "n minutes ago" text, for jobs we show remaining time instead
         // updated periodically by a Timer hence this property with generate() function
         property string agoText: ""
         visible: text !== ""
+        level: 5
+        opacity: 0.9
+        wrapMode: Text.NoWrap
         text: generateRemainingText() || agoText
-        Layout.rightMargin: Math.round(-notificationHeading.spacing / 2)
 
         function generateAgoText() {
-            if (!time || isNaN(time.getTime()) || notificationHeading.jobState === NotificationManager.Notifications.JobStateRunning) {
+            if (!time || isNaN(time.getTime())
+                    || notificationHeading.jobState === NotificationManager.Notifications.JobStateRunning
+                    || notificationHeading.jobState === NotificationManager.Notifications.JobStateSuspended) {
                 return "";
             }
 
             var deltaMinutes = Math.floor((Date.now() - time.getTime()) / 1000 / 60);
             if (deltaMinutes < 1) {
-                return "";
+                // "Just now" is implied by
+                return notificationHeading.inHistory
+                    ? i18ndc("plasma_applet_org.kde.plasma.notifications", "Notification was added less than a minute ago, keep short", "Just now")
+                    : "";
             }
 
             // Received less than an hour ago, show relative minutes
@@ -154,7 +165,7 @@ RowLayout {
                               "%1 min remaining", "%1 min remaining",
                               Math.round(eta / 60));
             }
-            if (eta < 60 * 60 * 5) { // 5 hours max, if it takes even longer there's no real point in shoing that
+            if (eta < 60 * 60 * 5) { // 5 hours max, if it takes even longer there's no real point in showing that
                 return i18ndcp("plasma_applet_org.kde.plasma.notifications", "hours remaining, keep short",
                               "%1 h remaining", "%1 h remaining",
                               Math.round(eta / 60 / 60));
@@ -170,64 +181,74 @@ RowLayout {
         }
     }
 
-    RowLayout {
-        id: headerButtonsRow
-        spacing: 0
+    PlasmaComponents3.ToolButton {
+        id: configureButton
+        icon.name: "configure"
+        visible: false
 
-        PlasmaComponents3.ToolButton {
-            id: configureButton
-            icon.name: "configure"
-            visible: false
-            onClicked: notificationHeading.configureClicked()
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        text: notificationHeading.configureActionLabel || i18nd("plasma_applet_org.kde.plasma.notifications", "Configure")
+        Accessible.description: applicationNameLabel.text
 
-            PlasmaComponents3.ToolTip {
-                text: notificationHeading.configureActionLabel || i18nd("plasma_applet_org.kde.plasma.notifications", "Configure")
-            }
+        onClicked: notificationHeading.configureClicked()
+
+        PlasmaComponents3.ToolTip {
+            text: parent.text
+        }
+    }
+
+    PlasmaComponents3.ToolButton {
+        id: dismissButton
+        icon.name: notificationHeading.dismissed ? "window-restore" : "window-minimize"
+        visible: false
+
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        text: notificationHeading.dismissed
+            ? i18ndc("plasma_applet_org.kde.plasma.notifications", "Opposite of minimize", "Restore")
+            : i18nd("plasma_applet_org.kde.plasma.notifications", "Minimize")
+        Accessible.description: applicationNameLabel.text
+
+        onClicked: notificationHeading.dismissClicked()
+
+        PlasmaComponents3.ToolTip {
+            text: parent.text
+        }
+    }
+
+    PlasmaComponents3.ToolButton {
+        id: closeButton
+        visible: false
+        icon.name: "window-close"
+
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        text: closeButtonToolTip.text
+        Accessible.description: applicationNameLabel.text
+
+        onClicked: notificationHeading.closeClicked()
+
+        PlasmaComponents3.ToolTip {
+            id: closeButtonToolTip
+            text: i18nd("plasma_applet_org.kde.plasma.notifications", "Close")
         }
 
-        PlasmaComponents3.ToolButton {
-            id: dismissButton
-            icon.name: notificationHeading.dismissed ? "window-restore" : "window-minimize"
-            visible: false
-            onClicked: notificationHeading.dismissClicked()
+        Charts.PieChart {
+            id: chart
+            anchors.fill: parent.contentItem
+            anchors.margins: Math.max(Math.floor(PlasmaCore.Units.devicePixelRatio), 1)
 
-            PlasmaComponents3.ToolTip {
-                text: notificationHeading.dismissed
-                      ? i18ndc("plasma_applet_org.kde.plasma.notifications", "Opposite of minimize", "Restore")
-                      : i18nd("plasma_applet_org.kde.plasma.notifications", "Minimize")
-            }
-        }
-
-        PlasmaComponents3.ToolButton {
-            id: closeButton
-            visible: false
-            icon.name: "window-close"
-            onClicked: notificationHeading.closeClicked()
-
-            PlasmaComponents3.ToolTip {
-                id: closeButtonToolTip
-                text: i18nd("plasma_applet_org.kde.plasma.notifications", "Close")
+            opacity: (notificationHeading.remainingTime > 0 && notificationHeading.remainingTime < notificationHeading.timeout) ? 1 : 0
+            Behavior on opacity {
+                NumberAnimation { duration: PlasmaCore.Units.longDuration }
             }
 
-            Charts.PieChart {
-                id: chart
-                anchors.fill: parent
-                anchors.margins: PlasmaCore.Units.smallSpacing + Math.max(Math.floor(PlasmaCore.Units.devicePixelRatio), 1)
+            range { from: 0; to: notificationHeading.timeout; automatic: false }
 
-                opacity: (notificationHeading.remainingTime > 0 && notificationHeading.remainingTime < notificationHeading.timeout) ? 1 : 0
-                Behavior on opacity {
-                    NumberAnimation { duration: PlasmaCore.Units.longDuration }
-                }
+            valueSources: Charts.SingleValueSource { value: notificationHeading.remainingTime }
+            colorSource: Charts.SingleValueSource { value: PlasmaCore.Theme.highlightColor }
 
-                range { from: 0; to: notificationHeading.timeout; automatic: false }
+            thickness: Math.max(Math.floor(PlasmaCore.Units.devicePixelRatio), 1) * 5
 
-                valueSources: Charts.SingleValueSource { value: notificationHeading.remainingTime }
-                colorSource: Charts.SingleValueSource { value: PlasmaCore.Theme.highlightColor }
-
-                thickness: Math.max(Math.floor(PlasmaCore.Units.devicePixelRatio), 1) * 5
-
-                transform: Scale { origin.x: chart.width / 2; xScale: -1 }
-            }
+            transform: Scale { origin.x: chart.width / 2; xScale: -1 }
         }
     }
 

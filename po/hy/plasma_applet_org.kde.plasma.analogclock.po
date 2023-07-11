@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2008-02-01 18:45+0400\n"
 "Last-Translator: Vardan Gevorgyan <vgevorgyan@debian.am>\n"
 "Language-Team: Armenian <kde@debian.am>\n"
@@ -27,6 +27,12 @@ msgstr ""
 msgid "Appearance"
 msgstr "Հայտնվել"
 
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
+
 #: contents/ui/configGeneral.qml:23
 #, fuzzy, kde-format
 #| msgid "Show &seconds"
@@ -43,3 +49,55 @@ msgstr ""
 #| msgid "Show the time in text"
 msgid "Show time zone"
 msgstr "Ժամը ցույց տալ տեքստում"
+
+#~ msgid "Show the seconds"
+#~ msgstr "Ցույց տալ վայրկյանները"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "Նշեք սա, եթե ուզում եք վայրկյանները երևան։ "
+
+#, fuzzy
+#~| msgid "Show &seconds"
+#~ msgid "Show &seconds hand"
+#~ msgstr "Ցույց տալ &վայրկյանները"
+
+#, fuzzy
+#~| msgid "Show the time in text"
+#~ msgid "Show the Timezone in text"
+#~ msgstr "Ժամը ցույց տալ տեքստում"
+
+#, fuzzy
+#~| msgid "Check this if you want to show the seconds."
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "Նշեք սա, եթե ուզում եք վայրկյանները երևան։ "
+
+#, fuzzy
+#~| msgid "Show the time in text"
+#~ msgid "Show &time zone"
+#~ msgstr "Ժամը ցույց տալ տեքստում"
+
+#, fuzzy
+#~| msgid "Also show the time in text"
+#~ msgid "Also show the Timezone as text"
+#~ msgstr "Տեքստում ժամը  միշտ ցույց տալ"
+
+#~ msgid "Timezones"
+#~ msgstr "Ժամանակագոտիներ"
+
+#~ msgid "Use &local timezone"
+#~ msgstr "Օգտագործել &տեղային ժամանակագոտի"
+
+#~ msgid "Area"
+#~ msgstr "Տարածք"
+
+#~ msgid "Region"
+#~ msgstr "Շրջան"
+
+#~ msgid "Comment"
+#~ msgstr "Մեկնաբանություն"
+
+#, fuzzy
+#~| msgid "Configure Clock"
+#~ msgctxt "@title:window"
+#~ msgid "Configure Clock"
+#~ msgstr "Կարգավորել ժամը"

@@ -3,164 +3,132 @@
 #
 # Serdar Soytetir, 2008.
 # Serdar Soytetir <tulliana@gmail.com>, 2008, 2010, 2013.
-# Volkan Gezer <volkangezer@gmail.com>, 2013.
+# Volkan Gezer <volkangezer@gmail.com>, 2013, 2021, 2022.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_autostart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2017-10-04 12:31+0000\n"
-"Last-Translator: Kaan <kaanozdincer@gmail.com>\n"
+"POT-Creation-Date: 2023-01-29 02:56+0000\n"
+"PO-Revision-Date: 2023-02-08 21:24+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 22.12.2\n"
 
+#: autostartmodel.cpp:322
 #, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Serdar Soytetir"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "tulliana@gmail.com"
-
-#: autostart.cpp:24
-#, kde-format
-msgid "Autostart"
-msgstr ""
-
-#: autostart.cpp:26
-#, kde-format
-msgid "Session Autostart Manager Control Panel Module"
-msgstr "Oturum Otomatik Başlatma Yöneticisi Kontrol Paneli Modülü"
-
-#: autostart.cpp:28
-#, fuzzy, kde-format
-#| msgid "Copyright © 2006–2010 Autostart Manager team"
-msgid "Copyright © 2006–2020 Autostart Manager team"
-msgstr "Telif Hakları © 2006–2010 Autostart Manager ekibi"
-
-#: autostart.cpp:29
-#, kde-format
-msgid "Stephen Leaf"
-msgstr "Stephen Leaf"
-
-#: autostart.cpp:30
-#, kde-format
-msgid "Montel Laurent"
-msgstr "Montel Laurent"
-
-#: autostart.cpp:30
-#, kde-format
-msgid "Maintainer"
-msgstr "Projeyi Yürüten"
-
-#: autostart.cpp:31
-#, kde-format
-msgid "Nicolas Fella"
-msgstr ""
-
-#: autostartmodel.cpp:288
-#, fuzzy, kde-format
-#| msgid "\"%1\" is not an absolute path."
 msgid "\"%1\" is not an absolute url."
-msgstr "\"%1\" gerçek bir yol değil."
+msgstr "\"%1\" mutlak bir URL değil."
 
-#: autostartmodel.cpp:291
+#: autostartmodel.cpp:325
 #, kde-format
 msgid "\"%1\" does not exist."
-msgstr "\"%1\" mevcut değil."
+msgstr "\"%1\" yok."
 
-#: autostartmodel.cpp:294
+#: autostartmodel.cpp:328
 #, kde-format
 msgid "\"%1\" is not a file."
 msgstr "\"%1\" bir dosya değil."
 
-#: autostartmodel.cpp:297
+#: autostartmodel.cpp:331
 #, kde-format
 msgid "\"%1\" is not readable."
 msgstr "\"%1\" okunabilir değil."
 
-#: package/contents/ui/main.qml:62
-#, fuzzy, kde-format
-#| msgid "&Properties..."
+#: package/contents/ui/main.qml:40
+#, kde-format
+msgid "Make Executable"
+msgstr "Yürütülebilir Yap"
+
+#: package/contents/ui/main.qml:54
+#, kde-format
+msgid "The file '%1' must be executable to run at logout."
+msgstr ""
+"\"%1\" dosyası, oturum kapanışında çalıştırılabilmesi için yürütülebilir "
+"olmalıdır."
+
+#: package/contents/ui/main.qml:56
+#, kde-format
+msgid "The file '%1' must be executable to run at login."
+msgstr ""
+"\"%1\" dosyası, oturum açılışında çalıştırılabilmesi için yürütülebilir "
+"olmalıdır."
+
+#: package/contents/ui/main.qml:94
+#, kde-format
 msgid "Properties"
-msgstr "&Özellikler..."
+msgstr "Özellikler"
 
-#: package/contents/ui/main.qml:68
-#, fuzzy, kde-format
-#| msgid "&Remove"
+#: package/contents/ui/main.qml:100
+#, kde-format
 msgid "Remove"
-msgstr "&Kaldır"
+msgstr "Kaldır"
 
-#: package/contents/ui/main.qml:79
+#: package/contents/ui/main.qml:111
 #, kde-format
 msgid "Applications"
-msgstr ""
+msgstr "Uygulamalar"
 
-#: package/contents/ui/main.qml:82
+#: package/contents/ui/main.qml:114
 #, kde-format
 msgid "Login Scripts"
-msgstr ""
+msgstr "Oturum Açma Betikleri"
 
-#: package/contents/ui/main.qml:85
-#, fuzzy, kde-format
-#| msgid "Pre-KDE startup"
+#: package/contents/ui/main.qml:117
+#, kde-format
 msgid "Pre-startup Scripts"
-msgstr "Ön-KDE başlangıcı"
+msgstr "Başlangıç Öncesi Betikleri"
 
-#: package/contents/ui/main.qml:88
-#, fuzzy, kde-format
-#| msgid "Logout"
+#: package/contents/ui/main.qml:120
+#, kde-format
 msgid "Logout Scripts"
-msgstr "Çıkış"
+msgstr "Oturum Kapatma Betikleri"
 
-#: package/contents/ui/main.qml:97
+#: package/contents/ui/main.qml:129
 #, kde-format
 msgid "No user-specified autostart items"
-msgstr ""
+msgstr "Kullanıcı tanımlı otomatik başlat ögesi yok"
 
-#: package/contents/ui/main.qml:98
+#: package/contents/ui/main.qml:130
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add…</interface> button below to add some"
 msgstr ""
+"Birkaç tane eklemek için aşağıdaki <interface>Ekle…</interface> düğmesine "
+"tıklayın"
 
-#: package/contents/ui/main.qml:112
-#, fuzzy, kde-format
-#| msgid "Add Script..."
+#: package/contents/ui/main.qml:144
+#, kde-format
 msgid "Choose Login Script"
-msgstr "Betik Ekle..."
+msgstr "Oturum Açma Betiği Seç"
 
-#: package/contents/ui/main.qml:133
+#: package/contents/ui/main.qml:165
 #, kde-format
 msgid "Choose Logout Script"
-msgstr ""
-
-#: package/contents/ui/main.qml:151
-#, kde-format
-msgid "Add…"
-msgstr ""
-
-#: package/contents/ui/main.qml:177
-#, kde-format
-msgid "Add Application…"
-msgstr ""
+msgstr "Oturum Kapatma Betiği Seç"
 
 #: package/contents/ui/main.qml:183
-#, fuzzy, kde-format
-#| msgid "Add Script..."
-msgid "Add Login Script…"
-msgstr "Betik Ekle..."
+#, kde-format
+msgid "Add…"
+msgstr "Ekle…"
 
-#: package/contents/ui/main.qml:189
-#, fuzzy, kde-format
-#| msgid "Add Script..."
+#: package/contents/ui/main.qml:198
+#, kde-format
+msgid "Add Application…"
+msgstr "Uygulama Ekle…"
+
+#: package/contents/ui/main.qml:204
+#, kde-format
+msgid "Add Login Script…"
+msgstr "Oturum Açma Betiği Ekle…"
+
+#: package/contents/ui/main.qml:210
+#, kde-format
 msgid "Add Logout Script…"
-msgstr "Betik Ekle..."
+msgstr "Oturum Kapatma Betiği Ekle…"

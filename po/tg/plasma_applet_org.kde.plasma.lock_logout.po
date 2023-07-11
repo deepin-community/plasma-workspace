@@ -120,3 +120,23 @@ msgstr "Ба хоб равондан (таваққуф кардан дар RAM)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Дар ҳолати ҷорӣ нигоҳ доштан (таваққуф кардан дар диск)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr ""
+#~ "Шумо мехоҳед, ки низомро дар диск таваққуф кунед (дар ҳолати ҷорӣ нигоҳ "
+#~ "доред)?"
+
+#~ msgid "Yes"
+#~ msgstr "Ҳа"
+
+#~ msgid "No"
+#~ msgstr "Не"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Шумо мехоҳед, ки низомро дар RAM таваққуф кунед (ба хоб равонед)?"
+
+#~ msgid "Leave"
+#~ msgstr "Баромад"
+
+#~ msgid "Leave..."
+#~ msgstr "Баромад..."

@@ -28,3 +28,20 @@ msgstr "Божидар Проевски"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "bobibobi@freemail.com.mk"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Не можам да го користам задниот крај за мултимедија <b>%1</b>:<br/>"
+#~ "%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Нема пронајден заден крај за мултимедија"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Не е пронајден бараниот заден крај за мултимедија"
+
+#~ msgid "create method returned 0"
+#~ msgstr "Методот „create“ врати 0"
+
+#~ msgid "Unable to use the <b>%1</b> Multimedia Backend:"
+#~ msgstr "Не можам да го користам задниот крај за мултимедија <b>%1</b>:"

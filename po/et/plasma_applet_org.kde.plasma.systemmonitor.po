@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-03-09 00:47+0000\n"
 "PO-Revision-Date: 2020-09-28 13:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 20.08.1\n"
 
-#: package/contents/config/config.qml:9
+#: package/contents/config/config.qml:10
 #, kde-format
 msgid "Appearance"
 msgstr "Välimus"
 
-#: package/contents/config/config.qml:14
+#: package/contents/config/config.qml:15
 #, kde-format
 msgid "%1 Details"
 msgstr "%1: üksikasjad"
 
-#: package/contents/config/config.qml:20
+#: package/contents/config/config.qml:21
 #, kde-format
 msgid "Sensors Details"
 msgstr "Sensorite üksikasjad"

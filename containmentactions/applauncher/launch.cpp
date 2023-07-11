@@ -8,7 +8,9 @@
 
 #include <QDebug>
 
-#include <KRun>
+#include <KConfigGroup>
+#include <KIO/ApplicationLauncherJob>
+#include <KPluginFactory>
 #include <Plasma/PluginLoader>
 
 AppLauncher::AppLauncher(QObject *parent, const QVariantList &args)
@@ -34,7 +36,7 @@ QList<QAction *> AppLauncher::contextualActions()
     return m_actions;
 }
 
-void AppLauncher::makeMenu(QMenu *menu, const KServiceGroup::Ptr group)
+void AppLauncher::makeMenu(QMenu *menu, const KServiceGroup::Ptr &group)
 {
     const auto entries = group->entries(true, true, true);
     for (const KSycocaEntry::Ptr &p : entries) {
@@ -49,7 +51,8 @@ void AppLauncher::makeMenu(QMenu *menu, const KServiceGroup::Ptr group)
             QAction *action = new QAction(QIcon::fromTheme(service->icon()), text, this);
             connect(action, &QAction::triggered, [action]() {
                 KService::Ptr service = KService::serviceByStorageId(action->data().toString());
-                new KRun(QUrl("file://" + service->entryPath()), nullptr);
+                auto job = new KIO::ApplicationLauncherJob(service);
+                job->start();
             });
             action->setData(service->storageId());
             if (menu) {

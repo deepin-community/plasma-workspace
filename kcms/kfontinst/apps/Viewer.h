@@ -31,8 +31,9 @@ public Q_SLOTS:
     void enableAction(const char *name, bool enable);
 
 private:
-    KParts::ReadOnlyPart *itsPreview;
-    QAction *itsPrintAct;
+    KParts::ReadOnlyPart *m_preview;
+    QAction *m_printAct;
+    QAction *m_openAct;
 };
 
 }

@@ -54,3 +54,23 @@ msgstr "Rodyti mėnesio dieną"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Rodyti savaitės numerį"
+
+#~ msgid "Working Day"
+#~ msgstr "Darbo diena"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Prasideda nuo 9"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Baigiasi 17"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "Ženkliukas:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "Mėnesio diena"
+
+#~ msgid "Agenda"
+#~ msgstr "Darbotvarkė"

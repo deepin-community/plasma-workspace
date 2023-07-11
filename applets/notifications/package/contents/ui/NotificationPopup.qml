@@ -29,6 +29,7 @@ PlasmaCore.Dialog {
 
     property alias summary: notificationItem.summary
     property alias body: notificationItem.body
+    property alias accessibleDescription: notificationItem.accessibleDescription
     property alias icon: notificationItem.icon
     property alias urls: notificationItem.urls
 
@@ -68,6 +69,7 @@ PlasmaCore.Dialog {
     signal replied(string text)
     signal openUrl(string url)
     signal fileActionInvoked(QtObject action)
+    signal forceActiveFocusRequested
 
     signal expired
     signal hoverEntered
@@ -104,27 +106,77 @@ PlasmaCore.Dialog {
     mainItem: KQuickAddons.MouseEventListener {
         id: focusListener
         property bool wantsFocus: false
+
+        width: notificationPopup.popupWidth
+        height: notificationItem.implicitHeight + notificationItem.y
+
         acceptedButtons: Qt.AllButtons
         hoverEnabled: true
         onPressed: wantsFocus = true
         onContainsMouseChanged: wantsFocus = wantsFocus && containsMouse
 
-        width: notificationPopup.popupWidth
-        height: notificationItem.height + notificationItem.y
+        DropArea {
+            anchors.fill: parent
+            onEntered: {
+                if (notificationPopup.hasDefaultAction && !notificationItem.dragging) {
+                    dragActivationTimer.start();
+                } else {
+                    drag.accepted = false;
+                }
+            }
+        }
+
+        Timer {
+            id: dragActivationTimer
+            interval: 250 // same as Task Manager
+            repeat: false
+            onTriggered: notificationPopup.defaultActionInvoked()
+        }
+
+        // Visual flourish for critical notifications to make them stand out more
+        Rectangle {
+            id: criticalNotificationLine
+
+            anchors {
+                top: parent.top
+                // Subtract bottom margin that header sets which is not a part of
+                // its height, and also the PlasmoidHeading's bottom line
+                topMargin: notificationItem.headerHeight - notificationItem.spacing - PlasmaCore.Units.devicePixelRatio
+                bottom: parent.bottom
+                bottomMargin: -notificationPopup.margins.bottom
+                left: parent.left
+                leftMargin: -notificationPopup.margins.left
+            }
+            implicitWidth: Math.round(4 * PlasmaCore.Units.devicePixelRatio)
+
+            visible: notificationPopup.urgency === NotificationManager.Notifications.CriticalUrgency
+
+            color: PlasmaCore.Theme.neutralTextColor
+        }
 
         DraggableDelegate {
             id: area
-            width: parent.width
-            height: parent.height
+            anchors.fill: parent
             hoverEnabled: true
             draggable: notificationItem.notificationType != NotificationManager.Notifications.JobType
             onDismissRequested: popupNotificationsModel.close(popupNotificationsModel.index(index, 0))
 
             cursorShape: hasDefaultAction ? Qt.PointingHandCursor : Qt.ArrowCursor
-            acceptedButtons: hasDefaultAction || draggable ? Qt.LeftButton : Qt.NoButton
+            acceptedButtons: {
+                let buttons = Qt.MiddleButton;
+                if (hasDefaultAction || draggable) {
+                    buttons |= Qt.LeftButton;
+                }
+                return buttons;
+            }
 
             onClicked: {
-                if (hasDefaultAction) {
+                // NOTE "mouse" can be null when faked by the SelectableLabel
+                if (mouse && mouse.button === Qt.MiddleButton) {
+                    if (notificationItem.closable) {
+                        notificationItem.closeClicked();
+                    }
+                } else if (hasDefaultAction) {
                     notificationPopup.defaultActionInvoked();
                 }
             }
@@ -180,7 +232,6 @@ PlasmaCore.Dialog {
                 y: closable || dismissable || configurable ? -notificationPopup.margins.top : 0
                 headingRightPadding: -notificationPopup.margins.right
                 width: parent.width
-                hovered: area.containsMouse
                 maximumLineCount: 8
                 bodyCursorShape: notificationPopup.hasDefaultAction ? Qt.PointingHandCursor : 0
 
@@ -188,6 +239,8 @@ PlasmaCore.Dialog {
                 thumbnailRightPadding: -notificationPopup.margins.right
                 thumbnailTopPadding: -notificationPopup.margins.top
                 thumbnailBottomPadding: -notificationPopup.margins.bottom
+
+                extraSpaceForCriticalNotificationLine: criticalNotificationLine.visible ? criticalNotificationLine.implicitWidth : 0
 
                 timeout: timer.running ? timer.interval : 0
 
@@ -205,6 +258,7 @@ PlasmaCore.Dialog {
                 onReplied: notificationPopup.replied(text)
                 onOpenUrl: notificationPopup.openUrl(url)
                 onFileActionInvoked: notificationPopup.fileActionInvoked(action)
+                onForceActiveFocusRequested: notificationPopup.forceActiveFocusRequested()
 
                 onSuspendJobClicked: notificationPopup.suspendJobClicked()
                 onResumeJobClicked: notificationPopup.resumeJobClicked()

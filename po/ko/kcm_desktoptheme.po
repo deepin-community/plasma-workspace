@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_desktopthemedetails\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2021-05-28 02:26+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -17,31 +17,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 20.12.3\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "박신조,이정희"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "kde@peremen.name,daemul72@gmail.com"
-
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
 #, kde-format
 msgid "Name of the current Plasma Style"
 msgstr "현재 Plasma 스타일 이름"
-
-#: kcm.cpp:51
-#, kde-format
-msgid "Plasma Style"
-msgstr "Plasma 스타일"
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr "David Rosca"
 
 #: kcm.cpp:110
 #, kde-format
@@ -63,7 +43,7 @@ msgstr "테마가 설치되었습니다."
 msgid "Theme installation failed."
 msgstr "테마 설치가 실패했습니다."
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr "테마를 삭제할 수 없음: %1"
@@ -123,12 +103,12 @@ msgstr "파일에서 설치…"
 msgid "Get New Plasma Styles…"
 msgstr "새 Plasma 스타일 가져오기…"
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgid "Open Theme"
 msgstr "테마 열기"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr "테마 파일 (*.zip *.tar.gz *.tar.bz2)"
@@ -180,3 +160,273 @@ msgstr "테마 \"%1\"을(를) 찾을 수 없습니다. 다음 중 하나여야 �
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
 msgstr "시스템에 다음 Plasma 테마가 설치되어 있습니다:"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "박신조,이정희"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "kde@peremen.name,daemul72@gmail.com"
+
+#~ msgid "Plasma Style"
+#~ msgstr "Plasma 스타일"
+
+#~ msgid "David Rosca"
+#~ msgstr "David Rosca"
+
+#~ msgid "Search..."
+#~ msgstr "검색..."
+
+#~ msgid "Plasma Styles"
+#~ msgstr "Plasma 스타일"
+
+#~ msgid "Download New Plasma Styles"
+#~ msgstr "새 Plasma 스타일 다운로드"
+
+#~ msgid "Configure Desktop Theme"
+#~ msgstr "데스크톱 테마 설정"
+
+#~ msgid "Theme removal failed."
+#~ msgstr "테마 삭제가 실패했습니다."
+
+#~ msgid ""
+#~ "<h1>Desktop Theme</h1>This module allows you to modify the visual "
+#~ "appearance of the desktop."
+#~ msgstr ""
+#~ "<h1>데스크톱 테마</h1>이 모듈에서는 데스크톱의 모양을 설정할 수 있습니다."
+
+#~ msgid "KDE Desktop Theme Module"
+#~ msgstr "KDE 데스크톱 테마 모듈"
+
+#~ msgid "(c) 2002 Karol Szwed, Daniel Molkentin"
+#~ msgstr "(c) 2002 Karol Szwed, Daniel Molkentin"
+
+#~ msgid "Theme installation failed. (%1)"
+#~ msgstr "테마 설치가 실패했습니다.(%1)"
+
+#~ msgid "Details"
+#~ msgstr "자세히"
+
+#~ msgctxt "plasma name"
+#~ msgid "Panel Background"
+#~ msgstr "패널 배경"
+
+#~ msgctxt "plasma name"
+#~ msgid "Kickoff"
+#~ msgstr "Kickoff"
+
+#~ msgctxt "plasma name"
+#~ msgid "Task Items"
+#~ msgstr "작업 표시줄 항목"
+
+#~ msgctxt "plasma name"
+#~ msgid "Widget Background"
+#~ msgstr "위젯 배경"
+
+#~ msgctxt "plasma name"
+#~ msgid "Translucent Background"
+#~ msgstr "투명한 배경"
+
+#~ msgctxt "plasma name"
+#~ msgid "Dialog Background"
+#~ msgstr "대화상자 배경"
+
+#~ msgctxt "plasma name"
+#~ msgid "Analog Clock"
+#~ msgstr "아날로그 시계"
+
+#~ msgctxt "plasma name"
+#~ msgid "Notes"
+#~ msgstr "노트"
+
+#~ msgctxt "plasma name"
+#~ msgid "Tooltip"
+#~ msgstr "풍선 도움말"
+
+#~ msgctxt "plasma name"
+#~ msgid "Pager"
+#~ msgstr "데스크톱 전환기"
+
+#~ msgctxt "plasma name"
+#~ msgid "Run Command Dialog"
+#~ msgstr "명령 실행 대화상자"
+
+#~ msgctxt "plasma name"
+#~ msgid "Shutdown Dialog"
+#~ msgstr "컴퓨터 끄기 대화상자"
+
+#~ msgctxt "plasma name"
+#~ msgid "Icons"
+#~ msgstr "아이콘"
+
+#~ msgid "(Customized)"
+#~ msgstr "(변경됨)"
+
+#~ msgid "User customized theme"
+#~ msgstr "사용자 정의 테마"
+
+#~ msgid ""
+#~ "Theme items have been changed.  Do you still wish remove the \"%1\" theme?"
+#~ msgstr "이 항목들이 변경되었습니다. 그래도 \"%1\" 테마를 삭제하시겠습니까?"
+
+#~ msgid "Removal of the default desktop theme is not allowed."
+#~ msgstr "기본 데스크톱 테마는 삭제할 수 없습니다."
+
+#~ msgid "Are you sure you wish remove the \"%1\" theme?"
+#~ msgstr "\"%1\" 테마를 삭제하시겠습니까?"
+
+#~ msgid ""
+#~ "Please apply theme item changes (with a new theme name) before attempting "
+#~ "to export theme."
+#~ msgstr "테마를 내보내기 전 항목 변경 사항을 적용시켜 보십시오."
+
+#~ msgid "Export Desktop Theme"
+#~ msgstr "데스크톱 테마 내보내기"
+
+#~ msgid "Export theme to file"
+#~ msgstr "테마를 파일로 내보내기"
+
+#~ msgid "Archive (*.zip)"
+#~ msgstr "압축 파일 (*.zip)"
+
+#~ msgid "Theme Item"
+#~ msgstr "테마 항목"
+
+#~ msgid "Source"
+#~ msgstr "원본"
+
+#~ msgctxt ""
+#~ "%1 is the name of the theme, %2 is the type of the element (background, "
+#~ "icon, note, etc)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgid "File..."
+#~ msgstr "파일..."
+
+#~ msgid "Select File to Use for %1"
+#~ msgstr "%1에 사용할 파일을 선택하십시오"
+
+#~ msgid " Author: %1"
+#~ msgstr " 작성자: %1"
+
+#~ msgid "Version: %1"
+#~ msgstr "버전: %1"
+
+#~ msgid "Desktop Theme Details"
+#~ msgstr "데스크톱 테마 정보"
+
+#~ msgid "Choose an item and customize it by assigning it a theme"
+#~ msgstr "항목을 선택한 다음 설정을 바꿀 수 있습니다"
+
+#~ msgid ""
+#~ "You can set any theme to any item. The available themes for the item are "
+#~ "in the dropdown box on the right."
+#~ msgstr ""
+#~ "임의의 항목과 임의의 테마를 연결할 수 있습니다. 항목에 사용할 수 있는 테마"
+#~ "는 오른쪽의 드롭다운 목록에서 찾을 수 있습니다."
+
+#~ msgid "Enable more options"
+#~ msgstr "더 많은 옵션 보이기"
+
+#~ msgid ""
+#~ "This will expand the dialog and give you options to export your custom "
+#~ "theme as well as to remove a theme."
+#~ msgstr ""
+#~ "대화 상자를 확장하여 더 많은 설정 옵션 및 테마 삭제 옵션을 보입니다."
+
+#~ msgid "More"
+#~ msgstr "더 보기"
+
+#~ msgid "Remove the selected theme"
+#~ msgstr "선택한 테마 삭제"
+
+#~ msgid ""
+#~ "Clicking this button will remove the selected theme. You will be asked "
+#~ "for confirmation."
+#~ msgstr ""
+#~ "이 단추를 누르면 선택한 테마를 삭제합니다. 진짜 삭제할 지 여부를 물어봅니"
+#~ "다."
+
+#~ msgid "Save your theme in a zip archive"
+#~ msgstr "zip 압축 파일로 테마 저장하기"
+
+#~ msgid ""
+#~ "You can save your theme in a zip archive in order to share it with the "
+#~ "community."
+#~ msgstr ""
+#~ "다른 사용자와 공유하기 위하여 테마를 zip 압축 파일로 저장할 수 있습니다."
+
+#~ msgid "Export Theme to File..."
+#~ msgstr "테마를 파일로 내보내기..."
+
+#~ msgid "New theme name:"
+#~ msgstr "새 테마 이름:"
+
+#~ msgid "Custom theme name"
+#~ msgstr "사용자 정의 테마 이름"
+
+#~ msgid "Give a name to your custom theme."
+#~ msgstr "새로운 테마의 이름을 입력하십시오."
+
+#~ msgid "Author:"
+#~ msgstr "작성자:"
+
+#~ msgid "Custom theme author "
+#~ msgstr "사용자 정의 테마 작성자"
+
+#~ msgid "Enter the author name of your custom theme."
+#~ msgstr "새로운 테마를 만든 사람을 입력하십시오."
+
+#~ msgid "Version:"
+#~ msgstr "버전:"
+
+#~ msgid "Custom theme version number"
+#~ msgstr "사용자 정의 테마 버전"
+
+#~ msgid "Enter the version number of your custom theme."
+#~ msgstr "새로운 테마의 버전 정보를 입력하십시오."
+
+#~ msgid "Description:"
+#~ msgstr "설명:"
+
+#~ msgid "Custom theme description"
+#~ msgstr "사용자 정의 테마 설명"
+
+#~ msgid "Enter a description which will explain your custom theme."
+#~ msgstr "새로운 테마의 설명을 입력하십시오."
+
+#~ msgid "Select theme from above to customize"
+#~ msgstr "수정할 테마를 위에서 선택하십시오"
+
+#~ msgid "Theme Author"
+#~ msgstr "테마 작성자"
+
+#~ msgid "Theme Name"
+#~ msgstr "테마 이름"
+
+#~ msgid "Theme Version"
+#~ msgstr "테마 버전"
+
+#~ msgid "The theme description goes here..."
+#~ msgstr "테마 설명의 자리..."
+
+#~ msgid ""
+#~ "Choose a start theme in this list then customize some items below. All "
+#~ "less important items not listed below will use this start theme."
+#~ msgstr ""
+#~ "시작할 테마를 선택한 다음 아래에서 항목을 수정하십시오. 아래 목록에 나와있"
+#~ "지 않은 구성 요소에는 시작할 테마를 사용합니다."
+
+#~ msgid "Karol Szwed"
+#~ msgstr "Karol Szwed"
+
+#~ msgid "Daniel Molkentin"
+#~ msgstr "Daniel Molkentin"
+
+#~ msgid "Ralf Nolden"
+#~ msgstr "Ralf Nolden"
+
+#~ msgid "KCMDesktopTheme"
+#~ msgstr "KCMDesktopTheme"

@@ -4,13 +4,13 @@
 #
 # Automatically generated, 2017.
 # Eloy <ecuadra@eloihr.net>, 2017.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2017, 2021.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2017, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-05-27 01:03+0200\n"
+"POT-Creation-Date: 2022-09-22 00:47+0000\n"
+"PO-Revision-Date: 2022-07-27 14:50+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.04.1\n"
+"X-Generator: Lokalize 22.04.3\n"
 
 #: package/contents/config/config.qml:13
 #, kde-format
@@ -35,12 +35,38 @@ msgstr "Usar botón único para el menú de la aplicación"
 msgid "Show full application menu"
 msgstr "Mostrar el menú completo de la aplicación"
 
-#: plugin/appmenumodel.cpp:85
+#: package/contents/ui/MenuDelegate.qml:62
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Open a menu"
+msgstr "Abrir un menú"
+
+#: plugin/appmenumodel.cpp:84
 #, kde-format
 msgid "Search"
 msgstr "Buscar"
 
-#: plugin/appmenumodel.cpp:92
+#: plugin/appmenumodel.cpp:91
 #, kde-format
 msgid "Search…"
 msgstr "Buscar..."
+
+#~ msgid "Search..."
+#~ msgstr "Buscar..."
+
+#~ msgid "application-menu"
+#~ msgstr "menú de la aplicación"
+
+#~ msgid "Application Menu Widget is disabled"
+#~ msgstr "El elemento gráfico del menú de la aplicación está desactivado"
+
+#~ msgctxt "it being the 'Application Menu Widget'"
+#~ msgid ""
+#~ "Go to System Settings > Application Style > Fine Tuning (tab) to enable "
+#~ "it."
+#~ msgstr ""
+#~ "Vaya a la pestaña «Preferencias del sistema > Estilo de la aplicación > "
+#~ "Ajuste fino» para activarlo."
+
+#~ msgid "emblem-warning"
+#~ msgstr "emblema de advertencia"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_wallpaper_image\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-31 00:22+0000\n"
+"POT-Creation-Date: 2022-12-02 00:48+0000\n"
 "PO-Revision-Date: 2019-08-19 20:53+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -22,192 +22,85 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 19.04.3\n"
 
-#: image.cpp:253
 #, kde-format
-msgid "Recommended wallpaper file"
-msgstr "Ficheiro de fondo de escritorio recomendado"
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
 
-#: image.cpp:414
 #, kde-format
-msgid "Directory with the wallpaper to show slides from"
-msgstr "Directorio que contén as imaxes para mostrar como unha presentación."
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
 
-#: image.cpp:716
-#, kde-format
-msgid "Open Image"
-msgstr "Abrir unha imaxe"
-
-#: image.cpp:716
-#, kde-format
-msgid "Image Files"
-msgstr "Ficheiros de imaxe"
-
-#: imagepackage/contents/ui/config.qml:98
+#: imagepackage/contents/ui/config.qml:94
 #, kde-format
 msgid "Positioning:"
 msgstr "Posicionamento:"
 
-#: imagepackage/contents/ui/config.qml:101
+#: imagepackage/contents/ui/config.qml:97
 #, kde-format
 msgid "Scaled and Cropped"
 msgstr "Cambiado de escala e recortado"
 
-#: imagepackage/contents/ui/config.qml:105
+#: imagepackage/contents/ui/config.qml:101
 #, kde-format
 msgid "Scaled"
 msgstr "Cambiado de escala"
 
-#: imagepackage/contents/ui/config.qml:109
+#: imagepackage/contents/ui/config.qml:105
 #, kde-format
 msgid "Scaled, Keep Proportions"
 msgstr "Cambiado de escala, mantendo as proporcións"
 
-#: imagepackage/contents/ui/config.qml:113
+#: imagepackage/contents/ui/config.qml:109
 #, kde-format
 msgid "Centered"
 msgstr "Centrado"
 
-#: imagepackage/contents/ui/config.qml:117
+#: imagepackage/contents/ui/config.qml:113
 #, kde-format
 msgid "Tiled"
 msgstr "En mosaico"
 
-#: imagepackage/contents/ui/config.qml:146
+#: imagepackage/contents/ui/config.qml:141
 #, kde-format
 msgid "Background:"
 msgstr "Fondo:"
 
-#: imagepackage/contents/ui/config.qml:147
+#: imagepackage/contents/ui/config.qml:142
 #, kde-format
 msgid "Blur"
 msgstr "Desenfoque"
 
-#: imagepackage/contents/ui/config.qml:156
+#: imagepackage/contents/ui/config.qml:151
 #, kde-format
 msgid "Solid color"
 msgstr "Cor sólida"
 
-#: imagepackage/contents/ui/config.qml:166
+#: imagepackage/contents/ui/config.qml:161
 #, kde-format
 msgid "Select Background Color"
 msgstr "Escoller a cor do fondo"
 
-#: imagepackage/contents/ui/config.qml:190
-#, kde-format
-msgid "Order:"
-msgstr "Orde:"
-
-#: imagepackage/contents/ui/config.qml:197
-#, kde-format
-msgid "Random"
-msgstr "Aleatorio"
-
-#: imagepackage/contents/ui/config.qml:201
-#, kde-format
-msgid "A to Z"
-msgstr "Do A ao Z"
-
-#: imagepackage/contents/ui/config.qml:205
-#, kde-format
-msgid "Z to A"
-msgstr "Do Z ao A"
-
-#: imagepackage/contents/ui/config.qml:209
-#, kde-format
-msgid "Date modified (newest first)"
-msgstr "Data de modificación (de novo a vello)"
-
-#: imagepackage/contents/ui/config.qml:213
-#, kde-format
-msgid "Date modified (oldest first)"
-msgstr "Data de modificación (de vello a novo)"
-
-#: imagepackage/contents/ui/config.qml:237
-#, kde-format
-msgid "Group by folders"
-msgstr ""
-
-#: imagepackage/contents/ui/config.qml:249
-#, kde-format
-msgid "Change every:"
-msgstr "&Cambiar cada:"
-
-#: imagepackage/contents/ui/config.qml:259
-#, kde-format
-msgid "%1 hour"
-msgid_plural "%1 hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: imagepackage/contents/ui/config.qml:278
-#, fuzzy, kde-format
-#| msgid "Minutes"
-msgid "%1 minute"
-msgid_plural "%1 minutes"
-msgstr[0] "Minutos"
-msgstr[1] "Minutos"
-
-#: imagepackage/contents/ui/config.qml:297
-#, fuzzy, kde-format
-#| msgid "Seconds"
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "Segundos"
-msgstr[1] "Segundos"
-
-#: imagepackage/contents/ui/config.qml:310
-#, kde-format
-msgid "Folders"
-msgstr "Cartafoles"
-
-#: imagepackage/contents/ui/config.qml:358
-#, kde-format
-msgid "Remove Folder"
-msgstr "Retirar o cartafol"
-
-#: imagepackage/contents/ui/config.qml:363
-#, kde-format
-msgid "Open Folder"
-msgstr "Abrir o cartafol"
-
-#: imagepackage/contents/ui/config.qml:373
-#, kde-format
-msgid "There are no wallpaper locations configured"
-msgstr ""
-
-#: imagepackage/contents/ui/config.qml:386
-#, fuzzy, kde-format
-#| msgid "Add Folder..."
-msgid "Add Folder…"
-msgstr "Engadir un cartafol…"
-
-#: imagepackage/contents/ui/config.qml:392
-#: imagepackage/contents/ui/config.qml:486
-#, fuzzy, kde-format
-#| msgid "Get New Wallpapers..."
-msgid "Get New Wallpapers…"
-msgstr "Obter novos fondos de escritorio…"
-
-#: imagepackage/contents/ui/config.qml:435
-#, fuzzy, kde-format
-#| msgid "Use system-installed wallpapers in slideshow"
-msgid "There are no wallpapers in this slideshow"
-msgstr ""
-"Emprega para a presentación fondos de escritorio instalados para todo o "
-"sistema"
-
-#: imagepackage/contents/ui/config.qml:480
+#: imagepackage/contents/ui/config.qml:207
 #, fuzzy, kde-format
 #| msgid "Add Image..."
 msgid "Add Image…"
 msgstr "Engadir unha imaxe…"
 
-#: imagepackage/contents/ui/main.qml:55
+#: imagepackage/contents/ui/config.qml:213
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:257
+#, fuzzy, kde-format
+#| msgid "Get New Wallpapers..."
+msgid "Get New Wallpapers…"
+msgstr "Obter novos fondos de escritorio…"
+
+#: imagepackage/contents/ui/main.qml:66
 #, kde-format
 msgid "Open Wallpaper Image"
 msgstr "Abrir a imaxe de fondo de escritorio"
 
-#: imagepackage/contents/ui/main.qml:56
+#: imagepackage/contents/ui/main.qml:67
 #, kde-format
 msgid "Next Wallpaper Image"
 msgstr "Seguinte imaxe de fondo de escritorio"
@@ -248,25 +141,248 @@ msgid ""
 "yourself: %1"
 msgstr ""
 
-#: plasma-apply-wallpaperimage.cpp:82
+#: plasma-apply-wallpaperimage.cpp:85
 #, kde-format
 msgid "An error occurred while attempting to set the Plasma wallpaper:\n"
 msgstr ""
 
-#: plasma-apply-wallpaperimage.cpp:86
+#: plasma-apply-wallpaperimage.cpp:89
 #, kde-format
 msgid ""
 "Successfully set the wallpaper for all desktops to the KPackage based %1"
 msgstr ""
 
-#: plasma-apply-wallpaperimage.cpp:88
+#: plasma-apply-wallpaperimage.cpp:91
 #, kde-format
 msgid "Successfully set the wallpaper for all desktops to the image %1"
 msgstr ""
 
-#: plasma-apply-wallpaperimage.cpp:94
+#: plasma-apply-wallpaperimage.cpp:97
 #, kde-format
 msgid ""
 "The file passed to be set as wallpaper does not exist, or we cannot identify "
 "it as a wallpaper: %1"
 msgstr ""
+
+#: plugin/finder/packagefinder.cpp:148
+#, kde-format
+msgid "Recommended wallpaper file"
+msgstr "Ficheiro de fondo de escritorio recomendado"
+
+#: plugin/imagebackend.cpp:243
+#, kde-format
+msgid "Directory with the wallpaper to show slides from"
+msgstr "Directorio que contén as imaxes para mostrar como unha presentación."
+
+#: plugin/imagebackend.cpp:353
+#, kde-format
+msgid "Open Image"
+msgstr "Abrir unha imaxe"
+
+#: plugin/imagebackend.cpp:353
+#, kde-format
+msgid "Image Files"
+msgstr "Ficheiros de imaxe"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:38
+#, kde-format
+msgid "Order:"
+msgstr "Orde:"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:45
+#, kde-format
+msgid "Random"
+msgstr "Aleatorio"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:49
+#, kde-format
+msgid "A to Z"
+msgstr "Do A ao Z"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:53
+#, kde-format
+msgid "Z to A"
+msgstr "Do Z ao A"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:57
+#, kde-format
+msgid "Date modified (newest first)"
+msgstr "Data de modificación (de novo a vello)"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:61
+#, kde-format
+msgid "Date modified (oldest first)"
+msgstr "Data de modificación (de vello a novo)"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:86
+#, kde-format
+msgid "Group by folders"
+msgstr ""
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:98
+#, kde-format
+msgid "Change every:"
+msgstr "&Cambiar cada:"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:108
+#, kde-format
+msgid "%1 hour"
+msgid_plural "%1 hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:128
+#, fuzzy, kde-format
+#| msgid "Minutes"
+msgid "%1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "Minutos"
+msgstr[1] "Minutos"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:148
+#, fuzzy, kde-format
+#| msgid "Seconds"
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "Segundos"
+msgstr[1] "Segundos"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:162
+#, kde-format
+msgid "Folders"
+msgstr "Cartafoles"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:220
+#, kde-format
+msgid "Remove Folder"
+msgstr "Retirar o cartafol"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:225
+#, kde-format
+msgid "Open Folder"
+msgstr "Abrir o cartafol"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:235
+#, kde-format
+msgid "There are no wallpaper locations configured"
+msgstr ""
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:250
+#, fuzzy, kde-format
+#| msgid "Add Folder..."
+msgid "Add Folder…"
+msgstr "Engadir un cartafol…"
+
+#, fuzzy
+#~| msgid "Use system-installed wallpapers in slideshow"
+#~ msgid "There are no wallpapers in this slideshow"
+#~ msgstr ""
+#~ "Emprega para a presentación fondos de escritorio instalados para todo o "
+#~ "sistema"
+
+#~ msgid "Add Custom Wallpaper"
+#~ msgstr "Engadir un fondo de escritorio personalizado"
+
+#~ msgid "Remove wallpaper"
+#~ msgstr "Retirar"
+
+#~ msgid "%1 by %2"
+#~ msgstr "%1 de %2"
+
+#, fuzzy
+#~| msgid "Remove Wallpaper"
+#~ msgid "Wallpapers"
+#~ msgstr "Retirar o fondo de pantalla"
+
+#~ msgctxt "<image> by <author>"
+#~ msgid "By %1"
+#~ msgstr "Por %1"
+
+#~ msgid "Download Wallpapers"
+#~ msgstr "Descargar fondos de escritorio"
+
+#~ msgid "Hours"
+#~ msgstr "Horas"
+
+#~ msgid "Open..."
+#~ msgstr "Abrir…"
+
+#~ msgctxt "Unknown Author"
+#~ msgid "Unknown"
+#~ msgstr "Descoñecido"
+
+#~ msgid "Image Files (*.png *.jpg *.jpeg *.bmp *.svg *.svgz *.xcf)"
+#~ msgstr "Ficheiros de imaxe (*.png *.jpg *.jpeg *.bmp *.svg *.svgz *.xcf)"
+
+#~ msgid "Screenshot"
+#~ msgstr "Captura de pantalla"
+
+#~ msgid "Preview"
+#~ msgstr "Previsualizar"
+
+#~ msgid "Center Tiled"
+#~ msgstr "Mosaico centrado"
+
+#~ msgid "Select Wallpaper Image File"
+#~ msgstr "Escolle o ficheiro coa imaxe de fondo"
+
+#~ msgid "P&ositioning:"
+#~ msgstr "&Posición:"
+
+#~ msgid "&Color:"
+#~ msgstr "&Cor:"
+
+#~ msgid "Change wallpaper frame color"
+#~ msgstr "Muda a cor da moldura do fondo do escritorio"
+
+#~ msgid ""
+#~ "Change the color of the frame that it may be visible when the wallpaper "
+#~ "is centered or scaled with the same proportions."
+#~ msgstr ""
+#~ "Muda a cor da moldura que puidera verse se o fondo de escritorio se "
+#~ "centra ou escala coas mesmas proporcións."
+
+#~ msgid "Remove from list"
+#~ msgstr "Quitar da lista"
+
+#~ msgctxt ""
+#~ "(qtdt-format) Please do not change the quotes (') and translate only the "
+#~ "content of the quotes."
+#~ msgid "hh 'Hours' mm 'Mins' ss 'Secs'"
+#~ msgstr "hh 'Horas' mm 'Minutos' ss 'Segundos'"
+
+#~ msgid "&My downloaded wallpapers:"
+#~ msgstr "Os fondos de escritorio &descargados:"
+
+#~ msgid ""
+#~ "Use wallpapers I have downloaded with \"Get New Wallpapers...\" in "
+#~ "slideshow"
+#~ msgstr ""
+#~ "Usa para a presentación fondos de escritorios descargados mediante «Obter "
+#~ "novos fondos de escritorio...»"
+
+#~ msgid "Custom folders:"
+#~ msgstr "Cartafoles personalizados:"
+
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:11pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Images</span></p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:11pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Imaxes</span></p></body></html>"

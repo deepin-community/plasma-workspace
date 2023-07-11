@@ -49,3 +49,12 @@ msgstr "Monstrar die del mense"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Monstra numero de septimana"
+
+#~ msgid "Working Day"
+#~ msgstr "Die de travalio"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Initia a 9"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Termina a 5"

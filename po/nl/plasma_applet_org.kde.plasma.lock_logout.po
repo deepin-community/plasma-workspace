@@ -119,3 +119,40 @@ msgstr "Slapen (RAM-slaapstand)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Slaapstand (schijf-slaapstand)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "Afsluiten..."
+
+#~ msgid "Logout..."
+#~ msgstr "Afmelden..."
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Wilt u naar de schijf-slaapstand gaan?"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nee"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Wilt u naar de RAM-slaapstand gaan?"
+
+#~ msgid "Leave"
+#~ msgstr "Verlaten"
+
+#~ msgid "Leave..."
+#~ msgstr "Verlaten..."
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Acties"
+
+#~ msgid "Suspend"
+#~ msgstr "Onderbreken"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Instellen voor vergrendelen/afmelden"
+
+#~ msgid "SystemTray Settings"
+#~ msgstr "Instellingen voor het systeemvak"

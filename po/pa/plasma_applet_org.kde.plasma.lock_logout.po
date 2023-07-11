@@ -119,3 +119,40 @@ msgstr "ਸਲੀਪ (RAM ਉੱਤੇ ਸਸਪੈਂਡ ਕਰੋ)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "ਹਾਈਬਰਨੇਟ (ਡਿਸਕ ਉੱਤੇ ਸਸਪੈਂਡ ਕਰੋ)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "ਬੰਦ ਕਰੋ..."
+
+#~ msgid "Logout..."
+#~ msgstr "ਲਾਗਆਉਟ..."
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "ਕੀ ਤੁਸੀਂ ਡਿਸਕ ਉੱਤੇ ਸਸਪੈਂਡ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ (ਹਾਈਬਰਨੇਟ)?"
+
+#~ msgid "Yes"
+#~ msgstr "ਹਾਂ"
+
+#~ msgid "No"
+#~ msgstr "ਨਹੀਂ"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "ਕੀ ਤੁਸੀਂ ਰੈਮ ਉੱਤੇ ਸਸਪੈਂਡ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ (ਸਲੀਪ)?"
+
+#~ msgid "Leave"
+#~ msgstr "ਛੱਡੋ"
+
+#~ msgid "Leave..."
+#~ msgstr "...ਛੱਡੋ"
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "ਕਾਰਵਾਈਆਂ"
+
+#~ msgid "Suspend"
+#~ msgstr "ਸਸਪੈਂਡ"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "ਲਾਕ/ਲਾਗ ਆਉਟ ਸੈਟਿੰਗ"
+
+#~ msgid "SystemTray Settings"
+#~ msgstr "ਸਿਸਟਮਟਰੇ ਸੈਟਿੰਗ"

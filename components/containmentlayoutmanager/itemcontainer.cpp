@@ -6,6 +6,7 @@
 
 #include "itemcontainer.h"
 #include "configoverlay.h"
+#include "containmentlayoutmanager_debug.h"
 
 #include <QGuiApplication>
 #include <QQmlContext>
@@ -16,6 +17,9 @@
 #include <cmath>
 
 #include <PlasmaQuick/AppletQuickItem>
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 ItemContainer::ItemContainer(QQuickItem *parent)
     : QQuickItem(parent)
@@ -68,7 +72,7 @@ void ItemContainer::setKey(const QString &key)
 
     m_key = key;
 
-    emit keyChanged();
+    Q_EMIT keyChanged();
 }
 
 bool ItemContainer::editMode() const
@@ -117,12 +121,12 @@ void ItemContainer::setEditMode(bool editMode)
 
     if (m_dragActive != editMode && m_mouseDown) {
         m_dragActive = editMode && m_mouseDown;
-        emit dragActiveChanged();
+        Q_EMIT dragActiveChanged();
     }
 
     setConfigOverlayVisible(editMode);
 
-    emit editModeChanged(editMode);
+    Q_EMIT editModeChanged(editMode);
 }
 
 ItemContainer::EditModeCondition ItemContainer::editModeCondition() const
@@ -148,7 +152,7 @@ void ItemContainer::setEditModeCondition(EditModeCondition condition)
 
     setAcceptHoverEvents(condition == AfterMouseOver || (m_layout && m_layout->editMode()));
 
-    emit editModeConditionChanged();
+    Q_EMIT editModeConditionChanged();
 }
 
 AppletsLayout::PreferredLayoutDirection ItemContainer::preferredLayoutDirection() const
@@ -164,7 +168,7 @@ void ItemContainer::setPreferredLayoutDirection(AppletsLayout::PreferredLayoutDi
 
     m_preferredLayoutDirection = direction;
 
-    emit preferredLayoutDirectionChanged();
+    Q_EMIT preferredLayoutDirectionChanged();
 }
 
 void ItemContainer::setLayout(AppletsLayout *layout)
@@ -185,7 +189,7 @@ void ItemContainer::setLayout(AppletsLayout *layout)
     m_layout = layout;
 
     if (!layout) {
-        emit layoutChanged();
+        Q_EMIT layoutChanged();
         return;
     }
 
@@ -198,13 +202,13 @@ void ItemContainer::setLayout(AppletsLayout *layout)
             setEditMode(false);
         }
         if ((m_layout->editModeCondition() == AppletsLayout::Locked) != (m_editModeCondition == ItemContainer::Locked)) {
-            emit editModeConditionChanged();
+            Q_EMIT editModeConditionChanged();
         }
     });
     connect(m_layout, &AppletsLayout::editModeChanged, this, [this]() {
         setAcceptHoverEvents(m_editModeCondition == AfterMouseOver || m_layout->editMode());
     });
-    emit layoutChanged();
+    Q_EMIT layoutChanged();
 }
 
 AppletsLayout *ItemContainer::layout() const
@@ -248,7 +252,7 @@ void ItemContainer::setConfigOverlayComponent(QQmlComponent *component)
         m_configOverlay = nullptr;
     }
 
-    emit configOverlayComponentChanged();
+    Q_EMIT configOverlayComponentChanged();
 }
 
 ConfigOverlay *ItemContainer::configOverlayItem() const
@@ -269,7 +273,7 @@ void ItemContainer::setInitialSize(const QSizeF &size)
 
     m_initialSize = size;
 
-    emit initialSizeChanged();
+    Q_EMIT initialSizeChanged();
 }
 
 bool ItemContainer::configOverlayVisible() const
@@ -294,7 +298,7 @@ void ItemContainer::setConfigOverlayVisible(bool visible)
         m_configOverlay = qobject_cast<ConfigOverlay *>(instance);
 
         if (!m_configOverlay) {
-            qWarning() << "Error: Applet configOverlay not of ConfigOverlay type";
+            qCWarning(CONTAINMENTLAYOUTMANAGER_DEBUG) << "Error: Applet configOverlay not of ConfigOverlay type";
             if (instance) {
                 instance->deleteLater();
             }
@@ -312,10 +316,10 @@ void ItemContainer::setConfigOverlayVisible(bool visible)
         m_configOverlayComponent->completeCreate();
 
         connect(m_configOverlay, &ConfigOverlay::openChanged, this, [this]() {
-            emit configOverlayVisibleChanged(m_configOverlay->open());
+            Q_EMIT configOverlayVisibleChanged(m_configOverlay->open());
         });
 
-        emit configOverlayItemChanged();
+        Q_EMIT configOverlayItemChanged();
     }
 
     if (m_configOverlay) {
@@ -334,7 +338,11 @@ void ItemContainer::contentData_append(QQmlListProperty<QObject> *prop, QObject 
     container->m_contentData.append(object);
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 int ItemContainer::contentData_count(QQmlListProperty<QObject> *prop)
+#else
+qsizetype ItemContainer::contentData_count(QQmlListProperty<QObject> *prop)
+#endif
 {
     ItemContainer *container = static_cast<ItemContainer *>(prop->object);
     if (!container) {
@@ -344,7 +352,11 @@ int ItemContainer::contentData_count(QQmlListProperty<QObject> *prop)
     return container->m_contentData.count();
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 QObject *ItemContainer::contentData_at(QQmlListProperty<QObject> *prop, int index)
+#else
+QObject *ItemContainer::contentData_at(QQmlListProperty<QObject> *prop, qsizetype index)
+#endif
 {
     ItemContainer *container = static_cast<ItemContainer *>(prop->object);
     if (!container) {
@@ -372,12 +384,20 @@ QQmlListProperty<QObject> ItemContainer::contentData()
     return QQmlListProperty<QObject>(this, nullptr, contentData_append, contentData_count, contentData_at, contentData_clear);
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void ItemContainer::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
+#else
+void ItemContainer::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry)
+#endif
 {
     syncChildItemsGeometry(newGeometry.size());
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QQuickItem::geometryChanged(newGeometry, oldGeometry);
-    emit contentWidthChanged();
-    emit contentHeightChanged();
+#else
+    QQuickItem::geometryChange(newGeometry, oldGeometry);
+#endif
+    Q_EMIT contentWidthChanged();
+    Q_EMIT contentHeightChanged();
 }
 
 void ItemContainer::componentComplete()
@@ -487,7 +507,7 @@ bool ItemContainer::childMouseEventFilter(QQuickItem *item, QEvent *event)
         event->accept();
         m_dragActive = false;
         if (m_editMode) {
-            emit dragActiveChanged();
+            Q_EMIT dragActiveChanged();
         }
     }
 
@@ -516,7 +536,7 @@ void ItemContainer::mousePressEvent(QMouseEvent *event)
         grabMouse();
         setCursor(Qt::ClosedHandCursor);
         m_dragActive = true;
-        emit dragActiveChanged();
+        Q_EMIT dragActiveChanged();
     } else if (m_editModeCondition == AfterPressAndHold) {
         m_editModeTimer->start(QGuiApplication::styleHints()->mousePressAndHoldInterval());
     }
@@ -546,7 +566,7 @@ void ItemContainer::mouseReleaseEvent(QMouseEvent *event)
 
     m_dragActive = false;
     if (m_editMode) {
-        emit dragActiveChanged();
+        Q_EMIT dragActiveChanged();
         setCursor(Qt::OpenHandCursor);
     }
     event->accept();
@@ -574,7 +594,7 @@ void ItemContainer::mouseMoveEvent(QMouseEvent *event)
         m_layout->releaseSpace(this);
         grabMouse();
         m_dragActive = true;
-        emit dragActiveChanged();
+        Q_EMIT dragActiveChanged();
 
     } else {
         setPosition(QPointF(x() + event->windowPos().x() - m_lastMousePosition.x(), y() + event->windowPos().y() - m_lastMousePosition.y()));
@@ -583,7 +603,7 @@ void ItemContainer::mouseMoveEvent(QMouseEvent *event)
             m_layout->showPlaceHolderForItem(this);
         }
 
-        emit userDrag(QPointF(x(), y()), event->pos());
+        Q_EMIT userDrag(QPointF(x(), y()), event->pos());
     }
     m_lastMousePosition = event->windowPos();
     event->accept();
@@ -603,7 +623,7 @@ void ItemContainer::mouseUngrabEvent()
 
     m_dragActive = false;
     if (m_editMode) {
-        emit dragActiveChanged();
+        Q_EMIT dragActiveChanged();
     }
 }
 
@@ -639,7 +659,7 @@ void ItemContainer::hoverLeaveEvent(QHoverEvent *event)
     if (!m_closeEditModeTimer) {
         m_closeEditModeTimer = new QTimer(this);
         m_closeEditModeTimer->setSingleShot(true);
-        m_closeEditModeTimer->setInterval(500);
+        m_closeEditModeTimer->setInterval(500ms);
         connect(m_closeEditModeTimer, &QTimer::timeout, this, [this]() {
             setEditMode(false);
         });
@@ -664,7 +684,7 @@ void ItemContainer::setContentItem(QQuickItem *item)
 
     m_contentItem->setSize(QSizeF(width() - m_leftPadding - m_rightPadding, height() - m_topPadding - m_bottomPadding));
 
-    emit contentItemChanged();
+    Q_EMIT contentItemChanged();
 }
 
 QQuickItem *ItemContainer::background() const
@@ -683,7 +703,7 @@ void ItemContainer::setBackground(QQuickItem *item)
     m_backgroundItem->setPosition(QPointF(0, 0));
     m_backgroundItem->setSize(size());
 
-    emit backgroundChanged();
+    Q_EMIT backgroundChanged();
 }
 
 int ItemContainer::leftPadding() const
@@ -699,8 +719,8 @@ void ItemContainer::setLeftPadding(int padding)
 
     m_leftPadding = padding;
     syncChildItemsGeometry(size());
-    emit leftPaddingChanged();
-    emit contentWidthChanged();
+    Q_EMIT leftPaddingChanged();
+    Q_EMIT contentWidthChanged();
 }
 
 int ItemContainer::topPadding() const
@@ -716,8 +736,8 @@ void ItemContainer::setTopPadding(int padding)
 
     m_topPadding = padding;
     syncChildItemsGeometry(size());
-    emit topPaddingChanged();
-    emit contentHeightChanged();
+    Q_EMIT topPaddingChanged();
+    Q_EMIT contentHeightChanged();
 }
 
 int ItemContainer::rightPadding() const
@@ -733,8 +753,8 @@ void ItemContainer::setRightPadding(int padding)
 
     m_rightPadding = padding;
     syncChildItemsGeometry(size());
-    emit rightPaddingChanged();
-    emit contentWidthChanged();
+    Q_EMIT rightPaddingChanged();
+    Q_EMIT contentWidthChanged();
 }
 
 int ItemContainer::bottomPadding() const
@@ -750,8 +770,8 @@ void ItemContainer::setBottomPadding(int padding)
 
     m_bottomPadding = padding;
     syncChildItemsGeometry(size());
-    emit bottomPaddingChanged();
-    emit contentHeightChanged();
+    Q_EMIT bottomPaddingChanged();
+    Q_EMIT contentHeightChanged();
 }
 
 int ItemContainer::contentWidth() const

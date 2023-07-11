@@ -7,7 +7,11 @@
 #pragma once
 
 #include <QHash>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QNetworkConfigurationManager>
+#else
+#include <QNetworkInformation>
+#endif
 #include <QTimer>
 
 #include <Plasma/DataEngine>
@@ -85,13 +89,17 @@ private Q_SLOTS:
     /**
      * Whenever networking changes, take action
      */
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     void onOnlineStateChanged(bool isOnline);
+#else
+    void onOnlineStateChanged(QNetworkInformation::Reachability reachability);
+#endif
     void startReconnect();
 
     /**
      * updates the list of ions whenever KSycoca changes (as well as on init
      */
-    void updateIonList(const QStringList &changedResources = QStringList());
+    void updateIonList();
 
 private:
     /**
@@ -103,5 +111,7 @@ private:
 private:
     QHash<QString, int> m_ionUsage;
     QTimer m_reconnectTimer;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QNetworkConfigurationManager m_networkConfigurationManager;
+#endif
 };

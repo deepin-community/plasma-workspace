@@ -1,130 +1,130 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Wantoyo <wantoyek@gmail.com>, 2016, 2017, 2018, 2019.
+# Wantoyo <wantoyek@gmail.com>, 2016, 2017, 2018, 2019, 2022.
+# Linerly <linerly@protonmail.com>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-26 01:42+0000\n"
-"PO-Revision-Date: 2019-06-16 07:52+0700\n"
-"Last-Translator: Wantoyo <wantoyek@gmail.com>\n"
+"POT-Creation-Date: 2023-01-02 01:06+0000\n"
+"PO-Revision-Date: 2023-01-15 13:12+0700\n"
+"Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.12.1\n"
 
-#: contents/ui/BarcodePage.qml:28
+#: contents/ui/BarcodePage.qml:36
 #, kde-format
 msgid "Return to Clipboard"
-msgstr "Kembali ke Papan-klip"
+msgstr "Kembali ke Papan Klip"
 
-#: contents/ui/BarcodePage.qml:49
+#: contents/ui/BarcodePage.qml:57
 #, kde-format
 msgid "QR Code"
 msgstr "Kode QR"
 
-#: contents/ui/BarcodePage.qml:50
+#: contents/ui/BarcodePage.qml:58
 #, kde-format
 msgid "Data Matrix"
 msgstr "Data Matrix"
 
-#: contents/ui/BarcodePage.qml:51
+#: contents/ui/BarcodePage.qml:59
 #, kde-format
 msgctxt "Aztec barcode"
 msgid "Aztec"
 msgstr "Aztec"
 
-#: contents/ui/BarcodePage.qml:52
+#: contents/ui/BarcodePage.qml:60
 #, kde-format
 msgid "Code 39"
 msgstr "Kode 39"
 
-#: contents/ui/BarcodePage.qml:53
+#: contents/ui/BarcodePage.qml:61
 #, kde-format
 msgid "Code 93"
 msgstr "Kode 93"
 
-#: contents/ui/BarcodePage.qml:54
-#, fuzzy, kde-format
-#| msgid "Code 39"
+#: contents/ui/BarcodePage.qml:62
+#, kde-format
 msgid "Code 128"
-msgstr "Kode 39"
+msgstr "Kode 128"
 
-#: contents/ui/BarcodePage.qml:77
+#: contents/ui/BarcodePage.qml:85
 #, kde-format
-msgid "Change the barcode type"
-msgstr "Ubah tipe barcode"
+msgid "Change the QR code type"
+msgstr "Ubah tipe kode QR"
 
-#: contents/ui/BarcodePage.qml:101
+#: contents/ui/BarcodePage.qml:114
 #, kde-format
-msgid "Creating barcode failed"
-msgstr "Gagal menciptakan barcode"
+msgid "Creating QR code failed"
+msgstr "Gagal membuat kode QR"
 
-#: contents/ui/BarcodePage.qml:110
+#: contents/ui/BarcodePage.qml:123
 #, kde-format
-msgid "The barcode is too large to be displayed"
-msgstr ""
+msgid "The QR code is too large to be displayed"
+msgstr "Kode QR terlalu besar untuk ditampilkan"
 
-#: contents/ui/clipboard.qml:26
+#: contents/ui/clipboard.qml:27
 #, kde-format
 msgid "Clipboard Contents"
-msgstr "Daftar Isi Papan-klip"
+msgstr "Daftar Isi Papan Klip"
 
-#: contents/ui/clipboard.qml:27 contents/ui/Menu.qml:58
+#: contents/ui/clipboard.qml:28 contents/ui/Menu.qml:126
 #, kde-format
 msgid "Clipboard is empty"
-msgstr "Papan-klip kosong"
+msgstr "Papan klip kosong"
 
-#: contents/ui/clipboard.qml:55
-#, fuzzy, kde-format
-#| msgid "Configure Clipboard..."
-msgid "Configure Clipboard…"
-msgstr "Konfigurasikan Papan-klip..."
-
-#: contents/ui/clipboard.qml:57
-#, fuzzy, kde-format
-#| msgid "Clear history"
-msgid "Clear History"
-msgstr "Bersihkan histori"
-
-#: contents/ui/ClipboardPage.qml:76
-#, fuzzy, kde-format
-#| msgid "Search..."
-msgid "Search…"
-msgstr "Cari..."
-
-#: contents/ui/ClipboardPage.qml:112
+#: contents/ui/clipboard.qml:56
 #, kde-format
-msgid "Clear history"
-msgstr "Bersihkan histori"
+msgid "Configure Clipboard…"
+msgstr "Konfigurasi Papan Klip…"
+
+#: contents/ui/clipboard.qml:58
+#, kde-format
+msgid "Clear History"
+msgstr "Hapus Riwayat"
 
 #: contents/ui/DelegateToolButtons.qml:23
 #, kde-format
 msgid "Invoke action"
 msgstr "Panggil aksi"
 
-#: contents/ui/DelegateToolButtons.qml:33
+#: contents/ui/DelegateToolButtons.qml:38
 #, kde-format
-msgid "Show barcode"
-msgstr "Tampilkan barcode"
+msgid "Show QR code"
+msgstr "Tampilkan kode QR"
 
-#: contents/ui/DelegateToolButtons.qml:43
+#: contents/ui/DelegateToolButtons.qml:54
 #, kde-format
 msgid "Edit contents"
 msgstr "Edit daftar isi"
 
-#: contents/ui/DelegateToolButtons.qml:51
+#: contents/ui/DelegateToolButtons.qml:68
 #, kde-format
 msgid "Remove from history"
-msgstr "Hapus dari histori"
+msgstr "Hapus dari riwayat"
 
-#: contents/ui/Menu.qml:58
+#: contents/ui/EditPage.qml:86
+#, kde-format
+msgctxt "@action:button"
+msgid "Save"
+msgstr "Simpan"
+
+#: contents/ui/EditPage.qml:94
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Batal"
+
+#: contents/ui/Menu.qml:126
 #, kde-format
 msgid "No matches"
-msgstr ""
+msgstr "Tidak ada yang cocok"
 
 #: contents/ui/UrlItemDelegate.qml:99
 #, kde-format
@@ -132,3 +132,14 @@ msgctxt ""
 "Indicator that there are more urls in the clipboard than previews shown"
 msgid "+%1"
 msgstr "+%1"
+
+#~ msgid "Clear history"
+#~ msgstr "Bersihkan histori"
+
+#, fuzzy
+#~| msgid "Search..."
+#~ msgid "Search…"
+#~ msgstr "Cari..."
+
+#~ msgid "Clipboard history is empty."
+#~ msgstr "Histori clipboard telah kosong."

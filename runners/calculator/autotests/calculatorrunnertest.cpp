@@ -7,6 +7,7 @@
 #include <KShell>
 #include <QMimeData>
 #include <QTest>
+#include <libqalculate/includes.h>
 
 class CalculatorRunnerTest : public AbstractRunnerTest
 {
@@ -18,6 +19,9 @@ private Q_SLOTS:
     void test42();
     void testApproximation();
     void testQuery_data();
+#if QALCULATE_MAJOR_VERSION > 2 || QALCULATE_MINOR_VERSION > 6
+    void testErrorDetection();
+#endif
 };
 
 void CalculatorRunnerTest::initTestCase()
@@ -49,11 +53,9 @@ void CalculatorRunnerTest::testQuery_data()
     QTest::newRow("simple power") << "2^3" << "8";
 
     QTest::newRow("x as multiplication sign") << "25x4" << "100";
-#ifdef ENABLE_QALCULATE
     QTest::newRow("single digit factorial") << "5!" << "120";
     QTest::newRow("superscripted number") << "2³"
                                           << "8"; // BUG: 435932
-#endif
 
     QTest::newRow("hex to decimal lower case") << "0xf" << "15";
     QTest::newRow("hex to decimal upper case") << "0xF" << "15";
@@ -70,9 +72,6 @@ void CalculatorRunnerTest::testQuery_data()
 
 void CalculatorRunnerTest::testApproximation()
 {
-#ifndef ENABLE_QALCULATE
-    QSKIP("Approximations are only with Qalculate supported");
-#endif
     launchQuery("5^1234567");
     QCOMPARE(manager->matches().size(), 1);
     QCOMPARE(manager->matches().constFirst().subtext(), "Approximation");
@@ -87,6 +86,14 @@ void CalculatorRunnerTest::test42()
     QCOMPARE(manager->matches().size(), 1);
     QCOMPARE(manager->matches().constFirst().text(), "42");
 }
+
+#if QALCULATE_MAJOR_VERSION > 2 || QALCULATE_MINOR_VERSION > 6
+void CalculatorRunnerTest::testErrorDetection()
+{
+    launchQuery("SDL_VIDEODRIVER=");
+    QVERIFY(manager->matches().isEmpty());
+}
+#endif
 
 QTEST_MAIN(CalculatorRunnerTest)
 

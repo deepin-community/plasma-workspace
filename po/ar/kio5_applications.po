@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-08 00:48+0000\n"
 "PO-Revision-Date: 2008-12-06 21:28+0400\n"
 "Last-Translator: zayed <zayed.alsaidi@gmail.com>\n"
 "Language-Team: Arabic <linuxac-kde-arabic-team@googlegroups.com>\n"
@@ -21,17 +21,17 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Translate Toolkit 1.10.0\n"
 
-#: kio_applications.cpp:121
+#: kio_applications.cpp:122
 #, kde-format
 msgid "Applications"
 msgstr "التطبيقات"
 
-#: kio_applications.cpp:121
+#: kio_applications.cpp:122
 #, kde-format
 msgid "Programs"
 msgstr "البرامج"
 
-#: kio_applications.cpp:130
+#: kio_applications.cpp:131
 #, kde-format
 msgid "Unknown application folder"
 msgstr "مجلد تطبيق مجهول"

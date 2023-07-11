@@ -5,192 +5,373 @@
 */
 
 #include "screenpool.h"
-#include <config-plasma.h>
+#include "outputorderwatcher.h"
+#include "screenpool-debug.h"
 
 #include <KWindowSystem>
+#include <QDebug>
 #include <QGuiApplication>
 #include <QScreen>
 
-#if HAVE_X11
-#include <QX11Info>
-#include <xcb/randr.h>
-#include <xcb/xcb.h>
-#include <xcb/xcb_event.h>
+#ifndef NDEBUG
+#define CHECK_SCREEN_INVARIANTS screenInvariants();
+#else
+#define CHECK_SCREEN_INVARIANTS
 #endif
 
-ScreenPool::ScreenPool(const KSharedConfig::Ptr &config, QObject *parent)
+#include <chrono>
+
+using namespace std::chrono_literals;
+
+ScreenPool::ScreenPool(QObject *parent)
     : QObject(parent)
-    , m_configGroup(KConfigGroup(config, QStringLiteral("ScreenConnectors")))
 {
-    m_configSaveTimer.setSingleShot(true);
-    connect(&m_configSaveTimer, &QTimer::timeout, this, [this]() {
-        m_configGroup.sync();
+    qRegisterMetaType<QList<QScreen *>>("QList<QScreen *>");
+    connect(qGuiApp, &QGuiApplication::screenAdded, this, [this](QScreen *screen) {
+        connect(screen, &QScreen::geometryChanged, this, [this, screen]() {
+            handleScreenGeometryChanged(screen);
+        });
+        handleScreenAdded(screen);
     });
 
-#if HAVE_X11
-    if (KWindowSystem::isPlatformX11()) {
-        qApp->installNativeEventFilter(this);
-        const xcb_query_extension_reply_t *reply = xcb_get_extension_data(QX11Info::connection(), &xcb_randr_id);
-        m_xrandrExtensionOffset = reply->first_event;
-    }
-#endif
-}
-
-void ScreenPool::load()
-{
-    m_primaryConnector = QString();
-    m_connectorForId.clear();
-    m_idForConnector.clear();
-
-    QScreen *primary = qGuiApp->primaryScreen();
-    if (primary) {
-        m_primaryConnector = primary->name();
-        if (!m_primaryConnector.isEmpty()) {
-            m_connectorForId[0] = m_primaryConnector;
-            m_idForConnector[m_primaryConnector] = 0;
-        }
+    for (auto screen : qApp->screens()) {
+        connect(screen, &QScreen::geometryChanged, this, [this, screen]() {
+            handleScreenGeometryChanged(screen);
+        });
     }
 
-    // restore the known ids to connector mappings
-    const auto keys = m_configGroup.keyList();
-    for (const QString &key : keys) {
-        QString connector = m_configGroup.readEntry(key, QString());
-        const int currentId = key.toInt();
-        if (!key.isEmpty() && !connector.isEmpty() && !m_connectorForId.contains(currentId) && !m_idForConnector.contains(connector)) {
-            m_connectorForId[currentId] = connector;
-            m_idForConnector[connector] = currentId;
-        } else if (m_idForConnector.value(connector) != currentId) {
-            m_configGroup.deleteEntry(key);
-        }
-    }
+    connect(qGuiApp, &QGuiApplication::screenRemoved, this, &ScreenPool::handleScreenRemoved);
 
-    // if there are already connected unknown screens, map those
-    // all needs to be populated as soon as possible, otherwise
-    // containment->screen() will return an incorrect -1
-    // at startup, if it' asked before corona::addOutput()
-    // is performed, driving to the creation of a new containment
-    for (QScreen *screen : qGuiApp->screens()) {
-        if (!m_idForConnector.contains(screen->name())) {
-            insertScreenMapping(firstAvailableId(), screen->name());
-        }
-    }
+    // Note that the ScreenPool must process the QGuiApplication::screenAdded signal
+    // before the primary output watcher.
+    m_outputOrderWatcher = OutputOrderWatcher::instance(this);
+    connect(m_outputOrderWatcher, &OutputOrderWatcher::outputOrderChanged, this, &ScreenPool::handleOutputOrderChanged);
+
+    reconsiderOutputOrder();
 }
 
 ScreenPool::~ScreenPool()
 {
-    m_configGroup.sync();
 }
 
-QString ScreenPool::primaryConnector() const
-{
-    return m_primaryConnector;
-}
-
-void ScreenPool::setPrimaryConnector(const QString &primary)
-{
-    if (m_primaryConnector == primary) {
-        return;
-    }
-
-    int oldIdForPrimary = m_idForConnector.value(primary, -1);
-    if (oldIdForPrimary == -1) {
-        // move old primary to new free id
-        oldIdForPrimary = firstAvailableId();
-        insertScreenMapping(oldIdForPrimary, m_primaryConnector);
-    }
-
-    m_idForConnector[primary] = 0;
-    m_connectorForId[0] = primary;
-    m_idForConnector[m_primaryConnector] = oldIdForPrimary;
-    m_connectorForId[oldIdForPrimary] = m_primaryConnector;
-    m_primaryConnector = primary;
-    save();
-}
-
-void ScreenPool::save()
-{
-    QMap<int, QString>::const_iterator i;
-    for (i = m_connectorForId.constBegin(); i != m_connectorForId.constEnd(); ++i) {
-        m_configGroup.writeEntry(QString::number(i.key()), i.value());
-    }
-    // write to disck every 30 seconds at most
-    m_configSaveTimer.start(30000);
-}
-
-void ScreenPool::insertScreenMapping(int id, const QString &connector)
-{
-    Q_ASSERT(!m_connectorForId.contains(id) || m_connectorForId.value(id) == connector);
-    Q_ASSERT(!m_idForConnector.contains(connector) || m_idForConnector.value(connector) == id);
-
-    if (id == 0) {
-        m_primaryConnector = connector;
-    }
-
-    m_connectorForId[id] = connector;
-    m_idForConnector[connector] = id;
-    save();
-}
-
-int ScreenPool::id(const QString &connector) const
-{
-    return m_idForConnector.value(connector, -1);
-}
-
-QString ScreenPool::connector(int id) const
-{
-    Q_ASSERT(m_connectorForId.contains(id));
-
-    return m_connectorForId.value(id);
-}
-
-int ScreenPool::firstAvailableId() const
+int ScreenPool::idForName(const QString &connector) const
 {
     int i = 0;
-    // find the first integer not stored in m_connectorForId
-    // m_connectorForId is the only map, so the ids are sorted
-    foreach (int existingId, m_connectorForId.keys()) {
-        if (i != existingId) {
+    for (auto *s : m_availableScreens) {
+        if (s->name() == connector) {
             return i;
         }
         ++i;
     }
-
-    return i;
+    return -1;
 }
 
-QList<int> ScreenPool::knownIds() const
+QList<QScreen *> ScreenPool::screenOrder() const
 {
-    return m_connectorForId.keys();
+    return m_availableScreens;
 }
 
-bool ScreenPool::nativeEventFilter(const QByteArray &eventType, void *message, long int *result)
+QScreen *ScreenPool::primaryScreen() const
 {
-    Q_UNUSED(result);
-#if HAVE_X11
-    // a particular edge case: when we switch the only enabled screen
-    // we don't have any signal about it, the primary screen changes but we have the same old QScreen* getting recycled
-    // see https://bugs.kde.org/show_bug.cgi?id=373880
-    // if this slot will be invoked many times, their//second time on will do nothing as name and primaryconnector will be the same by then
-    if (eventType[0] != 'x') {
-        return false;
+    if (m_availableScreens.isEmpty()) {
+        return nullptr;
+    }
+    return m_availableScreens.first();
+}
+
+QScreen *ScreenPool::screenForId(int id) const
+{
+    if (id < 0 || m_availableScreens.size() <= id) {
+        return nullptr;
     }
 
-    xcb_generic_event_t *ev = static_cast<xcb_generic_event_t *>(message);
+    return m_availableScreens[id];
+}
 
-    const auto responseType = XCB_EVENT_RESPONSE_TYPE(ev);
+int ScreenPool::idForScreen(QScreen *screen) const
+{
+    return m_availableScreens.indexOf(screen);
+}
 
-    if (responseType == m_xrandrExtensionOffset + XCB_RANDR_SCREEN_CHANGE_NOTIFY) {
-        if (qGuiApp->primaryScreen()->name() != primaryConnector()) {
-            // new screen?
-            if (id(qGuiApp->primaryScreen()->name()) < 0) {
-                insertScreenMapping(firstAvailableId(), qGuiApp->primaryScreen()->name());
-            }
-            // switch the primary screen in the pool
-            setPrimaryConnector(qGuiApp->primaryScreen()->name());
+bool ScreenPool::noRealOutputsConnected() const
+{
+    if (qApp->screens().count() > 1) {
+        return false;
+    } else if (m_availableScreens.isEmpty()) {
+        return true;
+    }
+
+    return isOutputFake(m_availableScreens.first());
+}
+
+bool ScreenPool::isOutputFake(QScreen *screen) const
+{
+    Q_ASSERT(screen);
+    // On X11 the output named :0.0 is fake (the geometry is usually valid and whatever the geometry
+    // of the last connected screen was), on wayland the fake output has no name and no geometry
+    const bool fake = screen->name() == QStringLiteral(":0.0") || screen->geometry().isEmpty() || screen->name().isEmpty();
+    // If there is a fake output we can only have one screen left (the fake one)
+    //    Q_ASSERT(!fake || fake == (qGuiApp->screens().count() == 1));
+    return fake;
+}
+
+QScreen *ScreenPool::outputRedundantTo(QScreen *screen) const
+{
+    Q_ASSERT(screen);
+    // Manage fake screens separately
+    if (isOutputFake(screen)) {
+        return nullptr;
+    }
+    const QRect thisGeometry = screen->geometry();
+
+    // Don't use it as we don't want to consider redundants
+    const int thisId = m_outputOrderWatcher->outputOrder().indexOf(screen->name());
+
+    // FIXME: QScreen doesn't have any idea of "this qscreen is clone of this other one
+    // so this ultra inefficient heuristic has to stay until we have a slightly better api
+    // logic is:
+    // a screen is redundant if:
+    //* its geometry is contained in another one
+    //* if their resolutions are different, the "biggest" one wins
+    //* if they have the same geometry, the one with the lowest id wins (arbitrary, but gives reproducible behavior and makes the primary screen win)
+    for (QScreen *s : m_sizeSortedScreens) {
+        // don't compare with itself
+        if (screen == s) {
+            continue;
+        }
+
+        const QRect otherGeometry = s->geometry();
+
+        if (otherGeometry.isNull()) {
+            continue;
+        }
+
+        const int otherId = m_outputOrderWatcher->outputOrder().indexOf(s->name());
+
+        if (otherGeometry.contains(thisGeometry, false)
+            && ( // since at this point contains is true, if either
+                 // measure of othergeometry is bigger, has a bigger area
+                otherGeometry.width() > thisGeometry.width() || otherGeometry.height() > thisGeometry.height() ||
+                // ids not -1 are considered in descending order of importance
+                //-1 means that is a screen not known yet, just arrived and
+                // not yet in screenpool: this happens for screens that
+                // are hotplugged and weren't known. it does NOT happen
+                // at first startup, as screenpool populates on load with all screens connected at the moment before the rest of the shell starts up
+                (thisId == -1 && otherId != -1) || (thisId > otherId && otherId != -1))) {
+            return s;
         }
     }
-#endif
-    return false;
+
+    return nullptr;
+}
+
+void ScreenPool::insertSortedScreen(QScreen *screen)
+{
+    if (m_sizeSortedScreens.contains(screen)) {
+        // This should happen only when a fake screen isn't anymore
+        return;
+    }
+    auto before = std::find_if(m_sizeSortedScreens.begin(), m_sizeSortedScreens.end(), [this, screen](QScreen *otherScreen) {
+        return (screen->geometry().width() > otherScreen->geometry().width() && screen->geometry().height() > otherScreen->geometry().height())
+            || idForName(screen->name()) < idForName(otherScreen->name());
+    });
+    m_sizeSortedScreens.insert(before, screen);
+}
+
+void ScreenPool::handleScreenGeometryChanged(QScreen *screen)
+{
+    m_sizeSortedScreens.removeAll(screen);
+    insertSortedScreen(screen);
+    reconsiderOutputOrder();
+}
+
+void ScreenPool::handleScreenAdded(QScreen *screen)
+{
+    qCDebug(SCREENPOOL) << "handleScreenAdded" << screen << screen->geometry();
+
+    insertSortedScreen(screen);
+
+    if (isOutputFake(screen)) {
+        m_fakeScreens.insert(screen);
+        return;
+    } else {
+        m_fakeScreens.remove(screen);
+    }
+
+    // TODO: remove?
+    if (QScreen *toScreen = outputRedundantTo(screen)) {
+        m_redundantScreens.insert(screen, toScreen);
+        return;
+    }
+
+    if (m_fakeScreens.contains(screen)) {
+        qCDebug(SCREENPOOL) << "not fake anymore" << screen;
+        m_fakeScreens.remove(screen);
+    }
+
+    Q_ASSERT(!m_availableScreens.contains(screen));
+}
+
+void ScreenPool::handleScreenRemoved(QScreen *screen)
+{
+    qCDebug(SCREENPOOL) << "handleScreenRemoved" << screen;
+
+    auto it = std::find_if(m_redundantScreens.begin(), m_redundantScreens.end(), [screen](QScreen *value) {
+        return (value == screen);
+    });
+
+    if (it != m_redundantScreens.end()) {
+        m_redundantScreens.erase(it);
+    }
+
+    m_sizeSortedScreens.removeAll(screen);
+    if (m_redundantScreens.contains(screen)) {
+        Q_ASSERT(!m_fakeScreens.contains(screen));
+        Q_ASSERT(!m_availableScreens.contains(screen));
+        m_redundantScreens.remove(screen);
+    } else if (m_fakeScreens.contains(screen)) {
+        Q_ASSERT(!m_redundantScreens.contains(screen));
+        Q_ASSERT(!m_availableScreens.contains(screen));
+        m_fakeScreens.remove(screen);
+    } else if (isOutputFake(screen)) {
+        // This happens when an output is recycled because it was the last one and became fake
+        Q_ASSERT(m_availableScreens.contains(screen));
+        Q_ASSERT(!m_redundantScreens.contains(screen));
+        Q_ASSERT(!m_fakeScreens.contains(screen));
+        Q_ASSERT(m_sizeSortedScreens.isEmpty());
+        m_sizeSortedScreens.append(screen);
+        m_availableScreens.removeAll(screen);
+        m_fakeScreens.insert(screen);
+    } else if (m_availableScreens.contains(screen)) {
+        // It's possible that the screen was already "removed" by handleOutputOrderChanged
+        Q_ASSERT(m_availableScreens.contains(screen));
+        Q_ASSERT(!m_redundantScreens.contains(screen));
+        Q_ASSERT(!m_fakeScreens.contains(screen));
+        m_orderChangedPendingSignal = true;
+        Q_EMIT screenRemoved(screen);
+        m_availableScreens.removeAll(screen);
+    }
+
+    // We can't call CHECK_SCREEN_INVARIANTS here, but on handleOutputOrderChanged which is about to arrive
+}
+
+void ScreenPool::handleOutputOrderChanged(const QStringList &newOrder)
+{
+    QHash<QString, QScreen *> connMap;
+    for (auto s : qApp->screens()) {
+        connMap[s->name()] = s;
+    }
+
+    QList<QScreen *> newAvailableScreens;
+    m_redundantScreens.clear();
+
+    for (const auto &c : newOrder) {
+        // When a screen is removed we reevaluate the order, but the order changed signal may not have happened yet,
+        // so filter out outputs which now are invalid
+        if (!connMap.contains(c)) {
+            continue;
+        }
+        auto *s = connMap[c];
+        if (!m_sizeSortedScreens.contains(s)) {
+            handleScreenAdded(s);
+        }
+        if (isOutputFake(s)) {
+            m_fakeScreens.insert(s);
+            continue;
+        }
+
+        auto *toScreen = outputRedundantTo(s);
+        if (!toScreen) {
+            newAvailableScreens.append(s);
+        } else {
+            m_redundantScreens.insert(s, toScreen);
+        }
+    }
+
+    // always emit removals before updating the sorted list
+    for (auto screen : std::as_const(m_availableScreens)) {
+        if (!newAvailableScreens.contains(screen)) {
+            Q_EMIT screenRemoved(screen);
+        }
+    }
+
+    if (m_orderChangedPendingSignal || newAvailableScreens != m_availableScreens) {
+        m_availableScreens = newAvailableScreens;
+        Q_EMIT screenOrderChanged(m_availableScreens);
+    }
+
+    m_orderChangedPendingSignal = false;
+
+    CHECK_SCREEN_INVARIANTS
+    // FIXME Async as the status can be incoherent before a fake screen goes away?
+}
+
+void ScreenPool::reconsiderOutputOrder()
+{
+    // prevent race condition between us and the watcher. depending on who receives signals first,
+    // the current screens may not be the ones the watcher knows about -> force an update.
+    m_outputOrderWatcher->refresh();
+    handleOutputOrderChanged(m_outputOrderWatcher->outputOrder());
+}
+
+void ScreenPool::screenInvariants()
+{
+    if (m_outputOrderWatcher->outputOrder().isEmpty()) {
+        return;
+    }
+    // Is the primary connector in sync with the actual primaryScreen? The only way it can get out of sync with primaryConnector() is the single fake screen/no
+    // real outputs scenario
+    Q_ASSERT(noRealOutputsConnected() || !m_availableScreens.isEmpty());
+    // Is the primary screen available? TODO: it can be redundant
+    // Q_ASSERT(m_availableScreens.contains(primaryScreen()));
+
+    // QScreen bookeeping integrity
+    auto allScreens = qGuiApp->screens();
+    // Do we actually track every screen?
+    qWarning() << "Checking screens: available:" << m_availableScreens << "redundant:" << m_redundantScreens << "fake:" << m_fakeScreens
+               << "all:" << allScreens;
+    Q_ASSERT((m_availableScreens.count() + m_redundantScreens.count() + m_fakeScreens.count()) == m_outputOrderWatcher->outputOrder().count());
+    Q_ASSERT(allScreens.count() == m_sizeSortedScreens.count());
+
+    // At most one fake output
+    Q_ASSERT(m_fakeScreens.count() <= 1);
+    for (QScreen *screen : allScreens) {
+        // ignore screens filtered out by the output order
+        if (!m_outputOrderWatcher->outputOrder().contains(screen->name())) {
+            continue;
+        }
+
+        if (m_availableScreens.contains(screen)) {
+            // If available can't be redundant
+            Q_ASSERT(!m_redundantScreens.contains(screen));
+        } else if (m_redundantScreens.contains(screen)) {
+            // If redundant can't be available
+            Q_ASSERT(!m_availableScreens.contains(screen));
+        } else if (m_fakeScreens.contains(screen)) {
+            // A fake screen can't be anywhere else
+            // This branch is quite rare, happens only during the transition from a fake screen to a real one, for a brief moment both screens can be there
+            Q_ASSERT(!m_availableScreens.contains(screen));
+            Q_ASSERT(!m_redundantScreens.contains(screen));
+        } else {
+            // We can't have a screen unaccounted for
+            Q_ASSERT(false);
+        }
+    }
+
+    for (QScreen *screen : m_redundantScreens.keys()) {
+        Q_ASSERT(outputRedundantTo(screen) != nullptr);
+    }
+}
+
+QDebug operator<<(QDebug debug, const ScreenPool *pool)
+{
+    debug << pool->metaObject()->className() << '(' << static_cast<const void *>(pool) << ") Internal state:\n";
+    debug << "Screen Order:\t" << pool->m_availableScreens << '\n';
+    debug << "\"Fake\" screens:\t" << pool->m_fakeScreens << '\n';
+    debug << "Redundant screens covered by other ones:\t" << pool->m_redundantScreens << '\n';
+    debug << "All screens, ordered by size:\t" << pool->m_sizeSortedScreens << '\n';
+    debug << "All screen that QGuiApplication knows:\t" << qGuiApp->screens() << '\n';
+    return debug;
 }
 
 #include "moc_screenpool.cpp"

@@ -119,3 +119,27 @@ msgstr "Yuxu rejimi (RAM-da saxlamaqla)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Gözləmə rejimi (diskdə saxlamaqla)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "Söndürmək..."
+
+#~ msgid "Logout..."
+#~ msgstr "Sistemdən Çıxış..."
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Diskdə saxlamaqla dayandırmaq istəyirsiniz (gözləmə)?"
+
+#~ msgid "Yes"
+#~ msgstr "Bəli"
+
+#~ msgid "No"
+#~ msgstr "Xeyr"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "RAM-da saxlamaqla dayandırmaq istəyirsiniz (yuxu)?"
+
+#~ msgid "Leave"
+#~ msgstr "Çıxış"
+
+#~ msgid "Leave..."
+#~ msgstr "Çıxış..."

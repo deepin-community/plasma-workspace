@@ -3,13 +3,13 @@
 #
 # Serdar Soytetir <tulliana@gmail.com>, 2009.
 # Serdar SOYTETİR <tulliana@gmail.com>, 2010.
-# Volkan Gezer <volkangezer@gmail.com>, 2017, 2021.
+# Volkan Gezer <volkangezer@gmail.com>, 2017, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_calculatorrunner\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-07-08 18:01+0200\n"
+"POT-Creation-Date: 2022-10-20 00:52+0000\n"
+"PO-Revision-Date: 2022-02-27 14:11+0100\n"
 "Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,29 +19,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 20.12.3\n"
 
-#: calculatorrunner.cpp:40
+#: calculatorrunner.cpp:33
 #, kde-format
 msgid ""
 "Calculates the value of :q: when :q: is made up of numbers and mathematical "
 "symbols such as +, -, /, *, ! and ^."
 msgstr ""
-" :q: +, -, /, *, ! ve ^ gibi matematiksel sembollerden oluşuyorsa :q: "
+":q: +, -, /, *, ! ve ^ gibi matematiksel sembollerden oluşuyorsa :q: "
 "değerini hesaplar."
 
-#: calculatorrunner.cpp:46
+#: calculatorrunner.cpp:39
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Panoya Kopyala"
 
-#: calculatorrunner.cpp:273
+#: calculatorrunner.cpp:133
 #, kde-format
 msgctxt "The result of the calculation is only an approximation"
 msgid "Approximation"
-msgstr "Yaklaşık değer"
+msgstr "Yaklaşık Değer"
 
-#: qalculate_engine.cpp:61
-#, kde-format
-msgid ""
-"The exchange rates could not be updated. The following error has been "
-"reported: %1"
-msgstr "Kur bilgileri güncellenemedi. Hata raporu: %1"
+#~ msgid ""
+#~ "The exchange rates could not be updated. The following error has been "
+#~ "reported: %1"
+#~ msgstr "Kur bilgileri güncellenemedi. Hata raporu: %1"

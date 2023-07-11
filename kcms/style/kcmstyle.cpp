@@ -16,11 +16,11 @@
 */
 
 #include "kcmstyle.h"
+#include "kcm_style_debug.h"
 
 #include "../kcms-common_p.h"
 #include "styleconfdialog.h"
 
-#include <KAboutData>
 #include <KConfigGroup>
 #include <KLocalizedString>
 #include <KPluginFactory>
@@ -33,7 +33,6 @@
 #include <QQuickItem>
 #include <QQuickRenderControl>
 #include <QQuickWindow>
-#include <QScopedPointer>
 #include <QStyleFactory>
 #include <QWidget>
 #include <QWindow>
@@ -44,13 +43,11 @@
 
 #include "previewitem.h"
 #include "styledata.h"
-#include "stylesettings.h"
-#include "stylesmodel.h"
 
 K_PLUGIN_FACTORY_WITH_JSON(KCMStyleFactory, "kcm_style.json", registerPlugin<KCMStyle>(); registerPlugin<StyleData>();)
 
 extern "C" {
-Q_DECL_EXPORT void kcminit_style()
+Q_DECL_EXPORT void kcminit()
 {
     uint flags = KRdbExportQtSettings | KRdbExportQtColors | KRdbExportXftSettings | KRdbExportGtkTheme;
     KConfig _config(QStringLiteral("kcmdisplayrc"), KConfig::NoGlobals);
@@ -65,27 +62,17 @@ Q_DECL_EXPORT void kcminit_style()
 }
 }
 
-KCMStyle::KCMStyle(QObject *parent, const QVariantList &args)
-    : KQuickAddons::ManagedConfigModule(parent, args)
+KCMStyle::KCMStyle(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KQuickAddons::ManagedConfigModule(parent, data, args)
     , m_data(new StyleData(this))
     , m_model(new StylesModel(this))
 {
-    qmlRegisterUncreatableType<KCMStyle>("org.kde.private.kcms.style", 1, 0, "KCM", QStringLiteral("Cannot create instances of KCM"));
-    qmlRegisterType<StyleSettings>();
-    qmlRegisterType<StylesModel>();
-    qmlRegisterType<PreviewItem>("org.kde.private.kcms.style", 1, 0, "PreviewItem");
+    const char *uri{"org.kde.private.kcms.style"};
 
-    KAboutData *about = new KAboutData(QStringLiteral("kcm_style"),
-                                       i18n("Application Style"),
-                                       QStringLiteral("2.0"),
-                                       QString(),
-                                       KAboutLicense::GPL,
-                                       i18n("(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik "));
-
-    about->addAuthor(i18n("Karol Szwed"), QString(), QStringLiteral("gallium@kde.org"));
-    about->addAuthor(i18n("Daniel Molkentin"), QString(), QStringLiteral("molkentin@kde.org"));
-    about->addAuthor(i18n("Kai Uwe Broulik"), QString(), QStringLiteral("kde@broulik.de"));
-    setAboutData(about);
+    qmlRegisterUncreatableType<KCMStyle>(uri, 1, 0, "KCM", QStringLiteral("Cannot create instances of KCM"));
+    qmlRegisterAnonymousType<StyleSettings>(uri, 1);
+    qmlRegisterAnonymousType<StylesModel>(uri, 1);
+    qmlRegisterType<PreviewItem>(uri, 1, 0, "PreviewItem");
 
     connect(m_model, &StylesModel::selectedStyleChanged, this, [this](const QString &style) {
         styleSettings()->setWidgetStyle(style);
@@ -99,19 +86,17 @@ KCMStyle::KCMStyle(QObject *parent, const QVariantList &args)
     connect(styleSettings(), &StyleSettings::iconsInMenusChanged, this, [this] {
         m_effectsDirty = true;
     });
+
+    m_gtkPage = new GtkPage(this);
+    connect(m_gtkPage, &GtkPage::gtkThemeSettingsChanged, this, [this]() {
+        settingsChanged();
+    });
 }
 
 KCMStyle::~KCMStyle() = default;
 
-GtkPage *KCMStyle::gtkPage()
+GtkPage *KCMStyle::gtkPage() const
 {
-    if (!m_gtkPage) {
-        m_gtkPage = new GtkPage(this);
-        connect(m_gtkPage, &GtkPage::gtkThemeSettingsChanged, this, [this]() {
-            setNeedsSave(true);
-        });
-    }
-
     return m_gtkPage;
 }
 
@@ -134,7 +119,7 @@ void KCMStyle::setMainToolBarStyle(ToolBarStyle style)
 {
     if (m_mainToolBarStyle != style) {
         m_mainToolBarStyle = style;
-        emit mainToolBarStyleChanged();
+        Q_EMIT mainToolBarStyleChanged();
 
         const QMetaEnum toolBarStyleEnum = QMetaEnum::fromType<ToolBarStyle>();
         styleSettings()->setToolButtonStyle(toolBarStyleEnum.valueToKey(m_mainToolBarStyle));
@@ -151,7 +136,7 @@ void KCMStyle::setOtherToolBarStyle(ToolBarStyle style)
 {
     if (m_otherToolBarStyle != style) {
         m_otherToolBarStyle = style;
-        emit otherToolBarStyleChanged();
+        Q_EMIT otherToolBarStyleChanged();
 
         const QMetaEnum toolBarStyleEnum = QMetaEnum::fromType<ToolBarStyle>();
         styleSettings()->setToolButtonStyleOtherToolbars(toolBarStyleEnum.valueToKey(m_otherToolBarStyle));
@@ -172,15 +157,15 @@ void KCMStyle::configure(const QString &title, const QString &styleName, QQuickI
 
     QLibrary library(QPluginLoader(configPage).fileName());
     if (!library.load()) {
-        qWarning() << "Failed to load style config page" << configPage << library.errorString();
-        emit showErrorMessage(i18n("There was an error loading the configuration dialog for this style."));
+        qCWarning(KCM_STYLE_DEBUG) << "Failed to load style config page" << configPage << library.errorString();
+        Q_EMIT showErrorMessage(i18n("There was an error loading the configuration dialog for this style."));
         return;
     }
 
     auto allocPtr = library.resolve("allocate_kstyle_config");
     if (!allocPtr) {
-        qWarning() << "Failed to resolve allocate_kstyle_config in" << configPage;
-        emit showErrorMessage(i18n("There was an error loading the configuration dialog for this style."));
+        qCWarning(KCM_STYLE_DEBUG) << "Failed to resolve allocate_kstyle_config in" << configPage;
+        Q_EMIT showErrorMessage(i18n("There was an error loading the configuration dialog for this style."));
         return;
     }
 
@@ -218,16 +203,13 @@ void KCMStyle::configure(const QString &title, const QString &styleName, QQuickI
         }
 
         // Force re-rendering of the preview, to apply settings
-        emit styleReconfigured(styleName);
+        Q_EMIT styleReconfigured(styleName);
 
         // For now, ask all KDE apps to recreate their styles to apply the setitngs
         notifyKcmChange(GlobalChangeType::StyleChanged);
 
         // When user edited a style, assume they want to use it, too
         styleSettings()->setWidgetStyle(styleName);
-
-        // We call setNeedsSave(true) here to make sure we force style re-creation
-        setNeedsSave(true);
     });
 
     m_styleConfigDialog->show();
@@ -248,7 +230,7 @@ void KCMStyle::checkGtkConfigKdedModuleLoaded()
         watcher->deleteLater();
 
         if (reply.isError()) {
-            qWarning() << "Failed to check whether GTK Config KDED module is loaded" << reply.error().message();
+            qCWarning(KCM_STYLE_DEBUG) << "Failed to check whether GTK Config KDED module is loaded" << reply.error().message();
             return;
         }
 
@@ -264,9 +246,7 @@ void KCMStyle::load()
 {
     checkGtkConfigKdedModuleLoaded();
 
-    if (m_gtkPage) {
-        m_gtkPage->load();
-    }
+    m_gtkPage->load();
 
     ManagedConfigModule::load();
     m_model->load();
@@ -279,21 +259,19 @@ void KCMStyle::load()
 
 void KCMStyle::save()
 {
-    if (m_gtkPage) {
-        m_gtkPage->save();
-    }
+    m_gtkPage->save();
 
     // Check whether the new style can actually be loaded before saving it.
     // Otherwise apps will use the default style despite something else having been written to the config
     bool newStyleLoaded = false;
     if (styleSettings()->widgetStyle() != m_previousStyle) {
-        QScopedPointer<QStyle> newStyle(QStyleFactory::create(styleSettings()->widgetStyle()));
+        std::unique_ptr<QStyle> newStyle(QStyleFactory::create(styleSettings()->widgetStyle()));
         if (newStyle) {
             newStyleLoaded = true;
             m_previousStyle = styleSettings()->widgetStyle();
         } else {
             const QString styleDisplay = m_model->data(m_model->index(m_model->indexOfStyle(styleSettings()->widgetStyle()), 0), Qt::DisplayRole).toString();
-            emit showErrorMessage(i18n("Failed to apply selected style '%1'.", styleDisplay));
+            Q_EMIT showErrorMessage(i18n("Failed to apply selected style '%1'.", styleDisplay));
 
             // Reset selected style back to current in case of failure
             styleSettings()->setWidgetStyle(m_previousStyle);
@@ -335,9 +313,7 @@ void KCMStyle::save()
 
 void KCMStyle::defaults()
 {
-    if (m_gtkPage) {
-        m_gtkPage->defaults();
-    }
+    m_gtkPage->defaults();
 
     // TODO the old code had a fallback chain but do we actually support not having Breeze for Plasma?
     // defaultStyle() -> oxygen -> plastique -> windows -> platinum -> motif
@@ -349,11 +325,21 @@ void KCMStyle::defaults()
 
 void KCMStyle::loadSettingsToModel()
 {
-    emit styleSettings()->widgetStyleChanged();
+    Q_EMIT styleSettings()->widgetStyleChanged();
 
     const QMetaEnum toolBarStyleEnum = QMetaEnum::fromType<ToolBarStyle>();
     setMainToolBarStyle(static_cast<ToolBarStyle>(toolBarStyleEnum.keyToValue(qUtf8Printable(styleSettings()->toolButtonStyle()))));
     setOtherToolBarStyle(static_cast<ToolBarStyle>(toolBarStyleEnum.keyToValue(qUtf8Printable(styleSettings()->toolButtonStyleOtherToolbars()))));
+}
+
+bool KCMStyle::isDefaults() const
+{
+    return m_gtkPage->isDefaults();
+}
+
+bool KCMStyle::isSaveNeeded() const
+{
+    return m_gtkPage->isSaveNeeded();
 }
 
 #include "kcmstyle.moc"

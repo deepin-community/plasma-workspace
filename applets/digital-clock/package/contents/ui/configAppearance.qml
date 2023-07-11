@@ -8,22 +8,32 @@
 
 import QtQuick 2.0
 import QtQuick.Controls 2.3 as QtControls
-import QtQuick.Layouts 1.0 as QtLayouts
+import QtQuick.Layouts 1.15
+import QtQuick.Dialogs 1.1 as QtDialogs
+import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.calendar 2.0 as PlasmaCalendar
+import org.kde.plasma.workspace.calendar 2.0 as PlasmaCalendar
 import org.kde.kquickcontrolsaddons 2.0 // For KCMShell
 import org.kde.kirigami 2.5 as Kirigami
 
-QtLayouts.ColumnLayout {
+
+
+ColumnLayout {
     id: appearancePage
 
-    signal configurationChanged
+    property alias cfg_autoFontAndSize: autoFontAndSizeRadioButton.checked
 
-    property string cfg_fontFamily
-    property alias cfg_boldText: boldCheckBox.checked
+    // boldText and fontStyleName are not used in DigitalClock.qml
+    // However, they are necessary to remember the exact font style chosen.
+    // Otherwise, when the user open the font dialog again, the style will be lost.
+    property alias cfg_fontFamily : fontDialog.fontChosen.family
+    property alias cfg_boldText : fontDialog.fontChosen.bold
+    property alias cfg_italicText : fontDialog.fontChosen.italic
+    property alias cfg_fontWeight : fontDialog.fontChosen.weight
+    property alias cfg_fontStyleName : fontDialog.fontChosen.styleName
+    property alias cfg_fontSize : fontDialog.fontChosen.pointSize
+
     property string cfg_timeFormat: ""
-    property alias cfg_italicText: italicCheckBox.checked
-
     property alias cfg_showLocalTimezone: showLocalTimezone.checked
     property alias cfg_displayTimezoneFormat: displayTimezoneFormat.currentIndex
     property alias cfg_showSeconds: showSeconds.checked
@@ -34,51 +44,25 @@ QtLayouts.ColumnLayout {
     property alias cfg_use24hFormat: use24hFormat.currentIndex
     property alias cfg_dateDisplayFormat: dateDisplayFormat.currentIndex
 
-    onCfg_fontFamilyChanged: {
-        // HACK by the time we populate our model and/or the ComboBox is finished the value is still undefined
-        if (cfg_fontFamily) {
-            for (var i = 0, j = fontsModel.count; i < j; ++i) {
-                if (fontsModel.get(i).value === cfg_fontFamily) {
-                    fontFamilyComboBox.currentIndex = i
-                    break
-                }
-            }
-        }
-    }
-
-    ListModel {
-        id: fontsModel
-        Component.onCompleted: {
-            var arr = [] // use temp array to avoid constant binding stuff
-            arr.push({text: i18nc("Use default font", "Default"), value: ""})
-
-            var fonts = Qt.fontFamilies()
-            var foundIndex = 0
-            for (var i = 0, j = fonts.length; i < j; ++i) {
-                arr.push({text: fonts[i], value: fonts[i]})
-            }
-            append(arr)
-        }
-    }
-
     Kirigami.FormLayout {
-        QtLayouts.Layout.fillWidth: true
-        
-        QtLayouts.RowLayout {
+        Layout.fillWidth: true
+
+        RowLayout {
             Kirigami.FormData.label: i18n("Information:")
 
             QtControls.CheckBox {
                 id: showDate
                 text: i18n("Show date")
             }
-            
+
             QtControls.ComboBox {
                 id: dateDisplayFormat
                 enabled: showDate.checked
-                visible: plasmoid.formFactor !== PlasmaCore.Types.Vertical
+                visible: Plasmoid.formFactor !== PlasmaCore.Types.Vertical
                 model: [
                     i18n("Adaptive location"),
                     i18n("Always beside time"),
+                    i18n("Always below time"),
                 ]
                 onActivated: cfg_dateDisplayFormat = currentIndex
             }
@@ -93,7 +77,7 @@ QtLayouts.ColumnLayout {
             Kirigami.FormData.isSection: true
         }
 
-        QtLayouts.ColumnLayout {
+        ColumnLayout {
             Kirigami.FormData.label: i18n("Show time zone:")
             Kirigami.FormData.buddyFor: showLocalTimeZoneWhenDifferent
 
@@ -112,7 +96,7 @@ QtLayouts.ColumnLayout {
             Kirigami.FormData.isSection: true
         }
 
-        QtLayouts.RowLayout {
+        RowLayout {
             Kirigami.FormData.label: i18n("Display time zone as:")
 
             QtControls.ComboBox {
@@ -130,8 +114,8 @@ QtLayouts.ColumnLayout {
             Kirigami.FormData.isSection: true
         }
 
-        QtLayouts.RowLayout {
-            QtLayouts.Layout.fillWidth: true
+        RowLayout {
+            Layout.fillWidth: true
             Kirigami.FormData.label: i18n("Time display:")
 
             QtControls.ComboBox {
@@ -145,10 +129,10 @@ QtLayouts.ColumnLayout {
             }
 
             QtControls.Button {
-                visible: KCMShell.authorize("formats.desktop").length > 0
+                visible: KCMShell.authorize("kcm_regionandlang.desktop").length > 0
                 text: i18n("Change Regional Settings…")
                 icon.name: "preferences-desktop-locale"
-                onClicked: KCMShell.openSystemSettings("formats")
+                onClicked: KCMShell.openSystemSettings("kcm_regionandlang")
             }
         }
 
@@ -156,7 +140,7 @@ QtLayouts.ColumnLayout {
             Kirigami.FormData.isSection: true
         }
 
-        QtLayouts.RowLayout {
+        RowLayout {
             Kirigami.FormData.label: i18n("Date format:")
             enabled: showDate.checked
 
@@ -188,7 +172,7 @@ QtLayouts.ColumnLayout {
 
                 Component.onCompleted: {
                     for (var i = 0; i < model.length; i++) {
-                        if (model[i]["name"] === plasmoid.configuration.dateFormat) {
+                        if (model[i]["name"] === Plasmoid.configuration.dateFormat) {
                             dateFormat.currentIndex = i;
                         }
                     }
@@ -196,7 +180,7 @@ QtLayouts.ColumnLayout {
             }
 
             QtControls.Label {
-                QtLayouts.Layout.fillWidth: true
+                Layout.fillWidth: true
                 textFormat: Text.PlainText
                 text: Qt.formatDate(new Date(), cfg_dateFormat === "custom" ? customDateFormat.text
                                                                             : dateFormat.model[dateFormat.currentIndex].format)
@@ -205,7 +189,7 @@ QtLayouts.ColumnLayout {
 
         QtControls.TextField {
             id: customDateFormat
-            QtLayouts.Layout.fillWidth: true
+            Layout.fillWidth: true
             enabled: showDate.checked
             visible: cfg_dateFormat == "custom"
         }
@@ -215,8 +199,8 @@ QtLayouts.ColumnLayout {
             enabled: showDate.checked
             visible: cfg_dateFormat == "custom"
             wrapMode: Text.Wrap
-            QtLayouts.Layout.preferredWidth: QtLayouts.Layout.maximumWidth
-            QtLayouts.Layout.maximumWidth: Kirigami.Units.gridUnit * 16
+            Layout.preferredWidth: Layout.maximumWidth
+            Layout.maximumWidth: Kirigami.Units.gridUnit * 16
 
             onLinkActivated: Qt.openUrlExternally(link)
             MouseArea {
@@ -230,57 +214,72 @@ QtLayouts.ColumnLayout {
             Kirigami.FormData.isSection: true
         }
 
-        QtLayouts.RowLayout {
-            QtLayouts.Layout.fillWidth: true
+        QtControls.ButtonGroup {
+            buttons: [autoFontAndSizeRadioButton, manualFontAndSizeRadioButton]
+        }
 
-            Kirigami.FormData.label: i18n("Font style:")
+        QtControls.RadioButton {
+            Kirigami.FormData.label: i18nc("@label:group", "Text display:")
+            id: autoFontAndSizeRadioButton
+            text: i18nc("@option:radio", "Automatic")
+        }
 
-            QtControls.ComboBox {
-                id: fontFamilyComboBox
-                QtLayouts.Layout.fillWidth: true
-                currentIndex: 0
-                // ComboBox's sizing is just utterly broken
-                QtLayouts.Layout.minimumWidth: Kirigami.Units.gridUnit * 10
-                model: fontsModel
-                // doesn't autodeduce from model because we manually populate it
-                textRole: "text"
+        QtControls.Label {
+            text: i18nc("@label", "Text will follow the system font and expand to fill the available space.")
+            Layout.fillWidth: true
+            wrapMode: Text.Wrap
+            font: PlasmaCore.Theme.smallestFont
+        }
 
-                onCurrentIndexChanged: {
-                    var current = model.get(currentIndex)
-                    if (current) {
-                        cfg_fontFamily = current.value
-                        appearancePage.configurationChanged()
+        RowLayout {
+            QtControls.RadioButton {
+                id: manualFontAndSizeRadioButton
+                text: i18nc("@option:radio setting for manually configuring the font settings", "Manual")
+                checked: !cfg_autoFontAndSize
+                onClicked: {
+                    if (cfg_fontFamily === "") {
+                        fontDialog.fontChosen = PlasmaCore.Theme.defaultFont
                     }
                 }
             }
 
             QtControls.Button {
-                id: boldCheckBox
-                QtControls.ToolTip {
-                    text: i18n("Bold text")
+                text: i18nc("@action:button", "Choose Style…")
+                icon.name: "settings-configure"
+                enabled: manualFontAndSizeRadioButton.checked
+                onClicked: {
+                    fontDialog.font = fontDialog.fontChosen
+                    fontDialog.open()
                 }
-                icon.name: "format-text-bold"
-                checkable: true
-                Accessible.name: QtControls.ToolTip.text
             }
 
-            QtControls.Button {
-                id: italicCheckBox
-                QtControls.ToolTip {
-                    text: i18n("Italic text")
-                }
-                icon.name: "format-text-italic"
-                checkable: true
-                Accessible.name: QtControls.ToolTip.text
-            }
+        }
+
+        QtControls.Label {
+            visible: manualFontAndSizeRadioButton.checked
+            text: i18nc("@info %1 is the font size, %2 is the font family", "%1pt %2", cfg_fontSize, fontDialog.fontChosen.family)
+            font: fontDialog.fontChosen
         }
     }
+
     Item {
-        QtLayouts.Layout.fillHeight: true
+        Layout.fillHeight: true
+    }
+
+    QtDialogs.FontDialog {
+        id: fontDialog
+        title: i18nc("@title:window", "Choose a Font")
+        modality: Qt.WindowModal
+
+        property font fontChosen: Qt.Font()
+
+        onAccepted: {
+            fontChosen = font
+        }
     }
 
     Component.onCompleted: {
-        if (!plasmoid.configuration.showLocalTimezone) {
+        if (!Plasmoid.configuration.showLocalTimezone) {
             showLocalTimeZoneWhenDifferent.checked = true;
         }
     }

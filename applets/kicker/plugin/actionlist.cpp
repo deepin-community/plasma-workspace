@@ -16,6 +16,8 @@
 #include <QStandardPaths>
 
 #include <KApplicationTrader>
+#include <KDesktopFileActions>
+#include <KFileUtils>
 #include <KIO/ApplicationLauncherJob>
 #include <KLocalizedString>
 #include <KNotificationJobUiDelegate>
@@ -25,6 +27,7 @@
 #include <KActivities/Stats/Cleaning>
 #include <KActivities/Stats/ResultSet>
 #include <KActivities/Stats/Terms>
+#include <KIO/DesktopExecParser>
 
 #include "containmentinterface.h"
 
@@ -82,9 +85,9 @@ QVariantList createActionListForFileItem(const KFileItem &fileItem)
     if (!services.isEmpty()) {
         list << createTitleActionItem(i18n("Open with:"));
 
-        for (const KService::Ptr service : services) {
+        for (const KService::Ptr &service : services) {
             const QString text = service->name().replace(QLatin1Char('&'), QStringLiteral("&&"));
-            QVariantMap item = createActionItem(text, service->icon(), QStringLiteral("_kicker_fileItem_openWith"), service->entryPath());
+            const QVariantMap item = createActionItem(text, service->icon(), QStringLiteral("_kicker_fileItem_openWith"), service->entryPath());
 
             list << item;
         }
@@ -217,7 +220,7 @@ QVariantList jumpListActions(KService::Ptr service)
             continue;
         }
 
-        QVariantMap item = createActionItem(action.text(), action.icon(), QStringLiteral("_kicker_jumpListAction"), action.exec());
+        QVariantMap item = createActionItem(action.text(), action.icon(), QStringLiteral("_kicker_jumpListAction"), QVariant::fromValue(action));
 
         list << item;
     }
@@ -249,13 +252,14 @@ QVariantList systemSettingsActions()
             continue;
         }
 
-        list << createActionItem(service->name(), service->icon(), QStringLiteral("_kicker_jumpListAction"), service->exec());
+        KServiceAction action(service->name(), service->desktopEntryName(), service->icon(), service->exec(), false, service);
+        list << createActionItem(service->name(), service->icon(), QStringLiteral("_kicker_jumpListAction"), QVariant::fromValue(action));
     }
 
     return list;
 }
 
-QVariantList recentDocumentActions(KService::Ptr service)
+QVariantList recentDocumentActions(const KService::Ptr &service)
 {
     QVariantList list;
 
@@ -286,15 +290,14 @@ QVariantList recentDocumentActions(KService::Ptr service)
     while (list.count() < 6 && resultIt != results.end()) {
         const QString resource = (*resultIt).resource();
         const QString mimeType = (*resultIt).mimetype();
+        const QUrl url = (*resultIt).url();
         ++resultIt;
-
-        const QUrl url(resource);
 
         if (!url.isValid()) {
             continue;
         }
 
-        const KFileItem fileItem(url);
+        const KFileItem fileItem(url, mimeType);
 
         if (!fileItem.isFile()) {
             continue;
@@ -345,6 +348,9 @@ bool handleRecentDocumentAction(KService::Ptr service, const QString &actionId, 
     }
 
     const QStringList argument = _argument.toStringList();
+    if (argument.isEmpty()) {
+        return false;
+    }
     const auto resource = argument.at(0);
     const auto mimeType = argument.at(1);
 
@@ -360,10 +366,6 @@ bool handleRecentDocumentAction(KService::Ptr service, const QString &actionId, 
                 return false;
             }
         }
-    }
-
-    if (argument.isEmpty()) {
-        return false;
     }
 
     auto *job = new KIO::ApplicationLauncherJob(service);
@@ -414,46 +416,92 @@ Q_GLOBAL_STATIC(AppStream::Pool, appstreamPool)
 
 QVariantList appstreamActions(const KService::Ptr &service)
 {
-    QVariantList ret;
-
 #ifdef HAVE_APPSTREAMQT
     const KService::Ptr appStreamHandler = KApplicationTrader::preferredService(QStringLiteral("x-scheme-handler/appstream"));
 
     // Don't show action if we can't find any app to handle appstream:// URLs.
     if (!appStreamHandler) {
         if (!KProtocolInfo::isHelperProtocol(QStringLiteral("appstream")) || KProtocolInfo::exec(QStringLiteral("appstream")).isEmpty()) {
-            return ret;
+            return {};
         }
     }
 
+    QVariantMap appstreamAction = Kicker::createActionItem(i18nc("@action opens a software center with the application", "Uninstall or Manage Add-Ons…"),
+                                                           appStreamHandler->icon(),
+                                                           QStringLiteral("manageApplication"));
+    return {appstreamAction};
+#else
+    Q_UNUSED(service)
+    return {};
+#endif
+}
+
+bool handleAppstreamActions(const QString &actionId, const KService::Ptr &service)
+{
+    if (actionId != QLatin1String("manageApplication")) {
+        return false;
+    }
+#ifdef HAVE_APPSTREAMQT
     if (!appstreamPool.exists()) {
         appstreamPool->load();
     }
 
-    const auto components = appstreamPool->componentsById(service->desktopEntryName() + QLatin1String(".desktop"));
-    for (const auto &component : components) {
-        const QString componentId = component.id();
-
-        QVariantMap appstreamAction = Kicker::createActionItem(i18nc("@action opens a software center with the application", "Uninstall or Manage Add-Ons…"),
-                                                               appStreamHandler->icon(),
-                                                               "manageApplication",
-                                                               QVariant(QLatin1String("appstream://") + componentId));
-        ret << appstreamAction;
+    const auto components =
+        appstreamPool->componentsByLaunchable(AppStream::Launchable::KindDesktopId, service->desktopEntryName() + QLatin1String(".desktop"));
+    if (components.empty()) {
+        return false;
     }
+    return QDesktopServices::openUrl(QUrl(QLatin1String("appstream://") + components[0].id()));
 #else
-    Q_UNUSED(service)
+    return false;
 #endif
-
-    return ret;
 }
 
-bool handleAppstreamActions(const QString &actionId, const QVariant &argument)
+static QList<KServiceAction> additionalActions(const KService::Ptr &service)
 {
-    if (actionId == QLatin1String("manageApplication")) {
-        return QDesktopServices::openUrl(QUrl(argument.toString()));
+    QList<KServiceAction> actions;
+    const static auto locations =
+        QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("plasma/kickeractions"), QStandardPaths::LocateDirectory);
+    const auto files = KFileUtils::findAllUniqueFiles(locations);
+    for (const auto &file : files) {
+        KService actionsService(file);
+        const auto filter = actionsService.property(QStringLiteral("X-KDE-OnlyForAppIds"), QMetaType::QStringList).toStringList();
+        if (filter.empty() || filter.contains(storageIdFromService(service))) {
+            actions.append(KDesktopFileActions::userDefinedServices(actionsService, true));
+        }
     }
+    return actions;
+}
 
-    return false;
+QVariantList additionalAppActions(const KService::Ptr &service)
+{
+    QVariantList list;
+    const auto actions = additionalActions(service);
+    list.reserve(actions.size());
+    for (const auto &action : actions) {
+        list << createActionItem(action.text(), action.icon(), action.name(), action.service()->entryPath());
+    }
+    return list;
+}
+
+bool handleAdditionalAppActions(const QString &actionId, const KService::Ptr &service, const QVariant &argument)
+{
+    const KService actionProvider(argument.toString());
+    if (!actionProvider.isValid()) {
+        return false;
+    }
+    const auto actions = actionProvider.actions();
+    auto action = std::find_if(actions.begin(), actions.end(), [&actionId](const KServiceAction &action) {
+        return action.name() == actionId;
+    });
+    if (action == actions.end()) {
+        return false;
+    }
+    auto *job = new KIO::ApplicationLauncherJob(*action);
+    job->setUrls({QUrl::fromLocalFile(resolvedServiceEntryPath(service))});
+    job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled));
+    job->start();
+    return true;
 }
 
 QString resolvedServiceEntryPath(const KService::Ptr &service)
@@ -466,3 +514,5 @@ QString resolvedServiceEntryPath(const KService::Ptr &service)
 }
 
 }
+
+Q_DECLARE_METATYPE(KServiceAction)

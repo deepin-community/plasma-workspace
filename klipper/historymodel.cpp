@@ -13,7 +13,6 @@ HistoryModel::HistoryModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_maxSize(0)
     , m_displayImages(true)
-    , m_mutex(QMutex::Recursive)
 {
 }
 
@@ -57,30 +56,22 @@ QVariant HistoryModel::data(const QModelIndex &index, int role) const
     }
 
     QSharedPointer<HistoryItem> item = m_items.at(index.row());
-    HistoryItemType type = HistoryItemType::Text;
-    if (dynamic_cast<HistoryStringItem *>(item.data())) {
-        type = HistoryItemType::Text;
-    } else if (dynamic_cast<HistoryImageItem *>(item.data())) {
-        type = HistoryItemType::Image;
-    } else if (dynamic_cast<HistoryURLItem *>(item.data())) {
-        type = HistoryItemType::Url;
-    }
 
     switch (role) {
     case Qt::DisplayRole:
         return item->text();
     case Qt::DecorationRole:
         return item->image();
-    case Qt::UserRole:
+    case HistoryItemConstPtrRole:
         return QVariant::fromValue<HistoryItemConstPtr>(qSharedPointerConstCast<const HistoryItem>(item));
-    case Qt::UserRole + 1:
+    case UuidRole:
         return item->uuid();
-    case Qt::UserRole + 2:
-        return QVariant::fromValue<HistoryItemType>(type);
-    case Qt::UserRole + 3:
+    case TypeRole:
+        return QVariant::fromValue<HistoryItemType>(item->type());
+    case Base64UuidRole:
         return item->uuid().toBase64();
-    case Qt::UserRole + 4:
-        return int(type);
+    case TypeIntRole:
+        return int(item->type());
     }
     return QVariant();
 }
@@ -134,29 +125,65 @@ void HistoryModel::insert(QSharedPointer<HistoryItem> item)
     if (item.isNull()) {
         return;
     }
-    const QModelIndex existingItem = indexOf(item.data());
+
+    if (m_maxSize == 0) {
+        // special case - cannot insert any items
+        return;
+    }
+
+    QMutexLocker lock(&m_mutex);
+
+    const QModelIndex existingItem = indexOf(item.get());
     if (existingItem.isValid()) {
         // move to top
         moveToTop(existingItem.row());
         return;
     }
 
-    QMutexLocker lock(&m_mutex);
-    if (m_items.count() == m_maxSize) {
-        // remove last item
-        if (m_maxSize == 0) {
-            // special case - cannot insert any items
-            return;
-        }
-        beginRemoveRows(QModelIndex(), m_items.count() - 1, m_items.count() - 1);
-        m_items.removeLast();
-        endRemoveRows();
-    }
-
     beginInsertRows(QModelIndex(), 0, 0);
     item->setModel(this);
     m_items.prepend(item);
     endInsertRows();
+
+    if (m_items.count() > m_maxSize) {
+        beginRemoveRows(QModelIndex(), m_items.count() - 1, m_items.count() - 1);
+        m_items.removeLast();
+        endRemoveRows();
+    }
+}
+
+void HistoryModel::clearAndBatchInsert(const QVector<HistoryItemPtr> &items)
+{
+    if (m_maxSize == 0) {
+        // special case - cannot insert any items
+        return;
+    }
+
+    if (items.empty()) {
+        // special case - nothing to insert, so just clear.
+        clear();
+        return;
+    }
+
+    QMutexLocker lock(&m_mutex);
+
+    beginResetModel();
+    m_items.clear();
+
+    // The last row is either items.size() - 1 or m_maxSize - 1.
+    const int numOfItemsToBeInserted = std::min(static_cast<int>(items.size()), m_maxSize);
+    m_items.reserve(numOfItemsToBeInserted);
+
+    for (int i = 0; i < numOfItemsToBeInserted; i++) {
+        if (items[i].isNull()) {
+            continue;
+        }
+
+        items[i]->setModel(this);
+        m_items.append(items[i]);
+    }
+
+    endResetModel();
 }
 
 void HistoryModel::moveToTop(const QByteArray &uuid)
@@ -201,7 +228,7 @@ QHash<int, QByteArray> HistoryModel::roleNames() const
     QHash<int, QByteArray> hash;
     hash.insert(Qt::DisplayRole, QByteArrayLiteral("DisplayRole"));
     hash.insert(Qt::DecorationRole, QByteArrayLiteral("DecorationRole"));
-    hash.insert(Qt::UserRole + 3, QByteArrayLiteral("UuidRole"));
-    hash.insert(Qt::UserRole + 4, QByteArrayLiteral("TypeRole"));
+    hash.insert(Base64UuidRole, QByteArrayLiteral("UuidRole"));
+    hash.insert(TypeIntRole, QByteArrayLiteral("TypeRole"));
     return hash;
 }

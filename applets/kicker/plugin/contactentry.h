@@ -39,5 +39,7 @@ public:
     static void showPersonDetailsDialog(const QString &id);
 
 private:
-    KPeople::PersonData *m_personData;
+    KPeople::PersonData *m_personData = nullptr;
+
+    Q_DISABLE_COPY(ContactEntry)
 };

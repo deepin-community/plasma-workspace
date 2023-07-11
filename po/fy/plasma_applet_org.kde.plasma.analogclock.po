@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2010-07-20 13:53+0100\n"
 "Last-Translator: Berend Ytsma <berendy@gmail.com>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -22,6 +22,12 @@ msgstr ""
 #, kde-format
 msgid "Appearance"
 msgstr "Uterlik"
+
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
 
 #: contents/ui/configGeneral.qml:23
 #, fuzzy, kde-format
@@ -39,3 +45,21 @@ msgstr "Algemien"
 #| msgid "Show &time zone"
 msgid "Show time zone"
 msgstr "&Tiidsône sjen litte"
+
+#~ msgid "Show the seconds"
+#~ msgstr "Lit de sekonden sjen"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "Dit selektearje as jo de sekonden sjen litte wolle."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "&Sekondewizer sjen litte"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "De tiidsône yn tekst sjen litte"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "Selektearje dit as jo de tiidsône sjen litte wolle yn tekst."
+
+#~ msgid "Show &time zone"
+#~ msgstr "&Tiidsône sjen litte"

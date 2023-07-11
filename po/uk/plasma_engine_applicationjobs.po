@@ -31,3 +31,6 @@ msgstr "Не вдалося знайти JobView для %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/с"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Завдання скасовано користувачем."

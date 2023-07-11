@@ -26,3 +26,16 @@ msgstr "Andhika Padmawan"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "andhika.padmawan@gmail.com"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Tak dapat menggunakan Ujung Belakang Multimedia <b>%1</b>:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Tak dapat menemukan sebuah Ujung Belakang Multimedia"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Tak dapat menemukan Ujung Belakang Multimedia yang diminta"
+
+#~ msgid "create method returned 0"
+#~ msgstr "buat metode mengembalikan 0"

@@ -63,9 +63,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2021-04-17</date>
+>5 мая 2022 г.</date>
 <releaseinfo
->Plasma 5.20</releaseinfo>
+>Plasma 5.25</releaseinfo>
 
 <abstract>
 <para
@@ -172,7 +172,7 @@
 >Чтобы использовать эту возможность, выберите &URL; или путь. Если в списке &klipper; есть подходящее регулярное выражение, появится меню, содержащее все доступные программы. С помощью мыши или клавиш со стрелками выберите нужную программу, и &klipper; запустит её, открыв указанный в буфере обмена адрес.</para>
 
 <para
->Если с содержимым буфера обмена не требуется выполнять какие-либо действия, выберите в меню пункт<guimenuitem
+>Если с содержимым буфера обмена не требуется выполнять никаких действий, выберите в меню пункт<guimenuitem
 >Запретить всплывающее меню</guimenuitem
 >. После выхода из меню оно исчезнет, позволив продолжать работу. В диалоге настройки возможно изменить время, в течение которого меню присутствует на экране: для этого предназначен параметр <guilabel
 >Задержка всплывающих меню</guilabel
@@ -251,11 +251,11 @@
 > в контекстном меню &klipper; и в появившемся диалоге выберите вкладку <guilabel
 >Главное</guilabel
 >. Снятие флажка <guilabel
->Синхронизировать содержимое буфера обмена и выделения мышью</guilabel
+>Выделение и буфер обмена</guilabel
 > делает функции буфера обмена и выделения отдельными буферами, как описано ранее. Включение этого параметра и параметра <guilabel
 >Игнорировать выделение мышью</guilabel
 > предотвратит включение содержимого выделений в журнал буфера обмена и выполнение над ними действий. Установка флажка <guilabel
->Синхронизировать содержимое буфера обмена и выделения мышью</guilabel
+>Выделение и буфер обмена</guilabel
 > будет синхронизировать содержимое буфера обмена и выделения. Это означает, что выделенный текст возможно вставить с помощью <mousebutton
 >средней</mousebutton
 > кнопки мыши или комбинации клавиш <keycombo
@@ -285,103 +285,50 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 
 <sect1 id="general-page">
 <title
->Общие</title>
+>Основные параметры</title>
 
 <variablelist>
 
-<varlistentry>
-<term
+<varlistentry
+><term
 ><guilabel
->Сохранять содержимое буфера обмена при выходе</guilabel
-></term
-> <listitem
-><para
->Если параметр установлен, история буфера обмена будет сохранена при выходе из &klipper;, позволяя использовать её при следующем запуске &klipper;.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Не допускать пустого буфера обмена</guilabel
+>Выделение и буфер обмена</guilabel
 ></term>
 <listitem
 ><para
->Если установлен, буфер обмена никогда не будет пустым: &klipper; будет вставлять самый последний элемент из истории вместо того чтобы позволяет ему быть пустым.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Игнорировать изображения</guilabel
-></term>
-<listitem
+>Выбор области экрана с помощью мыши или клавиатуры называется <emphasis
+>выделением</emphasis
+>. Вставка выделения выполняется щелчком средней кнопкой мыши.</para
 ><para
->Выбор области экрана с помощью мыши или клавиатуры называется <quote
->выделением</quote
->. Если параметр включён, в журнале сохраняются только выделения текста, но не изображения и другие выделения. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Игнорировать выделение</guilabel
-></term>
-<listitem
+>Если выделение явно копируется с помощью действия <guimenuitem
+>Копировать</guimenuitem
+> или <guimenuitem
+>Вставить</guimenuitem
+>, оно сохраняется в <emphasis
+>буфер обмена</emphasis
+>. Вставку выделения можно выполнить с помощью действия <guimenuitem
+>Вставить</guimenuitem
+>.</para
 ><para
->Устанавливает режим буфера обмена. Если параметр включён, содержимое выделения не сохраняется в журнале буфера обмена и над ним не выполняются действия. Подробные сведения: <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Только из выделения мышью</guilabel
-></term>
-<listitem
-><para
->Выбор области экрана с помощью мыши или клавиатуры называется <quote
->выделением</quote
->. Если параметр включён, в журнале сохраняются только выделения текста, но не изображения и другие выделения. Подробные сведения: <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Синхронизировать содержимое буфера обмена и выделения</guilabel
-></term>
-<listitem
-><para
->Устанавливает режим буфера обмена. Выбор области экрана с помощью мыши или клавиатуры называется <quote
->выделением</quote
->. Если параметр включён, выделение и буфер обмена будут иметь одинаковое содержимое, то есть при выделении текста мышьюего сразу будет возможно вставить любым способом, включая традиционную вставку из буфера обмена и вставку средней кнопкой мыши. Если параметр отключён, выделение записывается в журнал буфера обмена, но его возможно вставить только средней кнопкой мыши. Смотрите также параметр <guilabel
->Игнорировать выделение мышью</guilabel
->. Подробные сведения: <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Задержка всплывающих меню</guilabel
-></term>
-<listitem
-><para
->Устанавливает время, в течение которого всплывающее меню будет показываться, если вы ничего с ним не делаете.</para
+>Если этот параметр включён, содержание выделения и буфера обмена совпадает, поэтому выделение сразу же становится доступным для вставки любым способом. Если этот параметр отключён, выделение всё равно можно сохранить в журнале буфера (в соответствии с расположенными ниже параметрами), но его вставку будет возможно выполнить только с помощью средней кнопки мыши.</para
 ></listitem>
 </varlistentry>
 
 <varlistentry
 ><term
 ><guilabel
->Размер истории буфера обмена</guilabel
+>Журнал буфера обмена</guilabel
+></term>
+<listitem
+><para
+>Включает и отключает ведение журнала буфера обмена.</para
+></listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Количество записей</guilabel
 ></term>
 <listitem
 ><para
@@ -389,15 +336,67 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 ></listitem>
 </varlistentry>
 
+<varlistentry>
+<term
+><guilabel
+>Выделение текста</guilabel
+></term>
+<listitem
+><para
+>Выбранная с помощью мыши или клавиатуры область экрана называется <quote
+>выделением</quote
+>. Этот параметр определяет, сохраняются ли выделения текста в журнале буфера обмена. Возможно выбрать один следующих вариантов: <guilabel
+>Всегда сохранять в журнале</guilabel
+> или <guilabel
+>Только при явном копировании</guilabel
+>. Вариант <guilabel
+>Всегда сохранять в журнале</guilabel
+> недоступен, если синхронизация выделения и буфера обмена отключена (в этом случае выделение не будет автоматически сохраняться в журнале буфера обмена). Смотрите раздел <xref linkend="clipboard-modes"/>. </para>
+</listitem>
+</varlistentry
+> 
+
+<varlistentry>
+<term
+><guilabel
+>Нетекстовое выделение</guilabel
+></term>
+<listitem
+><para
+>Этот параметр определяет, сохраняются ли нетекстовые выделения (например, изображения) в журнале буфера обмена. Возможно выбрать один следующих вариантов: <guilabel
+>Всегда сохранять в журнале</guilabel
+>, <guilabel
+>Только при явном копировании</guilabel
+> или <guilabel
+>Никогда не сохранять в журнале</guilabel
+>. Вариант <guilabel
+>Всегда сохранять в журнале</guilabel
+> недоступен, если синхронизация выделения и буфера обмена отключена (в этом случае выделение не будет автоматически сохраняться в журнале буфера обмена). Смотрите раздел <xref linkend="clipboard-modes"/>. </para>
+</listitem>
+</varlistentry
+> 
+
 </variablelist>
 
 </sect1>
 
-<sect1 id="actions-page">
+<sect1 id="action-menu-page">
 <title
->Действия</title>
+>Меню действий</title>
 
 <variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Показ всплывающего меню действий</guilabel
+></term>
+<listitem
+><para
+>Устанавливает время, в течение которого всплывающее меню будет показываться, если вы ничего с ним не делаете.</para
+></listitem>
+</varlistentry>
+
 <varlistentry>
 <term
 ><guilabel
@@ -406,6 +405,48 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 <listitem
 ><para
 >Если этот флажок установлен, при выборе элемента из списка истории &klipper; покажет действия для этого элемента (если они, конечно, есть).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guibutton
+>Исключить окна…</guibutton
+></term>
+<listitem
+><para
+>Вызывает окно <guilabel
+>Отключить действия для окон класса WM_CLASS</guilabel
+>.</para>
+<para
+>Некоторые программы, такие как &konqueror;, используют буфер обмена внутри себя. Если ненужные меню &klipper; всплывают всякий раз, когда используется определённое приложение, сделайте следующее: </para>
+
+<orderedlist>
+<listitem
+><para
+>Откройте приложение.</para
+></listitem>
+<listitem
+><para
+>В терминале, выполните <userinput
+><command
+>xprop</command
+> | <command
+>grep</command
+> <parameter
+>WM_CLASS</parameter
+></userinput
+> и затем щёлкните в окне выполняющегося приложения.</para
+></listitem
+> 
+<listitem
+><para
+>Первая строка после знаков =, является той, которую необходимо ввести.</para
+></listitem>
+</orderedlist>
+
+<para
+>После добавления WM_CLASS для окон этого приложения не будет больше производиться никаких действий.</para>
 </listitem>
 </varlistentry>
 
@@ -430,7 +471,14 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 >Если этот флажок установлен, то во всплывающем меню будут показаны не только заданные действия, но и список приложений для обнаруженного типа MIME.</para>
 </listitem>
 </varlistentry>
+</variablelist>
+</sect1>
 
+<sect1 id="actions-configuration-page">
+<title
+>Настройка действий</title>
+
+<variablelist>
 <varlistentry>
 <term
 >Редактирование выражений/действий</term>
@@ -499,49 +547,18 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 >%s</token
 >, предварите его обратной наклонной чертой вот так: <userinput
 >\%s</userinput
->.</para
-></listitem>
-</varlistentry>
-
-<varlistentry
-><term
-><guibutton
->Дополнительно...</guibutton
-></term>
-<listitem
-><para
->Вызывает окно <guilabel
->Отключить действия для окон класса WM_CLASS</guilabel
 >.</para>
-<para
->Некоторые программы, такие как &konqueror;, используют буфер обмена внутри себя. Если ненужные меню &klipper; всплывают всякий раз, когда используется определённое приложение, сделайте следующее: </para>
 
-<orderedlist>
-<listitem
-><para
->Откройте приложение.</para
-></listitem>
-<listitem
-><para
->В терминале, выполните <userinput
-><command
->xprop</command
-> | <command
->grep</command
-> <parameter
->WM_CLASS</parameter
+<para
+>Записи <userinput
+><token
+>%0</token
 ></userinput
-> и затем щёлкните в окне выполняющегося приложения.</para
-></listitem
-> 
-<listitem
-><para
->Первая строка после знаков =, является той, которую необходимо ввести.</para
-></listitem>
-</orderedlist>
-
-<para
->После добавления WM_CLASS для окон этого приложения не будет больше производиться никаких действий.</para>
+> — <userinput
+><token
+>%9</token
+></userinput
+> будут заменены соответствующими захваченными текстами из шаблона сопоставления. </para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -622,7 +639,11 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 <para
 >Авторское право на документацию: 2000-2003, 2005 &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
 
-  &underFDL; &underGPL; </chapter>
+<para
+>Олеся Герасименко<email
+>translation-team@basealt.ru</email
+></para
+> &underFDL; &underGPL; </chapter>
 
 
 &documentation.index; 

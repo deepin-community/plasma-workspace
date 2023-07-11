@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_weather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
 "PO-Revision-Date: 2013-02-27 02:08+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -2752,75 +2752,88 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr "Жел"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "ҰлыБритания"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "АҚШ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr ""
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, fuzzy, kde-format
 #| msgid "Night"
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "Түнде"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "Сн"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "Жк"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "Дс"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "Сс"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "Ср"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "Бс"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "Жм"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
+msgstr ""
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
 msgstr ""
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
@@ -4959,3 +4972,180 @@ msgstr "Күн ашылады"
 msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr "Көбінесе аспан ашық"
+
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "ауа райы"
+
+#~ msgctxt "weather condition"
+#~ msgid "thunder storm"
+#~ msgstr "күн күркіреу"
+
+#~ msgctxt "weather forecast"
+#~ msgid "thunder storm"
+#~ msgstr "күн күркіреу"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "С"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNE"
+#~ msgstr "ССШ"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "СШ"
+
+#~ msgctxt "wind direction"
+#~ msgid "ENE"
+#~ msgstr "ШСШ"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "Ш"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSE"
+#~ msgstr "ООШ"
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "ОШ"
+
+#~ msgctxt "wind direction"
+#~ msgid "ESE"
+#~ msgstr "ШОШ"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "О"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNW"
+#~ msgstr "ССБ"
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "СБСБ"
+
+#~ msgctxt "wind direction"
+#~ msgid "WNW"
+#~ msgstr "БСБ"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "Б"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSW"
+#~ msgstr "ООБ"
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "ОБ"
+
+#~ msgctxt "wind direction"
+#~ msgid "WSW"
+#~ msgstr "БОБ"
+
+#~ msgctxt "wind direction"
+#~ msgid "VR"
+#~ msgstr "Жоқ"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "жоғарлайды"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "төмендейді"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "өзгермейді"
+
+#~ msgctxt "wind speed"
+#~ msgid "Calm"
+#~ msgstr "Желсіз"
+
+#~ msgctxt "wind speed"
+#~ msgid "N/A"
+#~ msgstr "А/Ж"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "steady"
+#~ msgstr "тұрақты"
+
+#~ msgctxt "wind direction - wind speed is too low to measure"
+#~ msgid "VR"
+#~ msgstr "Жоқ"
+
+#~ msgid "N"
+#~ msgstr "С"
+
+#~ msgid "NNE"
+#~ msgstr "ССШ"
+
+#~ msgid "NE"
+#~ msgstr "СШ"
+
+#~ msgid "ENE"
+#~ msgstr "ШСШ"
+
+#~ msgid "E"
+#~ msgstr "Ш"
+
+#~ msgid "SSE"
+#~ msgstr "ООШ"
+
+#~ msgid "SE"
+#~ msgstr "ОШ"
+
+#~ msgid "ESE"
+#~ msgstr "ШОШ"
+
+#~ msgid "S"
+#~ msgstr "О"
+
+#~ msgid "NNW"
+#~ msgstr "ССБ"
+
+#~ msgid "NW"
+#~ msgstr "СБ"
+
+#~ msgid "WNW"
+#~ msgstr "БСБ"
+
+#~ msgid "W"
+#~ msgstr "Б"
+
+#~ msgid "SSW"
+#~ msgstr "ООБ"
+
+#~ msgid "SW"
+#~ msgstr "ОБ"
+
+#~ msgid "WSW"
+#~ msgstr "БОБ"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "Environment Canada болжамы бойынша"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr "UK MET Оффисінің backstage.bbc.co.uk / дерегі қолдаған"
+
+#, fuzzy
+#~ msgctxt "Kelvin, temperature unit"
+#~ msgid "K"
+#~ msgstr "ҰлыБритания"
+
+#, fuzzy
+#~ msgctxt "miles, distance unit"
+#~ msgid "mi"
+#~ msgstr "буалдыр"
+
+#, fuzzy
+#~ msgctxt "inches, length unit"
+#~ msgid "in"
+#~ msgstr "жаңбыр"

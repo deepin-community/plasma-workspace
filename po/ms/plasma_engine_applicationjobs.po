@@ -31,3 +31,6 @@ msgstr "PelihatTugas untuk %1 tidak dapat ditemui"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Tugas dibatalkan oleh pengguna."

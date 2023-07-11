@@ -9,6 +9,7 @@
 #include "timezonesi18n.h"
 
 #include <KLocalizedString>
+#include <QDBusConnection>
 #include <QStringMatcher>
 #include <QTimeZone>
 
@@ -44,7 +45,7 @@ void TimeZoneFilterProxy::setFilterString(const QString &filterString)
 {
     m_filterString = filterString;
     m_stringMatcher.setPattern(filterString);
-    emit filterStringChanged();
+    Q_EMIT filterStringChanged();
     invalidateFilter();
 }
 
@@ -54,7 +55,7 @@ void TimeZoneFilterProxy::setOnlyShowChecked(const bool show)
         return;
     }
     m_onlyShowChecked = show;
-    emit onlyShowCheckedChanged();
+    Q_EMIT onlyShowCheckedChanged();
 }
 
 //=============================================================================
@@ -64,6 +65,13 @@ TimeZoneModel::TimeZoneModel(QObject *parent)
     , m_timezonesI18n(new TimezonesI18n(this))
 {
     update();
+
+    QDBusConnection::sessionBus().connect(QString(),
+                                          QStringLiteral("/org/kde/kcmshell_clock"), //
+                                          QStringLiteral("org.kde.kcmshell_clock"),
+                                          QStringLiteral("clockUpdated"),
+                                          this,
+                                          SLOT(slotUpdate()));
 }
 
 TimeZoneModel::~TimeZoneModel()
@@ -108,7 +116,7 @@ bool TimeZoneModel::setData(const QModelIndex &index, const QVariant &value, int
 
     if (role == CheckedRole) {
         m_data[index.row()].checked = value.toBool();
-        emit dataChanged(index, index);
+        Q_EMIT dataChanged(index, index);
 
         if (m_data[index.row()].checked) {
             m_selectedTimeZones.append(m_data[index.row()].id);
@@ -120,7 +128,7 @@ bool TimeZoneModel::setData(const QModelIndex &index, const QVariant &value, int
 
         sortTimeZones();
 
-        emit selectedTimeZonesChanged();
+        Q_EMIT selectedTimeZonesChanged();
         return true;
     }
 
@@ -197,7 +205,7 @@ void TimeZoneModel::setSelectedTimeZones(const QStringList &selectedTimeZones)
             m_offsetData.insert(m_data[i].id, m_data[i].offsetFromUtc);
 
             QModelIndex index = createIndex(i, 0);
-            emit dataChanged(index, index);
+            Q_EMIT dataChanged(index, index);
         }
     }
 
@@ -207,12 +215,20 @@ void TimeZoneModel::setSelectedTimeZones(const QStringList &selectedTimeZones)
 void TimeZoneModel::selectLocalTimeZone()
 {
     m_data[0].checked = true;
+    Q_EMIT dataChanged(index(0, 0), index(0, 0), QVector<int>{CheckedRole});
+}
 
-    QModelIndex index = createIndex(0, 0);
-    emit dataChanged(index, index);
+QString TimeZoneModel::localTimeZoneCity()
+{
+    const QTimeZone localZone = QTimeZone(QTimeZone::systemTimeZoneId());
+    const QStringList data = QString::fromUtf8(localZone.id()).split(QLatin1Char('/'));
+    return m_timezonesI18n->i18nCity(data.last());
+}
 
-    m_selectedTimeZones << m_data[0].id;
-    emit selectedTimeZonesChanged();
+void TimeZoneModel::slotUpdate()
+{
+    update();
+    setProperty("selectedTimeZones", m_selectedTimeZones);
 }
 
 QHash<int, QByteArray> TimeZoneModel::roleNames() const

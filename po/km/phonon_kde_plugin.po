@@ -29,3 +29,15 @@ msgstr "ខឹម សុខែម, អេង វណ្ណៈ, អោក ពិ�
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "khoemsokhem@khmeros.info,​​evannak@khmeros.info,piseth_dv@khmeros.info"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt>មិន​អាច​ប្រើ <b>%1</b> ជា​កម្មវិធី​ខាង​ក្រោយ​ពហុព័ត៌មាន ៖<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "មិន​អាច​រក​ផ្នែក​ខាង​ក្រោយ​ពហុព័ត៌មាន​បាន​ទេ"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "មិន​អាច​រក​កម្មវិធី​ខាង​ក្រោយ​ពហុព័ត៌មាន​ដែល​បាន​ស្នើ​បានទេ"
+
+#~ msgid "create method returned 0"
+#~ msgstr "បង្កើត​វិធីសាស្ត្រ​បាន​ត្រឡប់ ០"

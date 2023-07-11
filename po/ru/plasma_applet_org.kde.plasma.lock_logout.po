@@ -135,66 +135,68 @@ msgstr "Приостановить с сохранением в ОЗУ"
 msgid "Hibernate (suspend to disk)"
 msgstr "Выключить с сохранением состояния на диск"
 
+#~ msgid "Shutdown..."
+#~ msgstr "Выключить..."
 
-
-
-
-
-
-# shutdown-method
-
-
-
-
-
-
-
-
+#~ msgid "Logout..."
+#~ msgstr "Завершить сеанс..."
 
 # shutdown-method
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Выключить компьютер, предварительно сохранив его состояние на диск?"
 
+#~ msgid "Yes"
+#~ msgstr "Да"
 
-
-# shutdown-method
-
-
-
-# shutdown-method
-
-
-
-
-
-
+#~ msgid "No"
+#~ msgstr "Нет"
 
 # shutdown-method
-
-
-
-
-
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Перейти в спящий режим (с сохранением состояния в ОЗУ)?"
 
 # shutdown-method
+#~ msgid "Leave"
+#~ msgstr "Завершить работу"
 
+# shutdown-method
+#~ msgid "Leave..."
+#~ msgstr "Завершить работу..."
 
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Действия"
+
+# shutdown-method
+#~ msgid "Suspend"
+#~ msgstr "Ждущий режим"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Настройка блокирования и выхода"
+
+# shutdown-method
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Настройка блокирования экрана и выхода"
 
 # BUGME: too long for tab name? --aspotashev
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "Выберите один или несколько пунктов из приведённого ниже списка"
 
-
-
-
-
-
-# shutdown-method
-
-
+#~ msgid "Entries"
+#~ msgstr "Кнопки"
 
 # shutdown-method
-
-
-
-# shutdown-method
-
-
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Кнопка переключения пользователя"
 
 # shutdown-method
+#~ msgid "Show logout button"
+#~ msgstr "Кнопка завершения сеанса"
+
+# shutdown-method
+#~ msgid "Show hibernate button"
+#~ msgstr "Кнопка перехода в спящий режим"
+
+# shutdown-method
+#~ msgid "Show sleep button"
+#~ msgstr "Кнопка перехода в ждущий режим"

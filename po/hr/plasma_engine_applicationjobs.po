@@ -34,3 +34,6 @@ msgstr "Ne mogu pronaći JobView za %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Posao je prekinuo korisnik."

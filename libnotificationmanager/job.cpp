@@ -20,7 +20,9 @@ Job::Job(uint id, QObject *parent)
     // These properties are used in generating the pretty job text
     connect(d, &JobPrivate::infoMessageChanged, this, &Job::textChanged);
     connect(this, &Job::processedFilesChanged, this, &Job::textChanged);
+    connect(this, &Job::processedItemsChanged, this, &Job::textChanged);
     connect(this, &Job::totalFilesChanged, this, &Job::textChanged);
+    connect(this, &Job::totalItemsChanged, this, &Job::textChanged);
     connect(this, &Job::descriptionValue1Changed, this, &Job::textChanged);
     connect(this, &Job::descriptionValue2Changed, this, &Job::textChanged);
     connect(this, &Job::destUrlChanged, this, &Job::textChanged);
@@ -47,7 +49,7 @@ QDateTime Job::updated() const
 void Job::resetUpdated()
 {
     d->m_updated = QDateTime::currentDateTimeUtc();
-    emit updatedChanged();
+    Q_EMIT updatedChanged();
 }
 
 QString Job::summary() const
@@ -102,7 +104,7 @@ void Job::setState(Notifications::JobState state)
 {
     if (d->m_state != state) {
         d->m_state = state;
-        emit stateChanged(state);
+        Q_EMIT stateChanged(state);
     }
 }
 
@@ -120,7 +122,7 @@ void Job::setError(int error)
 {
     if (d->m_error != error) {
         d->m_error = error;
-        emit errorChanged(error);
+        Q_EMIT errorChanged(error);
     }
 }
 
@@ -133,7 +135,7 @@ void Job::setErrorText(const QString &errorText)
 {
     if (d->m_errorText != errorText) {
         d->m_errorText = errorText;
-        emit errorTextChanged(errorText);
+        Q_EMIT errorTextChanged(errorText);
     }
 }
 
@@ -157,6 +159,16 @@ void Job::setKillable(bool killable)
 {
     // Cannot change after job started
     d->m_killable = killable;
+}
+
+bool Job::transient() const
+{
+    return d->m_transient;
+}
+
+void Job::setTransient(bool transient)
+{
+    d->m_transient = transient;
 }
 
 QUrl Job::destUrl() const
@@ -248,7 +260,7 @@ void Job::setExpired(bool expired)
 {
     if (d->m_expired != expired) {
         d->m_expired = expired;
-        emit expiredChanged();
+        Q_EMIT expiredChanged();
     }
 }
 
@@ -261,18 +273,18 @@ void Job::setDismissed(bool dismissed)
 {
     if (d->m_dismissed != dismissed) {
         d->m_dismissed = dismissed;
-        emit dismissedChanged();
+        Q_EMIT dismissedChanged();
     }
 }
 
 void Job::suspend()
 {
-    emit d->suspendRequested();
+    Q_EMIT d->suspendRequested();
 }
 
 void Job::resume()
 {
-    emit d->resumeRequested();
+    Q_EMIT d->resumeRequested();
 }
 
 void Job::kill()

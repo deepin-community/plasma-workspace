@@ -18,7 +18,6 @@
 #include <QVBoxLayout>
 #include <QWindow>
 
-#include <KAboutData>
 #include <KConfigGroup>
 #include <KGlobalAccel>
 #include <KLocalizedString>
@@ -27,9 +26,7 @@
 
 #include <algorithm>
 
-#include "filterproxymodel.h"
 #include "notificationsdata.h"
-#include "sourcesmodel.h"
 
 #include <libnotificationmanager/badgesettings.h>
 #include <libnotificationmanager/behaviorsettings.h>
@@ -39,8 +36,8 @@
 
 K_PLUGIN_FACTORY_WITH_JSON(KCMNotificationsFactory, "kcm_notifications.json", registerPlugin<KCMNotifications>(); registerPlugin<NotificationsData>();)
 
-KCMNotifications::KCMNotifications(QObject *parent, const QVariantList &args)
-    : KQuickAddons::ManagedConfigModule(parent, args)
+KCMNotifications::KCMNotifications(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KQuickAddons::ManagedConfigModule(parent, data, args)
     , m_sourcesModel(new SourcesModel(this))
     , m_filteredModel(new FilterProxyModel(this))
     , m_data(new NotificationsData(this))
@@ -49,18 +46,14 @@ KCMNotifications::KCMNotifications(QObject *parent, const QVariantList &args)
     const char uri[] = "org.kde.private.kcms.notifications";
     qmlRegisterUncreatableType<SourcesModel>(uri, 1, 0, "SourcesModel", QStringLiteral("Cannot create instances of SourcesModel"));
 
-    qmlRegisterAnonymousType<FilterProxyModel>("FilterProxyModel",1);
-    qmlRegisterAnonymousType<QKeySequence>("QKeySequence",1);
-    qmlRegisterAnonymousType<NotificationManager::DoNotDisturbSettings>("DoNotDisturbSettings",1);
-    qmlRegisterAnonymousType<NotificationManager::NotificationSettings>("NotificationSettings",1);
-    qmlRegisterAnonymousType<NotificationManager::JobSettings>("JobSettings",1);
-    qmlRegisterAnonymousType<NotificationManager::BadgeSettings>("BadgeSettings",1);
-    qmlRegisterAnonymousType<NotificationManager::BehaviorSettings>("BehaviorSettings",1);
+    qmlRegisterAnonymousType<FilterProxyModel>("FilterProxyModel", 1);
+    qmlRegisterAnonymousType<QKeySequence>("QKeySequence", 1);
+    qmlRegisterAnonymousType<NotificationManager::DoNotDisturbSettings>("DoNotDisturbSettings", 1);
+    qmlRegisterAnonymousType<NotificationManager::NotificationSettings>("NotificationSettings", 1);
+    qmlRegisterAnonymousType<NotificationManager::JobSettings>("JobSettings", 1);
+    qmlRegisterAnonymousType<NotificationManager::BadgeSettings>("BadgeSettings", 1);
+    qmlRegisterAnonymousType<NotificationManager::BehaviorSettings>("BehaviorSettings", 1);
     qmlProtectModule(uri, 1);
-
-    KAboutData *about = new KAboutData(QStringLiteral("kcm_notifications"), i18n("Notifications"), QStringLiteral("5.0"), QString(), KAboutLicense::GPL);
-    about->addAuthor(i18n("Kai Uwe Broulik"), QString(), QStringLiteral("kde@privat.broulik.de"));
-    setAboutData(about);
 
     m_filteredModel->setSourceModel(m_sourcesModel);
 
@@ -145,7 +138,7 @@ void KCMNotifications::setToggleDoNotDisturbShortcut(const QKeySequence &shortcu
 
     m_toggleDoNotDisturbShortcut = shortcut;
     m_toggleDoNotDisturbShortcutDirty = true;
-    emit toggleDoNotDisturbShortcutChanged();
+    Q_EMIT toggleDoNotDisturbShortcutChanged();
 }
 
 QString KCMNotifications::initialDesktopEntry() const
@@ -157,7 +150,7 @@ void KCMNotifications::setInitialDesktopEntry(const QString &desktopEntry)
 {
     if (m_initialDesktopEntry != desktopEntry) {
         m_initialDesktopEntry = desktopEntry;
-        emit initialDesktopEntryChanged();
+        Q_EMIT initialDesktopEntryChanged();
     }
 }
 
@@ -170,7 +163,7 @@ void KCMNotifications::setInitialNotifyRcName(const QString &notifyRcName)
 {
     if (m_initialNotifyRcName != notifyRcName) {
         m_initialNotifyRcName = notifyRcName;
-        emit initialNotifyRcNameChanged();
+        Q_EMIT initialNotifyRcNameChanged();
     }
 }
 
@@ -183,7 +176,7 @@ void KCMNotifications::setInitialEventId(const QString &eventId)
 {
     if (m_initialEventId != eventId) {
         m_initialEventId = eventId;
-        emit initialEventIdChanged();
+        Q_EMIT initialEventIdChanged();
     }
 }
 
@@ -281,12 +274,12 @@ void KCMNotifications::load()
 
     if (m_toggleDoNotDisturbShortcut != toggleDoNotDisturbShortcut) {
         m_toggleDoNotDisturbShortcut = toggleDoNotDisturbShortcut;
-        emit toggleDoNotDisturbShortcutChanged();
+        Q_EMIT toggleDoNotDisturbShortcutChanged();
     }
 
     m_toggleDoNotDisturbShortcutDirty = false;
     if (firstLoad) {
-        emit firstLoadDone();
+        Q_EMIT firstLoadDone();
     }
 }
 
@@ -321,7 +314,7 @@ void KCMNotifications::updateModelIsDefaultStatus(const QModelIndex &index)
 {
     if (index.isValid()) {
         m_sourcesModel->setData(index, behaviorSettings(index)->isDefaults(), SourcesModel::IsDefaultRole);
-        emit isDefaultsBehaviorSettingsChanged();
+        Q_EMIT isDefaultsBehaviorSettingsChanged();
     }
 }
 

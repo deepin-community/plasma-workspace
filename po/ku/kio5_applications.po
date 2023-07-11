@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_settings\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-08 00:48+0000\n"
 "PO-Revision-Date: 2008-12-13 16:22+0100\n"
 "Last-Translator: Erdal Ronahi <erdal.ronahi@nospam.gmail.com>\n"
 "Language-Team: Kurdish <kde-i18n-doc@lists.kde.org>\n"
@@ -19,17 +19,20 @@ msgstr ""
 "X-Generator: Lokalize 0.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: kio_applications.cpp:121
+#: kio_applications.cpp:122
 #, kde-format
 msgid "Applications"
 msgstr "Sepan"
 
-#: kio_applications.cpp:121
+#: kio_applications.cpp:122
 #, kde-format
 msgid "Programs"
 msgstr "Bername"
 
-#: kio_applications.cpp:130
+#: kio_applications.cpp:131
 #, kde-format
 msgid "Unknown application folder"
 msgstr "Peldanka sepanan ya nenas"
+
+#~ msgid "Settings"
+#~ msgstr "Mîheng"

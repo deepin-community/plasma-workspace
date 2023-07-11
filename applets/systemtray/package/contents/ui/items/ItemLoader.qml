@@ -9,13 +9,19 @@ import QtQuick 2.0
 Loader {
     id: itemLoader
 
+    z: x
     property var itemModel: model
+    onActiveFocusChanged: {
+        if (activeFocus && item) {
+            item.forceActiveFocus();
+        }
+    }
 
     source: {
         if (model.itemType === "Plasmoid" && model.hasApplet) {
-            return "PlasmoidItem.qml"
+            return Qt.resolvedUrl("PlasmoidItem.qml")
         } else if (model.itemType === "StatusNotifier") {
-            return "StatusNotifierItem.qml"
+            return Qt.resolvedUrl("StatusNotifierItem.qml")
         }
         console.warn("SystemTray ItemLoader: Invalid state, cannot determine source!")
         return ""

@@ -9,6 +9,7 @@ import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents // For ContextMenu
 import org.kde.plasma.components 3.0 as PlasmaComponents3
+import org.kde.plasma.plasmoid 2.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 
@@ -18,6 +19,13 @@ ColumnLayout {
     id: barcodeView
 
     property alias text: barcodeItem.content
+
+    Keys.onPressed: {
+        if (event.key == Qt.Key_Escape) {
+            stack.pop()
+            event.accepted = true;
+        }
+    }
 
     property var header: PlasmaExtras.PlasmoidHeading {
         RowLayout {
@@ -62,6 +70,7 @@ ColumnLayout {
                         });
                         menuItem.clicked.connect(() => {
                             barcodeItem.barcodeType = item.type;
+                            Plasmoid.configuration.barcodeType = item.type;
                         });
                         menu.addMenuItem(menuItem);
                     });
@@ -71,10 +80,14 @@ ColumnLayout {
                 id: configureButton
                 checkable: true
                 icon.name: "configure"
+
+                display: PlasmaComponents3.AbstractButton.IconOnly
+                text: i18n("Change the QR code type")
+
                 onClicked: menu.openRelative()
 
                 PlasmaComponents3.ToolTip {
-                    text: i18n("Change the barcode type")
+                    text: parent.text
                 }
             }
         }
@@ -89,7 +102,7 @@ ColumnLayout {
             id: barcodeItem
             readonly property bool valid: implicitWidth > 0 && implicitHeight > 0 && implicitWidth <= width && implicitHeight <= height
             anchors.fill: parent
-            barcodeType: Prison.Barcode.QRCode
+            barcodeType: Plasmoid.configuration.barcodeType
             // Cannot set visible to false as we need it to re-render when changing its size
             opacity: valid ? 1 : 0
         }
@@ -98,7 +111,7 @@ ColumnLayout {
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            text: i18n("Creating barcode failed")
+            text: i18n("Creating QR code failed")
             wrapMode: Text.WordWrap
             visible: barcodeItem.implicitWidth === 0 && barcodeItem.implicitHeight === 0
         }
@@ -107,7 +120,7 @@ ColumnLayout {
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            text: i18n("The barcode is too large to be displayed")
+            text: i18n("The QR code is too large to be displayed")
             wrapMode: Text.WordWrap
             visible: barcodeItem.implicitWidth > barcodeItem.width || barcodeItem.implicitHeight > barcodeItem.height
         }

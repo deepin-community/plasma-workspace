@@ -14,24 +14,18 @@
 #include <KFileItem>
 #include <KNotificationJobUiDelegate>
 #include <KProcessList>
-#include <KServiceTypeTrader>
-#include <KStartupInfo>
 #include <KWindowSystem>
 #include <kemailsettings.h>
 
 #include <KIO/ApplicationLauncherJob>
 #include <KIO/OpenUrlJob>
 
-#include <config-X11.h>
-
 #include <QDir>
 #include <QGuiApplication>
 #include <QRegularExpression>
 #include <QScreen>
 #include <QUrlQuery>
-#if HAVE_X11
-#include <QX11Info>
-#endif
+#include <qnamespace.h>
 
 namespace TaskManager
 {
@@ -73,42 +67,66 @@ AppData appDataFromUrl(const QUrl &url, const QIcon &fallbackIcon)
         }
     }
 
-    if (url.isLocalFile() && KDesktopFile::isDesktopFile(url.toLocalFile())) {
-        const KService::Ptr service = KService::serviceByStorageId(url.fileName());
+    if (url.isLocalFile()) {
+        if (KDesktopFile::isDesktopFile(url.toLocalFile())) {
+            const KService::Ptr service = KService::serviceByStorageId(url.fileName());
 
-        // Resolve to non-absolute menuId-based URL if possible.
-        if (service) {
-            const QString &menuId = service->menuId();
+            // Resolve to non-absolute menuId-based URL if possible.
+            if (service) {
+                const QString &menuId = service->menuId();
 
-            if (!menuId.isEmpty()) {
-                data.url = QUrl(QLatin1String("applications:") + menuId);
-            }
-        }
-
-        if (service && QUrl::fromLocalFile(service->entryPath()) == url) {
-            data.name = service->name();
-            data.genericName = service->genericName();
-            data.id = service->storageId();
-
-            if (data.icon.isNull()) {
-                data.icon = QIcon::fromTheme(service->icon());
-            }
-        } else {
-            KDesktopFile f(url.toLocalFile());
-            if (f.tryExec()) {
-                data.name = f.readName();
-                data.genericName = f.readGenericName();
-                data.id = QUrl::fromLocalFile(f.fileName()).fileName();
-
-                if (data.icon.isNull()) {
-                    data.icon = QIcon::fromTheme(f.readIcon());
+                if (!menuId.isEmpty()) {
+                    data.url = QUrl(QLatin1String("applications:") + menuId);
                 }
             }
+
+            if (service && QUrl::fromLocalFile(service->entryPath()) == url) {
+                data.name = service->name();
+                data.genericName = service->genericName();
+                data.id = service->storageId();
+
+                if (data.icon.isNull()) {
+                    data.icon = QIcon::fromTheme(service->icon());
+                }
+            } else {
+                KDesktopFile f(url.toLocalFile());
+                if (f.tryExec()) {
+                    data.name = f.readName();
+                    data.genericName = f.readGenericName();
+                    data.id = QUrl::fromLocalFile(f.fileName()).fileName();
+
+                    if (data.icon.isNull()) {
+                        const QString iconValue = f.readIcon();
+                        if (QIcon::hasThemeIcon(iconValue)) {
+                            data.icon = QIcon::fromTheme(iconValue);
+                        } else if (!iconValue.startsWith(QDir::separator())) {
+                            const int lastIndexOfPeriod = iconValue.lastIndexOf(QLatin1Char('.'));
+                            const QString iconValueWithoutSuffix = lastIndexOfPeriod < 0 ? iconValue : iconValue.left(lastIndexOfPeriod);
+                            // Find an icon in the same folder
+                            const QDir sameDir = QFileInfo(url.toLocalFile()).absoluteDir();
+                            const auto iconList = sameDir.entryInfoList(
+                                {
+                                    QStringLiteral("*.png").arg(iconValueWithoutSuffix),
+                                    QStringLiteral("*.svg").arg(iconValueWithoutSuffix),
+                                },
+                                QDir::Files);
+                            if (!iconList.empty()) {
+                                data.icon = QIcon(iconList[0].absoluteFilePath());
+                            }
+                        } else {
+                            data.icon = QIcon(iconValue);
+                        }
+                    }
+                }
+            }
+
+            if (data.id.endsWith(".desktop")) {
+                data.id = data.id.left(data.id.length() - 8);
+            }
+        } else {
+            data.id = url.fileName();
         }
 
-        if (data.id.endsWith(".desktop")) {
-            data.id = data.id.left(data.id.length() - 8);
-        }
     } else if (url.scheme() == QLatin1String("preferred")) {
         data.id = defaultApplication(url);
 
@@ -146,53 +164,6 @@ AppData appDataFromUrl(const QUrl &url, const QIcon &fallbackIcon)
     return data;
 }
 
-AppData appDataFromAppId(const QString &appId)
-{
-    AppData data;
-
-    KService::Ptr service = KService::serviceByStorageId(appId);
-
-    if (service) {
-        data.id = service->storageId();
-        data.name = service->name();
-        data.genericName = service->genericName();
-
-        const QString &menuId = service->menuId();
-
-        // applications: URLs are used to refer to applications by their KService::menuId
-        // (i.e. .desktop file name) rather than the absolute path to a .desktop file.
-        if (!menuId.isEmpty()) {
-            data.url = QUrl(QLatin1String("applications:") + menuId);
-        } else {
-            data.url = QUrl::fromLocalFile(service->entryPath());
-        }
-
-        return data;
-    }
-
-    QString desktopFile = appId;
-
-    if (!desktopFile.endsWith(QLatin1String(".desktop"))) {
-        desktopFile.append(QLatin1String(".desktop"));
-    }
-
-    if (KDesktopFile::isDesktopFile(desktopFile) && QFile::exists(desktopFile)) {
-        KDesktopFile f(desktopFile);
-
-        data.id = QUrl::fromLocalFile(f.fileName()).fileName();
-
-        if (data.id.endsWith(QLatin1String(".desktop"))) {
-            data.id = data.id.left(data.id.length() - 8);
-        }
-
-        data.name = f.readName();
-        data.genericName = f.readGenericName();
-        data.url = QUrl::fromLocalFile(desktopFile);
-    }
-
-    return data;
-}
-
 QUrl windowUrlFromMetadata(const QString &appId, quint32 pid, KSharedConfig::Ptr rulesConfig, const QString &xWindowsWMClassName)
 {
     if (!rulesConfig) {
@@ -220,7 +191,7 @@ QUrl windowUrlFromMetadata(const QString &appId, quint32 pid, KSharedConfig::Ptr
     // of wine-Programs-Steam-Steam.desktop. The weighing done by this function makes
     // sure the Linux native version gets mapped to the former, while other heuristics
     // map the Wine version reliably to the latter.
-    // In lieu of this weighing we just used whatever KServiceTypeTrader returned first,
+    // In lieu of this weighing we just used whatever KApplicationTrader returned first,
     // so what we do here can be no worse.
     auto sortServicesByMenuId = [](KService::List &services, const QString &key) {
         if (services.count() == 1) {
@@ -292,16 +263,18 @@ QUrl windowUrlFromMetadata(const QString &appId, quint32 pid, KSharedConfig::Ptr
             //   window with the given string as its WM class or WM name hint.
             //
             // Source: https://specifications.freedesktop.org/startup-notification-spec/startup-notification-0.1.txt
-            if (services.isEmpty()) {
-                services =
-                    KServiceTypeTrader::self()->query(QStringLiteral("Application"), QStringLiteral("exist Exec and ('%1' =~ StartupWMClass)").arg(appId));
-                sortServicesByMenuId(services, appId);
+            if (services.isEmpty() && !xWindowsWMClassName.isEmpty()) {
+                services = KApplicationTrader::query([&xWindowsWMClassName](const KService::Ptr &service) {
+                    return service->property(QStringLiteral("StartupWMClass")).toString().compare(xWindowsWMClassName, Qt::CaseInsensitive) == 0;
+                });
+                sortServicesByMenuId(services, xWindowsWMClassName);
             }
 
-            if (services.isEmpty() && !xWindowsWMClassName.isEmpty()) {
-                services = KServiceTypeTrader::self()->query(QStringLiteral("Application"),
-                                                             QStringLiteral("exist Exec and ('%1' =~ StartupWMClass)").arg(xWindowsWMClassName));
-                sortServicesByMenuId(services, xWindowsWMClassName);
+            if (services.isEmpty()) {
+                services = KApplicationTrader::query([&appId](const KService::Ptr &service) {
+                    return service->property(QStringLiteral("StartupWMClass")).toString().compare(appId, Qt::CaseInsensitive) == 0;
+                });
+                sortServicesByMenuId(services, appId);
             }
 
             // Evaluate rewrite rules from config.
@@ -347,9 +320,9 @@ QUrl windowUrlFromMetadata(const QString &appId, quint32 pid, KSharedConfig::Ptr
                                 rewrittenString = matchProperty;
                             }
 
-                            services =
-                                KServiceTypeTrader::self()->query(QStringLiteral("Application"),
-                                                                  QStringLiteral("exist Exec and ('%1' =~ %2)").arg(rewrittenString, serviceSearchIdentifier));
+                            services = KApplicationTrader::query([&rewrittenString, &serviceSearchIdentifier](const KService::Ptr &service) {
+                                return service->property(serviceSearchIdentifier).toString().compare(rewrittenString, Qt::CaseInsensitive) == 0;
+                            });
                             sortServicesByMenuId(services, serviceSearchIdentifier);
 
                             if (!services.isEmpty()) {
@@ -377,34 +350,34 @@ QUrl windowUrlFromMetadata(const QString &appId, quint32 pid, KSharedConfig::Ptr
 
             // Try matching mapped name against DesktopEntryName.
             if (!mapped.isEmpty() && services.isEmpty()) {
-                services = KServiceTypeTrader::self()->query(
-                    QStringLiteral("Application"),
-                    QStringLiteral("exist Exec and ('%1' =~ DesktopEntryName) and (not exist NoDisplay or not NoDisplay)").arg(mapped));
+                services = KApplicationTrader::query([&mapped](const KService::Ptr &service) {
+                    return !service->noDisplay() && service->desktopEntryName().compare(mapped, Qt::CaseInsensitive) == 0;
+                });
                 sortServicesByMenuId(services, mapped);
             }
 
             // Try matching mapped name against 'Name'.
             if (!mapped.isEmpty() && services.isEmpty()) {
-                services =
-                    KServiceTypeTrader::self()->query(QStringLiteral("Application"),
-                                                      QStringLiteral("exist Exec and ('%1' =~ Name) and (not exist NoDisplay or not NoDisplay)").arg(mapped));
+                services = KApplicationTrader::query([&mapped](const KService::Ptr &service) {
+                    return !service->noDisplay() && service->name().compare(mapped, Qt::CaseInsensitive) == 0;
+                });
                 sortServicesByMenuId(services, mapped);
             }
 
             // Try matching appId against DesktopEntryName.
             if (services.isEmpty()) {
-                services = KServiceTypeTrader::self()->query(
-                    QStringLiteral("Application"),
-                    QStringLiteral("exist Exec and ('%1' =~ DesktopEntryName) and (not exist NoDisplay or not NoDisplay)").arg(appId));
+                services = KApplicationTrader::query([&appId](const KService::Ptr &service) {
+                    return service->desktopEntryName().compare(appId, Qt::CaseInsensitive) == 0;
+                });
                 sortServicesByMenuId(services, appId);
             }
 
             // Try matching appId against 'Name'.
             // This has a shaky chance of success as appId is untranslated, but 'Name' may be localized.
             if (services.isEmpty()) {
-                services =
-                    KServiceTypeTrader::self()->query(QStringLiteral("Application"),
-                                                      QStringLiteral("exist Exec and ('%1' =~ Name) and (not exist NoDisplay or not NoDisplay)").arg(appId));
+                services = KApplicationTrader::query([&appId](const KService::Ptr &service) {
+                    return !service->noDisplay() && service->name().compare(appId, Qt::CaseInsensitive) == 0;
+                });
                 sortServicesByMenuId(services, appId);
             }
 
@@ -446,8 +419,10 @@ QUrl windowUrlFromMetadata(const QString &appId, quint32 pid, KSharedConfig::Ptr
     // - appId also cannot match the binary because of name mismatch
     // - in the following code *.appId can match org.kde.dragonplayer though
     if (services.isEmpty() || services.at(0)->desktopEntryName().isEmpty()) {
-        auto matchingServices =
-            KServiceTypeTrader::self()->query(QStringLiteral("Application"), QStringLiteral("exist Exec and ('%1' ~~ DesktopEntryName)").arg(appId));
+        auto matchingServices = KApplicationTrader::query([&appId](const KService::Ptr &service) {
+            return !service->noDisplay() && service->desktopEntryName().contains(appId, Qt::CaseInsensitive);
+        });
+
         QMutableListIterator<KService::Ptr> it(matchingServices);
         while (it.hasNext()) {
             auto service = it.next();
@@ -505,6 +480,7 @@ KService::List servicesFromPid(quint32 pid, KSharedConfig::Ptr rulesConfig)
     QFile environFile(QStringLiteral("/proc/%1/environ").arg(QString::number(pid)));
     if (environFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         const QByteArray bamfDesktopFileHint = QByteArrayLiteral("BAMF_DESKTOP_FILE_HINT");
+        const QByteArray appDir = QByteArrayLiteral("APPDIR");
 
         const auto lines = environFile.readAll().split('\0');
         for (const QByteArray &line : lines) {
@@ -520,6 +496,14 @@ KService::List servicesFromPid(quint32 pid, KSharedConfig::Ptr rulesConfig)
                 KService::Ptr service = KService::serviceByDesktopPath(QString::fromUtf8(value));
                 if (service) {
                     return {service};
+                }
+                break;
+            } else if (key == appDir) {
+                // For AppImage
+                const QByteArray value = line.mid(equalsIdx + 1);
+                const auto desktopFileList = QDir(QString::fromUtf8(value)).entryInfoList(QStringList{QStringLiteral("*.desktop")}, QDir::Files);
+                if (!desktopFileList.empty()) {
+                    return {QExplicitlySharedDataPointer<KService>(new KService(desktopFileList[0].absoluteFilePath()))};
                 }
                 break;
             }
@@ -552,15 +536,19 @@ KService::List servicesFromCmdLine(const QString &_cmdLine, const QString &proce
     const int firstSpace = cmdLine.indexOf(' ');
     int slash = 0;
 
-    services = KServiceTypeTrader::self()->query(QStringLiteral("Application"), QStringLiteral("exist Exec and ('%1' =~ Exec)").arg(cmdLine));
+    services = KApplicationTrader::query([&cmdLine](const KService::Ptr &service) {
+        return service->exec() == cmdLine;
+    });
 
     if (services.isEmpty()) {
         // Could not find with complete command line, so strip out the path part ...
         slash = cmdLine.lastIndexOf('/', firstSpace);
 
         if (slash > 0) {
-            services =
-                KServiceTypeTrader::self()->query(QStringLiteral("Application"), QStringLiteral("exist Exec and ('%1' =~ Exec)").arg(cmdLine.mid(slash + 1)));
+            const QStringView midCmd = QStringView(cmdLine).mid(slash + 1);
+            services = services = KApplicationTrader::query([&midCmd](const KService::Ptr &service) {
+                return service->exec() == midCmd;
+            });
         }
     }
 
@@ -568,14 +556,18 @@ KService::List servicesFromCmdLine(const QString &_cmdLine, const QString &proce
         // Could not find with arguments, so try without ...
         cmdLine.truncate(firstSpace);
 
-        services = KServiceTypeTrader::self()->query(QStringLiteral("Application"), QStringLiteral("exist Exec and ('%1' =~ Exec)").arg(cmdLine));
+        services = KApplicationTrader::query([&cmdLine](const KService::Ptr &service) {
+            return service->exec() == cmdLine;
+        });
 
         if (services.isEmpty()) {
             slash = cmdLine.lastIndexOf('/');
 
             if (slash > 0) {
-                services = KServiceTypeTrader::self()->query(QStringLiteral("Application"),
-                                                             QStringLiteral("exist Exec and ('%1' =~ Exec)").arg(cmdLine.mid(slash + 1)));
+                const QStringView midCmd = QStringView(cmdLine).mid(slash + 1);
+                services = KApplicationTrader::query([&midCmd](const KService::Ptr &service) {
+                    return service->exec() == midCmd;
+                });
             }
         }
     }
@@ -656,7 +648,7 @@ QString defaultApplication(const QUrl &url)
     } else if (application.compare(QLatin1String("terminal"), Qt::CaseInsensitive) == 0) {
         KConfigGroup confGroup(KSharedConfig::openConfig(), "General");
 
-        return confGroup.readPathEntry("TerminalApplication", QStringLiteral("konsole"));
+        return confGroup.readPathEntry("TerminalApplication", KService::serviceByStorageId(QStringLiteral("konsole")) ? QStringLiteral("konsole") : QString());
     } else if (application.compare(QLatin1String("filemanager"), Qt::CaseInsensitive) == 0) {
         KService::Ptr service = KApplicationTrader::preferredService(QStringLiteral("inode/directory"));
 
@@ -665,37 +657,6 @@ QString defaultApplication(const QUrl &url)
         }
     } else if (KService::Ptr service = KApplicationTrader::preferredService(application)) {
         return service->storageId();
-    } else {
-        // Try the files in share/apps/kcm_componentchooser/*.desktop.
-        const QStringList directories =
-            QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("kcm_componentchooser"), QStandardPaths::LocateDirectory);
-        QStringList services;
-
-        for (const QString &directory : directories) {
-            QDir dir(directory);
-            const QStringList desktopFiles = dir.entryList(QStringList("*.desktop"));
-            for (const QString &f : desktopFiles)
-                services += dir.absoluteFilePath(f);
-        }
-
-        for (const QString &service : qAsConst(services)) {
-            KConfig config(service, KConfig::SimpleConfig);
-            KConfigGroup cg = config.group(QByteArray());
-            const QString type = cg.readEntry("valueName", QString());
-
-            if (type.compare(application, Qt::CaseInsensitive) == 0) {
-                KConfig store(cg.readPathEntry("storeInFile", QStringLiteral("null")));
-                KConfigGroup storeCg(&store, cg.readEntry("valueSection", QString()));
-                const QString exec =
-                    storeCg.readPathEntry(cg.readEntry("valueName", "kcm_componenchooser_null"), cg.readEntry("defaultImplementation", QString()));
-
-                if (!exec.isEmpty()) {
-                    return exec;
-                }
-
-                break;
-            }
-        }
     }
 
     return QLatin1String("");
@@ -792,14 +753,6 @@ QRect screenGeometry(const QPoint &pos)
 void runApp(const AppData &appData, const QList<QUrl> &urls)
 {
     if (appData.url.isValid()) {
-        quint32 timeStamp = 0;
-
-#if HAVE_X11
-        if (KWindowSystem::isPlatformX11()) {
-            timeStamp = QX11Info::appUserTime();
-        }
-#endif
-
         KService::Ptr service;
 
         // applications: URLs are used to refer to applications by their KService::menuId
@@ -816,9 +769,6 @@ void runApp(const AppData &appData, const QList<QUrl> &urls)
             auto *job = new KIO::ApplicationLauncherJob(service);
             job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
             job->setUrls(urls);
-            if (KWindowSystem::isPlatformX11()) {
-                job->setStartupId(KStartupInfo::createNewStartupIdForTimestamp(timeStamp));
-            }
             job->start();
 
             KActivities::ResourceInstance::notifyAccessed(QUrl(QStringLiteral("applications:") + service->storageId()),
@@ -826,9 +776,6 @@ void runApp(const AppData &appData, const QList<QUrl> &urls)
         } else {
             auto *job = new KIO::OpenUrlJob(appData.url);
             job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
-            if (KWindowSystem::isPlatformX11()) {
-                job->setStartupId(KStartupInfo::createNewStartupIdForTimestamp(timeStamp));
-            }
             job->setRunExecutables(true);
             job->start();
 
@@ -839,4 +786,49 @@ void runApp(const AppData &appData, const QList<QUrl> &urls)
     }
 }
 
+bool canLauchNewInstance(const AppData &appData)
+{
+    if (appData.url.isEmpty()) {
+        return false;
+    }
+
+    QString desktopEntry = appData.id;
+
+    // Remove suffix if necessary
+    if (desktopEntry.endsWith(QLatin1String(".desktop"))) {
+        desktopEntry.chop(8);
+    }
+
+    const KService::Ptr service = KService::serviceByDesktopName(desktopEntry);
+
+    if (service) {
+        if (service->noDisplay()) {
+            return false;
+        }
+
+        if (service->property(QStringLiteral("SingleMainWindow"), QMetaType::Bool).toBool()) {
+            return false;
+        }
+
+        // GNOME-specific key, for backwards compatibility with apps that haven't
+        // started using the XDG "SingleMainWindow" key yet
+        if (service->property(QStringLiteral("X-GNOME-SingleWindow"), QMetaType::Bool).toBool()) {
+            return false;
+        }
+
+        // Hide our own action if there's already a "New Window" action
+        const auto actions = service->actions();
+        for (const KServiceAction &action : actions) {
+            if (action.name().startsWith("new", Qt::CaseInsensitive) && action.name().endsWith("window", Qt::CaseInsensitive)) {
+                return false;
+            }
+
+            if (action.name() == QLatin1String("WindowNew")) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
 }

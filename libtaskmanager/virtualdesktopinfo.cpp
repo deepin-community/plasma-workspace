@@ -5,12 +5,14 @@
 */
 
 #include "virtualdesktopinfo.h"
+#include "libtaskmanager_debug.h"
 
 #include <KLocalizedString>
 #include <KWayland/Client/connection_thread.h>
 #include <KWayland/Client/plasmavirtualdesktop.h>
 #include <KWayland/Client/registry.h>
 #include <KWindowSystem>
+#include <KX11Extras>
 
 #include <QDBusConnection>
 #include <QDBusMessage>
@@ -21,9 +23,13 @@
 #include <config-X11.h>
 
 #if HAVE_X11
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
-#include <netwm.h>
 #endif
+#include <netwm.h>
+#endif // HAVE_X11
 
 namespace TaskManager
 {
@@ -76,7 +82,7 @@ VirtualDesktopInfo::Private::Private()
                                                                   this,
                                                                   SLOT(navigationWrappingAroundChanged(bool)));
     if (!connection) {
-        qWarning() << "Could not connect to org.kde.KWin.VirtualDesktopManager.navigationWrappingAroundChanged signal";
+        qCWarning(TASKMANAGER_DEBUG) << "Could not connect to org.kde.KWin.VirtualDesktopManager.navigationWrappingAroundChanged signal";
     }
 
     // ...Then get the property's current value
@@ -91,7 +97,7 @@ VirtualDesktopInfo::Private::Private()
         watcher->deleteLater();
 
         if (reply.isError()) {
-            qWarning() << "Failed to determine whether virtual desktop navigation wrapping is enabled: " << reply.error().message();
+            qCWarning(TASKMANAGER_DEBUG) << "Failed to determine whether virtual desktop navigation wrapping is enabled: " << reply.error().message();
             return;
         }
 
@@ -105,7 +111,7 @@ void VirtualDesktopInfo::Private::navigationWrappingAroundChanged(bool newVal)
         return;
     }
     navigationWrappingAround = newVal;
-    emit navigationWrappingAroundChanged();
+    Q_EMIT navigationWrappingAroundChanged();
 }
 
 #if HAVE_X11
@@ -135,11 +141,11 @@ VirtualDesktopInfo::XWindowPrivate::XWindowPrivate()
 
 void VirtualDesktopInfo::XWindowPrivate::init()
 {
-    connect(KWindowSystem::self(), &KWindowSystem::currentDesktopChanged, this, &VirtualDesktopInfo::XWindowPrivate::currentDesktopChanged);
+    connect(KX11Extras::self(), &KX11Extras::currentDesktopChanged, this, &VirtualDesktopInfo::XWindowPrivate::currentDesktopChanged);
 
-    connect(KWindowSystem::self(), &KWindowSystem::numberOfDesktopsChanged, this, &VirtualDesktopInfo::XWindowPrivate::numberOfDesktopsChanged);
+    connect(KX11Extras::self(), &KX11Extras::numberOfDesktopsChanged, this, &VirtualDesktopInfo::XWindowPrivate::numberOfDesktopsChanged);
 
-    connect(KWindowSystem::self(), &KWindowSystem::desktopNamesChanged, this, &VirtualDesktopInfo::XWindowPrivate::desktopNamesChanged);
+    connect(KX11Extras::self(), &KX11Extras::desktopNamesChanged, this, &VirtualDesktopInfo::XWindowPrivate::desktopNamesChanged);
 
     QDBusConnection dbus = QDBusConnection::sessionBus();
     dbus.connect(QString(),
@@ -152,19 +158,19 @@ void VirtualDesktopInfo::XWindowPrivate::init()
 
 QVariant VirtualDesktopInfo::XWindowPrivate::currentDesktop() const
 {
-    return KWindowSystem::currentDesktop();
+    return KX11Extras::currentDesktop();
 }
 
 int VirtualDesktopInfo::XWindowPrivate::numberOfDesktops() const
 {
-    return KWindowSystem::numberOfDesktops();
+    return KX11Extras::numberOfDesktops();
 }
 
 QVariantList VirtualDesktopInfo::XWindowPrivate::desktopIds() const
 {
     QVariantList ids;
 
-    for (int i = 1; i <= KWindowSystem::numberOfDesktops(); ++i) {
+    for (int i = 1; i <= KX11Extras::numberOfDesktops(); ++i) {
         ids << i;
     }
 
@@ -176,8 +182,8 @@ QStringList VirtualDesktopInfo::XWindowPrivate::desktopNames() const
     QStringList names;
 
     // Virtual desktop numbers start at 1.
-    for (int i = 1; i <= KWindowSystem::numberOfDesktops(); ++i) {
-        names << KWindowSystem::desktopName(i);
+    for (int i = 1; i <= KX11Extras::numberOfDesktops(); ++i) {
+        names << KX11Extras::desktopName(i);
     }
 
     return names;
@@ -208,8 +214,8 @@ void VirtualDesktopInfo::XWindowPrivate::requestActivate(const QVariant &desktop
     const int desktopNumber = desktop.toInt(&ok);
 
     // Virtual desktop numbers start at 1.
-    if (ok && desktopNumber > 0 && desktopNumber <= KWindowSystem::numberOfDesktops()) {
-        KWindowSystem::setCurrentDesktop(desktopNumber);
+    if (ok && desktopNumber > 0 && desktopNumber <= KX11Extras::numberOfDesktops()) {
+        KX11Extras::setCurrentDesktop(desktopNumber);
     }
 }
 
@@ -231,7 +237,7 @@ void VirtualDesktopInfo::XWindowPrivate::requestRemoveDesktop(quint32 position)
         info.setNumberOfDesktops(info.numberOfDesktops() - 1);
     }
 }
-#endif
+#endif // HAVE_X11
 
 class Q_DECL_HIDDEN VirtualDesktopInfo::WaylandPrivate : public VirtualDesktopInfo::Private
 {
@@ -280,8 +286,6 @@ void VirtualDesktopInfo::WaylandPrivate::init()
     QObject::connect(registry, &KWayland::Client::Registry::plasmaVirtualDesktopManagementAnnounced, [this, registry](quint32 name, quint32 version) {
         virtualDesktopManagement = registry->createPlasmaVirtualDesktopManagement(name, version, this);
 
-        const QList<KWayland::Client::PlasmaVirtualDesktop *> &desktops = virtualDesktopManagement->desktops();
-
         QObject::connect(virtualDesktopManagement,
                          &KWayland::Client::PlasmaVirtualDesktopManagement::desktopCreated,
                          this,
@@ -292,13 +296,13 @@ void VirtualDesktopInfo::WaylandPrivate::init()
         QObject::connect(virtualDesktopManagement, &KWayland::Client::PlasmaVirtualDesktopManagement::desktopRemoved, this, [this](const QString &id) {
             virtualDesktops.removeOne(id);
 
-            emit numberOfDesktopsChanged();
-            emit desktopIdsChanged();
-            emit desktopNamesChanged();
+            Q_EMIT numberOfDesktopsChanged();
+            Q_EMIT desktopIdsChanged();
+            Q_EMIT desktopNamesChanged();
 
             if (currentVirtualDesktop == id) {
                 currentVirtualDesktop.clear();
-                emit currentDesktopChanged();
+                Q_EMIT currentDesktopChanged();
             }
         });
 
@@ -319,24 +323,24 @@ void VirtualDesktopInfo::WaylandPrivate::addDesktop(const QString &id, quint32 p
 
     virtualDesktops.insert(position, id);
 
-    emit numberOfDesktopsChanged();
-    emit desktopIdsChanged();
-    emit desktopNamesChanged();
+    Q_EMIT numberOfDesktopsChanged();
+    Q_EMIT desktopIdsChanged();
+    Q_EMIT desktopNamesChanged();
 
     const KWayland::Client::PlasmaVirtualDesktop *desktop = virtualDesktopManagement->getVirtualDesktop(id);
 
     QObject::connect(desktop, &KWayland::Client::PlasmaVirtualDesktop::activated, this, [desktop, this]() {
         currentVirtualDesktop = desktop->id();
-        emit currentDesktopChanged();
+        Q_EMIT currentDesktopChanged();
     });
 
     QObject::connect(desktop, &KWayland::Client::PlasmaVirtualDesktop::done, this, [this]() {
-        emit desktopNamesChanged();
+        Q_EMIT desktopNamesChanged();
     });
 
     if (desktop->isActive()) {
         currentVirtualDesktop = id;
-        emit currentDesktopChanged();
+        Q_EMIT currentDesktopChanged();
     }
 }
 
@@ -439,7 +443,7 @@ VirtualDesktopInfo::VirtualDesktopInfo(QObject *parent)
         if (KWindowSystem::isPlatformX11()) {
             d = new VirtualDesktopInfo::XWindowPrivate;
         } else
-#endif
+#endif // HAVE_X11
         {
             d = new VirtualDesktopInfo::WaylandPrivate;
         }

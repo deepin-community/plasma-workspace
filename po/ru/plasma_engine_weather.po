@@ -3,20 +3,20 @@
 #
 # Alexander Potashev <aspotashev@gmail.com>, 2009, 2010, 2016, 2017, 2018.
 # Yuri Efremov <yur.arh@gmail.com>, 2010, 2011.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2019.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2019, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2019-10-08 15:08+0300\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
+"PO-Revision-Date: 2021-12-28 15:22+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.08.1\n"
+"X-Generator: Lokalize 21.12.0\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -2698,75 +2698,88 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr "Ветрено"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "Великобритания"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "США"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr "Сегодня"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, kde-format
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "Ночью"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "Сб"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "Вс"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "Пн"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "Вт"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "Ср"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "Чт"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "Пт"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
 msgstr "Данные от BBC Weather"
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
+msgstr "Источник: Deutscher Wetterdienst (метеорологическая служба Германии)"
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
 #: ions/envcan/ion_envcan.cpp:1403 ions/envcan/ion_envcan.cpp:1544
@@ -4875,115 +4888,237 @@ msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr "Преимущественно ясно"
 
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "погодные условия"
+
+#~ msgctxt "weather condition"
+#~ msgid "thunder storm"
+#~ msgstr "гроза"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#~ msgctxt "weather forecast"
+#~ msgid "thunder storm"
+#~ msgstr "гроза"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "С"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNE"
+#~ msgstr "ССВ"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "СВ"
+
+#~ msgctxt "wind direction"
+#~ msgid "ENE"
+#~ msgstr "ВСВ"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "В"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSE"
+#~ msgstr "ЮЮВ"
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "ЮВ"
+
+#~ msgctxt "wind direction"
+#~ msgid "ESE"
+#~ msgstr "ВЮВ"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "Ю"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNW"
+#~ msgstr "ССЗ"
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "СЗ"
+
+#~ msgctxt "wind direction"
+#~ msgid "WNW"
+#~ msgstr "ЗСЗ"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "З"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSW"
+#~ msgstr "ЮЮЗ"
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "ЮЗ"
+
+#~ msgctxt "wind direction"
+#~ msgid "WSW"
+#~ msgstr "ЗЮЗ"
+
+#~ msgctxt "wind direction"
+#~ msgid "VR"
+#~ msgstr "переменчивый"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "повышается"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "понижается"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "не меняется"
+
+#~ msgctxt "wind speed"
+#~ msgid "Calm"
+#~ msgstr "Штиль"
+
+#~ msgctxt "wind speed"
+#~ msgid "N/A"
+#~ msgstr "н/д"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "steady"
+#~ msgstr "неизменный"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "Метеорологические данные предоставляются Environment Canada"
+
+#~ msgctxt "wind direction - wind speed is too low to measure"
+#~ msgid "VR"
+#~ msgstr "переменчивый"
 
 # северный? --aspotashev
+#~ msgid "N"
+#~ msgstr "С"
+
+#~ msgid "NNE"
+#~ msgstr "ССВ"
+
+#~ msgid "NE"
+#~ msgstr "СВ"
+
+#~ msgid "ENE"
+#~ msgstr "ВСВ"
+
+#~ msgid "E"
+#~ msgstr "В"
+
+#~ msgid "SSE"
+#~ msgstr "ЮЮВ"
+
+#~ msgid "SE"
+#~ msgstr "ЮВ"
+
+#~ msgid "ESE"
+#~ msgstr "ВЮВ"
+
+#~ msgid "S"
+#~ msgstr "Ю"
+
+#~ msgid "NNW"
+#~ msgstr "ССЗ"
+
+#~ msgid "NW"
+#~ msgstr "СЗ"
+
+#~ msgid "WNW"
+#~ msgstr "ЗСЗ"
+
+#~ msgid "W"
+#~ msgstr "З"
+
+#~ msgid "SSW"
+#~ msgstr "ЮЮЗ"
+
+#~ msgid "SW"
+#~ msgstr "ЮЗ"
+
+#~ msgid "WSW"
+#~ msgstr "ЗЮЗ"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr "Поддержка backstage.bbc.co.uk / Данные из офиса UK MET"
+
+#~ msgctxt "Degree, unit symbol"
+#~ msgid "°"
+#~ msgstr "°"
+
+#~ msgctxt "Celsius, temperature unit"
+#~ msgid "°C"
+#~ msgstr "°C"
+
+#~ msgctxt "Fahrenheit, temperature unit"
+#~ msgid "°F"
+#~ msgstr "°F"
+
+#~ msgctxt "Kelvin, temperature unit"
+#~ msgid "K"
+#~ msgstr "K"
+
+#~ msgctxt "kilometers per hour, windspeed unit"
+#~ msgid "km/h"
+#~ msgstr "км/ч"
+
+#~ msgctxt "meters per second, windspeed unit"
+#~ msgid "m/s"
+#~ msgstr "м/с"
+
+#~ msgctxt "miles per hour, windspeed unit"
+#~ msgid "mph"
+#~ msgstr "миль/ч"
+
+#~ msgctxt "knots, wind speed unit"
+#~ msgid "kt"
+#~ msgstr "узлов"
+
+#~ msgctxt "beaufort, wind speed unit"
+#~ msgid "Bft"
+#~ msgstr "по Бофорту"
+
+#~ msgctxt "kilometers, distance unit"
+#~ msgid "km"
+#~ msgstr "км"
+
+#~ msgctxt "miles, distance unit"
+#~ msgid "mi"
+#~ msgstr "миль"
+
+#~ msgctxt "centimeters, length unit"
+#~ msgid "cm"
+#~ msgstr "см"
+
+#~ msgctxt "millimeters, length unit"
+#~ msgid "mm"
+#~ msgstr "мм"
+
+#~ msgctxt "inches, length unit"
+#~ msgid "in"
+#~ msgstr "дюймов"
+
+#~ msgctxt "kilopascals, airpressure unit"
+#~ msgid "kPa"
+#~ msgstr "кПа"
+
+#~ msgctxt "inches hg, airpressure unit"
+#~ msgid "inHg"
+#~ msgstr "дюймов рт.ст."
+
+#~ msgctxt "millibars, airpressure unit"
+#~ msgid "mbar"
+#~ msgstr "миллибар"
+
+#~ msgctxt "hectopascals, airpressure unit"
+#~ msgid "hPa"
+#~ msgstr "гПа"

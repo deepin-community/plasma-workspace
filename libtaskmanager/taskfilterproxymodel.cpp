@@ -25,6 +25,7 @@ public:
     bool filterByVirtualDesktop = false;
     bool filterByScreen = false;
     bool filterByActivity = false;
+    bool filterMinimized = false;
     bool filterNotMinimized = false;
     bool filterNotMaximized = false;
     bool filterHidden = false;
@@ -69,7 +70,7 @@ void TaskFilterProxyModel::setVirtualDesktop(const QVariant &desktop)
             invalidateFilter();
         }
 
-        emit virtualDesktopChanged();
+        Q_EMIT virtualDesktopChanged();
     }
 }
 
@@ -87,7 +88,7 @@ void TaskFilterProxyModel::setScreenGeometry(const QRect &geometry)
             invalidateFilter();
         }
 
-        emit screenGeometryChanged();
+        Q_EMIT screenGeometryChanged();
     }
 }
 
@@ -105,7 +106,7 @@ void TaskFilterProxyModel::setActivity(const QString &activity)
             invalidateFilter();
         }
 
-        emit activityChanged();
+        Q_EMIT activityChanged();
     }
 }
 
@@ -121,7 +122,7 @@ void TaskFilterProxyModel::setFilterByVirtualDesktop(bool filter)
 
         invalidateFilter();
 
-        emit filterByVirtualDesktopChanged();
+        Q_EMIT filterByVirtualDesktopChanged();
     }
 }
 
@@ -137,7 +138,7 @@ void TaskFilterProxyModel::setFilterByScreen(bool filter)
 
         invalidateFilter();
 
-        emit filterByScreenChanged();
+        Q_EMIT filterByScreenChanged();
     }
 }
 
@@ -153,8 +154,25 @@ void TaskFilterProxyModel::setFilterByActivity(bool filter)
 
         invalidateFilter();
 
-        emit filterByActivityChanged();
+        Q_EMIT filterByActivityChanged();
     }
+}
+
+bool TaskFilterProxyModel::filterMinimized() const
+{
+    return d->filterMinimized;
+}
+
+void TaskFilterProxyModel::setFilterMinimized(bool filter)
+{
+    if (d->filterMinimized == filter) {
+        return;
+    }
+
+    d->filterMinimized = filter;
+    invalidateFilter();
+
+    Q_EMIT filterMinimizedChanged();
 }
 
 bool TaskFilterProxyModel::filterNotMinimized() const
@@ -169,7 +187,7 @@ void TaskFilterProxyModel::setFilterNotMinimized(bool filter)
 
         invalidateFilter();
 
-        emit filterNotMinimizedChanged();
+        Q_EMIT filterNotMinimizedChanged();
     }
 }
 
@@ -185,7 +203,7 @@ void TaskFilterProxyModel::setFilterNotMaximized(bool filter)
 
         invalidateFilter();
 
-        emit filterNotMaximizedChanged();
+        Q_EMIT filterNotMaximizedChanged();
     }
 }
 
@@ -201,7 +219,7 @@ void TaskFilterProxyModel::setFilterHidden(bool filter)
 
         invalidateFilter();
 
-        emit filterHiddenChanged();
+        Q_EMIT filterHiddenChanged();
     }
 }
 
@@ -217,7 +235,7 @@ void TaskFilterProxyModel::setFilterSkipTaskbar(bool filter)
 
         invalidateFilter();
 
-        emit filterSkipTaskbarChanged();
+        Q_EMIT filterSkipTaskbarChanged();
     }
 }
 
@@ -233,7 +251,7 @@ void TaskFilterProxyModel::setFilterSkipPager(bool filter)
 
         invalidateFilter();
 
-        emit filterSkipPagerChanged();
+        Q_EMIT filterSkipPagerChanged();
     }
 }
 
@@ -249,7 +267,7 @@ void TaskFilterProxyModel::setDemandingAttentionSkipsFilters(bool skip)
 
         invalidateFilter();
 
-        emit demandingAttentionSkipsFiltersChanged();
+        Q_EMIT demandingAttentionSkipsFiltersChanged();
     }
 }
 
@@ -317,6 +335,15 @@ bool TaskFilterProxyModel::acceptsRow(int sourceRow) const
         bool isMinimized = sourceIdx.data(AbstractTasksModel::IsMinimized).toBool();
 
         if (!isMinimized) {
+            return false;
+        }
+    }
+
+    // Filter out minimized windows
+    if (d->filterMinimized) {
+        const bool isMinimized = sourceIdx.data(AbstractTasksModel::IsMinimized).toBool();
+
+        if (isMinimized) {
             return false;
         }
     }

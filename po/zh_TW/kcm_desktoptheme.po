@@ -6,47 +6,27 @@
 # Franklin Weng <franklin@goodhorse.idv.tw>, 2011, 2013, 2014.
 # Jeff Huang <s8321414@gmail.com>, 2016.
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_desktopthemedetails\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2020-01-16 14:33+0800\n"
-"Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
+"PO-Revision-Date: 2022-06-29 11:36+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.12.1\n"
+"X-Generator: Lokalize 22.04.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Franklin Weng, Jeff Huang"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "franklin@goodhorse.idv.tw, s8321414@gmail.com"
 
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
-#, fuzzy, kde-format
-#| msgid "Get New Plasma Styles..."
+#, kde-format
 msgid "Name of the current Plasma Style"
-msgstr "取得新 Plasma 樣式…"
-
-#: kcm.cpp:51
-#, kde-format
-msgid "Plasma Style"
-msgstr "Plasma 樣式"
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr "David Rosca"
+msgstr "目前的 Plasma 風格名稱"
 
 #: kcm.cpp:110
 #, kde-format
@@ -68,7 +48,7 @@ msgstr "主題已成功安裝。"
 msgid "Theme installation failed."
 msgstr "主題安裝失敗。"
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr "移除主題失敗：%1"
@@ -104,8 +84,7 @@ msgid "Follows color scheme"
 msgstr "使用配色"
 
 #: package/contents/ui/main.qml:118
-#, fuzzy, kde-format
-#| msgid "Edit Theme..."
+#, kde-format
 msgid "Edit Theme…"
 msgstr "編輯主題…"
 
@@ -120,23 +99,21 @@ msgid "Restore Theme"
 msgstr "復原主題"
 
 #: package/contents/ui/main.qml:174
-#, fuzzy, kde-format
-#| msgid "Install from File..."
+#, kde-format
 msgid "Install from File…"
-msgstr "從檔案安裝 ..."
+msgstr "從檔案安裝…"
 
 #: package/contents/ui/main.qml:179
-#, fuzzy, kde-format
-#| msgid "Get New Plasma Styles..."
+#, kde-format
 msgid "Get New Plasma Styles…"
 msgstr "取得新 Plasma 樣式…"
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgid "Open Theme"
 msgstr "開啟主題"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr "主題檔 (*.zip *.tar.gz *.tar.bz2)"
@@ -148,6 +125,8 @@ msgid ""
 "accidentally setting it to one that is either not available, or which is "
 "already set."
 msgstr ""
+"此工具讓您能設定目前 Plasma 工作階段的主題，而不會意外套用無法使用或是已經設"
+"定的主題。"
 
 #: plasma-apply-desktoptheme.cpp:35
 #, kde-format
@@ -155,33 +134,58 @@ msgid ""
 "The name of the theme you wish to set for your current Plasma session "
 "(passing a full path will only use the last part of the path)"
 msgstr ""
+"您希望目前 Plasma 工作階段使用的主題名稱（填入完整路徑時只會使用路徑最後的部"
+"分）"
 
 #: plasma-apply-desktoptheme.cpp:36
 #, kde-format
 msgid ""
 "Show all the themes available on the system (and which is the current theme)"
-msgstr ""
+msgstr "顯示系統上可用的主題（以及目前使用的主題）"
 
 #: plasma-apply-desktoptheme.cpp:49
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
 "Plasma session."
-msgstr ""
+msgstr "您要求設定的主題「%1」已經是目前 Plasma 工作階段的主題了。"
 
 #: plasma-apply-desktoptheme.cpp:65
 #, kde-format
 msgid "The current Plasma session's theme has been set to %1"
-msgstr ""
+msgstr "已將「%1」設為目前 Plasma 工作階段的主題"
 
 #: plasma-apply-desktoptheme.cpp:67
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
 "options: %2"
-msgstr ""
+msgstr "找不到主題「%1」。主題應該要是以下選項之一：%2"
 
 #: plasma-apply-desktoptheme.cpp:75
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
-msgstr ""
+msgstr "您的系統上有以下的 Plasma 主題："
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Franklin Weng, Jeff Huang"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "franklin@goodhorse.idv.tw, s8321414@gmail.com"
+
+#~ msgid "Plasma Style"
+#~ msgstr "Plasma 樣式"
+
+#~ msgid "David Rosca"
+#~ msgstr "David Rosca"
+
+#~ msgid "Search..."
+#~ msgstr "搜尋…"
+
+#~ msgid "Plasma Styles"
+#~ msgstr "Plasma 樣式"
+
+#~ msgid "Download New Plasma Styles"
+#~ msgstr "下載新 Plasma 樣式"

@@ -163,7 +163,7 @@ bool SourcesModel::setData(const QModelIndex &index, const QVariant &value, int 
     }
 
     if (dirty) {
-        emit dataChanged(index, index, {role});
+        Q_EMIT dataChanged(index, index, {role});
     }
 
     return dirty;
@@ -310,9 +310,7 @@ void SourcesModel::load()
             return false;
         }
 
-        const QString usesNotis = app->property(QStringLiteral("X-GNOME-UsesNotifications")).toString();
-
-        if (usesNotis.compare(QLatin1String("true"), Qt::CaseInsensitive) != 0) {
+        if (!app->property(QStringLiteral("X-GNOME-UsesNotifications")).toBool()) {
             return false;
         }
 

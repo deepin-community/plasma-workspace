@@ -31,3 +31,6 @@ msgstr "Ne mogu da nađem prikaz posla za %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Korisnik otkazao posao."

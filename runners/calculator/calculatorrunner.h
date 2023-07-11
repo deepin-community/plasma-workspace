@@ -11,9 +11,7 @@
 #include <QAction>
 #include <QMimeData>
 
-#ifdef ENABLE_QALCULATE
 class QalculateEngine;
-#endif
 
 #include <krunner/abstractrunner.h>
 
@@ -35,16 +33,10 @@ protected Q_SLOTS:
     QMimeData *mimeDataForMatch(const Plasma::QueryMatch &match) override;
 
 private:
-    QString calculate(const QString &term, bool *isApproximate);
+    QString calculate(const QString &term, bool *isApproximate, int base, const QString &customBase);
     void userFriendlyMultiplication(QString &cmd);
     void userFriendlySubstitutions(QString &cmd);
-#ifndef ENABLE_QALCULATE
-    void powSubstitutions(QString &cmd);
-    void hexSubstitutions(QString &cmd);
-#endif
 
-#ifdef ENABLE_QALCULATE
-    QalculateEngine *m_engine;
-#endif
+    std::unique_ptr<QalculateEngine> m_engine;
     QList<QAction *> m_actions;
 };

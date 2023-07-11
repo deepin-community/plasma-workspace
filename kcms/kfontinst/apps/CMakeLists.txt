@@ -13,7 +13,6 @@ set_target_properties(kfontprint_bin PROPERTIES OUTPUT_NAME kfontprint)
 set_target_properties(kfontview_bin PROPERTIES OUTPUT_NAME kfontview)
 
 target_link_libraries(kfontinst_bin
-    Qt::X11Extras
     KF5::Archive
     KF5::IconThemes
     KF5::KIOCore
@@ -22,6 +21,11 @@ target_link_libraries(kfontinst_bin
     X11::X11
     kfontinst
 )
+if (QT_MAJOR_VERSION EQUAL "5")
+    target_link_libraries(kfontinst_bin Qt::X11Extras)
+else()
+    target_link_libraries(kfontinst_bin Qt::GuiPrivate)
+endif()
 target_link_libraries(kfontprint_bin
     Qt::PrintSupport
     KF5::IconThemes
@@ -30,13 +34,20 @@ target_link_libraries(kfontprint_bin
 )
 target_link_libraries(kfontview_bin KF5::Parts KF5::XmlGui KF5::DBusAddons kfontinstui kfontinst )
 
+
+ecm_qt_declare_logging_category(kfontview_bin
+    HEADER kfontview_debug.h
+    IDENTIFIER KFONTVIEW_DEBUG
+    CATEGORY_NAME org.kde.plasma.kfontview
+)
+
 install(TARGETS kfontinst_bin ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 install(TARGETS kfontprint_bin DESTINATION ${KDE_INSTALL_LIBEXECDIR} )
 install(TARGETS kfontview_bin ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
-install(FILES kfontviewui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kfontview )
+install(FILES kfontviewui.rc DESTINATION ${KDE_INSTALL_KXMLGUIDIR}/kfontview )
 install(PROGRAMS org.kde.kfontview.desktop DESTINATION ${KDE_INSTALL_APPDIR} )
 install(FILES installfont.desktop DESTINATION
-${KDE_INSTALL_KSERVICES5DIR}/ServiceMenus )
+${KDE_INSTALL_KSERVICESDIR}/ServiceMenus )
 
 ecm_install_icons( ICONS
                    16-apps-kfontview.png

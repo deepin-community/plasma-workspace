@@ -1,9 +1,6 @@
 # KI18N Translation Domain for this library
 add_definitions(-DTRANSLATION_DOMAIN=\"kcm_cursortheme\")
 
-include_directories( ${LIBUSB_INCLUDE_DIR} )
-
-
 set( libnoinst_SRCS
 xcursor/thememodel.cpp
 xcursor/themeapplicator.cpp
@@ -24,18 +21,19 @@ kcmutils_generate_module_data(
     kcm_cursortheme_PART_SRCS
     MODULE_DATA_HEADER cursorthemedata.h
     MODULE_DATA_CLASS_NAME CursorThemeData
-    SETTINGS_HEADERS cursorthemesettings.h
-    SETTINGS_CLASSES CursorThemeSettings
+    SETTINGS_HEADERS cursorthemesettings.h launchfeedbacksettings.h
+    SETTINGS_CLASSES CursorThemeSettings LaunchFeedbackSettings
 )
 
 
 kconfig_add_kcfg_files(kcm_cursortheme_PART_SRCS cursorthemesettings.kcfgc GENERATE_MOC)
-kcoreaddons_add_plugin(kcm_cursortheme SOURCES ${kcm_cursortheme_PART_SRCS} INSTALL_NAMESPACE "kcms")
+kconfig_add_kcfg_files(kcm_cursortheme_PART_SRCS launchfeedbacksettings.kcfgc GENERATE_MOC)
+kcoreaddons_add_plugin(kcm_cursortheme SOURCES ${kcm_cursortheme_PART_SRCS} INSTALL_NAMESPACE "plasma/kcms/systemsettings")
+kcmutils_generate_desktop_file (kcm_cursortheme)
 
 
 target_link_libraries(kcm_cursortheme
     Qt::DBus
-    Qt::X11Extras
     Qt::Quick
     KF5::Archive
     KF5::KCMUtils
@@ -50,14 +48,15 @@ target_link_libraries(kcm_cursortheme
     krdb
 )
 
-if (X11_Xcursor_FOUND)
-   target_link_libraries(kcm_cursortheme X11::Xcursor)
-endif ()
-if (X11_Xfixes_FOUND)
-   target_link_libraries(kcm_cursortheme X11::Xfixes)
-endif ()
+if (HAVE_X11)
+    if (QT_MAJOR_VERSION EQUAL "5")
+        target_link_libraries(kcm_cursortheme Qt::X11Extras)
+    else()
+        target_link_libraries(kcm_cursortheme Qt::GuiPrivate)
+    endif()
 
-kcoreaddons_desktop_to_json(kcm_cursortheme "kcm_cursortheme.desktop")
+   target_link_libraries(kcm_cursortheme X11::Xcursor X11::Xfixes)
+endif ()
 
 ########### next target ###############
 
@@ -77,29 +76,30 @@ add_executable(plasma-apply-cursortheme ${plasma-apply-cursortheme_SRCS})
 
 target_link_libraries(plasma-apply-cursortheme
     Qt::DBus
-    Qt::X11Extras
     KF5::GuiAddons
     KF5::I18n
     KF5::KCMUtils
     KF5::WindowSystem
-    X11::X11
-    XCB::XCB
     PW::KWorkspace
 )
-if (X11_Xcursor_FOUND)
-   target_link_libraries(plasma-apply-cursortheme X11::Xcursor)
-endif ()
-if (X11_Xfixes_FOUND)
-   target_link_libraries(plasma-apply-cursortheme X11::Xfixes)
-endif ()
+
+if (HAVE_X11)
+    if (QT_MAJOR_VERSION EQUAL "5")
+        target_link_libraries(plasma-apply-cursortheme Qt::X11Extras)
+    else()
+        target_link_libraries(plasma-apply-cursortheme Qt::GuiPrivate)
+    endif()
+
+   target_link_libraries(plasma-apply-cursortheme X11::X11 X11::Xcursor X11::Xfixes)
+endif()
 
 install(TARGETS plasma-apply-cursortheme  DESTINATION ${KDE_INSTALL_BINDIR})
 
 ########### install files ###############
 
 install(FILES cursorthemesettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+install(FILES launchfeedbacksettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 install(FILES delete_cursor_old_default_size.upd delete_cursor_old_default_size.pl DESTINATION ${KDE_INSTALL_DATADIR}/kconf_update)
-install( FILES kcm_cursortheme.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
 install( FILES xcursor/xcursor.knsrc DESTINATION  ${KDE_INSTALL_KNSRCDIR} )
 
 kpackage_install_package(package kcm_cursortheme kcms)

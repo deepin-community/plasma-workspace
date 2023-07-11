@@ -28,3 +28,6 @@ msgstr "Ne trovis la TaskVidon por %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Tasko rezignita de uzanto."

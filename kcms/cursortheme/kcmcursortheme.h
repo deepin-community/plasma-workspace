@@ -9,9 +9,9 @@
 
 #include <KNSCore/EntryWrapper>
 #include <KQuickAddons/ManagedConfigModule>
-#include <QScopedPointer>
 
 #include "cursorthemesettings.h"
+#include "launchfeedbacksettings.h"
 
 class QQmlListReference;
 class QStandardItemModel;
@@ -30,7 +30,9 @@ class FileCopyJob;
 class CursorThemeConfig : public KQuickAddons::ManagedConfigModule
 {
     Q_OBJECT
+
     Q_PROPERTY(CursorThemeSettings *cursorThemeSettings READ cursorThemeSettings CONSTANT)
+    Q_PROPERTY(LaunchFeedbackSettings *launchFeedbackSettings READ launchFeedbackSettings CONSTANT)
     Q_PROPERTY(bool canInstall READ canInstall WRITE setCanInstall NOTIFY canInstallChanged)
     Q_PROPERTY(bool canResize READ canResize WRITE setCanResize NOTIFY canResizeChanged)
     Q_PROPERTY(bool canConfigure READ canConfigure WRITE setCanConfigure NOTIFY canConfigureChanged)
@@ -41,7 +43,7 @@ class CursorThemeConfig : public KQuickAddons::ManagedConfigModule
     Q_PROPERTY(int preferredSize READ preferredSize WRITE setPreferredSize NOTIFY preferredSizeChanged)
 
 public:
-    CursorThemeConfig(QObject *parent, const QVariantList &);
+    CursorThemeConfig(QObject *parent, const KPluginMetaData &data, const QVariantList &);
     ~CursorThemeConfig() override;
 
     void load() override;
@@ -50,6 +52,7 @@ public:
 
     // for QML properties
     CursorThemeSettings *cursorThemeSettings() const;
+    LaunchFeedbackSettings *launchFeedbackSettings() const;
 
     bool canInstall() const;
     void setCanInstall(bool can);
@@ -121,6 +124,6 @@ private:
     bool m_canResize;
     bool m_canConfigure;
 
-    QScopedPointer<QTemporaryFile> m_tempInstallFile;
+    std::unique_ptr<QTemporaryFile> m_tempInstallFile;
     QPointer<KIO::FileCopyJob> m_tempCopyJob;
 };

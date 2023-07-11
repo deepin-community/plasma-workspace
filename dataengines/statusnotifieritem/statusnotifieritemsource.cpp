@@ -6,7 +6,6 @@
 */
 
 #include "statusnotifieritemsource.h"
-#include "statusnotifieritem_interface.h"
 #include "statusnotifieritemservice.h"
 #include "systemtraytypes.h"
 
@@ -170,7 +169,7 @@ void StatusNotifierItemSource::refreshToolTip()
 void StatusNotifierItemSource::refreshMenu()
 {
     if (m_menuImporter) {
-        m_menuImporter->deleteLater();
+        delete m_menuImporter;
         m_menuImporter = nullptr;
     }
     refresh();
@@ -240,7 +239,7 @@ void StatusNotifierItemSource::refreshCallback(QDBusPendingCallWatcher *call)
             }
             // FIXME: If last part of path is not "icons", this won't work!
             QString appName;
-            auto tokens = path.splitRef('/', Qt::SkipEmptyParts);
+            auto tokens = QStringView(path).split('/', Qt::SkipEmptyParts);
             if (tokens.length() >= 3 && tokens.takeLast() == QLatin1String("icons"))
                 appName = tokens.takeLast().toString();
 
@@ -387,7 +386,7 @@ void StatusNotifierItemSource::refreshCallback(QDBusPendingCallWatcher *call)
 
 void StatusNotifierItemSource::contextMenuReady()
 {
-    emit contextMenuReady(m_menuImporter->menu());
+    Q_EMIT contextMenuReady(m_menuImporter->menu());
 }
 
 QPixmap StatusNotifierItemSource::KDbusImageStructToPixmap(const KDbusImageStruct &image) const
@@ -498,7 +497,7 @@ void StatusNotifierItemSource::activate(int x, int y)
 void StatusNotifierItemSource::activateCallback(QDBusPendingCallWatcher *call)
 {
     QDBusPendingReply<void> reply = *call;
-    emit activateResult(!reply.isError());
+    Q_EMIT activateResult(!reply.isError());
     call->deleteLater();
 }
 

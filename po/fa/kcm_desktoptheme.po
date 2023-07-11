@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: ۲۰۱۶-۰۸-۲۰ ۱۶:۵۵+0330\n"
 "Last-Translator: Mohi Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Persian <kde-i18n-fa@kde.org>\n"
@@ -19,33 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 2.0\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "محمدرضا میردامادی, احسان عبدالهی"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "mohi@ubuntu.ir, ehsan.abdolahy@gmail.com"
-
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
 #, fuzzy, kde-format
 #| msgid "Get new Theme"
 msgid "Name of the current Plasma Style"
 msgstr "دریافت چهره‌ی جدید"
-
-#: kcm.cpp:51
-#, fuzzy, kde-format
-#| msgid "Get new Theme"
-msgid "Plasma Style"
-msgstr "دریافت چهره‌ی جدید"
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr "David Rosca"
 
 #: kcm.cpp:110
 #, kde-format
@@ -67,7 +46,7 @@ msgstr "چهره با موفقیت نصب شد."
 msgid "Theme installation failed."
 msgstr "نصب چهره شکست خورد."
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr ""
@@ -134,12 +113,12 @@ msgstr "نصب از پرونده"
 msgid "Get New Plasma Styles…"
 msgstr "دریافت چهره‌ی جدید"
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgid "Open Theme"
 msgstr "باز کردن چهره"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr "پرونده‌های چهره (*.zip *.tar.gz *.tar.bz2)"
@@ -188,3 +167,87 @@ msgstr ""
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
 msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "محمدرضا میردامادی, احسان عبدالهی"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "mohi@ubuntu.ir, ehsan.abdolahy@gmail.com"
+
+#, fuzzy
+#~| msgid "Get new Theme"
+#~ msgid "Plasma Style"
+#~ msgstr "دریافت چهره‌ی جدید"
+
+#~ msgid "David Rosca"
+#~ msgstr "David Rosca"
+
+#, fuzzy
+#~| msgid "Get new Theme"
+#~ msgid "Plasma Styles"
+#~ msgstr "دریافت چهره‌ی جدید"
+
+#, fuzzy
+#~| msgid "Configure Desktop Theme"
+#~ msgid "Download New Plasma Styles"
+#~ msgstr "پیکربندی چهره‌ی رومیزی"
+
+#~ msgid "Configure Desktop Theme"
+#~ msgstr "پیکربندی چهره‌ی رومیزی"
+
+#~ msgid "Theme removal failed."
+#~ msgstr "حذف چهره شکست خورد."
+
+#~ msgid "Details"
+#~ msgstr "جزئیات"
+
+#~ msgid "Source"
+#~ msgstr "مبدأ"
+
+#, fuzzy
+#~ msgid "File..."
+#~ msgstr "پرونده"
+
+#, fuzzy
+#~ msgid " Author: %1"
+#~ msgstr "نویسنده"
+
+#~ msgid "Version: %1"
+#~ msgstr "نسخه: %1"
+
+#~ msgid "More"
+#~ msgstr "بیشتر"
+
+#~ msgid "Author:"
+#~ msgstr "نویسنده:"
+
+#, fuzzy
+#~| msgid "Author:"
+#~ msgid "Custom theme author "
+#~ msgstr "نویسنده:"
+
+#~ msgid "Version:"
+#~ msgstr "نسخه:"
+
+#~ msgid "Description:"
+#~ msgstr "توصیف:"
+
+#, fuzzy
+#~| msgid "Author:"
+#~ msgid "Theme Author"
+#~ msgstr "نویسنده:"
+
+#, fuzzy
+#~| msgid "Version:"
+#~ msgid "Theme Name"
+#~ msgstr "نسخه:"
+
+#, fuzzy
+#~| msgid "Version:"
+#~ msgid "Theme Version"
+#~ msgstr "نسخه:"
+
+#~ msgid "Daniel Molkentin"
+#~ msgstr "Daniel Molkentin"

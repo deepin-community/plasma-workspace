@@ -26,3 +26,14 @@ msgstr "José Nuno Pires,Pedro Morais"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "zepires@gmail.com,morais@kde.org"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Não é possível usar a infra-estrutura multimédia <b>%1</b>:<br/>%2</"
+#~ "qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Não é possível encontrar uma infra-estrutura multimédia"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Não é possível encontrar a infra-estrutura multimédia pedida"

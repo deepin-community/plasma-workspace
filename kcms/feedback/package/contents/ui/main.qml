@@ -5,7 +5,7 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-import QtQuick 2.1
+import QtQuick 2.15
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.3 as QQC2
 import org.kde.kirigami 2.6 as Kirigami
@@ -34,7 +34,13 @@ SimpleKCM {
             text: i18n("User Feedback has been disabled centrally. Please contact your distributor.")
         }
 
-        QQC2.Label {
+        // The system settings window likes to take over
+        // the cursor with a plain label. The TextEdit
+        // 'takes priority' over the system settings
+        // window trying to eat the mouse, allowing
+        // us to use the HoverHandler boilerplate for
+        // proper link handling
+        TextEdit {
             Kirigami.FormData.label: i18n("Plasma:")
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.gridUnit
@@ -42,12 +48,20 @@ SimpleKCM {
             Layout.rightMargin: Kirigami.Units.gridUnit
             Layout.alignment: Qt.AlignHCenter
             wrapMode: Text.WordWrap
-            text: xi18nc("@info", "You can help KDE improve Plasma by contributing information on how you use it, so we can focus on things that matter to you.<nl/><nl/>Contributing this information is optional and entirely anonymous. We never collect your personal data, files you use, websites you visit, or information that could identify you.<nl/><nl/>You can read about our privacy policy in the following link:")
-        }
+            text: xi18nc("@info", "You can help KDE improve Plasma by contributing information on how you use it, so we can focus on things that matter to you.<nl/><nl/>Contributing this information is optional and entirely anonymous. We never collect your personal data, files you use, websites you visit, or information that could identify you.<nl/><nl/>You can read about <link url='https://kde.org/privacypolicy-apps.php'>our privacy policy here.</link>")
+            textFormat: TextEdit.RichText
+            readOnly: true
 
-        Kirigami.UrlButton {
-            Layout.alignment: Qt.AlignHCenter
-            url: "https://kde.org/privacypolicy-apps.php"
+            color: Kirigami.Theme.textColor
+            selectedTextColor: Kirigami.Theme.highlightedTextColor
+            selectionColor: Kirigami.Theme.highlightColor
+
+            onLinkActivated: (url) => Qt.openUrlExternally(url)
+
+            HoverHandler {
+                acceptedButtons: Qt.NoButton
+                cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+            }
         }
 
         Kirigami.Separator {
@@ -63,8 +77,7 @@ SimpleKCM {
                 Kirigami.FormData.label: i18n("Plasma:")
                 readonly property var currentMode: modeOptions[value]
                 Layout.fillWidth: true
-                Layout.minimumWidth: Kirigami.Units.gridUnit * 21
-                Layout.maximumWidth: Kirigami.Units.gridUnit * 21
+                Layout.maximumWidth: Kirigami.Units.gridUnit * 22
 
                 readonly property var modeOptions: [UserFeedback.Provider.NoTelemetry, UserFeedback.Provider.BasicSystemInformation, UserFeedback.Provider.BasicUsageStatistics,
                                                     UserFeedback.Provider.DetailedSystemInformation, UserFeedback.Provider.DetailedUsageStatistics]
@@ -100,8 +113,10 @@ SimpleKCM {
             }
 
             Kirigami.Heading {
+                Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
-                Layout.maximumWidth: Kirigami.Units.gridUnit * 21
+                Layout.preferredWidth: Kirigami.Units.gridUnit * 22
+                Layout.maximumWidth: Kirigami.Units.gridUnit * 29
                 wrapMode: Text.WordWrap
                 level: 3
                 text: feedbackController.telemetryName(statisticsModeSlider.currentMode)
@@ -110,8 +125,9 @@ SimpleKCM {
                 Kirigami.FormData.isSection: true
             }
             QQC2.Label {
+                Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
-                Layout.maximumWidth: Kirigami.Units.gridUnit * 21
+                Layout.maximumWidth: Kirigami.Units.gridUnit * 22
                 wrapMode: Text.WordWrap
 
                 text: i18n("The following information will be sent:")
@@ -124,6 +140,7 @@ SimpleKCM {
                     delegate: QQC2.Label {
                         visible: modelData.mode <= statisticsModeSlider.currentMode
                         text: "· " + modelData.description
+                        Layout.fillWidth: true
 
                         MouseArea {
                             anchors.fill: parent
@@ -134,12 +151,11 @@ SimpleKCM {
                                 visible: parent.containsMouse
                                 RowLayout {
                                     id: iconsLayout
-                                    anchors.centerIn: parent
                                     Repeater {
                                         model: modelData.icons
                                         delegate: Kirigami.Icon {
-                                            height: Kirigami.Units.gridUnit * 2
-                                            width: Kirigami.Units.gridUnit * 2
+                                            implicitHeight: Kirigami.Units.iconSizes.medium
+                                            implicitWidth: Kirigami.Units.iconSizes.medium
                                             source: modelData
                                         }
                                     }

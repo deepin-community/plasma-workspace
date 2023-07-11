@@ -31,3 +31,6 @@ msgstr "Nerastas %1 JobViewer"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/sek."
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Naudotojas atšaukė užduotį"

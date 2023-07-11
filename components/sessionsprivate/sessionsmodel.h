@@ -33,6 +33,7 @@ struct SessionEntry {
 
 class KDisplayManager;
 
+// This model should be compatible with SDDM::SessionModel
 class SessionsModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -49,16 +50,17 @@ public:
     explicit SessionsModel(QObject *parent = nullptr);
     ~SessionsModel() override = default;
 
-    enum class Role {
-        RealName = Qt::DisplayRole,
-        Icon = Qt::DecorationRole, // path to a file
-        Name = Qt::UserRole + 1,
-        DisplayNumber,
-        VtNumber,
-        Session,
-        IsTty,
-        IconName, // name of an icon
+    enum UserRoles {
+        NameRole = Qt::UserRole + 1,
+        RealNameRole,
+        IconRole, // path to a file
+        IconNameRole, // name of an icon
+        DisplayNumberRole,
+        VtNumberRole,
+        SessionRole,
+        IsTtyRole,
     };
+    Q_ENUM(UserRoles)
 
     bool canSwitchUser() const;
     bool canStartNewSession() const;

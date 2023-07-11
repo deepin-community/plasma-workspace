@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmstyle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-18 00:19+0000\n"
+"POT-Creation-Date: 2023-04-24 03:15+0000\n"
 "PO-Revision-Date: 2021-10-09 21:36+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -20,52 +20,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 21.08.2\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "zhakanini"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "prabu_anand2000@yahoo.com"
-
-#: gtkpage.cpp:65
+#: gtkpage.cpp:59
 #, kde-format
 msgid "%1 is not a valid GTK Theme archive."
 msgstr "%1 ஒரு முறையான GTK தோற்றத்திட்டப் பெட்டகம் இல்லை"
 
-#: kcmstyle.cpp:79
-#, kde-format
-msgid "Application Style"
-msgstr "செயலி தோற்றம்"
-
-#: kcmstyle.cpp:83
-#, kde-format
-msgid "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik "
-msgstr ""
-
-#: kcmstyle.cpp:85
-#, kde-format
-msgid "Karol Szwed"
-msgstr ""
-
-#: kcmstyle.cpp:86
-#, kde-format
-msgid "Daniel Molkentin"
-msgstr ""
-
-#: kcmstyle.cpp:87
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr ""
-
-#: kcmstyle.cpp:176 kcmstyle.cpp:183
+#: kcmstyle.cpp:161 kcmstyle.cpp:168
 #, kde-format
 msgid "There was an error loading the configuration dialog for this style."
 msgstr "இந்த பாணிக்காக வடிவமைப்பு உரையாடலை ஏற்றுவதில் பிழை."
 
-#: kcmstyle.cpp:296
+#: kcmstyle.cpp:274
 #, kde-format
 msgid "Failed to apply selected style '%1'."
 msgstr "தேர்ந்தெடுக்கப்பட்ட '%1' என்ற தோற்றத்திட்டத்தை இயக்குதல் தோல்வியடைந்தது."
@@ -125,27 +90,27 @@ msgstr "GNOME/GTK செயலி தோற்றம்"
 msgid "GTK theme:"
 msgstr "GTK தோற்றத்திட்டம்:"
 
-#: package/contents/ui/GtkStylePage.qml:76
+#: package/contents/ui/GtkStylePage.qml:69
 #, kde-format
 msgid "Preview…"
 msgstr "முன்தோற்றம்…"
 
-#: package/contents/ui/GtkStylePage.qml:95
+#: package/contents/ui/GtkStylePage.qml:88
 #, kde-format
 msgid "Install from File…"
 msgstr "கோப்பிலிருந்து நிறுவு…"
 
-#: package/contents/ui/GtkStylePage.qml:100
+#: package/contents/ui/GtkStylePage.qml:93
 #, kde-format
 msgid "Get New GNOME/GTK Application Styles…"
 msgstr "புதிய GNOME/GTK செயலி தோற்றத்திட்டங்களை பதிவிறக்கு…"
 
-#: package/contents/ui/GtkStylePage.qml:149
+#: package/contents/ui/GtkStylePage.qml:109
 #, kde-format
 msgid "Select GTK Theme Archive"
 msgstr "GTK தோற்றத்திட்ட பெட்டகத்தை தேர்வு செய்தல்"
 
-#: package/contents/ui/GtkStylePage.qml:151
+#: package/contents/ui/GtkStylePage.qml:111
 #, kde-format
 msgid "GTK Theme Archive (*.tar.xz *.tar.gz *.tar.bz2)"
 msgstr "GTK தோற்றத்திட்ட பெட்டகம் (*.tar.xz *.tar.gz *.tar.bz2)"
@@ -208,8 +173,14 @@ msgstr "தேர்வுப்பெட்டி"
 msgid "Radio button"
 msgstr "ஒற்றைத்தேர்வு பட்டன்"
 
+#. i18n: ectx: property (format), widget (QProgressBar, progressBar)
+#: stylepreview.ui:128
+#, no-c-format, kde-format
+msgid "%p%"
+msgstr ""
+
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
-#: stylepreview.ui:133
+#: stylepreview.ui:136
 #, kde-format
 msgid "Tab 2"
 msgstr "கீற்று 2"
@@ -243,3 +214,375 @@ msgstr "பிரதான கருவிப்பட்டையில் ப�
 #, kde-format
 msgid "Secondary toolbar label"
 msgstr "மற்ற கருவிப்பட்டைகளில் பெயர்கள்"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "zhakanini"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "prabu_anand2000@yahoo.com"
+
+#~ msgid "Application Style"
+#~ msgstr "செயலி தோற்றம்"
+
+#, fuzzy
+#~| msgid "Application Level"
+#~ msgid "Download New GNOME/GTK2 Application Styles..."
+#~ msgstr "பயன்பாட்டு நிலை"
+
+#, fuzzy
+#~| msgid "Application Level"
+#~ msgid "GNOME/GTK2 Application Styles"
+#~ msgstr "பயன்பாட்டு நிலை"
+
+#, fuzzy
+#~| msgid "Application Level"
+#~ msgid "Download New GNOME/GTK3 Application Styles..."
+#~ msgstr "பயன்பாட்டு நிலை"
+
+#, fuzzy
+#~| msgid "Application Level"
+#~ msgid "GNOME/GTK3 Application Styles"
+#~ msgstr "பயன்பாட்டு நிலை"
+
+#~ msgid "Unable to Load Dialog"
+#~ msgstr "உரையடலை ஏற்ற முடியாது."
+
+#~ msgid "No description available."
+#~ msgstr "விவரம் ஏதுமில்லை."
+
+#~ msgid ""
+#~ "This area shows a preview of the currently selected style without having "
+#~ "to apply it to the whole desktop."
+#~ msgstr ""
+#~ "இது தற்போது தேர்வு செய்துள்ள பாணியின் முன்காட்சியை உங்கள் கணினியின் மேல்மேசையில் "
+#~ "பயன்படுத்தாமல் காட்டுகிறது"
+
+#~ msgid ""
+#~ "Here you can choose from a list of predefined widget styles (e.g. the way "
+#~ "buttons are drawn) which may or may not be combined with a theme "
+#~ "(additional information like a marble texture or a gradient)."
+#~ msgstr ""
+#~ "இங்கே, ஏற்கனவே விவரிக்கப்பட்ட சாளர பாணிகளிலிருந்து நீங்கள் தேர்வு செய்யலாம் (உதா. "
+#~ "பட்டன்கள் வரையபட்டிருக்கும் முறை) இது ஒரு உருகருவுடன் சேர்க்கலாம் (சலவைக்கல்லின் "
+#~ "இழையமைப்பு அல்லது ஒரு சீரான சரிவு போன்ற அதிகப்படியான தகவல்)."
+
+#, fuzzy
+#~| msgid ""
+#~| "If you enable this option, KDE Applications will show small icons "
+#~| "alongside some important buttons."
+#~ msgid ""
+#~ "If you enable this option, applications will show small icons alongside "
+#~ "some important buttons."
+#~ msgstr ""
+#~ "இதனை தேர்வு செய்தால், கேடியி பயன்பாடுகள் சின்ன குறும்படங்களோடு சில முக்கிய "
+#~ "பட்டன்களையும் காட்டும்."
+
+#, fuzzy
+#~| msgid ""
+#~| "If you enable this option, KDE Applications will show small icons "
+#~| "alongside some important buttons."
+#~ msgid ""
+#~ "If you enable this option, applications will show small icons alongside "
+#~ "most menu items."
+#~ msgstr ""
+#~ "இதனை தேர்வு செய்தால், கேடியி பயன்பாடுகள் சின்ன குறும்படங்களோடு சில முக்கிய "
+#~ "பட்டன்களையும் காட்டும்."
+
+#, fuzzy
+#~| msgid ""
+#~| "<p><b>Icons only:</b> Shows only icons on toolbar buttons. Best option "
+#~| "for low resolutions.</p><p><b>Text only: </b>Shows only text on toolbar "
+#~| "buttons.</p><p><b>Text alongside icons: </b> Shows icons and text on "
+#~| "toolbar buttons. Text is aligned alongside the icon.</p><b>Text under "
+#~| "icons: </b> Shows icons and text on toolbar buttons. Text is aligned "
+#~| "below the icon."
+#~ msgid ""
+#~ "<p><b>No text:</b> Shows only icons on toolbar buttons. Best option for "
+#~ "low resolutions.</p><p><b>Text only: </b>Shows only text on toolbar "
+#~ "buttons.</p><p><b>Text beside icons: </b> Shows icons and text on toolbar "
+#~ "buttons. Text is aligned beside the icon.</p><b>Text below icons: </b> "
+#~ "Shows icons and text on toolbar buttons. Text is aligned below the icon."
+#~ msgstr ""
+#~ "<p><b>குறும்படங்கள் மட்டும்:</b>கருவிப்பட்டி பட்டன்களில் குறும்படங்களை மட்டும் "
+#~ "காட்டுகிறது. குறைந்த தெளிவுத்திறன்களுக்கான சிறந்த விருப்பத்தேர்வு.</p><p><b>உரை "
+#~ "மட்டும்: </b>கருவிபட்டி பட்டன்களில் உரையை மட்டும் காட்டுகிறது.</p><p><b>உரையின் "
+#~ "பக்கத்தில் குறும்படங்கள்: </b> கருபபட்டி பட்டன்களில் குறும்படங்கள் மற்ரும் உரையை "
+#~ "காட்டுகிறது. குறும்படத்துடன் உரை வரிசைப்படுத்தப்பட்டுள்ளது.</p><b>குறும்படங்களின் கீழ் "
+#~ "உரை: </b> கருவிப்பட்டி பட்டன்களில் உரை மற்றும் குறும்படங்களை காட்டுகிறது. "
+#~ "குறும்படத்தின் கீழ் உரை வரிசைப்படுத்தப்பட்டுள்ளது."
+
+#, fuzzy
+#~| msgid "&Toolbar"
+#~ msgid "Toolbars"
+#~ msgstr "&கருவிப்பட்டி"
+
+#, fuzzy
+#~| msgid "Widget Style"
+#~ msgid "Widget Style"
+#~ msgstr "சாளரப் பாணி"
+
+#, fuzzy
+#~| msgid "Widget Style"
+#~ msgid "Widget style:"
+#~ msgstr "சாளரப் பாணி"
+
+#~ msgid "Description: %1"
+#~ msgstr "விவரம்: %1"
+
+#~ msgid "KDE Style Module"
+#~ msgstr "கேடியி பாணிக் கூறு"
+
+#, fuzzy
+#~| msgid "Application Level"
+#~ msgid "In application"
+#~ msgstr "பயன்பாட்டு நிலை"
+
+#, fuzzy
+#~| msgid "Application Level"
+#~ msgid "Global Menu widget"
+#~ msgstr "பயன்பாட்டு நிலை"
+
+#, fuzzy
+#~| msgid ""
+#~| "If you enable this option, KDE Applications will show small icons "
+#~| "alongside some important buttons."
+#~ msgid ""
+#~ "If you enable this option, KDE Applications will run internal animations."
+#~ msgstr ""
+#~ "இதனை தேர்வு செய்தால், கேடியி பயன்பாடுகள் சின்ன குறும்படங்களோடு சில முக்கிய "
+#~ "பட்டன்களையும் காட்டும்."
+
+#~ msgid "kcmstyle"
+#~ msgstr "kcm பாணி"
+
+#~ msgid "Icons Only"
+#~ msgstr "குறும்படங்கள் மட்டும்"
+
+#, fuzzy
+#~| msgid "Text pos&ition:"
+#~ msgctxt "@label:listbox"
+#~ msgid "Text pos&ition of toolbar elements:"
+#~ msgstr "உரையின் இடம்:"
+
+#, fuzzy
+#~| msgid "&Style"
+#~ msgctxt "@title:tab"
+#~ msgid "&Style"
+#~ msgstr "&பாணி"
+
+#~ msgid ""
+#~ "This page allows you to enable various widget style effects. For best "
+#~ "performance, it is advisable to disable all effects."
+#~ msgstr ""
+#~ "பலவித சாளர பாணி விளைவுகளை செயலாக்க இந்த பக்கம் அனுமதிக்கிறது. ஆனால் கணினியின் "
+#~ "சிறந்த செயல் திறனுக்கு எல்லா விளைவுகளையும் செயல் நீக்குவது நல்லது."
+
+#, fuzzy
+#~| msgid "High&light buttons under mouse"
+#~ msgctxt "@option:check"
+#~ msgid "High&light buttons under mouse"
+#~ msgstr "சுட்டியின் கீழ் வரும் பட்டன்களை தனிப்படுத்து"
+
+#, fuzzy
+#~| msgid "E&nable tooltips"
+#~ msgctxt "@option:check"
+#~ msgid "E&nable tooltips"
+#~ msgstr "கருவிக்குறிப்புகளைக் காட்டு"
+
+#~ msgid ""
+#~ "If this option is selected, toolbar buttons will change their color when "
+#~ "the mouse cursor is moved over them."
+#~ msgstr ""
+#~ "இதனை தேர்வு செய்தால், கருவிப்பட்டியின் மேல் சுட்டி நகர்ந்தால், அவை பட்டன்களின் நிறத்தை "
+#~ "மாற்றிக் கொள்ளும்."
+
+#~ msgid ""
+#~ "If you check this option, the KDE application will offer tooltips when "
+#~ "the cursor remains over items in the toolbar."
+#~ msgstr ""
+#~ "இதனை தேர்வு செய்தால், கருவிப்பட்டியில் சுட்டியை நகர்த்தும்போது கேடியி பயன்பாடு "
+#~ "கருவிக்குறிப்பைத் தருகிறது."
+
+#~ msgid "&Effects"
+#~ msgstr "&விளைவுகள்"
+
+#~ msgid "Show tear-off handles in &popup menus"
+#~ msgstr "மேல்தோன்றும் பட்டியில் பிரித்தெடுக்கும் கைப்பிடியை காட்டு"
+
+#~ msgid "&Enable GUI effects"
+#~ msgstr "&வரைவியல்வழி விளைவுகளை செயல்படுத்து"
+
+#~ msgid "Disable"
+#~ msgstr "முடமாக்கு"
+
+#~ msgid "Animate"
+#~ msgstr "அசைவூட்டு"
+
+#~ msgid "Combobo&x effect:"
+#~ msgstr "பலத்தேர்வுப்பெட்டி விளைவு:"
+
+#~ msgid "Fade"
+#~ msgstr "மங்கிய"
+
+#~ msgid "&Tool tip effect:"
+#~ msgstr "&கருவிக்குறிப்பு விளைவு:"
+
+#~ msgid "Make Translucent"
+#~ msgstr "ஒளியூடுபுகவிடும்படி அமை"
+
+#~ msgid "&Menu effect:"
+#~ msgstr "&பட்டி விளைவு:"
+
+#~ msgid "Me&nu tear-off handles:"
+#~ msgstr "பட்டியை பிரித்தெடுக்கும் கைப்பிடிகள்:"
+
+#~ msgid "Menu &drop shadow"
+#~ msgstr "பட்டியின் விழும் நிழல்"
+
+#~ msgid "Software Tint"
+#~ msgstr "மென்பொருள் பூச்சு"
+
+#~ msgid "Software Blend"
+#~ msgstr "மென்பொருள் கலவை"
+
+#~ msgid "XRender Blend"
+#~ msgstr "Xவழங்கி கலவை"
+
+#~ msgid "0%"
+#~ msgstr "0%"
+
+#~ msgid "50%"
+#~ msgstr "50%"
+
+#~ msgid "100%"
+#~ msgstr "100%"
+
+#~ msgid "Menu trans&lucency type:"
+#~ msgstr "பட்டி ஒளியூடுபுகவிடும்படி வகை:"
+
+#~ msgid "Menu &opacity:"
+#~ msgstr "தெளிவுத்திறன் பட்டி:"
+
+#~ msgid "Transparent tool&bars when moving"
+#~ msgstr "நகர்த்தும்போது ஒளியூடுபுகவிடும் கருவிப்பட்டிகளை அமை"
+
+#, fuzzy
+#~| msgid ""
+#~| "<qt>Selected style: <b>%1</b><br><br>One or more effects that you have "
+#~| "chosen could not be applied because the selected style does not support "
+#~| "them; they have therefore been disabled.<br><br>"
+#~ msgid ""
+#~ "<qt>Selected style: <b>%1</b><br /><br />One or more effects that you "
+#~ "have chosen could not be applied because the selected style does not "
+#~ "support them; they have therefore been disabled.<br /><br /></qt>"
+#~ msgstr ""
+#~ "<qt>தேர்வான பாணி: <b>%1</b><br><br>சில விளைவுகளை செயல் நீக்கம் செய்து இருந்தால் "
+#~ "நீங்கள் தேர்வு செய்துள்ள பாணியில் பார்க்க முடியாது.<br><br>"
+
+#, fuzzy
+#~| msgid "Menu translucency is not available.<br>"
+#~ msgid "Menu translucency is not available.<br />"
+#~ msgstr "ஒளியூடுபுகவிடும்படி பட்டியல் இல்லை.<br>"
+
+#~ msgid "Menu drop-shadows are not available."
+#~ msgstr "வீழ்நிழல் பட்டியல் இல்லை."
+
+#~ msgid ""
+#~ "If you check this box, you can select several effects for different "
+#~ "widgets like combo boxes, menus or tooltips."
+#~ msgstr ""
+#~ "இதைத் தேர்வு செய்தால், பலத் தேர்வு பெட்டிகள், பட்டிகள் அல்லது கருவிகுறிப்புகள் போன்ற "
+#~ "வித்தியாசமான சாளரங்களுகான பல விளைவுகளை தேர்ந்தெடுக்க முடியும்"
+
+#~ msgid ""
+#~ "<p><b>Disable: </b>do not use any combo box effects.</p>\n"
+#~ "<b>Animate: </b>Do some animation."
+#~ msgstr ""
+#~ "<p><b>செயல் நீக்கு: </b>பலத்தேர்வுப்பெட்டி விளைவுகளை பயன்படுத்தாதே.</p>\n"
+#~ "<b>அசைவூட்டு: </b>ஏதாவது அசைவூட்டத்தை செய்."
+
+#~ msgid ""
+#~ "<p><b>Disable: </b>do not use any tooltip effects.</p>\n"
+#~ "<p><b>Animate: </b>Do some animation.</p>\n"
+#~ "<b>Fade: </b>Fade in tooltips using alpha-blending."
+#~ msgstr ""
+#~ "<p><b>செயல் நீக்கு: </b> கருவிக்குறிப்பு விளைவுகளை பயன்படுத்தாதே.</p>\n"
+#~ "<p><b>அசைவூட்டு: </b>ஏதாவது அசைவூட்டம் செய்.</p>\n"
+#~ "<b>நிழல்: </b>கருவிக்குறிப்புகளை ஏதாவது கலவையை பயன்படுத்தி மங்க வைக்கவும்."
+
+#~ msgid ""
+#~ "<p><b>Disable: </b>do not use any menu effects.</p>\n"
+#~ "<p><b>Animate: </b>Do some animation.</p>\n"
+#~ "<p><b>Fade: </b>Fade in menus using alpha-blending.</p>\n"
+#~ "<b>Make Translucent: </b>Alpha-blend menus for a see-through effect. (KDE "
+#~ "styles only)"
+#~ msgstr ""
+#~ "<p><b>செயல் நீக்கு: </b>பட்டியில் விளைவு ஏதும் வேண்டாம்</p>\n"
+#~ "<p><b>அசைவூட்டு: </b>சில அசைவூட்டங்களைச் செய்.</p>\n"
+#~ "<p><b>நிழல்: </b>பட்டிகளை கலவை மூலம் மங்கச்செய்.</p>\n"
+#~ "<b>ஒளியூடுபுகவிடும்படி அமை: </b>பட்டிகளை கலவை மூலம் ஒளியூடுபுகவிடும்படி அமை. "
+#~ "(கேடியி பாணிகள் மட்டும்)"
+
+#~ msgid ""
+#~ "When enabled, all popup menus will have a drop-shadow, otherwise drop-"
+#~ "shadows will not be displayed. At present, only KDE styles can have this "
+#~ "effect enabled."
+#~ msgstr ""
+#~ "தேர்வு செய்யப்பட்டால் அனைத்து வலைச்சாளரங்களும், நிழலோடு வரும், இல்லையென்றால் வராது. "
+#~ "தற்போது கேடியி பாணிகளில் மட்டும் இந்த விளைவு உள்ளது."
+
+#, fuzzy
+#~| msgid ""
+#~| "<p><b>Software Tint: </b>Alpha-blend using a flat color.</p>\n"
+#~| "<p><b>Software Blend: </b>Alpha-blend using an image.</p>\n"
+#~| "<b>XRender Blend: </b>Use the XFree RENDER extension for image blending "
+#~| "(if available). This method may be slower than the Software routines on "
+#~| "non-accelerated displays, but may however improve performance on remote "
+#~| "displays.</p>\n"
+#~ msgid ""
+#~ "<p><b>Software Tint: </b>Alpha-blend using a flat color.</p>\n"
+#~ "<p><b>Software Blend: </b>Alpha-blend using an image.</p>\n"
+#~ "<p><b>XRender Blend: </b>Use the XFree RENDER extension for image "
+#~ "blending (if available). This method may be slower than the Software "
+#~ "routines on non-accelerated displays, but may however improve performance "
+#~ "on remote displays.</p>\n"
+#~ msgstr ""
+#~ "<p><b>மென்பொருள் பூச்சு: </b>திடமான ஒரு நிறத்துடன் கலக்கப்படும்</p>\n"
+#~ "<p><b>மென்பொருள் கலவை </b>படத்துடன் கலக்கப்படும்</p>\n"
+#~ "<b>XRENDER கலவை </b> X-ன் RENDER வசதியைக் கொண்டு படத்துடன் கலக்கவும் (இருந்தால்). "
+#~ "இவை கணினியை மென்பொருள் கலவை விட மிகவும் மெதுவாக்கச் செய்யலாம், ஆனால் தொலைதூர "
+#~ "காட்சிகளில் செயல்திறன் அதிகரிக்கலாம்.</p>\n"
+
+#~ msgid "By adjusting this slider you can control the menu effect opacity."
+#~ msgstr "இந்த சறுக்கியை நகர்த்தி நீங்கள் பட்டியின் பிரகாசத்தை கட்டுப்படுத்தலாம்."
+
+#~ msgid ""
+#~ "<b>Note:</b> that all widgets in this combobox do not apply to Qt-only "
+#~ "applications."
+#~ msgstr ""
+#~ "<b>குறிப்பு:</b> இங்குள்ள அனைத்து சாளரங்களையும் Qt-only பயன்பாடுகளுக்கு "
+#~ "பயன்படுத்தக்கூடாது."
+
+#~ msgid ""
+#~ "If you check this box, the toolbars will be transparent when moving them "
+#~ "around."
+#~ msgstr ""
+#~ "இதனை தேர்வு செய்தால், கருவிப்பட்டிகளை சுற்றி நகரும்போது அவை ஒளியூடுபுகவிடும் "
+#~ "தன்மையை அடையும்"
+
+#~ msgid ""
+#~ "If you enable this option some pop-up menus will show so called tear-off "
+#~ "handles. If you click them, you get the menu inside a widget. This can be "
+#~ "very helpful when performing the same action multiple times."
+#~ msgstr ""
+#~ "இதனை தேர்வு செய்தால், சில மேல்தோன்றும் பட்டிகள் தோன்றும். இவைகளை க்ளிக் செய்தால் ஒரு "
+#~ "சாளரத்தின் உள்ளே பட்டி தெரியும். இதே செயலை பலதடவை செய்யும்போது இது மிகவும் "
+#~ "பயனுள்ளதாக இருக்கும்."
+
+#~ msgid "%"
+#~ msgstr "%"
+
+#~ msgid "Button Group"
+#~ msgstr "பட்டன் குழு"

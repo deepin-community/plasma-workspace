@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_desktopthemedetails\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2009-01-18 15:27+0530\n"
 "Last-Translator: Sangeeta Kumari <sangeeta09@gmail.com>\n"
 "Language-Team: Maithili <maithili.sf.net>\n"
@@ -20,33 +20,12 @@ msgstr ""
 "\n"
 "\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "संगीता कुमारी"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "sangeeta09@gmail.com"
-
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
 #, fuzzy, kde-format
 #| msgid "Theme Name"
 msgid "Name of the current Plasma Style"
 msgstr "प्रसंग नाम"
-
-#: kcm.cpp:51
-#, fuzzy, kde-format
-#| msgid "Theme Name"
-msgid "Plasma Style"
-msgstr "प्रसंग नाम"
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr ""
 
 #: kcm.cpp:110
 #, kde-format
@@ -68,7 +47,7 @@ msgstr ""
 msgid "Theme installation failed."
 msgstr ""
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr ""
@@ -133,13 +112,13 @@ msgstr ""
 msgid "Get New Plasma Styles…"
 msgstr "प्रसंग नाम"
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, fuzzy, kde-format
 #| msgid "Theme Name"
 msgid "Open Theme"
 msgstr "प्रसंग नाम"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr ""
@@ -188,3 +167,95 @@ msgstr ""
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
 msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "संगीता कुमारी"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "sangeeta09@gmail.com"
+
+#, fuzzy
+#~| msgid "Theme Name"
+#~ msgid "Plasma Style"
+#~ msgstr "प्रसंग नाम"
+
+#, fuzzy
+#~| msgid "Theme Name"
+#~ msgid "Plasma Styles"
+#~ msgstr "प्रसंग नाम"
+
+#, fuzzy
+#~| msgid "Theme Name"
+#~ msgid "Download New Plasma Styles"
+#~ msgstr "प्रसंग नाम"
+
+#~ msgctxt "plasma name"
+#~ msgid "Kickoff"
+#~ msgstr "किकआफ"
+
+#~ msgctxt "plasma name"
+#~ msgid "Analog Clock"
+#~ msgstr "एनालाग घडी"
+
+#~ msgctxt "plasma name"
+#~ msgid "Notes"
+#~ msgstr "टिप्पणी"
+
+#~ msgctxt "plasma name"
+#~ msgid "Tooltip"
+#~ msgstr "उपकरण-युक्ति"
+
+#~ msgctxt "plasma name"
+#~ msgid "Pager"
+#~ msgstr "पेजर"
+
+#~ msgid "Source"
+#~ msgstr "श्रोत"
+
+#, fuzzy
+#~| msgid "%1 %2"
+#~ msgctxt ""
+#~ "%1 is the name of the theme, %2 is the type of the element (background, "
+#~ "icon, note, etc)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgid "More"
+#~ msgstr "बेसी"
+
+#, fuzzy
+#~| msgid "Theme Name"
+#~ msgid "New theme name:"
+#~ msgstr "प्रसंग नाम"
+
+#, fuzzy
+#~| msgid "Theme Name"
+#~ msgid "Custom theme name"
+#~ msgstr "प्रसंग नाम"
+
+#~ msgid "Author:"
+#~ msgstr "लेखक:"
+
+#, fuzzy
+#~| msgid "Author:"
+#~ msgid "Custom theme author "
+#~ msgstr "लेखक:"
+
+#~ msgid "Version:"
+#~ msgstr "संस्करण:"
+
+#~ msgid "Description:"
+#~ msgstr "विवरण:"
+
+#, fuzzy
+#~| msgid "Author:"
+#~ msgid "Theme Author"
+#~ msgstr "लेखक:"
+
+#~ msgid "Theme Name"
+#~ msgstr "प्रसंग नाम"
+
+#~ msgid "Theme Version"
+#~ msgstr "थीम संस्करण"

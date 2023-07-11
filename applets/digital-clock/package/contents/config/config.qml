@@ -8,8 +8,9 @@
 import QtQuick 2.0
 import QtQml 2.2
 
+import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.configuration 2.0
-import org.kde.plasma.calendar 2.0 as PlasmaCalendar
+import org.kde.plasma.workspace.calendar 2.0 as PlasmaCalendar
 
 ConfigModel {
     id: configModel
@@ -30,13 +31,19 @@ ConfigModel {
         source: "configTimeZones.qml"
     }
 
+    property QtObject eventPluginsManager: PlasmaCalendar.EventPluginsManager {
+        Component.onCompleted: {
+            populateEnabledPluginsList(Plasmoid.configuration.enabledCalendarPlugins);
+        }
+    }
+
     property Instantiator __eventPlugins: Instantiator {
-        model: PlasmaCalendar.EventPluginsManager.model
+        model: eventPluginsManager.model
         delegate: ConfigCategory {
             name: model.display
             icon: model.decoration
             source: model.configUi
-            visible: plasmoid.configuration.enabledCalendarPlugins.indexOf(model.pluginPath) > -1
+            visible: Plasmoid.configuration.enabledCalendarPlugins.indexOf(model.pluginPath) > -1
         }
 
         onObjectAdded: configModel.appendCategory(object)

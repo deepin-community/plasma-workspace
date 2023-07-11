@@ -8,6 +8,7 @@
 
 #include <KConfigGroup>
 #include <KConfigWatcher>
+#include <KPluginMetaData>
 #include <KSharedConfig>
 #include <QPointer>
 #include <QQuickView>
@@ -38,11 +39,8 @@ class View : public PlasmaQuick::Dialog
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.krunner.App")
 
-    Q_PROPERTY(bool canConfigure READ canConfigure CONSTANT)
     Q_PROPERTY(bool pinned READ pinned WRITE setPinned NOTIFY pinnedChanged)
-    Q_PROPERTY(QStringList history READ history NOTIFY historyChanged)
-    // TODO KF6 This is kept for compatibility with third party themes which override the RunCommand.qml file
-    Q_PROPERTY(Plasma::RunnerManager *runnerManager WRITE setRunnerManager)
+    Q_PROPERTY(bool helpEnabled READ helpEnabled NOTIFY helpEnabledChanged)
 
 public:
     explicit View(QWindow *parent = nullptr);
@@ -53,26 +51,19 @@ public:
     bool freeFloating() const;
     void setFreeFloating(bool floating);
 
-    bool canConfigure() const;
-    QStringList history() const;
-
     bool pinned() const;
     void setPinned(bool pinned);
 
-    // TODO KF6 This is kept for compatibility with third party themes which override the RunCommand.qml file
-    Q_SIGNAL void historyChanged();
-    Q_INVOKABLE void addToHistory(const QString &)
+    bool helpEnabled()
     {
-        // Kept for compatibility, since milou f442b33af3c292c49743083493423275a51c118a the KRunner framework logic is used for handling this
-    }
-    Q_INVOKABLE void removeFromHistory(int index);
-    void setRunnerManager(Plasma::RunnerManager *manager)
-    {
-        m_manager = manager;
+        const static auto metaData = KPluginMetaData(QStringLiteral("kf5/krunner/helprunner"));
+        const KConfigGroup grp = KSharedConfig::openConfig()->group("Plugins");
+        return metaData.isEnabled(grp);
     }
 
 Q_SIGNALS:
     void pinnedChanged();
+    void helpEnabledChanged();
 
 protected:
     bool event(QEvent *event) override;
@@ -108,6 +99,7 @@ private:
     bool m_floating : 1;
     bool m_requestedVisible = false;
     bool m_pinned = false;
+    bool m_requestedClipboardSelection = false;
     QStringList m_history;
     Plasma::RunnerManager *m_manager = nullptr;
 };

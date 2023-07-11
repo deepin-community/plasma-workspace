@@ -19,7 +19,6 @@
 #include "xcursor/themeapplicator.h"
 #include "xcursor/thememodel.h"
 
-#include <KAboutData>
 #include <KIO/CopyJob>
 #include <KIO/DeleteJob>
 #include <KIO/Job>
@@ -31,14 +30,15 @@
 #include <KUrlRequesterDialog>
 
 #include <QStandardItemModel>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
-
+#endif
 #include <X11/Xcursor/Xcursor.h>
 #include <X11/Xlib.h>
 
 #include <updatelaunchenvjob.h>
-
-#include "cursorthemesettings.h"
 
 #ifdef HAVE_XFIXES
 #include <X11/extensions/Xfixes.h>
@@ -46,8 +46,8 @@
 
 K_PLUGIN_FACTORY_WITH_JSON(CursorThemeConfigFactory, "kcm_cursortheme.json", registerPlugin<CursorThemeConfig>(); registerPlugin<CursorThemeData>();)
 
-CursorThemeConfig::CursorThemeConfig(QObject *parent, const QVariantList &args)
-    : KQuickAddons::ManagedConfigModule(parent, args)
+CursorThemeConfig::CursorThemeConfig(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KQuickAddons::ManagedConfigModule(parent, data, args)
     , m_data(new CursorThemeData(this))
     , m_canInstall(true)
     , m_canResize(true)
@@ -56,17 +56,9 @@ CursorThemeConfig::CursorThemeConfig(QObject *parent, const QVariantList &args)
     m_preferredSize = cursorThemeSettings()->cursorSize();
     connect(cursorThemeSettings(), &CursorThemeSettings::cursorThemeChanged, this, &CursorThemeConfig::updateSizeComboBox);
     qmlRegisterType<PreviewWidget>("org.kde.private.kcm_cursortheme", 1, 0, "PreviewWidget");
-    qmlRegisterAnonymousType<SortProxyModel>("SortProxyModel",1);
-    qmlRegisterAnonymousType<CursorThemeSettings>("CursorThemeSettings",1);
-    KAboutData *aboutData = new KAboutData(QStringLiteral("kcm_cursortheme"),
-                                           i18n("Cursors"),
-                                           QStringLiteral("1.0"),
-                                           QString(),
-                                           KAboutLicense::GPL,
-                                           i18n("(c) 2003-2007 Fredrik Höglund"));
-    aboutData->addAuthor(i18n("Fredrik Höglund"));
-    aboutData->addAuthor(i18n("Marco Martin"));
-    setAboutData(aboutData);
+    qmlRegisterAnonymousType<SortProxyModel>("SortProxyModel", 1);
+    qmlRegisterAnonymousType<CursorThemeSettings>("CursorThemeSettings", 1);
+    qmlRegisterAnonymousType<LaunchFeedbackSettings>("LaunchFeedbackSettings", 1);
 
     m_themeModel = new CursorThemeModel(this);
 
@@ -74,7 +66,7 @@ CursorThemeConfig::CursorThemeConfig(QObject *parent, const QVariantList &args)
     m_themeProxyModel->setSourceModel(m_themeModel);
     // sort ordering is already case-insensitive; match that for filtering too
     m_themeProxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
-    m_themeProxyModel->sort(NameColumn, Qt::AscendingOrder);
+    m_themeProxyModel->sort(0, Qt::AscendingOrder);
 
     m_sizesModel = new QStandardItemModel(this);
 
@@ -100,7 +92,12 @@ CursorThemeConfig::~CursorThemeConfig()
 
 CursorThemeSettings *CursorThemeConfig::cursorThemeSettings() const
 {
-    return m_data->settings();
+    return m_data->cursorThemeSettings();
+}
+
+LaunchFeedbackSettings *CursorThemeConfig::launchFeedbackSettings() const
+{
+    return m_data->launchFeedbackSettings();
 }
 
 void CursorThemeConfig::setCanInstall(bool can)
@@ -110,7 +107,7 @@ void CursorThemeConfig::setCanInstall(bool can)
     }
 
     m_canInstall = can;
-    emit canInstallChanged();
+    Q_EMIT canInstallChanged();
 }
 
 bool CursorThemeConfig::canInstall() const
@@ -125,7 +122,7 @@ void CursorThemeConfig::setCanResize(bool can)
     }
 
     m_canResize = can;
-    emit canResizeChanged();
+    Q_EMIT canResizeChanged();
 }
 
 bool CursorThemeConfig::canResize() const
@@ -140,7 +137,7 @@ void CursorThemeConfig::setCanConfigure(bool can)
     }
 
     m_canConfigure = can;
-    emit canConfigureChanged();
+    Q_EMIT canConfigureChanged();
 }
 
 int CursorThemeConfig::preferredSize() const
@@ -154,7 +151,7 @@ void CursorThemeConfig::setPreferredSize(int size)
         return;
     }
     m_preferredSize = size;
-    emit preferredSizeChanged();
+    Q_EMIT preferredSizeChanged();
 }
 
 bool CursorThemeConfig::canConfigure() const
@@ -264,8 +261,8 @@ void CursorThemeConfig::updateSizeComboBox()
     } else {
         setCanResize(m_sizesModel->rowCount() > 0);
     }
-    // We need to emit a cursorSizeChanged in all case to refresh UI
-    emit cursorThemeSettings()->cursorSizeChanged();
+    // We need to Q_EMIT a cursorSizeChanged in all case to refresh UI
+    Q_EMIT cursorThemeSettings()->cursorSizeChanged();
 }
 
 int CursorThemeConfig::cursorSizeIndex(int cursorSize) const
@@ -295,7 +292,7 @@ int CursorThemeConfig::cursorThemeIndex(const QString &cursorTheme) const
 QString CursorThemeConfig::cursorThemeFromIndex(int index) const
 {
     QModelIndex idx = m_themeProxyModel->index(index, 0);
-    return m_themeProxyModel->theme(idx)->name();
+    return idx.isValid() ? m_themeProxyModel->theme(idx)->name() : QString();
 }
 
 void CursorThemeConfig::save()
@@ -308,7 +305,7 @@ void CursorThemeConfig::save()
     const CursorTheme *theme = selected.isValid() ? m_themeProxyModel->theme(selected) : nullptr;
 
     if (!applyTheme(theme, cursorThemeSettings()->cursorSize())) {
-        emit showInfoMessage(i18n("You have to restart the Plasma session for these changes to take effect."));
+        Q_EMIT showInfoMessage(i18n("You have to restart the Plasma session for these changes to take effect."));
     }
     removeThemes();
 
@@ -346,7 +343,7 @@ void CursorThemeConfig::ghnsEntryChanged(KNSCore::EntryWrapper *entry)
 {
     if (entry->entry().status() == KNS3::Entry::Deleted) {
         for (const QString &deleted : entry->entry().uninstalledFiles()) {
-            QVector<QStringRef> list = deleted.splitRef(QLatin1Char('/'));
+            auto list = QStringView(deleted).split(QLatin1Char('/'));
             if (list.last() == QLatin1Char('*')) {
                 list.takeLast();
             }
@@ -356,20 +353,16 @@ void CursorThemeConfig::ghnsEntryChanged(KNSCore::EntryWrapper *entry)
             }
         }
     } else if (entry->entry().status() == KNS3::Entry::Installed) {
-        for (const QString &created : entry->entry().installedFiles()) {
-            QStringList list = created.split(QLatin1Char('/'));
-            if (list.last() == QLatin1Char('*')) {
-                list.takeLast();
-            }
-            // Because we sometimes get some extra slashes in the installed files list
-            list.removeAll({});
-            // Because we'll also get the containing folder, if it was not already there
-            // we need to ignore it.
-            if (list.last() == QLatin1String(".icons")) {
-                continue;
-            }
-            m_themeModel->addTheme(list.join(QLatin1Char('/')));
+        const QList<QString> installedFiles = entry->entry().installedFiles();
+        if (installedFiles.size() != 1) {
+            return;
         }
+        const QString installedDir = installedFiles.first();
+        if (!installedDir.endsWith(QLatin1Char('*'))) {
+            return;
+        }
+
+        m_themeModel->addTheme(installedDir.left(installedDir.size() - 1));
     }
 }
 
@@ -386,18 +379,18 @@ void CursorThemeConfig::installThemeFromFile(const QUrl &url)
 
     m_tempInstallFile.reset(new QTemporaryFile());
     if (!m_tempInstallFile->open()) {
-        emit showErrorMessage(i18n("Unable to create a temporary file."));
+        Q_EMIT showErrorMessage(i18n("Unable to create a temporary file."));
         m_tempInstallFile.reset();
         return;
     }
 
     m_tempCopyJob = KIO::file_copy(url, QUrl::fromLocalFile(m_tempInstallFile->fileName()), -1, KIO::Overwrite);
     m_tempCopyJob->uiDelegate()->setAutoErrorHandlingEnabled(true);
-    emit downloadingFileChanged();
+    Q_EMIT downloadingFileChanged();
 
     connect(m_tempCopyJob, &KIO::FileCopyJob::result, this, [this, url](KJob *job) {
         if (job->error() != KJob::NoError) {
-            emit showErrorMessage(i18n("Unable to download the icon theme archive: %1", job->errorText()));
+            Q_EMIT showErrorMessage(i18n("Unable to download the icon theme archive: %1", job->errorText()));
             return;
         }
 
@@ -428,14 +421,14 @@ void CursorThemeConfig::installThemeFile(const QString &path)
     }
 
     if (themeDirs.isEmpty()) {
-        emit showErrorMessage(i18n("The file is not a valid icon theme archive."));
+        Q_EMIT showErrorMessage(i18n("The file is not a valid icon theme archive."));
         return;
     }
 
     // The directory we'll install the themes to
     QString destDir = QDir::homePath() + "/.icons/";
     if (!QDir().mkpath(destDir)) {
-        emit showErrorMessage(i18n("Failed to create 'icons' folder."));
+        Q_EMIT showErrorMessage(i18n("Failed to create 'icons' folder."));
         return;
     }
 
@@ -472,7 +465,7 @@ void CursorThemeConfig::installThemeFile(const QString &path)
 
     archive.close();
 
-    emit showSuccessMessage(i18n("Theme installed successfully."));
+    Q_EMIT showSuccessMessage(i18n("Theme installed successfully."));
 
     m_themeModel->refreshList();
 }

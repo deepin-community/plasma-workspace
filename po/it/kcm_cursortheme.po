@@ -3,14 +3,14 @@
 # Pino Toscano <toscano.pino@tiscali.it>, 2006.
 # Luciano Montanaro <mikelima@cirulla.net>, 2008.
 # Nicola Ruggero <nicola@nxnt.org>, 2010, 2011, 2012.
-# Vincenzo Reale <smart2128vr@gmail.com>, 2015, 2020, 2021.
-# Paolo Zamponi <zapaolo@email.it>, 2018, 2019.
+# Vincenzo Reale <smart2128vr@gmail.com>, 2015, 2020, 2021, 2022, 2023.
+# Paolo Zamponi <feus73@gmail.com>, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcminput\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-15 00:20+0000\n"
-"PO-Revision-Date: 2021-05-28 09:32+0200\n"
+"POT-Creation-Date: 2023-01-10 00:58+0000\n"
+"PO-Revision-Date: 2023-01-31 23:12+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -18,17 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.04.1\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Nicola Ruggero,Andrea Rizzi"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "nicola@nxnt.org,"
+"X-Generator: Lokalize 22.12.0\n"
 
 #. i18n: ectx: label, entry (cursorTheme), group (Mouse)
 #: cursorthemesettings.kcfg:9
@@ -42,27 +32,7 @@ msgstr "Nome del tema di puntatori del mouse attuale"
 msgid "Current cursor size"
 msgstr "Dimensioni attuali del cursore"
 
-#: kcmcursortheme.cpp:62
-#, kde-format
-msgid "Cursors"
-msgstr "Puntatori"
-
-#: kcmcursortheme.cpp:66
-#, kde-format
-msgid "(c) 2003-2007 Fredrik Höglund"
-msgstr "(c) 2003-2007 Fredrik Höglund"
-
-#: kcmcursortheme.cpp:67
-#, kde-format
-msgid "Fredrik Höglund"
-msgstr "Fredrik Höglund"
-
-#: kcmcursortheme.cpp:68
-#, kde-format
-msgid "Marco Martin"
-msgstr "Marco Martin"
-
-#: kcmcursortheme.cpp:311
+#: kcmcursortheme.cpp:308
 #, kde-format
 msgid ""
 "You have to restart the Plasma session for these changes to take effect."
@@ -70,27 +40,27 @@ msgstr ""
 "Affinché queste modifiche abbiano effetto devi riavviare la sessione di "
 "Plasma."
 
-#: kcmcursortheme.cpp:389
+#: kcmcursortheme.cpp:382
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr "Impossibile creare un file temporaneo."
 
-#: kcmcursortheme.cpp:400
+#: kcmcursortheme.cpp:393
 #, kde-format
 msgid "Unable to download the icon theme archive: %1"
 msgstr "Impossibile scaricare l'archivio del tema di icone: %1"
 
-#: kcmcursortheme.cpp:431
+#: kcmcursortheme.cpp:424
 #, kde-format
 msgid "The file is not a valid icon theme archive."
 msgstr "Il file non è un archivio valido di tema di icone."
 
-#: kcmcursortheme.cpp:438
+#: kcmcursortheme.cpp:431
 #, kde-format
 msgid "Failed to create 'icons' folder."
 msgstr "Impossibile creare la cartella «icons»."
 
-#: kcmcursortheme.cpp:447
+#: kcmcursortheme.cpp:440
 #, kde-format
 msgid ""
 "A theme named %1 already exists in your icon theme folder. Do you want "
@@ -99,15 +69,22 @@ msgstr ""
 "Esiste già un tema chiamato %1 nella tua cartella dei temi. Voi sostituirlo "
 "con questo?"
 
-#: kcmcursortheme.cpp:451
+#: kcmcursortheme.cpp:444
 #, kde-format
 msgid "Overwrite Theme?"
 msgstr "Sovrascrivo il tema?"
 
-#: kcmcursortheme.cpp:475
+#: kcmcursortheme.cpp:468
 #, kde-format
 msgid "Theme installed successfully."
 msgstr "Tema installato correttamente."
+
+#. i18n: ectx: label, entry (cursorTimeout), group (BusyCursorSettings)
+#. i18n: ectx: label, entry (taskbarTimeout), group (TaskbarButtonSettings)
+#: launchfeedbacksettings.kcfg:19 launchfeedbacksettings.kcfg:33
+#, kde-format
+msgid "Timeout in seconds"
+msgstr "Timeout in secondi"
 
 #: package/contents/ui/Delegate.qml:54
 #, kde-format
@@ -118,6 +95,74 @@ msgstr "Rimuovi tema"
 #, kde-format
 msgid "Restore Cursor Theme"
 msgstr "Ripristina tema di puntatori"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:16
+#, kde-format
+msgctxt "@title"
+msgid "Launch Feedback"
+msgstr "Notifica di avvio"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:25
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Configure the animations played while an application is launching."
+msgstr "Configura le animazioni riprodotte durante l'avvio di un'applicazione."
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:46
+#, kde-format
+msgctxt "@label"
+msgid "Cursor feedback:"
+msgstr "Riscontro del cursore:"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:47
+#, kde-format
+msgctxt "@option:radio No cursor feedback when launching apps"
+msgid "None"
+msgstr "Nessuno"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:56
+#, kde-format
+msgctxt "@option:radio"
+msgid "Static"
+msgstr "Statico"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:65
+#, kde-format
+msgctxt "@option:radio"
+msgid "Blinking"
+msgstr "Lampeggiante"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:74
+#, kde-format
+msgctxt "@option:radio"
+msgid "Bouncing"
+msgstr "Rimbalzante"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:89
+#, kde-format
+msgctxt "@label"
+msgid "Task Manager feedback:"
+msgstr "Riscontro del gestore delle attività:"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:91
+#, kde-format
+msgctxt "@option:check"
+msgid "Enable animation"
+msgstr "Abilita l'animazione"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:110
+#, kde-format
+msgctxt "@label"
+msgid "Stop animations after:"
+msgstr "Ferma le animazioni dopo:"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:124
+#: package/contents/ui/LaunchFeedbackDialog.qml:136
+#, kde-format
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 secondo"
+msgstr[1] "%1 secondi"
 
 #: package/contents/ui/main.qml:20
 #, kde-format
@@ -131,25 +176,37 @@ msgstr "Dimensione:"
 
 #: package/contents/ui/main.qml:134
 #, kde-format
+msgctxt "@action:button"
+msgid "&Configure Launch Feedback…"
+msgstr "&Configura la notifica di avvio…"
+
+#: package/contents/ui/main.qml:145
+#, kde-format
 msgid "&Install from File…"
 msgstr "&Installa da file…"
 
-#: package/contents/ui/main.qml:140
+#: package/contents/ui/main.qml:151
 #, kde-format
 msgid "&Get New Cursors…"
 msgstr "&Scarica nuovi puntatori…"
 
-#: package/contents/ui/main.qml:190
+#: package/contents/ui/main.qml:168
 #, kde-format
 msgid "Open Theme"
 msgstr "Apri tema"
 
-#: package/contents/ui/main.qml:192
+#: package/contents/ui/main.qml:170
 #, kde-format
 msgid "Cursor Theme Files (*.tar.gz *.tar.bz2)"
 msgstr "File di tema di puntatori (*.tar.gz *.tar.bz2)"
 
-#: plasma-apply-cursortheme.cpp:36
+#: plasma-apply-cursortheme.cpp:42
+#, kde-format
+msgid "The requested size '%1' is not available, using %2 instead."
+msgstr ""
+"La dimensione richiesta «%1» non è disponibile, sarà invece utilizzata %2."
+
+#: plasma-apply-cursortheme.cpp:63
 #, kde-format
 msgid ""
 "This tool allows you to set the mouse cursor theme for the current Plasma "
@@ -160,7 +217,7 @@ msgstr ""
 "la sessione attuale di Plasma, senza impostarlo casualmente su uno che non "
 "sia disponibile o già impostato."
 
-#: plasma-apply-cursortheme.cpp:40
+#: plasma-apply-cursortheme.cpp:67
 #, kde-format
 msgid ""
 "The name of the cursor theme you wish to set for your current Plasma session "
@@ -170,13 +227,19 @@ msgstr ""
 "attuale di Plasma (il passaggio di un percorso completo utilizzerà solo "
 "l'ultima parte del percorso)"
 
-#: plasma-apply-cursortheme.cpp:41
+#: plasma-apply-cursortheme.cpp:68
 #, kde-format
 msgid ""
 "Show all the themes available on the system (and which is the current theme)"
 msgstr "Mostra tutti i temi disponibili sul sistema (e qual è il tema attuale)"
 
-#: plasma-apply-cursortheme.cpp:62
+#: plasma-apply-cursortheme.cpp:69
+#, kde-format
+msgid "Use a specific size, rather than the theme default size"
+msgstr ""
+"Usa una dimensione specifica, anziché la dimensione predefinita del tema"
+
+#: plasma-apply-cursortheme.cpp:90
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
@@ -185,7 +248,7 @@ msgstr ""
 "Il tema richiesto «%1» è già impostato come tema per l'attuale sessione di "
 "Plasma."
 
-#: plasma-apply-cursortheme.cpp:73
+#: plasma-apply-cursortheme.cpp:101
 #, kde-format
 msgid ""
 "Successfully applied the mouse cursor theme %1 to your current Plasma session"
@@ -193,7 +256,7 @@ msgstr ""
 "Il tema di puntatori del mouse %1 è stato applicato correttamente alla tua "
 "sessione attuale di Plasma"
 
-#: plasma-apply-cursortheme.cpp:75
+#: plasma-apply-cursortheme.cpp:103
 #, kde-format
 msgid ""
 "You have to restart the Plasma session for your newly applied mouse cursor "
@@ -202,7 +265,7 @@ msgstr ""
 "Devi riavviare la sessione Plasma per visualizzare correttamente il tema di "
 "puntatori del mouse appena applicato."
 
-#: plasma-apply-cursortheme.cpp:85
+#: plasma-apply-cursortheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
@@ -211,25 +274,90 @@ msgstr ""
 "Impossibile trovare il tema «%1». Il tema dovrebbe essere una delle seguenti "
 "opzioni: %2"
 
-#: plasma-apply-cursortheme.cpp:93
+#: plasma-apply-cursortheme.cpp:121
 #, kde-format
 msgid "You have the following mouse cursor themes on your system:"
 msgstr "Hai i seguenti temi del cursore del mouse sul tuo sistema:"
 
-#: xcursor/thememodel.cpp:67
+#: plasma-apply-cursortheme.cpp:126
 #, kde-format
-msgid "Name"
-msgstr "Nome"
+msgid "(Current theme for this Plasma session)"
+msgstr "(Tema attuale per questa sessione di Plasma)"
 
-#: xcursor/thememodel.cpp:70
-#, kde-format
-msgid "Description"
-msgstr "Descrizione"
-
-#: xcursor/xcursortheme.cpp:56
+#: xcursor/xcursortheme.cpp:60
 #, kde-format
 msgctxt ""
 "@info The argument is the list of available sizes (in pixel). Example: "
 "'Available sizes: 24' or 'Available sizes: 24, 36, 48'"
 msgid "(Available sizes: %1)"
 msgstr "(Dimensioni disponibili: %1)"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgid "Description"
+#~ msgstr "Descrizione"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Nicola Ruggero,Andrea Rizzi"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "nicola@nxnt.org,"
+
+#~ msgid "Cursors"
+#~ msgstr "Puntatori"
+
+#~ msgid "(c) 2003-2007 Fredrik Höglund"
+#~ msgstr "(c) 2003-2007 Fredrik Höglund"
+
+#~ msgid "Fredrik Höglund"
+#~ msgstr "Fredrik Höglund"
+
+#~ msgid "Marco Martin"
+#~ msgstr "Marco Martin"
+
+#~ msgid ""
+#~ "<qt>You cannot delete the theme you are currently using.<br />You have to "
+#~ "switch to another theme first.</qt>"
+#~ msgstr ""
+#~ "<qt>Non puoi eliminare il tema in uso.<br />Devi prima passare ad un "
+#~ "altro.</qt>"
+
+#~ msgid ""
+#~ "<qt>Are you sure you want to remove the <i>%1</i> cursor theme?<br />This "
+#~ "will delete all the files installed by this theme.</qt>"
+#~ msgstr ""
+#~ "<qt>Sei sicuro di voler rimuovere il tema di puntatori <strong>%1</"
+#~ "strong>?<br/> Questo eliminerà tutti i file installati da questo tema.</"
+#~ "qt>"
+
+#~ msgid "Confirmation"
+#~ msgstr "Conferma"
+
+#~ msgctxt "@item:inlistbox size"
+#~ msgid "Resolution dependent"
+#~ msgstr "Dipendente dalla risoluzione"
+
+#~ msgid "Cursor Settings Changed"
+#~ msgstr "Impostazioni del puntatore modificate"
+
+#~ msgid "Drag or Type Theme URL"
+#~ msgstr "Trascina o immetti l'URL del tema"
+
+#~ msgid ""
+#~ "Unable to download the cursor theme archive; please check that the "
+#~ "address %1 is correct."
+#~ msgstr ""
+#~ "Impossibile scaricare l'archivio del tema del puntatore; controlla che "
+#~ "l'indirizzo %1 sia corretto."
+
+#~ msgid "Get new color schemes from the Internet"
+#~ msgstr "Scarica nuovi schemi colore da internet"
+
+#~ msgid ""
+#~ "Select the cursor theme you want to use (hover preview to test cursor):"
+#~ msgstr ""
+#~ "Scegli il tema del puntatore che vuoi utilizzare (passa su anteprima per "
+#~ "provare il cursore):"

@@ -29,3 +29,6 @@ msgstr "تعذّر العثور على عرض مهمّة (JobView)‏ %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/ثا"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "ألغى المستخدِم المهمّة."

@@ -17,6 +17,7 @@
 #include <QUrl>
 
 #include <chrono>
+#include <memory>
 
 #include "job.h"
 #include "notifications.h"
@@ -87,7 +88,7 @@ private:
     {
         if (target != newValue) {
             target = newValue;
-            emit((static_cast<Job *>(parent()))->*changeSignal)();
+            Q_EMIT((static_cast<Job *>(parent()))->*changeSignal)();
             return true;
         }
         return false;
@@ -104,9 +105,10 @@ private:
         return updateField(it->value<T>(), target, changeSignal);
     }
 
-    static QSharedPointer<KFilePlacesModel> createPlacesModel();
+    static std::shared_ptr<KFilePlacesModel> createPlacesModel();
 
     static QUrl localFileOrUrl(const QString &stringUrl);
+    static QString linkify(const QUrl &url, const QString &caption);
 
     void requestShow();
 
@@ -141,6 +143,7 @@ private:
     QString m_errorText;
     bool m_suspendable = false;
     bool m_killable = false;
+    bool m_transient = false;
 
     QUrl m_destUrl;
 
@@ -167,7 +170,7 @@ private:
     bool m_expired = false;
     bool m_dismissed = false;
 
-    mutable QSharedPointer<KFilePlacesModel> m_placesModel;
+    mutable std::shared_ptr<KFilePlacesModel> m_placesModel;
 };
 
 } // namespace NotificationManager

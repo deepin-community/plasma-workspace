@@ -12,7 +12,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: package/contents/config/config.qml:13
 #, kde-format
@@ -46,3 +46,23 @@ msgstr "Monatstag anzeigen"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Kalenderwoche anzeigen"
+
+#~ msgid "Working Day"
+#~ msgstr "Arbeitstag"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Beginnt um 9"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Endet um 5"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "Symbol:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "Tag im Monat"
+
+#~ msgid "Agenda"
+#~ msgstr "Agenda"

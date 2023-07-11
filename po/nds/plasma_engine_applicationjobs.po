@@ -30,3 +30,6 @@ msgstr "De Opgavenkieker för \"%1\" lett sik nich finnen"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Opgaav vun Bruker afbraken"

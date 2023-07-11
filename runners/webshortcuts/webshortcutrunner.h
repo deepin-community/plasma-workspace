@@ -7,6 +7,7 @@
 #pragma once
 
 #include <KRunner/AbstractRunner>
+#include <KServiceAction>
 
 class WebshortcutRunner : public Plasma::AbstractRunner
 {
@@ -34,4 +35,7 @@ private:
     QRegularExpression m_regex;
 
     KServiceAction m_privateAction;
+
+    Plasma::RunnerContext m_lastUsedContext;
+    QString m_defaultKey;
 };

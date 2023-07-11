@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2019, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_feedback\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-26 00:18+0000\n"
-"PO-Revision-Date: 2021-08-26 12:45+0300\n"
+"POT-Creation-Date: 2022-08-28 00:47+0000\n"
+"PO-Revision-Date: 2022-01-05 09:35+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -20,26 +20,6 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Юрій Чорноіван"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "yurchor@ukr.net"
-
-#: feedback.cpp:50
-#, kde-format
-msgid "User Feedback"
-msgstr "Відгуки користувача"
-
-#: feedback.cpp:52
-#, kde-format
-msgid "Configure user feedback settings"
-msgstr "Налаштовування системи відгуків користувача"
-
 #: package/contents/ui/main.qml:34
 #, kde-format
 msgid ""
@@ -48,12 +28,12 @@ msgstr ""
 "Надсилання відгуків користувачем вимкнено на рівні системи. Будь ласка, "
 "зверніться до авторів дистрибутива, щоб його увімкнути."
 
-#: package/contents/ui/main.qml:38 package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:44 package/contents/ui/main.qml:77
 #, kde-format
 msgid "Plasma:"
 msgstr "Плазма:"
 
-#: package/contents/ui/main.qml:45
+#: package/contents/ui/main.qml:51
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -61,8 +41,8 @@ msgid ""
 "it, so we can focus on things that matter to you.<nl/><nl/>Contributing this "
 "information is optional and entirely anonymous. We never collect your "
 "personal data, files you use, websites you visit, or information that could "
-"identify you.<nl/><nl/>You can read about our privacy policy in the "
-"following link:"
+"identify you.<nl/><nl/>You can read about <link url='https://kde.org/"
+"privacypolicy-apps.php'>our privacy policy here.</link>"
 msgstr ""
 "Ви можете допомогти нам поліпшити це програмне забезпечення, якщо поділитеся "
 "даними щодо того, як ви ним користуєтеся. Це надасть нам змогу зосередити "
@@ -71,19 +51,55 @@ msgstr ""
 "ваших особистих даних, даних щодо документів, які ви відкривали, та "
 "відвіданих вами сайтів, а також не збиратимемо жодних даних, за якими вас "
 "можна ідентифікувати.<nl/><nl/>Докладніше про наші правила конфіденційності "
-"можна дізнатися на сторінці із наведеною нижче адресою:"
+"можна дізнатися <link url='https://kde.org/privacypolicy-apps.php'>тут</"
+"link>."
 
-#: package/contents/ui/main.qml:99
+#: package/contents/ui/main.qml:112
 #, kde-format
 msgid "Plasma"
 msgstr "Плазма"
 
-#: package/contents/ui/main.qml:117
+#: package/contents/ui/main.qml:133
 #, kde-format
 msgid "The following information will be sent:"
 msgstr "Буде надіслано такі дані:"
 
-#: package/contents/ui/main.qml:162
+#: package/contents/ui/main.qml:178
 #, kde-format
 msgid "View sent data:"
 msgstr "Перегляд надісланих даних:"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Юрій Чорноіван"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "yurchor@ukr.net"
+
+#~ msgid "User Feedback"
+#~ msgstr "Відгуки користувача"
+
+#~ msgid "Configure user feedback settings"
+#~ msgstr "Налаштовування системи відгуків користувача"
+
+#~ msgctxt "@info"
+#~ msgid "You can read about our policy in the following link:"
+#~ msgstr "Ознайомитися із нашими правилами можна за таким посиланням:"
+
+#~ msgid "Allow KDE software to collect anonymous usage information"
+#~ msgstr ""
+#~ "Дозволити програмному забезпеченню KDE збирати анонімні дані щодо "
+#~ "користування системою"
+
+#~ msgid "Send basic system information"
+#~ msgstr "Надсилати основні дані щодо системи"
+
+#~ msgid "Send basic usage information"
+#~ msgstr "Надсилати основні дані щодо користування"
+
+#~ msgid "Send detailed system information"
+#~ msgstr "Надсилати докладні дані щодо системи"
+
+#~ msgid "Send detailed usage information"
+#~ msgstr "Надсилати докладні дані щодо користування"

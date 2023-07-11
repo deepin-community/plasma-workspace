@@ -14,10 +14,9 @@
 #include <KIconLoader>
 #include <KService>
 #include <KSharedConfig>
-#include <KStartupInfo>
 #include <KSycoca>
 #include <KWindowInfo>
-#include <KWindowSystem>
+#include <KX11Extras>
 
 #include <QBuffer>
 #include <QDir>
@@ -26,14 +25,21 @@
 #include <QSet>
 #include <QTimer>
 #include <QUrlQuery>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 namespace TaskManager
 {
 static const NET::Properties windowInfoFlags =
     NET::WMState | NET::XAWMState | NET::WMDesktop | NET::WMVisibleName | NET::WMGeometry | NET::WMFrameExtents | NET::WMWindowType | NET::WMPid;
-static const NET::Properties2 windowInfoFlags2 =
-    NET::WM2DesktopFileName | NET::WM2Activities | NET::WM2WindowClass | NET::WM2AllowedActions | NET::WM2AppMenuObjectPath | NET::WM2AppMenuServiceName;
+static const NET::Properties2 windowInfoFlags2 = NET::WM2DesktopFileName | NET::WM2Activities | NET::WM2WindowClass | NET::WM2AllowedActions
+    | NET::WM2AppMenuObjectPath | NET::WM2AppMenuServiceName | NET::WM2GTKApplicationId;
 
 class Q_DECL_HIDDEN XWindowTasksModel::Private
 {
@@ -111,22 +117,19 @@ void XWindowTasksModel::Private::init()
                                            AbstractTasksModel::GenericName,
                                            AbstractTasksModel::LauncherUrl,
                                            AbstractTasksModel::LauncherUrlWithoutIcon,
+                                           AbstractTasksModel::CanLaunchNewInstance,
                                            AbstractTasksModel::SkipTaskbar});
     };
 
-    cachedStackingOrder = KWindowSystem::stackingOrder();
+    cachedStackingOrder = KX11Extras::stackingOrder();
 
     sycocaChangeTimer.setSingleShot(true);
-    sycocaChangeTimer.setInterval(100);
+    sycocaChangeTimer.setInterval(100ms);
 
     QObject::connect(&sycocaChangeTimer, &QTimer::timeout, q, clearCacheAndRefresh);
 
-    void (KSycoca::*myDatabaseChangeSignal)(const QStringList &) = &KSycoca::databaseChanged;
-    QObject::connect(KSycoca::self(), myDatabaseChangeSignal, q, [this](const QStringList &changedResources) {
-        if (changedResources.contains(QLatin1String("services")) || changedResources.contains(QLatin1String("apps"))
-            || changedResources.contains(QLatin1String("xdgdata-apps"))) {
-            sycocaChangeTimer.start();
-        }
+    QObject::connect(KSycoca::self(), &KSycoca::databaseChanged, q, [this]() {
+        sycocaChangeTimer.start();
     });
 
     rulesConfig = KSharedConfig::openConfig(QStringLiteral("taskmanagerrulesrc"));
@@ -160,7 +163,7 @@ void XWindowTasksModel::Private::init()
     });
 
     // Update IsActive for previously- and newly-active windows.
-    QObject::connect(KWindowSystem::self(), &KWindowSystem::activeWindowChanged, q, [this](WId window) {
+    QObject::connect(KX11Extras::self(), &KX11Extras::activeWindowChanged, q, [this](WId window) {
         const WId oldActiveWindow = activeWindow;
 
         const auto leader = transients.value(window, XCB_WINDOW_NONE);
@@ -184,15 +187,21 @@ void XWindowTasksModel::Private::init()
         }
     });
 
-    QObject::connect(KWindowSystem::self(), &KWindowSystem::stackingOrderChanged, q, [this]() {
-        cachedStackingOrder = KWindowSystem::stackingOrder();
+    QObject::connect(KX11Extras::self(), &KX11Extras::stackingOrderChanged, q, [this]() {
+        // No need to do anything if the model is empty. This avoids calling q->dataChanged with an invalid QModelIndex.
+        if (q->rowCount() == 0) {
+            return;
+        }
+        cachedStackingOrder = KX11Extras::stackingOrder();
+        Q_ASSERT(q->hasIndex(0, 0));
+        Q_ASSERT(q->hasIndex(q->rowCount() - 1, 0));
         Q_EMIT q->dataChanged(q->index(0, 0), q->index(q->rowCount() - 1, 0), QVector<int>{StackingOrder});
     });
 
-    activeWindow = KWindowSystem::activeWindow();
+    activeWindow = KX11Extras::activeWindow();
 
     // Add existing windows.
-    foreach (const WId window, KWindowSystem::windows()) {
+    foreach (const WId window, KX11Extras::windows()) {
         addWindow(window);
     }
 }
@@ -207,7 +216,7 @@ void XWindowTasksModel::Private::addWindow(WId window)
     KWindowInfo info(window, NET::WMWindowType | NET::WMState | NET::WMName | NET::WMVisibleName, NET::WM2TransientFor);
 
     NET::WindowType wType = info.windowType(NET::NormalMask | NET::DesktopMask | NET::DockMask | NET::ToolbarMask | NET::MenuMask | NET::DialogMask
-                                            | NET::OverrideMask | NET::TopMenuMask | NET::UtilityMask | NET::SplashMask);
+                                            | NET::OverrideMask | NET::TopMenuMask | NET::UtilityMask | NET::SplashMask | NET::NotificationMask);
 
     const WId leader = info.transientFor();
 
@@ -217,7 +226,7 @@ void XWindowTasksModel::Private::addWindow(WId window)
 
         // Update demands attention state for leader.
         if (info.hasState(NET::DemandsAttention) && windows.contains(leader)) {
-            transientsDemandingAttention.insertMulti(leader, window);
+            transientsDemandingAttention.insert(leader, window);
             dataChanged(leader, QVector<int>{IsDemandingAttention});
         }
 
@@ -279,7 +288,7 @@ void XWindowTasksModel::Private::transientChanged(WId window, NET::Properties pr
 
         if (info.hasState(NET::DemandsAttention)) {
             if (!transientsDemandingAttention.values(leader).contains(window)) {
-                transientsDemandingAttention.insertMulti(leader, window);
+                transientsDemandingAttention.insert(leader, window);
                 dataChanged(leader, QVector<int>{IsDemandingAttention});
             }
         } else if (transientsDemandingAttention.remove(window)) {
@@ -297,7 +306,7 @@ void XWindowTasksModel::Private::transientChanged(WId window, NET::Properties pr
 
                 if (leader != oldLeader) {
                     transientsDemandingAttention.remove(oldLeader, window);
-                    transientsDemandingAttention.insertMulti(leader, window);
+                    transientsDemandingAttention.insert(leader, window);
                     dataChanged(oldLeader, QVector<int>{IsDemandingAttention});
                     dataChanged(leader, QVector<int>{IsDemandingAttention});
                 }
@@ -320,7 +329,7 @@ void XWindowTasksModel::Private::windowChanged(WId window, NET::Properties prope
     if (properties & (NET::WMPid) || properties2 & (NET::WM2DesktopFileName | NET::WM2WindowClass)) {
         wipeInfoCache = true;
         wipeAppDataCache = true;
-        changedRoles << Qt::DecorationRole << AppId << AppName << GenericName << LauncherUrl << AppPid << SkipTaskbar;
+        changedRoles << Qt::DecorationRole << AppId << AppName << GenericName << LauncherUrl << AppPid << SkipTaskbar << CanLaunchNewInstance;
     }
 
     if (properties & (NET::WMName | NET::WMVisibleName)) {
@@ -402,7 +411,7 @@ void XWindowTasksModel::Private::dataChanged(WId window, const QVector<int> &rol
     }
 
     QModelIndex idx = q->index(i);
-    emit q->dataChanged(idx, idx, roles);
+    Q_EMIT q->dataChanged(idx, idx, roles);
 }
 
 KWindowInfo *XWindowTasksModel::Private::windowInfo(WId window)
@@ -470,10 +479,10 @@ QIcon XWindowTasksModel::Private::icon(WId window)
 
     QIcon icon;
 
-    icon.addPixmap(KWindowSystem::icon(window, KIconLoader::SizeSmall, KIconLoader::SizeSmall, false));
-    icon.addPixmap(KWindowSystem::icon(window, KIconLoader::SizeSmallMedium, KIconLoader::SizeSmallMedium, false));
-    icon.addPixmap(KWindowSystem::icon(window, KIconLoader::SizeMedium, KIconLoader::SizeMedium, false));
-    icon.addPixmap(KWindowSystem::icon(window, KIconLoader::SizeLarge, KIconLoader::SizeLarge, false));
+    icon.addPixmap(KX11Extras::icon(window, KIconLoader::SizeSmall, KIconLoader::SizeSmall, false));
+    icon.addPixmap(KX11Extras::icon(window, KIconLoader::SizeSmallMedium, KIconLoader::SizeSmallMedium, false));
+    icon.addPixmap(KX11Extras::icon(window, KIconLoader::SizeMedium, KIconLoader::SizeMedium, false));
+    icon.addPixmap(KX11Extras::icon(window, KIconLoader::SizeLarge, KIconLoader::SizeLarge, false));
 
     appDataCache[window].icon = icon;
     usingFallbackIcon.insert(window);
@@ -496,6 +505,10 @@ QUrl XWindowTasksModel::Private::windowUrl(WId window)
     const KWindowInfo *info = windowInfo(window);
 
     QString desktopFile = QString::fromUtf8(info->desktopFileName());
+
+    if (desktopFile.isEmpty()) {
+        desktopFile = QString::fromUtf8(info->gtkApplicationId());
+    }
 
     if (!desktopFile.isEmpty()) {
         KService::Ptr service = KService::serviceByStorageId(desktopFile);
@@ -553,7 +566,7 @@ QUrl XWindowTasksModel::Private::launcherUrl(WId window, bool encodeFallbackIcon
     }
 
     if (pixmap.isNull()) {
-        pixmap = KWindowSystem::icon(window, KIconLoader::SizeLarge, KIconLoader::SizeLarge, false);
+        pixmap = KX11Extras::icon(window, KIconLoader::SizeLarge, KIconLoader::SizeLarge, false);
     }
 
     if (pixmap.isNull()) {
@@ -618,7 +631,7 @@ QVariant XWindowTasksModel::data(const QModelIndex &index, int role) const
     } else if (role == MimeType) {
         return d->mimeType();
     } else if (role == MimeData) {
-        return QByteArray((char *)&window, sizeof(window));
+        return QByteArray(reinterpret_cast<const char *>(&window), sizeof(window));
     } else if (role == IsWindow) {
         return true;
     } else if (role == IsActive) {
@@ -685,6 +698,8 @@ QVariant XWindowTasksModel::data(const QModelIndex &index, int role) const
         return d->appMenuObjectPath(window);
     } else if (role == ApplicationMenuServiceName) {
         return d->appMenuServiceName(window);
+    } else if (role == CanLaunchNewInstance) {
+        return canLauchNewInstance(d->appData(window));
     }
 
     return QVariant();
@@ -724,7 +739,7 @@ void XWindowTasksModel::requestActivate(const QModelIndex &index)
             }
         }
 
-        KWindowSystem::forceActiveWindow(window);
+        KX11Extras::forceActiveWindow(window);
     }
 }
 
@@ -768,12 +783,12 @@ void XWindowTasksModel::requestMove(const QModelIndex &index)
     bool onCurrent = info->isOnCurrentDesktop();
 
     if (!onCurrent) {
-        KWindowSystem::setCurrentDesktop(info->desktop());
-        KWindowSystem::forceActiveWindow(window);
+        KX11Extras::setCurrentDesktop(info->desktop());
+        KX11Extras::forceActiveWindow(window);
     }
 
     if (info->isMinimized()) {
-        KWindowSystem::unminimizeWindow(window);
+        KX11Extras::unminimizeWindow(window);
     }
 
     const QRect &geom = info->geometry();
@@ -794,12 +809,12 @@ void XWindowTasksModel::requestResize(const QModelIndex &index)
     bool onCurrent = info->isOnCurrentDesktop();
 
     if (!onCurrent) {
-        KWindowSystem::setCurrentDesktop(info->desktop());
-        KWindowSystem::forceActiveWindow(window);
+        KX11Extras::setCurrentDesktop(info->desktop());
+        KX11Extras::forceActiveWindow(window);
     }
 
     if (info->isMinimized()) {
-        KWindowSystem::unminimizeWindow(window);
+        KX11Extras::unminimizeWindow(window);
     }
 
     const QRect &geom = info->geometry();
@@ -822,16 +837,16 @@ void XWindowTasksModel::requestToggleMinimized(const QModelIndex &index)
 
         // FIXME: Move logic up into proxy? (See also others.)
         if (!onCurrent) {
-            KWindowSystem::setCurrentDesktop(info->desktop());
+            KX11Extras::setCurrentDesktop(info->desktop());
         }
 
-        KWindowSystem::unminimizeWindow(window);
+        KX11Extras::unminimizeWindow(window);
 
         if (onCurrent) {
-            KWindowSystem::forceActiveWindow(window);
+            KX11Extras::forceActiveWindow(window);
         }
     } else {
-        KWindowSystem::minimizeWindow(window);
+        KX11Extras::minimizeWindow(window);
     }
 }
 
@@ -848,11 +863,11 @@ void XWindowTasksModel::requestToggleMaximized(const QModelIndex &index)
 
     // FIXME: Move logic up into proxy? (See also others.)
     if (!onCurrent) {
-        KWindowSystem::setCurrentDesktop(info->desktop());
+        KX11Extras::setCurrentDesktop(info->desktop());
     }
 
     if (info->isMinimized()) {
-        KWindowSystem::unminimizeWindow(window);
+        KX11Extras::unminimizeWindow(window);
     }
 
     NETWinInfo ni(QX11Info::connection(), window, QX11Info::appRootWindow(), NET::WMState, NET::Properties2());
@@ -864,7 +879,7 @@ void XWindowTasksModel::requestToggleMaximized(const QModelIndex &index)
     }
 
     if (!onCurrent) {
-        KWindowSystem::forceActiveWindow(window);
+        KX11Extras::forceActiveWindow(window);
     }
 }
 
@@ -958,7 +973,7 @@ void XWindowTasksModel::requestVirtualDesktops(const QModelIndex &index, const Q
         }
     }
 
-    if (desktop > KWindowSystem::numberOfDesktops()) {
+    if (desktop > KX11Extras::numberOfDesktops()) {
         return;
     }
 
@@ -967,19 +982,19 @@ void XWindowTasksModel::requestVirtualDesktops(const QModelIndex &index, const Q
 
     if (desktop == 0) {
         if (info->onAllDesktops()) {
-            KWindowSystem::setOnDesktop(window, KWindowSystem::currentDesktop());
-            KWindowSystem::forceActiveWindow(window);
+            KX11Extras::setOnDesktop(window, KX11Extras::currentDesktop());
+            KX11Extras::forceActiveWindow(window);
         } else {
-            KWindowSystem::setOnAllDesktops(window, true);
+            KX11Extras::setOnAllDesktops(window, true);
         }
 
         return;
     }
 
-    KWindowSystem::setOnDesktop(window, desktop);
+    KX11Extras::setOnDesktop(window, desktop);
 
-    if (desktop == KWindowSystem::currentDesktop()) {
-        KWindowSystem::forceActiveWindow(window);
+    if (desktop == KX11Extras::currentDesktop()) {
+        KX11Extras::forceActiveWindow(window);
     }
 }
 
@@ -990,7 +1005,7 @@ void XWindowTasksModel::requestNewVirtualDesktop(const QModelIndex &index)
     }
 
     const WId window = d->windows.at(index.row());
-    const int desktop = KWindowSystem::numberOfDesktops() + 1;
+    const int desktop = KX11Extras::numberOfDesktops() + 1;
 
     // FIXME Arbitrary limit of 20 copied from old code.
     if (desktop > 20) {
@@ -1000,7 +1015,7 @@ void XWindowTasksModel::requestNewVirtualDesktop(const QModelIndex &index)
     NETRootInfo ri(QX11Info::connection(), NET::NumberOfDesktops);
     ri.setNumberOfDesktops(desktop);
 
-    KWindowSystem::setOnDesktop(window, desktop);
+    KX11Extras::setOnDesktop(window, desktop);
 }
 
 void XWindowTasksModel::requestActivities(const QModelIndex &index, const QStringList &activities)
@@ -1011,7 +1026,7 @@ void XWindowTasksModel::requestActivities(const QModelIndex &index, const QStrin
 
     const WId window = d->windows.at(index.row());
 
-    KWindowSystem::setOnActivities(window, activities);
+    KX11Extras::setOnActivities(window, activities);
 }
 
 void XWindowTasksModel::requestPublishDelegateGeometry(const QModelIndex &index, const QRect &geometry, QObject *delegate)
@@ -1058,12 +1073,22 @@ WId XWindowTasksModel::winIdFromMimeData(const QMimeData *mimeData, bool *ok)
     }
 
     QByteArray data(mimeData->data(Private::mimeType()));
-    if (data.size() != sizeof(WId)) {
-        return 0;
-    }
-
     WId id;
-    memcpy(&id, data.data(), sizeof(WId));
+    if (data.size() != sizeof(WId)) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 4, 2)
+        // Workaround for https://bugreports.qt.io/browse/QTBUG-71922
+        QString idString = QString::fromUtf8(data);
+        if (idString.startsWith(QLatin1String("strnum-"))) {
+            id = QString::fromUtf8(data).mid(7).toUInt();
+        } else {
+            return 0;
+        }
+#else
+        return 0;
+#endif
+    } else {
+        memcpy(&id, data.data(), sizeof(WId));
+    }
 
     if (ok) {
         *ok = true;

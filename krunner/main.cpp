@@ -14,13 +14,13 @@
 #include <QDebug>
 #include <QQuickWindow>
 #include <QSessionManager>
+#include <QSurfaceFormat>
 #include <QUrl>
 
 #include <KAboutData>
 #include <KAuthorized>
 #include <KDBusService>
 
-#include <KQuickAddons/QtQuickSettings>
 #include <kdeclarative/qmlobject.h>
 
 #include <kworkspace.h>
@@ -29,12 +29,17 @@
 
 int main(int argc, char **argv)
 {
+    auto format = QSurfaceFormat::defaultFormat();
+    format.setOption(QSurfaceFormat::ResetNotification);
+    QSurfaceFormat::setDefaultFormat(format);
+
     QCommandLineParser parser;
     if (!qEnvironmentVariableIsSet("PLASMA_USE_QT_SCALING")) {
         qunsetenv("QT_DEVICE_PIXEL_RATIO");
         QCoreApplication::setAttribute(Qt::AA_DisableHighDpiScaling);
     }
 
+    qputenv("QT_WAYLAND_DISABLE_FIXED_POSITIONS", {});
     const bool qpaVariable = qEnvironmentVariableIsSet("QT_QPA_PLATFORM");
     KWorkSpace::detectPlatform(argc, argv);
     QQuickWindow::setDefaultAlphaBuffer(true);
@@ -43,14 +48,13 @@ int main(int argc, char **argv)
         // don't leak the env variable to processes we start
         qunsetenv("QT_QPA_PLATFORM");
     }
+    qunsetenv("QT_WAYLAND_DISABLE_FIXED_POSITIONS");
     KLocalizedString::setApplicationDomain("krunner");
-
-    KQuickAddons::QtQuickSettings::init();
 
     //     TODO: Make it a QGuiApplication once we don't depend on KDELibs4Support
     //     QGuiApplication app(argc, argv);
 
-    KAboutData aboutData(QStringLiteral("krunner"), i18n("krunner"), QStringLiteral(PROJECT_VERSION), i18n("Run Command interface"), KAboutLicense::GPL);
+    KAboutData aboutData(QStringLiteral("krunner"), i18n("KRunner"), QStringLiteral(PROJECT_VERSION), i18n("Run Command interface"), KAboutLicense::GPL);
 
     KAboutData::setApplicationData(aboutData);
     app.setQuitOnLastWindowClosed(false);
@@ -75,7 +79,9 @@ int main(int argc, char **argv)
 
     KDBusService service(KDBusService::Unique | KDBusService::StartupOption(parser.isSet(replaceOption) ? KDBusService::Replace : 0));
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QGuiApplication::setFallbackSessionManagementEnabled(false);
+#endif
 
     auto disableSessionManagement = [](QSessionManager &sm) {
         sm.setRestartHint(QSessionManager::RestartNever);

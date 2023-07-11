@@ -1,10 +1,12 @@
 /*
-    SPDX-FileCopyrightText: 20016 Aleix Pol Gonzalez <aleixpol@kde.org>
+    SPDX-FileCopyrightText: 2016 Aleix Pol Gonzalez <aleixpol@kde.org>
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
 #include "iconssettings.h"
+#include "plasma_changeicons_debug.h"
+
 #include <KLocalizedString>
 #include <QApplication>
 
@@ -27,7 +29,7 @@ int main(int argc, char **argv)
     IconsSettings settings;
     if (settings.theme() == themeName) {
         // In KNS this will be displayed as a warning in the UI
-        qWarning().noquote() << i18n("Icon theme is already used");
+        qCWarning(PLASMA_CHANGEICONS_DEBUG).noquote() << "Icon theme is already used";
     } else {
         settings.setTheme(themeName);
         settings.save();
