@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_desktopthemedetails\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2009-07-10 19:35+0100\n"
 "Last-Translator: Berend Ytsma <berendy@gmail.com>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -18,33 +18,12 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Berend Ytsma"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "berendy@gmail.com"
-
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
 #, fuzzy, kde-format
 #| msgid "Get New Theme..."
 msgid "Name of the current Plasma Style"
 msgstr "Nij tema krije..."
-
-#: kcm.cpp:51
-#, fuzzy, kde-format
-#| msgid "Get New Theme..."
-msgid "Plasma Style"
-msgstr "Nij tema krije..."
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr ""
 
 #: kcm.cpp:110
 #, kde-format
@@ -66,7 +45,7 @@ msgstr ""
 msgid "Theme installation failed."
 msgstr ""
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr ""
@@ -133,13 +112,13 @@ msgstr ""
 msgid "Get New Plasma Styles…"
 msgstr "Nij tema krije..."
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, fuzzy, kde-format
 #| msgid "Theme Item"
 msgid "Open Theme"
 msgstr "Tema item"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr ""
@@ -188,3 +167,212 @@ msgstr ""
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
 msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Berend Ytsma"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "berendy@gmail.com"
+
+#, fuzzy
+#~| msgid "Get New Theme..."
+#~ msgid "Plasma Style"
+#~ msgstr "Nij tema krije..."
+
+#, fuzzy
+#~| msgid "Get New Theme..."
+#~ msgid "Plasma Styles"
+#~ msgstr "Nij tema krije..."
+
+#, fuzzy
+#~| msgid "How to Change Desktop Theme"
+#~ msgid "Download New Plasma Styles"
+#~ msgstr "Hoe jo buroblêdtema te feroarjen"
+
+#, fuzzy
+#~| msgid "Remove Desktop Theme"
+#~ msgid "Configure Desktop Theme"
+#~ msgstr "Buroblêd tema fuortsmite"
+
+#, fuzzy
+#~| msgid "Export Desktop Theme"
+#~ msgid "KDE Desktop Theme Module"
+#~ msgstr "Buroblédtema eksportearje"
+
+#~ msgctxt "plasma name"
+#~ msgid "Panel Background"
+#~ msgstr "Panieleftergrûn"
+
+#~ msgctxt "plasma name"
+#~ msgid "Kickoff"
+#~ msgstr "Kickoff"
+
+#~ msgctxt "plasma name"
+#~ msgid "Task Items"
+#~ msgstr "Taak items"
+
+#~ msgctxt "plasma name"
+#~ msgid "Widget Background"
+#~ msgstr "Widget eftergrûn"
+
+#~ msgctxt "plasma name"
+#~ msgid "Translucent Background"
+#~ msgstr "Trochsichtich eftergrûn"
+
+#~ msgctxt "plasma name"
+#~ msgid "Dialog Background"
+#~ msgstr "Dialooch eftergrûn"
+
+#~ msgctxt "plasma name"
+#~ msgid "Analog Clock"
+#~ msgstr "Analoge klok"
+
+#~ msgctxt "plasma name"
+#~ msgid "Notes"
+#~ msgstr "Notysjes"
+
+#~ msgctxt "plasma name"
+#~ msgid "Tooltip"
+#~ msgstr "Tekstballon"
+
+#~ msgctxt "plasma name"
+#~ msgid "Pager"
+#~ msgstr "Semafoan"
+
+#~ msgctxt "plasma name"
+#~ msgid "Run Command Dialog"
+#~ msgstr "Rin kommando skerm"
+
+#~ msgctxt "plasma name"
+#~ msgid "Shutdown Dialog"
+#~ msgstr "De útgong skerm"
+
+#~ msgid "(Customized)"
+#~ msgstr "(Oanpast)"
+
+#~ msgid "User customized theme"
+#~ msgstr "Oanpast tema troch brûker"
+
+#~ msgid ""
+#~ "Theme items have been changed.  Do you still wish remove the \"%1\" theme?"
+#~ msgstr "Tema items binne feroare. Wolle jo tema \"%1\" fuortsmite?"
+
+#~ msgid "Removal of the default desktop theme is not allowed."
+#~ msgstr "It fuortsmiten fan it standert buroblêdtema is net tastien."
+
+#~ msgid "Are you sure you wish remove the \"%1\" theme?"
+#~ msgstr "Binne jo wis dat jo tema \"%1\" fuortsmite wolle?"
+
+#~ msgid ""
+#~ "Please apply theme item changes (with a new theme name) before attempting "
+#~ "to export theme."
+#~ msgstr ""
+#~ "Tema feroarings tapasse (mei in temanamme) foar it besykjen it tema te "
+#~ "eksportearjen."
+
+#~ msgid "Export Desktop Theme"
+#~ msgstr "Buroblédtema eksportearje"
+
+#~ msgid "Export theme to file"
+#~ msgstr "Tema nei triem eksportearj"
+
+#~ msgid "Theme Item"
+#~ msgstr "Tema item"
+
+#~ msgid "Source"
+#~ msgstr "Boarne"
+
+#, fuzzy
+#~| msgid "%1 %2"
+#~ msgctxt ""
+#~ "%1 is the name of the theme, %2 is the type of the element (background, "
+#~ "icon, note, etc)"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgid "File..."
+#~ msgstr "Triem..."
+
+#~ msgid "Select File to Use for %1"
+#~ msgstr "Triem selektearje om te brûken foar %1"
+
+#~ msgid " Author: %1"
+#~ msgstr "Skriuwer: %1"
+
+#~ msgid "Version: %1"
+#~ msgstr "Ferzje: %1"
+
+#~ msgid "Desktop Theme Details"
+#~ msgstr "Desktop tema details"
+
+#~ msgid "More"
+#~ msgstr "Mear"
+
+#, fuzzy
+#~| msgid "Remove Desktop Theme"
+#~ msgid "Remove the selected theme"
+#~ msgstr "Buroblêd tema fuortsmite"
+
+#~ msgid "Export Theme to File..."
+#~ msgstr "Tema nei triem eksportearje..."
+
+#~ msgid "New theme name:"
+#~ msgstr "Nije temanamme:"
+
+#, fuzzy
+#~| msgid "New theme name:"
+#~ msgid "Custom theme name"
+#~ msgstr "Nije temanamme:"
+
+#~ msgid "Author:"
+#~ msgstr "Skriuwer:"
+
+#, fuzzy
+#~| msgid "Theme Author"
+#~ msgid "Custom theme author "
+#~ msgstr "Skriuwer fab tema"
+
+#~ msgid "Version:"
+#~ msgstr "Ferzje:"
+
+#, fuzzy
+#~| msgid "New theme name:"
+#~ msgid "Custom theme version number"
+#~ msgstr "Nije temanamme:"
+
+#~ msgid "Description:"
+#~ msgstr "Beskriuwing:"
+
+#, fuzzy
+#~| msgid "The theme description goes here..."
+#~ msgid "Custom theme description"
+#~ msgstr "De beskriuwing fan it tema giet hjir..."
+
+#~ msgid "Theme Author"
+#~ msgstr "Skriuwer fab tema"
+
+#~ msgid "Theme Name"
+#~ msgstr "Tema namme"
+
+#~ msgid "Theme Version"
+#~ msgstr "Tema ferzje"
+
+#~ msgid "The theme description goes here..."
+#~ msgstr "De beskriuwing fan it tema giet hjir..."
+
+#, fuzzy
+#~| msgid "Remove Desktop Theme"
+#~ msgid "KCMDesktopTheme"
+#~ msgstr "Buroblêd tema fuortsmite"
+
+#~ msgid ""
+#~ "To change your desktop theme to \"%1\", open\n"
+#~ " the desktop Appearance Settings and select \"%2\" from the droplist."
+#~ msgstr ""
+#~ "Op jo buroblêdtema te feroarjen nei \"%1\",  iepenje\n"
+#~ "de buroblêd úterlik ynstellings en selektearje \"%2\" yn it dellûk menu."
+
+#~ msgid "Removal of the active desktop theme is not allowed."
+#~ msgstr "It fuortsmiten fan it aktive tema is net tastien."

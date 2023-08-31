@@ -10,7 +10,7 @@
 <articleinfo>
 
 <title
->Widget Style</title>
+>Anwendungs-Stil</title>
 <authorgroup>
 <author
 >&Mike.McBride; &Mike.McBride.mail;</author>
@@ -32,9 +32,9 @@
 </authorgroup>
 
 <date
->2018-03-18</date>
+>2021-04-09</date>
 <releaseinfo
->Plasma 5.12</releaseinfo>
+>Plasma 5.20</releaseinfo>
 
 <keywordset>
 <keyword
@@ -44,18 +44,14 @@
 <keyword
 >Stil</keyword>
 <keyword
+>Anwendung</keyword>
+<keyword
 >Miniprogramme</keyword>
 </keywordset>
 </articleinfo>
 
-<variablelist>
-<varlistentry>
-<term
->Introduction</term>
-<listitem>
-
 <para
->This module is used to configure how the individual widgets are drawn by Plasma.</para>
+>In diesem Abschnitt können Sie festlegen, wie Kontrollelemente (Widgets) von &plasma; dargestellt werden.</para>
 
 <note
 ><para
@@ -70,59 +66,37 @@
 > einstellen.</para>
 
 <para
->This panel is divided into two tabs: <guilabel
->Applications</guilabel
-> and <guilabel
->Fine Tuning</guilabel
->.</para>
-
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Applications</guilabel
-> tab</term>
-<listitem>
-<para
->The top drop down box, labeled <guilabel
->Widget Style</guilabel
-> contains a list of the pre-defined styles. Each style has a name, and a brief description.</para>
+>Unter der Beschriftung <guilabel
+>Anwendungs-Stil</guilabel
+> wird eine Auswahl vordefinierter Stile angezeigt. Jeder Stil hat einen Namen und eine kurze Beschreibung erscheint, wenn der Mauszeiger sich über dem Eintrag befindet.</para>
 
 <para
->To change styles, select a style in the drop down box, and a preview of the style will be displayed in the preview box below the style list.</para>
+>Möchten Sie einen &plasma;-Stil ändern, benutzen Sie das Überlagerungssymbol <guilabel
+>Stil einrichten</guilabel
+> unten rechts auf dem Symbol.</para>
 
 <para
->If a style is configurable, the <guibutton
->Configure...</guibutton
-> button at the right side of the drop down box is enabled and can be used to open a dialog to select further settings.</para>
+>Wenn implementiert, ist es möglich, fast jeden Aspekt eines Stils zu ändern: Reiter auf Karteikarten zentrieren, Symbol-Trenner in Werkzeugleisten anzeigen, Fokus von Bedienelementen in Listen sichtbar machen, Skalenstriche auf Schiebereglern anzeigen, Erweitere Griffe zur Größenänderung aktivieren, Sichtbarkeit von Kurzbefehlen einstellen, Verschiebungsmodus von Fenstern ändern, die Verwendung von Rahmen für die bessere Zugänglichkeit, Verwendung von Schaltflächen auf den Bildlaufleisten und die Verwendung von Transparenz in den Menüs.</para>
 
-</listitem>
-</varlistentry>
-
-<varlistentry
-> 
-<term
-><guilabel
->Fine Tuning</guilabel
-> tab</term>
-<listitem>
+<para
+>Die allgemeinen Einstellungen können Sie mit dem Knopf <guibutton
+>Symbole und Werkzeugleisten einrichten</guibutton
+> unter den Stilen   einen Dialog öffnen, um die Einstellungen auszuwählen.</para>
 <variablelist>
 
 <varlistentry
 > 
 <term
 ><guilabel
->Show icons in buttons</guilabel
+>Symbole auf Knöpfen anzeigen</guilabel
 ></term>
 <listitem>
 <para
->If this option is selected, action buttons (like <guibutton
+>Falls diese Einstellung gewählt wurde, wird auf Standardknöpfen wie <guibutton
 >OK</guibutton
-> and <guibutton
->Apply</guibutton
->) will have a small icon located within them to act as a visual reference. If this option is not selected, then only text will appear in the button.</para>
+> und <guibutton
+>Anwenden</guibutton
+> ein kleines Symbol dargestellt. Ist die Einstellung nicht aktiviert, wird nur der Text des Knopfes angezeigt.</para>
 </listitem
 > 
 </varlistentry
@@ -132,7 +106,7 @@
 > 
 <term
 ><guilabel
->Show icons in menus</guilabel
+>Symbole in Menüs anzeigen</guilabel
 ></term>
 <listitem>
 <para
@@ -146,31 +120,31 @@
 > 
 <term
 ><guilabel
->Main toolbar text location</guilabel
+>Text auf Haupt-Werkzeugleiste</guilabel
 >, <guilabel
->Secondary toolbar text location</guilabel
+>Text auf anderen Werkzeugleisten</guilabel
 ></term>
 <listitem>
 <para
->These drop down boxes lets you determine where on the button in both toolbars the text name of the button will appear as the default. If <guilabel
->No Text</guilabel
-> is selected, then there is no text on the toolbar buttons. If <guilabel
->Text Only</guilabel
-> is selected, then the button's icon is replaced with a text name of the button. If <guilabel
->Text Beside Icons</guilabel
-> is selected, then the name of the button will be placed to the <emphasis
->right</emphasis
-> of the icon. If <guilabel
->Text Below Icons</guilabel
-> is selected, the default will be to have the text of the button <emphasis
->below</emphasis
-> the icon.</para>
+>Mit diesen Auswahlfeldern können Sie festlegen, wo der Text auf einem Knopf standardmäßig angezeigt wird. Falls <guilabel
+>Keiner</guilabel
+> gewählt ist, wird auf den Knöpfen der Werkzeugleisten kein Text angezeigt. Bei der Auswahl <guilabel
+>Nur Text</guilabel
+> wird das Symbol des Knopfes durch eine Textbezeichnung ersetzt. Ist <guilabel
+>Neben Symbolen</guilabel
+> ausgewählt, wird der Text <emphasis
+>rechts</emphasis
+> neben dem Symbol angezeigt. Die Auswahl <guilabel
+>Unter Symbolen</guilabel
+> bewirkt, dass der Text des Knopfes standardmäßig <emphasis
+>unter</emphasis
+> dem Symbol angezeigt wird.</para>
 
 <tip
 ><para
->This option only specifies the <emphasis
->default</emphasis
-> location. Each application can override the setting used in this panel.</para
+>Diese Einstellungen legen nur die <emphasis
+>Standard</emphasis
+>position fest. Jede Anwendung kann die Einstellung in diesem Abschnitt überschreiben.</para
 ></tip>
 </listitem
 > 
@@ -179,16 +153,13 @@
 
 </variablelist>
 
-</listitem>
-</varlistentry>
-
-</variablelist>
-
 <para
->The global menu is now automatically enabled when you place a global menu applet in a panel or add the menu button to the window decoration in <guilabel
->Buttons</guilabel
-> tab of the <guilabel
->Window Decorations</guilabel
-> module. </para>
+>Mit <guibutton
+>GNOME/GTK Anwendungs-Stil einrichten</guibutton
+> können Sie einen Dialog öffnen, um ein <guilabel
+>GTK-Design</guilabel
+> auszuwählen, ein GTK-Design-Design aus einer Datei zu installieren oder aus dem Internet <guibutton
+>Neue Anwendungs-Stile für GNOME-GTK holen</guibutton
+>. </para>
 
 </article>

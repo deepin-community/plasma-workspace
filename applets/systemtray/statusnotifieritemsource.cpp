@@ -6,9 +6,10 @@
 */
 
 #include "statusnotifieritemsource.h"
-#include "statusnotifieritem_interface.h"
 #include "statusnotifieritemservice.h"
 #include "systemtraytypes.h"
+
+#include "debug.h"
 
 #include <KIconEngine>
 #include <KIconLoader>
@@ -63,7 +64,7 @@ StatusNotifierItemSource::StatusNotifierItemSource(const QString &notifierItemId
 
     int slash = notifierItemId.indexOf('/');
     if (slash == -1) {
-        qWarning() << "Invalid notifierItemId:" << notifierItemId;
+        qCWarning(SYSTEM_TRAY) << "Invalid notifierItemId:" << notifierItemId;
         m_valid = false;
         m_statusNotifierItemInterface = nullptr;
         return;
@@ -194,7 +195,7 @@ void StatusNotifierItemSource::syncStatus(const QString &status)
 void StatusNotifierItemSource::refreshMenu()
 {
     if (m_menuImporter) {
-        m_menuImporter->deleteLater();
+        delete m_menuImporter;
         m_menuImporter = nullptr;
     }
     refresh();
@@ -254,7 +255,7 @@ void StatusNotifierItemSource::refreshCallback(QDBusPendingCallWatcher *call)
             }
             // FIXME: If last part of path is not "icons", this won't work!
             QString appName;
-            auto tokens = path.splitRef('/', Qt::SkipEmptyParts);
+            auto tokens = QStringView(path).split('/', Qt::SkipEmptyParts);
             if (tokens.length() >= 3 && tokens.takeLast() == QLatin1String("icons"))
                 appName = tokens.takeLast().toString();
 
@@ -286,68 +287,52 @@ void StatusNotifierItemSource::refreshCallback(QDBusPendingCallWatcher *call)
         QIcon overlay;
         QStringList overlayNames;
 
-        // Icon
+        // Overlay icon
         {
-            KDbusImageVector image;
-            QIcon icon;
-            QString iconName;
+            m_overlayIconName = QString();
 
-            properties[QStringLiteral("OverlayIconPixmap")].value<QDBusArgument>() >> image;
-            if (image.isEmpty()) {
-                QString iconName = properties[QStringLiteral("OverlayIconName")].toString();
-                m_overlayIconName = iconName;
-                if (!iconName.isEmpty()) {
+            const QString iconName = properties[QStringLiteral("OverlayIconName")].toString();
+            if (!iconName.isEmpty()) {
+                overlay = QIcon(new KIconEngine(iconName, iconLoader()));
+                if (!overlay.isNull()) {
+                    m_overlayIconName = iconName;
                     overlayNames << iconName;
-                    overlay = QIcon(new KIconEngine(iconName, iconLoader()));
                 }
-            } else {
-                overlay = imageVectorToPixmap(image);
             }
+            if (overlay.isNull()) {
+                KDbusImageVector image;
+                properties[QStringLiteral("OverlayIconPixmap")].value<QDBusArgument>() >> image;
+                if (!image.isEmpty()) {
+                    overlay = imageVectorToPixmap(image);
+                }
+            }
+        }
 
-            properties[QStringLiteral("IconPixmap")].value<QDBusArgument>() >> image;
-            if (image.isEmpty()) {
-                iconName = properties[QStringLiteral("IconName")].toString();
-                if (!iconName.isEmpty()) {
-                    icon = QIcon(new KIconEngine(iconName, iconLoader(), overlayNames));
-
-                    if (overlayNames.isEmpty() && !overlay.isNull()) {
+        auto loadIcon = [this, &properties, &overlay, &overlayNames](const QString &iconKey, const QString &pixmapKey) -> std::tuple<QIcon, QString> {
+            const QString iconName = properties[iconKey].toString();
+            if (!iconName.isEmpty()) {
+                QIcon icon = QIcon(new KIconEngine(iconName, iconLoader(), overlayNames));
+                if (!icon.isNull()) {
+                    if (!overlay.isNull() && overlayNames.isEmpty()) {
                         overlayIcon(&icon, &overlay);
                     }
+                    return {icon, iconName};
                 }
-            } else {
-                icon = imageVectorToPixmap(image);
+            }
+            KDbusImageVector image;
+            properties[pixmapKey].value<QDBusArgument>() >> image;
+            if (!image.isEmpty()) {
+                QIcon icon = imageVectorToPixmap(image);
                 if (!icon.isNull() && !overlay.isNull()) {
                     overlayIcon(&icon, &overlay);
                 }
+                return {icon, QString()};
             }
-            m_icon = icon;
-            m_iconName = iconName;
-        }
+            return {};
+        };
 
-        // Attention icon
-        {
-            KDbusImageVector image;
-            QIcon attentionIcon;
-
-            properties[QStringLiteral("AttentionIconPixmap")].value<QDBusArgument>() >> image;
-            if (image.isEmpty()) {
-                QString iconName = properties[QStringLiteral("AttentionIconName")].toString();
-                m_attentionIconName = iconName;
-                if (!iconName.isEmpty()) {
-                    attentionIcon = QIcon(new KIconEngine(iconName, iconLoader(), overlayNames));
-
-                    if (overlayNames.isEmpty() && !overlay.isNull()) {
-                        overlayIcon(&attentionIcon, &overlay);
-                    }
-                }
-            } else {
-                attentionIcon = imageVectorToPixmap(image);
-                if (!attentionIcon.isNull() && !overlay.isNull()) {
-                    overlayIcon(&attentionIcon, &overlay);
-                }
-            }
-            m_attentionIcon = attentionIcon;
-        }
+        std::tie(m_icon, m_iconName) = loadIcon(QStringLiteral("IconName"), QStringLiteral("IconPixmap"));
+        std::tie(m_attentionIcon, m_attentionIconName) = loadIcon(QStringLiteral("AttentionIconName"), QStringLiteral("AttentionIconPixmap"));
 
         // ToolTip
         {
@@ -382,7 +367,7 @@ void StatusNotifierItemSource::refreshCallback(QDBusPendingCallWatcher *call)
                     // This is a hack to make it possible to disable DBusMenu in an
                     // application. The string "/NO_DBUSMENU" must be the same as in
                     // KStatusNotifierItem::setContextMenu().
-                    qWarning() << "DBusMenu disabled for this application";
+                    qCWarning(SYSTEM_TRAY) << "DBusMenu disabled for this application";
                 } else {
                     m_menuImporter = new PlasmaDBusMenuImporter(m_statusNotifierItemInterface->service(), menuObjectPath, iconLoader(), this);
                     connect(m_menuImporter, &PlasmaDBusMenuImporter::menuUpdated, this, [this](QMenu *menu) {
@@ -401,7 +386,7 @@ void StatusNotifierItemSource::refreshCallback(QDBusPendingCallWatcher *call)
 
 void StatusNotifierItemSource::contextMenuReady()
 {
-    emit contextMenuReady(m_menuImporter->menu());
+    Q_EMIT contextMenuReady(m_menuImporter->menu());
 }
 
 QPixmap StatusNotifierItemSource::KDbusImageStructToPixmap(const KDbusImageStruct &image) const
@@ -512,7 +497,7 @@ void StatusNotifierItemSource::activate(int x, int y)
 void StatusNotifierItemSource::activateCallback(QDBusPendingCallWatcher *call)
 {
     QDBusPendingReply<void> reply = *call;
-    emit activateResult(!reply.isError());
+    Q_EMIT activateResult(!reply.isError());
     call->deleteLater();
 }
 
@@ -535,7 +520,7 @@ void StatusNotifierItemSource::contextMenu(int x, int y)
     if (m_menuImporter) {
         m_menuImporter->updateMenu();
     } else {
-        qWarning() << "Could not find DBusMenu interface, falling back to calling ContextMenu()";
+        qCWarning(SYSTEM_TRAY) << "Could not find DBusMenu interface, falling back to calling ContextMenu()";
         if (m_statusNotifierItemInterface && m_statusNotifierItemInterface->isValid()) {
             m_statusNotifierItemInterface->call(QDBus::NoBlock, QStringLiteral("ContextMenu"), x, y);
         }

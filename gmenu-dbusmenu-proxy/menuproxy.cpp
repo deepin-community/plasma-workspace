@@ -23,11 +23,20 @@
 #include <KDirWatch>
 #include <KSharedConfig>
 #include <KWindowSystem>
+#include <KX11Extras>
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 #include <xcb/xcb.h>
 
+#include "../c_ptr.h"
 #include "window.h"
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 static const QString s_ourServiceName = QStringLiteral("org.kde.plasma.gmenu_dbusmenu_proxy");
 
@@ -83,7 +92,7 @@ MenuProxy::MenuProxy()
 
     // kde-gtk-config just deletes and re-creates the gtkrc-2.0, watch this and add our config to it again
     m_writeGtk2SettingsTimer->setSingleShot(true);
-    m_writeGtk2SettingsTimer->setInterval(1000);
+    m_writeGtk2SettingsTimer->setInterval(1s);
     connect(m_writeGtk2SettingsTimer, &QTimer::timeout, this, &MenuProxy::writeGtk2Settings);
 
     auto startGtk2SettingsTimer = [this] {
@@ -111,10 +120,10 @@ bool MenuProxy::init()
 
     enableGtkSettings(true);
 
-    connect(KWindowSystem::self(), &KWindowSystem::windowAdded, this, &MenuProxy::onWindowAdded);
-    connect(KWindowSystem::self(), &KWindowSystem::windowRemoved, this, &MenuProxy::onWindowRemoved);
+    connect(KX11Extras::self(), &KX11Extras::windowAdded, this, &MenuProxy::onWindowAdded);
+    connect(KX11Extras::self(), &KX11Extras::windowRemoved, this, &MenuProxy::onWindowRemoved);
 
-    const auto windows = KWindowSystem::windows();
+    const auto windows = KX11Extras::windows();
     for (WId id : windows) {
         onWindowAdded(id);
     }
@@ -132,8 +141,8 @@ void MenuProxy::teardown()
 
     QDBusConnection::sessionBus().unregisterService(s_ourServiceName);
 
-    disconnect(KWindowSystem::self(), &KWindowSystem::windowAdded, this, &MenuProxy::onWindowAdded);
-    disconnect(KWindowSystem::self(), &KWindowSystem::windowRemoved, this, &MenuProxy::onWindowRemoved);
+    disconnect(KX11Extras::self(), &KX11Extras::windowAdded, this, &MenuProxy::onWindowAdded);
+    disconnect(KX11Extras::self(), &KX11Extras::windowRemoved, this, &MenuProxy::onWindowRemoved);
 
     qDeleteAll(m_windows);
     m_windows.clear();
@@ -333,14 +342,14 @@ QByteArray MenuProxy::getWindowPropertyString(WId id, const QByteArray &name)
 
     static const long MAX_PROP_SIZE = 10000;
     auto propertyCookie = xcb_get_property(m_xConnection, false, id, atom, utf8StringAtom, 0, MAX_PROP_SIZE);
-    QScopedPointer<xcb_get_property_reply_t, QScopedPointerPodDeleter> propertyReply(xcb_get_property_reply(m_xConnection, propertyCookie, nullptr));
-    if (propertyReply.isNull()) {
+    UniqueCPointer<xcb_get_property_reply_t> propertyReply(xcb_get_property_reply(m_xConnection, propertyCookie, nullptr));
+    if (!propertyReply) {
         qCWarning(DBUSMENUPROXY) << "XCB property reply for atom" << name << "on" << id << "was null";
         return value;
     }
 
     if (propertyReply->type == utf8StringAtom && propertyReply->format == 8 && propertyReply->value_len > 0) {
-        const char *data = (const char *)xcb_get_property_value(propertyReply.data());
+        const char *data = (const char *)xcb_get_property_value(propertyReply.get());
         int len = propertyReply->value_len;
         if (data) {
             value = QByteArray(data, data[len - 1] ? len : len - 1);
@@ -371,8 +380,8 @@ xcb_atom_t MenuProxy::getAtom(const QByteArray &name)
     auto atom = s_atoms.value(name, XCB_ATOM_NONE);
     if (atom == XCB_ATOM_NONE) {
         const xcb_intern_atom_cookie_t atomCookie = xcb_intern_atom(m_xConnection, false, name.length(), name.constData());
-        QScopedPointer<xcb_intern_atom_reply_t, QScopedPointerPodDeleter> atomReply(xcb_intern_atom_reply(m_xConnection, atomCookie, nullptr));
-        if (!atomReply.isNull()) {
+        UniqueCPointer<xcb_intern_atom_reply_t> atomReply(xcb_intern_atom_reply(m_xConnection, atomCookie, nullptr));
+        if (atomReply) {
             atom = atomReply->atom;
             if (atom != XCB_ATOM_NONE) {
                 s_atoms.insert(name, atom);

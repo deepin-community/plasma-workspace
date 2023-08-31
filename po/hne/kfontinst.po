@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfontinst\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-18 00:19+0000\n"
+"POT-Creation-Date: 2023-01-29 02:56+0000\n"
 "PO-Revision-Date: 2009-02-05 17:58+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -29,14 +29,14 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "raviratlami@aol.in"
 
-#: apps/Installer.cpp:35 kcmfontinst/KCmFontInst.cpp:955
+#: apps/Installer.cpp:35 kcmfontinst/KCmFontInst.cpp:956
 #, kde-format
 msgid ""
 "Do you wish to install the font(s) for personal use (only available to you), "
 "or system-wide (available to all users)?"
 msgstr ""
 
-#: apps/Installer.cpp:38 kcmfontinst/KCmFontInst.cpp:958
+#: apps/Installer.cpp:38 kcmfontinst/KCmFontInst.cpp:959
 #, kde-format
 msgid "Where to Install"
 msgstr "कहां इनस्टाल करव"
@@ -71,7 +71,7 @@ msgstr "इनस्टाल करे बर यूआरएल"
 msgid "Print"
 msgstr "छापव"
 
-#: apps/Printer.cpp:308 kcmfontinst/DuplicatesDialog.cpp:210
+#: apps/Printer.cpp:308 kcmfontinst/DuplicatesDialog.cpp:222
 #, fuzzy, kde-format
 #| msgid "Cancel"
 msgid "Canceling…"
@@ -109,60 +109,72 @@ msgstr "छापे जाए वाले फोंट के सूची व
 msgid "Remove file containing list of fonts to print"
 msgstr "छापे जाए वाले फोंट के सूची वाले फाइल ल मेटाव"
 
-#: apps/Viewer.cpp:58
+#: apps/Viewer.cpp:48
+#, fuzzy, kde-format
+#| msgid "Open all %1 fonts in font viewer?"
+msgid "Open an existing font file"
+msgstr "सब्बो %1 फोंट ल फोंट प्रदर्सक मं खोलव?"
+
+#: apps/Viewer.cpp:49
+#, fuzzy, kde-format
+#| msgid "Print Font Samples"
+msgid "Print font preview"
+msgstr "फोंट नमूना छापव"
+
+#: apps/Viewer.cpp:66
 #, kde-format
 msgid "Select Font to View"
 msgstr "देखे बर फोंट चुनव"
 
-#: apps/Viewer.cpp:101
+#: apps/Viewer.cpp:109
 #, kde-format
 msgid "URL to open"
 msgstr "खोले बर यूआरएल"
 
-#: apps/Viewer.cpp:144
+#: apps/Viewer.cpp:152
 #, kde-format
 msgid "Font Viewer"
 msgstr "फोंट प्रदर्सक"
 
-#: apps/Viewer.cpp:146
+#: apps/Viewer.cpp:154
 #, kde-format
 msgid "Simple font viewer"
 msgstr "सादा फोंट प्रदर्सक"
 
-#: apps/Viewer.cpp:148
+#: apps/Viewer.cpp:156
 #, kde-format
 msgid "(C) Craig Drummond, 2004-2007"
 msgstr "(c) क्रेग ड्रमांड, 2004-2007"
 
-#: kcmfontinst/DuplicatesDialog.cpp:46
+#: kcmfontinst/DuplicatesDialog.cpp:47
 #, kde-format
 msgid "Duplicate Fonts"
 msgstr "दोहरा फोंट"
 
-#: kcmfontinst/DuplicatesDialog.cpp:76
+#: kcmfontinst/DuplicatesDialog.cpp:77
 #, fuzzy, kde-format
 #| msgid "Scanning for duplicate fonts. Please wait..."
 msgid "Scanning for duplicate fonts. Please wait…"
 msgstr "स्कैन करत हे. किरपा करके, अगोरव..."
 
-#: kcmfontinst/DuplicatesDialog.cpp:95
+#: kcmfontinst/DuplicatesDialog.cpp:96
 #, kde-format
 msgid "No duplicate fonts found."
 msgstr "कोई दोहरा फोंट नइ मिलिस."
 
-#: kcmfontinst/DuplicatesDialog.cpp:103
+#: kcmfontinst/DuplicatesDialog.cpp:104
 #, kde-format
 msgid "Delete Marked Files"
 msgstr ""
 
-#: kcmfontinst/DuplicatesDialog.cpp:105
+#: kcmfontinst/DuplicatesDialog.cpp:106
 #, kde-format
 msgid "%1 duplicate font found."
 msgid_plural "%1 duplicate fonts found."
 msgstr[0] "%1 दोहरा फोंट मिलिस."
 msgstr[1] "%1 दोहरा फोंट मिलिस."
 
-#: kcmfontinst/DuplicatesDialog.cpp:185
+#: kcmfontinst/DuplicatesDialog.cpp:187
 #, kde-format
 msgid ""
 "Are you sure you wish to delete:\n"
@@ -171,58 +183,58 @@ msgstr ""
 "का आप मन सही मं :\n"
 "%1 ल मिटाना चाहथो ?"
 
-#: kcmfontinst/DuplicatesDialog.cpp:186
+#: kcmfontinst/DuplicatesDialog.cpp:193
 #, kde-format
 msgid "Are you sure you wish to delete:"
 msgstr "का आप मन सही मं इसको मिटाना चाहथो :"
 
-#: kcmfontinst/DuplicatesDialog.cpp:209
+#: kcmfontinst/DuplicatesDialog.cpp:221
 #, fuzzy, kde-format
 #| msgid "Abort font scan?"
 msgid "Cancel font scan?"
 msgstr "फोंट स्कैन करना छोड़व?"
 
-#: kcmfontinst/DuplicatesDialog.cpp:370
+#: kcmfontinst/DuplicatesDialog.cpp:382
 #, kde-format
 msgid "Font/File"
 msgstr "फोंट/फाइल मन ल"
 
-#: kcmfontinst/DuplicatesDialog.cpp:372
+#: kcmfontinst/DuplicatesDialog.cpp:384
 #, kde-format
 msgid "Size"
 msgstr "आकार"
 
-#: kcmfontinst/DuplicatesDialog.cpp:373
+#: kcmfontinst/DuplicatesDialog.cpp:385
 #, kde-format
 msgid "Date"
 msgstr "दिनांक "
 
-#: kcmfontinst/DuplicatesDialog.cpp:374
+#: kcmfontinst/DuplicatesDialog.cpp:386
 #, kde-format
 msgid "Links To"
 msgstr "पर संकली"
 
-#: kcmfontinst/DuplicatesDialog.cpp:387 kcmfontinst/FontList.cpp:1316
+#: kcmfontinst/DuplicatesDialog.cpp:399 kcmfontinst/FontList.cpp:1315
 #, kde-format
 msgid "Open in Font Viewer"
 msgstr "फोंट प्रदर्सक मं खोलव"
 
-#: kcmfontinst/DuplicatesDialog.cpp:389
+#: kcmfontinst/DuplicatesDialog.cpp:401
 #, kde-format
 msgid "Properties"
 msgstr "गुन"
 
-#: kcmfontinst/DuplicatesDialog.cpp:391
+#: kcmfontinst/DuplicatesDialog.cpp:403
 #, kde-format
 msgid "Unmark for Deletion"
 msgstr "मेटाय बर चिनहा हटाव"
 
-#: kcmfontinst/DuplicatesDialog.cpp:392
+#: kcmfontinst/DuplicatesDialog.cpp:404
 #, kde-format
 msgid "Mark for Deletion"
 msgstr "मेटाय बर चिनहा लगाव"
 
-#: kcmfontinst/DuplicatesDialog.cpp:490
+#: kcmfontinst/DuplicatesDialog.cpp:502
 #, fuzzy, kde-format
 #| msgid "Open all %1 fonts in font viewer?"
 msgid "Open font in font viewer?"
@@ -330,29 +342,29 @@ msgid "Delete"
 msgstr "मेटाव"
 
 #: kcmfontinst/FontList.cpp:1308 kcmfontinst/GroupList.cpp:789
-#: kcmfontinst/KCmFontInst.cpp:1132 kcmfontinst/KCmFontInst.cpp:1156
+#: kcmfontinst/KCmFontInst.cpp:1133 kcmfontinst/KCmFontInst.cpp:1157
 #, kde-format
 msgid "Enable"
 msgstr "सक्छम करव"
 
 #: kcmfontinst/FontList.cpp:1309 kcmfontinst/GroupList.cpp:790
-#: kcmfontinst/KCmFontInst.cpp:1133 kcmfontinst/KCmFontInst.cpp:1157
+#: kcmfontinst/KCmFontInst.cpp:1134 kcmfontinst/KCmFontInst.cpp:1158
 #, kde-format
 msgid "Disable"
 msgstr "अक्छम"
 
-#: kcmfontinst/FontList.cpp:1314 kcmfontinst/GroupList.cpp:796
+#: kcmfontinst/FontList.cpp:1313 kcmfontinst/GroupList.cpp:796
 #, fuzzy, kde-format
 #| msgid "Print"
 msgid "Print…"
 msgstr "छापव"
 
-#: kcmfontinst/FontList.cpp:1318
+#: kcmfontinst/FontList.cpp:1317
 #, kde-format
 msgid "Reload"
 msgstr "री-लोड"
 
-#: kcmfontinst/FontList.cpp:1717
+#: kcmfontinst/FontList.cpp:1718
 #, kde-format
 msgid "Open all %1 fonts in font viewer?"
 msgstr "सब्बो %1 फोंट ल फोंट प्रदर्सक मं खोलव?"
@@ -475,23 +487,23 @@ msgstr ""
 msgid "Move to system folder."
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:139
+#: kcmfontinst/JobRunner.cpp:143
 #, kde-format
 msgid "Skip"
 msgstr "छोड़व "
 
-#: kcmfontinst/JobRunner.cpp:142
+#: kcmfontinst/JobRunner.cpp:146
 #, kde-format
 msgid "AutoSkip"
 msgstr "अपन आप छोड़व"
 
-#: kcmfontinst/JobRunner.cpp:187
+#: kcmfontinst/JobRunner.cpp:191
 #, fuzzy, kde-format
 #| msgid "Are you sure you wish to cancel?"
 msgid "<h3>Cancel?</h3><p>Are you sure you wish to cancel?</p>"
 msgstr "का आप मन सही मं खारिज करना चाहथो ?"
 
-#: kcmfontinst/JobRunner.cpp:199
+#: kcmfontinst/JobRunner.cpp:203
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Please note that any open applications will need to be restarted in "
@@ -503,135 +515,135 @@ msgstr ""
 "<p>किरपा करके, नोट करव कि सब्बो खुले अनुपरयोग मन ल फिर से चालू करना होही, तभे बदलाव "
 "दिखही</p>"
 
-#: kcmfontinst/JobRunner.cpp:207
+#: kcmfontinst/JobRunner.cpp:211
 #, kde-format
 msgid "Do not show this message again"
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:317
+#: kcmfontinst/JobRunner.cpp:321
 #, kde-format
 msgid "Installing"
 msgstr "इनस्टाल करत हे"
 
-#: kcmfontinst/JobRunner.cpp:320
+#: kcmfontinst/JobRunner.cpp:324
 #, kde-format
 msgid "Uninstalling"
 msgstr "अइनस्टाल करत हे"
 
-#: kcmfontinst/JobRunner.cpp:323 kcmfontinst/JobRunner.cpp:420
+#: kcmfontinst/JobRunner.cpp:327 kcmfontinst/JobRunner.cpp:424
 #, kde-format
 msgid "Enabling"
 msgstr "सक्छम करत हे"
 
-#: kcmfontinst/JobRunner.cpp:326 kcmfontinst/JobRunner.cpp:424
+#: kcmfontinst/JobRunner.cpp:330 kcmfontinst/JobRunner.cpp:428
 #, kde-format
 msgid "Moving"
 msgstr "खिसकावत हे"
 
-#: kcmfontinst/JobRunner.cpp:329
+#: kcmfontinst/JobRunner.cpp:333
 #, kde-format
 msgid "Updating"
 msgstr "अपडेट करत हे"
 
-#: kcmfontinst/JobRunner.cpp:333
+#: kcmfontinst/JobRunner.cpp:337
 #, fuzzy, kde-format
 #| msgid "Remove"
 msgid "Removing"
 msgstr "हटाव"
 
-#: kcmfontinst/JobRunner.cpp:337
+#: kcmfontinst/JobRunner.cpp:341
 #, kde-format
 msgid "Disabling"
 msgstr "अक्छम करत हे"
 
-#: kcmfontinst/JobRunner.cpp:375
+#: kcmfontinst/JobRunner.cpp:379
 #, fuzzy, kde-format
 #| msgid "Updating font configuration. Please wait..."
 msgid "Updating font configuration. Please wait…"
 msgstr "फोंट कान्फिगरेसन अपडेट करत हे. किरपा करके, अगोरव..."
 
-#: kcmfontinst/JobRunner.cpp:447
+#: kcmfontinst/JobRunner.cpp:451
 #, kde-format
 msgid "Unable to start backend."
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:456
+#: kcmfontinst/JobRunner.cpp:460
 #, kde-format
 msgid "Backend died, but has been restarted. Please try again."
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:618 kcmfontinst/JobRunner.cpp:624
+#: kcmfontinst/JobRunner.cpp:625 kcmfontinst/JobRunner.cpp:631
 #, kde-format
 msgid "<h3>Error</h3>"
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:690
+#: kcmfontinst/JobRunner.cpp:697
 #, kde-format
 msgid "Failed to download <i>%1</i>"
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:692
+#: kcmfontinst/JobRunner.cpp:699
 #, kde-format
 msgid "System backend died. Please try again.<br><i>%1</i>"
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:694
+#: kcmfontinst/JobRunner.cpp:701
 #, kde-format
 msgid ""
 "<i>%1</i> is a bitmap font, and these have been disabled on your system."
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:696
+#: kcmfontinst/JobRunner.cpp:703
 #, fuzzy, kde-format
 msgid ""
 "<i>%1</i> contains the font <b>%2</b>, which is already installed on your "
 "system."
 msgstr "ये नाम के कनेक्सन पहिली से ही मौजूद हे."
 
-#: kcmfontinst/JobRunner.cpp:698
+#: kcmfontinst/JobRunner.cpp:705
 #, kde-format
 msgid "<i>%1</i> is not a font."
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:700
+#: kcmfontinst/JobRunner.cpp:707
 #, fuzzy, kde-format
 msgid "Could not remove all files associated with <i>%1</i>"
 msgstr "घटना के साथ कोनो समय सम्बद्ध नइ"
 
-#: kcmfontinst/JobRunner.cpp:702
+#: kcmfontinst/JobRunner.cpp:709
 #, kde-format
 msgid "Failed to start the system daemon.<br><i>%1</i>"
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:705 kio/KioFonts.cpp:725
+#: kcmfontinst/JobRunner.cpp:712 kio/KioFonts.cpp:727
 #, fuzzy, kde-format
 #| msgid "<qt>A group named <b>'%1'</b> already exists.</qt>"
 msgid "<i>%1</i> already exists."
 msgstr "<qt>एक समूह <b>%1</b> नांव से पहिली से ही मौजूद हे.</qt>"
 
-#: kcmfontinst/JobRunner.cpp:708
+#: kcmfontinst/JobRunner.cpp:715
 #, kde-format
 msgid "<i>%1</i> does not exist."
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:710
+#: kcmfontinst/JobRunner.cpp:717
 #, kde-format
 msgid "Permission denied.<br><i>%1</i>"
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:712
+#: kcmfontinst/JobRunner.cpp:719
 #, fuzzy, kde-format
 #| msgid "Authentication failed."
 msgid "Unsupported action.<br><i>%1</i>"
 msgstr "प्रमानीकरन फेल"
 
-#: kcmfontinst/JobRunner.cpp:714
+#: kcmfontinst/JobRunner.cpp:721
 #, fuzzy, kde-format
 #| msgid "Authentication failed."
 msgid "Authentication failed.<br><i>%1</i>"
 msgstr "प्रमानीकरन फेल"
 
-#: kcmfontinst/JobRunner.cpp:716
+#: kcmfontinst/JobRunner.cpp:723
 #, kde-format
 msgid "Unexpected error while processing: <i>%1</i>"
 msgstr ""
@@ -716,25 +728,25 @@ msgstr ""
 msgid "Get New Fonts…"
 msgstr "फोंट मेटाव"
 
-#: kcmfontinst/KCmFontInst.cpp:252
+#: kcmfontinst/KCmFontInst.cpp:253
 #, fuzzy, kde-format
 #| msgid "Enable fonts"
 msgid "Download new fonts"
 msgstr "फोंट सक्छम करव"
 
-#: kcmfontinst/KCmFontInst.cpp:254
+#: kcmfontinst/KCmFontInst.cpp:255
 #, fuzzy, kde-format
 #| msgid "Delete all selected fonts"
 msgid "Delete Selected Fonts…"
 msgstr "सब्बो चुने गे फोंट ल मेटाव."
 
-#: kcmfontinst/KCmFontInst.cpp:312
+#: kcmfontinst/KCmFontInst.cpp:313
 #, fuzzy, kde-format
 #| msgid "Change Preview Text..."
 msgid "Change Preview Text…"
 msgstr "प्रीव्यू पाठ बदलव..."
 
-#: kcmfontinst/KCmFontInst.cpp:374
+#: kcmfontinst/KCmFontInst.cpp:375
 #, kde-format
 msgid ""
 "<h1>Font Installer</h1><p> This module allows you to install TrueType, "
@@ -743,7 +755,7 @@ msgid ""
 "installed fonts. To install a font, simply copy one into the folder.</p>"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:381
+#: kcmfontinst/KCmFontInst.cpp:382
 #, kde-format
 msgid ""
 "<h1>Font Installer</h1><p> This module allows you to install TrueType, "
@@ -754,54 +766,54 @@ msgid ""
 "wide fonts (available to all).</p>"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:436
+#: kcmfontinst/KCmFontInst.cpp:437
 #, kde-format
 msgid "Add Fonts"
 msgstr "फोंट जोड़व"
 
-#: kcmfontinst/KCmFontInst.cpp:561
+#: kcmfontinst/KCmFontInst.cpp:562
 #, fuzzy, kde-format
 msgid "Failed to save list of fonts to print."
 msgstr "फोटू ल %1 मं सहेजे मं फेल"
 
-#: kcmfontinst/KCmFontInst.cpp:582
+#: kcmfontinst/KCmFontInst.cpp:583
 #, fuzzy, kde-format
 msgid "Failed to start font printer."
 msgstr "प्लेयर काम बन्द करे मं फेल."
 
-#: kcmfontinst/KCmFontInst.cpp:589
+#: kcmfontinst/KCmFontInst.cpp:590
 #, kde-format
 msgid ""
 "There are no printable fonts.\n"
 "You can only print non-bitmap and enabled fonts."
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:591
+#: kcmfontinst/KCmFontInst.cpp:592
 #, kde-format
 msgid "Cannot Print"
 msgstr "मुद्रित नइ कर सकिस"
 
-#: kcmfontinst/KCmFontInst.cpp:606
+#: kcmfontinst/KCmFontInst.cpp:607
 #, kde-format
 msgid "You did not select anything to delete."
 msgstr "मेटाय बर आप मन कुछ चुने नइ हे."
 
-#: kcmfontinst/KCmFontInst.cpp:606
+#: kcmfontinst/KCmFontInst.cpp:607
 #, kde-format
 msgid "Nothing to Delete"
 msgstr "मेटाय बर कुछ नइ "
 
-#: kcmfontinst/KCmFontInst.cpp:621
+#: kcmfontinst/KCmFontInst.cpp:622
 #, fuzzy, kde-format
 msgid "<p>Do you really want to delete</p><p>'<b>%1</b>'?</p>"
 msgstr "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:624
+#: kcmfontinst/KCmFontInst.cpp:625
 #, kde-format
 msgid "Delete Font"
 msgstr "फोंट मेटाव"
 
-#: kcmfontinst/KCmFontInst.cpp:631
+#: kcmfontinst/KCmFontInst.cpp:632
 #, fuzzy, kde-format
 msgid "Do you really want to delete this font?"
 msgid_plural "Do you really want to delete these %1 fonts?"
@@ -812,34 +824,34 @@ msgstr[1] ""
 "का आप मन सचमुच ओ टिप्पनीको मिटाना चाहथो ?\n"
 "का आप मन सचमुच ए %n टिप्पनियों ल मिटाना चाहथो ?"
 
-#: kcmfontinst/KCmFontInst.cpp:633
+#: kcmfontinst/KCmFontInst.cpp:634
 #, kde-format
 msgid "Delete Fonts"
 msgstr "फोंट मेटाव"
 
-#: kcmfontinst/KCmFontInst.cpp:638
+#: kcmfontinst/KCmFontInst.cpp:639
 #, fuzzy, kde-format
 msgid "Deleting font(s)…"
 msgstr "प्रविस्टि मिटा रहे..."
 
-#: kcmfontinst/KCmFontInst.cpp:653
+#: kcmfontinst/KCmFontInst.cpp:654
 #, fuzzy, kde-format
 msgid "You did not select anything to move."
 msgstr "मेटाय बर आप मन कुछ चुने नइ हे."
 
-#: kcmfontinst/KCmFontInst.cpp:653
+#: kcmfontinst/KCmFontInst.cpp:654
 #, fuzzy, kde-format
 msgid "Nothing to Move"
 msgstr "मेटाय बर कुछ नइ "
 
-#: kcmfontinst/KCmFontInst.cpp:663
+#: kcmfontinst/KCmFontInst.cpp:664
 #, fuzzy, kde-format
 msgid ""
 "<p>Do you really want to move</p><p>'<b>%1</b>'</p><p>from <i>%2</i> to <i>"
 "%3</i>?</p>"
 msgstr "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:668
+#: kcmfontinst/KCmFontInst.cpp:669
 #, fuzzy, kde-format
 msgid "Move Font"
 msgstr ""
@@ -866,12 +878,12 @@ msgstr ""
 "#-#-#-#-#  umbrello.po (umbrello)  #-#-#-#-#\n"
 "नीचे जाव"
 
-#: kcmfontinst/KCmFontInst.cpp:669 kcmfontinst/KCmFontInst.cpp:681
+#: kcmfontinst/KCmFontInst.cpp:670 kcmfontinst/KCmFontInst.cpp:682
 #, kde-format
 msgid "Move"
 msgstr "खिसकाव"
 
-#: kcmfontinst/KCmFontInst.cpp:674
+#: kcmfontinst/KCmFontInst.cpp:675
 #, fuzzy, kde-format
 msgid ""
 "<p>Do you really want to move this font from <i>%2</i> to <i>%3</i>?</p>"
@@ -880,75 +892,75 @@ msgid_plural ""
 msgstr[0] "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
 msgstr[1] "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:680
+#: kcmfontinst/KCmFontInst.cpp:681
 #, fuzzy, kde-format
 msgid "Move Fonts"
 msgstr "टेक्स फोंट"
 
-#: kcmfontinst/KCmFontInst.cpp:685
+#: kcmfontinst/KCmFontInst.cpp:686
 #, fuzzy, kde-format
 msgid "Moving font(s)…"
 msgstr "फोंट लोकेट करत हे..."
 
-#: kcmfontinst/KCmFontInst.cpp:699
+#: kcmfontinst/KCmFontInst.cpp:700
 #, kde-format
 msgid "Export Group"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:725
+#: kcmfontinst/KCmFontInst.cpp:726
 #, kde-format
 msgid "No files?"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:728
+#: kcmfontinst/KCmFontInst.cpp:729
 #, fuzzy, kde-format
 msgid "Failed to open %1 for writing"
 msgstr "प्लेयर काम बन्द करे मं फेल."
 
-#: kcmfontinst/KCmFontInst.cpp:748
+#: kcmfontinst/KCmFontInst.cpp:749
 #, kde-format
 msgid "Create New Group"
 msgstr "नवा समूह बनाव"
 
-#: kcmfontinst/KCmFontInst.cpp:748
+#: kcmfontinst/KCmFontInst.cpp:749
 #, fuzzy, kde-format
 #| msgid "Create New Group"
 msgid "Name of new group:"
 msgstr "नवा समूह बनाव"
 
-#: kcmfontinst/KCmFontInst.cpp:748
+#: kcmfontinst/KCmFontInst.cpp:749
 #, kde-format
 msgid "New Group"
 msgstr "नवा समूह"
 
-#: kcmfontinst/KCmFontInst.cpp:776
+#: kcmfontinst/KCmFontInst.cpp:777
 #, fuzzy, kde-format
 msgid "Preview Text"
 msgstr "प्रिव्यू किसिम"
 
-#: kcmfontinst/KCmFontInst.cpp:776
+#: kcmfontinst/KCmFontInst.cpp:777
 #, fuzzy, kde-format
 msgid "Please enter new text:"
 msgstr "किरपा करके, नवा वाक्यांस भरव:"
 
-#: kcmfontinst/KCmFontInst.cpp:828
+#: kcmfontinst/KCmFontInst.cpp:829
 #, fuzzy, kde-format
 msgid "Scanning font list…"
 msgstr "परियोजना फाइल मन ल स्कैन करत हे ..."
 
-#: kcmfontinst/KCmFontInst.cpp:887
+#: kcmfontinst/KCmFontInst.cpp:888
 #, fuzzy, kde-format
 msgid "No fonts"
 msgstr "सामा. फोंट"
 
-#: kcmfontinst/KCmFontInst.cpp:892
+#: kcmfontinst/KCmFontInst.cpp:893
 #, fuzzy, kde-format
 msgid "1 Font"
 msgid_plural "%1 Fonts"
 msgstr[0] "फोंट"
 msgstr[1] "फोंट"
 
-#: kcmfontinst/KCmFontInst.cpp:901
+#: kcmfontinst/KCmFontInst.cpp:902
 #, kde-format
 msgid ""
 "<table><tr><td align=\"right\">Enabled:</td><td>%1</td></tr><tr><td align="
@@ -957,7 +969,7 @@ msgid ""
 "tr></table>"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:911
+#: kcmfontinst/KCmFontInst.cpp:912
 #, kde-format
 msgid ""
 "<table><tr><td align=\"right\">Enabled:</td><td>%1</td></tr><tr><td align="
@@ -965,86 +977,86 @@ msgid ""
 "td><td>%3</td></tr></table>"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:988
+#: kcmfontinst/KCmFontInst.cpp:989
 #, fuzzy, kde-format
 msgid "Looking for any associated files…"
 msgstr "माडम बर देख रहे..."
 
-#: kcmfontinst/KCmFontInst.cpp:992
+#: kcmfontinst/KCmFontInst.cpp:993
 #, fuzzy, kde-format
 msgid "Scanning Files…"
 msgstr "परियोजना फाइल मन ल स्कैन करत हे ..."
 
-#: kcmfontinst/KCmFontInst.cpp:993
+#: kcmfontinst/KCmFontInst.cpp:994
 #, fuzzy, kde-format
 msgid "Looking for additional files to install…"
 msgstr "इनस्टाल करे बर फाइल मन के पैटर्न जोड़व..."
 
-#: kcmfontinst/KCmFontInst.cpp:1008
+#: kcmfontinst/KCmFontInst.cpp:1009
 #, fuzzy, kde-format
 msgid "Looking for files associated with %1"
 msgstr "घटना के साथ कोनो समय सम्बद्ध नइ"
 
-#: kcmfontinst/KCmFontInst.cpp:1036
+#: kcmfontinst/KCmFontInst.cpp:1037
 #, fuzzy, kde-format
 msgid "Installing font(s)…"
 msgstr "चिनहा प्रसंग इनस्टाल करत हे"
 
-#: kcmfontinst/KCmFontInst.cpp:1101
+#: kcmfontinst/KCmFontInst.cpp:1102
 #, fuzzy, kde-format
 msgid "You did not select anything to enable."
 msgstr "मेटाय बर आप मन कुछ चुने नइ हे."
 
-#: kcmfontinst/KCmFontInst.cpp:1101
+#: kcmfontinst/KCmFontInst.cpp:1102
 #, fuzzy, kde-format
 msgid "You did not select anything to disable."
 msgstr "मेटाय बर आप मन कुछ चुने नइ हे."
 
-#: kcmfontinst/KCmFontInst.cpp:1102
+#: kcmfontinst/KCmFontInst.cpp:1103
 #, fuzzy, kde-format
 msgid "Nothing to Enable"
 msgstr "मेटाय बर कुछ नइ "
 
-#: kcmfontinst/KCmFontInst.cpp:1102
+#: kcmfontinst/KCmFontInst.cpp:1103
 #, fuzzy, kde-format
 msgid "Nothing to Disable"
 msgstr "मेटाय बर कुछ नइ "
 
-#: kcmfontinst/KCmFontInst.cpp:1119
+#: kcmfontinst/KCmFontInst.cpp:1120
 #, fuzzy, kde-format
 msgid "<p>Do you really want to enable</p><p>'<b>%1</b>'?</p>"
 msgstr "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:1121
+#: kcmfontinst/KCmFontInst.cpp:1122
 #, fuzzy, kde-format
 msgid "<p>Do you really want to disable</p><p>'<b>%1</b>'?</p>"
 msgstr "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:1123
+#: kcmfontinst/KCmFontInst.cpp:1124
 #, fuzzy, kde-format
 msgid ""
 "<p>Do you really want to enable</p><p>'<b>%1</b>', contained within group "
 "'<b>%2</b>'?</p>"
 msgstr "<qt>का आप मन सचमुच रिसोर्स <b>%1</b> ल मिटाना चाहथो ?</qt>"
 
-#: kcmfontinst/KCmFontInst.cpp:1127
+#: kcmfontinst/KCmFontInst.cpp:1128
 #, fuzzy, kde-format
 msgid ""
 "<p>Do you really want to disable</p><p>'<b>%1</b>', contained within group "
 "'<b>%2</b>'?</p>"
 msgstr "<qt>का आप मन सचमुच रिसोर्स <b>%1</b> ल मिटाना चाहथो ?</qt>"
 
-#: kcmfontinst/KCmFontInst.cpp:1131 kcmfontinst/KCmFontInst.cpp:1132
+#: kcmfontinst/KCmFontInst.cpp:1132 kcmfontinst/KCmFontInst.cpp:1133
 #, kde-format
 msgid "Enable Font"
 msgstr "फोंट सक्छम करव"
 
-#: kcmfontinst/KCmFontInst.cpp:1131 kcmfontinst/KCmFontInst.cpp:1133
+#: kcmfontinst/KCmFontInst.cpp:1132 kcmfontinst/KCmFontInst.cpp:1134
 #, kde-format
 msgid "Disable Font"
 msgstr "फोंट अक्छम करव"
 
-#: kcmfontinst/KCmFontInst.cpp:1138
+#: kcmfontinst/KCmFontInst.cpp:1139
 #, fuzzy, kde-format
 msgid "Do you really want to enable this font?"
 msgid_plural "Do you really want to enable these %1 fonts?"
@@ -1053,7 +1065,7 @@ msgstr[1] ""
 "का आप मन सचमुच ओ टिप्पनीको मिटाना चाहथो ?\n"
 "का आप मन सचमुच ए %n टिप्पनियों ल मिटाना चाहथो ?"
 
-#: kcmfontinst/KCmFontInst.cpp:1141
+#: kcmfontinst/KCmFontInst.cpp:1142
 #, fuzzy, kde-format
 msgid "Do you really want to disable this font?"
 msgid_plural "Do you really want to disable these %1 fonts?"
@@ -1064,7 +1076,7 @@ msgstr[1] ""
 "का आप मन सचमुच ओ टिप्पनीको मिटाना चाहथो ?\n"
 "का आप मन सचमुच ए %n टिप्पनियों ल मिटाना चाहथो ?"
 
-#: kcmfontinst/KCmFontInst.cpp:1144
+#: kcmfontinst/KCmFontInst.cpp:1145
 #, fuzzy, kde-format
 msgid ""
 "<p>Do you really want to enable this font contained within group '<b>%2</b>'?"
@@ -1075,7 +1087,7 @@ msgid_plural ""
 msgstr[0] "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
 msgstr[1] "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:1149
+#: kcmfontinst/KCmFontInst.cpp:1150
 #, fuzzy, kde-format
 msgid ""
 "<p>Do you really want to disable this font contained within group '<b>%2</"
@@ -1086,22 +1098,22 @@ msgid_plural ""
 msgstr[0] "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
 msgstr[1] "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:1155 kcmfontinst/KCmFontInst.cpp:1156
+#: kcmfontinst/KCmFontInst.cpp:1156 kcmfontinst/KCmFontInst.cpp:1157
 #, kde-format
 msgid "Enable Fonts"
 msgstr "फोंट सक्छम करव"
 
-#: kcmfontinst/KCmFontInst.cpp:1155 kcmfontinst/KCmFontInst.cpp:1157
+#: kcmfontinst/KCmFontInst.cpp:1156 kcmfontinst/KCmFontInst.cpp:1158
 #, kde-format
 msgid "Disable Fonts"
 msgstr "फोंट अक्छम करव"
 
-#: kcmfontinst/KCmFontInst.cpp:1163
+#: kcmfontinst/KCmFontInst.cpp:1164
 #, fuzzy, kde-format
 msgid "Enabling font(s)…"
 msgstr "प्रविस्टि सक्छम करत हे..."
 
-#: kcmfontinst/KCmFontInst.cpp:1165
+#: kcmfontinst/KCmFontInst.cpp:1166
 #, fuzzy, kde-format
 msgid "Disabling font(s)…"
 msgstr "प्रविस्टि अक्छम करत हे..."
@@ -1146,305 +1158,273 @@ msgstr "36पाइं."
 msgid "48pt"
 msgstr "48पाइं."
 
-#: kio/KioFonts.cpp:207
+#: kio/KioFonts.cpp:208
 #, kde-format
 msgid "Can only install fonts to either \"%1\" or \"%2\"."
 msgstr ""
 
-#: kio/KioFonts.cpp:210
+#: kio/KioFonts.cpp:211
 #, kde-format
 msgid ""
 "You cannot install a fonts package directly.\n"
 "Please extract %1, and install the components individually."
 msgstr ""
 
-#: kio/KioFonts.cpp:438
+#: kio/KioFonts.cpp:439
 #, fuzzy, kde-format
 msgid "Cannot copy fonts"
 msgstr "नकल इहां रखव"
 
-#: kio/KioFonts.cpp:443
+#: kio/KioFonts.cpp:444
 #, fuzzy, kde-format
 #| msgid "Cannot Print"
 msgid "Cannot move fonts"
 msgstr "मुद्रित नइ कर सकिस"
 
-#: kio/KioFonts.cpp:454
+#: kio/KioFonts.cpp:455
 #, fuzzy, kde-format
 #| msgid "Only fonts may be installed."
 msgid "Only fonts may be deleted."
 msgstr "सिरिफ फोंट इनस्टाल होही."
 
-#: kio/KioFonts.cpp:456
+#: kio/KioFonts.cpp:458
 #, fuzzy, kde-format
 msgid "Can only remove fonts from either \"%1\" or \"%2\"."
 msgstr ""
 "माफ करव, आप मन \"%1\" या \"%2\" के नाम नइ बदल सके, मिटा, खिसका या नकल नइ कर "
 "सकते."
 
-#: kio/KioFonts.cpp:483
+#: kio/KioFonts.cpp:485
 #, kde-format
 msgid "Please specify \"%1\" or \"%2\"."
 msgstr "किरपा करके, निरधारित करव \"%1\" या \"%2\"."
 
-#: kio/KioFonts.cpp:503
+#: kio/KioFonts.cpp:505
 #, kde-format
 msgid "No special methods supported."
 msgstr ""
 
-#: kio/KioFonts.cpp:577
+#: kio/KioFonts.cpp:579
 #, kde-format
 msgid "Fonts"
 msgstr "फोंट"
 
-#: kio/KioFonts.cpp:706
+#: kio/KioFonts.cpp:708
 #, fuzzy, kde-format
 msgid "Failed to start the system daemon"
 msgstr "प्लेयर काम बन्द करे मं फेल."
 
-#: kio/KioFonts.cpp:709
+#: kio/KioFonts.cpp:711
 #, kde-format
 msgid "Backend died"
 msgstr ""
 
-#: kio/KioFonts.cpp:712
+#: kio/KioFonts.cpp:714
 #, kde-format
 msgid "%1 is a bitmap font, and these have been disabled on your system."
 msgstr ""
 
-#: kio/KioFonts.cpp:715
+#: kio/KioFonts.cpp:717
 #, fuzzy, kde-format
 msgid ""
 "%1 contains the font <b>%2</b>, which is already installed on your system."
 msgstr "ये नाम के कनेक्सन पहिली से ही मौजूद हे."
 
-#: kio/KioFonts.cpp:718
+#: kio/KioFonts.cpp:720
 #, fuzzy, kde-format
 #| msgid "Could not read font."
 msgid "%1 is not a font."
 msgstr "फोंट पढ़ नइ सकिस."
 
-#: kio/KioFonts.cpp:721
+#: kio/KioFonts.cpp:723
 #, fuzzy, kde-format
 msgid "Could not remove all files associated with %1"
 msgstr "घटना के साथ कोनो समय सम्बद्ध नइ"
 
-#: lib/Fc.cpp:407 lib/KfiConstants.h:106
+#: lib/Fc.cpp:407 lib/KfiConstants.h:107
 #, kde-format
 msgid "Unknown"
 msgstr "अग्यात"
 
-#: lib/FcEngine.cpp:854
+#: lib/FcEngine.cpp:858
 #, fuzzy, kde-format
 msgctxt "First letter of the alphabet (in upper then lower case)"
 msgid "Aa"
 msgstr "अआ"
 
-#: lib/FcEngine.cpp:856
+#: lib/FcEngine.cpp:860
 #, fuzzy, kde-format
 msgctxt ""
 "All letters of the alphabet (in upper/lower case pairs), followed by numbers"
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789"
 msgstr "कखगघड चछजझञ पफबभम ककाकिकीकुकूकेकैकोकौकंकः १२३४५६७८९०"
 
-#: lib/FcEngine.cpp:1018
+#: lib/FcEngine.cpp:1022
 #, kde-format
 msgid "No characters found."
 msgstr "कोई अक्छर नइ मिलिस."
 
-#: lib/FcEngine.cpp:1056
+#: lib/FcEngine.cpp:1060
 #, fuzzy, kde-format
 msgctxt "A sentence that uses all of the letters of the alphabet"
 msgid "The quick brown fox jumps over the lazy dog"
 msgstr "छत्तीसगढ़िया सबले बढ़िया"
 
-#: lib/FcEngine.cpp:1061
+#: lib/FcEngine.cpp:1065
 #, fuzzy, kde-format
 msgctxt "All of the letters of the alphabet, uppercase"
 msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgstr "कखगघजझञटठडढनपफबभम"
 
-#: lib/FcEngine.cpp:1066
+#: lib/FcEngine.cpp:1070
 #, fuzzy, kde-format
 msgctxt "All of the letters of the alphabet, lowercase"
 msgid "abcdefghijklmnopqrstuvwxyz"
 msgstr "कखगघजझञटठडढनपफबभम"
 
-#: lib/FcEngine.cpp:1071
+#: lib/FcEngine.cpp:1075
 #, fuzzy, kde-format
 msgctxt "Numbers and characters"
 msgid "0123456789.:,;(*!?'/\\\")£$€%^&-+@~#<>{}[]"
 msgstr "0१२३४५६७८९.:,;(*!?'/\\\")£$€%^&-+@~#<>{}[]"
 
-#: lib/FcEngine.cpp:1469
+#: lib/FcEngine.cpp:1473
 #, kde-format
 msgid "ERROR: Could not determine font's name."
 msgstr "गलती: फोंट नाम पढ़ नइ सकिस."
 
-#: lib/FcEngine.cpp:1472
+#: lib/FcEngine.cpp:1476
 #, fuzzy, kde-format
 msgid "%2 [1 pixel]"
 msgid_plural "%2 [%1 pixels]"
 msgstr[0] "पिक्सल"
 msgstr[1] "पिक्सेल"
 
-#: lib/KfiConstants.h:21
-#, kde-format
+#: lib/KfiConstants.h:22
 msgid "Personal"
 msgstr "निजी"
 
-#: lib/KfiConstants.h:22
-#, kde-format
+#: lib/KfiConstants.h:23
 msgid "System"
 msgstr "तंत्र"
 
-#: lib/KfiConstants.h:23
-#, kde-format
+#: lib/KfiConstants.h:24
 msgid "All"
 msgstr "सब्बो"
 
-#: lib/KfiConstants.h:37
-#, kde-format
+#: lib/KfiConstants.h:38
 msgid "Administrator"
 msgstr "प्रसासक"
 
-#: lib/KfiConstants.h:73
-#, kde-format
+#: lib/KfiConstants.h:74
 msgid "Thin"
 msgstr "पतला"
 
-#: lib/KfiConstants.h:74
-#, kde-format
+#: lib/KfiConstants.h:75
 msgid "Extra Light"
 msgstr "अतिरिक्त हल्का"
 
-#: lib/KfiConstants.h:75
-#, kde-format
+#: lib/KfiConstants.h:76
 msgid "Ultra Light"
 msgstr "बहुत हल्का"
 
-#: lib/KfiConstants.h:76
-#, kde-format
+#: lib/KfiConstants.h:77
 msgid "Light"
 msgstr "हल्का"
 
-#: lib/KfiConstants.h:77
-#, kde-format
+#: lib/KfiConstants.h:78
 msgid "Regular"
 msgstr "नियमित"
 
-#: lib/KfiConstants.h:78 lib/KfiConstants.h:96
-#, kde-format
+#: lib/KfiConstants.h:79 lib/KfiConstants.h:97
 msgid "Normal"
 msgstr "सादा"
 
-#: lib/KfiConstants.h:79
-#, kde-format
+#: lib/KfiConstants.h:80
 msgid "Medium"
 msgstr "मध्यम"
 
-#: lib/KfiConstants.h:80
-#, kde-format
+#: lib/KfiConstants.h:81
 msgid "Demi Bold"
 msgstr "डिमाई गाढ़ा"
 
-#: lib/KfiConstants.h:81
-#, kde-format
+#: lib/KfiConstants.h:82
 msgid "Semi Bold"
 msgstr "अर्ध गाढ़ा"
 
-#: lib/KfiConstants.h:82
-#, kde-format
+#: lib/KfiConstants.h:83
 msgid "Bold"
 msgstr "गाढ़ा"
 
-#: lib/KfiConstants.h:83
-#, kde-format
+#: lib/KfiConstants.h:84
 msgid "Extra Bold"
 msgstr "अतिरिक्त गाढ़ा"
 
-#: lib/KfiConstants.h:84
-#, kde-format
+#: lib/KfiConstants.h:85
 msgid "Ultra Bold"
 msgstr "बहुत गाढ़ा"
 
-#: lib/KfiConstants.h:85
-#, kde-format
+#: lib/KfiConstants.h:86
 msgid "Black"
 msgstr "काला"
 
-#: lib/KfiConstants.h:86
-#, kde-format
+#: lib/KfiConstants.h:87
 msgid "Heavy"
 msgstr "भारी"
 
-#: lib/KfiConstants.h:88
-#, kde-format
+#: lib/KfiConstants.h:89
 msgid "Roman"
 msgstr "रोमन"
 
-#: lib/KfiConstants.h:89
-#, kde-format
+#: lib/KfiConstants.h:90
 msgid "Italic"
 msgstr "ईटैलिक"
 
-#: lib/KfiConstants.h:90
-#, kde-format
+#: lib/KfiConstants.h:91
 msgid "Oblique"
 msgstr "तिर्यक"
 
-#: lib/KfiConstants.h:92
-#, kde-format
+#: lib/KfiConstants.h:93
 msgid "Ultra Condensed"
 msgstr "बहुत सघन"
 
-#: lib/KfiConstants.h:93
-#, kde-format
+#: lib/KfiConstants.h:94
 msgid "Extra Condensed"
 msgstr "अतिरिक्त सघन"
 
-#: lib/KfiConstants.h:94
-#, kde-format
+#: lib/KfiConstants.h:95
 msgid "Condensed"
 msgstr "सघन"
 
-#: lib/KfiConstants.h:95
-#, kde-format
+#: lib/KfiConstants.h:96
 msgid "Semi Condensed"
 msgstr "अर्ध संघनित"
 
-#: lib/KfiConstants.h:97
-#, kde-format
+#: lib/KfiConstants.h:98
 msgid "Semi Expanded"
 msgstr "अर्ध विस्तारित"
 
-#: lib/KfiConstants.h:98
-#, kde-format
+#: lib/KfiConstants.h:99
 msgid "Expanded"
 msgstr "विस्तारित"
 
-#: lib/KfiConstants.h:99
-#, kde-format
+#: lib/KfiConstants.h:100
 msgid "Extra Expanded"
 msgstr "अतिरिक्त विस्तारित"
 
-#: lib/KfiConstants.h:100
-#, kde-format
+#: lib/KfiConstants.h:101
 msgid "Ultra Expanded"
 msgstr "बहुत विस्तारित"
 
-#: lib/KfiConstants.h:102
-#, kde-format
+#: lib/KfiConstants.h:103
 msgid "Monospaced"
 msgstr "मोनोस्पेस्ड"
 
-#: lib/KfiConstants.h:103
-#, kde-format
+#: lib/KfiConstants.h:104
 msgid "Charcell"
 msgstr "चर-सेल"
 
-#: lib/KfiConstants.h:104
-#, kde-format
+#: lib/KfiConstants.h:105
 msgid "Proportional"
 msgstr "समानुपातिक"
 
@@ -1603,54 +1583,54 @@ msgstr "अलगइया, जगह"
 msgid "Category"
 msgstr "स्रेनी"
 
-#: viewpart/CharTip.cpp:154
+#: viewpart/CharTip.cpp:153
 #, kde-format
 msgid "UCS-4"
 msgstr "यूसीएस-4"
 
-#: viewpart/CharTip.cpp:157
+#: viewpart/CharTip.cpp:156
 #, kde-format
 msgid "UTF-16"
 msgstr "यूटीएफ-16"
 
-#: viewpart/CharTip.cpp:168
+#: viewpart/CharTip.cpp:167
 #, kde-format
 msgid "UTF-8"
 msgstr "यूटीएफ-8"
 
-#: viewpart/CharTip.cpp:185
+#: viewpart/CharTip.cpp:184
 #, kde-format
 msgid "XML Decimal Entity"
 msgstr "एक्सएमएल दसमलव एंटिटी"
 
-#: viewpart/FontViewPart.cpp:87
+#: viewpart/FontViewPart.cpp:85
 #, kde-format
 msgid "Show Face:"
 msgstr "फेस देखाव:"
 
-#: viewpart/FontViewPart.cpp:90
+#: viewpart/FontViewPart.cpp:88
 #, fuzzy, kde-format
 #| msgid "Install"
 msgid "Install…"
 msgstr "इनस्टाल करव"
 
-#: viewpart/FontViewPart.cpp:111
+#: viewpart/FontViewPart.cpp:109
 #, fuzzy, kde-format
 #| msgid "Change Text..."
 msgid "Change Text…"
 msgstr "पाठ बदलव..."
 
-#: viewpart/FontViewPart.cpp:337
+#: viewpart/FontViewPart.cpp:335
 #, kde-format
 msgid "Could not read font."
 msgstr "फोंट पढ़ नइ सकिस."
 
-#: viewpart/FontViewPart.cpp:389
+#: viewpart/FontViewPart.cpp:387
 #, kde-format
 msgid "Preview String"
 msgstr "वाक्यांस प्रिव्यू"
 
-#: viewpart/FontViewPart.cpp:389
+#: viewpart/FontViewPart.cpp:387
 #, kde-format
 msgid "Please enter new string:"
 msgstr "किरपा करके, नवा वाक्यांस भरव:"
@@ -1686,837 +1666,1136 @@ msgstr "यूनिकोड ब्लाक: %1"
 msgid "Unicode Script: %1"
 msgstr "यूनिकोड स्क्रिप्ट: %1"
 
-#: viewpart/UnicodeBlocks.h:16
-#, kde-format
+#: viewpart/UnicodeBlocks.h:17
 msgid "Basic Latin"
 msgstr "मूल लातिन"
 
-#: viewpart/UnicodeBlocks.h:17
-#, kde-format
+#: viewpart/UnicodeBlocks.h:18
 msgid "Latin-1 Supplement"
 msgstr "लातिन-1 संपूरक"
 
-#: viewpart/UnicodeBlocks.h:18
-#, kde-format
+#: viewpart/UnicodeBlocks.h:19
 msgid "Latin Extended-A"
 msgstr "लातिन विस्तारित-अ"
 
-#: viewpart/UnicodeBlocks.h:19
-#, kde-format
+#: viewpart/UnicodeBlocks.h:20
 msgid "Latin Extended-B"
 msgstr "लातिन विस्तारित-ब"
 
-#: viewpart/UnicodeBlocks.h:20
-#, kde-format
+#: viewpart/UnicodeBlocks.h:21
 msgid "IPA Extensions"
 msgstr "आइपीए विस्तारन"
 
-#: viewpart/UnicodeBlocks.h:21
-#, kde-format
+#: viewpart/UnicodeBlocks.h:22
 msgid "Spacing Modifier Letters"
 msgstr "जगह परिवर्धक अक्छर"
 
-#: viewpart/UnicodeBlocks.h:22
-#, kde-format
+#: viewpart/UnicodeBlocks.h:23
 msgid "Combining Diacritical Marks"
 msgstr "डायाक्रिटिकल निसान जोड़त हे"
 
-#: viewpart/UnicodeBlocks.h:23
-#, kde-format
+#: viewpart/UnicodeBlocks.h:24
 msgid "Greek and Coptic"
 msgstr "युनानी अउ कोप्टिक"
 
-#: viewpart/UnicodeBlocks.h:24 viewpart/UnicodeScripts.h:28
-#, kde-format
+#: viewpart/UnicodeBlocks.h:25 viewpart/UnicodeScripts.h:29
 msgid "Cyrillic"
 msgstr "साइरिलिक"
 
-#: viewpart/UnicodeBlocks.h:25
-#, kde-format
+#: viewpart/UnicodeBlocks.h:26
 msgid "Cyrillic Supplement"
 msgstr "साइरिलिक परिसिस्ट"
 
-#: viewpart/UnicodeBlocks.h:26 viewpart/UnicodeScripts.h:15
-#, kde-format
+#: viewpart/UnicodeBlocks.h:27 viewpart/UnicodeScripts.h:16
 msgid "Armenian"
 msgstr "आर्मेनियाई"
 
-#: viewpart/UnicodeBlocks.h:27 viewpart/UnicodeScripts.h:41
-#, kde-format
+#: viewpart/UnicodeBlocks.h:28 viewpart/UnicodeScripts.h:42
 msgid "Hebrew"
 msgstr "हिब्रू"
 
-#: viewpart/UnicodeBlocks.h:28 viewpart/UnicodeScripts.h:14
-#, kde-format
+#: viewpart/UnicodeBlocks.h:29 viewpart/UnicodeScripts.h:15
 msgid "Arabic"
 msgstr "अरबी"
 
-#: viewpart/UnicodeBlocks.h:29 viewpart/UnicodeScripts.h:68
-#, kde-format
+#: viewpart/UnicodeBlocks.h:30 viewpart/UnicodeScripts.h:69
 msgid "Syriac"
 msgstr "सीरियाक"
 
-#: viewpart/UnicodeBlocks.h:30
-#, kde-format
+#: viewpart/UnicodeBlocks.h:31
 msgid "Arabic Supplement"
 msgstr "अरबी संपूरक"
 
-#: viewpart/UnicodeBlocks.h:31 viewpart/UnicodeScripts.h:74
-#, kde-format
+#: viewpart/UnicodeBlocks.h:32 viewpart/UnicodeScripts.h:75
 msgid "Thaana"
 msgstr "थाना"
 
-#: viewpart/UnicodeBlocks.h:32
-#, kde-format
+#: viewpart/UnicodeBlocks.h:33
 msgid "NKo"
 msgstr "एनकेओ"
 
-#: viewpart/UnicodeBlocks.h:33 viewpart/UnicodeScripts.h:30
-#, kde-format
+#: viewpart/UnicodeBlocks.h:34 viewpart/UnicodeScripts.h:31
 msgid "Devanagari"
 msgstr "देवनागरी"
 
-#: viewpart/UnicodeBlocks.h:34 viewpart/UnicodeScripts.h:17
-#, kde-format
+#: viewpart/UnicodeBlocks.h:35 viewpart/UnicodeScripts.h:18
 msgid "Bengali"
 msgstr "बंगाली"
 
-#: viewpart/UnicodeBlocks.h:35 viewpart/UnicodeScripts.h:37
-#, kde-format
+#: viewpart/UnicodeBlocks.h:36 viewpart/UnicodeScripts.h:38
 msgid "Gurmukhi"
 msgstr "गुरूमुखी"
 
-#: viewpart/UnicodeBlocks.h:36 viewpart/UnicodeScripts.h:36
-#, kde-format
+#: viewpart/UnicodeBlocks.h:37 viewpart/UnicodeScripts.h:37
 msgid "Gujarati"
 msgstr "गुजराती"
 
-#: viewpart/UnicodeBlocks.h:37 viewpart/UnicodeScripts.h:60
-#, kde-format
+#: viewpart/UnicodeBlocks.h:38 viewpart/UnicodeScripts.h:61
 msgid "Oriya"
 msgstr "उड़िया"
 
-#: viewpart/UnicodeBlocks.h:38 viewpart/UnicodeScripts.h:72
-#, kde-format
+#: viewpart/UnicodeBlocks.h:39 viewpart/UnicodeScripts.h:73
 msgid "Tamil"
 msgstr "तमिल"
 
-#: viewpart/UnicodeBlocks.h:39 viewpart/UnicodeScripts.h:73
-#, kde-format
+#: viewpart/UnicodeBlocks.h:40 viewpart/UnicodeScripts.h:74
 msgid "Telugu"
 msgstr "तेलुगु"
 
-#: viewpart/UnicodeBlocks.h:40 viewpart/UnicodeScripts.h:44
-#, kde-format
+#: viewpart/UnicodeBlocks.h:41 viewpart/UnicodeScripts.h:45
 msgid "Kannada"
 msgstr "कन्नड"
 
-#: viewpart/UnicodeBlocks.h:41 viewpart/UnicodeScripts.h:52
-#, kde-format
+#: viewpart/UnicodeBlocks.h:42 viewpart/UnicodeScripts.h:53
 msgid "Malayalam"
 msgstr "मलयालम"
 
-#: viewpart/UnicodeBlocks.h:42 viewpart/UnicodeScripts.h:66
-#, kde-format
+#: viewpart/UnicodeBlocks.h:43 viewpart/UnicodeScripts.h:67
 msgid "Sinhala"
 msgstr "सिंहला"
 
-#: viewpart/UnicodeBlocks.h:43 viewpart/UnicodeScripts.h:75
-#, kde-format
+#: viewpart/UnicodeBlocks.h:44 viewpart/UnicodeScripts.h:76
 msgid "Thai"
 msgstr "थाई"
 
-#: viewpart/UnicodeBlocks.h:44 viewpart/UnicodeScripts.h:48
-#, kde-format
+#: viewpart/UnicodeBlocks.h:45 viewpart/UnicodeScripts.h:49
 msgid "Lao"
 msgstr "लाओ"
 
-#: viewpart/UnicodeBlocks.h:45 viewpart/UnicodeScripts.h:76
-#, kde-format
+#: viewpart/UnicodeBlocks.h:46 viewpart/UnicodeScripts.h:77
 msgid "Tibetan"
 msgstr "तिब्बती"
 
-#: viewpart/UnicodeBlocks.h:46 viewpart/UnicodeScripts.h:54
-#, kde-format
+#: viewpart/UnicodeBlocks.h:47 viewpart/UnicodeScripts.h:55
 msgid "Myanmar"
 msgstr "म्यनमार"
 
-#: viewpart/UnicodeBlocks.h:47 viewpart/UnicodeScripts.h:32
-#, kde-format
+#: viewpart/UnicodeBlocks.h:48 viewpart/UnicodeScripts.h:33
 msgid "Georgian"
 msgstr "ज्यार्जियाई"
 
-#: viewpart/UnicodeBlocks.h:48
-#, kde-format
+#: viewpart/UnicodeBlocks.h:49
 msgid "Hangul Jamo"
 msgstr "हांगुल जामो"
 
-#: viewpart/UnicodeBlocks.h:49 viewpart/UnicodeScripts.h:31
-#, kde-format
+#: viewpart/UnicodeBlocks.h:50 viewpart/UnicodeScripts.h:32
 msgid "Ethiopic"
 msgstr "इथियोपी"
 
-#: viewpart/UnicodeBlocks.h:50
-#, kde-format
+#: viewpart/UnicodeBlocks.h:51
 msgid "Ethiopic Supplement"
 msgstr "इथियोपिक संपूरक"
 
-#: viewpart/UnicodeBlocks.h:51 viewpart/UnicodeScripts.h:23
-#, kde-format
+#: viewpart/UnicodeBlocks.h:52 viewpart/UnicodeScripts.h:24
 msgid "Cherokee"
 msgstr "सेराकी"
 
-#: viewpart/UnicodeBlocks.h:52
-#, kde-format
+#: viewpart/UnicodeBlocks.h:53
 msgid "Unified Canadian Aboriginal Syllabics"
 msgstr "यूनिफाइड कनाडाई अबारजिनल सिलेबिक्स"
 
-#: viewpart/UnicodeBlocks.h:53 viewpart/UnicodeScripts.h:57
-#, kde-format
+#: viewpart/UnicodeBlocks.h:54 viewpart/UnicodeScripts.h:58
 msgid "Ogham"
 msgstr "ओघम"
 
-#: viewpart/UnicodeBlocks.h:54 viewpart/UnicodeScripts.h:64
-#, kde-format
+#: viewpart/UnicodeBlocks.h:55 viewpart/UnicodeScripts.h:65
 msgid "Runic"
 msgstr "रूनिक"
 
-#: viewpart/UnicodeBlocks.h:55 viewpart/UnicodeScripts.h:69
-#, kde-format
+#: viewpart/UnicodeBlocks.h:56 viewpart/UnicodeScripts.h:70
 msgid "Tagalog"
 msgstr "टागालोग"
 
-#: viewpart/UnicodeBlocks.h:56 viewpart/UnicodeScripts.h:40
-#, kde-format
+#: viewpart/UnicodeBlocks.h:57 viewpart/UnicodeScripts.h:41
 msgid "Hanunoo"
 msgstr "हनुनू"
 
-#: viewpart/UnicodeBlocks.h:57 viewpart/UnicodeScripts.h:21
-#, kde-format
+#: viewpart/UnicodeBlocks.h:58 viewpart/UnicodeScripts.h:22
 msgid "Buhid"
 msgstr "बुहीद"
 
-#: viewpart/UnicodeBlocks.h:58 viewpart/UnicodeScripts.h:70
-#, kde-format
+#: viewpart/UnicodeBlocks.h:59 viewpart/UnicodeScripts.h:71
 msgid "Tagbanwa"
 msgstr "तागबांवा"
 
-#: viewpart/UnicodeBlocks.h:59 viewpart/UnicodeScripts.h:47
-#, kde-format
+#: viewpart/UnicodeBlocks.h:60 viewpart/UnicodeScripts.h:48
 msgid "Khmer"
 msgstr "ख्मेर"
 
-#: viewpart/UnicodeBlocks.h:60 viewpart/UnicodeScripts.h:53
-#, kde-format
+#: viewpart/UnicodeBlocks.h:61 viewpart/UnicodeScripts.h:54
 msgid "Mongolian"
 msgstr "मंगोलियन"
 
-#: viewpart/UnicodeBlocks.h:61 viewpart/UnicodeScripts.h:50
-#, kde-format
+#: viewpart/UnicodeBlocks.h:62 viewpart/UnicodeScripts.h:51
 msgid "Limbu"
 msgstr "लिंबु"
 
-#: viewpart/UnicodeBlocks.h:62 viewpart/UnicodeScripts.h:71
-#, kde-format
+#: viewpart/UnicodeBlocks.h:63 viewpart/UnicodeScripts.h:72
 msgid "Tai Le"
 msgstr "ताइ ली"
 
-#: viewpart/UnicodeBlocks.h:63 viewpart/UnicodeScripts.h:55
-#, kde-format
+#: viewpart/UnicodeBlocks.h:64 viewpart/UnicodeScripts.h:56
 msgid "New Tai Lue"
 msgstr "नवा ताई ल्यू"
 
-#: viewpart/UnicodeBlocks.h:64
-#, kde-format
+#: viewpart/UnicodeBlocks.h:65
 msgid "Khmer Symbols"
 msgstr "ख्मेर चिनहा"
 
-#: viewpart/UnicodeBlocks.h:65 viewpart/UnicodeScripts.h:20
-#, kde-format
+#: viewpart/UnicodeBlocks.h:66 viewpart/UnicodeScripts.h:21
 msgid "Buginese"
 msgstr "बगिनी"
 
-#: viewpart/UnicodeBlocks.h:66 viewpart/UnicodeScripts.h:16
-#, kde-format
+#: viewpart/UnicodeBlocks.h:67 viewpart/UnicodeScripts.h:17
 msgid "Balinese"
 msgstr "बेलिनी"
 
-#: viewpart/UnicodeBlocks.h:67
-#, kde-format
+#: viewpart/UnicodeBlocks.h:68
 msgid "Phonetic Extensions"
 msgstr "ध्वन्यात्मक विस्तारन"
 
-#: viewpart/UnicodeBlocks.h:68
-#, kde-format
+#: viewpart/UnicodeBlocks.h:69
 msgid "Phonetic Extensions Supplement"
 msgstr "फोनेटिक विस्तारन संपूरक"
 
-#: viewpart/UnicodeBlocks.h:69
-#, kde-format
+#: viewpart/UnicodeBlocks.h:70
 msgid "Combining Diacritical Marks Supplement"
 msgstr "डायाक्रिटिकल मार्क्स संपूरक जोड़त हे"
 
-#: viewpart/UnicodeBlocks.h:70
-#, kde-format
+#: viewpart/UnicodeBlocks.h:71
 msgid "Latin Extended Additional"
 msgstr "लातिन विस्तारित अतिरिक्त"
 
-#: viewpart/UnicodeBlocks.h:71
-#, kde-format
+#: viewpart/UnicodeBlocks.h:72
 msgid "Greek Extended"
 msgstr "युनानी विस्तारन"
 
-#: viewpart/UnicodeBlocks.h:72
-#, kde-format
+#: viewpart/UnicodeBlocks.h:73
 msgid "General Punctuation"
 msgstr "सामान्य विरामचिन्ह"
 
-#: viewpart/UnicodeBlocks.h:73
-#, kde-format
+#: viewpart/UnicodeBlocks.h:74
 msgid "Superscripts and Subscripts"
 msgstr "सुपरस्क्रिप्ट्स अउ सबस्क्रिप्ट्स"
 
-#: viewpart/UnicodeBlocks.h:74
-#, kde-format
+#: viewpart/UnicodeBlocks.h:75
 msgid "Currency Symbols"
 msgstr "मुद्रा चिनहा"
 
-#: viewpart/UnicodeBlocks.h:75
-#, kde-format
+#: viewpart/UnicodeBlocks.h:76
 msgid "Combining Diacritical Marks for Symbols"
 msgstr "चिनहा बर डायाक्रिटिकल मार्क्स जोड़त हे"
 
-#: viewpart/UnicodeBlocks.h:76
-#, fuzzy, kde-format
+#: viewpart/UnicodeBlocks.h:77
+#, fuzzy
 msgid "Letter-Like Symbols"
 msgstr "अक्छर-जइसन चिनहा"
 
-#: viewpart/UnicodeBlocks.h:77
-#, kde-format
+#: viewpart/UnicodeBlocks.h:78
 msgid "Number Forms"
 msgstr "संख्या रूप"
 
-#: viewpart/UnicodeBlocks.h:78
-#, kde-format
+#: viewpart/UnicodeBlocks.h:79
 msgid "Arrows"
 msgstr "तीर"
 
-#: viewpart/UnicodeBlocks.h:79
-#, kde-format
+#: viewpart/UnicodeBlocks.h:80
 msgid "Mathematical Operators"
 msgstr "गनितीय आपरेटर्स"
 
-#: viewpart/UnicodeBlocks.h:80
-#, kde-format
+#: viewpart/UnicodeBlocks.h:81
 msgid "Miscellaneous Technical"
 msgstr "विविध तकनीकी"
 
-#: viewpart/UnicodeBlocks.h:81
-#, kde-format
+#: viewpart/UnicodeBlocks.h:82
 msgid "Control Pictures"
 msgstr "नियंत्रक फोटू"
 
-#: viewpart/UnicodeBlocks.h:82
-#, kde-format
+#: viewpart/UnicodeBlocks.h:83
 msgid "Optical Character Recognition"
 msgstr "आप्टिकल कैरेक्टर रिकग्नीसन"
 
-#: viewpart/UnicodeBlocks.h:83
-#, kde-format
+#: viewpart/UnicodeBlocks.h:84
 msgid "Enclosed Alphanumerics"
 msgstr "संलग्न अल्फान्यूमेरिक्स"
 
-#: viewpart/UnicodeBlocks.h:84
-#, kde-format
+#: viewpart/UnicodeBlocks.h:85
 msgid "Box Drawing"
 msgstr "बाक्स ड्राइंग"
 
-#: viewpart/UnicodeBlocks.h:85
-#, kde-format
+#: viewpart/UnicodeBlocks.h:86
 msgid "Block Elements"
 msgstr "ब्लाक तत्व"
 
-#: viewpart/UnicodeBlocks.h:86
-#, kde-format
+#: viewpart/UnicodeBlocks.h:87
 msgid "Geometric Shapes"
 msgstr "ज्यामितीय आकार"
 
-#: viewpart/UnicodeBlocks.h:87
-#, kde-format
+#: viewpart/UnicodeBlocks.h:88
 msgid "Miscellaneous Symbols"
 msgstr "विविध चिनहा"
 
-#: viewpart/UnicodeBlocks.h:88
-#, kde-format
+#: viewpart/UnicodeBlocks.h:89
 msgid "Dingbats"
 msgstr "डिंगबेट्स"
 
-#: viewpart/UnicodeBlocks.h:89
-#, kde-format
+#: viewpart/UnicodeBlocks.h:90
 msgid "Miscellaneous Mathematical Symbols-A"
 msgstr "विविध गनितीय चिनहा-ए"
 
-#: viewpart/UnicodeBlocks.h:90
-#, kde-format
+#: viewpart/UnicodeBlocks.h:91
 msgid "Supplemental Arrows-A"
 msgstr "संपूरक तीर-ए"
 
-#: viewpart/UnicodeBlocks.h:91
-#, kde-format
+#: viewpart/UnicodeBlocks.h:92
 msgid "Braille Patterns"
 msgstr "ब्रेल पैटर्न्स"
 
-#: viewpart/UnicodeBlocks.h:92
-#, kde-format
+#: viewpart/UnicodeBlocks.h:93
 msgid "Supplemental Arrows-B"
 msgstr "संपूरक तीर-बी"
 
-#: viewpart/UnicodeBlocks.h:93
-#, kde-format
+#: viewpart/UnicodeBlocks.h:94
 msgid "Miscellaneous Mathematical Symbols-B"
 msgstr "विविध गनितीय चिन्ह-बी"
 
-#: viewpart/UnicodeBlocks.h:94
-#, kde-format
+#: viewpart/UnicodeBlocks.h:95
 msgid "Supplemental Mathematical Operators"
 msgstr "संपूरक गनितीय आपरेटर्स"
 
-#: viewpart/UnicodeBlocks.h:95
-#, kde-format
+#: viewpart/UnicodeBlocks.h:96
 msgid "Miscellaneous Symbols and Arrows"
 msgstr "विविध चिनहा अउ तीर"
 
-#: viewpart/UnicodeBlocks.h:96 viewpart/UnicodeScripts.h:33
-#, kde-format
+#: viewpart/UnicodeBlocks.h:97 viewpart/UnicodeScripts.h:34
 msgid "Glagolitic"
 msgstr "ग्लेगोलितिक"
 
-#: viewpart/UnicodeBlocks.h:97
-#, kde-format
+#: viewpart/UnicodeBlocks.h:98
 msgid "Latin Extended-C"
 msgstr "लातिन विस्तारित-सी"
 
-#: viewpart/UnicodeBlocks.h:98 viewpart/UnicodeScripts.h:25
-#, kde-format
+#: viewpart/UnicodeBlocks.h:99 viewpart/UnicodeScripts.h:26
 msgid "Coptic"
 msgstr "कोप्टिक"
 
-#: viewpart/UnicodeBlocks.h:99
-#, kde-format
+#: viewpart/UnicodeBlocks.h:100
 msgid "Georgian Supplement"
 msgstr "ज्यार्जियाई परिसिस्ट"
 
-#: viewpart/UnicodeBlocks.h:100 viewpart/UnicodeScripts.h:77
-#, kde-format
+#: viewpart/UnicodeBlocks.h:101 viewpart/UnicodeScripts.h:78
 msgid "Tifinagh"
 msgstr "टिफिनाग"
 
-#: viewpart/UnicodeBlocks.h:101
-#, kde-format
+#: viewpart/UnicodeBlocks.h:102
 msgid "Ethiopic Extended"
 msgstr "इथियापिक विस्तारित"
 
-#: viewpart/UnicodeBlocks.h:102
-#, kde-format
+#: viewpart/UnicodeBlocks.h:103
 msgid "Supplemental Punctuation"
 msgstr "परिसिस्ट विरामचिन्ह"
 
-#: viewpart/UnicodeBlocks.h:103
-#, kde-format
+#: viewpart/UnicodeBlocks.h:104
 msgid "CJK Radicals Supplement"
 msgstr "सीजेके रेडिकल्स सप्लीमेंट"
 
-#: viewpart/UnicodeBlocks.h:104
-#, kde-format
+#: viewpart/UnicodeBlocks.h:105
 msgid "Kangxi Radicals"
 msgstr "कांग्सी रेडिकल्स"
 
-#: viewpart/UnicodeBlocks.h:105
-#, kde-format
+#: viewpart/UnicodeBlocks.h:106
 msgid "Ideographic Description Characters"
 msgstr "आइडियोग्राफिक वर्नन अक्छर"
 
-#: viewpart/UnicodeBlocks.h:106
-#, kde-format
+#: viewpart/UnicodeBlocks.h:107
 msgid "CJK Symbols and Punctuation"
 msgstr "सीजेके चिनहा अउ विरामचिनहा"
 
-#: viewpart/UnicodeBlocks.h:107 viewpart/UnicodeScripts.h:42
-#, kde-format
+#: viewpart/UnicodeBlocks.h:108 viewpart/UnicodeScripts.h:43
 msgid "Hiragana"
 msgstr "हिरागाना"
 
-#: viewpart/UnicodeBlocks.h:108 viewpart/UnicodeScripts.h:45
-#, kde-format
+#: viewpart/UnicodeBlocks.h:109 viewpart/UnicodeScripts.h:46
 msgid "Katakana"
 msgstr "काताकाना"
 
-#: viewpart/UnicodeBlocks.h:109 viewpart/UnicodeScripts.h:18
-#, kde-format
+#: viewpart/UnicodeBlocks.h:110 viewpart/UnicodeScripts.h:19
 msgid "Bopomofo"
 msgstr "बोपोमोफो"
 
-#: viewpart/UnicodeBlocks.h:110
-#, kde-format
+#: viewpart/UnicodeBlocks.h:111
 msgid "Hangul Compatibility Jamo"
 msgstr "हांगुल संगतता जामो"
 
-#: viewpart/UnicodeBlocks.h:111
-#, kde-format
+#: viewpart/UnicodeBlocks.h:112
 msgid "Kanbun"
 msgstr "कानबुन"
 
-#: viewpart/UnicodeBlocks.h:112
-#, kde-format
+#: viewpart/UnicodeBlocks.h:113
 msgid "Bopomofo Extended"
 msgstr "बोपोमोफो विस्तारन"
 
-#: viewpart/UnicodeBlocks.h:113
-#, kde-format
+#: viewpart/UnicodeBlocks.h:114
 msgid "CJK Strokes"
 msgstr "सीजेके स्ट्रोक्स"
 
-#: viewpart/UnicodeBlocks.h:114
-#, kde-format
+#: viewpart/UnicodeBlocks.h:115
 msgid "Katakana Phonetic Extensions"
 msgstr "काताकाना फोनेटिक विस्तारन"
 
-#: viewpart/UnicodeBlocks.h:115
-#, kde-format
+#: viewpart/UnicodeBlocks.h:116
 msgid "Enclosed CJK Letters and Months"
 msgstr "सीजेके अक्छर अउ महिना संलग्न"
 
-#: viewpart/UnicodeBlocks.h:116
-#, kde-format
+#: viewpart/UnicodeBlocks.h:117
 msgid "CJK Compatibility"
 msgstr "सीजेके संगतता"
 
-#: viewpart/UnicodeBlocks.h:117
-#, kde-format
+#: viewpart/UnicodeBlocks.h:118
 msgid "CJK Unified Ideographs Extension A"
 msgstr "सीजेके यूनिफाइड आइडियोग्राफ्स विस्तारक ए"
 
-#: viewpart/UnicodeBlocks.h:118
-#, kde-format
+#: viewpart/UnicodeBlocks.h:119
 msgid "Yijing Hexagram Symbols"
 msgstr "यीजिंग हेक्साग्राम चिनहा"
 
-#: viewpart/UnicodeBlocks.h:119
-#, kde-format
+#: viewpart/UnicodeBlocks.h:120
 msgid "CJK Unified Ideographs"
 msgstr "सीजेके यूनिफाइड आइडियोग्राफ्स"
 
-#: viewpart/UnicodeBlocks.h:120
-#, kde-format
+#: viewpart/UnicodeBlocks.h:121
 msgid "Yi Syllables"
 msgstr "यी अक्छर"
 
-#: viewpart/UnicodeBlocks.h:121
-#, kde-format
+#: viewpart/UnicodeBlocks.h:122
 msgid "Yi Radicals"
 msgstr "यी रेडिकल्स"
 
-#: viewpart/UnicodeBlocks.h:122
-#, kde-format
+#: viewpart/UnicodeBlocks.h:123
 msgid "Modifier Tone Letters"
 msgstr "परिवर्धक टोन कुंजियाँ"
 
-#: viewpart/UnicodeBlocks.h:123
-#, kde-format
+#: viewpart/UnicodeBlocks.h:124
 msgid "Latin Extended-D"
 msgstr "लातिन विस्तारित-डी"
 
-#: viewpart/UnicodeBlocks.h:124 viewpart/UnicodeScripts.h:67
-#, kde-format
+#: viewpart/UnicodeBlocks.h:125 viewpart/UnicodeScripts.h:68
 msgid "Syloti Nagri"
 msgstr "सायलोती नागरी"
 
-#: viewpart/UnicodeBlocks.h:125
-#, kde-format
+#: viewpart/UnicodeBlocks.h:126
 msgid "Phags-pa"
 msgstr "फाग्स-पा"
 
-#: viewpart/UnicodeBlocks.h:126
-#, kde-format
+#: viewpart/UnicodeBlocks.h:127
 msgid "Hangul Syllables"
 msgstr "हांगुल सिलेबल्स"
 
-#: viewpart/UnicodeBlocks.h:127
-#, kde-format
+#: viewpart/UnicodeBlocks.h:128
 msgid "High Surrogates"
 msgstr "जादा प्रतिनिधि"
 
-#: viewpart/UnicodeBlocks.h:128
-#, kde-format
+#: viewpart/UnicodeBlocks.h:129
 msgid "High Private Use Surrogates"
 msgstr "जादा निजी उपयोग प्रतिनिधि"
 
-#: viewpart/UnicodeBlocks.h:129
-#, kde-format
+#: viewpart/UnicodeBlocks.h:130
 msgid "Low Surrogates"
 msgstr "निम्न प्रतिनिधि"
 
-#: viewpart/UnicodeBlocks.h:130
-#, kde-format
+#: viewpart/UnicodeBlocks.h:131
 msgid "Private Use Area"
 msgstr "निजी उपयोग के जगह"
 
-#: viewpart/UnicodeBlocks.h:131
-#, kde-format
+#: viewpart/UnicodeBlocks.h:132
 msgid "CJK Compatibility Ideographs"
 msgstr "सीजेके संगतता आइडियोग्राफ्स"
 
-#: viewpart/UnicodeBlocks.h:132
-#, kde-format
+#: viewpart/UnicodeBlocks.h:133
 msgid "Alphabetic Presentation Forms"
 msgstr "वर्नमाला प्रस्तुति फारम"
 
-#: viewpart/UnicodeBlocks.h:133
-#, kde-format
+#: viewpart/UnicodeBlocks.h:134
 msgid "Arabic Presentation Forms-A"
 msgstr "अरबी प्रेजेन्टेसन फार्म्स-ए"
 
-#: viewpart/UnicodeBlocks.h:134
-#, kde-format
+#: viewpart/UnicodeBlocks.h:135
 msgid "Variation Selectors"
 msgstr "वेरिएसन सलेक्टर्स"
 
-#: viewpart/UnicodeBlocks.h:135
-#, kde-format
+#: viewpart/UnicodeBlocks.h:136
 msgid "Vertical Forms"
 msgstr "खड़ा फारम"
 
-#: viewpart/UnicodeBlocks.h:136
-#, kde-format
+#: viewpart/UnicodeBlocks.h:137
 msgid "Combining Half Marks"
 msgstr "आधा चिन्हों ल संयुक्त करना"
 
-#: viewpart/UnicodeBlocks.h:137
-#, kde-format
+#: viewpart/UnicodeBlocks.h:138
 msgid "CJK Compatibility Forms"
 msgstr "सीजेके संगतता फार्म्स"
 
-#: viewpart/UnicodeBlocks.h:138
-#, kde-format
+#: viewpart/UnicodeBlocks.h:139
 msgid "Small Form Variants"
 msgstr "छोटा फार्म वेरिएन्ट्स"
 
-#: viewpart/UnicodeBlocks.h:139
-#, kde-format
+#: viewpart/UnicodeBlocks.h:140
 msgid "Arabic Presentation Forms-B"
 msgstr "अरबी प्रेजेन्टेसन फार्म्स-बी"
 
-#: viewpart/UnicodeBlocks.h:140
-#, fuzzy, kde-format
+#: viewpart/UnicodeBlocks.h:141
+#, fuzzy
 msgid "Half-Width and Full-Width Forms"
 msgstr "अर्ध-चौड़ाई अउ पूरा-चौड़ाई फार्म्स"
 
-#: viewpart/UnicodeBlocks.h:141
-#, kde-format
+#: viewpart/UnicodeBlocks.h:142
 msgid "Specials"
 msgstr "विसेस"
 
-#: viewpart/UnicodeBlocks.h:142
-#, kde-format
+#: viewpart/UnicodeBlocks.h:143
 msgid "Linear B Syllabary"
 msgstr "लीनियर बी सिलेबरी"
 
-#: viewpart/UnicodeBlocks.h:143
-#, kde-format
+#: viewpart/UnicodeBlocks.h:144
 msgid "Linear B Ideograms"
 msgstr "लीनियर बी आइडियोग्राम्स"
 
-#: viewpart/UnicodeBlocks.h:144
-#, kde-format
+#: viewpart/UnicodeBlocks.h:145
 msgid "Aegean Numbers"
 msgstr "एजीएन संख्या"
 
-#: viewpart/UnicodeBlocks.h:145
-#, kde-format
+#: viewpart/UnicodeBlocks.h:146
 msgid "Ancient Greek Numbers"
 msgstr "जुन्ना यूनानी संख्या"
 
-#: viewpart/UnicodeBlocks.h:146 viewpart/UnicodeScripts.h:58
-#, kde-format
+#: viewpart/UnicodeBlocks.h:147 viewpart/UnicodeScripts.h:59
 msgid "Old Italic"
 msgstr "जुन्ना तिरछा"
 
-#: viewpart/UnicodeBlocks.h:147 viewpart/UnicodeScripts.h:34
-#, kde-format
+#: viewpart/UnicodeBlocks.h:148 viewpart/UnicodeScripts.h:35
 msgid "Gothic"
 msgstr "गोथिक"
 
-#: viewpart/UnicodeBlocks.h:148 viewpart/UnicodeScripts.h:78
-#, kde-format
+#: viewpart/UnicodeBlocks.h:149 viewpart/UnicodeScripts.h:79
 msgid "Ugaritic"
 msgstr "उगारितिक"
 
-#: viewpart/UnicodeBlocks.h:149 viewpart/UnicodeScripts.h:59
-#, kde-format
+#: viewpart/UnicodeBlocks.h:150 viewpart/UnicodeScripts.h:60
 msgid "Old Persian"
 msgstr "जुन्ना फारसी"
 
-#: viewpart/UnicodeBlocks.h:150 viewpart/UnicodeScripts.h:29
-#, kde-format
+#: viewpart/UnicodeBlocks.h:151 viewpart/UnicodeScripts.h:30
 msgid "Deseret"
 msgstr "देसेरेत"
 
-#: viewpart/UnicodeBlocks.h:151 viewpart/UnicodeScripts.h:65
-#, kde-format
+#: viewpart/UnicodeBlocks.h:152 viewpart/UnicodeScripts.h:66
 msgid "Shavian"
 msgstr "सावियं"
 
-#: viewpart/UnicodeBlocks.h:152 viewpart/UnicodeScripts.h:61
-#, kde-format
+#: viewpart/UnicodeBlocks.h:153 viewpart/UnicodeScripts.h:62
 msgid "Osmanya"
 msgstr "ओसमान्य"
 
-#: viewpart/UnicodeBlocks.h:153
-#, kde-format
+#: viewpart/UnicodeBlocks.h:154
 msgid "Cypriot Syllabary"
 msgstr "साइप्रियात सिलेबरी"
 
-#: viewpart/UnicodeBlocks.h:154 viewpart/UnicodeScripts.h:63
-#, kde-format
+#: viewpart/UnicodeBlocks.h:155 viewpart/UnicodeScripts.h:64
 msgid "Phoenician"
 msgstr "फोनेसियन"
 
-#: viewpart/UnicodeBlocks.h:155 viewpart/UnicodeScripts.h:46
-#, kde-format
+#: viewpart/UnicodeBlocks.h:156 viewpart/UnicodeScripts.h:47
 msgid "Kharoshthi"
 msgstr "खारोस्थि"
 
-#: viewpart/UnicodeBlocks.h:156 viewpart/UnicodeScripts.h:26
-#, kde-format
+#: viewpart/UnicodeBlocks.h:157 viewpart/UnicodeScripts.h:27
 msgid "Cuneiform"
 msgstr "क्यूनिफारम"
 
-#: viewpart/UnicodeBlocks.h:157
-#, kde-format
+#: viewpart/UnicodeBlocks.h:158
 msgid "Cuneiform Numbers and Punctuation"
 msgstr "क्यूनिफारम संख्या अउ विरामचिनहा"
 
-#: viewpart/UnicodeBlocks.h:158
-#, kde-format
+#: viewpart/UnicodeBlocks.h:159
 msgid "Byzantine Musical Symbols"
 msgstr "बाइजेंटाए संगीतमय चिनहा"
 
-#: viewpart/UnicodeBlocks.h:159
-#, kde-format
+#: viewpart/UnicodeBlocks.h:160
 msgid "Musical Symbols"
 msgstr "संगीत चिन्ह"
 
-#: viewpart/UnicodeBlocks.h:160
-#, kde-format
+#: viewpart/UnicodeBlocks.h:161
 msgid "Ancient Greek Musical Notation"
 msgstr ""
 
-#: viewpart/UnicodeBlocks.h:161
-#, kde-format
+#: viewpart/UnicodeBlocks.h:162
 msgid "Tai Xuan Jing Symbols"
 msgstr "ताइ जुआन जिंग चिनहा"
 
-#: viewpart/UnicodeBlocks.h:162
-#, kde-format
+#: viewpart/UnicodeBlocks.h:163
 msgid "Counting Rod Numerals"
 msgstr "राड संख्या गिनी जा रही हे"
 
-#: viewpart/UnicodeBlocks.h:163
-#, kde-format
+#: viewpart/UnicodeBlocks.h:164
 msgid "Mathematical Alphanumeric Symbols"
 msgstr "गनितीय अउ अक्छर-अंक चिनहा"
 
-#: viewpart/UnicodeBlocks.h:164
-#, kde-format
+#: viewpart/UnicodeBlocks.h:165
 msgid "CJK Unified Ideographs Extension B"
 msgstr "सीजेके संगतता आइडियोग्राफ्स विस्तारक बी"
 
-#: viewpart/UnicodeBlocks.h:165
-#, kde-format
+#: viewpart/UnicodeBlocks.h:166
 msgid "CJK Compatibility Ideographs Supplement"
 msgstr "सीजेके संगतता आइडियोग्राफ्स संपूरक"
 
-#: viewpart/UnicodeBlocks.h:166
-#, kde-format
+#: viewpart/UnicodeBlocks.h:167
 msgid "Tags"
 msgstr "टैग्स"
 
-#: viewpart/UnicodeBlocks.h:167
-#, kde-format
+#: viewpart/UnicodeBlocks.h:168
 msgid "Variation Selectors Supplement"
 msgstr "वेरिएसन सलेक्टर सप्लीमेंट"
 
-#: viewpart/UnicodeBlocks.h:168
-#, kde-format
+#: viewpart/UnicodeBlocks.h:169
 msgid "Supplementary Private Use Area-A"
 msgstr "संपूरक निजी उपयोग छेत्र-ए"
 
-#: viewpart/UnicodeBlocks.h:169
-#, kde-format
+#: viewpart/UnicodeBlocks.h:170
 msgid "Supplementary Private Use Area-B"
 msgstr "संपूरक निजी उपयोग छेत्र-बी"
 
-#: viewpart/UnicodeScripts.h:19
-#, kde-format
+#: viewpart/UnicodeScripts.h:20
 msgid "Braille"
 msgstr "ब्रेल"
 
-#: viewpart/UnicodeScripts.h:22
-#, kde-format
+#: viewpart/UnicodeScripts.h:23
 msgid "Canadian Aboriginal"
 msgstr "कनाडियन एबार्जऊनल"
 
-#: viewpart/UnicodeScripts.h:24
-#, kde-format
+#: viewpart/UnicodeScripts.h:25
 msgid "Common"
 msgstr "कामन"
 
-#: viewpart/UnicodeScripts.h:27
-#, kde-format
+#: viewpart/UnicodeScripts.h:28
 msgid "Cypriot"
 msgstr "साइप्रियात"
 
-#: viewpart/UnicodeScripts.h:35
-#, kde-format
+#: viewpart/UnicodeScripts.h:36
 msgid "Greek"
 msgstr "यूनानी"
 
-#: viewpart/UnicodeScripts.h:38
-#, kde-format
+#: viewpart/UnicodeScripts.h:39
 msgid "Han"
 msgstr "हान"
 
-#: viewpart/UnicodeScripts.h:39
-#, kde-format
+#: viewpart/UnicodeScripts.h:40
 msgid "Hangul"
 msgstr "हांगुल"
 
-#: viewpart/UnicodeScripts.h:43
-#, kde-format
+#: viewpart/UnicodeScripts.h:44
 msgid "Inherited"
 msgstr "इनहेरिटेड"
 
-#: viewpart/UnicodeScripts.h:49
-#, kde-format
+#: viewpart/UnicodeScripts.h:50
 msgid "Latin"
 msgstr "लातिन"
 
-#: viewpart/UnicodeScripts.h:51
-#, kde-format
+#: viewpart/UnicodeScripts.h:52
 msgid "Linear B"
 msgstr "लीनियर बी"
 
-#: viewpart/UnicodeScripts.h:56
-#, kde-format
+#: viewpart/UnicodeScripts.h:57
 msgid "Nko"
 msgstr "एनकेओ"
 
-#: viewpart/UnicodeScripts.h:62
-#, kde-format
+#: viewpart/UnicodeScripts.h:63
 msgid "Phags Pa"
 msgstr "फाग्स पा"
 
-#: viewpart/UnicodeScripts.h:79
-#, kde-format
+#: viewpart/UnicodeScripts.h:80
 msgid "Yi"
 msgstr "यी"
+
+#~ msgid "Print..."
+#~ msgstr "छापव..."
+
+#, fuzzy
+#~| msgid "Create New Group"
+#~ msgid "Create New Group..."
+#~ msgstr "नवा समूह बनाव"
+
+#, fuzzy
+#~| msgid "Remove Group"
+#~ msgid "Remove Group..."
+#~ msgstr "समूह मेटाव"
+
+#~ msgid "Install..."
+#~ msgstr "इनस्टाल करव..."
+
+#, fuzzy
+#~| msgid "CFontViewPart"
+#~ msgid "FontViewPart"
+#~ msgstr "सी-फोंट-व्यू-पार्ट"
+
+#~ msgid "<p>No information</p>"
+#~ msgstr "<p>जानकारी मन नइ</p>"
+
+#~ msgid "Create a new group"
+#~ msgstr "नवा समूह बनाव"
+
+#~ msgid "Enable all disabled fonts in the current group"
+#~ msgstr "हाल के समूह मं सब्बो अक्छम फोंट ल सक्छम करव"
+
+#~ msgid "Disable all enabled fonts in the current group"
+#~ msgstr "हाल के समूह मं सब्बो सक्छम फोंट ल अक्छम करव"
+
+#, fuzzy
+#~ msgid "Please enter the name of the new group:"
+#~ msgstr "नवा समूह बर एक नाम भरव:"
+
+#, fuzzy
+#~| msgid "KDE Font Installer"
+#~ msgid "KDE Font Manager"
+#~ msgstr "केडीई फोंट संस्थापक"
+
+#~ msgid "Type here to filter on %1"
+#~ msgstr "%1 मं फिल्टर करे बर टाइप करव"
+
+#~ msgid "Tools"
+#~ msgstr "औजार"
+
+#~ msgid "Add..."
+#~ msgstr "जोड़व...."
+
+#~ msgid "Install fonts"
+#~ msgstr "फोंट इनस्टाल करव"
+
+#, fuzzy
+#~ msgid "Do you really want to move this font?"
+#~ msgid_plural ""
+#~ "<p>Do you really want to move these %1 fonts from <i>%2</i> to <i>%3</i>?"
+#~ msgstr[0] ""
+#~ "का आप मन सचमुच ओ टिप्पनीको मिटाना चाहथो ?\n"
+#~ "का आप मन सचमुच ए %n टिप्पनियों ल मिटाना चाहथो ?"
+#~ msgstr[1] ""
+#~ "का आप मन सचमुच ओ टिप्पनीको मिटाना चाहथो ?\n"
+#~ "का आप मन सचमुच ए %n टिप्पनियों ल मिटाना चाहथो ?"
+
+#, fuzzy
+#~| msgid "Print..."
+#~ msgid "Starting..."
+#~ msgstr "छापव..."
+
+#, fuzzy
+#~| msgid "Cancel"
+#~ msgid "Cancelling..."
+#~ msgstr " खारिज करव"
+
+#, fuzzy
+#~ msgid "Failed to locate font printer."
+#~ msgstr "प्लेयर काम बन्द करे मं फेल."
+
+#~ msgid "File"
+#~ msgstr "फाइल"
+
+#~ msgid "Move Here"
+#~ msgstr "इहां खिसकाव"
+
+#~ msgid "Cancel"
+#~ msgstr " खारिज करव"
+
+#~ msgid "Preview"
+#~ msgstr "प्रिव्यू"
+
+#, fuzzy
+#~| msgid "Show Large Preview"
+#~ msgid "Show Preview"
+#~ msgstr "बड़ा प्रिव्यू देखाव"
+
+#~ msgid ""
+#~ "Could not delete:\n"
+#~ "%1"
+#~ msgstr ""
+#~ "%1 ल\n"
+#~ "मेटाय नइ सकिस"
+
+#~ msgid "Could not delete the following files:"
+#~ msgstr "निम्न फाइल मन ल नइ मेटाय सकिस:"
+
+#~ msgctxt ""
+#~ "Title for a group that contains \"All Fonts\", \"Personal Fonts\", "
+#~ "\"System Fonts\" and \"Unclassified\""
+#~ msgid "Standard:"
+#~ msgstr "मानक:"
+
+#~ msgid "Custom:"
+#~ msgstr "मनमाफिकः"
+
+#~ msgid "%1 (Disabled)"
+#~ msgstr "%1 (अक्छम)"
+
+#~ msgid "%1 (Empty)"
+#~ msgstr "%1 (खाली)"
+
+#~ msgid "%1 (Partial)"
+#~ msgstr "%1 (आंसिक)"
+
+#~ msgid "Copy Here"
+#~ msgstr "इहां नकल करव"
+
+#~ msgid "Rename Group"
+#~ msgstr "समूह ल नवा नाम देव..."
+
+#~ msgid "Please enter a new name for group:"
+#~ msgstr "समूह बर एक नवा नाम भरव:"
+
+#~ msgid "Drop here to add the selected fonts to \"%1\"."
+#~ msgstr "चुने गे फोंट ल \"%1\" मं जोड़े बर इहां छोड़व."
+
+#~ msgid "Drop here to remove the selected fonts from the current group."
+#~ msgstr "हाल के समूह मं से चुने गे फोंट ल मेटाय बर इहां छोड़व."
+
+#~ msgid ""
+#~ "Drop here to copy, or move, the selected fonts to your personal folder."
+#~ msgstr "चुने गे फोंट ल अपन निजी फोल्डर मं नकल या खिसकाय बर इहां छोड़व."
+
+#~ msgid "Drop here to copy, or move, the selected fonts to the system folder."
+#~ msgstr "चुने गे फोंट ल अपन तंत्र फोल्डर मं नकल या खिसकाय बर इहां छोड़व."
+
+#~ msgid "Information"
+#~ msgstr "जानकारी"
+
+#~ msgid "Authorization Required"
+#~ msgstr "प्रमानीकरन चाही"
+
+#~ msgid "Insufficient privileges."
+#~ msgstr "अधूरा अनुमति."
+
+#~ msgid "Conversation with su failed."
+#~ msgstr "एसयू के साथ गोठ फेल."
+
+#~ msgid ""
+#~ "<p>Could not launch '%1'.</p><p>Make sure your PATH is set correctly.</p>"
+#~ msgstr ""
+#~ "<p>'%1' चालू नइ होइस.</p><p>देख लेव कि  आप मन के रस्ता उचित किसम सेट हे.</p>"
+
+#~ msgid "Incorrect password, please try again."
+#~ msgstr "गलत पासवर्ड, किरपा करके, फिर से कोसिस करव."
+
+#~ msgid "Internal error: illegal return from SuProcess::checkInstall()"
+#~ msgstr "अंदर के गलती: से अवैध वापसीः SuProcess::checkInstall()"
+
+#~ msgid "Copying"
+#~ msgstr "नकल करत हे"
+
+#~ msgid "Installing %1"
+#~ msgstr "%1 इनस्टाल करत हे"
+
+#~ msgid "Copying %1"
+#~ msgstr "नकल करत हे %1"
+
+#~ msgid "Deleting %1"
+#~ msgstr "मिटात हे %1"
+
+#~ msgid "Enabling %1"
+#~ msgstr "सक्छम करत हे %1"
+
+#~ msgid "Disabling %1"
+#~ msgstr "अक्छम करत हे %1"
+
+#~ msgid "Moving %1"
+#~ msgstr "खिसकाय जात हे %1"
+
+#~ msgid "Success"
+#~ msgstr "सफलता"
+
+#~ msgid ""
+#~ "GUI front-end to the fonts:/ ioslave.\n"
+#~ "(c) Craig Drummond, 2000 - 2007"
+#~ msgstr ""
+#~ "फोंट बर जीयूआई फ्रन्ट एन्ड:/ ioslave.\n"
+#~ "(c) क्रेग ड्रमांड, 2000 - 2007"
+
+#~ msgid "Settings"
+#~ msgstr "सेटिंग"
+
+#~ msgid "Enable all selected fonts"
+#~ msgstr "सब्बो चुने गे फोंट ल सक्छम करव"
+
+#~ msgid "Disable all selected fonts"
+#~ msgstr "सब्बो चुने गे फोंट ल अक्छम करव"
+
+#, fuzzy
+#~ msgid "You did not select anything to copy."
+#~ msgstr "मेटाय बर आप मन कुछ चुने नइ हे."
+
+#~ msgid "Nothing to Copy"
+#~ msgstr "नकल करे बर कुछ नइ हे"
+
+#, fuzzy
+#~ msgid "<p>Do you really want to copy</p><p>'<b>%1</b>'?</p>"
+#~ msgstr "<p>का आप मन सचमुच मं <b>'%1'</b> ल मिटाना चाहथो ?</p>"
+
+#~ msgid "Copy Font"
+#~ msgstr "फोंट नकल करव"
+
+#~ msgid "Copy"
+#~ msgstr "नकल"
+
+#, fuzzy
+#~ msgid "Do you really want to copy this font?"
+#~ msgid_plural "Do you really want to copy these %1 fonts?"
+#~ msgstr[0] "का आप मन सही मं एखर फंट फाइल के ऊपर लिखना चाहथो ?\\n   %s"
+#~ msgstr[1] ""
+#~ "का आप मन सचमुच ओ टिप्पनीको मिटाना चाहथो ?\n"
+#~ "का आप मन सचमुच ए %n टिप्पनियों ल मिटाना चाहथो ?"
+
+#, fuzzy
+#~ msgid "Copying font(s)..."
+#~ msgstr "फोंट लोकेट करत हे..."
+
+#~ msgid " (%1 Enabled, %2 Disabled, %3 Partial)"
+#~ msgstr " (%1 सक्छम, %2 अक्छम, %3 आंसिक)"
+
+#, fuzzy
+#~ msgid "Would you like to install the font(s) for personal use?"
+#~ msgstr "का आप मन जुन्ना इतिहास फाइल मन ल मिटाना चाहथो ?"
+
+#, fuzzy
+#~ msgid "Authorization Failed"
+#~ msgstr "अनुमोदन गोठ "
+
+#~ msgid "Invalid Font"
+#~ msgstr "अवैध फोंट"
+
+#, fuzzy
+#~ msgid ""
+#~ "Cannot install %1\n"
+#~ "Hidden fonts cannot be installed."
+#~ msgstr "सैली लोड नइ कर सके. सैली इनस्टाल नइ."
+
+#~ msgid "Could not access \"%1\" folder."
+#~ msgstr "फोल्डर \"%1\" एक्सेस नइ कर सकिस."
+
+#~ msgid ""
+#~ "Cannot copy %1 to %2\n"
+#~ "Hidden/disabled fonts cannot be installed."
+#~ msgstr ""
+#~ " %1 ल %2 मं नकल नइ कर सकिस\n"
+#~ "छुपे/अक्छम फोंट ल इनस्टाल नइ कर सकिस."
+
+#~ msgid "You cannot rename font folders"
+#~ msgstr "आप फोंट फोल्डर के नाम बदल नइ सकहू"
+
+#, fuzzy
+#~ msgid "Internal error - could not find font."
+#~ msgstr "माफ करवगा, अंदर के गलती - फोंट नइ मिलिस."
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not enable %1\n"
+#~ "An enabled font already exists, please delete the disabled one."
+#~ msgstr "एक सैली नाम \"%1\"  पहिली से ही अस्तित्व मं हे. किरपा करके, सैली के नाम भरव."
+
+#~ msgid "Sorry, fonts cannot be renamed."
+#~ msgstr "माफ करव, फोंट के नाम बदले नइ जा सके."
+
+#~ msgid "Could not access \"%1\"."
+#~ msgstr "\"%1\" मं पहुंच नइ सकिस."
+
+#~ msgid "Configuring installed fonts..."
+#~ msgstr "इनस्टाल फोंट मन कान्फिगर करव..."
+
+#~ msgid "Incorrect password.\n"
+#~ msgstr "गलत पासवर्ड.\n"
+
+#~ msgid "Internal fontconfig error."
+#~ msgstr "अंदर के फोंटकान्फिग गलती."
+
+#~ msgid "Duplicate Font"
+#~ msgstr "दोहरा फोंट"
+
+#~ msgid "Enabled Font"
+#~ msgstr "सक्छम फोंट"
+
+#~ msgid "Disabled Font"
+#~ msgstr "अक्छम फोंट"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not determine file type for: %1\n"
+#~ "Only fonts may be installed."
+#~ msgstr "ये कागद बर मुख्य फाइल के निर्धारन नइ कर सकिस."
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not install %1\n"
+#~ "A matching disabled font already exists. Please enable that."
+#~ msgstr "एक सैली नाम \"%1\"  पहिली से ही अस्तित्व मं हे. किरपा करके, सैली के नाम भरव."
+
+#~ msgid "Enable..."
+#~ msgstr "सक्छम करव..."
+
+#~ msgid "Disable..."
+#~ msgstr "अक्छम करव..."
+
+#~ msgid "Remove..."
+#~ msgstr "मेटाव..."
+
+#~ msgid "Delete..."
+#~ msgstr "मेटायें..."
+
+#~ msgid "Enable font"
+#~ msgstr "फोंट सक्छम करव"
+
+#~ msgid "Disable font"
+#~ msgstr "फोंट अक्छम करव"
+
+#, fuzzy
+#~ msgid "Disable fonts"
+#~ msgstr "टेबल फोंट:"
+
+#~ msgid "Display:"
+#~ msgstr "प्रदर्सन:"
+
+#, fuzzy
+#~ msgid "%1 (Writing System)"
+#~ msgstr "छपाई तंत्र"
+
+#~ msgid "Add Fonts..."
+#~ msgstr "फोंट जोड़व"
+
+#~ msgid ""
+#~ "<qt>Do you really want to delete\n"
+#~ " <b>'%1'</b>?</qt>"
+#~ msgstr ""
+#~ "<qt>का आप मन सचमुच मं मिटाना चाहथो एला-\n"
+#~ " <b>'%1'</b>?</qt>"
+
+#, fuzzy
+#~ msgid ""
+#~ "_n: Do you really want to delete this font?\n"
+#~ "Do you really want to delete these %n fonts?"
+#~ msgstr "का आप मन सचमुच ए %n फोंट मन ल मिटाना चाहथो ?"
+
+#~ msgid ""
+#~ "_n: One Font\n"
+#~ "%n Fonts"
+#~ msgstr ""
+#~ "एक फोंट\n"
+#~ "%n फोंट"
+
+#~ msgid "(%1 Total)"
+#~ msgstr "(%1 कुल)"
+
+#, fuzzy
+#~ msgid ""
+#~ "_n: One Family\n"
+#~ "%n Families"
+#~ msgstr "%n कुटुंब"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Please note that any open applications will need to be restarted in "
+#~ "order for any changes to be noticed.<p><p>(You will also have to restart "
+#~ "this application in order to use its print function on any newly "
+#~ "installed fonts.)</p>"
+#~ msgstr ""
+#~ "किरपा करके, नोट करव कि सब्बो खुले अनुपरयोग मन ल फिर से चालू करना होही, ताकि करे "
+#~ "बदलाव दिखाई दे सकें"
+
+#~ msgid "Detailed View"
+#~ msgstr "विस्तृत दृस्य"
+
+#~ msgid "Name"
+#~ msgstr "नाम"
+
+#, fuzzy
+#~ msgid "Selected Fonts"
+#~ msgstr "फोंट मेटाव"
+
+#, fuzzy
+#~ msgid "Font size:"
+#~ msgstr "फोंट प्रदर्सक"
+
+#~ msgid "General"
+#~ msgstr "सामान्य"
+
+#~ msgid "Weight"
+#~ msgstr "भार"
+
+#~ msgid "Slant"
+#~ msgstr "झुकाव"
+
+#, fuzzy
+#~ msgid ""
+#~ "_n: %1 [1 pixel]\n"
+#~ "%1 [%n pixels]"
+#~ msgstr "%1 [%n pixels]"
+
+#~ msgid ""
+#~ "_: A sentence that uses all of the letters of the alphabet\n"
+#~ "The quick brown fox jumps over the lazy dog"
+#~ msgstr "एचटीटीपी://डबल्यूडबल्यूडबल्यू.इंडलिनक्स.ओर्ग"
+
+#~ msgid ""
+#~ "_: All of the letters of the alphabet, uppercase\n"
+#~ "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr ""
+#~ "कखगघन पफबभम तथदधन टठडढन यरलवस ससह क्छत्रग्य स्ररिABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#~ msgid ""
+#~ "_: All of the letters of the alphabet, lowercase\n"
+#~ "abcdefghijklmnopqrstuvwxyz"
+#~ msgstr "अआइईउऊएऐओऔabcdefghijklmnopqrstuvwxyz"
+
+#~ msgid " No preview available"
+#~ msgstr "कोई प्रिव्यू नइ मिलत"
+
+#~ msgid "Face:"
+#~ msgstr "फेसः"
+
+#~ msgid ""
+#~ "Where do you wish to install \"%1\" (%2)?\n"
+#~ "\"%3\" - only accessible to you, or\n"
+#~ "\"%4\" - accessible to all (requires administrator password)"
+#~ msgstr ""
+#~ "आप  \"%1\" (%2) ल कहाँ इनस्टाल करना चाहथो ?\n"
+#~ "\"%3\" - ही आप मन पहुंच जा सकथे , या\n"
+#~ "\"%4\" - सबबर पहूँच जा सकथे  (प्रसासक पासवर्ड जरूरी होही)"
+
+#~ msgid "%1:%2 successfully installed."
+#~ msgstr "%1:%2 सफलतापूर्वक इनस्टाल."
+
+#~ msgid "Could not install %1:%2"
+#~ msgstr "इनस्टाल नइ कर सके %1:%2"
+
+#~ msgid ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Your names"
+#~ msgstr "रविसंकर सिरीवास्तव"
+
+#~ msgid ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "Your emails"
+#~ msgstr "raviratlami@yahoo.com"

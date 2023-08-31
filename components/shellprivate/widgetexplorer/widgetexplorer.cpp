@@ -16,7 +16,7 @@
 #include <KAuthorized>
 #include <KLocalizedString>
 #include <KNewStuff3/KNS3/QtQuickDialogWrapper>
-#include <KWindowSystem>
+#include <KX11Extras>
 
 #include <Plasma/Applet>
 #include <Plasma/Containment>
@@ -58,7 +58,7 @@ public:
         , filterModel(w)
         , activitiesConsumer(new KActivities::Consumer())
     {
-        QObject::connect(activitiesConsumer.data(), &Consumer::currentActivityChanged, q, [this] {
+        QObject::connect(activitiesConsumer.get(), &Consumer::currentActivityChanged, q, [this] {
             initRunningApplets();
         });
     }
@@ -98,7 +98,7 @@ public:
     DefaultItemFilterProxyModel filterItemModel;
     static QPointer<KNS3::QtQuickDialogWrapper> newStuffDialog;
 
-    QScopedPointer<KActivities::Consumer> activitiesConsumer;
+    std::unique_ptr<KActivities::Consumer> activitiesConsumer;
 };
 
 QPointer<KNS3::QtQuickDialogWrapper> WidgetExplorerPrivate::newStuffDialog;
@@ -115,43 +115,40 @@ void WidgetExplorerPrivate::initFilters()
                               KCategorizedItemsViewModels::Filter(QStringLiteral("running"), true),
                               QIcon::fromTheme(QStringLiteral("dialog-ok")));
 
-        filterModel.addFilter(i18n("Uninstallable"),
+        filterModel.addFilter(i18nc("@item:inmenu used in the widget filter. Filter widgets that can be un-installed from the system, which are usually "
+                                    "installed by the user to a local place.",
+                                    "Uninstallable"),
                               KCategorizedItemsViewModels::Filter(QStringLiteral("local"), true),
                               QIcon::fromTheme(QStringLiteral("edit-delete")));
 
         filterModel.addSeparator(i18n("Categories:"));
     }
 
-    typedef QPair<QString, QString> catPair;
-    QMap<QString, catPair> categories;
-    QSet<QString> existingCategories = itemModel.categories();
-    QStringList cats;
+    const QSet<QString> existingCategories = itemModel.categories();
+    QSet<QString> cats;
     const QList<KPluginMetaData> list = PluginLoader::self()->listAppletMetaData(QString());
 
-    for (auto &plugin : list) {
+    for (const auto &plugin : list) {
         if (!plugin.isValid()) {
             continue;
         }
-        if (plugin.rawData().value("NoDisplay").toBool() || plugin.category() == QLatin1String("Containments") || plugin.category().isEmpty()) {
+        if (plugin.rawData().value(QStringLiteral("NoDisplay")).toBool() || plugin.category() == QLatin1String("Containments") || plugin.category().isEmpty()) {
             // we don't want to show the hidden category
             continue;
         }
         const QString c = plugin.category();
-        if (-1 == cats.indexOf(c)) {
-            cats << c;
+        if (cats.contains(c)) {
+            continue;
         }
-    }
-    qWarning() << "TODO: port listCategories()";
-    for (const QString &category : qAsConst(cats)) {
-        const QString lowerCaseCat = category.toLower();
-        if (existingCategories.contains(lowerCaseCat)) {
-            const QString trans = i18nd("libplasma5", category.toLocal8Bit());
-            categories.insert(trans.toLower(), qMakePair(trans, lowerCaseCat));
-        }
-    }
+        cats.insert(c);
 
-    for (const catPair &category : qAsConst(categories)) {
-        filterModel.addFilter(category.first, KCategorizedItemsViewModels::Filter(QStringLiteral("category"), category.second));
+        const QString lowerCaseCat = c.toLower();
+        if (!existingCategories.contains(lowerCaseCat)) {
+            continue;
+        }
+
+        filterModel.addFilter(i18nd("plasmashellprivateplugin", c.toLocal8Bit()),
+                              KCategorizedItemsViewModels::Filter(QStringLiteral("category"), lowerCaseCat));
     }
 }
 
@@ -186,7 +183,7 @@ void WidgetExplorer::setShowSpecialFilters(bool show)
     if (d->showSpecialFilters != show) {
         d->showSpecialFilters = show;
         d->initFilters();
-        emit showSpecialFiltersChanged();
+        Q_EMIT showSpecialFiltersChanged();
     }
 }
 
@@ -196,7 +193,7 @@ QList<QObject *> WidgetExplorer::widgetsMenuActions()
 
     WidgetAction *action = nullptr;
 
-    if (KAuthorized::authorize(QStringLiteral("ghns"))) {
+    if (KAuthorized::authorize(KAuthorized::GHNS)) {
         action = new WidgetAction(QIcon::fromTheme(QStringLiteral("internet-services")), i18n("Download New Plasma Widgets"), this);
         connect(action, &QAction::triggered, this, &WidgetExplorer::downloadWidgets);
         actionList << action;
@@ -279,12 +276,9 @@ void WidgetExplorerPrivate::addContainment(Containment *containment)
     QObject::connect(containment, SIGNAL(appletAdded(Plasma::Applet *)), q, SLOT(appletAdded(Plasma::Applet *)));
     QObject::connect(containment, SIGNAL(appletRemoved(Plasma::Applet *)), q, SLOT(appletRemoved(Plasma::Applet *)));
 
-    foreach (Applet *applet, containment->applets()) {
+    const QList<Applet *> applets = containment->applets();
+    for (auto applet : applets) {
         if (applet->pluginMetaData().isValid()) {
-            Containment *childContainment = applet->property("containment").value<Containment *>();
-            if (childContainment) {
-                addContainment(childContainment);
-            }
             runningApplets[applet->pluginMetaData().pluginId()]++;
         } else {
             qDebug() << "Invalid plugin metadata. :(";
@@ -370,7 +364,7 @@ void WidgetExplorer::setApplication(const QString &app)
     d->initFilters();
 
     d->itemModel.setRunningApplets(d->runningApplets);
-    emit applicationChanged();
+    Q_EMIT applicationChanged();
 }
 
 QString WidgetExplorer::application()
@@ -390,7 +384,7 @@ void WidgetExplorer::setProvides(const QStringList &provides)
     }
 
     d->itemModel.setProvides(provides);
-    emit providesChanged();
+    Q_EMIT providesChanged();
 }
 
 void WidgetExplorer::setContainment(Plasma::Containment *containment)
@@ -408,7 +402,7 @@ void WidgetExplorer::setContainment(Plasma::Containment *containment)
         }
 
         d->initRunningApplets();
-        emit containmentChanged();
+        Q_EMIT containmentChanged();
     }
 }
 
@@ -447,18 +441,20 @@ void WidgetExplorer::addApplet(const QString &pluginName)
 void WidgetExplorer::immutabilityChanged(Plasma::Types::ImmutabilityType type)
 {
     if (type != Plasma::Types::Mutable) {
-        emit shouldClose();
+        Q_EMIT shouldClose();
     }
 }
 
 void WidgetExplorer::downloadWidgets()
 {
-    if (!d->newStuffDialog) {
-        d->newStuffDialog = new KNS3::QtQuickDialogWrapper(QLatin1String("plasmoids.knsrc"));
-    }
-    d->newStuffDialog->open();
+    if (WidgetExplorerPrivate::newStuffDialog.isNull()) {
+        WidgetExplorerPrivate::newStuffDialog = new KNS3::QtQuickDialogWrapper(QStringLiteral("plasmoids.knsrc"));
+        connect(WidgetExplorerPrivate::newStuffDialog, &KNS3::QtQuickDialogWrapper::closed, WidgetExplorerPrivate::newStuffDialog, &QObject::deleteLater);
 
-    emit shouldClose();
+        WidgetExplorerPrivate::newStuffDialog->open();
+    }
+
+    Q_EMIT shouldClose();
 }
 
 void WidgetExplorer::openWidgetFile()
@@ -469,13 +465,13 @@ void WidgetExplorer::openWidgetFile()
         d->openAssistant = assistant;
     }
 
-    KWindowSystem::setOnDesktop(assistant->winId(), KWindowSystem::currentDesktop());
+    KX11Extras::setOnDesktop(assistant->winId(), KX11Extras::currentDesktop());
     assistant->setAttribute(Qt::WA_DeleteOnClose, true);
     assistant->show();
     assistant->raise();
     assistant->setFocus();
 
-    emit shouldClose();
+    Q_EMIT shouldClose();
 }
 
 void WidgetExplorer::uninstall(const QString &pluginName)

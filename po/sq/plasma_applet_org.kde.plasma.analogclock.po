@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdebase-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2009-08-08 18:24+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -23,6 +23,12 @@ msgstr ""
 #, kde-format
 msgid "Appearance"
 msgstr "Paraqitja"
+
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
 
 #: contents/ui/configGeneral.qml:23
 #, fuzzy, kde-format
@@ -40,3 +46,21 @@ msgstr ""
 #| msgid "Show &time zone"
 msgid "Show time zone"
 msgstr "Shfaq &zonën kohore"
+
+#~ msgid "Show the seconds"
+#~ msgstr "Shfaq sekondat"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "Përzgjidh këtë nëse do që të shfaqen sekondat."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "Shfaq &dorën e sekondave"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "Shfaq Zonën Kohore në tekst"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "Përzgjidh këtë nëse do të shfaqësh zonën kohore në tekst."
+
+#~ msgid "Show &time zone"
+#~ msgstr "Shfaq &zonën kohore"

@@ -163,10 +163,10 @@
 </itemizedlist>
 
 <para
->Cada tipo de letra tiene un botón <guibutton
->Seleccionar...</guibutton
->. Al pulsarlo se muestra un cuadro de diálogo, que puede utilizar para seleccionar un nuevo tipo de letra, un estilo y un tamaño. Después pulse <guibutton
->Aceptar</guibutton
+>Each font has a corresponding <guibutton
+>Choose...</guibutton
+> button. By clicking on this button, a dialog box appears. You can use this dialog box to choose a new font, a font style and size. Then press <guibutton
+>Ok</guibutton
 >.</para>
 
 <para
@@ -214,32 +214,32 @@
 >Suavizar texto</title>
 
 <para
->La configuración predeterminada del suavizado la utiliza su distribución para todo el sistema y se etiqueta como <guilabel
->Predeterminada del vendedor</guilabel
->. Puede desactivar todo el suavizado eligiendo <guilabel
->Desactivado</guilabel
-> en la lista desplegable.</para>
+>Default anti-aliasing settings are those used system wide by your distribution and labelled <guilabel
+>Vendor Default</guilabel
+>. You can disable all anti-aliasing by choosing <guilabel
+>Disabled</guilabel
+> in the drop down box.</para>
 
 <para
->Para usar una configuración de suavizado distinta, solo tiene que escoger <guilabel
->Activado</guilabel
-> en el cuadro situado a la derecha de <guilabel
->Usar suavizado</guilabel
-> y activar las preferencias personalizadas.</para>
+>To use different anti-aliasing setting, simply choose <guilabel
+>Enabled</guilabel
+> from the box on the right of <guilabel
+>Use anti-aliasing:</guilabel
+> and enable the custom settings.</para>
 
 <para
->Marcando la casilla <guilabel
->Excluir rango</guilabel
-> podrá especificar que rango de tipos de letra <emphasis
->no</emphasis
-> se suavizarán. Este rango se especificará con dos listas desplegables que hay debajo.</para>
+>Placing a mark in the <guilabel
+>Exclude range:</guilabel
+> checkbox will allow you to specify which range of fonts will <emphasis
+>not</emphasis
+> be anti-aliased. This range is specified with the two combo boxes below.</para>
 
 <para
->También podrá elegir el método a usar para crear un aspecto suavizado de sus tipos de letra y cómo debería aplicarse cambiando la <ulink url="https://es.wikipedia.org/wiki/Renderizaci%C3%B3n_de_subpixel"
->renderización de subpíxel</ulink
-> y el <ulink url="https://en.wikipedia.org/wiki/Font_hinting"
->hinting del tipo de letra</ulink
->. Si no está familiarizado con los métodos individuales, debería dejar esta opción vacía.</para>
+>You can also choose the method used to create an anti-alias look to your fonts, and how strongly it should be applied changing the <ulink url="https://en.wikipedia.org/wiki/Subpixel_rendering"
+> Sub-pixel rendering</ulink
+> and <ulink url="https://en.wikipedia.org/wiki/Font_hinting"
+> font hinting</ulink
+>. If you are not familiar with the individual methods, you should leave this option alone.</para>
 
 <note
 ><para

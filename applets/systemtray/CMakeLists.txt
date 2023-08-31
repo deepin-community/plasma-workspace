@@ -35,6 +35,7 @@ ecm_qt_declare_logging_category(systemtray_SRCS HEADER debug.h
 add_library(systemtraymodel_static STATIC ${systemtray_SRCS})
 target_link_libraries(systemtraymodel_static
     Qt::Gui
+    Qt${QT_VERSION_MAJOR}::GuiPrivate
     Qt::Quick
     Qt::DBus
     KF5::XmlGui
@@ -45,8 +46,23 @@ target_link_libraries(systemtraymodel_static
     KF5::WindowSystem
     dbusmenuqt)
 
+set_property(TARGET systemtraymodel_static PROPERTY POSITION_INDEPENDENT_CODE ON)
+
 kcoreaddons_add_plugin(org.kde.plasma.private.systemtray SOURCES systemtray.cpp INSTALL_NAMESPACE "plasma/applets")
-kcoreaddons_desktop_to_json(org.kde.plasma.private.systemtray package/metadata.desktop)
+
+if (HAVE_WaylandProtocols)
+    target_link_libraries(systemtraymodel_static Qt::WaylandClient Wayland::Client)
+
+    if (QT_MAJOR_VERSION EQUAL "5")
+        ecm_add_qtwayland_client_protocol(org.kde.plasma.private.systemtray
+            PROTOCOL ${WaylandProtocols_DATADIR}/staging/fractional-scale/fractional-scale-v1.xml
+            BASENAME fractional-scale-v1
+        )
+    else()
+        qt6_generate_wayland_protocol_client_sources(org.kde.plasma.private.systemtray FILES
+            ${WaylandProtocols_DATADIR}/staging/fractional-scale/fractional-scale-v1.xml)
+    endif()
+endif()
 
 target_link_libraries(org.kde.plasma.private.systemtray systemtraymodel_static)
 

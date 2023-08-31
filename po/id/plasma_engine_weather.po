@@ -2,21 +2,22 @@
 # Copyright (C) 2009 This_file_is_part_of_KDE
 # This file is distributed under the same license as the plasma_engine_weather package.
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2009-2014.
-# Wantoyo <wantoyek@gmail.com>, 2017, 2018, 2019.
+# Wantoyo <wantoyek@gmail.com>, 2017, 2018, 2019, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_weather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2019-08-29 20:39+0700\n"
-"Last-Translator: Wantoyo <wantoyek@gmail.com>\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
+"PO-Revision-Date: 2022-03-13 22:09+0700\n"
+"Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: bbcukmet_i18n.dat:1
 #, kde-format
@@ -2693,75 +2694,88 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr "Berangin"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "BR"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "AS"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr "Siang"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, kde-format
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "Malam"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "Sab"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "Ming"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "Sen"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "Sel"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "Rab"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "Kam"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "Jum"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
 msgstr "Data dari BBC Weather"
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
+msgstr "Sumber: Deutscher Wetterdienst"
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
 #: ions/envcan/ion_envcan.cpp:1403 ions/envcan/ion_envcan.cpp:1544
@@ -4868,3 +4882,242 @@ msgstr "Menjadi Cerah"
 msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr "Sebagian Besar Terang"
+
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "kondisi cuaca"
+
+#~ msgctxt "weather condition"
+#~ msgid "thunder storm"
+#~ msgstr "badai petir"
+
+#~ msgctxt "weather forecast"
+#~ msgid "thunder storm"
+#~ msgstr "badai petir"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "S"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNE"
+#~ msgstr "UTL"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "TL"
+
+#~ msgctxt "wind direction"
+#~ msgid "ENE"
+#~ msgstr "TTL"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "T"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSE"
+#~ msgstr "STg"
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "Tg"
+
+#~ msgctxt "wind direction"
+#~ msgid "ESE"
+#~ msgstr "TTg"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNW"
+#~ msgstr "UBL"
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "BL"
+
+#~ msgctxt "wind direction"
+#~ msgid "WNW"
+#~ msgstr "BBL"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "B"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSW"
+#~ msgstr "SBD"
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "BD"
+
+#~ msgctxt "wind direction"
+#~ msgid "WSW"
+#~ msgstr "BBD"
+
+#~ msgctxt "wind direction"
+#~ msgid "VR"
+#~ msgstr "VR"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "meningkat"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "jatuh"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "tak ada perubahan"
+
+#~ msgctxt "wind speed"
+#~ msgid "Calm"
+#~ msgstr "Tenang"
+
+#~ msgctxt "wind speed"
+#~ msgid "N/A"
+#~ msgstr "T/A"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "steady"
+#~ msgstr "tetap"
+
+#~ msgctxt "wind direction - wind speed is too low to measure"
+#~ msgid "VR"
+#~ msgstr "VR"
+
+#~ msgid "N"
+#~ msgstr "U"
+
+#~ msgid "NNE"
+#~ msgstr "UTL"
+
+#~ msgid "NE"
+#~ msgstr "TL"
+
+#~ msgid "ENE"
+#~ msgstr "TTL"
+
+#~ msgid "E"
+#~ msgstr "T"
+
+#~ msgid "SSE"
+#~ msgstr "STg"
+
+#~ msgid "SE"
+#~ msgstr "Tg"
+
+#~ msgid "ESE"
+#~ msgstr "TTg"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "NNW"
+#~ msgstr "UBL"
+
+#~ msgid "NW"
+#~ msgstr "BL"
+
+#~ msgid "WNW"
+#~ msgstr "BBL"
+
+#~ msgid "W"
+#~ msgstr "B"
+
+#~ msgid "SSW"
+#~ msgstr "SBD"
+
+#~ msgid "SW"
+#~ msgstr "BD"
+
+#~ msgid "WSW"
+#~ msgstr "BBD"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "Data meteorologi disediakan oleh Environment Canada"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr ""
+#~ "Didukung oleh backstage.bbc.co.uk / Data dari Kantor MET Britania Raya"
+
+#~ msgctxt "Degree, unit symbol"
+#~ msgid "°"
+#~ msgstr "°"
+
+#~ msgctxt "Celsius, temperature unit"
+#~ msgid "°C"
+#~ msgstr "°C"
+
+#~ msgctxt "Fahrenheit, temperature unit"
+#~ msgid "°F"
+#~ msgstr "°F"
+
+#~ msgctxt "Kelvin, temperature unit"
+#~ msgid "K"
+#~ msgstr "K"
+
+#~ msgctxt "Precent, measure unit"
+#~ msgid "%"
+#~ msgstr "%"
+
+#~ msgctxt "kilometers per hour, windspeed unit"
+#~ msgid "km/h"
+#~ msgstr "km/j"
+
+#~ msgctxt "meters per second, windspeed unit"
+#~ msgid "m/s"
+#~ msgstr "m/d"
+
+#~ msgctxt "miles per hour, windspeed unit"
+#~ msgid "mph"
+#~ msgstr "mpj"
+
+#~ msgctxt "knots, wind speed unit"
+#~ msgid "kt"
+#~ msgstr "kt"
+
+#~ msgctxt "beaufort, wind speed unit"
+#~ msgid "Bft"
+#~ msgstr "Bft"
+
+#~ msgctxt "kilometers, distance unit"
+#~ msgid "km"
+#~ msgstr "km"
+
+#~ msgctxt "miles, distance unit"
+#~ msgid "mi"
+#~ msgstr "mi"
+
+#~ msgctxt "centimeters, length unit"
+#~ msgid "cm"
+#~ msgstr "cm"
+
+#~ msgctxt "millimeters, length unit"
+#~ msgid "mm"
+#~ msgstr "mm"
+
+#~ msgctxt "inches, length unit"
+#~ msgid "in"
+#~ msgstr "in"
+
+#~ msgctxt "kilopascals, airpressure unit"
+#~ msgid "kPa"
+#~ msgstr "kPa"
+
+#~ msgctxt "inches hg, airpressure unit"
+#~ msgid "inHg"
+#~ msgstr "inHg"
+
+#~ msgctxt "millibars, airpressure unit"
+#~ msgid "mbar"
+#~ msgstr "mbar"
+
+#~ msgctxt "hectopascals, airpressure unit"
+#~ msgid "hPa"
+#~ msgstr "hPa"

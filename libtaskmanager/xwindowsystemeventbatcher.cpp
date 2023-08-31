@@ -9,6 +9,8 @@
 #include <QDebug>
 #include <QTimerEvent>
 
+#include <KX11Extras>
+
 #define BATCH_TIME 10
 
 static const NET::Properties s_cachableProperties = NET::WMName | NET::WMVisibleName;
@@ -17,16 +19,15 @@ static const NET::Properties2 s_cachableProperties2 = NET::WM2UserTime;
 XWindowSystemEventBatcher::XWindowSystemEventBatcher(QObject *parent)
     : QObject(parent)
 {
-    connect(KWindowSystem::self(), &KWindowSystem::windowAdded, this, &XWindowSystemEventBatcher::windowAdded);
+    connect(KX11Extras::self(), &KX11Extras::windowAdded, this, &XWindowSystemEventBatcher::windowAdded);
 
     // remove our cache entries when we lose a window, otherwise we might fire change signals after a window is destroyed which wouldn't make sense
-    connect(KWindowSystem::self(), &KWindowSystem::windowRemoved, this, [this](WId wid) {
+    connect(KX11Extras::self(), &KX11Extras::windowRemoved, this, [this](WId wid) {
         m_cache.remove(wid);
-        emit windowRemoved(wid);
+        Q_EMIT windowRemoved(wid);
     });
 
-    void (KWindowSystem::*myWindowChangeSignal)(WId window, NET::Properties properties, NET::Properties2 properties2) = &KWindowSystem::windowChanged;
-    QObject::connect(KWindowSystem::self(), myWindowChangeSignal, this, [this](WId window, NET::Properties properties, NET::Properties2 properties2) {
+    QObject::connect(KX11Extras::self(), &KX11Extras::windowChanged, this, [this](WId window, NET::Properties properties, NET::Properties2 properties2) {
         // if properties contained only cachable flags
         if ((properties | s_cachableProperties) == s_cachableProperties && (properties2 | s_cachableProperties2) == s_cachableProperties2) {
             m_cache[window].properties |= properties;
@@ -42,7 +43,7 @@ XWindowSystemEventBatcher::XWindowSystemEventBatcher(QObject *parent)
                 properties2 |= it->properties2;
                 m_cache.erase(it);
             }
-            emit windowChanged(window, properties, properties2);
+            Q_EMIT windowChanged(window, properties, properties2);
         }
     });
 }
@@ -53,7 +54,7 @@ void XWindowSystemEventBatcher::timerEvent(QTimerEvent *event)
         return;
     }
     for (auto it = m_cache.constBegin(); it != m_cache.constEnd(); it++) {
-        emit windowChanged(it.key(), it.value().properties, it.value().properties2);
+        Q_EMIT windowChanged(it.key(), it.value().properties, it.value().properties2);
     };
     m_cache.clear();
     killTimer(m_timerId);

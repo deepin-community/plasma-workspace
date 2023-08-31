@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: soliduiserver\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-02-17 00:47+0000\n"
 "PO-Revision-Date: 2013-12-22 13:56+0200\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@gmail.com>\n"
 "Language-Team: Finnish <lokalisointi@lists.coss.fi>\n"
@@ -22,7 +22,20 @@ msgstr ""
 "X-POT-Import-Date: 2012-12-01 22:22:16+0000\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: soliduiserver.cpp:61
+#: soliduiserver.cpp:62
 #, kde-format
 msgid "'%1' needs a password to be accessed. Please enter a password."
 msgstr "%1 edellyttää salasanaa. Anna salasana."
+
+#~ msgid "A new device has been detected.<br><b>What do you want to do?</b>"
+#~ msgstr "Havaittiin uusi laite.<br><b>Mitä haluat tehdä?</b>"
+
+#~ msgid "..."
+#~ msgstr "…"
+
+#~ msgid "Do nothing"
+#~ msgstr "Älä tee mitään"
+
+#~ msgctxt "A default name for an action without proper label"
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"

@@ -29,3 +29,6 @@ msgstr "Nie można znaleźć widoku pracy dla: %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Zadanie porzucone przez użytkownika."

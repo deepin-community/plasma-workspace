@@ -120,3 +120,40 @@ msgstr "Uśpij (zapisz do pamięci)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Hibernuj (zapisz na dysk)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "Wyłącz..."
+
+#~ msgid "Logout..."
+#~ msgstr "Wyloguj..."
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Czy zahibernować system (uśpić na dysk)?"
+
+#~ msgid "Yes"
+#~ msgstr "Tak"
+
+#~ msgid "No"
+#~ msgstr "Nie"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Czy uśpić system do pamięci RAM?"
+
+#~ msgid "Leave"
+#~ msgstr "Wyjdź"
+
+#~ msgid "Leave..."
+#~ msgstr "Wyjdź..."
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Działania"
+
+#~ msgid "Suspend"
+#~ msgstr "Uśpij"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Ustawienia blokowania/wylogowywania"
+
+#~ msgid "SystemTray Settings"
+#~ msgstr "Ustawienia tacki systemowej"

@@ -14,10 +14,9 @@
 
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
-#include <QDBusPendingReply>
 #include <QDBusServiceWatcher>
 
-DBusServiceObserver::DBusServiceObserver(QPointer<SystemTraySettings> settings, QObject *parent)
+DBusServiceObserver::DBusServiceObserver(const QPointer<SystemTraySettings> &settings, QObject *parent)
     : QObject(parent)
     , m_settings(settings)
     , m_sessionServiceWatcher(new QDBusServiceWatcher(this))
@@ -64,7 +63,7 @@ void DBusServiceObserver::registerPlugin(const KPluginMetaData &pluginMetaData)
         rx.setPatternSyntax(QRegExp::Wildcard);
         m_dbusActivatableTasks[pluginMetaData.pluginId()] = rx;
 
-        const QString watchedService = QString(dbusactivation).replace(".*", "*");
+        const QString watchedService = QString(dbusactivation).replace(QLatin1String(".*"), QLatin1String("*"));
         m_sessionServiceWatcher->addWatchedService(watchedService);
         m_systemServiceWatcher->addWatchedService(watchedService);
     }
@@ -74,7 +73,7 @@ void DBusServiceObserver::unregisterPlugin(const QString &pluginId)
 {
     if (m_dbusActivatableTasks.contains(pluginId)) {
         QRegExp rx = m_dbusActivatableTasks.take(pluginId);
-        const QString watchedService = rx.pattern().replace(".*", "*");
+        const QString watchedService = rx.pattern().replace(QLatin1String(".*"), QLatin1String("*"));
         m_sessionServiceWatcher->removeWatchedService(watchedService);
         m_systemServiceWatcher->removeWatchedService(watchedService);
     }
@@ -90,8 +89,8 @@ bool DBusServiceObserver::isDBusActivable(const QString &pluginId)
  * This works as follows:
  * - we collect a list of plugins and related services in m_dbusActivatableTasks
  * - we query DBus for the list of services, async (initDBusActivatables())
- * - we go over that list, adding tasks when a service and plugin match (serviceNameFetchFinished())
- * - we start watching for new services, and do the same (serviceNameFetchFinished())
+ * - we go over that list, adding tasks when a service and plugin match ({session,system}BusNameFetchFinished())
+ * - we start watching for new services, and do the same (serviceRegistered())
  * - whenever a service is gone, we check whether to unload a Plasmoid (serviceUnregistered())
  *
  * Order of events has to be:
@@ -103,34 +102,45 @@ bool DBusServiceObserver::isDBusActivable(const QString &pluginId)
 void DBusServiceObserver::initDBusActivatables()
 {
     // fetch list of existing services
-    QDBusPendingCall async = QDBusConnection::sessionBus().interface()->asyncCall(QStringLiteral("ListNames"));
-    QDBusPendingCallWatcher *callWatcher = new QDBusPendingCallWatcher(async, this);
-    connect(callWatcher, &QDBusPendingCallWatcher::finished, [=](QDBusPendingCallWatcher *callWatcher) {
-        serviceNameFetchFinished(callWatcher);
-        m_dbusSessionServiceNamesFetched = true;
-    });
+    QDBusConnection::sessionBus().interface()->callWithCallback(QStringLiteral("ListNames"),
+                                                                QList<QVariant>(),
+                                                                this,
+                                                                SLOT(sessionBusNameFetchFinished(QStringList)),
+                                                                SLOT(sessionBusNameFetchError(QDBusError)));
 
-    QDBusPendingCall systemAsync = QDBusConnection::systemBus().interface()->asyncCall(QStringLiteral("ListNames"));
-    QDBusPendingCallWatcher *systemCallWatcher = new QDBusPendingCallWatcher(systemAsync, this);
-    connect(systemCallWatcher, &QDBusPendingCallWatcher::finished, [=](QDBusPendingCallWatcher *callWatcher) {
-        serviceNameFetchFinished(callWatcher);
-        m_dbusSystemServiceNamesFetched = true;
-    });
+    QDBusConnection::systemBus().interface()->callWithCallback(QStringLiteral("ListNames"),
+                                                               QList<QVariant>(),
+                                                               this,
+                                                               SLOT(systemBusNameFetchFinished(QStringList)),
+                                                               SLOT(systemBusNameFetchError(QDBusError)));
 }
 
-void DBusServiceObserver::serviceNameFetchFinished(QDBusPendingCallWatcher *watcher)
+void DBusServiceObserver::sessionBusNameFetchFinished(const QStringList &list)
 {
-    QDBusPendingReply<QStringList> propsReply = *watcher;
-    watcher->deleteLater();
-
-    if (propsReply.isError()) {
-        qCWarning(SYSTEM_TRAY) << "Could not get list of available D-Bus services";
-    } else {
-        const auto propsReplyValue = propsReply.value();
-        for (const QString &serviceName : propsReplyValue) {
-            serviceRegistered(serviceName);
-        }
+    for (const QString &serviceName : list) {
+        serviceRegistered(serviceName);
     }
+
+    m_dbusSessionServiceNamesFetched = true;
+}
+
+void DBusServiceObserver::sessionBusNameFetchError(const QDBusError &error)
+{
+    qCWarning(SYSTEM_TRAY) << "Could not get list of available D-Bus services on the session bus:" << error.name() << ":" << error.message();
+}
+
+void DBusServiceObserver::systemBusNameFetchFinished(const QStringList &list)
+{
+    for (const QString &serviceName : list) {
+        serviceRegistered(serviceName);
+    }
+
+    m_dbusSystemServiceNamesFetched = true;
+}
+
+void DBusServiceObserver::systemBusNameFetchError(const QDBusError &error)
+{
+    qCWarning(SYSTEM_TRAY) << "Could not get list of available D-Bus services on the system bus:" << error.name() << ":" << error.message();
 }
 
 void DBusServiceObserver::serviceRegistered(const QString &service)
@@ -148,7 +158,7 @@ void DBusServiceObserver::serviceRegistered(const QString &service)
         const auto &rx = it.value();
         if (rx.exactMatch(service)) {
             qCDebug(SYSTEM_TRAY) << "DBus service" << service << "matching" << m_dbusActivatableTasks[plugin] << "appeared. Loading" << plugin;
-            emit serviceStarted(plugin);
+            Q_EMIT serviceStarted(plugin);
             m_dbusServiceCounts[plugin]++;
         }
     }
@@ -168,7 +178,7 @@ void DBusServiceObserver::serviceUnregistered(const QString &service)
             Q_ASSERT(m_dbusServiceCounts[plugin] >= 0);
             if (m_dbusServiceCounts[plugin] == 0) {
                 qCDebug(SYSTEM_TRAY) << "DBus service" << service << "matching" << m_dbusActivatableTasks[plugin] << "disappeared. Unloading" << plugin;
-                emit serviceStopped(plugin);
+                Q_EMIT serviceStopped(plugin);
             }
         }
     }

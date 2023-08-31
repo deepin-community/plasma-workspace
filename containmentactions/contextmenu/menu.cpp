@@ -12,9 +12,13 @@
 #include <QVBoxLayout>
 
 #include <KActionCollection>
+#include <KActivities/Consumer>
 #include <KAuthorized>
 #include <KGlobalAccel>
+#include <KIO/CommandLauncherJob>
 #include <KLocalizedString>
+#include <KService>
+#include <KTerminalLauncherJob>
 #include <QDebug>
 #include <QIcon>
 
@@ -27,13 +31,6 @@
 
 ContextMenu::ContextMenu(QObject *parent, const QVariantList &args)
     : Plasma::ContainmentActions(parent, args)
-    , m_runCommandAction(nullptr)
-    , m_lockScreenAction(nullptr)
-    , m_logoutAction(nullptr)
-    , m_separator1(nullptr)
-    , m_separator2(nullptr)
-    , m_separator3(nullptr)
-    , m_buttons(nullptr)
     , m_session(new SessionManagement(this))
 {
 }
@@ -52,19 +49,21 @@ void ContextMenu::restore(const KConfigGroup &config)
     QHash<QString, bool> actions;
     QSet<QString> disabled;
 
+    // clang-format off
+    // because it really wants to mangle this nice aligned list
     if (c->containmentType() == Plasma::Types::PanelContainment || c->containmentType() == Plasma::Types::CustomPanelContainment) {
         m_actionOrder << QStringLiteral("add widgets")
-                      << QStringLiteral("_add panel")
                       << QStringLiteral("_context")
                       << QStringLiteral("configure")
                       << QStringLiteral("remove");
     } else {
         actions.insert(QStringLiteral("configure shortcuts"), false);
         m_actionOrder << QStringLiteral("configure")
-                      << QStringLiteral("run associated application")
+                      << QStringLiteral("_display_settings")
                       << QStringLiteral("configure shortcuts")
                       << QStringLiteral("_sep1")
                       << QStringLiteral("_context")
+                      << QStringLiteral("_open_terminal")
                       << QStringLiteral("_run_command")
                       << QStringLiteral("add widgets")
                       << QStringLiteral("_add panel")
@@ -77,8 +76,13 @@ void ContextMenu::restore(const KConfigGroup &config)
                       << QStringLiteral("_sep3")
                       << QStringLiteral("_wallpaper");
         disabled.insert(QStringLiteral("configure shortcuts"));
+        disabled.insert(QStringLiteral("_open_terminal"));
         disabled.insert(QStringLiteral("_run_command"));
+        disabled.insert(QStringLiteral("run associated application"));
+        disabled.insert(QStringLiteral("_lock_screen"));
+        disabled.insert(QStringLiteral("_logout"));
     }
+    // clang-format on
 
     for (const QString &name : qAsConst(m_actionOrder)) {
         actions.insert(name, !disabled.contains(name));
@@ -97,6 +101,10 @@ void ContextMenu::restore(const KConfigGroup &config)
         m_runCommandAction->setShortcut(KGlobalAccel::self()->globalShortcut(QStringLiteral("krunner.desktop"), QStringLiteral("_launch")).value(0));
         connect(m_runCommandAction, &QAction::triggered, this, &ContextMenu::runCommand);
 
+        m_openTerminalAction = new QAction(i18n("Open Terminal"), this);
+        m_openTerminalAction->setIcon(QIcon::fromTheme("utilities-terminal"));
+        connect(m_openTerminalAction, &QAction::triggered, this, &ContextMenu::openTerminal);
+
         m_lockScreenAction = new QAction(i18nc("plasma_containmentactions_contextmenu", "Lock Screen"), this);
         m_lockScreenAction->setIcon(QIcon::fromTheme(QStringLiteral("system-lock-screen")));
         m_lockScreenAction->setShortcut(KGlobalAccel::self()->globalShortcut(QStringLiteral("ksmserver"), QStringLiteral("Lock Session")).value(0));
@@ -114,6 +122,10 @@ void ContextMenu::restore(const KConfigGroup &config)
             m_logoutAction->setEnabled(m_session->canLogout());
         });
         connect(m_logoutAction, &QAction::triggered, this, &ContextMenu::startLogout);
+
+        m_configureDisplaysAction = new QAction(i18nc("plasma_containmentactions_contextmenu", "Configure Display Settings…"), this);
+        m_configureDisplaysAction->setIcon(QIcon::fromTheme(QStringLiteral("preferences-desktop-display")));
+        connect(m_configureDisplaysAction, &QAction::triggered, this, &ContextMenu::configureDisplays);
 
         m_separator1 = new QAction(this);
         m_separator1->setSeparator(true);
@@ -175,6 +187,10 @@ QAction *ContextMenu::action(const QString &name)
         if (KAuthorized::authorizeAction(QStringLiteral("run_command")) && KAuthorized::authorize(QStringLiteral("run_command"))) {
             return m_runCommandAction;
         }
+    } else if (name == QLatin1String("_open_terminal")) {
+        if (KAuthorized::authorizeAction(QStringLiteral("shell_access"))) {
+            return m_openTerminalAction;
+        }
     } else if (name == QLatin1String("_lock_screen")) {
         if (KAuthorized::authorizeAction(QStringLiteral("lock_screen"))) {
             return m_lockScreenAction;
@@ -183,12 +199,22 @@ QAction *ContextMenu::action(const QString &name)
         if (KAuthorized::authorize(QStringLiteral("logout"))) {
             return m_logoutAction;
         }
+    } else if (name == QLatin1String("_display_settings")) {
+        if (KAuthorized::authorizeControlModule(QStringLiteral("kcm_kscreen.desktop")) && KService::serviceByStorageId(QStringLiteral("kcm_kscreen"))) {
+            return m_configureDisplaysAction;
+        }
     } else if (name == QLatin1String("edit mode")) {
         if (c->corona()) {
             return c->corona()->actions()->action(QStringLiteral("edit mode"));
         }
     } else if (name == QLatin1String("manage activities")) {
         if (c->corona()) {
+            // Don't show the action if there's only one activity since in this
+            // case it's clear that the user doesn't use activities
+            if (KActivities::Consumer().activities().length() == 1) {
+                return nullptr;
+            }
+
             return c->corona()->actions()->action(QStringLiteral("manage activities"));
         }
     } else {
@@ -196,6 +222,16 @@ QAction *ContextMenu::action(const QString &name)
         return c->actions()->action(name);
     }
     return nullptr;
+}
+
+void ContextMenu::openTerminal()
+{
+    if (!KAuthorized::authorizeAction(QStringLiteral("shell_access"))) {
+        return;
+    }
+    auto job = new KTerminalLauncherJob(QString());
+    job->setWorkingDirectory(QDir::homePath());
+    job->start();
 }
 
 void ContextMenu::runCommand()
@@ -224,6 +260,27 @@ void ContextMenu::startLogout()
         m_session->requestLogout();
         break;
     }
+}
+
+// FIXME: this function contains some code copied from KCMShell::openSystemSettings()
+// which is not publicly available to C++ code right now. Eventually we should
+// move that code into KIO so it's accessible to everyone, and then call that
+// function instead of this one
+void ContextMenu::configureDisplays()
+{
+    const QString systemSettings = QStringLiteral("systemsettings");
+    const QString kscreenKCM = QStringLiteral("kcm_kscreen");
+
+    KIO::CommandLauncherJob *job = nullptr;
+
+    // Open in System Settings if it's available
+    if (KService::serviceByDesktopName(systemSettings)) {
+        job = new KIO::CommandLauncherJob(QStringLiteral("systemsettings5"), {kscreenKCM});
+        job->setDesktopName(systemSettings);
+    } else {
+        job = new KIO::CommandLauncherJob(QStringLiteral("kcmshell5"), {kscreenKCM});
+    }
+    job->start();
 }
 
 QWidget *ContextMenu::createConfigurationInterface(QWidget *parent)
@@ -293,3 +350,4 @@ void ContextMenu::save(KConfigGroup &config)
 K_PLUGIN_CLASS_WITH_JSON(ContextMenu, "plasma-containmentactions-contextmenu.json")
 
 #include "menu.moc"
+#include "moc_menu.cpp"

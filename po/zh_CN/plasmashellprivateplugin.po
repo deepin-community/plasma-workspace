@@ -1,14 +1,9 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-#
-# Xuetian Weng <xweng@cs.stonybrook.edu>, 2014.
-# Weng Xuetian <wengxt@gmail.com>, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-30 00:18+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"POT-Creation-Date: 2023-01-17 01:00+0000\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -26,12 +21,119 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "KDE China (中国), Guo Yunhe (郭云鹤)"
+msgstr "KDE China, Guo Yunhe, Tyson Tan"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "kde-china@kde.org, i@guoyunhe.me"
+msgstr "kde-china@kde.org, i@guoyunhe.me, tysontan@tysontan.com"
+
+#: calendar/eventdatadecorator.cpp:51
+#, kde-format
+msgctxt "Agenda listview section title"
+msgid "Holidays"
+msgstr "节假日"
+
+#: calendar/eventdatadecorator.cpp:53
+#, kde-format
+msgctxt "Agenda listview section title"
+msgid "Events"
+msgstr "活动"
+
+#: calendar/eventdatadecorator.cpp:55
+#, kde-format
+msgctxt "Agenda listview section title"
+msgid "Todo"
+msgstr "待办事项"
+
+#: calendar/eventdatadecorator.cpp:57
+#, kde-format
+msgctxt "Means 'Other calendar items'"
+msgid "Other"
+msgstr "其他"
+
+#: calendar/qml/DayDelegate.qml:43
+#, kde-format
+msgid "%1 event"
+msgid_plural "%1 events"
+msgstr[0] "%1 项活动"
+
+#: calendar/qml/DayDelegate.qml:43
+#, kde-format
+msgid "No events"
+msgstr "无活动"
+
+#: calendar/qml/MonthViewHeader.qml:67
+#, kde-format
+msgctxt "Format: month year"
+msgid "%1 %2"
+msgstr "%2 年 %1"
+
+#: calendar/qml/MonthViewHeader.qml:113
+#, kde-format
+msgid "Days"
+msgstr "日"
+
+#: calendar/qml/MonthViewHeader.qml:119
+#, kde-format
+msgid "Months"
+msgstr "月"
+
+#: calendar/qml/MonthViewHeader.qml:125
+#, kde-format
+msgid "Years"
+msgstr "年"
+
+#: calendar/qml/MonthViewHeader.qml:163
+#, kde-format
+msgid "Previous Month"
+msgstr "上一月"
+
+#: calendar/qml/MonthViewHeader.qml:165
+#, kde-format
+msgid "Previous Year"
+msgstr "上一年"
+
+#: calendar/qml/MonthViewHeader.qml:167
+#, kde-format
+msgid "Previous Decade"
+msgstr "上一个十年"
+
+#: calendar/qml/MonthViewHeader.qml:184
+#, kde-format
+msgctxt "Reset calendar to today"
+msgid "Today"
+msgstr "今天"
+
+#: calendar/qml/MonthViewHeader.qml:185
+#, kde-format
+msgid "Reset calendar to today"
+msgstr "重置日历到今天"
+
+#: calendar/qml/MonthViewHeader.qml:196
+#, kde-format
+msgid "Next Month"
+msgstr "下一月"
+
+#: calendar/qml/MonthViewHeader.qml:198
+#, kde-format
+msgid "Next Year"
+msgstr "下一年"
+
+#: calendar/qml/MonthViewHeader.qml:200
+#, kde-format
+msgid "Next Decade"
+msgstr "下一个十年"
+
+#: calendar/qml/MonthViewHeader.qml:256
+#, kde-format
+msgid "Keep Open"
+msgstr "保持打开"
+
+#: containmentlayoutmanager/qml/BasicAppletContainer.qml:270
+#, kde-format
+msgid "Configure…"
+msgstr "配置…"
 
 #. i18n: ectx: label, entry, group (Daemon)
 #: sessionsprivate/kscreenlockersettings.kcfg:10
@@ -57,27 +159,27 @@ msgstr "屏幕保护程序超时时间"
 msgid "Sets the minutes after which the screen is locked."
 msgstr "设置屏幕锁定前等待的分钟数。"
 
-#: sessionsprivate/sessionsmodel.cpp:233 sessionsprivate/sessionsmodel.cpp:237
+#: sessionsprivate/sessionsmodel.cpp:235 sessionsprivate/sessionsmodel.cpp:239
 #, kde-format
 msgid "New Session"
 msgstr "新建会话"
 
-#: shellprivate/widgetexplorer/kcategorizeditemsviewmodels.cpp:58
+#: shellprivate/widgetexplorer/kcategorizeditemsviewmodels.cpp:64
 #, kde-format
 msgid "Filters"
 msgstr "过滤"
 
-#: shellprivate/widgetexplorer/openwidgetassistant.cpp:44
+#: shellprivate/widgetexplorer/openwidgetassistant.cpp:41
 #, kde-format
 msgid "Select Plasmoid File"
-msgstr "选择小部件文件"
+msgstr "选择 Plasma 小程序文件"
 
-#: shellprivate/widgetexplorer/openwidgetassistant.cpp:68
+#: shellprivate/widgetexplorer/openwidgetassistant.cpp:65
 #, kde-format
 msgid "Installing the package %1 failed."
-msgstr "安装包 %1 失败。"
+msgstr "安装 %1 软件包失败。"
 
-#: shellprivate/widgetexplorer/openwidgetassistant.cpp:68
+#: shellprivate/widgetexplorer/openwidgetassistant.cpp:65
 #, kde-format
 msgid "Installation Failure"
 msgstr "安装失败"
@@ -85,29 +187,33 @@ msgstr "安装失败"
 #: shellprivate/widgetexplorer/widgetexplorer.cpp:110
 #, kde-format
 msgid "All Widgets"
-msgstr "所有部件"
+msgstr "所有挂件"
 
 #: shellprivate/widgetexplorer/widgetexplorer.cpp:114
 #, kde-format
 msgid "Running"
-msgstr "运行中"
+msgstr "正在运行"
 
-#: shellprivate/widgetexplorer/widgetexplorer.cpp:118
+#: shellprivate/widgetexplorer/widgetexplorer.cpp:120
 #, kde-format
+msgctxt ""
+"@item:inmenu used in the widget filter. Filter widgets that can be un-"
+"installed from the system, which are usually installed by the user to a "
+"local place."
 msgid "Uninstallable"
 msgstr "可卸载"
 
-#: shellprivate/widgetexplorer/widgetexplorer.cpp:122
+#: shellprivate/widgetexplorer/widgetexplorer.cpp:124
 #, kde-format
 msgid "Categories:"
-msgstr "类别："
+msgstr "分类："
 
-#: shellprivate/widgetexplorer/widgetexplorer.cpp:200
+#: shellprivate/widgetexplorer/widgetexplorer.cpp:197
 #, kde-format
 msgid "Download New Plasma Widgets"
-msgstr "下载新 Plasma 部件"
+msgstr "下载新 Plasma 挂件"
 
-#: shellprivate/widgetexplorer/widgetexplorer.cpp:209
+#: shellprivate/widgetexplorer/widgetexplorer.cpp:206
 #, kde-format
 msgid "Install Widget From Local File…"
-msgstr "从本地文件安装小部件…"
+msgstr "从本地文件安装挂件…"

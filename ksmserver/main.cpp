@@ -19,8 +19,13 @@
 
 #include "server.h"
 #include <KLocalizedString>
+#include <KRuntimePlatform>
 #include <KSharedConfig>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <kdbusservice.h>
@@ -30,11 +35,11 @@
 
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QFile>
 #include <QQuickWindow>
 #include <X11/extensions/Xrender.h>
 
 static const char version[] = "0.4";
-static const char description[] = I18N_NOOP("The reliable Plasma session manager that talks the standard X11R6 \nsession management protocol (XSMP).");
 
 Display *dpy = nullptr;
 Colormap colormap = 0;
@@ -229,7 +234,7 @@ int main(int argc, char *argv[])
     a->setQuitOnLastWindowClosed(false); // #169486
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(i18n(description));
+    parser.setApplicationDescription(i18n("The reliable Plasma session manager that talks the standard X11R6 \nsession management protocol (XSMP)."));
     parser.addHelpOption();
     parser.addVersionOption();
 
@@ -289,12 +294,17 @@ int main(int argc, char *argv[])
 
     QString loginMode = config.readEntry("loginMode", "restorePreviousLogout");
 
+    // we don't need session restoring in Plasma Mobile
+    if (KRuntimePlatform::runtimePlatform().contains(QStringLiteral("phone"))) {
+        loginMode = QStringLiteral("emptySession");
+    }
+
     if (parser.isSet(restoreOption))
-        server->restoreSession(QStringLiteral(SESSION_BY_USER));
+        server->setRestoreSession(QStringLiteral(SESSION_BY_USER));
     else if (loginMode == QLatin1String("restorePreviousLogout"))
-        server->restoreSession(QStringLiteral(SESSION_PREVIOUS_LOGOUT));
+        server->setRestoreSession(QStringLiteral(SESSION_PREVIOUS_LOGOUT));
     else if (loginMode == QLatin1String("restoreSavedSession"))
-        server->restoreSession(QStringLiteral(SESSION_BY_USER));
+        server->setRestoreSession(QStringLiteral(SESSION_BY_USER));
     else
         server->startDefaultSession();
 

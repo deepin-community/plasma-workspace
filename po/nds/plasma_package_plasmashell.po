@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-01-22 00:46+0000\n"
 "PO-Revision-Date: 2014-09-18 16:16+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -82,11 +82,17 @@ msgid "QML component for choosing an alternate applet"
 msgstr "QML-Komponent, mit de sik en anner Lüttprogramm utsöken lett"
 
 #: shellpackage.cpp:63
+#, fuzzy, kde-format
+#| msgid "QML component for the configuration dialog for containments"
+msgid "QML component for the configuration dialog of containments"
+msgstr "QML-Komponent för den Instellendialoog vun Gelatsen"
+
+#: shellpackage.cpp:66
 #, kde-format
 msgid "Widgets explorer UI"
 msgstr "Lüttprogrammkieker-Böversiet"
 
-#: shellpackage.cpp:67
+#: shellpackage.cpp:70
 #, kde-format
 msgid ""
 "A UI for writing, loading and running desktop scripts in the current live "

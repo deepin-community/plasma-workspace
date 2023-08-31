@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcminit\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-26 00:47+0000\n"
 "PO-Revision-Date: 2021-09-19 14:02+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -29,27 +29,25 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ubuntu-l10n-tam@lists.ubuntu.com"
 
-#: main.cpp:151
-#, kde-format
-msgid "Module %1 not found"
-msgstr "%1 என்ற கூறு கிடைக்கவில்லை"
-
-#: main.cpp:214
+#: main.cpp:170
 #, kde-format
 msgid "KCMInit"
 msgstr "KCMInit"
 
-#: main.cpp:216
+#: main.cpp:172
 #, kde-format
 msgid "KCMInit - runs startup initialization for Control Modules."
 msgstr "KCMInit - கட்டுப்பாடு கூறுகளுக்கான துவக்க பணிகளை இயக்கும்."
 
-#: main.cpp:222
+#: main.cpp:178
 #, kde-format
 msgid "List modules that are run at startup"
 msgstr "துவங்கும்போது இயக்கப்படும் கூறுகளை பட்டியலிடும்"
 
-#: main.cpp:223
+#: main.cpp:179
 #, kde-format
 msgid "Configuration module to run"
 msgstr "இயக்க வேண்டிய விருப்பத்தேர்வு கூறு"
+
+#~ msgid "Module %1 not found"
+#~ msgstr "%1 என்ற கூறு கிடைக்கவில்லை"

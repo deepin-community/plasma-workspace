@@ -13,7 +13,6 @@
 #include <QDBusPendingCallWatcher>
 #include <QDBusPendingReply>
 #include <QDebug>
-#include <QStringList>
 #include <QVariantList>
 
 static const QString s_orgGtkActions = QStringLiteral("org.gtk.Actions");
@@ -48,10 +47,10 @@ void Actions::load()
         QDBusPendingReply<GMenuActionMap> reply = *watcher;
         if (reply.isError()) {
             qCWarning(DBUSMENUPROXY) << "Failed to get actions from" << m_serviceName << "at" << m_objectPath << reply.error();
-            emit failedToLoad();
+            Q_EMIT failedToLoad();
         } else {
             m_actions = reply.value();
-            emit loaded();
+            Q_EMIT loaded();
         }
         watcher->deleteLater();
     });
@@ -193,6 +192,6 @@ void Actions::onActionsChanged(const QStringList &removed, const StringBoolMap &
     }
 
     if (!dirtyActions.isEmpty()) {
-        emit actionsChanged(dirtyActions);
+        Q_EMIT actionsChanged(dirtyActions);
     }
 }

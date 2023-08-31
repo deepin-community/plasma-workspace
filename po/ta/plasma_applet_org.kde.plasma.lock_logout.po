@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-workspace package.
 #
-# Kishore G <kishore96@gmail.com>, 2021.
+# Kishore G <kishore96@gmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-08-12 21:45+0530\n"
+"PO-Revision-Date: 2022-02-24 21:54+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.07.90\n"
+"X-Generator: Lokalize 21.12.2\n"
 
 #: contents/config/config.qml:13
 #, kde-format
@@ -57,7 +57,7 @@ msgstr "பயனரை மாற்று"
 #: contents/ui/ConfigGeneral.qml:63 contents/ui/data.js:46
 #, kde-format
 msgid "Hibernate"
-msgstr ""
+msgstr "ஆழுறங்கு"
 
 #: contents/ui/ConfigGeneral.qml:68 contents/ui/data.js:39
 #, kde-format
@@ -118,4 +118,10 @@ msgstr "தூங்கு (RAM-க்கு இடைநிறுத்து�
 #: contents/ui/data.js:47
 #, kde-format
 msgid "Hibernate (suspend to disk)"
-msgstr ""
+msgstr "ஆழுறங்கு (வட்டுக்கு இடைநிறுத்தம்)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "கணினியை நிறுத்து..."
+
+#~ msgid "Logout..."
+#~ msgstr "வெளியேறு"

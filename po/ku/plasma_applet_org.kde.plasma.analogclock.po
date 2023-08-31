@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2008-12-25 02:25+0200\n"
 "Last-Translator: Omer Ensari <oensari@gmail.com>\n"
 "Language-Team: Kurdish <ubuntu-l10n-kur@lists.ubuntu.com>\n"
@@ -23,6 +23,12 @@ msgstr ""
 #: contents/config/config.qml:13
 #, kde-format
 msgid "Appearance"
+msgstr ""
+
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
 msgstr ""
 
 #: contents/ui/configGeneral.qml:23
@@ -42,3 +48,22 @@ msgstr "Giştî"
 #| msgid "Show &time zone"
 msgid "Show time zone"
 msgstr "Herêma &demê nîşan bide"
+
+#~ msgid "Show the seconds"
+#~ msgstr "Çirkeyan nîşan bide"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "Heke bixwazî çirkeyan nîşan bidî, vê kontrol bike."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "Jimêra &çirkeyan nîşan bide"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "Herêma-demê di nivîsar de nîşan bide"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr ""
+#~ "Heke bixwazî Herêma-demê di nivîsar de nîşan bidî vê hilbijêre bike."
+
+#~ msgid "Show &time zone"
+#~ msgstr "Herêma &demê nîşan bide"

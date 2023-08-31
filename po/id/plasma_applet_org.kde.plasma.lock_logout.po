@@ -1,16 +1,17 @@
 # Indonesian translations for plasma_applet_lockout package.
 # Copyright (C) 2009 This_file_is_part_of_KDE
 # This file is distributed under the same license as the plasma_applet_lockout package.
+#
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2009-2014.
 # Wantoyo <wantoyek@gmail.com>, 2018, 2019.
-#
+# Linerly <linerly@protonmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_lockout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2019-08-28 16:36+0700\n"
-"Last-Translator: Wantoyo <wantoyek@gmail.com>\n"
+"PO-Revision-Date: 2022-02-25 15:27+0700\n"
+"Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -33,17 +34,17 @@ msgstr "Tampilkan aksi:"
 #: contents/ui/ConfigGeneral.qml:37
 #, kde-format
 msgid "Logout"
-msgstr ""
+msgstr "Keluar"
 
 #: contents/ui/ConfigGeneral.qml:43
 #, kde-format
 msgid "Shutdown"
-msgstr ""
+msgstr "Matikan"
 
 #: contents/ui/ConfigGeneral.qml:48
 #, kde-format
 msgid "Reboot"
-msgstr ""
+msgstr "Mulai Ulang"
 
 #: contents/ui/ConfigGeneral.qml:53 contents/ui/data.js:5
 #, kde-format
@@ -84,33 +85,32 @@ msgstr "Jalankan sesi paralel sebagai pengguna lain"
 #: contents/ui/data.js:18
 #, kde-format
 msgid "Shutdown…"
-msgstr ""
+msgstr "Matikan..."
 
 #: contents/ui/data.js:19
-#, fuzzy, kde-format
-#| msgid "Log out, turn off or restart the computer"
+#, kde-format
 msgid "Turn off the computer"
-msgstr "Keluar log, matikan atau nyalakan-ulang komputer"
+msgstr "Matikan komputer"
 
 #: contents/ui/data.js:25
 #, kde-format
 msgid "Restart…"
-msgstr ""
+msgstr "Mulai ulang..."
 
 #: contents/ui/data.js:26
 #, kde-format
 msgid "Reboot the computer"
-msgstr ""
+msgstr "Mulai ulang komputer"
 
 #: contents/ui/data.js:32
 #, kde-format
 msgid "Logout…"
-msgstr ""
+msgstr "Keluar..."
 
 #: contents/ui/data.js:33
 #, kde-format
 msgid "End the session"
-msgstr ""
+msgstr "Akhiri sesi ini"
 
 #: contents/ui/data.js:40
 #, kde-format
@@ -121,3 +121,51 @@ msgstr "Tidur (suspensi ke RAM)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Hibernasi (suspensi ke cakram)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Anda ingin suspensi ke cakram (hibernasi)?"
+
+#~ msgid "Yes"
+#~ msgstr "Ya"
+
+#~ msgid "No"
+#~ msgstr "Tidak"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Apakah kamu ingin mensuspensi ke RAM (tidur)?"
+
+#~ msgid "Leave"
+#~ msgstr "Tinggalkan"
+
+#~ msgid "Leave..."
+#~ msgstr "Tinggalkan..."
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Aksi"
+
+#~ msgid "Suspend"
+#~ msgstr "Suspensi"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Pengaturan Kunci/Keluar"
+
+#~ msgid "SystemTray Settings"
+#~ msgstr "Pengaturan Baki Sistem"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Atur Kunci/Log Keluar"
+
+#, fuzzy
+#~| msgid "Show sleep button"
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Tampilkan tombol tidur"
+
+#~ msgid "Show logout button"
+#~ msgstr "Tampilkan tombol log keluar"
+
+#~ msgid "Show hibernate button"
+#~ msgstr "Tampilkan tombol hibernasi"
+
+#~ msgid "Show sleep button"
+#~ msgstr "Tampilkan tombol tidur"

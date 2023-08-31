@@ -10,6 +10,7 @@ import QtQuick.Layouts 1.0
 import QtQuick.Dialogs 1.1
 
 import org.kde.kquickcontrolsaddons 2.0 // For kcmshell
+import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.private.digitalclock 1.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.kirigami 2.14 as Kirigami
@@ -31,6 +32,12 @@ ColumnLayout {
                 timeZones.selectLocalTimeZone();
             }
         }
+    }
+
+    QQC2.Label {
+        Layout.fillWidth: true
+        text: i18n("Tip: if you travel frequently, add another entry for your home time zone to this list. It will only appear when you change the systemwide time zone to something else.")
+        wrapMode: Text.Wrap
     }
 
     QQC2.ScrollView {
@@ -61,9 +68,11 @@ ColumnLayout {
 
             delegate: Kirigami.BasicListItem {
                 id: timeZoneListItem
-                property bool isCurrent: plasmoid.configuration.lastSelectedTimezone === model.timeZoneId
+                readonly property bool isCurrent: Plasmoid.configuration.lastSelectedTimezone === model.timeZoneId
+                readonly property bool isIdenticalToLocal: !model.isLocalTimeZone && model.city === timeZones.localTimeZoneCity()
 
                 bold: isCurrent
+                fadeContent: isIdenticalToLocal
 
                 // Don't want a highlight effect here because it doesn't look good
                 hoverEnabled: false
@@ -86,19 +95,28 @@ ColumnLayout {
                 }
 
                 label: model.city
-                subtitle: isCurrent && configuredTimezoneList.count > 1 ? i18n("Clock is currently using this time zone") : ""
+                subtitle: {
+                    if (configuredTimezoneList.count > 1) {
+                        if (isCurrent) {
+                            return i18n("Clock is currently using this time zone");
+                        } else if (isIdenticalToLocal) {
+                            return i18nc("@label This list item shows a time zone city name that is identical to the local time zone's city, and will be hidden in the timezone display in the plasmoid's popup", "Hidden while this is the local time zone's city");
+                        }
+                    }
+                    return "";
+                }
 
                 action: Kirigami.Action {
                     id: clickAction
-                    onTriggered: plasmoid.configuration.lastSelectedTimezone = model.timeZoneId
+                    onTriggered: Plasmoid.configuration.lastSelectedTimezone = model.timeZoneId
                 }
 
                 trailing: RowLayout {
                     QQC2.Button {
-                        visible: model.isLocalTimeZone && KCMShell.authorize("clock.desktop").length > 0
-                        text: i18n("Switch Local Time Zone…")
+                        visible: model.isLocalTimeZone && KCMShell.authorize("kcm_clock.desktop").length > 0
+                        text: i18n("Switch Systemwide Time Zone…")
                         icon.name: "preferences-system-time"
-                        onClicked: KCMShell.openSystemSettings("clock")
+                        onClicked: KCMShell.openSystemSettings("kcm_clock")
                     }
                     QQC2.Button {
                         visible: !model.isLocalTimeZone && configuredTimezoneList.count > 1
@@ -114,7 +132,7 @@ ColumnLayout {
             section {
                 property: "isLocalTimeZone"
                 delegate: Kirigami.ListSectionHeader {
-                    label: section == "true" ? i18n("System's Local Time Zone") : i18n("Additional Time Zones")
+                    label: section == "true" ? i18n("Systemwide Time Zone") : i18n("Additional Time Zones")
                 }
             }
 
@@ -144,19 +162,14 @@ ColumnLayout {
         enabled: configuredTimezoneList.count > 1
         Layout.fillWidth: true
         Layout.topMargin: Kirigami.Units.largeSpacing
-        Layout.bottomMargin: Kirigami.Units.largeSpacing
         text: i18n("Switch displayed time zone by scrolling over clock applet")
-    }
-
-    Kirigami.Separator {
-        Layout.fillWidth: true
     }
 
     QQC2.Label {
         Layout.fillWidth: true
         Layout.leftMargin: Kirigami.Units.largeSpacing * 2
         Layout.rightMargin: Kirigami.Units.largeSpacing * 2
-        text: i18n("Note that using a different time zone for the clock does not change the systemwide local time zone. When you travel, switch the local time zone instead.")
+        text: i18n("Using this feature does not change the systemwide time zone. When you travel, switch the systemwide time zone instead.")
         font: Kirigami.Theme.smallFont
         wrapMode: Text.Wrap
     }
@@ -176,9 +189,6 @@ ColumnLayout {
                 filter.forceActiveFocus()
             }
         }
-
-        // Need to manually set the parent when using this in a Plasma config dialog
-        parent: timeZonesPage.parent
 
         header: ColumnLayout {
             Layout.preferredWidth: Kirigami.Units.gridUnit * 25

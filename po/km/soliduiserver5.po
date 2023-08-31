@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: soliduiserver\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-02-17 00:47+0000\n"
 "PO-Revision-Date: 2008-11-20 11:30+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros.info>\n"
@@ -18,7 +18,20 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: soliduiserver.cpp:61
+#: soliduiserver.cpp:62
 #, kde-format
 msgid "'%1' needs a password to be accessed. Please enter a password."
 msgstr "'%1' ត្រូវ​ការ​ពាក្យ​សម្ងាត់ ដើម្បី​ចូល​ដំណើរការ ។ សូម​បញ្ចូល​ពាក្យ​សម្ងាត់ ។"
+
+#~ msgid "A new device has been detected.<br><b>What do you want to do?</b>"
+#~ msgstr "ឧបករណ៍​ថ្មី​ត្រូវ​បាន​លុប ។<br><b>តើ​អ្នក​ចង់​ធ្វើអ្វី ?</b>"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "Do nothing"
+#~ msgstr "មិន​ធ្វើអ្វី​ទាំង​អស់"
+
+#~ msgctxt "A default name for an action without proper label"
+#~ msgid "Unknown"
+#~ msgstr "មិន​ស្គាល់"

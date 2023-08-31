@@ -1,12 +1,12 @@
 # Translation of plasma_applet_org.kde.plasma.manageinputmethod to Norwegian Nynorsk
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2021.
+# Karl Ove Hufthammer <karl@huftis.org>, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-07-23 00:18+0000\n"
-"PO-Revision-Date: 2021-09-19 12:32+0200\n"
+"POT-Creation-Date: 2022-09-13 00:47+0000\n"
+"PO-Revision-Date: 2023-01-15 12:54+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,33 +14,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.11.70\n"
+"X-Generator: Lokalize 22.12.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: contents/ui/manage-inputmethod.qml:43
+#: contents/ui/manage-inputmethod.qml:64
 #, kde-format
 msgctxt "Opens the system settings module"
 msgid "Configure Virtual Keyboards..."
 msgstr "Set opp virtuelle tastatur …"
 
-#: contents/ui/manage-inputmethod.qml:58
+#: contents/ui/manage-inputmethod.qml:79
 #, kde-format
 msgid "Virtual Keyboard: unavailable"
 msgstr "Virtuelt tastatur: utilgjengeleg"
 
-#: contents/ui/manage-inputmethod.qml:69
+#: contents/ui/manage-inputmethod.qml:90
 #, kde-format
 msgid "Virtual Keyboard: disabled"
 msgstr "Virtuelt tastatur: slått av"
 
-#: contents/ui/manage-inputmethod.qml:79
+#: contents/ui/manage-inputmethod.qml:104
+#, kde-format
+msgid "Show Virtual Keyboard"
+msgstr "Vis virtuelt tastatur"
+
+#: contents/ui/manage-inputmethod.qml:115
 #, kde-format
 msgid "Virtual Keyboard: visible"
 msgstr "Virtuelt tastatur: synleg"
 
-#: contents/ui/manage-inputmethod.qml:89
+#: contents/ui/manage-inputmethod.qml:128
 #, kde-format
 msgid "Virtual Keyboard: enabled"
 msgstr "Virtuelt tastatur: slått på"

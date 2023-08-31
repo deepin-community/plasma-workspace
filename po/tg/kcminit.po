@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcminit\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-26 00:47+0000\n"
 "PO-Revision-Date: 2019-09-16 19:56+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: Tajik <kde-i18n-doc@kde.org>\n"
@@ -27,28 +27,26 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "victor.ibragimov@gmail.com"
 
-#: main.cpp:151
-#, kde-format
-msgid "Module %1 not found"
-msgstr "Модули %1 ёфт нашуд"
-
-#: main.cpp:214
+#: main.cpp:170
 #, kde-format
 msgid "KCMInit"
 msgstr "KCMInit"
 
-#: main.cpp:216
+#: main.cpp:172
 #, kde-format
 msgid "KCMInit - runs startup initialization for Control Modules."
 msgstr ""
 "KCMInit - омодасозии оғози корро барои модулҳои идоракунӣ иҷро мекунад."
 
-#: main.cpp:222
+#: main.cpp:178
 #, kde-format
 msgid "List modules that are run at startup"
 msgstr "Руйхати модулҳое, ки дар оғози кори низом иҷро мешаванд"
 
-#: main.cpp:223
+#: main.cpp:179
 #, kde-format
 msgid "Configuration module to run"
 msgstr "Танзимоти модули иҷрошаванда"
+
+#~ msgid "Module %1 not found"
+#~ msgstr "Модули %1 ёфт нашуд"

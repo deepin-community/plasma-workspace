@@ -14,10 +14,16 @@
 class HistoryImageItem : public HistoryItem
 {
 public:
-    explicit HistoryImageItem(const QPixmap &data);
+    explicit HistoryImageItem(const QImage &data);
     ~HistoryImageItem() override
     {
     }
+
+    HistoryItemType type() const override
+    {
+        return HistoryItemType::Image;
+    }
+
     QString text() const override;
     bool operator==(const HistoryItem &rhs) const override
     {
@@ -26,7 +32,7 @@ public:
         }
         return false;
     }
-    const QPixmap &image() const override;
+    QPixmap image() const override;
     QMimeData *mimeData() const override;
 
     void write(QDataStream &stream) const override;
@@ -35,7 +41,7 @@ private:
     /**
      *
      */
-    const QPixmap m_data;
+    const QImage m_data;
     /**
      * Cache for m_data's string representation
      */

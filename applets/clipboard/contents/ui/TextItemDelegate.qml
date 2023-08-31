@@ -27,13 +27,13 @@ PlasmaComponents3.Label {
         text = text.replace(/^\s+|\s+$/gm, function(match) {
             // then inside the trimmed characters ("match") we replace each one individually
             match = match.replace(/ /g, "␣") // space
-                         .replace(/\t/g, "↹") // tab
+                         .replace(/\t/g, "⇥") // tab
                          .replace(/\n/g, "↵") // return
             return highlightFontTag.arg(match)
         })
 
         // finally turn line breaks into HTML br tags
-        text = text.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, "<br>")
+        text = text.replace(/\r\n|\r|\n/g, "<br>")
 
         return text
     }

@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2017, 2021.
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2017, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-06-06 07:30+0200\n"
+"POT-Creation-Date: 2022-09-22 00:47+0000\n"
+"PO-Revision-Date: 2022-07-31 09:25+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 20.12.1\n"
+"X-Generator: Lokalize 22.03.70\n"
 
 #: package/contents/config/config.qml:13
 #, kde-format
@@ -33,12 +33,38 @@ msgstr "Użyj pojedynczego przycisku dla menu aplikacji"
 msgid "Show full application menu"
 msgstr "Pokaż pełne menu aplikacji"
 
-#: plugin/appmenumodel.cpp:85
+#: package/contents/ui/MenuDelegate.qml:62
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Open a menu"
+msgstr "Otwórz menu"
+
+#: plugin/appmenumodel.cpp:84
 #, kde-format
 msgid "Search"
-msgstr "Szukaj"
+msgstr "Poszukaj"
 
-#: plugin/appmenumodel.cpp:92
+#: plugin/appmenumodel.cpp:91
 #, kde-format
 msgid "Search…"
-msgstr "Szukaj..."
+msgstr "Poszukaj..."
+
+#~ msgid "Search..."
+#~ msgstr "Szukaj..."
+
+#~ msgid "application-menu"
+#~ msgstr "menu aplikacji"
+
+#~ msgid "Application Menu Widget is disabled"
+#~ msgstr "Wyłączono element menu aplikacji"
+
+#~ msgctxt "it being the 'Application Menu Widget'"
+#~ msgid ""
+#~ "Go to System Settings > Application Style > Fine Tuning (tab) to enable "
+#~ "it."
+#~ msgstr ""
+#~ "Przejdź do Ustawienia systemu -> Wygląd programów -> Dostrajanie aby je "
+#~ "włączyć."
+
+#~ msgid "emblem-warning"
+#~ msgstr "etykieta-ostrzeżenie"

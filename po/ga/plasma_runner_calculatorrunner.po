@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_calculatorrunner\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-20 00:52+0000\n"
 "PO-Revision-Date: 2009-04-06 08:33-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
 "3 : 4\n"
 
-#: calculatorrunner.cpp:40
+#: calculatorrunner.cpp:33
 #, fuzzy, kde-format
 #| msgid ""
 #| "Calculates the value of :q: when :q: is made up of numbers and "
@@ -29,22 +29,20 @@ msgstr ""
 "Áiríonn sé seo an luach de :q: nuair atá :q: déanta as uimhreacha agus "
 "siombailí matamaiticiúla cosúil le +, -, /, * agus ^."
 
-#: calculatorrunner.cpp:46
+#: calculatorrunner.cpp:39
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr ""
 
-#: calculatorrunner.cpp:273
+#: calculatorrunner.cpp:133
 #, kde-format
 msgctxt "The result of the calculation is only an approximation"
 msgid "Approximation"
 msgstr ""
 
-#: qalculate_engine.cpp:61
-#, kde-format
-msgid ""
-"The exchange rates could not be updated. The following error has been "
-"reported: %1"
-msgstr ""
-"Níorbh fhéidir na rátaí malairte a nuashonrú. Tuairiscíodh an earráid seo a "
-"leanas: %1"
+#~ msgid ""
+#~ "The exchange rates could not be updated. The following error has been "
+#~ "reported: %1"
+#~ msgstr ""
+#~ "Níorbh fhéidir na rátaí malairte a nuashonrú. Tuairiscíodh an earráid seo "
+#~ "a leanas: %1"

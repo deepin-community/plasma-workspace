@@ -1,25 +1,25 @@
-# Translation of plasma_engine_weather.po to Euskara/Basque (eu).
+# Translation for plasma_engine_weather.po to Euskara/Basque (eu).
 # Copyright (C) 2010-2018, Free Software Foundation.
-# Copyright (C) 2019, This file is copyright:
+# Copyright (C) 2019-2022, This file is copyright:
 # This file is distributed under the same license as the plasma-workspace package.
-# KDE euskaratzeko proiektuaren arduraduna <xalba@euskalnet.net>.
+# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@euskalnet.net>, 2010, 2011, 2014, 2016, 2018, 2019.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2010, 2011, 2014, 2016, 2018, 2019, 2022, 2023.
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2019-08-23 09:47+0200\n"
-"Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
+"PO-Revision-Date: 2023-02-15 07:03+0100\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.08.0\n"
+"X-Generator: Lokalize 22.12.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: bbcukmet_i18n.dat:1
@@ -2697,75 +2697,88 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr "Haizetsu"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "EB"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "AEB"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr "Gaur"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, kde-format
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "Gaur gauean"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
-msgstr "lr."
+msgstr "lar"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
-msgstr "ig."
+msgstr "Iga"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
-msgstr "al."
+msgstr "Asl"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
-msgstr "ar."
+msgstr "Asr"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
-msgstr "az."
+msgstr "Asz"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
-msgstr "og."
+msgstr "Osg"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
-msgstr "or."
+msgstr "Osr"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
 msgstr "Datuen jatorria «BBC Weather»"
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
+msgstr "Sorburua: Deutscher Wetterdienst"
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
 #: ions/envcan/ion_envcan.cpp:1403 ions/envcan/ion_envcan.cpp:1544
@@ -4872,3 +4885,165 @@ msgstr "Eguzkia nagusitzen"
 msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr "Nagusiki oskarbia"
+
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "Eguraldia"
+
+#~ msgctxt "weather condition"
+#~ msgid "thunder storm"
+#~ msgstr "trumoi-ekaitza"
+
+#~ msgctxt "weather forecast"
+#~ msgid "thunder storm"
+#~ msgstr "trumoi-ekaitza"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "N"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNE"
+#~ msgstr "NNE"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "NE"
+
+#~ msgctxt "wind direction"
+#~ msgid "ENE"
+#~ msgstr "ENE"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSE"
+#~ msgstr "SSE"
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "SE"
+
+#~ msgctxt "wind direction"
+#~ msgid "ESE"
+#~ msgstr "ESE"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNW"
+#~ msgstr "NNW"
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "IM"
+
+#~ msgctxt "wind direction"
+#~ msgid "WNW"
+#~ msgstr "WNW"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "M"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSW"
+#~ msgstr "SSW"
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "SW"
+
+#~ msgctxt "wind direction"
+#~ msgid "WSW"
+#~ msgstr "WSW"
+
+#~ msgctxt "wind direction"
+#~ msgid "VR"
+#~ msgstr "VR"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "igotzen"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "jaisten"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "aldaketarik ez"
+
+#~ msgctxt "wind speed"
+#~ msgid "Calm"
+#~ msgstr "Barealdia"
+
+#~ msgctxt "wind speed"
+#~ msgid "N/A"
+#~ msgstr "E/A"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "steady"
+#~ msgstr "egonkor"
+
+#~ msgctxt "wind direction - wind speed is too low to measure"
+#~ msgid "VR"
+#~ msgstr "VR"
+
+#~ msgid "N"
+#~ msgstr "N"
+
+#~ msgid "NNE"
+#~ msgstr "NNE"
+
+#~ msgid "NE"
+#~ msgstr "NE"
+
+#~ msgid "ENE"
+#~ msgstr "ENE"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "SSE"
+#~ msgstr "SSE"
+
+#~ msgid "SE"
+#~ msgstr "SE"
+
+#~ msgid "ESE"
+#~ msgstr "ESE"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "NNW"
+#~ msgstr "NNW"
+
+#~ msgid "NW"
+#~ msgstr "IM"
+
+#~ msgid "WNW"
+#~ msgstr "WNW"
+
+#~ msgid "W"
+#~ msgstr "M"
+
+#~ msgid "SSW"
+#~ msgstr "SSW"
+
+#~ msgid "SW"
+#~ msgstr "SW"
+
+#~ msgid "WSW"
+#~ msgstr "WSW"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "Kanadako Ingurumen Ministerioak emandako datu meteorologikoak"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr "backstage.bbc.co.uk-ren euskarria / UK MET Office-ren datuak"

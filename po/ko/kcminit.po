@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcminit\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-26 00:47+0000\n"
 "PO-Revision-Date: 2008-04-26 15:42+0900\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -27,27 +27,25 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: main.cpp:151
-#, kde-format
-msgid "Module %1 not found"
-msgstr "모듈 %1을(를) 찾을 수 없습니다"
-
-#: main.cpp:214
+#: main.cpp:170
 #, kde-format
 msgid "KCMInit"
 msgstr "KCMInit"
 
-#: main.cpp:216
+#: main.cpp:172
 #, kde-format
 msgid "KCMInit - runs startup initialization for Control Modules."
 msgstr "KCMInit - 제어 모듈의 시작 초기화를 실행합니다."
 
-#: main.cpp:222
+#: main.cpp:178
 #, kde-format
 msgid "List modules that are run at startup"
 msgstr "시작할 때 실행될 모듈 목록"
 
-#: main.cpp:223
+#: main.cpp:179
 #, kde-format
 msgid "Configuration module to run"
 msgstr "실행할 설정 모듈"
+
+#~ msgid "Module %1 not found"
+#~ msgstr "모듈 %1을(를) 찾을 수 없습니다"

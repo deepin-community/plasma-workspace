@@ -11,7 +11,8 @@
 #include <QDebug>
 #include <QIcon>
 
-#include <KAuth>
+#include <KAuth/Action>
+#include <KConfigGroup>
 #include <KLocalizedString>
 #include <KProcess>
 

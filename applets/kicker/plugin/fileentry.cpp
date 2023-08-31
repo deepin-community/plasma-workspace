@@ -7,15 +7,19 @@
 #include "fileentry.h"
 #include "actionlist.h"
 
-#include <KFileItem>
-#include <KRun>
+#include <QApplication>
 
-FileEntry::FileEntry(AbstractModel *owner, const QUrl &url)
+#include <KFileItem>
+#include <KIO/JobUiDelegate>
+#include <KIO/JobUiDelegateFactory>
+#include <KIO/OpenUrlJob>
+
+FileEntry::FileEntry(AbstractModel *owner, const QUrl &url, const QString &mimeType)
     : AbstractEntry(owner)
     , m_fileItem(nullptr)
 {
     if (url.isValid()) {
-        m_fileItem = new KFileItem(url);
+        m_fileItem = new KFileItem(url, mimeType);
         m_fileItem->determineMimeType();
     }
 }
@@ -27,7 +31,7 @@ FileEntry::~FileEntry()
 
 bool FileEntry::isValid() const
 {
-    return m_fileItem && (m_fileItem->isFile() || m_fileItem->isDir());
+    return m_fileItem;
 }
 
 QIcon FileEntry::icon() const
@@ -96,7 +100,10 @@ bool FileEntry::run(const QString &actionId, const QVariant &argument)
     }
 
     if (actionId.isEmpty()) {
-        new KRun(m_fileItem->url(), nullptr);
+        auto job = new KIO::OpenUrlJob(m_fileItem->url());
+        job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, QApplication::activeWindow()));
+        job->setShowOpenOrExecuteDialog(true);
+        job->start();
 
         return true;
     } else {

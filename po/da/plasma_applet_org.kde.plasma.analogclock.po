@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2019-05-07 13:07+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -23,6 +23,12 @@ msgstr ""
 msgid "Appearance"
 msgstr "Udseende"
 
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
+
 #: contents/ui/configGeneral.qml:23
 #, kde-format
 msgid "Show seconds hand"
@@ -37,3 +43,54 @@ msgstr "Generelt:"
 #, kde-format
 msgid "Show time zone"
 msgstr "Vis tidszone"
+
+#~ msgid "Show the seconds"
+#~ msgstr "Vis sekunder"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "Afkryds dette hvis du ønsker at vise sekunder."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "Vis &sekundviser"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "Vis tidszonen i tekst"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "Afkryds dette hvis du ønsker tidszonen vist som tekst."
+
+#~ msgid "Show &time zone"
+#~ msgstr "Vis &tidszone"
+
+#, fuzzy
+#~| msgid "Also show the time as text"
+#~ msgid "Also show the Timezone as text"
+#~ msgstr "Vis også tidspunktet som tekst"
+
+#~ msgid "Timezones"
+#~ msgstr "Tidszoner"
+
+#~ msgid "Use &local timezone"
+#~ msgstr "Brug &lokal tidszone"
+
+#~ msgid "Area"
+#~ msgstr "Område"
+
+#~ msgid "Region"
+#~ msgstr "Region"
+
+#~ msgid "Comment"
+#~ msgstr "Kommentar"
+
+#~ msgctxt "@title:window"
+#~ msgid "Configure Clock"
+#~ msgstr "Indstil ur"
+
+#~ msgid "Display the second hand"
+#~ msgstr "Vis sekundviser"
+
+#~ msgid "Display seconds"
+#~ msgstr "Vis sekunder"
+
+#~ msgid "Display the time as a string"
+#~ msgstr "Vis tidspunktet som en streng"

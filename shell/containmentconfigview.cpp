@@ -18,7 +18,6 @@
 #include <QStandardPaths>
 
 #include <KConfigLoader>
-#include <KDeclarative/ConfigPropertyMap>
 #include <KDeclarative/KDeclarative>
 #include <KLocalizedString>
 #include <KPackage/Package>
@@ -26,7 +25,11 @@
 #include <Plasma/ContainmentActions>
 #include <Plasma/Corona>
 #include <Plasma/PluginLoader>
-#include <PlasmaQuick/ConfigModel>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <KDeclarative/ConfigPropertyMap>
+#else
+#include <KConfigPropertyMap>
+#endif
 
 class WallpaperConfigModel : public PlasmaQuick::ConfigModel
 {
@@ -42,7 +45,7 @@ ContainmentConfigView::ContainmentConfigView(Plasma::Containment *cont, QWindow 
     : ConfigView(cont, parent)
     , m_containment(cont)
 {
-    qmlRegisterAnonymousType<QAbstractItemModel>("QAbstractItemModel",1);
+    qmlRegisterAnonymousType<QAbstractItemModel>("QAbstractItemModel", 1);
     rootContext()->setContextProperty(QStringLiteral("configDialog"), this);
     setCurrentWallpaper(cont->containment()->wallpaper());
 
@@ -105,7 +108,7 @@ void ContainmentConfigView::setContainmentPlugin(const QString &plugin)
     }
 
     m_containment = static_cast<ShellCorona *>(m_containment->corona())->setContainmentTypeForScreen(m_containment->screen(), plugin);
-    emit containmentPluginChanged();
+    Q_EMIT containmentPluginChanged();
 }
 
 PlasmaQuick::ConfigModel *ContainmentConfigView::wallpaperConfigModel()
@@ -147,7 +150,7 @@ PlasmaQuick::ConfigModel *ContainmentConfigView::containmentPluginsConfigModel()
     return m_containmentPluginsConfigModel;
 }
 
-KDeclarative::ConfigPropertyMap *ContainmentConfigView::wallpaperConfiguration() const
+QQmlPropertyMap *ContainmentConfigView::wallpaperConfiguration() const
 {
     return m_currentWallpaperConfig;
 }
@@ -177,12 +180,16 @@ void ContainmentConfigView::setCurrentWallpaper(const QString &wallpaper)
         KConfigGroup cfg = m_containment->config();
         cfg = KConfigGroup(&cfg, "Wallpaper");
         cfg = KConfigGroup(&cfg, wallpaper);
-        m_currentWallpaperConfig = m_ownWallpaperConfig = new KDeclarative::ConfigPropertyMap(new KConfigLoader(cfg, &file), this);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+        m_currentWallpaperConfig = m_ownWallpaperConfig = new KDeclarative::ConfigPropertyMap(new KConfigLoader(cfg, &file, this), this);
+#else
+        m_currentWallpaperConfig = m_ownWallpaperConfig = new KConfigPropertyMap(new KConfigLoader(cfg, &file, this), this);
+#endif
     }
 
     m_currentWallpaper = wallpaper;
-    emit currentWallpaperChanged();
-    emit wallpaperConfigurationChanged();
+    Q_EMIT currentWallpaperChanged();
+    Q_EMIT wallpaperConfigurationChanged();
 }
 
 void ContainmentConfigView::applyWallpaper()
@@ -191,6 +198,7 @@ void ContainmentConfigView::applyWallpaper()
 
     syncWallpaperObjects();
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     if (m_currentWallpaperConfig && m_ownWallpaperConfig) {
         for (const auto &key : m_ownWallpaperConfig->keys()) {
             auto value = m_ownWallpaperConfig->value(key);
@@ -201,8 +209,11 @@ void ContainmentConfigView::applyWallpaper()
 
     delete m_ownWallpaperConfig;
     m_ownWallpaperConfig = nullptr;
+#else
+    static_cast<KConfigPropertyMap *>(m_currentWallpaperConfig)->writeConfig();
+#endif
 
-    emit wallpaperConfigurationChanged();
+    Q_EMIT wallpaperConfigurationChanged();
 }
 
 void ContainmentConfigView::syncWallpaperObjects()
@@ -215,7 +226,7 @@ void ContainmentConfigView::syncWallpaperObjects()
     rootContext()->setContextProperty(QStringLiteral("wallpaper"), wallpaperGraphicsObject);
 
     // FIXME: why m_wallpaperGraphicsObject->property("configuration").value<ConfigPropertyMap *>() doesn't work?
-    m_currentWallpaperConfig = static_cast<KDeclarative::ConfigPropertyMap *>(wallpaperGraphicsObject->property("configuration").value<QObject *>());
+    m_currentWallpaperConfig = static_cast<QQmlPropertyMap *>(wallpaperGraphicsObject->property("configuration").value<QObject *>());
 }
 
 WallpaperConfigModel::WallpaperConfigModel(QObject *parent)

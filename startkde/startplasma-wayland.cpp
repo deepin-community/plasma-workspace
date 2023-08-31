@@ -4,11 +4,13 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
+#include "debug.h"
 #include "startplasma.h"
 #include <KConfig>
 #include <KConfigGroup>
 #include <QDBusConnection>
 #include <QDBusInterface>
+#include <signal.h>
 
 int main(int argc, char **argv)
 {
@@ -16,6 +18,7 @@ int main(int argc, char **argv)
 
     createConfigDirectory();
     setupCursor(true);
+    signal(SIGTERM, sigtermHandler);
 
     {
         KConfig fonts(QStringLiteral("kcmfonts"));
@@ -31,7 +34,7 @@ int main(int argc, char **argv)
         const QString locale1Service = QStringLiteral("org.freedesktop.locale1");
         const QString locale1Path = QStringLiteral("/org/freedesktop/locale1");
         QDBusMessage message =
-            QDBusMessage::createMethodCall(locale1Service, locale1Path, QStringLiteral("org.freedesktop.DBus.Properties"), QLatin1String("GetAll"));
+            QDBusMessage::createMethodCall(locale1Service, locale1Path, QStringLiteral("org.freedesktop.DBus.Properties"), QStringLiteral("GetAll"));
         message << locale1Service;
         QDBusMessage resultMessage = QDBusConnection::systemBus().call(message);
         if (resultMessage.type() == QDBusMessage::ReplyMessage) {
@@ -52,7 +55,7 @@ int main(int argc, char **argv)
             queryAndSet("XKB_DEFAULT_VARIANT", QStringLiteral("X11Variant"));
             queryAndSet("XKB_DEFAULT_OPTIONS", QStringLiteral("X11Options"));
         } else {
-            qWarning() << "not a reply org.freedesktop.locale1" << resultMessage;
+            qCWarning(PLASMA_STARTUP) << "not a reply org.freedesktop.locale1" << resultMessage;
         }
     }
     runEnvironmentScripts();
@@ -64,9 +67,6 @@ int main(int argc, char **argv)
     setupPlasmaEnvironment();
     runStartupConfig();
     qputenv("PLASMA_USE_QT_SCALING", "1");
-    qputenv("GDK_SCALE", "1");
-    qputenv("GDK_DPI_SCALE", "1");
-
     qputenv("XDG_SESSION_TYPE", "wayland");
 
     auto oldSystemdEnvironment = getSystemdEnvironment();
@@ -80,16 +80,16 @@ int main(int argc, char **argv)
     // variables (e.g. LANG and LC_*)
     importSystemdEnvrionment();
 
-    QStringList args;
-    if (argc > 1) {
-        args.reserve(argc);
-        for (int i = 1; i < argc; ++i) {
-            args << QString::fromLocal8Bit(argv[i]);
-        }
-    } else {
-        args = QStringList{QStringLiteral("--xwayland"), QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR "/startplasma-waylandsession")};
-    }
-    runSync(QStringLiteral("kwin_wayland_wrapper"), args);
+    if (!startPlasmaSession(true))
+        return 4;
+
+    // Anything after here is logout
+    // It is not called after shutdown/restart
+    waitForKonqi();
+    out << "startplasma-wayland: Shutting down...\n";
+
+    // Keep for KF5; remove in KF6 (KInit will be gone then)
+    runSync(QStringLiteral("kdeinit5_shutdown"), {});
 
     out << "startplasmacompositor: Shutting down...\n";
     cleanupPlasmaEnvironment(oldSystemdEnvironment);

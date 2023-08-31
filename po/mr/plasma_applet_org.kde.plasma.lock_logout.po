@@ -122,3 +122,30 @@ msgstr "झोप (RAM वर अकार्यक्षम)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "हायबरनेट (डिस्कवर अकार्यक्षम)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "तुम्हाला डिस्कवर अकार्यक्षम (हायबरनेट) करायचे आहे का?"
+
+#~ msgid "Yes"
+#~ msgstr "हो"
+
+#~ msgid "No"
+#~ msgstr "नाही"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "तुम्हाला RAM वर अकार्यक्षम (झोप) करायचे आहे का?"
+
+#~ msgid "Leave"
+#~ msgstr "बाहेर पडा"
+
+#~ msgid "Leave..."
+#~ msgstr "बाहेर पडा..."
+
+#~ msgid "Suspend"
+#~ msgstr "अकार्यक्षम करा"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "कुलूपबंद/बाहेर पडा संयोजीत करा"
+
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "खालील यादीतून एक किंवा अधिक घटक निवडा."

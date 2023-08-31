@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmstyle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-18 00:19+0000\n"
+"POT-Creation-Date: 2023-04-24 03:15+0000\n"
 "PO-Revision-Date: 2021-08-18 21:45+0200\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -18,52 +18,17 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 20.12.2\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Nguyễn Hùng Phú,Clytie Siddall"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "phu.nguyen@kdemail.net,clytie@riverland.net.au"
-
-#: gtkpage.cpp:65
+#: gtkpage.cpp:59
 #, kde-format
 msgid "%1 is not a valid GTK Theme archive."
 msgstr "%1 không phải là một kho trữ chủ đề của GTK hợp lệ."
 
-#: kcmstyle.cpp:79
-#, kde-format
-msgid "Application Style"
-msgstr "Kiểu cách ứng dụng"
-
-#: kcmstyle.cpp:83
-#, kde-format
-msgid "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik "
-msgstr "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik"
-
-#: kcmstyle.cpp:85
-#, kde-format
-msgid "Karol Szwed"
-msgstr "Karol Szwed"
-
-#: kcmstyle.cpp:86
-#, kde-format
-msgid "Daniel Molkentin"
-msgstr "Daniel Molkentin"
-
-#: kcmstyle.cpp:87
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "Kai Uwe Broulik"
-
-#: kcmstyle.cpp:176 kcmstyle.cpp:183
+#: kcmstyle.cpp:161 kcmstyle.cpp:168
 #, kde-format
 msgid "There was an error loading the configuration dialog for this style."
 msgstr "Có một lỗi khi tải hộp thoại cấu hình cho kiểu cách này."
 
-#: kcmstyle.cpp:296
+#: kcmstyle.cpp:274
 #, kde-format
 msgid "Failed to apply selected style '%1'."
 msgstr "Áp dụng kiểu cách được chọn '%1' thất bại."
@@ -123,27 +88,27 @@ msgstr "Kiểu cách ứng dụng GNOME/GTK"
 msgid "GTK theme:"
 msgstr "Chủ đề GTK:"
 
-#: package/contents/ui/GtkStylePage.qml:76
+#: package/contents/ui/GtkStylePage.qml:69
 #, kde-format
 msgid "Preview…"
 msgstr "Xem thử…"
 
-#: package/contents/ui/GtkStylePage.qml:95
+#: package/contents/ui/GtkStylePage.qml:88
 #, kde-format
 msgid "Install from File…"
 msgstr "Cài từ tệp…"
 
-#: package/contents/ui/GtkStylePage.qml:100
+#: package/contents/ui/GtkStylePage.qml:93
 #, kde-format
 msgid "Get New GNOME/GTK Application Styles…"
 msgstr "Lấy kiểu cách ứng dụng GNOME/GTK mới…"
 
-#: package/contents/ui/GtkStylePage.qml:149
+#: package/contents/ui/GtkStylePage.qml:109
 #, kde-format
 msgid "Select GTK Theme Archive"
 msgstr "Chọn kho trữ chủ đề GTK"
 
-#: package/contents/ui/GtkStylePage.qml:151
+#: package/contents/ui/GtkStylePage.qml:111
 #, kde-format
 msgid "GTK Theme Archive (*.tar.xz *.tar.gz *.tar.bz2)"
 msgstr "Kho trữ chủ đề GTK (*.tar.xz *.tar.gz *.tar.bz2)"
@@ -208,8 +173,14 @@ msgstr "Hộp kiểm"
 msgid "Radio button"
 msgstr "Nút chọn một"
 
+#. i18n: ectx: property (format), widget (QProgressBar, progressBar)
+#: stylepreview.ui:128
+#, no-c-format, kde-format
+msgid "%p%"
+msgstr ""
+
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
-#: stylepreview.ui:133
+#: stylepreview.ui:136
 #, kde-format
 msgid "Tab 2"
 msgstr "Thẻ 2"
@@ -243,3 +214,26 @@ msgstr "Nhãn trên thanh công cụ chính"
 #, kde-format
 msgid "Secondary toolbar label"
 msgstr "Nhãn trên thanh công cụ thứ"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Nguyễn Hùng Phú,Clytie Siddall"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "phu.nguyen@kdemail.net,clytie@riverland.net.au"
+
+#~ msgid "Application Style"
+#~ msgstr "Kiểu cách ứng dụng"
+
+#~ msgid "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik "
+#~ msgstr "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik"
+
+#~ msgid "Karol Szwed"
+#~ msgstr "Karol Szwed"
+
+#~ msgid "Daniel Molkentin"
+#~ msgstr "Daniel Molkentin"
+
+#~ msgid "Kai Uwe Broulik"
+#~ msgstr "Kai Uwe Broulik"

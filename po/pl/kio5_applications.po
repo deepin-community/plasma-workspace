@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-08 00:48+0000\n"
 "PO-Revision-Date: 2016-08-27 09:19+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: kio_applications.cpp:121
+#: kio_applications.cpp:122
 #, kde-format
 msgid "Applications"
 msgstr "Programy"
 
-#: kio_applications.cpp:121
+#: kio_applications.cpp:122
 #, kde-format
 msgid "Programs"
 msgstr "Programy"
 
-#: kio_applications.cpp:130
+#: kio_applications.cpp:131
 #, kde-format
 msgid "Unknown application folder"
 msgstr "Nieznany katalog programu"

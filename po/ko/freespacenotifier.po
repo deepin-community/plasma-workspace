@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-20 01:43+0000\n"
+"POT-Creation-Date: 2022-10-17 00:48+0000\n"
 "PO-Revision-Date: 2021-05-28 02:24+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -69,15 +69,41 @@ msgid ""
 "(%2%)."
 msgstr "홈 폴더의 디스크 공간이 부족합니다. %1MiB 남았습니다(%2%)."
 
-#: module.cpp:46
+#: module.cpp:45
 #, kde-format
 msgid ""
 "Your Root partition is running out of disk space, you have %1 MiB remaining "
 "(%2%)."
 msgstr "루트 파티션의 디스크 공간이 부족합니다. %1MiB 남았습니다(%2%)."
 
-#: module.cpp:63
+#: module.cpp:62
 #, kde-format
 msgctxt "The settings dialog main page name, as in 'general settings'"
 msgid "General"
 msgstr "일반"
+
+#~ msgid "Low Disk Space"
+#~ msgstr "디스크 공간 부족"
+
+#~ msgid "Remaining space in your Home folder: %1 MiB"
+#~ msgstr "홈 폴더의 남은 공간: %1MiB"
+
+#~ msgctxt "Allows the user to hide this notifier item"
+#~ msgid "Hide"
+#~ msgstr "숨기기"
+
+#~ msgctxt ""
+#~ "Warns the user that the system is running low on space on his home "
+#~ "folder, indicating the percentage and absolute MiB size remaining, and "
+#~ "asks if the user wants to do something about it"
+#~ msgid ""
+#~ "You are running low on disk space on your home folder (currently %2%, %1 "
+#~ "MiB free).\n"
+#~ "Would you like to run a file manager to free some disk space?"
+#~ msgstr ""
+#~ "홈 폴더에 디스크 공간이 거의 없습니다. (현재 %2%, %1 MiB 남음)\n"
+#~ "파일 관리자를 열어서 디스크를 정리하시겠습니까?"
+
+#~ msgctxt "Closes the notification"
+#~ msgid "Do Nothing"
+#~ msgstr "아무것도 하지 않음"

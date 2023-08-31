@@ -18,7 +18,9 @@
 
 #include <KConfigGroup>
 #include <KLocalizedString>
+#include <KProtocolInfo>
 #include <KSharedConfig>
+#include <KSycoca>
 
 #include <KActivities/Consumer>
 #include <KActivities/Stats/Query>
@@ -37,6 +39,7 @@ using namespace KAStats::Terms;
 
 QString agentForUrl(const QString &url)
 {
+    QUrl u(url);
     // clang-format off
     return url.startsWith(QLatin1String("ktp:"))
                 ? AGENT_CONTACTS
@@ -48,6 +51,8 @@ QString agentForUrl(const QString &url)
                 ? AGENT_DOCUMENTS
          : (url.startsWith(QLatin1String("file:/")) && !url.endsWith(QLatin1String(".desktop")))
                 ? AGENT_DOCUMENTS
+         : (u.scheme() != QLatin1String("file") && !u.scheme().isEmpty() && KProtocolInfo::isKnownProtocol(u.scheme()))
+                  ? AGENT_DOCUMENTS
          // use applications as the default
                 : AGENT_APPLICATIONS;
     // clang-format on
@@ -79,7 +84,7 @@ public:
             }
 
             if (!entry || !entry->isValid()) {
-                qWarning() << "Entry is not valid" << id << entry;
+                qCWarning(KICKER_DEBUG) << "Entry is not valid" << id << entry;
                 m_id = id;
                 return;
             }
@@ -139,7 +144,7 @@ public:
         return NormalizedId(this, id);
     }
 
-    QSharedPointer<AbstractEntry> entryForResource(const QString &resource) const
+    QSharedPointer<AbstractEntry> entryForResource(const QString &resource, const QString &mimeType = QString()) const
     {
         using SP = QSharedPointer<AbstractEntry>;
 
@@ -150,9 +155,9 @@ public:
 
         } else if (agent == AGENT_DOCUMENTS) {
             if (resource.startsWith(QLatin1String("/"))) {
-                return SP(new FileEntry(q, QUrl::fromLocalFile(resource)));
+                return SP(new FileEntry(q, QUrl::fromLocalFile(resource), mimeType));
             } else {
-                return SP(new FileEntry(q, QUrl(resource)));
+                return SP(new FileEntry(q, QUrl(resource), mimeType));
             }
 
         } else if (agent == AGENT_APPLICATIONS) {
@@ -167,7 +172,7 @@ public:
         }
     }
 
-    Private(KAStatsFavoritesModel *parent, QString clientId)
+    Private(KAStatsFavoritesModel *parent, const QString &clientId)
         : q(parent)
         , m_query(LinkedResources | Agent{AGENT_APPLICATIONS, AGENT_CONTACTS, AGENT_DOCUMENTS} | Type::any() | Activity::current() | Activity::global()
                   | Limit::all())
@@ -181,6 +186,19 @@ public:
 
         connect(&m_watcher, &ResultWatcher::resultUnlinked, [this](const QString &resource) {
             removeResult(resource);
+        });
+        connect(KSycoca::self(), &KSycoca::databaseChanged, this, [this]() {
+            QStringList keys;
+            for (auto it = m_itemEntries.cbegin(); it != m_itemEntries.cend(); it++) {
+                if (it.value() && !it.value()->isValid()) {
+                    keys << it.key();
+                }
+            }
+            if (!keys.isEmpty()) {
+                for (const QString &key : keys) {
+                    removeResult(key);
+                }
+            }
         });
 
         // Loading the items order
@@ -196,6 +214,10 @@ public:
         KConfigGroup globalCfgGroup(cfg, globalGroupName);
 
         QStringList ordering = thisCfgGroup.readEntry("ordering", QStringList()) + globalCfgGroup.readEntry("ordering", QStringList());
+        // Normalizing all the ids
+        std::transform(ordering.begin(), ordering.end(), ordering.begin(), [&](const QString &item) {
+            return normalizedId(item).value();
+        });
 
         qCDebug(KICKER_DEBUG) << "Loading the ordering " << ordering;
 
@@ -205,13 +227,55 @@ public:
 
         for (const auto &result : results) {
             qCDebug(KICKER_DEBUG) << "Got " << result.resource() << " -->";
-            addResult(result.resource(), -1, false);
+            addResult(result.resource(), -1, false, result.mimetype());
         }
 
-        // Normalizing all the ids
-        std::transform(ordering.begin(), ordering.end(), ordering.begin(), [&](const QString &item) {
-            return normalizedId(item).value();
-        });
+        if (ordering.length() == 0) {
+            // try again with other applets with highest instance number which has the matching apps
+            qCDebug(KICKER_DEBUG) << "No ordering for this applet found, trying others";
+            const auto allGroups = cfg->groupList();
+            int instanceHighest = -1;
+            for (const auto &groupName : allGroups) {
+                if (groupName.contains(QStringLiteral(".favorites.instance-"))
+                    && (groupName.endsWith(QStringLiteral("-global")) || groupName.endsWith(m_activities.currentActivity()))) {
+                    // the group names look like "Favorites-org.kde.plasma.kicker.favorites.instance-58-1bd5bb42-187c-4c77-a746-c9644c5da866"
+                    const QStringList split = groupName.split(QStringLiteral("-"));
+                    if (split.length() >= 3) {
+                        bool ok;
+                        int instanceN = split[2].toInt(&ok);
+                        if (!ok) {
+                            continue;
+                        }
+                        auto groupOrdering = KConfigGroup(cfg, groupName).readEntry("ordering", QStringList());
+                        if (groupOrdering.length() != m_items.length()) {
+                            continue;
+                        }
+                        std::transform(groupOrdering.begin(), groupOrdering.end(), groupOrdering.begin(), [&](const QString &item) {
+                            return normalizedId(item).value();
+                        });
+                        for (auto item : m_items) {
+                            if (!groupOrdering.contains(item.value())) {
+                                continue;
+                            }
+                        }
+                        if (instanceHighest == instanceN) {
+                            // we got a -global as well as -{activity uuid}
+                            // we add them
+                            if (groupName.endsWith(QStringLiteral("-global"))) {
+                                ordering += groupOrdering;
+                            } else {
+                                ordering = groupOrdering + ordering;
+                            }
+                            qCDebug(KICKER_DEBUG) << "adding ordering from: " << groupName;
+                        } else if (instanceN > instanceHighest) {
+                            instanceHighest = instanceN;
+                            ordering = (groupOrdering.length() != 0) ? groupOrdering : ordering;
+                            qCDebug(KICKER_DEBUG) << "taking ordering from: " << groupName;
+                        }
+                    }
+                }
+            }
+        }
 
         // Sorting the items in the cache
         std::sort(m_items.begin(), m_items.end(), [&](const NormalizedId &left, const NormalizedId &right) {
@@ -240,7 +304,7 @@ public:
         qCDebug(KICKER_DEBUG) << "After ordering: " << itemStrings;
     }
 
-    void addResult(const QString &_resource, int index, bool notifyModel = true)
+    void addResult(const QString &_resource, int index, bool notifyModel = true, const QString &mimeType = QString())
     {
         // We want even files to have a proper URL
         const auto resource = _resource.startsWith(QLatin1Char('/')) ? QUrl::fromLocalFile(_resource).toString() : _resource;
@@ -250,10 +314,22 @@ public:
         if (m_itemEntries.contains(resource))
             return;
 
-        auto entry = entryForResource(resource);
+        auto entry = entryForResource(resource, mimeType);
 
         if (!entry || !entry->isValid()) {
-            qCDebug(KICKER_DEBUG) << "Entry is not valid!";
+            qCDebug(KICKER_DEBUG) << "Entry is not valid!" << resource;
+            return;
+        }
+
+        // TODO Remove a few releases after Plasma 5.25 as this should become dead code, once users have run this code at least once
+        // Converts old-style applications favorites with path (/usrshare/applications/org.kde.dolphin.desktop) or storageId (org.kde.dolphin.desktop)
+        if ((_resource.startsWith(QLatin1String("/")) || QUrl(_resource).scheme().isEmpty()) && _resource.endsWith(QLatin1String(".desktop"))) {
+            m_watcher.unlinkFromActivity(QUrl(_resource), QStringLiteral(":any"), agentForUrl(resource));
+
+            const auto normalized = normalizedId(resource).value();
+            qCDebug(KICKER_DEBUG) << "Converting old-style application favorite entry" << _resource << "to" << normalized;
+
+            m_watcher.linkToActivity(QUrl(normalized), QStringLiteral(":any"), agentForUrl(resource));
             return;
         }
 
@@ -267,7 +343,10 @@ public:
 
         auto url = entry->url();
 
-        m_itemEntries[resource] = m_itemEntries[entry->id()] = m_itemEntries[url.toString()] = m_itemEntries[url.toLocalFile()] = entry;
+        m_itemEntries[resource] = m_itemEntries[entry->id()] = m_itemEntries[url.toString()] = entry;
+        if (!url.toLocalFile().isEmpty()) {
+            m_itemEntries[url.toLocalFile()] = entry;
+        }
 
         auto normalized = normalizedId(resource);
         m_items.insert(index, normalized);
@@ -281,7 +360,7 @@ public:
 
     void removeResult(const QString &resource)
     {
-        auto normalized = normalizedId(resource);
+        const auto normalized = normalizedId(resource);
 
         // If we know this item will not really be removed,
         // but only that activities it is on have changed,
@@ -293,13 +372,13 @@ public:
 
         qCDebug(KICKER_DEBUG) << "Removing result" << resource;
 
-        auto index = m_items.indexOf(normalizedId(resource));
+        auto index = m_items.indexOf(normalized);
 
         if (index == -1)
             return;
 
         beginRemoveRows(QModelIndex(), index, index);
-        auto entry = m_itemEntries[resource];
+        const auto entry = m_itemEntries[resource];
         m_items.removeAt(index);
 
         // Removing the entry from the cache
@@ -312,6 +391,8 @@ public:
         }
 
         endRemoveRows();
+
+        saveOrdering();
     }
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override
@@ -492,20 +573,20 @@ void KAStatsFavoritesModel::setEnabled(bool enable)
     if (m_enabled != enable) {
         m_enabled = enable;
 
-        emit enabledChanged();
+        Q_EMIT enabledChanged();
     }
 }
 
 QStringList KAStatsFavoritesModel::favorites() const
 {
-    qWarning() << "KAStatsFavoritesModel::favorites returns nothing, it is here just to keep the API backwards-compatible";
+    qCWarning(KICKER_DEBUG) << "KAStatsFavoritesModel::favorites returns nothing, it is here just to keep the API backwards-compatible";
     return QStringList();
 }
 
 void KAStatsFavoritesModel::setFavorites(const QStringList &favorites)
 {
     Q_UNUSED(favorites);
-    qWarning() << "KAStatsFavoritesModel::setFavorites is ignored";
+    qCWarning(KICKER_DEBUG) << "KAStatsFavoritesModel::setFavorites is ignored";
 }
 
 bool KAStatsFavoritesModel::isFavorite(const QString &id) const
@@ -593,7 +674,7 @@ void KAStatsFavoritesModel::removeFavoriteFrom(const QString &id, const Activity
 
     Q_ASSERT(!activity.values.isEmpty());
 
-    qCDebug(KICKER_DEBUG) << "addFavoriteTo" << id << activity << url << " (actual)";
+    qCDebug(KICKER_DEBUG) << "removeFavoriteFrom" << id << activity << url << " (actual)";
 
     if (url.isEmpty())
         return;

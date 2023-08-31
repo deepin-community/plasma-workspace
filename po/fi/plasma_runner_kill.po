@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_kill\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2020-06-18 17:58+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -21,32 +21,32 @@ msgstr ""
 "X-POT-Import-Date: 2012-12-01 22:22:36+0000\n"
 "X-Generator: Lokalize 20.04.2\n"
 
-#: killrunner.cpp:29
+#: killrunner.cpp:30
 #, kde-format
 msgid "Send SIGTERM"
 msgstr "Lähetä SIGTERM"
 
-#: killrunner.cpp:31
+#: killrunner.cpp:32
 #, kde-format
 msgid "Send SIGKILL"
 msgstr "Lähetä SIGKILL"
 
-#: killrunner.cpp:50 killrunner_config.cpp:51 killrunner_config.cpp:77
+#: killrunner.cpp:51 killrunner_config.cpp:51 killrunner_config.cpp:77
 #, kde-format
 msgid "kill"
 msgstr "kill"
 
-#: killrunner.cpp:56
+#: killrunner.cpp:57
 #, kde-format
 msgid "Terminate running applications whose names match the query."
 msgstr "Lopettaa hakua vastaavat käynnissä olevat sovellukset."
 
-#: killrunner.cpp:119
+#: killrunner.cpp:120
 #, kde-format
 msgid "Terminate %1"
 msgstr "Lopeta %1"
 
-#: killrunner.cpp:120
+#: killrunner.cpp:121
 #, kde-format
 msgid "Process ID: %1"
 msgstr "Prosessin ID: %1"
@@ -95,3 +95,10 @@ msgstr "&Lajittelujärjestys"
 #, kde-format
 msgid "It is not sure, that this will take effect"
 msgstr "Ei ole varmaa, että tällä on vaikutusta"
+
+#~ msgid ""
+#~ "Process ID: %1\n"
+#~ "Running as user: %2"
+#~ msgstr ""
+#~ "Prosessin tunnus: %1\n"
+#~ "Ajetaan käyttäjänä: %2"

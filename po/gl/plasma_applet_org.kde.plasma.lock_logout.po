@@ -125,3 +125,40 @@ msgstr "Suspender (en memoria)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Hibernar (no almacenamento)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Quere suspender no disco (hibernar)?"
+
+#~ msgid "Yes"
+#~ msgstr "Si"
+
+#~ msgid "No"
+#~ msgstr "Non"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Quere suspender na RAM (durmir)?"
+
+#~ msgid "Leave"
+#~ msgstr "Saír"
+
+#~ msgid "Leave..."
+#~ msgstr "Saír…"
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Accións"
+
+#~ msgid "Suspend"
+#~ msgstr "Suspender"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Configuración de iniciar e saír da sesión"
+
+#~ msgid "SystemTray Settings"
+#~ msgstr "Configuración da bandexa do sistema"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Configurar o tranque/saída"
+
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "Escolla un ou máis elementos na lista en baixo."

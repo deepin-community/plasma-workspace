@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-11-09 01:47+0000\n"
+"POT-Creation-Date: 2023-04-27 02:45+0000\n"
 "PO-Revision-Date: 2014-12-28 11:33+0000\n"
 "Last-Translator: Ajla Alic <aalic2@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -20,46 +20,46 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: ../sddm-theme/KeyboardButton.qml:13
+#: ../sddm-theme/KeyboardButton.qml:19
 #, kde-format
 msgid "Keyboard Layout: %1"
 msgstr ""
 
-#: ../sddm-theme/Login.qml:59
+#: ../sddm-theme/Login.qml:85
 #, kde-format
 msgid "Username"
 msgstr ""
 
-#: ../sddm-theme/Login.qml:75 contents/lockscreen/MainBlock.qml:49
+#: ../sddm-theme/Login.qml:102 contents/lockscreen/MainBlock.qml:61
 #, kde-format
 msgid "Password"
 msgstr "Šifra"
 
-#: ../sddm-theme/Login.qml:116 ../sddm-theme/Login.qml:122
+#: ../sddm-theme/Login.qml:144 ../sddm-theme/Login.qml:150
 #, fuzzy, kde-format
 #| msgid "Log out"
 msgid "Log In"
 msgstr "Odjavi se"
 
-#: ../sddm-theme/Main.qml:198 contents/lockscreen/LockScreenUi.qml:243
+#: ../sddm-theme/Main.qml:201 contents/lockscreen/LockScreenUi.qml:301
 #, kde-format
 msgid "Caps Lock is on"
 msgstr "Caps Lock je uključen"
 
-#: ../sddm-theme/Main.qml:210 ../sddm-theme/Main.qml:462
+#: ../sddm-theme/Main.qml:213 ../sddm-theme/Main.qml:462
 #: contents/logout/Logout.qml:163
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr ""
 
-#: ../sddm-theme/Main.qml:218 ../sddm-theme/Main.qml:470
+#: ../sddm-theme/Main.qml:220 ../sddm-theme/Main.qml:469
 #: contents/logout/Logout.qml:181
 #, kde-format
 msgid "Restart"
 msgstr ""
 
-#: ../sddm-theme/Main.qml:226 ../sddm-theme/Main.qml:478
+#: ../sddm-theme/Main.qml:227 ../sddm-theme/Main.qml:476
 #: contents/logout/Logout.qml:191
 #, fuzzy, kde-format
 #| msgid "Shut down"
@@ -72,144 +72,168 @@ msgctxt "For switching to a username and password prompt"
 msgid "Other…"
 msgstr ""
 
-#: ../sddm-theme/Main.qml:450
+#: ../sddm-theme/Main.qml:449
 #, kde-format
 msgid "Type in Username and Password"
 msgstr ""
 
-#: ../sddm-theme/Main.qml:486
+#: ../sddm-theme/Main.qml:483
 #, fuzzy, kde-format
 #| msgctxt "Button to change keyboard layout"
 #| msgid "Switch layout"
 msgid "List Users"
 msgstr "Zamijeni raspored"
 
-#: ../sddm-theme/Main.qml:559 contents/lockscreen/LockScreenUi.qml:511
+#: ../sddm-theme/Main.qml:550 contents/lockscreen/LockScreenUi.qml:576
 #, kde-format
 msgctxt "Button to show/hide virtual keyboard"
 msgid "Virtual Keyboard"
 msgstr ""
 
-#: ../sddm-theme/Main.qml:588
+#: ../sddm-theme/Main.qml:596
 #, kde-format
 msgid "Login Failed"
 msgstr "Neuspjela prijava"
 
-#: ../sddm-theme/SessionButton.qml:22
+#: ../sddm-theme/SessionButton.qml:18
 #, fuzzy, kde-format
 #| msgid "Create Session"
 msgid "Desktop Session: %1"
 msgstr "Kreiraj sesiju"
 
-#: contents/components/Battery.qml:40
+#: contents/components/Battery.qml:53
 #, kde-format
 msgid "%1%"
 msgstr ""
 
-#: contents/components/Battery.qml:41
+#: contents/components/Battery.qml:54
 #, kde-format
 msgid "Battery at %1%"
 msgstr ""
 
-#: contents/components/UserList.qml:51
+#: contents/components/UserList.qml:71
 #, kde-format
 msgctxt "Nobody logged in on that session"
 msgid "Unused"
 msgstr ""
 
-#: contents/components/UserList.qml:57
+#: contents/components/UserList.qml:77
 #, kde-format
 msgctxt "User logged in on console number"
 msgid "TTY %1"
 msgstr ""
 
-#: contents/components/UserList.qml:59
+#: contents/components/UserList.qml:79
 #, fuzzy, kde-format
 #| msgid "%1 (%2)"
 msgctxt "User logged in on console (X display number)"
 msgid "on TTY %1 (Display %2)"
 msgstr "%1 (%2)"
 
-#: contents/components/UserList.qml:63
+#: contents/components/UserList.qml:83
 #, fuzzy, kde-format
 #| msgid "%1 (%2)"
 msgctxt "Username (location)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: contents/lockscreen/config.qml:17
-#, kde-format
-msgctxt "verb, to show something"
-msgid "Show:"
-msgstr ""
-
-#: contents/lockscreen/config.qml:18
+#: contents/lockscreen/config.qml:19
 #, fuzzy, kde-format
 #| msgid "Unlock"
-msgid "Clock"
+msgctxt "@title: group"
+msgid "Clock:"
 msgstr "Otključaj"
 
-#: contents/lockscreen/config.qml:26
+#: contents/lockscreen/config.qml:22
 #, kde-format
-msgid "Media Controls"
+msgctxt "@option:check"
+msgid "Keep visible when unlocking prompt disappears"
 msgstr ""
 
-#: contents/lockscreen/LockScreenUi.qml:32
+#: contents/lockscreen/config.qml:33
+#, kde-format
+msgctxt "@title: group"
+msgid "Media controls:"
+msgstr ""
+
+#: contents/lockscreen/config.qml:36
+#, kde-format
+msgctxt "@option:check"
+msgid "Show under unlocking prompt"
+msgstr ""
+
+#: contents/lockscreen/LockScreenUi.qml:37
 #, kde-format
 msgid "Unlocking failed"
 msgstr "Otključavanje nije uspjelo"
 
-#: contents/lockscreen/LockScreenUi.qml:259
+#: contents/lockscreen/LockScreenUi.qml:315
+#, kde-format
+msgid "Sleep"
+msgstr ""
+
+#: contents/lockscreen/LockScreenUi.qml:321 contents/logout/Logout.qml:172
+#, kde-format
+msgid "Hibernate"
+msgstr ""
+
+#: contents/lockscreen/LockScreenUi.qml:327
 #, fuzzy, kde-format
 #| msgctxt "Button to change keyboard layout"
 #| msgid "Switch layout"
 msgid "Switch User"
 msgstr "Zamijeni raspored"
 
-#: contents/lockscreen/LockScreenUi.qml:458
+#: contents/lockscreen/LockScreenUi.qml:523
 #, fuzzy, kde-format
 #| msgid "New Session"
 msgid "Switch to This Session"
 msgstr "Nova sesija"
 
-#: contents/lockscreen/LockScreenUi.qml:466
+#: contents/lockscreen/LockScreenUi.qml:531
 #, fuzzy, kde-format
 #| msgid "New Session"
 msgid "Start New Session"
 msgstr "Nova sesija"
 
-#: contents/lockscreen/LockScreenUi.qml:479
+#: contents/lockscreen/LockScreenUi.qml:544
 #, kde-format
 msgid "Back"
 msgstr ""
 
-#: contents/lockscreen/LockScreenUi.qml:525
+#: contents/lockscreen/LockScreenUi.qml:590
 #, kde-format
 msgctxt "Button to change keyboard layout"
 msgid "Switch layout"
 msgstr "Zamijeni raspored"
 
-#: contents/lockscreen/MainBlock.qml:92
+#: contents/lockscreen/MainBlock.qml:101
+#: contents/lockscreen/NoPasswordUnlock.qml:17
 #, kde-format
 msgid "Unlock"
 msgstr "Otključaj"
 
-#: contents/lockscreen/MediaControls.qml:105
+#: contents/lockscreen/MediaControls.qml:109
+#, kde-format
+msgid "No title"
+msgstr ""
+
+#: contents/lockscreen/MediaControls.qml:110
 #, kde-format
 msgid "No media playing"
 msgstr ""
 
-#: contents/lockscreen/MediaControls.qml:134
+#: contents/lockscreen/MediaControls.qml:139
 #, kde-format
 msgid "Previous track"
 msgstr ""
 
-#: contents/lockscreen/MediaControls.qml:146
+#: contents/lockscreen/MediaControls.qml:151
 #, kde-format
 msgid "Play or Pause media"
 msgstr ""
 
-#: contents/lockscreen/MediaControls.qml:160
+#: contents/lockscreen/MediaControls.qml:165
 #, kde-format
 msgid "Next track"
 msgstr ""
@@ -229,11 +253,6 @@ msgstr[2] ""
 #: contents/logout/Logout.qml:153
 #, kde-format
 msgid "When restarted, the computer will enter the firmware setup screen."
-msgstr ""
-
-#: contents/logout/Logout.qml:172
-#, kde-format
-msgid "Hibernate"
 msgstr ""
 
 #: contents/logout/Logout.qml:201
@@ -276,79 +295,100 @@ msgstr ""
 msgid "Cancel"
 msgstr "Otkaži"
 
-#: contents/osd/OsdItem.qml:62
+#: contents/osd/OsdItem.qml:66
 #, kde-format
 msgid "100%"
 msgstr ""
 
-#: contents/osd/OsdItem.qml:76
+#: contents/osd/OsdItem.qml:80
 #, kde-format
 msgctxt "Percentage value"
 msgid "%1%"
 msgstr ""
 
-#: contents/runcommand/RunCommand.qml:74
-#, kde-format
-msgid "Configure"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:75
-#, kde-format
-msgid "Configure Search Plugins"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:78
-#, kde-format
-msgid "Configure KRunner…"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:94
-#, kde-format
-msgctxt "Textfield placeholder text, query specific KRunner"
-msgid "Search '%1'…"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:96
-#, kde-format
-msgctxt "Textfield placeholder text"
-msgid "Search…"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:222
-#, kde-format
-msgid "Pin"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:223
-#, kde-format
-msgid "Pin Search"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:225
-#, kde-format
-msgid "Keep Open"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:291
-#, kde-format
-msgid "Recent Queries"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:294
-#, kde-format
-msgid "Remove"
-msgstr ""
-
-#: contents/runcommand/RunCommand.qml:296
-#, kde-format
-msgid "in category recent queries"
-msgstr ""
-
-#: contents/splash/Splash.qml:80
+#: contents/splash/Splash.qml:81
 #, kde-format
 msgctxt ""
 "This is the first text the user sees while starting in the splash screen, "
 "should be translated as something short, is a form that can be seen on a "
 "product. Plasma is the project name so shouldn't be translated."
-msgid "Plasma 25th Anniversary Edition by KDE"
+msgid "Plasma made by KDE"
 msgstr ""
+
+#~ msgid "Reboot"
+#~ msgstr "Ponovo pokreni"
+
+#, fuzzy
+#~| msgid "Password"
+#~ msgid "Password..."
+#~ msgstr "Šifra"
+
+#~ msgid "Login"
+#~ msgstr "Prijava"
+
+#, fuzzy
+#~| msgctxt "Button to shut down the computer"
+#~| msgid "Shutdown"
+#~ msgid "Shutdown"
+#~ msgstr "Ugasi"
+
+#, fuzzy
+#~| msgctxt "Button to change keyboard layout"
+#~| msgid "Switch layout"
+#~ msgid "Switch"
+#~ msgstr "Zamijeni raspored"
+
+#~ msgid "New Session"
+#~ msgstr "Nova sesija"
+
+#~ msgid "%1%. Charging"
+#~ msgstr "%1%. Punjenje"
+
+#~ msgid "Fully charged"
+#~ msgstr "Napunjeno"
+
+#~ msgid "%1% battery remaining"
+#~ msgstr "%1% baterije preostalo"
+
+#~ msgid "Change Session"
+#~ msgstr "Promijeni sesiju"
+
+#~ msgid "Create Session"
+#~ msgstr "Kreiraj sesiju"
+
+#~ msgid "Change Session..."
+#~ msgstr "Promijeni sesiju..."
+
+#, fuzzy
+#~| msgid "%1 (%2)"
+#~ msgctxt "Username (logged in on console)"
+#~ msgid "%1 (TTY)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "Button to restart the computer"
+#~ msgid "Reboot"
+#~ msgstr "Restartuj"
+
+#, fuzzy
+#~| msgid "Shut down"
+#~ msgctxt "Button to shut down the computer"
+#~ msgid "Shut down"
+#~ msgstr "Ugasi"
+
+#, fuzzy
+#~| msgid "Logging out"
+#~ msgctxt "Dialog heading, confirm log out, not a status label"
+#~ msgid "Logging out"
+#~ msgstr "Odjavljivanje"
+
+#, fuzzy
+#~| msgid "Rebooting"
+#~ msgctxt "Dialog heading, confirm reboot, not a status label"
+#~ msgid "Rebooting"
+#~ msgstr "Ponovno podizanje računarskog sistema"
+
+#, fuzzy
+#~| msgid "%1 (%2)"
+#~ msgctxt "Username (on display number)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"

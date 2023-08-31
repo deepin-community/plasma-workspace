@@ -7,15 +7,17 @@
 #include "webshortcutrunner.h"
 
 #include <KApplicationTrader>
+#include <KConfigGroup>
 #include <KIO/CommandLauncherJob>
+#include <KIO/OpenUrlJob>
 #include <KLocalizedString>
+#include <KRunner/RunnerManager>
 #include <KSharedConfig>
 #include <KShell>
 #include <KSycoca>
 #include <KUriFilter>
 #include <QAction>
 #include <QDBusConnection>
-#include <QDesktopServices>
 
 WebshortcutRunner::WebshortcutRunner(QObject *parent, const KPluginMetaData &metaData, const QVariantList &args)
     : Plasma::AbstractRunner(parent, metaData, args)
@@ -31,8 +33,21 @@ WebshortcutRunner::WebshortcutRunner(QObject *parent, const KPluginMetaData &met
     sessionDbus.connect(QString(), QStringLiteral("/"), QStringLiteral("org.kde.KUriFilterPlugin"), QStringLiteral("configure"), this, SLOT(loadSyntaxes()));
     loadSyntaxes();
     configurePrivateBrowsingActions();
-    connect(KSycoca::self(), QOverload<>::of(&KSycoca::databaseChanged), this, &WebshortcutRunner::configurePrivateBrowsingActions);
+    connect(KSycoca::self(), &KSycoca::databaseChanged, this, &WebshortcutRunner::configurePrivateBrowsingActions);
     setMinLetterCount(3);
+
+    connect(qobject_cast<Plasma::RunnerManager *>(parent), &Plasma::RunnerManager::queryFinished, this, [this]() {
+        if (m_lastUsedContext.isValid() && !m_defaultKey.isEmpty() && m_lastUsedContext.matches().isEmpty()) {
+            const QString queryWithDefaultProvider = m_defaultKey + m_delimiter + m_lastUsedContext.query();
+            KUriFilterData filterData(queryWithDefaultProvider);
+            if (KUriFilter::self()->filterSearchUri(filterData, KUriFilter::WebShortcutFilter)) {
+                m_match.setText(i18n("Search %1 for %2", filterData.searchProvider(), filterData.searchTerm()));
+                m_match.setData(filterData.uri());
+                m_match.setIconName(filterData.iconName());
+                m_lastUsedContext.addMatch(m_match);
+            }
+        }
+    });
 }
 
 WebshortcutRunner::~WebshortcutRunner()
@@ -46,12 +61,20 @@ void WebshortcutRunner::loadSyntaxes()
     if (KUriFilter::self()->filterSearchUri(filterData, KUriFilter::NormalTextFilter)) {
         m_delimiter = filterData.searchTermSeparator();
     }
+    m_regex = QRegularExpression(QStringLiteral("^([^ ]+)%1").arg(QRegularExpression::escape(m_delimiter)));
 
     QList<Plasma::RunnerSyntax> syns;
     const QStringList providers = filterData.preferredSearchProviders();
+    const QRegularExpression replaceRegex(QStringLiteral(":q$"));
+    const QString placeholder = QStringLiteral(":q:");
     for (const QString &provider : providers) {
-        Plasma::RunnerSyntax s(filterData.queryForPreferredSearchProvider(provider), /*":q:",*/
+        Plasma::RunnerSyntax s(filterData.queryForPreferredSearchProvider(provider).replace(replaceRegex, placeholder),
                                i18n("Opens \"%1\" in a web browser with the query :q:.", provider));
+        syns << s;
+    }
+    if (!providers.isEmpty()) {
+        QString defaultKey = filterData.queryForSearchProvider(providers.constFirst()).defaultKey();
+        Plasma::RunnerSyntax s(QStringLiteral("!%1 :q:").arg(defaultKey), i18n("Search using the DuckDuckGo bang syntax"));
         syns << s;
     }
 
@@ -59,6 +82,10 @@ void WebshortcutRunner::loadSyntaxes()
     m_lastFailedKey.clear();
     m_lastProvider.clear();
     m_lastKey.clear();
+
+    // When we reload the syntaxes, our WebShortcut config has changed or is initialized
+    const KConfigGroup grp = KSharedConfig::openConfig(QStringLiteral("kuriikwsfilterrc"))->group("General");
+    m_defaultKey = grp.readEntry("DefaultWebShortcut", QStringLiteral("duckduckgo"));
 }
 
 void WebshortcutRunner::configurePrivateBrowsingActions()
@@ -92,9 +119,9 @@ void WebshortcutRunner::configurePrivateBrowsingActions()
 
 void WebshortcutRunner::match(Plasma::RunnerContext &context)
 {
+    m_lastUsedContext = context;
     const QString term = context.query();
     const static QRegularExpression bangRegex(QStringLiteral("!([^ ]+).*"));
-    const static QRegularExpression normalRegex(QStringLiteral("^([^ ]+)%1").arg(QRegularExpression::escape(m_delimiter)));
     const auto bangMatch = bangRegex.match(term);
     QString key;
     QString rawQuery = term;
@@ -103,7 +130,7 @@ void WebshortcutRunner::match(Plasma::RunnerContext &context)
         key = bangMatch.captured(1);
         rawQuery = rawQuery.remove(rawQuery.indexOf(key) - 1, key.size() + 1);
     } else {
-        const auto normalMatch = normalRegex.match(term);
+        const auto normalMatch = m_regex.match(term);
         if (normalMatch.hasMatch()) {
             key = normalMatch.captured(0);
             rawQuery = rawQuery.mid(key.length());
@@ -137,6 +164,7 @@ void WebshortcutRunner::match(Plasma::RunnerContext &context)
 
     m_match.setText(i18n("Search %1 for %2", m_lastProvider, filterData.searchTerm()));
     m_match.setData(filterData.uri());
+    m_match.setUrls(QList<QUrl>{filterData.uri()});
     context.addMatch(m_match);
 }
 
@@ -154,11 +182,24 @@ void WebshortcutRunner::run(const Plasma::RunnerContext &context, const Plasma::
 
     if (!location.isEmpty()) {
         if (match.selectedAction()) {
-            const auto command = m_privateAction.exec() + QLatin1Char(' ') + KShell::quoteArg(location.toString());
+            QString command;
+
+            // Chrome's exec line does not have a URL placeholder
+            // Firefox's does, but only sometimes, depending on the distro
+            // Replace placeholders if found, otherwise append at the end
+            if (m_privateAction.exec().contains("%u")) {
+                command = m_privateAction.exec().replace("%u", KShell::quoteArg(location.toString()));
+            } else if (m_privateAction.exec().contains("%U")) {
+                command = m_privateAction.exec().replace("%U", KShell::quoteArg(location.toString()));
+            } else {
+                command = m_privateAction.exec() + QLatin1Char(' ') + KShell::quoteArg(location.toString());
+            }
+
             auto *job = new KIO::CommandLauncherJob(command);
             job->start();
         } else {
-            QDesktopServices::openUrl(location);
+            auto job = new KIO::OpenUrlJob(location);
+            job->start();
         }
     }
 }

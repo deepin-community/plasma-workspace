@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_weather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2019-11-05 18:43+0200\n"
-"Last-Translator: Moo\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
+"PO-Revision-Date: 2022-12-28 02:30+0200\n"
+"Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: bbcukmet_i18n.dat:1
 #, kde-format
@@ -650,9 +650,7 @@ msgid "Excellent"
 msgstr "Puikus"
 
 #: bbcukmet_i18n.dat:101
-#, fuzzy, kde-format
-#| msgctxt "visibility"
-#| msgid "Very good"
+#, kde-format
 msgctxt "visibility"
 msgid "Very Good"
 msgstr "Labai geras"
@@ -676,9 +674,7 @@ msgid "Poor"
 msgstr "Blogas"
 
 #: bbcukmet_i18n.dat:105
-#, fuzzy, kde-format
-#| msgctxt "visibility"
-#| msgid "Very poor"
+#, kde-format
 msgctxt "visibility"
 msgid "Very Poor"
 msgstr "Labai blogas"
@@ -2753,75 +2749,88 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr "Vėjuota"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "JK"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "JAV"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr ""
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, fuzzy, kde-format
 #| msgid "Night"
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "Naktis"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "Šeš"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "Sek"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "Pir"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "Ant"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "Tre"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "Ket"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "Pen"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
+msgstr ""
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
 msgstr ""
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
@@ -4956,3 +4965,165 @@ msgstr "Giedrysis"
 msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr "Daugiausiai giedra"
+
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "orai"
+
+#~ msgctxt "weather condition"
+#~ msgid "thunder storm"
+#~ msgstr "audra su perkūnija"
+
+#~ msgctxt "weather forecast"
+#~ msgid "thunder storm"
+#~ msgstr "audra su perkūnija"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "Š"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNE"
+#~ msgstr "ŠŠR"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "ŠR"
+
+#~ msgctxt "wind direction"
+#~ msgid "ENE"
+#~ msgstr "RŠR"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "R"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSE"
+#~ msgstr "PPR"
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "PR"
+
+#~ msgctxt "wind direction"
+#~ msgid "ESE"
+#~ msgstr "RPR"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "P"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNW"
+#~ msgstr "ŠŠV"
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "ŠV"
+
+#~ msgctxt "wind direction"
+#~ msgid "WNW"
+#~ msgstr "VŠV"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "V"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSW"
+#~ msgstr "PPV"
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "PV"
+
+#~ msgctxt "wind direction"
+#~ msgid "WSW"
+#~ msgstr "VPV"
+
+#~ msgctxt "wind direction"
+#~ msgid "VR"
+#~ msgstr "NK"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "kyla"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "krenta"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "pastovus"
+
+#~ msgctxt "wind speed"
+#~ msgid "Calm"
+#~ msgstr "Silpnas"
+
+#~ msgctxt "wind speed"
+#~ msgid "N/A"
+#~ msgstr "Nežinoma"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "steady"
+#~ msgstr "pastovus"
+
+#~ msgctxt "wind direction - wind speed is too low to measure"
+#~ msgid "VR"
+#~ msgstr "Nepastovios krypties"
+
+#~ msgid "N"
+#~ msgstr "Š"
+
+#~ msgid "NNE"
+#~ msgstr "ŠŠR"
+
+#~ msgid "NE"
+#~ msgstr "ŠR"
+
+#~ msgid "ENE"
+#~ msgstr "RŠR"
+
+#~ msgid "E"
+#~ msgstr "R"
+
+#~ msgid "SSE"
+#~ msgstr "PPR"
+
+#~ msgid "SE"
+#~ msgstr "PR"
+
+#~ msgid "ESE"
+#~ msgstr "RPR"
+
+#~ msgid "S"
+#~ msgstr "P"
+
+#~ msgid "NNW"
+#~ msgstr "ŠŠV"
+
+#~ msgid "NW"
+#~ msgstr "ŠV"
+
+#~ msgid "WNW"
+#~ msgstr "VŠV"
+
+#~ msgid "W"
+#~ msgstr "V"
+
+#~ msgid "SSW"
+#~ msgstr "PPV"
+
+#~ msgid "SW"
+#~ msgstr "PV"
+
+#~ msgid "WSW"
+#~ msgstr "VPV"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "Meteorologinius duomenis teikia Environment Canada"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr "Palaikoma backstage.bbc.co.uk / Duomenys iš UK MET Office"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcminit\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-26 00:47+0000\n"
 "PO-Revision-Date: 2008-04-07 07:55+0800\n"
 "Last-Translator: Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv "
 "dot tw>\n"
@@ -30,27 +30,25 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "franklin@goodhorse.idv.tw"
 
-#: main.cpp:151
-#, kde-format
-msgid "Module %1 not found"
-msgstr "找不到模組 %1"
-
-#: main.cpp:214
+#: main.cpp:170
 #, kde-format
 msgid "KCMInit"
 msgstr "KCMInit"
 
-#: main.cpp:216
+#: main.cpp:172
 #, kde-format
 msgid "KCMInit - runs startup initialization for Control Modules."
 msgstr "KCMInit - 啟始時執行控制模組的初始化。"
 
-#: main.cpp:222
+#: main.cpp:178
 #, kde-format
 msgid "List modules that are run at startup"
 msgstr "列出啟始時要執行的模組"
 
-#: main.cpp:223
+#: main.cpp:179
 #, kde-format
 msgid "Configuration module to run"
 msgstr "設定要執行的模組"
+
+#~ msgid "Module %1 not found"
+#~ msgstr "找不到模組 %1"

@@ -44,3 +44,12 @@ msgstr "Mostrar o dia do mês"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Mostrar o número da semana"
+
+#~ msgid "Working Day"
+#~ msgstr "Dia de Trabalho"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Começa às 9"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Termina às 5"

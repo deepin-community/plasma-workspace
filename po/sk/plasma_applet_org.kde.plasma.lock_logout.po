@@ -119,3 +119,40 @@ msgstr "Uspať (uspať do RAM)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Uspať (uspať na disk)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "Vypnúť..."
+
+#~ msgid "Logout..."
+#~ msgstr "Odhlásiť sa..."
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Chcete uspať na disk (hibernovať)?"
+
+#~ msgid "Yes"
+#~ msgstr "Áno"
+
+#~ msgid "No"
+#~ msgstr "Nie"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Chcete uspať do RAM?"
+
+#~ msgid "Leave"
+#~ msgstr "Odísť"
+
+#~ msgid "Leave..."
+#~ msgstr "Odísť..."
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Akcie"
+
+#~ msgid "Suspend"
+#~ msgstr "Uspať"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Nastavenia zamknutia/odomknutia"
+
+#~ msgid "SystemTray Settings"
+#~ msgstr "Nastavenia systémovej lišty"

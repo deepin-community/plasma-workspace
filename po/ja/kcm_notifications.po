@@ -1,11 +1,13 @@
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019, 2020, 2021.
+# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022, 2023.
+# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-desktop\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-06 00:21+0000\n"
-"PO-Revision-Date: 2021-09-20 18:35+0900\n"
-"Last-Translator: Tomohiro Hyakutake <tomhioo@outlook.jp>\n"
+"POT-Creation-Date: 2022-12-27 00:50+0000\n"
+"PO-Revision-Date: 2023-04-07 23:30-0700\n"
+"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -14,37 +16,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 21.08.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr ""
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr ""
-
-#: kcm.cpp:61
-#, kde-format
-msgid "Notifications"
-msgstr "通知"
-
-#: kcm.cpp:62
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr ""
-
-#: kcm.cpp:71
+#: kcm.cpp:64
 #, kde-format
 msgid "Toggle do not disturb"
 msgstr "マナーモードを切り替え"
 
-#: kcm.cpp:199
+#: kcm.cpp:192
 #, kde-format
 msgid "Configure Notifications"
-msgstr ""
+msgstr "通知を設定"
 
 #: package/contents/ui/ApplicationConfiguration.qml:63
 #, kde-format
@@ -68,8 +50,7 @@ msgid "Show notification badges"
 msgstr "通知バッジを表示"
 
 #: package/contents/ui/ApplicationConfiguration.qml:119
-#, fuzzy, kde-format
-#| msgid "Configure Events..."
+#, kde-format
 msgid "Configure Events…"
 msgstr "イベントを設定..."
 
@@ -92,40 +73,56 @@ msgid ""
 "notifications. Make sure that it is enabled either in your System Tray or as "
 "a standalone widget."
 msgstr ""
+"通知ウィジェットが見つかりませんでした。通知を表示するには通知ウィジェットが"
+"必要です。システムトレイにて、もしくはスタンドアローンのウィジェットとして有"
+"効化されていることを確認してください。"
 
 #: package/contents/ui/main.qml:53
 #, kde-format
 msgctxt "Vendor and product name"
 msgid "Notifications are currently provided by '%1 %2' instead of Plasma."
-msgstr ""
+msgstr "現在、通知は Plasma の代わりに '%1 %2' によって提供されています。"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
 msgid "Notifications are currently not provided by Plasma."
-msgstr ""
+msgstr "現在、通知は Plasma によって提供されていません。"
 
 #: package/contents/ui/main.qml:64
 #, kde-format
-msgid "Do Not Disturb mode:"
-msgstr "マナーモード:"
+msgctxt "@title:group"
+msgid "Do Not Disturb mode"
+msgstr "マナーモード"
 
-#: package/contents/ui/main.qml:65
+#: package/contents/ui/main.qml:69
 #, kde-format
-msgctxt "Do not disturb when screens are mirrored"
-msgid "Enable when screens are mirrored"
-msgstr "画面がミラーリングされているときに有効化"
+msgctxt "Enable Do Not Disturb mode when screens are mirrored"
+msgid "Enable:"
+msgstr "有効:"
 
-#: package/contents/ui/main.qml:77
+#: package/contents/ui/main.qml:70
 #, kde-format
-msgctxt "Do not disturb while screen sharing"
-msgid "Enable while screen sharing"
-msgstr ""
+msgctxt "Enable Do Not Disturb mode when screens are mirrored"
+msgid "When screens are mirrored"
+msgstr "画面がミラーリングされているとき"
 
-#: package/contents/ui/main.qml:95
+#: package/contents/ui/main.qml:82
 #, kde-format
-msgctxt "Turn do not disturb mode on/off with keyboard shortcut"
-msgid "Toggle with:"
-msgstr "切り替えに使用するショートカット:"
+msgctxt "Enable Do Not Disturb mode during screen sharing"
+msgid "During screen sharing"
+msgstr "スクリーン共有中"
+
+#: package/contents/ui/main.qml:97
+#, kde-format
+msgctxt "Keyboard shortcut to turn Do Not Disturb mode on and off"
+msgid "Keyboard shortcut:"
+msgstr "キーボードショートカット:"
+
+#: package/contents/ui/main.qml:104
+#, kde-format
+msgctxt "@title:group"
+msgid "Visibility conditions"
+msgstr "可視性"
 
 #: package/contents/ui/main.qml:109
 #, kde-format
@@ -157,68 +154,82 @@ msgstr "優先度の低い通知:"
 msgid "Show popup"
 msgstr "ポップアップを表示"
 
-#: package/contents/ui/main.qml:170
+#: package/contents/ui/main.qml:165
 #, kde-format
-msgid "Popup:"
-msgstr "ポップアップ:"
+msgctxt "@title:group As in: 'notification popups'"
+msgid "Popups"
+msgstr "ポップアップ"
 
 #: package/contents/ui/main.qml:171
 #, kde-format
-msgctxt "Popup position near notification plasmoid"
-msgid "Show near notification icon"
-msgstr "通知アイコンの近くに表示"
+msgctxt "@label"
+msgid "Location:"
+msgstr "場所:"
 
-#: package/contents/ui/main.qml:208
+#: package/contents/ui/main.qml:172
+#, kde-format
+msgctxt "Popup position near notification plasmoid"
+msgid "Near notification icon"
+msgstr "通知アイコンの近く"
+
+#: package/contents/ui/main.qml:209
 #, kde-format
 msgid "Choose Custom Position…"
 msgstr "表示位置を指定…"
 
-#: package/contents/ui/main.qml:217 package/contents/ui/main.qml:241
+#: package/contents/ui/main.qml:218 package/contents/ui/main.qml:234
 #, kde-format
 msgid "%1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "%1 秒"
 msgstr[1] "%1 秒"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:223
 #, kde-format
 msgctxt "Part of a sentence like, 'Hide popup after n seconds'"
 msgid "Hide after:"
 msgstr "非表示にするまでの時間:"
 
-#: package/contents/ui/main.qml:258
+#: package/contents/ui/main.qml:246
+#, kde-format
+msgctxt "@title:group"
+msgid "Additional feedback"
+msgstr "追加のフィードバック"
+
+#: package/contents/ui/main.qml:251
 #, kde-format
 msgid "Application progress:"
 msgstr "アプリケーションの進行状況:"
 
-#: package/contents/ui/main.qml:259 package/contents/ui/main.qml:303
+#: package/contents/ui/main.qml:252 package/contents/ui/main.qml:292
 #, kde-format
 msgid "Show in task manager"
 msgstr "タスクマネージャに表示"
 
-#: package/contents/ui/main.qml:271
+#: package/contents/ui/main.qml:264
 #, kde-format
 msgctxt "Show application jobs in notification widget"
 msgid "Show in notifications"
 msgstr "通知に表示"
 
-#: package/contents/ui/main.qml:285
+#: package/contents/ui/main.qml:278
 #, kde-format
 msgctxt "Keep application job popup open for entire duration of job"
 msgid "Keep popup open during progress"
 msgstr "進行中はポップアップを開けたままにする"
 
-#: package/contents/ui/main.qml:302
+#: package/contents/ui/main.qml:291
 #, kde-format
 msgid "Notification badges:"
 msgstr "通知バッジ:"
 
-#: package/contents/ui/main.qml:318
+#: package/contents/ui/main.qml:303
 #, kde-format
-msgid "Applications:"
-msgstr "アプリケーション:"
+msgctxt "@title:group"
+msgid "Application-specific settings"
+msgstr "アプリケーション固有の設定"
 
-#: package/contents/ui/main.qml:319
+#: package/contents/ui/main.qml:308
 #, kde-format
 msgid "Configure…"
 msgstr "設定…"
@@ -233,29 +244,29 @@ msgstr "ポップアップの位置"
 msgid "Application Settings"
 msgstr "アプリケーションの設定"
 
-#: package/contents/ui/SourcesPage.qml:91
+#: package/contents/ui/SourcesPage.qml:93
 #, kde-format
 msgid "Applications"
 msgstr "アプリケーション"
 
-#: package/contents/ui/SourcesPage.qml:92
+#: package/contents/ui/SourcesPage.qml:94
 #, kde-format
 msgid "System Services"
 msgstr "システムサービス"
 
-#: package/contents/ui/SourcesPage.qml:130
+#: package/contents/ui/SourcesPage.qml:132
 #, kde-format
 msgid "No application or event matches your search term."
-msgstr ""
+msgstr "検索語に一致するアプリケーションおよびイベントはありません。"
 
-#: package/contents/ui/SourcesPage.qml:150
+#: package/contents/ui/SourcesPage.qml:152
 #, kde-format
 msgid ""
 "Select an application from the list to configure its notification settings "
 "and behavior."
 msgstr "リストからアプリケーションを選択して通知設定と動作を設定します。"
 
-#: sourcesmodel.cpp:365
+#: sourcesmodel.cpp:363
 #, kde-format
 msgid "Other Applications"
 msgstr "その他のアプリケーション"

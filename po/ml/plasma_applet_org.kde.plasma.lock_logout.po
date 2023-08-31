@@ -115,3 +115,21 @@ msgstr "സ്ലീപ് (റാമിലേക്ക് സസ്‌പെൻ
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "ഹൈബർ‌നേറ്റ് (ഡിസ്കിലേക്ക് സസ്‌പെൻഡ് ചെയ്യുക)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "ഡിസ്കിലേക്ക് സസ്‌പെൻഡ് ചെയ്യാൻ നിങ്ങൾ‌ താൽ‌പ്പര്യപ്പെടുന്നോ (ഹൈബർ‌നേറ്റ്)?"
+
+#~ msgid "Yes"
+#~ msgstr "അതെ"
+
+#~ msgid "No"
+#~ msgstr "ഇല്ല"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "റാമിലേക്ക് സസ്‌പെൻഡ് ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ (സ്ലീപ്)?"
+
+#~ msgid "Leave"
+#~ msgstr "പോവുക"
+
+#~ msgid "Leave..."
+#~ msgstr "പോവുക..."

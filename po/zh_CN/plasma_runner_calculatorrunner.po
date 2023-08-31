@@ -1,16 +1,9 @@
-# translation of plasma_runner_calculatorrunner.po to 简体中文
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-#
-# Ni Hui <shuizhuyuanluo@126.com>, 2009.
-# Weng Xuetian <wengxt@gmail.com>, 2016.
-# Guo Yunhe <guoyunhebrave@gmail.com>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"POT-Creation-Date: 2022-10-20 00:52+0000\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -25,27 +18,20 @@ msgstr ""
 "plasma_runner_calculatorrunner.pot\n"
 "X-Crowdin-File-ID: 2855\n"
 
-#: calculatorrunner.cpp:40
+#: calculatorrunner.cpp:33
 #, kde-format
 msgid ""
 "Calculates the value of :q: when :q: is made up of numbers and mathematical "
 "symbols such as +, -, /, *, ! and ^."
-msgstr "计算 :q: 的值，:q: 由数字和诸如 +、-、/、*、! 和 ^ 的数学符号组成。"
+msgstr "计算 :q: 的值，:q: 由数字和诸如 +、-、/、*、! 和 ^ 等数学符号组成。"
 
-#: calculatorrunner.cpp:46
+#: calculatorrunner.cpp:39
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "复制到剪贴板"
 
-#: calculatorrunner.cpp:273
+#: calculatorrunner.cpp:133
 #, kde-format
 msgctxt "The result of the calculation is only an approximation"
 msgid "Approximation"
 msgstr "近似值"
-
-#: qalculate_engine.cpp:61
-#, kde-format
-msgid ""
-"The exchange rates could not be updated. The following error has been "
-"reported: %1"
-msgstr "无法更新汇率。发生如下错误：%1"

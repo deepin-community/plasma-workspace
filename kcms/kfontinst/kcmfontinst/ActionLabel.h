@@ -7,7 +7,6 @@
 #include <QLabel>
 
 class QTimer;
-class QLabel;
 
 namespace KFI
 {
@@ -26,8 +25,8 @@ private Q_SLOTS:
     void rotateIcon();
 
 protected:
-    QTimer *itsTimer;
-    int itsCount;
+    QTimer *m_timer;
+    int m_count;
 };
 
 }

@@ -6,6 +6,7 @@
 */
 
 #include "previewitem.h"
+#include "kcm_style_debug.h"
 
 #include <QHoverEvent>
 #include <QMouseEvent>
@@ -43,7 +44,7 @@ void PreviewItem::componentComplete()
 
 bool PreviewItem::eventFilter(QObject *watched, QEvent *event)
 {
-    if (watched == m_widget.data()) {
+    if (watched == m_widget.get()) {
         switch (event->type()) {
         case QEvent::Show:
         case QEvent::UpdateRequest:
@@ -70,7 +71,7 @@ void PreviewItem::setStyleName(const QString &styleName)
 
     m_styleName = styleName;
     reload();
-    emit styleNameChanged();
+    Q_EMIT styleNameChanged();
 }
 
 bool PreviewItem::isValid() const
@@ -104,9 +105,9 @@ void PreviewItem::reload()
 
     m_style.reset(QStyleFactory::create(m_styleName));
     if (!m_style) {
-        qWarning() << "Failed to load style" << m_styleName;
+        qCWarning(KCM_STYLE_DEBUG) << "Failed to load style" << m_styleName;
         if (oldValid != isValid()) {
-            emit validChanged();
+            Q_EMIT validChanged();
         }
         return;
     }
@@ -117,7 +118,7 @@ void PreviewItem::reload()
     // Do not wait for this widget to close before the app closes
     m_widget->setAttribute(Qt::WA_QuitOnClose, false);
 
-    m_ui.setupUi(m_widget.data());
+    m_ui.setupUi(m_widget.get());
 
     // Prevent Qt from wrongly caching radio button images
     QPixmapCache::clear();
@@ -135,7 +136,7 @@ void PreviewItem::reload()
         palette.setColor(QPalette::Inactive, role, palette.color(QPalette::Active, role));
     }
 
-    setStyleRecursively(m_widget.data(), m_style.data(), palette);
+    setStyleRecursively(m_widget.get(), m_style.get(), palette);
 
     m_widget->ensurePolished();
 
@@ -149,7 +150,7 @@ void PreviewItem::reload()
     setImplicitSize(sizeHint.width(), sizeHint.height());
 
     if (oldValid != isValid()) {
-        emit validChanged();
+        Q_EMIT validChanged();
     }
 }
 
@@ -182,13 +183,13 @@ void PreviewItem::sendHoverEvent(QHoverEvent *event)
     QPointF pos = event->pos();
 
     QWidget *child = m_widget->childAt(pos.toPoint());
-    QWidget *receiver = child ? child : m_widget.data();
+    QWidget *receiver = child ? child : m_widget.get();
 
     dispatchEnterLeave(receiver, m_lastWidgetUnderMouse, mapToGlobal(event->pos()));
 
     m_lastWidgetUnderMouse = receiver;
 
-    pos = receiver->mapFrom(m_widget.data(), pos.toPoint());
+    pos = receiver->mapFrom(m_widget.get(), pos.toPoint());
 
     QMouseEvent mouseEvent(QEvent::MouseMove,
                            pos,
@@ -283,11 +284,19 @@ void PreviewItem::dispatchEnterLeave(QWidget *enter, QWidget *leave, const QPoin
     }
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void PreviewItem::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
+#else
+void PreviewItem::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry)
+#endif
 {
     if (m_widget && newGeometry != oldGeometry) {
         m_widget->resize(qRound(newGeometry.width()), qRound(newGeometry.height()));
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QQuickPaintedItem::geometryChanged(newGeometry, oldGeometry);
+#else
+    QQuickPaintedItem::geometryChange(newGeometry, oldGeometry);
+#endif
 }

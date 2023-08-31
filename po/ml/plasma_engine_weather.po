@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_weather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
 "PO-Revision-Date: 2021-03-08 13:23+0000\n"
 "Last-Translator: Vivek K J <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -2695,75 +2695,88 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr "കാറ്റുള്ള"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "യുകെ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "അമേരിക്കന്‍ ഐക്യനാടുകള്‍"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr "ഇന്ന്"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, kde-format
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "രാത്രി"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "ശനി"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "ഞായര്‍"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "തിങ്കള്‍"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "ചൊവ്വ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "ബുധന്‍"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "വ്യാഴം"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "വെള്ളി"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
 msgstr "ബിബിസി കാലാവസ്ഥയിൽ നിന്നുമുള്ള ഡാറ്റ"
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
+msgstr ""
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
 #: ions/envcan/ion_envcan.cpp:1403 ions/envcan/ion_envcan.cpp:1544
@@ -4870,3 +4883,222 @@ msgstr "വെയിലായി വരുന്ന"
 msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr "ഏതാണ്ടു് തെളിഞ്ഞ"
+
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "കാലാവസ്ഥ"
+
+#~ msgctxt "weather condition"
+#~ msgid "thunder storm"
+#~ msgstr "ഇടിമിന്നല്‍"
+
+#~ msgctxt "weather forecast"
+#~ msgid "thunder storm"
+#~ msgstr "ഇടിമിന്നല്‍"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "വ."
+
+#~ msgctxt "wind direction"
+#~ msgid "NNE"
+#~ msgstr "വ.വ.കി"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "വ.കി."
+
+#~ msgctxt "wind direction"
+#~ msgid "ENE"
+#~ msgstr "കി.വ.കി"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "കി."
+
+#~ msgctxt "wind direction"
+#~ msgid "SSE"
+#~ msgstr "തെ.തെ.കി."
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "തെ.കി."
+
+#~ msgctxt "wind direction"
+#~ msgid "ESE"
+#~ msgstr "കി.തെ.കി"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "തെ."
+
+#~ msgctxt "wind direction"
+#~ msgid "NNW"
+#~ msgstr "വ.വ.പ."
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "വ.പ."
+
+#~ msgctxt "wind direction"
+#~ msgid "WNW"
+#~ msgstr "പ.വ.പ"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "പ."
+
+#~ msgctxt "wind direction"
+#~ msgid "SSW"
+#~ msgstr "തെ.തെ.പ."
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "തെ.പ."
+
+#~ msgctxt "wind direction"
+#~ msgid "WSW"
+#~ msgstr "പ.തെ.പ."
+
+#~ msgctxt "wind direction"
+#~ msgid "VR"
+#~ msgstr "VR"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "ഉയരുന്ന"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "താഴുന്ന"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "മാറ്റമില്ല"
+
+#~ msgctxt "wind speed"
+#~ msgid "Calm"
+#~ msgstr "ശാന്തം"
+
+#~ msgctxt "wind speed"
+#~ msgid "N/A"
+#~ msgstr "ബാധകമല്ല"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "steady"
+#~ msgstr "വ്യതിയാനമില്ലാത്ത"
+
+#~ msgctxt "wind direction - wind speed is too low to measure"
+#~ msgid "VR"
+#~ msgstr "VR"
+
+#~ msgid "N"
+#~ msgstr "N"
+
+#~ msgid "NNE"
+#~ msgstr "NNE"
+
+#~ msgid "NE"
+#~ msgstr "NE"
+
+#~ msgid "ENE"
+#~ msgstr "ENE"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "SSE"
+#~ msgstr "SSE"
+
+#~ msgid "SE"
+#~ msgstr "SE"
+
+#~ msgid "ESE"
+#~ msgstr "ESE"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "NNW"
+#~ msgstr "NNW"
+
+#~ msgid "NW"
+#~ msgstr "NW"
+
+#~ msgid "WNW"
+#~ msgstr "WNW"
+
+#~ msgid "W"
+#~ msgstr "W"
+
+#~ msgid "SSW"
+#~ msgstr "SSW"
+
+#~ msgid "SW"
+#~ msgstr "SW"
+
+#~ msgid "WSW"
+#~ msgstr "WSW"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "കാനഡ പരിസ്ഥിതി കാര്യാലയം നല്‍കിയ അന്തരീക്ഷവിവരം"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr ""
+#~ "backstage.bbc.co.uk പിന്തുണയോടെ / ബ്രിട്ടന്‍ കാലാവസ്ഥാകേന്ദ്രത്തില്‍ നിന്നുള്ള വിവരം"
+
+#~ msgctxt "Degree, unit symbol"
+#~ msgid "°"
+#~ msgstr "°"
+
+#~ msgctxt "Celsius, temperature unit"
+#~ msgid "°C"
+#~ msgstr "° സെല്‍ഷ്യസു്"
+
+#~ msgctxt "Fahrenheit, temperature unit"
+#~ msgid "°F"
+#~ msgstr "° ഫാരന്‍ഹീറ്റു്"
+
+#~ msgctxt "Kelvin, temperature unit"
+#~ msgid "K"
+#~ msgstr "കെ"
+
+#~ msgctxt "kilometers per hour, windspeed unit"
+#~ msgid "km/h"
+#~ msgstr "കി.മീ./മണിക്കൂര്‍"
+
+#~ msgctxt "meters per second, windspeed unit"
+#~ msgid "m/s"
+#~ msgstr "മീ./സെ."
+
+#~ msgctxt "miles per hour, windspeed unit"
+#~ msgid "mph"
+#~ msgstr "മീ./മണിക്കൂര്‍"
+
+#~ msgctxt "kilometers, distance unit"
+#~ msgid "km"
+#~ msgstr "കി.മീ."
+
+#~ msgctxt "centimeters, length unit"
+#~ msgid "cm"
+#~ msgstr "സെ.മീ"
+
+#~ msgctxt "millimeters, length unit"
+#~ msgid "mm"
+#~ msgstr "മി.മീ."
+
+#~ msgctxt "inches, length unit"
+#~ msgid "in"
+#~ msgstr "ഇഞ്ചു്"
+
+#~ msgctxt "kilopascals, airpressure unit"
+#~ msgid "kPa"
+#~ msgstr "കിലോ പാസ്കല്‍"
+
+#~ msgctxt "inches hg, airpressure unit"
+#~ msgid "inHg"
+#~ msgstr "ഇഞ്ചു് രസം"
+
+#~ msgctxt "millibars, airpressure unit"
+#~ msgid "mbar"
+#~ msgstr "മി.ബാര്‍"

@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# A S Alam <aalam@users.sf.net>, 2015, 2020, 2021.
+# A S Alam <aalam@users.sf.net>, 2015, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
-"PO-Revision-Date: 2021-06-08 22:28-0700\n"
+"POT-Creation-Date: 2023-01-07 00:51+0000\n"
+"PO-Revision-Date: 2022-06-11 09:40-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
 "Language: pa\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.12.2\n"
+"X-Generator: Lokalize 21.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -27,55 +27,50 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alam.yellow@gmail.com"
 
-#: kcm.cpp:79
-#, kde-format
-msgid "Global Theme"
-msgstr "ਗਲੋਬਲ ਥੀਮ"
-
-#: kcm.cpp:80 lnftool.cpp:37
-#, kde-format
-msgid "Marco Martin"
-msgstr "ਮਾਈਕਰੋ ਮਾਰਟੇਨ"
-
-#: kcm.cpp:608
+#: kcm.cpp:590
 #, kde-format
 msgid ""
 "You have to restart the Plasma session for these changes to take effect."
 msgstr "ਇਹਨਾਂ ਤਬਦੀਲੀਆਂ ਨੂੰ ਲਾਗੂ ਕਰਨ ਲਈ ਤੁਹਾਨੂੰ ਪਲਾਜ਼ਮਾ ਸ਼ੈਸ਼ਨ ਮੁੜ ਚਾਲੂ ਕਰਨਾ ਪਵੇਗਾ।"
 
-#: kcm.cpp:609
+#: kcm.cpp:591
 #, kde-format
 msgid "Cursor Settings Changed"
 msgstr "ਕਰਸਰ ਸੈਟਿੰਗਾਂ ਬਦਲੀਆਂ ਗਈਆਂ"
 
-#: lnftool.cpp:32
+#: lnftool.cpp:33
 #, kde-format
 msgid "Global Theme Tool"
 msgstr "ਗਲੋਬਲ ਥੀਮ ਟੂਲ"
 
-#: lnftool.cpp:34
+#: lnftool.cpp:35
 #, kde-format
 msgid ""
 "Command line tool to apply global theme packages for changing the look and "
 "feel."
 msgstr ""
 
-#: lnftool.cpp:36
+#: lnftool.cpp:37
 #, kde-format
 msgid "Copyright 2017, Marco Martin"
 msgstr "Copyright 2017, ਮਾਈਕਰੋ ਮਾਰਟੇਨ"
 
-#: lnftool.cpp:37
+#: lnftool.cpp:38
+#, kde-format
+msgid "Marco Martin"
+msgstr "ਮਾਈਕਰੋ ਮਾਰਟੇਨ"
+
+#: lnftool.cpp:38
 #, kde-format
 msgid "Maintainer"
 msgstr "ਪਰਬੰਧਕ"
 
-#: lnftool.cpp:45
+#: lnftool.cpp:46
 #, kde-format
 msgid "List available global theme packages"
 msgstr ""
 
-#: lnftool.cpp:48
+#: lnftool.cpp:49
 #, kde-format
 msgid ""
 "Apply a global theme package. This can be the name of a package, or a full "
@@ -83,12 +78,12 @@ msgid ""
 "global theme package and then attempt to apply it"
 msgstr ""
 
-#: lnftool.cpp:50
+#: lnftool.cpp:51
 #, kde-format
 msgid "packagename"
 msgstr "ਪੈਕੇਜ ਦਾ ਨਾਂ"
 
-#: lnftool.cpp:51
+#: lnftool.cpp:52
 #, kde-format
 msgid "Reset the Plasma Desktop layout"
 msgstr "ਪਲਾਜ਼ਮਾ ਡੈਸਕਟਾਪ ਖਾਕਾ ਮੁੜ-ਸੈੱਟ ਕਰੋ"
@@ -99,30 +94,168 @@ msgstr "ਪਲਾਜ਼ਮਾ ਡੈਸਕਟਾਪ ਖਾਕਾ ਮੁੜ-ਸੈ�
 msgid "Global look and feel"
 msgstr "ਗਲੋਬਲ ਦਿੱਖ ਤੇ ਛੋਹ"
 
-#: package/contents/ui/main.qml:18
+#: package/contents/ui/main.qml:21
 #, kde-format
 msgid "This module lets you choose the global look and feel."
 msgstr ""
 
-#: package/contents/ui/main.qml:45
+#: package/contents/ui/main.qml:62
+#, kde-format
+msgid "Contains Desktop layout"
+msgstr "ਡੈਸਕਟਾਪ ਖਾਕਾ ਰੱਖਦਾ ਹੈ"
+
+#: package/contents/ui/main.qml:76
 #, kde-format
 msgid "Preview Theme"
 msgstr "ਥੀਮ ਦੀ ਝਲਕ"
 
-#: package/contents/ui/main.qml:66
+#: package/contents/ui/main.qml:92
 #, kde-format
-msgid ""
-"Your current layout and configuration of panels, desktop widgets, and "
-"wallpapers will be lost and reset to the default layout provided by the "
-"selected theme."
-msgstr ""
+msgctxt ""
+"Confirmation question about applying the Global Theme - %1 is the Global "
+"Theme's name"
+msgid "Apply %1?"
+msgstr "%1 ਲਾਗੂ ਕਰਨਾ ਹੈ?"
 
-#: package/contents/ui/main.qml:76
+#: package/contents/ui/main.qml:110
 #, kde-format
-msgid "Use desktop layout from theme"
-msgstr ""
+msgid "Choose what to apply…"
+msgstr "ਚੁਣੋ ਕਿ ਕੀ ਲਾਗੂ ਕਰਨਾ ਹੈ…"
 
-#: package/contents/ui/main.qml:85
+#: package/contents/ui/main.qml:110
+#, kde-format
+msgid "Show fewer options…"
+msgstr "ਘੱਟ ਚੋਣਾਂ ਵੇਖਾਓ…"
+
+#: package/contents/ui/main.qml:127
+#, kde-format
+msgid "Apply"
+msgstr "ਲਾਗੂ ਕਰੋ"
+
+#: package/contents/ui/main.qml:139
+#, kde-format
+msgid "Cancel"
+msgstr "ਰੱਦ ਕਰੋ"
+
+#: package/contents/ui/main.qml:156
 #, kde-format
 msgid "Get New Global Themes…"
 msgstr "…ਨਵੇਂ ਗਲੋਬਲ ਥੀਮ ਲਵੋ"
+
+#: package/contents/ui/MoreOptions.qml:23
+#, kde-format
+msgid "Layout settings:"
+msgstr "ਖਾਕਾ ਸੈਟਿੰਗਾਂ:"
+
+#: package/contents/ui/MoreOptions.qml:27
+#, kde-format
+msgid "Desktop layout"
+msgstr "ਡੈਸਕਟਾਪ ਖਾਕਾ"
+
+#: package/contents/ui/MoreOptions.qml:34
+#, kde-format
+msgid "Titlebar Buttons layout"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:48
+#: package/contents/ui/SimpleOptions.qml:63
+#, kde-format
+msgid ""
+"Applying a Desktop layout replaces your current configuration of desktops, "
+"panels, docks, and widgets"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:56
+#, kde-format
+msgid "Appearance settings:"
+msgstr "ਦਿੱਖ ਸੈਟਿੰਗਾਂ:"
+
+#: package/contents/ui/MoreOptions.qml:60
+#, kde-format
+msgid "Colors"
+msgstr "ਰੰਗ"
+
+#: package/contents/ui/MoreOptions.qml:61
+#, kde-format
+msgid "Application Style"
+msgstr "ਐਪਲੀਕੇਸ਼ਨ ਸਟਾਈਲ"
+
+#: package/contents/ui/MoreOptions.qml:62
+#, kde-format
+msgid "Window Decorations"
+msgstr "ਵਿੰਡੋ ਸਜਾਵਟ"
+
+#: package/contents/ui/MoreOptions.qml:63
+#, kde-format
+msgid "Icons"
+msgstr "ਆਈਕਾਨ"
+
+#: package/contents/ui/MoreOptions.qml:64
+#, kde-format
+msgid "Plasma Style"
+msgstr "ਪਲਾਜ਼ਮਾ ਸਟਾਈਲ"
+
+#: package/contents/ui/MoreOptions.qml:65
+#, kde-format
+msgid "Cursors"
+msgstr "ਕਰਸਰ"
+
+#: package/contents/ui/MoreOptions.qml:66
+#, kde-format
+msgid "Fonts"
+msgstr "ਫ਼ੋਂਟ"
+
+#: package/contents/ui/MoreOptions.qml:67
+#, kde-format
+msgid "Task Switcher"
+msgstr "ਟਾਸਕ ਸਵਿੱਚਰ"
+
+#: package/contents/ui/MoreOptions.qml:68
+#, kde-format
+msgid "Splash Screen"
+msgstr "ਸਵਾਗਤੀ ਸਕਰੀਨ"
+
+#: package/contents/ui/MoreOptions.qml:69
+#, kde-format
+msgid "Lock Screen"
+msgstr "ਲਾਕ ਸਕਰੀਨ"
+
+#: package/contents/ui/SimpleOptions.qml:20
+#, kde-format
+msgid "The following will be applied by this Global Theme:"
+msgstr ""
+
+#: package/contents/ui/SimpleOptions.qml:33
+#, kde-format
+msgid "Appearance settings"
+msgstr "ਦਿੱਖ ਸੈਟਿੰਗਾਂ"
+
+#: package/contents/ui/SimpleOptions.qml:41
+#, kde-format
+msgctxt "List item"
+msgid "• Appearance settings"
+msgstr "• ਦਿੱਖ ਸੈਟਿੰਗਾਂ"
+
+#: package/contents/ui/SimpleOptions.qml:47
+#, fuzzy, kde-format
+#| msgid "Desktop layout"
+msgid "Desktop and window layout"
+msgstr "ਡੈਸਕਟਾਪ ਖਾਕਾ"
+
+#: package/contents/ui/SimpleOptions.qml:56
+#, fuzzy, kde-format
+#| msgctxt "List item"
+#| msgid "• Desktop layout"
+msgctxt "List item"
+msgid "• Desktop and window layout"
+msgstr "• ਡੈਸਕਟਾਪ ਖਾਕਾ"
+
+#: package/contents/ui/SimpleOptions.qml:74
+#, kde-format
+msgid ""
+"This Global Theme does not provide any applicable settings. Please contact "
+"the maintainer of this Global Theme as it might be broken."
+msgstr ""
+
+#~ msgid "Global Theme"
+#~ msgstr "ਗਲੋਬਲ ਥੀਮ"

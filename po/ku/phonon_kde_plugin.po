@@ -29,3 +29,15 @@ msgstr "Omer Ensari"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "oensari@gmail.com"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt>Nikare bi kar bîne <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Nikare Multimedia Backend bibîne"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Nikare Multimedia Backend a hatiye xwestin bibîne"
+
+#~ msgid "create method returned 0"
+#~ msgstr "şêwaza afirandinê bersiva 0 da"

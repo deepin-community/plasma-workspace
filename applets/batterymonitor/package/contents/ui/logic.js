@@ -6,8 +6,24 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-function stringForBatteryState(batteryData) {
+function stringForBatteryState(batteryData, source) {
     if (batteryData["Plugged in"]) {
+        // When we are using a charge threshold, the kernel
+        // may stop charging within a percentage point of the actual threshold
+        // and this is considered correct behavior, so we have to handle
+        // that. See https://bugzilla.kernel.org/show_bug.cgi?id=215531.
+        if (typeof source.data["Battery"]["Charge Stop Threshold"] === "number"
+            && (source.data.Battery.Percent >= source.data["Battery"]["Charge Stop Threshold"] - 1
+            && source.data.Battery.Percent <= source.data["Battery"]["Charge Stop Threshold"] + 1)
+            // Also, Upower may give us a status of "Not charging" rather than
+            // "Fully charged", so we need to account for that as well. See
+            // https://gitlab.freedesktop.org/upower/upower/-/issues/142.
+            && (source.data["Battery"]["State"] === "NoCharge" || source.data["Battery"]["State"] === "FullyCharged")
+        ) {
+            return i18n("Fully Charged");
+        }
+
+        // Otherwise, just look at the charge state
         switch(batteryData["State"]) {
             case "Discharging": return i18n("Discharging");
             case "FullyCharged": return i18n("Fully Charged");
@@ -16,24 +32,8 @@ function stringForBatteryState(batteryData) {
             default: return i18n("Not Charging");
         }
     } else {
-        return i18nc("Battery is currently not present in the bay","Not present");
+        return i18nc("Battery is currently not present in the bay", "Not present");
     }
-}
-
-function batteryDetails(batteryData, remainingTime) {
-    var data = []
-
-    if (remainingTime > 0 && batteryData["Is Power Supply"] && (batteryData["State"] == "Discharging" || batteryData["State"] == "Charging")) {
-        data.push({label: (batteryData["State"] == "Charging" ? i18n("Time To Full:") : i18n("Remaining Time:")) })
-        data.push({value: KCoreAddons.Format.formatDuration(remainingTime, KCoreAddons.FormatTypes.HideSeconds) })
-    }
-
-    if (batteryData["Is Power Supply"] && batteryData["Capacity"] != "" && typeof batteryData["Capacity"] == "number") {
-        data.push({label: i18n("Battery Health:") })
-        data.push({value: i18nc("Placeholder is battery health percentage", "%1%", batteryData["Capacity"]) })
-    }
-
-    return data
 }
 
 function updateBrightness(rootItem, source) {
@@ -57,17 +57,17 @@ function updateBrightness(rootItem, source) {
 }
 
 function updateInhibitions(rootItem, source) {
-    var inhibitions = [];
+    const inhibitions = [];
 
     if (source.data["Inhibitions"]) {
-        for(var key in pmSource.data["Inhibitions"]) {
+        for (let key in pmSource.data["Inhibitions"]) {
             if (key === "plasmashell" || key === "plasmoidviewer") { // ignore our own inhibition
-                continue
+                continue;
             }
 
-            inhibitions.push(pmSource.data["Inhibitions"][key])
+            inhibitions.push(pmSource.data["Inhibitions"][key]);
         }
     }
 
-    rootItem.inhibitions = inhibitions
+    rootItem.inhibitions = inhibitions;
 }

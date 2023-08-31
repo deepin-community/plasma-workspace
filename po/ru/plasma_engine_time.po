@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-03-10 00:46+0000\n"
 "PO-Revision-Date: 2014-09-30 11:33+0400\n"
 "Last-Translator: Alexander Potashev <aspotashev@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -18,64 +18,52 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: timesource.cpp:45
-#, kde-format
+#: timesource.cpp:46
 msgid "Local"
 msgstr "Местное время"
 
-#: timesource.cpp:60
-#, kde-format
+#: timesource.cpp:61
 msgid "Timezone"
 msgstr "Часовой пояс"
 
-#: timesource.cpp:65 timesource.cpp:68 timesource.cpp:72
-#, kde-format
+#: timesource.cpp:66 timesource.cpp:69 timesource.cpp:73
 msgid "Timezone City"
 msgstr "Город часового пояса"
 
-#: timesource.cpp:67 timesource.cpp:70
-#, kde-format
+#: timesource.cpp:68 timesource.cpp:71
 msgid "Timezone Continent"
 msgstr "Континент часового пояса"
 
-#: timesource.cpp:71
-#, kde-format
+#: timesource.cpp:72
 msgid "Timezone Country"
 msgstr "Страна часового пояса"
 
-#: timesource.cpp:96
-#, kde-format
+#: timesource.cpp:97
 msgid "Offset"
 msgstr "Смещение"
 
-#: timesource.cpp:99
-#, kde-format
+#: timesource.cpp:100
 msgid "Timezone Abbreviation"
 msgstr "Код часового пояса"
 
-#: timesource.cpp:130 timesource.cpp:149 timesource.cpp:170
-#, kde-format
+#: timesource.cpp:131 timesource.cpp:150 timesource.cpp:171
 msgid "DateTime"
 msgstr "Дата и время"
 
-#: timesource.cpp:145
-#, kde-format
+#: timesource.cpp:146
 msgid "Latitude"
 msgstr "Широта"
 
-#: timesource.cpp:146
-#, kde-format
+#: timesource.cpp:147
 msgid "Longitude"
 msgstr "Долгота"
 
 # Время восхода и захода и другие характеристики, относящиеся к Солнцу. --aspotashev
-#: timesource.cpp:147
-#, kde-format
+#: timesource.cpp:148
 msgid "Solar"
 msgstr "Солнце"
 
 # Время восхода и захода и другие характеристики, относящиеся к Луне. --aspotashev
-#: timesource.cpp:148
-#, kde-format
+#: timesource.cpp:149
 msgid "Moon"
 msgstr "Луна"

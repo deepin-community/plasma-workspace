@@ -100,46 +100,73 @@ msgid "Could not eject this disc."
 msgstr "Не удалось извлечь диск."
 
 # BUGME: please clarify that %1 is name of the disc inserted into device (disc reader), not name of device (disc reader). --aspotashev
-
-
-
-
-
-
-
-
-
-
-# BUGME: please clarify that %1 is name of the disc inserted into device (disc reader), not name of device (disc reader). --aspotashev
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#, fuzzy
+#~| msgid ""
+#~| "Could not eject the following device: %1\n"
+#~| "One or more files on this device are open within an application "
+#~ msgid ""
+#~ "Could not safely remove the following device: %1\n"
+#~ "One or more files on this device are open within an application"
+#~ msgstr ""
+#~ "Не удалось извлечь следующий носитель из устройства: %1\n"
+#~ "Один или несколько файлов на этом носителе открыты в приложениях."
 
 # BUGME: please clarify that %1 is name of the disc inserted into device (disc reader), not name of device (disc reader). --aspotashev
+#, fuzzy
+#~| msgid ""
+#~| "Could not eject the following device: %1\n"
+#~| "One or more files on this device are open within an application "
+#~ msgid ""
+#~ "Could not safely remove the following device: %1\n"
+#~ "One or more files on this device are opened in application \"%3\"\n"
+#~ "Please close it and try again"
+#~ msgid_plural ""
+#~ "Could not safely remove the following device: %1\n"
+#~ "One or more files on this device are opened in following applications: "
+#~ "%3\n"
+#~ "Please close it and try again"
+#~ msgstr[0] ""
+#~ "Не удалось извлечь следующий носитель из устройства: %1\n"
+#~ "Один или несколько файлов на этом носителе открыты в приложениях."
+#~ msgstr[1] ""
+#~ "Не удалось извлечь следующий носитель из устройства: %1\n"
+#~ "Один или несколько файлов на этом носителе открыты в приложениях."
+#~ msgstr[2] ""
+#~ "Не удалось извлечь следующий носитель из устройства: %1\n"
+#~ "Один или несколько файлов на этом носителе открыты в приложениях."
+#~ msgstr[3] ""
+#~ "Не удалось извлечь следующий носитель из устройства: %1\n"
+#~ "Один или несколько файлов на этом носителе открыты в приложениях."
+
+#~ msgctxt ""
+#~ "The term \"remove\" here means \"physically disconnect the device from "
+#~ "the computer\", whereas \"safely\" means \"without risk of data loss\""
+#~ msgid "The following device can now be safely removed: %1"
+#~ msgstr "Можно извлечь следующий носитель без риска потери данных: %1"
+
+# BUGME: please clarify that %1 is name of the disc inserted into device (disc reader), not name of device (disc reader). --aspotashev
+#, fuzzy
+#~| msgid ""
+#~| "Could not eject the following device: %1\n"
+#~| "One or more files on this device are open within an application "
+#~ msgid ""
+#~ "Could not eject the following device: %1\n"
+#~ "One or more files on this device are opened in application \"%3\"\n"
+#~ "Please close it and try again"
+#~ msgid_plural ""
+#~ "Could not eject the following device: %1\n"
+#~ "One or more files on this device are opened in following applications: "
+#~ "%3\n"
+#~ "Please close it and try again"
+#~ msgstr[0] ""
+#~ "Не удалось извлечь следующий носитель из устройства: %1\n"
+#~ "Один или несколько файлов на этом носителе открыты в приложениях."
+#~ msgstr[1] ""
+#~ "Не удалось извлечь следующий носитель из устройства: %1\n"
+#~ "Один или несколько файлов на этом носителе открыты в приложениях."
+#~ msgstr[2] ""
+#~ "Не удалось извлечь следующий носитель из устройства: %1\n"
+#~ "Один или несколько файлов на этом носителе открыты в приложениях."
+#~ msgstr[3] ""
+#~ "Не удалось извлечь следующий носитель из устройства: %1\n"
+#~ "Один или несколько файлов на этом носителе открыты в приложениях."

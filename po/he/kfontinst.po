@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfontinst\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-18 00:19+0000\n"
+"POT-Creation-Date: 2023-01-29 02:56+0000\n"
 "PO-Revision-Date: 2017-05-23 08:43-0400\n"
 "Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -35,7 +35,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-l10n-he@kde.org,ttv200@gmail.com"
 
-#: apps/Installer.cpp:35 kcmfontinst/KCmFontInst.cpp:955
+#: apps/Installer.cpp:35 kcmfontinst/KCmFontInst.cpp:956
 #, kde-format
 msgid ""
 "Do you wish to install the font(s) for personal use (only available to you), "
@@ -44,7 +44,7 @@ msgstr ""
 "להתקין את הגופן/גופנים לשימוש אישי (זמינים רק לך), או לשימוש מערכתי (זמין "
 "לכל המשתמשים)?"
 
-#: apps/Installer.cpp:38 kcmfontinst/KCmFontInst.cpp:958
+#: apps/Installer.cpp:38 kcmfontinst/KCmFontInst.cpp:959
 #, kde-format
 msgid "Where to Install"
 msgstr "היכן להתקין"
@@ -79,7 +79,7 @@ msgstr "כתובת URL להתקנה"
 msgid "Print"
 msgstr "הדפס"
 
-#: apps/Printer.cpp:308 kcmfontinst/DuplicatesDialog.cpp:210
+#: apps/Printer.cpp:308 kcmfontinst/DuplicatesDialog.cpp:222
 #, fuzzy, kde-format
 #| msgid "Canceling..."
 msgid "Canceling…"
@@ -120,60 +120,73 @@ msgstr "קובץ המכיל את רשימת הגופנים להדפסה"
 msgid "Remove file containing list of fonts to print"
 msgstr "הסר קובץ המכיל רשימה של גופנים להדפסה"
 
-#: apps/Viewer.cpp:58
+#: apps/Viewer.cpp:48
+#, fuzzy, kde-format
+#| msgid "Open font in font viewer?"
+#| msgid_plural "Open all %1 fonts in font viewer?"
+msgid "Open an existing font file"
+msgstr "האם לפתוח את הגופן במציג הגופנים?"
+
+#: apps/Viewer.cpp:49
+#, fuzzy, kde-format
+#| msgid "Print Font Samples"
+msgid "Print font preview"
+msgstr "מדפיס דוגמאות גופן"
+
+#: apps/Viewer.cpp:66
 #, kde-format
 msgid "Select Font to View"
 msgstr "בחר גופן לתצוגה"
 
-#: apps/Viewer.cpp:101
+#: apps/Viewer.cpp:109
 #, kde-format
 msgid "URL to open"
 msgstr "כתובת לפתיחה"
 
-#: apps/Viewer.cpp:144
+#: apps/Viewer.cpp:152
 #, kde-format
 msgid "Font Viewer"
 msgstr "מציג גופנים"
 
-#: apps/Viewer.cpp:146
+#: apps/Viewer.cpp:154
 #, kde-format
 msgid "Simple font viewer"
 msgstr "מציג גופנים פשוט"
 
-#: apps/Viewer.cpp:148
+#: apps/Viewer.cpp:156
 #, kde-format
 msgid "(C) Craig Drummond, 2004-2007"
 msgstr "‎(C) Craig Drummond, 2004-2007"
 
-#: kcmfontinst/DuplicatesDialog.cpp:46
+#: kcmfontinst/DuplicatesDialog.cpp:47
 #, kde-format
 msgid "Duplicate Fonts"
 msgstr "גופן כפול"
 
-#: kcmfontinst/DuplicatesDialog.cpp:76
+#: kcmfontinst/DuplicatesDialog.cpp:77
 #, fuzzy, kde-format
 #| msgid "Scanning for duplicate fonts. Please wait..."
 msgid "Scanning for duplicate fonts. Please wait…"
 msgstr "סורק עבור גופנים כפולים, אנא המתן..."
 
-#: kcmfontinst/DuplicatesDialog.cpp:95
+#: kcmfontinst/DuplicatesDialog.cpp:96
 #, kde-format
 msgid "No duplicate fonts found."
 msgstr "לא נמצאו גופנים כפולים."
 
-#: kcmfontinst/DuplicatesDialog.cpp:103
+#: kcmfontinst/DuplicatesDialog.cpp:104
 #, kde-format
 msgid "Delete Marked Files"
 msgstr "מחק קבצים מסומנים"
 
-#: kcmfontinst/DuplicatesDialog.cpp:105
+#: kcmfontinst/DuplicatesDialog.cpp:106
 #, kde-format
 msgid "%1 duplicate font found."
 msgid_plural "%1 duplicate fonts found."
 msgstr[0] "נמצא גופן כפול %1"
 msgstr[1] "נמצאו %1 גופנים כפולים."
 
-#: kcmfontinst/DuplicatesDialog.cpp:185
+#: kcmfontinst/DuplicatesDialog.cpp:187
 #, kde-format
 msgid ""
 "Are you sure you wish to delete:\n"
@@ -182,57 +195,57 @@ msgstr ""
 "אתה בטוח שברצונך למחוק את\n"
 "%1"
 
-#: kcmfontinst/DuplicatesDialog.cpp:186
+#: kcmfontinst/DuplicatesDialog.cpp:193
 #, kde-format
 msgid "Are you sure you wish to delete:"
 msgstr "אתה בטוח שברצונך למחוק את:"
 
-#: kcmfontinst/DuplicatesDialog.cpp:209
+#: kcmfontinst/DuplicatesDialog.cpp:221
 #, kde-format
 msgid "Cancel font scan?"
 msgstr "לבטל את סריקת הגופנים?"
 
-#: kcmfontinst/DuplicatesDialog.cpp:370
+#: kcmfontinst/DuplicatesDialog.cpp:382
 #, kde-format
 msgid "Font/File"
 msgstr "גופן/קובץ"
 
-#: kcmfontinst/DuplicatesDialog.cpp:372
+#: kcmfontinst/DuplicatesDialog.cpp:384
 #, kde-format
 msgid "Size"
 msgstr "גודל"
 
-#: kcmfontinst/DuplicatesDialog.cpp:373
+#: kcmfontinst/DuplicatesDialog.cpp:385
 #, kde-format
 msgid "Date"
 msgstr "תאריך"
 
-#: kcmfontinst/DuplicatesDialog.cpp:374
+#: kcmfontinst/DuplicatesDialog.cpp:386
 #, kde-format
 msgid "Links To"
 msgstr "קישור אל"
 
-#: kcmfontinst/DuplicatesDialog.cpp:387 kcmfontinst/FontList.cpp:1316
+#: kcmfontinst/DuplicatesDialog.cpp:399 kcmfontinst/FontList.cpp:1315
 #, kde-format
 msgid "Open in Font Viewer"
 msgstr "פתח במציג הגופנים"
 
-#: kcmfontinst/DuplicatesDialog.cpp:389
+#: kcmfontinst/DuplicatesDialog.cpp:401
 #, kde-format
 msgid "Properties"
 msgstr "מאפיינים"
 
-#: kcmfontinst/DuplicatesDialog.cpp:391
+#: kcmfontinst/DuplicatesDialog.cpp:403
 #, kde-format
 msgid "Unmark for Deletion"
 msgstr "הסר סימון למחיקה"
 
-#: kcmfontinst/DuplicatesDialog.cpp:392
+#: kcmfontinst/DuplicatesDialog.cpp:404
 #, kde-format
 msgid "Mark for Deletion"
 msgstr "סמן למחיקה"
 
-#: kcmfontinst/DuplicatesDialog.cpp:490
+#: kcmfontinst/DuplicatesDialog.cpp:502
 #, kde-format
 msgid "Open font in font viewer?"
 msgid_plural "Open all %1 fonts in font viewer?"
@@ -337,29 +350,29 @@ msgid "Delete"
 msgstr "מחק"
 
 #: kcmfontinst/FontList.cpp:1308 kcmfontinst/GroupList.cpp:789
-#: kcmfontinst/KCmFontInst.cpp:1132 kcmfontinst/KCmFontInst.cpp:1156
+#: kcmfontinst/KCmFontInst.cpp:1133 kcmfontinst/KCmFontInst.cpp:1157
 #, kde-format
 msgid "Enable"
 msgstr "אפשר"
 
 #: kcmfontinst/FontList.cpp:1309 kcmfontinst/GroupList.cpp:790
-#: kcmfontinst/KCmFontInst.cpp:1133 kcmfontinst/KCmFontInst.cpp:1157
+#: kcmfontinst/KCmFontInst.cpp:1134 kcmfontinst/KCmFontInst.cpp:1158
 #, kde-format
 msgid "Disable"
 msgstr "בטל"
 
-#: kcmfontinst/FontList.cpp:1314 kcmfontinst/GroupList.cpp:796
+#: kcmfontinst/FontList.cpp:1313 kcmfontinst/GroupList.cpp:796
 #, fuzzy, kde-format
 #| msgid "Print"
 msgid "Print…"
 msgstr "הדפס"
 
-#: kcmfontinst/FontList.cpp:1318
+#: kcmfontinst/FontList.cpp:1317
 #, kde-format
 msgid "Reload"
 msgstr "טען מחדש"
 
-#: kcmfontinst/FontList.cpp:1717
+#: kcmfontinst/FontList.cpp:1718
 #, kde-format
 msgid "Open all %1 fonts in font viewer?"
 msgstr "האם לפתוח את %1 הגופנים במציג הגופנים?"
@@ -481,153 +494,153 @@ msgstr "הוסף לתיקייה אישית."
 msgid "Move to system folder."
 msgstr "הוסף לתיקיית מערכת."
 
-#: kcmfontinst/JobRunner.cpp:139
+#: kcmfontinst/JobRunner.cpp:143
 #, kde-format
 msgid "Skip"
 msgstr "דלג"
 
-#: kcmfontinst/JobRunner.cpp:142
+#: kcmfontinst/JobRunner.cpp:146
 #, kde-format
 msgid "AutoSkip"
 msgstr "דלג אוטומטית"
 
-#: kcmfontinst/JobRunner.cpp:187
+#: kcmfontinst/JobRunner.cpp:191
 #, kde-format
 msgid "<h3>Cancel?</h3><p>Are you sure you wish to cancel?</p>"
 msgstr "<h3>ביטול?</h3><p>אתה בטוח שברצונך לבטל?</p>"
 
-#: kcmfontinst/JobRunner.cpp:199
+#: kcmfontinst/JobRunner.cpp:203
 #, kde-format
 msgid ""
 "<h3>Finished</h3><p>Please note that any open applications will need to be "
 "restarted in order for any changes to be noticed.</p>"
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:207
+#: kcmfontinst/JobRunner.cpp:211
 #, kde-format
 msgid "Do not show this message again"
 msgstr "אל תראה הודעה זו שנית"
 
-#: kcmfontinst/JobRunner.cpp:317
+#: kcmfontinst/JobRunner.cpp:321
 #, kde-format
 msgid "Installing"
 msgstr "מתקין"
 
-#: kcmfontinst/JobRunner.cpp:320
+#: kcmfontinst/JobRunner.cpp:324
 #, kde-format
 msgid "Uninstalling"
 msgstr "מסיר התקנה"
 
-#: kcmfontinst/JobRunner.cpp:323 kcmfontinst/JobRunner.cpp:420
+#: kcmfontinst/JobRunner.cpp:327 kcmfontinst/JobRunner.cpp:424
 #, kde-format
 msgid "Enabling"
 msgstr "מאפשר"
 
-#: kcmfontinst/JobRunner.cpp:326 kcmfontinst/JobRunner.cpp:424
+#: kcmfontinst/JobRunner.cpp:330 kcmfontinst/JobRunner.cpp:428
 #, kde-format
 msgid "Moving"
 msgstr "מעביר"
 
-#: kcmfontinst/JobRunner.cpp:329
+#: kcmfontinst/JobRunner.cpp:333
 #, kde-format
 msgid "Updating"
 msgstr "מעדכן"
 
-#: kcmfontinst/JobRunner.cpp:333
+#: kcmfontinst/JobRunner.cpp:337
 #, kde-format
 msgid "Removing"
 msgstr "מסיר"
 
-#: kcmfontinst/JobRunner.cpp:337
+#: kcmfontinst/JobRunner.cpp:341
 #, kde-format
 msgid "Disabling"
 msgstr "מבטל"
 
-#: kcmfontinst/JobRunner.cpp:375
+#: kcmfontinst/JobRunner.cpp:379
 #, fuzzy, kde-format
 #| msgid "Updating font configuration. Please wait..."
 msgid "Updating font configuration. Please wait…"
 msgstr "מעדכן את הגדרות הגופן. אנא המתן..."
 
-#: kcmfontinst/JobRunner.cpp:447
+#: kcmfontinst/JobRunner.cpp:451
 #, kde-format
 msgid "Unable to start backend."
 msgstr "אין אפשרות להתחיל את הממשק."
 
-#: kcmfontinst/JobRunner.cpp:456
+#: kcmfontinst/JobRunner.cpp:460
 #, kde-format
 msgid "Backend died, but has been restarted. Please try again."
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:618 kcmfontinst/JobRunner.cpp:624
+#: kcmfontinst/JobRunner.cpp:625 kcmfontinst/JobRunner.cpp:631
 #, kde-format
 msgid "<h3>Error</h3>"
 msgstr "<h3>שגיאה</h3>"
 
-#: kcmfontinst/JobRunner.cpp:690
+#: kcmfontinst/JobRunner.cpp:697
 #, kde-format
 msgid "Failed to download <i>%1</i>"
 msgstr "אין אפשרות להוריד <i>%1</i>"
 
-#: kcmfontinst/JobRunner.cpp:692
+#: kcmfontinst/JobRunner.cpp:699
 #, kde-format
 msgid "System backend died. Please try again.<br><i>%1</i>"
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:694
+#: kcmfontinst/JobRunner.cpp:701
 #, kde-format
 msgid ""
 "<i>%1</i> is a bitmap font, and these have been disabled on your system."
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:696
+#: kcmfontinst/JobRunner.cpp:703
 #, kde-format
 msgid ""
 "<i>%1</i> contains the font <b>%2</b>, which is already installed on your "
 "system."
 msgstr ""
 
-#: kcmfontinst/JobRunner.cpp:698
+#: kcmfontinst/JobRunner.cpp:705
 #, kde-format
 msgid "<i>%1</i> is not a font."
 msgstr "<i>%1</i> אינו גופן."
 
-#: kcmfontinst/JobRunner.cpp:700
+#: kcmfontinst/JobRunner.cpp:707
 #, kde-format
 msgid "Could not remove all files associated with <i>%1</i>"
 msgstr "לא יכול להסיר את כל הקבצים הקשורים עם <i>%1</i>"
 
-#: kcmfontinst/JobRunner.cpp:702
+#: kcmfontinst/JobRunner.cpp:709
 #, kde-format
 msgid "Failed to start the system daemon.<br><i>%1</i>"
 msgstr "כשל בהפעלת שירות מערכת.<br><i>%1</i>"
 
-#: kcmfontinst/JobRunner.cpp:705 kio/KioFonts.cpp:725
+#: kcmfontinst/JobRunner.cpp:712 kio/KioFonts.cpp:727
 #, kde-format
 msgid "<i>%1</i> already exists."
 msgstr "<i>%1</i> כבר קיים."
 
-#: kcmfontinst/JobRunner.cpp:708
+#: kcmfontinst/JobRunner.cpp:715
 #, kde-format
 msgid "<i>%1</i> does not exist."
 msgstr "<i>%1</i> אינו קיים."
 
-#: kcmfontinst/JobRunner.cpp:710
+#: kcmfontinst/JobRunner.cpp:717
 #, kde-format
 msgid "Permission denied.<br><i>%1</i>"
 msgstr "הגישה נדחתה.<br><i>%1</i>"
 
-#: kcmfontinst/JobRunner.cpp:712
+#: kcmfontinst/JobRunner.cpp:719
 #, kde-format
 msgid "Unsupported action.<br><i>%1</i>"
 msgstr "פעולה לא נתמכת.<br><i>%1</i>"
 
-#: kcmfontinst/JobRunner.cpp:714
+#: kcmfontinst/JobRunner.cpp:721
 #, kde-format
 msgid "Authentication failed.<br><i>%1</i>"
 msgstr "זיהוי נכשל.<br><i>%1</i>"
 
-#: kcmfontinst/JobRunner.cpp:716
+#: kcmfontinst/JobRunner.cpp:723
 #, kde-format
 msgid "Unexpected error while processing: <i>%1</i>"
 msgstr "שגיאה לא צפויה תוך כדי העיבוד: <i>%1</i>"
@@ -711,24 +724,24 @@ msgstr ""
 msgid "Get New Fonts…"
 msgstr "השג גופנים חדשים..."
 
-#: kcmfontinst/KCmFontInst.cpp:252
+#: kcmfontinst/KCmFontInst.cpp:253
 #, kde-format
 msgid "Download new fonts"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:254
+#: kcmfontinst/KCmFontInst.cpp:255
 #, fuzzy, kde-format
 #| msgid "Delete all selected fonts"
 msgid "Delete Selected Fonts…"
 msgstr "מחק את כל הגופנים הנבחרים"
 
-#: kcmfontinst/KCmFontInst.cpp:312
+#: kcmfontinst/KCmFontInst.cpp:313
 #, fuzzy, kde-format
 #| msgid "Change Preview Text..."
 msgid "Change Preview Text…"
 msgstr "שנה את כיתוב התצוגה מקדימה..."
 
-#: kcmfontinst/KCmFontInst.cpp:374
+#: kcmfontinst/KCmFontInst.cpp:375
 #, kde-format
 msgid ""
 "<h1>Font Installer</h1><p> This module allows you to install TrueType, "
@@ -741,7 +754,7 @@ msgstr ""
 "הקלד fonts:/ בתיבת המיקום של Konqueror ורשימת הגופנים המותקנים יוצגו. על מנת "
 "להתקין גופן, פשוט העתק אותו לתיקייה המתאימה. </p>"
 
-#: kcmfontinst/KCmFontInst.cpp:381
+#: kcmfontinst/KCmFontInst.cpp:382
 #, kde-format
 msgid ""
 "<h1>Font Installer</h1><p> This module allows you to install TrueType, "
@@ -757,22 +770,22 @@ msgstr ""
 "להתקין גופן, פשוט העתק אותו לתיקייה המתאימה. - \"%1\" לגופני זמינים רק לך, "
 "או \"%2\" לגופני מערכת ־הזמינים לכולם). </p>"
 
-#: kcmfontinst/KCmFontInst.cpp:436
+#: kcmfontinst/KCmFontInst.cpp:437
 #, kde-format
 msgid "Add Fonts"
 msgstr "הוספת גופנים"
 
-#: kcmfontinst/KCmFontInst.cpp:561
+#: kcmfontinst/KCmFontInst.cpp:562
 #, kde-format
 msgid "Failed to save list of fonts to print."
 msgstr "כשל בשמירת רשימת גופנים להדפסה."
 
-#: kcmfontinst/KCmFontInst.cpp:582
+#: kcmfontinst/KCmFontInst.cpp:583
 #, kde-format
 msgid "Failed to start font printer."
 msgstr "כשל בהפעלת מדפיס גופנים."
 
-#: kcmfontinst/KCmFontInst.cpp:589
+#: kcmfontinst/KCmFontInst.cpp:590
 #, kde-format
 msgid ""
 "There are no printable fonts.\n"
@@ -781,60 +794,60 @@ msgstr ""
 "אין גופנים אפשריים להדפסה.\n"
 "אתה יכול רק להדפיס גופנים מאופשרים שאינם מסוג bitmap"
 
-#: kcmfontinst/KCmFontInst.cpp:591
+#: kcmfontinst/KCmFontInst.cpp:592
 #, kde-format
 msgid "Cannot Print"
 msgstr "אין אפשרות להדפיס"
 
-#: kcmfontinst/KCmFontInst.cpp:606
+#: kcmfontinst/KCmFontInst.cpp:607
 #, kde-format
 msgid "You did not select anything to delete."
 msgstr "לא נבחרו פריטים למחיקה."
 
-#: kcmfontinst/KCmFontInst.cpp:606
+#: kcmfontinst/KCmFontInst.cpp:607
 #, kde-format
 msgid "Nothing to Delete"
 msgstr "אין שום דבר למחיקה."
 
-#: kcmfontinst/KCmFontInst.cpp:621
+#: kcmfontinst/KCmFontInst.cpp:622
 #, kde-format
 msgid "<p>Do you really want to delete</p><p>'<b>%1</b>'?</p>"
 msgstr "<p>האם באמת ברצונך למחוק את </p><p> <b>\"%1\"</b>?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:624
+#: kcmfontinst/KCmFontInst.cpp:625
 #, kde-format
 msgid "Delete Font"
 msgstr "מחק גופן"
 
-#: kcmfontinst/KCmFontInst.cpp:631
+#: kcmfontinst/KCmFontInst.cpp:632
 #, kde-format
 msgid "Do you really want to delete this font?"
 msgid_plural "Do you really want to delete these %1 fonts?"
 msgstr[0] "האם ברצונך למחוק את הגופן הזה? "
 msgstr[1] "האם באמת ברצונך למחוק את %1 הגופנים הללו?"
 
-#: kcmfontinst/KCmFontInst.cpp:633
+#: kcmfontinst/KCmFontInst.cpp:634
 #, kde-format
 msgid "Delete Fonts"
 msgstr "מחק גופנים"
 
-#: kcmfontinst/KCmFontInst.cpp:638
+#: kcmfontinst/KCmFontInst.cpp:639
 #, fuzzy, kde-format
 #| msgid "Deleting font(s)..."
 msgid "Deleting font(s)…"
 msgstr "מוחק גופנ/ים..."
 
-#: kcmfontinst/KCmFontInst.cpp:653
+#: kcmfontinst/KCmFontInst.cpp:654
 #, kde-format
 msgid "You did not select anything to move."
 msgstr "לא בחרת שום דבר להעברה."
 
-#: kcmfontinst/KCmFontInst.cpp:653
+#: kcmfontinst/KCmFontInst.cpp:654
 #, kde-format
 msgid "Nothing to Move"
 msgstr "שום דבר להעברה."
 
-#: kcmfontinst/KCmFontInst.cpp:663
+#: kcmfontinst/KCmFontInst.cpp:664
 #, kde-format
 msgid ""
 "<p>Do you really want to move</p><p>'<b>%1</b>'</p><p>from <i>%2</i> to <i>"
@@ -842,17 +855,17 @@ msgid ""
 msgstr ""
 "<p>האם ברצונך להעביר את</p><p>'<b>%1</b>'</p><p> מ־<i>%2</i> ל־<i>%3</i>?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:668
+#: kcmfontinst/KCmFontInst.cpp:669
 #, kde-format
 msgid "Move Font"
 msgstr "העבר גופן"
 
-#: kcmfontinst/KCmFontInst.cpp:669 kcmfontinst/KCmFontInst.cpp:681
+#: kcmfontinst/KCmFontInst.cpp:670 kcmfontinst/KCmFontInst.cpp:682
 #, kde-format
 msgid "Move"
 msgstr "העבר"
 
-#: kcmfontinst/KCmFontInst.cpp:674
+#: kcmfontinst/KCmFontInst.cpp:675
 #, kde-format
 msgid ""
 "<p>Do you really want to move this font from <i>%2</i> to <i>%3</i>?</p>"
@@ -861,77 +874,77 @@ msgid_plural ""
 msgstr[0] "<p>האם ברצונך להעביר את הגופן מ־<i>%2</i> ל־<i>%3</i>?</p>"
 msgstr[1] "<p>האם ברצונך להעביר את %1 הגופנים מ־<i>%2</i> ל־<i>%3</i>?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:680
+#: kcmfontinst/KCmFontInst.cpp:681
 #, kde-format
 msgid "Move Fonts"
 msgstr "העבר גופנים"
 
-#: kcmfontinst/KCmFontInst.cpp:685
+#: kcmfontinst/KCmFontInst.cpp:686
 #, fuzzy, kde-format
 #| msgid "Moving font(s)..."
 msgid "Moving font(s)…"
 msgstr "מעביר גופן/גופנים..."
 
-#: kcmfontinst/KCmFontInst.cpp:699
+#: kcmfontinst/KCmFontInst.cpp:700
 #, kde-format
 msgid "Export Group"
 msgstr "ייצא קבוצה"
 
-#: kcmfontinst/KCmFontInst.cpp:725
+#: kcmfontinst/KCmFontInst.cpp:726
 #, kde-format
 msgid "No files?"
 msgstr "אין קבצים?"
 
-#: kcmfontinst/KCmFontInst.cpp:728
+#: kcmfontinst/KCmFontInst.cpp:729
 #, kde-format
 msgid "Failed to open %1 for writing"
 msgstr "אין אפשרות לפתוח את %1 לכתיבה"
 
-#: kcmfontinst/KCmFontInst.cpp:748
+#: kcmfontinst/KCmFontInst.cpp:749
 #, kde-format
 msgid "Create New Group"
 msgstr "צור קבוצה חדשה"
 
-#: kcmfontinst/KCmFontInst.cpp:748
+#: kcmfontinst/KCmFontInst.cpp:749
 #, fuzzy, kde-format
 #| msgid "Create New Group"
 msgid "Name of new group:"
 msgstr "צור קבוצה חדשה"
 
-#: kcmfontinst/KCmFontInst.cpp:748
+#: kcmfontinst/KCmFontInst.cpp:749
 #, kde-format
 msgid "New Group"
 msgstr "קבוצה חדשה"
 
-#: kcmfontinst/KCmFontInst.cpp:776
+#: kcmfontinst/KCmFontInst.cpp:777
 #, kde-format
 msgid "Preview Text"
 msgstr "כיתוב תצוגה מקדימה"
 
-#: kcmfontinst/KCmFontInst.cpp:776
+#: kcmfontinst/KCmFontInst.cpp:777
 #, kde-format
 msgid "Please enter new text:"
 msgstr "אנא הכנס טקסט חדש:"
 
-#: kcmfontinst/KCmFontInst.cpp:828
+#: kcmfontinst/KCmFontInst.cpp:829
 #, fuzzy, kde-format
 #| msgid "Scanning font list..."
 msgid "Scanning font list…"
 msgstr "סורק רשימת גופנים..."
 
-#: kcmfontinst/KCmFontInst.cpp:887
+#: kcmfontinst/KCmFontInst.cpp:888
 #, kde-format
 msgid "No fonts"
 msgstr "אין גופנים"
 
-#: kcmfontinst/KCmFontInst.cpp:892
+#: kcmfontinst/KCmFontInst.cpp:893
 #, kde-format
 msgid "1 Font"
 msgid_plural "%1 Fonts"
 msgstr[0] "גופן אחד"
 msgstr[1] "%1 גופנים"
 
-#: kcmfontinst/KCmFontInst.cpp:901
+#: kcmfontinst/KCmFontInst.cpp:902
 #, kde-format
 msgid ""
 "<table><tr><td align=\"right\">Enabled:</td><td>%1</td></tr><tr><td align="
@@ -940,7 +953,7 @@ msgid ""
 "tr></table>"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:911
+#: kcmfontinst/KCmFontInst.cpp:912
 #, kde-format
 msgid ""
 "<table><tr><td align=\"right\">Enabled:</td><td>%1</td></tr><tr><td align="
@@ -948,104 +961,104 @@ msgid ""
 "td><td>%3</td></tr></table>"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:988
+#: kcmfontinst/KCmFontInst.cpp:989
 #, fuzzy, kde-format
 #| msgid "Looking for any associated files..."
 msgid "Looking for any associated files…"
 msgstr "מחפש את כל הקבצים הקשורים..."
 
-#: kcmfontinst/KCmFontInst.cpp:992
+#: kcmfontinst/KCmFontInst.cpp:993
 #, fuzzy, kde-format
 #| msgid "Scanning Files..."
 msgid "Scanning Files…"
 msgstr "סורק קבצים..."
 
-#: kcmfontinst/KCmFontInst.cpp:993
+#: kcmfontinst/KCmFontInst.cpp:994
 #, fuzzy, kde-format
 #| msgid "Looking for additional files to install..."
 msgid "Looking for additional files to install…"
 msgstr "מחפש את קבצים נוספים להתקנה..."
 
-#: kcmfontinst/KCmFontInst.cpp:1008
+#: kcmfontinst/KCmFontInst.cpp:1009
 #, kde-format
 msgid "Looking for files associated with %1"
 msgstr "מחפש את הקבצים הקשורים ל־%1"
 
-#: kcmfontinst/KCmFontInst.cpp:1036
+#: kcmfontinst/KCmFontInst.cpp:1037
 #, fuzzy, kde-format
 #| msgid "Installing font(s)..."
 msgid "Installing font(s)…"
 msgstr "מתקין גופנ/ים..."
 
-#: kcmfontinst/KCmFontInst.cpp:1101
+#: kcmfontinst/KCmFontInst.cpp:1102
 #, kde-format
 msgid "You did not select anything to enable."
 msgstr "לא בחרת דבר לאפשר"
 
-#: kcmfontinst/KCmFontInst.cpp:1101
+#: kcmfontinst/KCmFontInst.cpp:1102
 #, kde-format
 msgid "You did not select anything to disable."
 msgstr "לא בחרת דבר לבטל"
 
-#: kcmfontinst/KCmFontInst.cpp:1102
+#: kcmfontinst/KCmFontInst.cpp:1103
 #, kde-format
 msgid "Nothing to Enable"
 msgstr "אין שום דבר לאפשור"
 
-#: kcmfontinst/KCmFontInst.cpp:1102
+#: kcmfontinst/KCmFontInst.cpp:1103
 #, kde-format
 msgid "Nothing to Disable"
 msgstr "אין שום דבר לביטול"
 
-#: kcmfontinst/KCmFontInst.cpp:1119
+#: kcmfontinst/KCmFontInst.cpp:1120
 #, kde-format
 msgid "<p>Do you really want to enable</p><p>'<b>%1</b>'?</p>"
 msgstr "<p>האם ברצונך לאפשר את</p><p>'<b>%1</b>'?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:1121
+#: kcmfontinst/KCmFontInst.cpp:1122
 #, kde-format
 msgid "<p>Do you really want to disable</p><p>'<b>%1</b>'?</p>"
 msgstr "<p>האם ברצונך לבטל את</p><p>'<b>%1</b>'?</p>"
 
-#: kcmfontinst/KCmFontInst.cpp:1123
+#: kcmfontinst/KCmFontInst.cpp:1124
 #, kde-format
 msgid ""
 "<p>Do you really want to enable</p><p>'<b>%1</b>', contained within group "
 "'<b>%2</b>'?</p>"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:1127
+#: kcmfontinst/KCmFontInst.cpp:1128
 #, kde-format
 msgid ""
 "<p>Do you really want to disable</p><p>'<b>%1</b>', contained within group "
 "'<b>%2</b>'?</p>"
 msgstr ""
 
-#: kcmfontinst/KCmFontInst.cpp:1131 kcmfontinst/KCmFontInst.cpp:1132
+#: kcmfontinst/KCmFontInst.cpp:1132 kcmfontinst/KCmFontInst.cpp:1133
 #, kde-format
 msgid "Enable Font"
 msgstr "אפשר גופן"
 
-#: kcmfontinst/KCmFontInst.cpp:1131 kcmfontinst/KCmFontInst.cpp:1133
+#: kcmfontinst/KCmFontInst.cpp:1132 kcmfontinst/KCmFontInst.cpp:1134
 #, kde-format
 msgid "Disable Font"
 msgstr "בטל גופן"
 
-#: kcmfontinst/KCmFontInst.cpp:1138
+#: kcmfontinst/KCmFontInst.cpp:1139
 #, kde-format
 msgid "Do you really want to enable this font?"
 msgid_plural "Do you really want to enable these %1 fonts?"
 msgstr[0] "לאפשר את הגופן הזה?"
 msgstr[1] "לאפשר את %1 הגופנים הללו?"
 
-#: kcmfontinst/KCmFontInst.cpp:1141
+#: kcmfontinst/KCmFontInst.cpp:1142
 #, kde-format
 msgid "Do you really want to disable this font?"
 msgid_plural "Do you really want to disable these %1 fonts?"
 msgstr[0] "להשבית את הגופן הזה?"
 msgstr[1] "להשבית את %1 הגופנים הללו?"
 
-#: kcmfontinst/KCmFontInst.cpp:1144
+#: kcmfontinst/KCmFontInst.cpp:1145
 #, kde-format
 msgid ""
 "<p>Do you really want to enable this font contained within group '<b>%2</b>'?"
@@ -1056,7 +1069,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: kcmfontinst/KCmFontInst.cpp:1149
+#: kcmfontinst/KCmFontInst.cpp:1150
 #, kde-format
 msgid ""
 "<p>Do you really want to disable this font contained within group '<b>%2</"
@@ -1067,23 +1080,23 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: kcmfontinst/KCmFontInst.cpp:1155 kcmfontinst/KCmFontInst.cpp:1156
+#: kcmfontinst/KCmFontInst.cpp:1156 kcmfontinst/KCmFontInst.cpp:1157
 #, kde-format
 msgid "Enable Fonts"
 msgstr "אפשר גופנים"
 
-#: kcmfontinst/KCmFontInst.cpp:1155 kcmfontinst/KCmFontInst.cpp:1157
+#: kcmfontinst/KCmFontInst.cpp:1156 kcmfontinst/KCmFontInst.cpp:1158
 #, kde-format
 msgid "Disable Fonts"
 msgstr "בטל גופנים"
 
-#: kcmfontinst/KCmFontInst.cpp:1163
+#: kcmfontinst/KCmFontInst.cpp:1164
 #, fuzzy, kde-format
 #| msgid "Enabling font(s)..."
 msgid "Enabling font(s)…"
 msgstr "מאפשר גופן/גופנים..."
 
-#: kcmfontinst/KCmFontInst.cpp:1165
+#: kcmfontinst/KCmFontInst.cpp:1166
 #, fuzzy, kde-format
 #| msgid "Disabling font(s)..."
 msgid "Disabling font(s)…"
@@ -1129,12 +1142,12 @@ msgstr "36 נקודות"
 msgid "48pt"
 msgstr "48 נקודות"
 
-#: kio/KioFonts.cpp:207
+#: kio/KioFonts.cpp:208
 #, kde-format
 msgid "Can only install fonts to either \"%1\" or \"%2\"."
 msgstr "אפשר להתקין גופנים רק במיקומים \"%1\" או \"%2\"."
 
-#: kio/KioFonts.cpp:210
+#: kio/KioFonts.cpp:211
 #, kde-format
 msgid ""
 "You cannot install a fonts package directly.\n"
@@ -1143,288 +1156,256 @@ msgstr ""
 "לא ניתן להתקין חבילת גופנים ישירות.\n"
 "נא חלץ את %1, והתקן את הרכיבים בנפרד."
 
-#: kio/KioFonts.cpp:438
+#: kio/KioFonts.cpp:439
 #, kde-format
 msgid "Cannot copy fonts"
 msgstr "אין אפשרות להעתיק את הגופנים"
 
-#: kio/KioFonts.cpp:443
+#: kio/KioFonts.cpp:444
 #, kde-format
 msgid "Cannot move fonts"
 msgstr "אין אפשרות להעביר את הגופנים"
 
-#: kio/KioFonts.cpp:454
+#: kio/KioFonts.cpp:455
 #, kde-format
 msgid "Only fonts may be deleted."
 msgstr ""
 
-#: kio/KioFonts.cpp:456
+#: kio/KioFonts.cpp:458
 #, kde-format
 msgid "Can only remove fonts from either \"%1\" or \"%2\"."
 msgstr ""
 
-#: kio/KioFonts.cpp:483
+#: kio/KioFonts.cpp:485
 #, kde-format
 msgid "Please specify \"%1\" or \"%2\"."
 msgstr "ציין בבקשה \"%1\" או  \"%2\"."
 
-#: kio/KioFonts.cpp:503
+#: kio/KioFonts.cpp:505
 #, kde-format
 msgid "No special methods supported."
 msgstr ""
 
-#: kio/KioFonts.cpp:577
+#: kio/KioFonts.cpp:579
 #, kde-format
 msgid "Fonts"
 msgstr "גופנים"
 
-#: kio/KioFonts.cpp:706
+#: kio/KioFonts.cpp:708
 #, kde-format
 msgid "Failed to start the system daemon"
 msgstr ""
 
-#: kio/KioFonts.cpp:709
+#: kio/KioFonts.cpp:711
 #, kde-format
 msgid "Backend died"
 msgstr ""
 
-#: kio/KioFonts.cpp:712
+#: kio/KioFonts.cpp:714
 #, kde-format
 msgid "%1 is a bitmap font, and these have been disabled on your system."
 msgstr ""
 
-#: kio/KioFonts.cpp:715
+#: kio/KioFonts.cpp:717
 #, kde-format
 msgid ""
 "%1 contains the font <b>%2</b>, which is already installed on your system."
 msgstr ""
 
-#: kio/KioFonts.cpp:718
+#: kio/KioFonts.cpp:720
 #, kde-format
 msgid "%1 is not a font."
 msgstr "%1 אינו גופן."
 
-#: kio/KioFonts.cpp:721
+#: kio/KioFonts.cpp:723
 #, kde-format
 msgid "Could not remove all files associated with %1"
 msgstr ""
 
-#: lib/Fc.cpp:407 lib/KfiConstants.h:106
+#: lib/Fc.cpp:407 lib/KfiConstants.h:107
 #, kde-format
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#: lib/FcEngine.cpp:854
+#: lib/FcEngine.cpp:858
 #, kde-format
 msgctxt "First letter of the alphabet (in upper then lower case)"
 msgid "Aa"
 msgstr "א"
 
-#: lib/FcEngine.cpp:856
+#: lib/FcEngine.cpp:860
 #, kde-format
 msgctxt ""
 "All letters of the alphabet (in upper/lower case pairs), followed by numbers"
 msgid "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789"
 msgstr "אבגדהוזחטיכךלמםנןסעפףצץקרשת0123456789"
 
-#: lib/FcEngine.cpp:1018
+#: lib/FcEngine.cpp:1022
 #, kde-format
 msgid "No characters found."
 msgstr "לא נמצאו אותיות"
 
-#: lib/FcEngine.cpp:1056
+#: lib/FcEngine.cpp:1060
 #, kde-format
 msgctxt "A sentence that uses all of the letters of the alphabet"
 msgid "The quick brown fox jumps over the lazy dog"
 msgstr "דג סקרן שט לו בים זך ולפתע מצא חבורה נחמדה."
 
-#: lib/FcEngine.cpp:1061
+#: lib/FcEngine.cpp:1065
 #, kde-format
 msgctxt "All of the letters of the alphabet, uppercase"
 msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgstr "אבגדהוזחטיכלמנסעפצקרשת"
 
-#: lib/FcEngine.cpp:1066
+#: lib/FcEngine.cpp:1070
 #, kde-format
 msgctxt "All of the letters of the alphabet, lowercase"
 msgid "abcdefghijklmnopqrstuvwxyz"
 msgstr "אבגדהוזחטיכלמנסעפצקרשת"
 
-#: lib/FcEngine.cpp:1071
+#: lib/FcEngine.cpp:1075
 #, kde-format
 msgctxt "Numbers and characters"
 msgid "0123456789.:,;(*!?'/\\\")£$€%^&-+@~#<>{}[]"
 msgstr "0123456789.:,;(*!?'/\\\")£$₪€%^&-+@~#<>{}[]"
 
-#: lib/FcEngine.cpp:1469
+#: lib/FcEngine.cpp:1473
 #, kde-format
 msgid "ERROR: Could not determine font's name."
 msgstr "שגיאה: לא ניתן לקבוע את שם הגופן."
 
-#: lib/FcEngine.cpp:1472
+#: lib/FcEngine.cpp:1476
 #, kde-format
 msgid "%2 [1 pixel]"
 msgid_plural "%2 [%1 pixels]"
 msgstr[0] "%2 [פיקסל אחד]"
 msgstr[1] "%2 [%1 פיקסלים]"
 
-#: lib/KfiConstants.h:21
-#, kde-format
+#: lib/KfiConstants.h:22
 msgid "Personal"
 msgstr "אישי"
 
-#: lib/KfiConstants.h:22
-#, kde-format
+#: lib/KfiConstants.h:23
 msgid "System"
 msgstr "מערכתי"
 
-#: lib/KfiConstants.h:23
-#, kde-format
+#: lib/KfiConstants.h:24
 msgid "All"
 msgstr "הכל"
 
-#: lib/KfiConstants.h:37
-#, kde-format
+#: lib/KfiConstants.h:38
 msgid "Administrator"
 msgstr "מנהל"
 
-#: lib/KfiConstants.h:73
-#, kde-format
+#: lib/KfiConstants.h:74
 msgid "Thin"
 msgstr "דק"
 
-#: lib/KfiConstants.h:74
-#, kde-format
+#: lib/KfiConstants.h:75
 msgid "Extra Light"
 msgstr ""
 
-#: lib/KfiConstants.h:75
-#, kde-format
+#: lib/KfiConstants.h:76
 msgid "Ultra Light"
 msgstr ""
 
-#: lib/KfiConstants.h:76
-#, kde-format
+#: lib/KfiConstants.h:77
 msgid "Light"
 msgstr "קל"
 
-#: lib/KfiConstants.h:77
-#, kde-format
+#: lib/KfiConstants.h:78
 msgid "Regular"
 msgstr "רגיל"
 
-#: lib/KfiConstants.h:78 lib/KfiConstants.h:96
-#, kde-format
+#: lib/KfiConstants.h:79 lib/KfiConstants.h:97
 msgid "Normal"
 msgstr "נורמלי"
 
-#: lib/KfiConstants.h:79
-#, kde-format
+#: lib/KfiConstants.h:80
 msgid "Medium"
 msgstr "בינוני"
 
-#: lib/KfiConstants.h:80
-#, kde-format
+#: lib/KfiConstants.h:81
 msgid "Demi Bold"
 msgstr ""
 
-#: lib/KfiConstants.h:81
-#, kde-format
+#: lib/KfiConstants.h:82
 msgid "Semi Bold"
 msgstr "חצי מודגש"
 
-#: lib/KfiConstants.h:82
-#, kde-format
+#: lib/KfiConstants.h:83
 msgid "Bold"
 msgstr "מודגש"
 
-#: lib/KfiConstants.h:83
-#, kde-format
+#: lib/KfiConstants.h:84
 msgid "Extra Bold"
 msgstr ""
 
-#: lib/KfiConstants.h:84
-#, kde-format
+#: lib/KfiConstants.h:85
 msgid "Ultra Bold"
 msgstr ""
 
-#: lib/KfiConstants.h:85
-#, kde-format
+#: lib/KfiConstants.h:86
 msgid "Black"
 msgstr "שחור"
 
-#: lib/KfiConstants.h:86
-#, kde-format
+#: lib/KfiConstants.h:87
 msgid "Heavy"
 msgstr "כבד"
 
-#: lib/KfiConstants.h:88
-#, kde-format
+#: lib/KfiConstants.h:89
 msgid "Roman"
 msgstr ""
 
-#: lib/KfiConstants.h:89
-#, kde-format
+#: lib/KfiConstants.h:90
 msgid "Italic"
 msgstr "נטוי"
 
-#: lib/KfiConstants.h:90
-#, kde-format
+#: lib/KfiConstants.h:91
 msgid "Oblique"
 msgstr ""
 
-#: lib/KfiConstants.h:92
-#, kde-format
+#: lib/KfiConstants.h:93
 msgid "Ultra Condensed"
 msgstr ""
 
-#: lib/KfiConstants.h:93
-#, kde-format
+#: lib/KfiConstants.h:94
 msgid "Extra Condensed"
 msgstr ""
 
-#: lib/KfiConstants.h:94
-#, kde-format
+#: lib/KfiConstants.h:95
 msgid "Condensed"
 msgstr ""
 
-#: lib/KfiConstants.h:95
-#, kde-format
+#: lib/KfiConstants.h:96
 msgid "Semi Condensed"
 msgstr ""
 
-#: lib/KfiConstants.h:97
-#, kde-format
+#: lib/KfiConstants.h:98
 msgid "Semi Expanded"
 msgstr ""
 
-#: lib/KfiConstants.h:98
-#, kde-format
+#: lib/KfiConstants.h:99
 msgid "Expanded"
 msgstr ""
 
-#: lib/KfiConstants.h:99
-#, kde-format
+#: lib/KfiConstants.h:100
 msgid "Extra Expanded"
 msgstr ""
 
-#: lib/KfiConstants.h:100
-#, kde-format
+#: lib/KfiConstants.h:101
 msgid "Ultra Expanded"
 msgstr ""
 
-#: lib/KfiConstants.h:102
-#, kde-format
+#: lib/KfiConstants.h:103
 msgid "Monospaced"
 msgstr "גודל אחיד"
 
-#: lib/KfiConstants.h:103
-#, kde-format
+#: lib/KfiConstants.h:104
 msgid "Charcell"
 msgstr ""
 
-#: lib/KfiConstants.h:104
-#, kde-format
+#: lib/KfiConstants.h:105
 msgid "Proportional"
 msgstr "יחסי"
 
@@ -1583,54 +1564,54 @@ msgstr "מפריד, רווח"
 msgid "Category"
 msgstr "קטגוריה"
 
-#: viewpart/CharTip.cpp:154
+#: viewpart/CharTip.cpp:153
 #, kde-format
 msgid "UCS-4"
 msgstr "UCS-4"
 
-#: viewpart/CharTip.cpp:157
+#: viewpart/CharTip.cpp:156
 #, kde-format
 msgid "UTF-16"
 msgstr "UTF-16"
 
-#: viewpart/CharTip.cpp:168
+#: viewpart/CharTip.cpp:167
 #, kde-format
 msgid "UTF-8"
 msgstr "UTF-8"
 
-#: viewpart/CharTip.cpp:185
+#: viewpart/CharTip.cpp:184
 #, kde-format
 msgid "XML Decimal Entity"
 msgstr ""
 
-#: viewpart/FontViewPart.cpp:87
+#: viewpart/FontViewPart.cpp:85
 #, kde-format
 msgid "Show Face:"
 msgstr ""
 
-#: viewpart/FontViewPart.cpp:90
+#: viewpart/FontViewPart.cpp:88
 #, fuzzy, kde-format
 #| msgid "Installing"
 msgid "Install…"
 msgstr "מתקין"
 
-#: viewpart/FontViewPart.cpp:111
+#: viewpart/FontViewPart.cpp:109
 #, fuzzy, kde-format
 #| msgid "Change Text..."
 msgid "Change Text…"
 msgstr "שנה טקסט..."
 
-#: viewpart/FontViewPart.cpp:337
+#: viewpart/FontViewPart.cpp:335
 #, kde-format
 msgid "Could not read font."
 msgstr "אין אפשרות לקרוא את הגופן."
 
-#: viewpart/FontViewPart.cpp:389
+#: viewpart/FontViewPart.cpp:387
 #, kde-format
 msgid "Preview String"
 msgstr "מחרוזת תצוגה מקדימה"
 
-#: viewpart/FontViewPart.cpp:389
+#: viewpart/FontViewPart.cpp:387
 #, kde-format
 msgid "Please enter new string:"
 msgstr "אנא הכנס מחרוזת חדשה:"
@@ -1666,837 +1647,713 @@ msgstr "בלוק יוניקוד: %1"
 msgid "Unicode Script: %1"
 msgstr "תסריט יוניקוד: %1"
 
-#: viewpart/UnicodeBlocks.h:16
-#, kde-format
+#: viewpart/UnicodeBlocks.h:17
 msgid "Basic Latin"
 msgstr "לטינית בסיסית"
 
-#: viewpart/UnicodeBlocks.h:17
-#, kde-format
+#: viewpart/UnicodeBlocks.h:18
 msgid "Latin-1 Supplement"
 msgstr "תוספת ללטינית־1"
 
-#: viewpart/UnicodeBlocks.h:18
-#, kde-format
+#: viewpart/UnicodeBlocks.h:19
 msgid "Latin Extended-A"
 msgstr "לטינית מורחבת - א'"
 
-#: viewpart/UnicodeBlocks.h:19
-#, kde-format
+#: viewpart/UnicodeBlocks.h:20
 msgid "Latin Extended-B"
 msgstr "לטינית מורחבת - ב'"
 
-#: viewpart/UnicodeBlocks.h:20
-#, kde-format
+#: viewpart/UnicodeBlocks.h:21
 msgid "IPA Extensions"
 msgstr "הרחבות IPA"
 
-#: viewpart/UnicodeBlocks.h:21
-#, kde-format
+#: viewpart/UnicodeBlocks.h:22
 msgid "Spacing Modifier Letters"
 msgstr "אותיות משנות ריווח"
 
-#: viewpart/UnicodeBlocks.h:22
-#, kde-format
+#: viewpart/UnicodeBlocks.h:23
 msgid "Combining Diacritical Marks"
 msgstr "סימני ניקוד מחברים"
 
-#: viewpart/UnicodeBlocks.h:23
-#, kde-format
+#: viewpart/UnicodeBlocks.h:24
 msgid "Greek and Coptic"
 msgstr "יוונית וקופטית"
 
-#: viewpart/UnicodeBlocks.h:24 viewpart/UnicodeScripts.h:28
-#, kde-format
+#: viewpart/UnicodeBlocks.h:25 viewpart/UnicodeScripts.h:29
 msgid "Cyrillic"
 msgstr "קירילית"
 
-#: viewpart/UnicodeBlocks.h:25
-#, kde-format
+#: viewpart/UnicodeBlocks.h:26
 msgid "Cyrillic Supplement"
 msgstr "תוספות לקירילית"
 
-#: viewpart/UnicodeBlocks.h:26 viewpart/UnicodeScripts.h:15
-#, kde-format
+#: viewpart/UnicodeBlocks.h:27 viewpart/UnicodeScripts.h:16
 msgid "Armenian"
 msgstr "ארמנית"
 
-#: viewpart/UnicodeBlocks.h:27 viewpart/UnicodeScripts.h:41
-#, kde-format
+#: viewpart/UnicodeBlocks.h:28 viewpart/UnicodeScripts.h:42
 msgid "Hebrew"
 msgstr "עברית"
 
-#: viewpart/UnicodeBlocks.h:28 viewpart/UnicodeScripts.h:14
-#, kde-format
+#: viewpart/UnicodeBlocks.h:29 viewpart/UnicodeScripts.h:15
 msgid "Arabic"
 msgstr "ערבית"
 
-#: viewpart/UnicodeBlocks.h:29 viewpart/UnicodeScripts.h:68
-#, kde-format
+#: viewpart/UnicodeBlocks.h:30 viewpart/UnicodeScripts.h:69
 msgid "Syriac"
 msgstr "סורית"
 
-#: viewpart/UnicodeBlocks.h:30
-#, kde-format
+#: viewpart/UnicodeBlocks.h:31
 msgid "Arabic Supplement"
 msgstr "תוספות לערבית"
 
-#: viewpart/UnicodeBlocks.h:31 viewpart/UnicodeScripts.h:74
-#, kde-format
+#: viewpart/UnicodeBlocks.h:32 viewpart/UnicodeScripts.h:75
 msgid "Thaana"
 msgstr "טאנה"
 
-#: viewpart/UnicodeBlocks.h:32
-#, kde-format
+#: viewpart/UnicodeBlocks.h:33
 msgid "NKo"
 msgstr "נקו"
 
-#: viewpart/UnicodeBlocks.h:33 viewpart/UnicodeScripts.h:30
-#, kde-format
+#: viewpart/UnicodeBlocks.h:34 viewpart/UnicodeScripts.h:31
 msgid "Devanagari"
 msgstr "דוונגארי"
 
-#: viewpart/UnicodeBlocks.h:34 viewpart/UnicodeScripts.h:17
-#, kde-format
+#: viewpart/UnicodeBlocks.h:35 viewpart/UnicodeScripts.h:18
 msgid "Bengali"
 msgstr "בנגלית"
 
-#: viewpart/UnicodeBlocks.h:35 viewpart/UnicodeScripts.h:37
-#, kde-format
+#: viewpart/UnicodeBlocks.h:36 viewpart/UnicodeScripts.h:38
 msgid "Gurmukhi"
 msgstr "גורמוקי"
 
-#: viewpart/UnicodeBlocks.h:36 viewpart/UnicodeScripts.h:36
-#, kde-format
+#: viewpart/UnicodeBlocks.h:37 viewpart/UnicodeScripts.h:37
 msgid "Gujarati"
 msgstr "גוג'ראטית"
 
-#: viewpart/UnicodeBlocks.h:37 viewpart/UnicodeScripts.h:60
-#, kde-format
+#: viewpart/UnicodeBlocks.h:38 viewpart/UnicodeScripts.h:61
 msgid "Oriya"
 msgstr "אורייה"
 
-#: viewpart/UnicodeBlocks.h:38 viewpart/UnicodeScripts.h:72
-#, kde-format
+#: viewpart/UnicodeBlocks.h:39 viewpart/UnicodeScripts.h:73
 msgid "Tamil"
 msgstr "טמילית"
 
-#: viewpart/UnicodeBlocks.h:39 viewpart/UnicodeScripts.h:73
-#, kde-format
+#: viewpart/UnicodeBlocks.h:40 viewpart/UnicodeScripts.h:74
 msgid "Telugu"
 msgstr "טלוגו"
 
-#: viewpart/UnicodeBlocks.h:40 viewpart/UnicodeScripts.h:44
-#, kde-format
+#: viewpart/UnicodeBlocks.h:41 viewpart/UnicodeScripts.h:45
 msgid "Kannada"
 msgstr "קנאדה"
 
-#: viewpart/UnicodeBlocks.h:41 viewpart/UnicodeScripts.h:52
-#, kde-format
+#: viewpart/UnicodeBlocks.h:42 viewpart/UnicodeScripts.h:53
 msgid "Malayalam"
 msgstr "מליאלאם"
 
-#: viewpart/UnicodeBlocks.h:42 viewpart/UnicodeScripts.h:66
-#, kde-format
+#: viewpart/UnicodeBlocks.h:43 viewpart/UnicodeScripts.h:67
 msgid "Sinhala"
 msgstr "סינהלה"
 
-#: viewpart/UnicodeBlocks.h:43 viewpart/UnicodeScripts.h:75
-#, kde-format
+#: viewpart/UnicodeBlocks.h:44 viewpart/UnicodeScripts.h:76
 msgid "Thai"
 msgstr "תאילנדית"
 
-#: viewpart/UnicodeBlocks.h:44 viewpart/UnicodeScripts.h:48
-#, kde-format
+#: viewpart/UnicodeBlocks.h:45 viewpart/UnicodeScripts.h:49
 msgid "Lao"
 msgstr "לאו"
 
-#: viewpart/UnicodeBlocks.h:45 viewpart/UnicodeScripts.h:76
-#, kde-format
+#: viewpart/UnicodeBlocks.h:46 viewpart/UnicodeScripts.h:77
 msgid "Tibetan"
 msgstr "טיבטית"
 
-#: viewpart/UnicodeBlocks.h:46 viewpart/UnicodeScripts.h:54
-#, kde-format
+#: viewpart/UnicodeBlocks.h:47 viewpart/UnicodeScripts.h:55
 msgid "Myanmar"
 msgstr "מיאנמר"
 
-#: viewpart/UnicodeBlocks.h:47 viewpart/UnicodeScripts.h:32
-#, kde-format
+#: viewpart/UnicodeBlocks.h:48 viewpart/UnicodeScripts.h:33
 msgid "Georgian"
 msgstr "גאורגית"
 
-#: viewpart/UnicodeBlocks.h:48
-#, kde-format
+#: viewpart/UnicodeBlocks.h:49
 msgid "Hangul Jamo"
 msgstr "ג'אמו של האנגול"
 
-#: viewpart/UnicodeBlocks.h:49 viewpart/UnicodeScripts.h:31
-#, kde-format
+#: viewpart/UnicodeBlocks.h:50 viewpart/UnicodeScripts.h:32
 msgid "Ethiopic"
 msgstr "אתיופית"
 
-#: viewpart/UnicodeBlocks.h:50
-#, kde-format
+#: viewpart/UnicodeBlocks.h:51
 msgid "Ethiopic Supplement"
 msgstr "תוספות לאתיופית"
 
-#: viewpart/UnicodeBlocks.h:51 viewpart/UnicodeScripts.h:23
-#, kde-format
+#: viewpart/UnicodeBlocks.h:52 viewpart/UnicodeScripts.h:24
 msgid "Cherokee"
 msgstr "צ'רוקי"
 
-#: viewpart/UnicodeBlocks.h:52
-#, kde-format
+#: viewpart/UnicodeBlocks.h:53
 msgid "Unified Canadian Aboriginal Syllabics"
 msgstr "הברות קנדיות ילידיות מאוחדות"
 
-#: viewpart/UnicodeBlocks.h:53 viewpart/UnicodeScripts.h:57
-#, kde-format
+#: viewpart/UnicodeBlocks.h:54 viewpart/UnicodeScripts.h:58
 msgid "Ogham"
 msgstr "אוגהם"
 
-#: viewpart/UnicodeBlocks.h:54 viewpart/UnicodeScripts.h:64
-#, kde-format
+#: viewpart/UnicodeBlocks.h:55 viewpart/UnicodeScripts.h:65
 msgid "Runic"
 msgstr "רונות"
 
-#: viewpart/UnicodeBlocks.h:55 viewpart/UnicodeScripts.h:69
-#, kde-format
+#: viewpart/UnicodeBlocks.h:56 viewpart/UnicodeScripts.h:70
 msgid "Tagalog"
 msgstr "טאלוג"
 
-#: viewpart/UnicodeBlocks.h:56 viewpart/UnicodeScripts.h:40
-#, kde-format
+#: viewpart/UnicodeBlocks.h:57 viewpart/UnicodeScripts.h:41
 msgid "Hanunoo"
 msgstr "האנונו"
 
-#: viewpart/UnicodeBlocks.h:57 viewpart/UnicodeScripts.h:21
-#, kde-format
+#: viewpart/UnicodeBlocks.h:58 viewpart/UnicodeScripts.h:22
 msgid "Buhid"
 msgstr "בוהיד"
 
-#: viewpart/UnicodeBlocks.h:58 viewpart/UnicodeScripts.h:70
-#, kde-format
+#: viewpart/UnicodeBlocks.h:59 viewpart/UnicodeScripts.h:71
 msgid "Tagbanwa"
 msgstr "טגבאנווה"
 
-#: viewpart/UnicodeBlocks.h:59 viewpart/UnicodeScripts.h:47
-#, kde-format
+#: viewpart/UnicodeBlocks.h:60 viewpart/UnicodeScripts.h:48
 msgid "Khmer"
 msgstr "חמר"
 
-#: viewpart/UnicodeBlocks.h:60 viewpart/UnicodeScripts.h:53
-#, kde-format
+#: viewpart/UnicodeBlocks.h:61 viewpart/UnicodeScripts.h:54
 msgid "Mongolian"
 msgstr "מונגולית"
 
-#: viewpart/UnicodeBlocks.h:61 viewpart/UnicodeScripts.h:50
-#, kde-format
+#: viewpart/UnicodeBlocks.h:62 viewpart/UnicodeScripts.h:51
 msgid "Limbu"
 msgstr "לימבו"
 
-#: viewpart/UnicodeBlocks.h:62 viewpart/UnicodeScripts.h:71
-#, kde-format
+#: viewpart/UnicodeBlocks.h:63 viewpart/UnicodeScripts.h:72
 msgid "Tai Le"
 msgstr "טאי לה"
 
-#: viewpart/UnicodeBlocks.h:63 viewpart/UnicodeScripts.h:55
-#, kde-format
+#: viewpart/UnicodeBlocks.h:64 viewpart/UnicodeScripts.h:56
 msgid "New Tai Lue"
 msgstr "טאי לה חדש"
 
-#: viewpart/UnicodeBlocks.h:64
-#, kde-format
+#: viewpart/UnicodeBlocks.h:65
 msgid "Khmer Symbols"
 msgstr "סמל בחמר"
 
-#: viewpart/UnicodeBlocks.h:65 viewpart/UnicodeScripts.h:20
-#, kde-format
+#: viewpart/UnicodeBlocks.h:66 viewpart/UnicodeScripts.h:21
 msgid "Buginese"
 msgstr "בוגינית"
 
-#: viewpart/UnicodeBlocks.h:66 viewpart/UnicodeScripts.h:16
-#, kde-format
+#: viewpart/UnicodeBlocks.h:67 viewpart/UnicodeScripts.h:17
 msgid "Balinese"
 msgstr "באלית"
 
-#: viewpart/UnicodeBlocks.h:67
-#, kde-format
+#: viewpart/UnicodeBlocks.h:68
 msgid "Phonetic Extensions"
 msgstr "הרחבות פונטיות"
 
-#: viewpart/UnicodeBlocks.h:68
-#, kde-format
+#: viewpart/UnicodeBlocks.h:69
 msgid "Phonetic Extensions Supplement"
 msgstr "תוספות להרחבות פונטיות"
 
-#: viewpart/UnicodeBlocks.h:69
-#, kde-format
+#: viewpart/UnicodeBlocks.h:70
 msgid "Combining Diacritical Marks Supplement"
 msgstr "תוספות לסימני ניקוד מחברים"
 
-#: viewpart/UnicodeBlocks.h:70
-#, kde-format
+#: viewpart/UnicodeBlocks.h:71
 msgid "Latin Extended Additional"
 msgstr "תוספות להרחבות ללטינית"
 
-#: viewpart/UnicodeBlocks.h:71
-#, kde-format
+#: viewpart/UnicodeBlocks.h:72
 msgid "Greek Extended"
 msgstr "הרחבות ליוונית"
 
-#: viewpart/UnicodeBlocks.h:72
-#, kde-format
+#: viewpart/UnicodeBlocks.h:73
 msgid "General Punctuation"
 msgstr "סימני פיסוק כללים"
 
-#: viewpart/UnicodeBlocks.h:73
-#, kde-format
+#: viewpart/UnicodeBlocks.h:74
 msgid "Superscripts and Subscripts"
 msgstr "ציונים עיליים ותחתיים"
 
-#: viewpart/UnicodeBlocks.h:74
-#, kde-format
+#: viewpart/UnicodeBlocks.h:75
 msgid "Currency Symbols"
 msgstr "סמלי מטבע"
 
-#: viewpart/UnicodeBlocks.h:75
-#, kde-format
+#: viewpart/UnicodeBlocks.h:76
 msgid "Combining Diacritical Marks for Symbols"
 msgstr "סימני ניקוד מחברים עבור סמלים"
 
-#: viewpart/UnicodeBlocks.h:76
-#, kde-format
+#: viewpart/UnicodeBlocks.h:77
 msgid "Letter-Like Symbols"
 msgstr "סמלים דמויי אותיות"
 
-#: viewpart/UnicodeBlocks.h:77
-#, kde-format
+#: viewpart/UnicodeBlocks.h:78
 msgid "Number Forms"
 msgstr "צורות מספרים"
 
-#: viewpart/UnicodeBlocks.h:78
-#, kde-format
+#: viewpart/UnicodeBlocks.h:79
 msgid "Arrows"
 msgstr "חצים"
 
-#: viewpart/UnicodeBlocks.h:79
-#, kde-format
+#: viewpart/UnicodeBlocks.h:80
 msgid "Mathematical Operators"
 msgstr "אופרטורים מתמטיים"
 
-#: viewpart/UnicodeBlocks.h:80
-#, kde-format
+#: viewpart/UnicodeBlocks.h:81
 msgid "Miscellaneous Technical"
 msgstr "סימנים טכניים שונים"
 
-#: viewpart/UnicodeBlocks.h:81
-#, kde-format
+#: viewpart/UnicodeBlocks.h:82
 msgid "Control Pictures"
 msgstr "תמונות תווי בקרה"
 
-#: viewpart/UnicodeBlocks.h:82
-#, kde-format
+#: viewpart/UnicodeBlocks.h:83
 msgid "Optical Character Recognition"
 msgstr "זיהוי תווים אופטי"
 
-#: viewpart/UnicodeBlocks.h:83
-#, kde-format
+#: viewpart/UnicodeBlocks.h:84
 msgid "Enclosed Alphanumerics"
 msgstr "תווים אלפאנומריים תחומים"
 
-#: viewpart/UnicodeBlocks.h:84
-#, kde-format
+#: viewpart/UnicodeBlocks.h:85
 msgid "Box Drawing"
 msgstr "שרטוט תיבות"
 
-#: viewpart/UnicodeBlocks.h:85
-#, kde-format
+#: viewpart/UnicodeBlocks.h:86
 msgid "Block Elements"
 msgstr "מרכיבי בלוקים"
 
-#: viewpart/UnicodeBlocks.h:86
-#, kde-format
+#: viewpart/UnicodeBlocks.h:87
 msgid "Geometric Shapes"
 msgstr "צורות הנדסיות"
 
-#: viewpart/UnicodeBlocks.h:87
-#, kde-format
+#: viewpart/UnicodeBlocks.h:88
 msgid "Miscellaneous Symbols"
 msgstr "סמלים שונים"
 
-#: viewpart/UnicodeBlocks.h:88
-#, kde-format
+#: viewpart/UnicodeBlocks.h:89
 msgid "Dingbats"
 msgstr "קישוטים"
 
-#: viewpart/UnicodeBlocks.h:89
-#, kde-format
+#: viewpart/UnicodeBlocks.h:90
 msgid "Miscellaneous Mathematical Symbols-A"
 msgstr "סמלים מתמטיים שונים - א'"
 
-#: viewpart/UnicodeBlocks.h:90
-#, kde-format
+#: viewpart/UnicodeBlocks.h:91
 msgid "Supplemental Arrows-A"
 msgstr "חצים נוספים - א'"
 
-#: viewpart/UnicodeBlocks.h:91
-#, kde-format
+#: viewpart/UnicodeBlocks.h:92
 msgid "Braille Patterns"
 msgstr "דפוסי ברייל"
 
-#: viewpart/UnicodeBlocks.h:92
-#, kde-format
+#: viewpart/UnicodeBlocks.h:93
 msgid "Supplemental Arrows-B"
 msgstr "חצים נוספים - ב'"
 
-#: viewpart/UnicodeBlocks.h:93
-#, kde-format
+#: viewpart/UnicodeBlocks.h:94
 msgid "Miscellaneous Mathematical Symbols-B"
 msgstr "סמלים מתמטיים שונים - ב'"
 
-#: viewpart/UnicodeBlocks.h:94
-#, kde-format
+#: viewpart/UnicodeBlocks.h:95
 msgid "Supplemental Mathematical Operators"
 msgstr "אופרטורים מתמטיים נוספים"
 
-#: viewpart/UnicodeBlocks.h:95
-#, kde-format
+#: viewpart/UnicodeBlocks.h:96
 msgid "Miscellaneous Symbols and Arrows"
 msgstr "סמלים וחצים נוספים"
 
-#: viewpart/UnicodeBlocks.h:96 viewpart/UnicodeScripts.h:33
-#, kde-format
+#: viewpart/UnicodeBlocks.h:97 viewpart/UnicodeScripts.h:34
 msgid "Glagolitic"
 msgstr "גלגוליטי"
 
-#: viewpart/UnicodeBlocks.h:97
-#, kde-format
+#: viewpart/UnicodeBlocks.h:98
 msgid "Latin Extended-C"
 msgstr "לטינית מורחבת - ג'"
 
-#: viewpart/UnicodeBlocks.h:98 viewpart/UnicodeScripts.h:25
-#, kde-format
+#: viewpart/UnicodeBlocks.h:99 viewpart/UnicodeScripts.h:26
 msgid "Coptic"
 msgstr "קופטית"
 
-#: viewpart/UnicodeBlocks.h:99
-#, kde-format
+#: viewpart/UnicodeBlocks.h:100
 msgid "Georgian Supplement"
 msgstr "תוספות לגאורגית"
 
-#: viewpart/UnicodeBlocks.h:100 viewpart/UnicodeScripts.h:77
-#, kde-format
+#: viewpart/UnicodeBlocks.h:101 viewpart/UnicodeScripts.h:78
 msgid "Tifinagh"
 msgstr "טיפינאג"
 
-#: viewpart/UnicodeBlocks.h:101
-#, kde-format
+#: viewpart/UnicodeBlocks.h:102
 msgid "Ethiopic Extended"
 msgstr "אתיופית מורחבת"
 
-#: viewpart/UnicodeBlocks.h:102
-#, kde-format
+#: viewpart/UnicodeBlocks.h:103
 msgid "Supplemental Punctuation"
 msgstr "סימני פיסוק נוספים"
 
-#: viewpart/UnicodeBlocks.h:103
-#, kde-format
+#: viewpart/UnicodeBlocks.h:104
 msgid "CJK Radicals Supplement"
 msgstr "שורשים נוספים בסינית/יפנית/קוריאנית"
 
-#: viewpart/UnicodeBlocks.h:104
-#, kde-format
+#: viewpart/UnicodeBlocks.h:105
 msgid "Kangxi Radicals"
 msgstr "שורש קאנגשי"
 
-#: viewpart/UnicodeBlocks.h:105
-#, kde-format
+#: viewpart/UnicodeBlocks.h:106
 msgid "Ideographic Description Characters"
 msgstr "תווים לתיאר אידיאוגרפי"
 
-#: viewpart/UnicodeBlocks.h:106
-#, kde-format
+#: viewpart/UnicodeBlocks.h:107
 msgid "CJK Symbols and Punctuation"
 msgstr "סמלים וסימני פיסוק סינים/יפנים/קוריאנים"
 
-#: viewpart/UnicodeBlocks.h:107 viewpart/UnicodeScripts.h:42
-#, kde-format
+#: viewpart/UnicodeBlocks.h:108 viewpart/UnicodeScripts.h:43
 msgid "Hiragana"
 msgstr "היראגאנה"
 
-#: viewpart/UnicodeBlocks.h:108 viewpart/UnicodeScripts.h:45
-#, kde-format
+#: viewpart/UnicodeBlocks.h:109 viewpart/UnicodeScripts.h:46
 msgid "Katakana"
 msgstr "קטקאנה"
 
-#: viewpart/UnicodeBlocks.h:109 viewpart/UnicodeScripts.h:18
-#, kde-format
+#: viewpart/UnicodeBlocks.h:110 viewpart/UnicodeScripts.h:19
 msgid "Bopomofo"
 msgstr "בופומופו"
 
-#: viewpart/UnicodeBlocks.h:110
-#, kde-format
+#: viewpart/UnicodeBlocks.h:111
 msgid "Hangul Compatibility Jamo"
 msgstr "ג'אמו של האנגלו לתאימות"
 
-#: viewpart/UnicodeBlocks.h:111
-#, kde-format
+#: viewpart/UnicodeBlocks.h:112
 msgid "Kanbun"
 msgstr "קאנבון"
 
-#: viewpart/UnicodeBlocks.h:112
-#, kde-format
+#: viewpart/UnicodeBlocks.h:113
 msgid "Bopomofo Extended"
 msgstr "בופומופו מורחב"
 
-#: viewpart/UnicodeBlocks.h:113
-#, kde-format
+#: viewpart/UnicodeBlocks.h:114
 msgid "CJK Strokes"
 msgstr "קווים בסינית/יפנית/קוריאנית"
 
-#: viewpart/UnicodeBlocks.h:114
-#, kde-format
+#: viewpart/UnicodeBlocks.h:115
 msgid "Katakana Phonetic Extensions"
 msgstr "הרחבות פונטיות לקטקאנה"
 
-#: viewpart/UnicodeBlocks.h:115
-#, kde-format
+#: viewpart/UnicodeBlocks.h:116
 msgid "Enclosed CJK Letters and Months"
 msgstr "אותיות וחודשים תחומים לסינית/יפנית/קוריאנית"
 
-#: viewpart/UnicodeBlocks.h:116
-#, kde-format
+#: viewpart/UnicodeBlocks.h:117
 msgid "CJK Compatibility"
 msgstr "תאימות סינית/יפנית/קוריאנית"
 
-#: viewpart/UnicodeBlocks.h:117
-#, kde-format
+#: viewpart/UnicodeBlocks.h:118
 msgid "CJK Unified Ideographs Extension A"
 msgstr "הרחבות אידאוגרמות מאוחדת סינית/יפנית/קוריאנית - א'"
 
-#: viewpart/UnicodeBlocks.h:118
-#, kde-format
+#: viewpart/UnicodeBlocks.h:119
 msgid "Yijing Hexagram Symbols"
 msgstr "סמלי הקסגרמה של איצ'ינג"
 
-#: viewpart/UnicodeBlocks.h:119
-#, kde-format
+#: viewpart/UnicodeBlocks.h:120
 msgid "CJK Unified Ideographs"
 msgstr "אידיאוגרמות מאוחדות של סינית/יפנים/קוריאנית"
 
-#: viewpart/UnicodeBlocks.h:120
-#, kde-format
+#: viewpart/UnicodeBlocks.h:121
 msgid "Yi Syllables"
 msgstr "הברות אי"
 
-#: viewpart/UnicodeBlocks.h:121
-#, kde-format
+#: viewpart/UnicodeBlocks.h:122
 msgid "Yi Radicals"
 msgstr "שורשי אי"
 
-#: viewpart/UnicodeBlocks.h:122
-#, kde-format
+#: viewpart/UnicodeBlocks.h:123
 msgid "Modifier Tone Letters"
 msgstr "אותיות שינוי טון"
 
-#: viewpart/UnicodeBlocks.h:123
-#, kde-format
+#: viewpart/UnicodeBlocks.h:124
 msgid "Latin Extended-D"
 msgstr "לטינית מורחבת - ד'"
 
-#: viewpart/UnicodeBlocks.h:124 viewpart/UnicodeScripts.h:67
-#, kde-format
+#: viewpart/UnicodeBlocks.h:125 viewpart/UnicodeScripts.h:68
 msgid "Syloti Nagri"
 msgstr "סילוטי נאגרי"
 
-#: viewpart/UnicodeBlocks.h:125
-#, kde-format
+#: viewpart/UnicodeBlocks.h:126
 msgid "Phags-pa"
 msgstr "פאגספה"
 
-#: viewpart/UnicodeBlocks.h:126
-#, kde-format
+#: viewpart/UnicodeBlocks.h:127
 msgid "Hangul Syllables"
 msgstr "הברות האנגול"
 
-#: viewpart/UnicodeBlocks.h:127
-#, kde-format
+#: viewpart/UnicodeBlocks.h:128
 msgid "High Surrogates"
 msgstr "ממלאי מקום גבוהים"
 
-#: viewpart/UnicodeBlocks.h:128
-#, kde-format
+#: viewpart/UnicodeBlocks.h:129
 msgid "High Private Use Surrogates"
 msgstr "ממלאי מקום גבוהים לשימוש פרטי"
 
-#: viewpart/UnicodeBlocks.h:129
-#, kde-format
+#: viewpart/UnicodeBlocks.h:130
 msgid "Low Surrogates"
 msgstr "ממלאי מקום נמוכים"
 
-#: viewpart/UnicodeBlocks.h:130
-#, kde-format
+#: viewpart/UnicodeBlocks.h:131
 msgid "Private Use Area"
 msgstr "תחום לשימוש פרטי"
 
-#: viewpart/UnicodeBlocks.h:131
-#, kde-format
+#: viewpart/UnicodeBlocks.h:132
 msgid "CJK Compatibility Ideographs"
 msgstr "אידאוגרמות סינית/יפנית/קוריאנית לתאימות"
 
-#: viewpart/UnicodeBlocks.h:132
-#, kde-format
+#: viewpart/UnicodeBlocks.h:133
 msgid "Alphabetic Presentation Forms"
 msgstr "צורות ייצוג אלפביתיות"
 
-#: viewpart/UnicodeBlocks.h:133
-#, kde-format
+#: viewpart/UnicodeBlocks.h:134
 msgid "Arabic Presentation Forms-A"
 msgstr "צורות ייצוג ערבית - א'"
 
-#: viewpart/UnicodeBlocks.h:134
-#, kde-format
+#: viewpart/UnicodeBlocks.h:135
 msgid "Variation Selectors"
 msgstr "בוררי צורות משנה"
 
-#: viewpart/UnicodeBlocks.h:135
-#, kde-format
+#: viewpart/UnicodeBlocks.h:136
 msgid "Vertical Forms"
 msgstr "צורות אנכיות"
 
-#: viewpart/UnicodeBlocks.h:136
-#, kde-format
+#: viewpart/UnicodeBlocks.h:137
 msgid "Combining Half Marks"
 msgstr "חצאי סימנים מחברים"
 
-#: viewpart/UnicodeBlocks.h:137
-#, kde-format
+#: viewpart/UnicodeBlocks.h:138
 msgid "CJK Compatibility Forms"
 msgstr "סימני תאימות לסינית/יפנית/קוריאנית"
 
-#: viewpart/UnicodeBlocks.h:138
-#, kde-format
+#: viewpart/UnicodeBlocks.h:139
 msgid "Small Form Variants"
 msgstr "צורות משנה קטנות"
 
-#: viewpart/UnicodeBlocks.h:139
-#, kde-format
+#: viewpart/UnicodeBlocks.h:140
 msgid "Arabic Presentation Forms-B"
 msgstr "צורות ייצוג ערבית - ב'"
 
-#: viewpart/UnicodeBlocks.h:140
-#, kde-format
+#: viewpart/UnicodeBlocks.h:141
 msgid "Half-Width and Full-Width Forms"
 msgstr "צורות ברוחב מלא וחצי רוחב"
 
-#: viewpart/UnicodeBlocks.h:141
-#, kde-format
+#: viewpart/UnicodeBlocks.h:142
 msgid "Specials"
 msgstr "מיוחדים"
 
-#: viewpart/UnicodeBlocks.h:142
-#, kde-format
+#: viewpart/UnicodeBlocks.h:143
 msgid "Linear B Syllabary"
 msgstr "הברות לינארי ב."
 
-#: viewpart/UnicodeBlocks.h:143
-#, kde-format
+#: viewpart/UnicodeBlocks.h:144
 msgid "Linear B Ideograms"
 msgstr "סמלי לינארי ב."
 
-#: viewpart/UnicodeBlocks.h:144
-#, kde-format
+#: viewpart/UnicodeBlocks.h:145
 msgid "Aegean Numbers"
 msgstr "מספרים אגאים"
 
-#: viewpart/UnicodeBlocks.h:145
-#, kde-format
+#: viewpart/UnicodeBlocks.h:146
 msgid "Ancient Greek Numbers"
 msgstr "מספרים יוונים עתיקים"
 
-#: viewpart/UnicodeBlocks.h:146 viewpart/UnicodeScripts.h:58
-#, kde-format
+#: viewpart/UnicodeBlocks.h:147 viewpart/UnicodeScripts.h:59
 msgid "Old Italic"
 msgstr "איטלקית עתיקה"
 
-#: viewpart/UnicodeBlocks.h:147 viewpart/UnicodeScripts.h:34
-#, kde-format
+#: viewpart/UnicodeBlocks.h:148 viewpart/UnicodeScripts.h:35
 msgid "Gothic"
 msgstr "גותית"
 
-#: viewpart/UnicodeBlocks.h:148 viewpart/UnicodeScripts.h:78
-#, kde-format
+#: viewpart/UnicodeBlocks.h:149 viewpart/UnicodeScripts.h:79
 msgid "Ugaritic"
 msgstr "אוגרתית"
 
-#: viewpart/UnicodeBlocks.h:149 viewpart/UnicodeScripts.h:59
-#, kde-format
+#: viewpart/UnicodeBlocks.h:150 viewpart/UnicodeScripts.h:60
 msgid "Old Persian"
 msgstr "פרסית עתיקה"
 
-#: viewpart/UnicodeBlocks.h:150 viewpart/UnicodeScripts.h:29
-#, kde-format
+#: viewpart/UnicodeBlocks.h:151 viewpart/UnicodeScripts.h:30
 msgid "Deseret"
 msgstr "אלפבית מורמוני"
 
-#: viewpart/UnicodeBlocks.h:151 viewpart/UnicodeScripts.h:65
-#, kde-format
+#: viewpart/UnicodeBlocks.h:152 viewpart/UnicodeScripts.h:66
 msgid "Shavian"
 msgstr "שביאנית"
 
-#: viewpart/UnicodeBlocks.h:152 viewpart/UnicodeScripts.h:61
-#, kde-format
+#: viewpart/UnicodeBlocks.h:153 viewpart/UnicodeScripts.h:62
 msgid "Osmanya"
 msgstr "אוסמנית (סומלית)"
 
-#: viewpart/UnicodeBlocks.h:153
-#, kde-format
+#: viewpart/UnicodeBlocks.h:154
 msgid "Cypriot Syllabary"
 msgstr ""
 
-#: viewpart/UnicodeBlocks.h:154 viewpart/UnicodeScripts.h:63
-#, kde-format
+#: viewpart/UnicodeBlocks.h:155 viewpart/UnicodeScripts.h:64
 msgid "Phoenician"
 msgstr "פיניקית"
 
-#: viewpart/UnicodeBlocks.h:155 viewpart/UnicodeScripts.h:46
-#, kde-format
+#: viewpart/UnicodeBlocks.h:156 viewpart/UnicodeScripts.h:47
 msgid "Kharoshthi"
 msgstr ""
 
-#: viewpart/UnicodeBlocks.h:156 viewpart/UnicodeScripts.h:26
-#, kde-format
+#: viewpart/UnicodeBlocks.h:157 viewpart/UnicodeScripts.h:27
 msgid "Cuneiform"
 msgstr "כתב יתדות"
 
-#: viewpart/UnicodeBlocks.h:157
-#, kde-format
+#: viewpart/UnicodeBlocks.h:158
 msgid "Cuneiform Numbers and Punctuation"
 msgstr "מספרים ופיסוק בכתב יתדות"
 
-#: viewpart/UnicodeBlocks.h:158
-#, kde-format
+#: viewpart/UnicodeBlocks.h:159
 msgid "Byzantine Musical Symbols"
 msgstr "סימנים מוזיקלים ביזנטיים"
 
-#: viewpart/UnicodeBlocks.h:159
-#, kde-format
+#: viewpart/UnicodeBlocks.h:160
 msgid "Musical Symbols"
 msgstr "סימנים מוזיקליים"
 
-#: viewpart/UnicodeBlocks.h:160
-#, kde-format
+#: viewpart/UnicodeBlocks.h:161
 msgid "Ancient Greek Musical Notation"
 msgstr "סימנים מוזיקליים יוונים עתיקים"
 
-#: viewpart/UnicodeBlocks.h:161
-#, kde-format
+#: viewpart/UnicodeBlocks.h:162
 msgid "Tai Xuan Jing Symbols"
 msgstr ""
 
-#: viewpart/UnicodeBlocks.h:162
-#, kde-format
+#: viewpart/UnicodeBlocks.h:163
 msgid "Counting Rod Numerals"
 msgstr ""
 
-#: viewpart/UnicodeBlocks.h:163
-#, kde-format
+#: viewpart/UnicodeBlocks.h:164
 msgid "Mathematical Alphanumeric Symbols"
 msgstr "סימנים מתמטיים אלפא־נומריים"
 
-#: viewpart/UnicodeBlocks.h:164
-#, kde-format
+#: viewpart/UnicodeBlocks.h:165
 msgid "CJK Unified Ideographs Extension B"
 msgstr ""
 
-#: viewpart/UnicodeBlocks.h:165
-#, kde-format
+#: viewpart/UnicodeBlocks.h:166
 msgid "CJK Compatibility Ideographs Supplement"
 msgstr ""
 
-#: viewpart/UnicodeBlocks.h:166
-#, kde-format
+#: viewpart/UnicodeBlocks.h:167
 msgid "Tags"
 msgstr "תגיות"
 
-#: viewpart/UnicodeBlocks.h:167
-#, kde-format
+#: viewpart/UnicodeBlocks.h:168
 msgid "Variation Selectors Supplement"
 msgstr ""
 
-#: viewpart/UnicodeBlocks.h:168
-#, kde-format
+#: viewpart/UnicodeBlocks.h:169
 msgid "Supplementary Private Use Area-A"
 msgstr ""
 
-#: viewpart/UnicodeBlocks.h:169
-#, kde-format
+#: viewpart/UnicodeBlocks.h:170
 msgid "Supplementary Private Use Area-B"
 msgstr ""
 
-#: viewpart/UnicodeScripts.h:19
-#, kde-format
+#: viewpart/UnicodeScripts.h:20
 msgid "Braille"
 msgstr "ברייל"
 
-#: viewpart/UnicodeScripts.h:22
-#, kde-format
+#: viewpart/UnicodeScripts.h:23
 msgid "Canadian Aboriginal"
 msgstr "קנדית אבוריג'ינלית"
 
-#: viewpart/UnicodeScripts.h:24
-#, kde-format
+#: viewpart/UnicodeScripts.h:25
 msgid "Common"
 msgstr ""
 
-#: viewpart/UnicodeScripts.h:27
-#, kde-format
+#: viewpart/UnicodeScripts.h:28
 msgid "Cypriot"
 msgstr "קפריסאית"
 
-#: viewpart/UnicodeScripts.h:35
-#, kde-format
+#: viewpart/UnicodeScripts.h:36
 msgid "Greek"
 msgstr "יוונית"
 
-#: viewpart/UnicodeScripts.h:38
-#, kde-format
+#: viewpart/UnicodeScripts.h:39
 msgid "Han"
 msgstr "סינית"
 
-#: viewpart/UnicodeScripts.h:39
-#, kde-format
+#: viewpart/UnicodeScripts.h:40
 msgid "Hangul"
 msgstr "האנגול"
 
-#: viewpart/UnicodeScripts.h:43
-#, kde-format
+#: viewpart/UnicodeScripts.h:44
 msgid "Inherited"
 msgstr ""
 
-#: viewpart/UnicodeScripts.h:49
-#, kde-format
+#: viewpart/UnicodeScripts.h:50
 msgid "Latin"
 msgstr "לטינית"
 
-#: viewpart/UnicodeScripts.h:51
-#, kde-format
+#: viewpart/UnicodeScripts.h:52
 msgid "Linear B"
 msgstr "לינארי ב'"
 
-#: viewpart/UnicodeScripts.h:56
-#, kde-format
+#: viewpart/UnicodeScripts.h:57
 msgid "Nko"
 msgstr "נקו"
 
-#: viewpart/UnicodeScripts.h:62
-#, kde-format
+#: viewpart/UnicodeScripts.h:63
 msgid "Phags Pa"
 msgstr ""
 
-#: viewpart/UnicodeScripts.h:79
-#, kde-format
+#: viewpart/UnicodeScripts.h:80
 msgid "Yi"
 msgstr "אי"
+
+#~ msgid "Print..."
+#~ msgstr "הדפס..."
+
+#, fuzzy
+#~| msgid "Create New Group"
+#~ msgid "Create New Group..."
+#~ msgstr "צור קבוצה חדשה"
+
+#, fuzzy
+#~| msgid "Remove Group"
+#~ msgid "Remove Group..."
+#~ msgstr "הסר קבוצה"
+
+#~ msgid "Install..."
+#~ msgstr "התקנה..."
+
+#~ msgid "<p>No information</p>"
+#~ msgstr "<p>אין מידע</p>"
+
+#~ msgid "Create a new group"
+#~ msgstr "צור קבוצה חדשה"
+
+#~ msgid "Enable all disabled fonts in the current group"
+#~ msgstr "אפשר את כל הגופנים המבוטלים בקבוצה הנוכחית"
+
+#~ msgid "Disable all enabled fonts in the current group"
+#~ msgstr "בטל את כל הגופנים המאופשרים בקבוצה הנוכחית"
+
+#~ msgid "Please enter the name of the new group:"
+#~ msgstr "אנא הכנס שם לקבוצה החדשה:"
+
+#~ msgid "Type here to filter on %1"
+#~ msgstr "כתוב כאן בכדי לסנן את %1"
+
+#~ msgid "Tools"
+#~ msgstr "כלים"
+
+#~ msgid "Add..."
+#~ msgstr "הוסף..."
+
+#~ msgid "Install fonts"
+#~ msgstr "התקן גופנים"

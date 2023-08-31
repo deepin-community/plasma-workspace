@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcminit\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-26 00:47+0000\n"
 "PO-Revision-Date: 2008-05-05 03:28+0300\n"
 "Last-Translator: Marek Laane <bald@starman.ee>\n"
 "Language-Team: Estonian <kde-et@linux.ee>\n"
@@ -28,27 +28,25 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "bald@starman.ee"
 
-#: main.cpp:151
-#, kde-format
-msgid "Module %1 not found"
-msgstr "Moodulit %1 ei leitud"
-
-#: main.cpp:214
+#: main.cpp:170
 #, kde-format
 msgid "KCMInit"
 msgstr "KCMInit"
 
-#: main.cpp:216
+#: main.cpp:172
 #, kde-format
 msgid "KCMInit - runs startup initialization for Control Modules."
 msgstr "KCMInit - käivitab käivitamisel ajal juhtimiskeskuse mooduleid."
 
-#: main.cpp:222
+#: main.cpp:178
 #, kde-format
 msgid "List modules that are run at startup"
 msgstr "Käivitamisel käivitatakse moodulite nimekiri"
 
-#: main.cpp:223
+#: main.cpp:179
 #, kde-format
 msgid "Configuration module to run"
 msgstr "Käivitatav seadistustemoodul"
+
+#~ msgid "Module %1 not found"
+#~ msgstr "Moodulit %1 ei leitud"

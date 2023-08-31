@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmcolors\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
+"POT-Creation-Date: 2023-02-22 02:35+0000\n"
 "PO-Revision-Date: 2009-01-06 18:00+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bengali INDIA <fedora-trans-bn_IN@redhat.com>\n"
@@ -28,44 +28,34 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "runab@redhat.com"
 
-#: colors.cpp:65 editor/scmeditordialog.cpp:66
-#, kde-format
-msgid "Colors"
-msgstr "রং"
-
-#: colors.cpp:67
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr ""
-
-#: colors.cpp:192
+#: colors.cpp:235
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr ""
 
-#: colors.cpp:205
+#: colors.cpp:248
 #, fuzzy, kde-format
 #| msgid "&Enter a name for the color scheme:"
 msgid "Unable to download the color scheme: %1"
 msgstr "রঙের স্কিম চিহ্নিত করা জন্য একটি নাম লিখুন: (&E)"
 
-#: colors.cpp:223
+#: colors.cpp:266
 #, fuzzy, kde-format
 #| msgid "Import a color scheme from a file"
 msgid "This file is not a color scheme file."
 msgstr "ফাইল থেকে একটি নতুন রঙের স্কিম ইম্পোর্ট করুন"
 
-#: colors.cpp:242
+#: colors.cpp:285
 #, kde-format
 msgid "Failed to create 'color-scheme' data folder."
 msgstr ""
 
-#: colors.cpp:249
+#: colors.cpp:292
 #, kde-format
 msgid "Failed to copy color scheme into 'color-scheme' data folder."
 msgstr ""
 
-#: colors.cpp:266
+#: colors.cpp:309
 #, kde-format
 msgid "Color scheme installed successfully."
 msgstr ""
@@ -84,62 +74,76 @@ msgstr "রঙের স্কিম সংরক্ষণ করুন"
 msgid "Accent color"
 msgstr "নিষ্ক্রিয় রঙ"
 
-#: editor/kcolorschemeeditor.cpp:23
+#. i18n: ectx: label, entry (lastUsedCustomAccentColor), group (General)
+#: colorssettings.kcfg:17
+#, kde-format
+msgid ""
+"The last used custom accent color before user switched to wallpaper "
+"generated color or default color"
+msgstr ""
+
+#. i18n: ectx: label, entry (accentColorFromWallpaper), group (General)
+#: colorssettings.kcfg:21
+#, kde-format
+msgid "Whether accent color from wallpaper should be applied"
+msgstr ""
+
+#: editor/kcolorschemeeditor.cpp:25
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "KColorSchemeEditor"
 msgstr "রঙের স্কিম সংরক্ষণ করুন"
 
-#: editor/kcolorschemeeditor.cpp:25
+#: editor/kcolorschemeeditor.cpp:27
 #, fuzzy, kde-format
 #| msgid "Save the current color scheme"
 msgid "Utility to edit and create color schemes"
 msgstr "রঙের বর্তমান স্কিম সংরক্ষণ করুন"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Olivier Churlaud"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Utility creation"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:28
+#: editor/kcolorschemeeditor.cpp:30
 #, kde-format
 msgid "Jeremy Whiting"
 msgstr "জেরেমি ওয়াইটিং"
 
-#: editor/kcolorschemeeditor.cpp:28 editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:30 editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "KCM code (reused in here)"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "ম্যাথিউ ওয়েলকে"
 
-#: editor/kcolorschemeeditor.cpp:33
+#: editor/kcolorschemeeditor.cpp:35
 #, kde-format
 msgid "Scheme to edit or to use as a base."
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:35
+#: editor/kcolorschemeeditor.cpp:37
 #, kde-format
 msgid ""
 "Show 'Apply' button that saves changes without asking (unlike 'Save As' "
 "button)"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:39
+#: editor/kcolorschemeeditor.cpp:41
 #, kde-format
 msgid ""
 "Makes the dialog transient for another application window specified by handle"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:55
+#: editor/kcolorschemeeditor.cpp:57
 #, kde-format
 msgid "Scheme not found, falling back to current one.\n"
 msgstr ""
@@ -677,48 +681,43 @@ msgstr "নিষ্ক্রিয় শিরোনামের বারের 
 msgid "Inactive Titlebar Secondary"
 msgstr "নিষ্ক্রিয় শিরোনামের বারের লেখা"
 
-#: editor/scmeditordialog.cpp:65
+#: editor/scmeditordialog.cpp:60
 #, kde-format
 msgid "Options"
 msgstr "বিকল্প"
 
-#: editor/scmeditordialog.cpp:67
+#: editor/scmeditordialog.cpp:61
+#, kde-format
+msgid "Colors"
+msgstr "রং"
+
+#: editor/scmeditordialog.cpp:62
 #, fuzzy, kde-format
 #| msgid "Disabled"
 msgid "Disabled"
 msgstr "নিষ্ক্রিয়"
 
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "This colour scheme was not saved. Continue?"
-msgstr ""
-
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "Do you really want to upload?"
-msgstr ""
-
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:94
 #, kde-format
 msgid "You have unsaved changes. Do you really want to quit?"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:95
 #, kde-format
 msgid "Unsaved changes"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:133 editor/scmeditordialog.cpp:158
+#: editor/scmeditordialog.cpp:115 editor/scmeditordialog.cpp:140
 #, kde-format
 msgid "Save Color Scheme"
 msgstr "রঙের স্কিম সংরক্ষণ করুন"
 
-#: editor/scmeditordialog.cpp:133
+#: editor/scmeditordialog.cpp:115
 #, kde-format
 msgid "&Enter a name for the color scheme:"
 msgstr "রঙের স্কিম চিহ্নিত করা জন্য একটি নাম লিখুন: (&E)"
 
-#: editor/scmeditordialog.cpp:157
+#: editor/scmeditordialog.cpp:139
 #, kde-format
 msgid ""
 "A color scheme with that name already exists.\n"
@@ -727,35 +726,21 @@ msgstr ""
 "এই নামের একটি রঙের স্কিম বর্তমানে উপস্থিত রয়েছে।\n"
 "আপনি কি এটি নতুন করে লিখতে ইচ্ছুক?"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "You do not have permission to overwrite that scheme"
 msgstr "এই স্কিম মুছে নতুন করে লেখার অনুমতি আপনার নেই"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "Error"
 msgstr "ত্রুটি"
 
-#: editor/scmeditordialog.cpp:209
+#: editor/scmeditordialog.cpp:191
 #, fuzzy, kde-format
 #| msgid "Inactive"
 msgid "Inactive"
 msgstr "নিষ্ক্রিয়"
-
-#. i18n: ectx: property (toolTip), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:42
-#, fuzzy, kde-format
-#| msgid "Get new color schemes from the Internet"
-msgid "Share the selected scheme on the Internet"
-msgstr "ইন্টারনেট থেকে, রঙের নতুন স্কিম প্রাপ্ত করুন"
-
-#. i18n: ectx: property (text), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:45
-#, fuzzy, kde-format
-#| msgid "Import Scheme..."
-msgid "Upload Scheme"
-msgstr "স্কিম ইম্পোর্ট করুন..."
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: editor/scmeditoreffects.ui:17
@@ -924,33 +909,52 @@ msgstr ""
 msgid "Shade sorted column &in lists"
 msgstr ""
 
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (text), widget (QCheckBox, tintColors)
 #: editor/scmeditoroptions.ui:38
+#, fuzzy, kde-format
+#| msgid "Inactive color"
+msgid "Tint all colors with accent color"
+msgstr "নিষ্ক্রিয় রঙ"
+
+#. i18n: ectx: property (text), widget (QCheckBox, accentTitlebar)
+#: editor/scmeditoroptions.ui:45
+#, kde-format
+msgid "Make window titlebars a&ccent-colored"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: editor/scmeditoroptions.ui:52
+#, kde-format
+msgid "Tint strength:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#: editor/scmeditoroptions.ui:69
 #, kde-format
 msgid "Shading of frames and lighting (\"3D\") effects"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:41
+#: editor/scmeditoroptions.ui:72
 #, fuzzy, kde-format
 #| msgid "Shade"
 msgid "Shading"
 msgstr "ছায়াবৃত"
 
-#. i18n: ectx: property (text), widget (QLabel, label_9)
-#: editor/scmeditoroptions.ui:53
-#, kde-format
-msgid "Minimum"
-msgstr ""
-
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: editor/scmeditoroptions.ui:73
+#: editor/scmeditoroptions.ui:97
 #, kde-format
 msgid "Maximum"
 msgstr ""
 
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: editor/scmeditoroptions.ui:117
+#, kde-format
+msgid "Minimum"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: editor/scmeditoroptions.ui:80
+#: editor/scmeditoroptions.ui:124
 #, kde-format
 msgid "Contrast"
 msgstr "বৈপরিত্য"
@@ -1239,96 +1243,108 @@ msgid "From current color scheme"
 msgstr "রঙের বর্তমান স্কিম সংরক্ষণ করুন"
 
 #: package/contents/ui/main.qml:157
+#, fuzzy, kde-format
+#| msgid "Save the current color scheme"
+msgctxt "@option:radio wallpaper accent color option"
+msgid "From current wallpaper"
+msgstr "রঙের বর্তমান স্কিম সংরক্ষণ করুন"
+
+#: package/contents/ui/main.qml:266
 #, kde-format
 msgid "Custom:"
 msgstr ""
 
-#: package/contents/ui/main.qml:268
+#: package/contents/ui/main.qml:273
+#, kde-format
+msgid "Choose custom accent color"
+msgstr ""
+
+#: package/contents/ui/main.qml:361
 #, fuzzy, kde-format
 #| msgid "Window Text"
 msgid "Window Title"
 msgstr "উইন্ডোর লেখা"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:383
 #, fuzzy, kde-format
 #| msgid "Window text"
 msgid "Window text"
 msgstr "উইন্ডোর লেখা"
 
-#: package/contents/ui/main.qml:297
+#: package/contents/ui/main.qml:390
 #, fuzzy, kde-format
 #| msgid "Button"
 msgid "Button"
 msgstr "বাটন"
 
-#: package/contents/ui/main.qml:331
+#: package/contents/ui/main.qml:427
 #, fuzzy, kde-format
 #| msgid "link"
 msgctxt "Hyperlink"
 msgid "link"
 msgstr "লিংক"
 
-#: package/contents/ui/main.qml:333
+#: package/contents/ui/main.qml:429
 #, fuzzy, kde-format
 #| msgid "visited"
 msgctxt "Visited hyperlink"
 msgid "visited"
 msgstr "পরিদর্শিত"
 
-#: package/contents/ui/main.qml:340
+#: package/contents/ui/main.qml:436
 #, fuzzy, kde-format
 #| msgid "Normal text"
 msgid "Normal text"
 msgstr "স্বাভাবিক লেখা"
 
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:444
 #, fuzzy, kde-format
 #| msgid "Visited Text"
 msgid "Highlighted text"
 msgstr "পরিদর্শিত লেখা"
 
-#: package/contents/ui/main.qml:355
+#: package/contents/ui/main.qml:451
 #, fuzzy, kde-format
 #| msgid "Disabled"
 msgid "Disabled text"
 msgstr "নিষ্ক্রিয়"
 
-#: package/contents/ui/main.qml:373
+#: package/contents/ui/main.qml:469
 #, fuzzy, kde-format
 #| msgid "Import Scheme..."
 msgid "Edit Color Scheme…"
 msgstr "স্কিম ইম্পোর্ট করুন..."
 
-#: package/contents/ui/main.qml:379
+#: package/contents/ui/main.qml:475
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Remove Color Scheme"
 msgstr "রঙের স্কিম সংরক্ষণ করুন"
 
-#: package/contents/ui/main.qml:386
+#: package/contents/ui/main.qml:482
 #, fuzzy, kde-format
 #| msgid "Import Color Scheme"
 msgid "Restore Color Scheme"
 msgstr "রঙের স্কিম ইম্পোর্ট করুন"
 
-#: package/contents/ui/main.qml:430
+#: package/contents/ui/main.qml:526
 #, kde-format
 msgid "Install from File…"
 msgstr ""
 
-#: package/contents/ui/main.qml:435
+#: package/contents/ui/main.qml:531
 #, fuzzy, kde-format
 #| msgid "Get &New Schemes..."
 msgid "Get New Color Schemes…"
 msgstr "নতুন স্কিম প্রাপ্ত করুন...(&N)"
 
-#: package/contents/ui/main.qml:486
+#: package/contents/ui/main.qml:549
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Open Color Scheme"
 msgstr "রঙের স্কিম সংরক্ষণ করুন"
 
-#: package/contents/ui/main.qml:488
+#: package/contents/ui/main.qml:551
 #, kde-format
 msgid "Color Scheme Files (*.colors)"
 msgstr ""
@@ -1348,53 +1364,232 @@ msgid ""
 "(passing a full path will only use the last part of the path)"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:45
+#: plasma-apply-colorscheme.cpp:46
 #, kde-format
 msgid ""
 "Show all the color schemes available on the system (and which is the current "
 "theme)"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:69
+#: plasma-apply-colorscheme.cpp:51
+#, kde-format
+msgid ""
+"The name of the accent color you want to set. SVG color names (https://www."
+"w3.org/TR/SVG11/types.html#ColorKeywords) and hex color codes are supported. "
+"Quote the hex code if there is possibility of shell expansion"
+msgstr ""
+
+#: plasma-apply-colorscheme.cpp:78
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
 "Plasma session."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:92
+#: plasma-apply-colorscheme.cpp:111
 #, kde-format
 msgid "Successfully applied the color scheme %1 to your current Plasma session"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:94
+#: plasma-apply-colorscheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
 "options: %2"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:101
+#: plasma-apply-colorscheme.cpp:120
 #, kde-format
 msgid ""
 "You have managed to pass an empty color scheme name, which isn't supported "
 "behavior."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:105
+#: plasma-apply-colorscheme.cpp:124
 #, kde-format
 msgid ""
 "The file you attempted to set as your scheme, %1, could not be identified as "
 "a color scheme."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:110
+#: plasma-apply-colorscheme.cpp:147
+#, kde-format
+msgid "Successfully applied the accent color %1"
+msgstr ""
+
+#: plasma-apply-colorscheme.cpp:149
+#, fuzzy, kde-format
+#| msgid "Inactive color"
+msgid "Invalid accent color "
+msgstr "নিষ্ক্রিয় রঙ"
+
+#: plasma-apply-colorscheme.cpp:154
 #, kde-format
 msgid "You have the following color schemes on your system:"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:115
+#: plasma-apply-colorscheme.cpp:159
 #, fuzzy, kde-format
 #| msgid "Save the current color scheme"
 msgid " * %1 (current color scheme)"
 msgstr "রঙের বর্তমান স্কিম সংরক্ষণ করুন"
+
+#, fuzzy
+#~| msgid "Apply inactive window color &effects"
+#~ msgid "Apply a&ccent color to active window titlebars"
+#~ msgstr "নিষ্ক্রিয় উইন্ডোর রঙের ইফেক্ট প্রয়োগ করা হবে (&e)"
+
+#, fuzzy
+#~| msgid "Apply inactive window color &effects"
+#~ msgid "Apply acce&nt color to inactive window titlebars"
+#~ msgstr "নিষ্ক্রিয় উইন্ডোর রঙের ইফেক্ট প্রয়োগ করা হবে (&e)"
+
+#, fuzzy
+#~| msgid "Get new color schemes from the Internet"
+#~ msgid "Share the selected scheme on the Internet"
+#~ msgstr "ইন্টারনেট থেকে, রঙের নতুন স্কিম প্রাপ্ত করুন"
+
+#, fuzzy
+#~| msgid "Import Scheme..."
+#~ msgid "Upload Scheme"
+#~ msgstr "স্কিম ইম্পোর্ট করুন..."
+
+#, fuzzy
+#~| msgid "Get &New Schemes..."
+#~ msgid "Download New Color Schemes"
+#~ msgstr "নতুন স্কিম প্রাপ্ত করুন...(&N)"
+
+#~ msgid "Remove the selected scheme"
+#~ msgstr "নির্বাচিত স্কিম মুছে ফেলুন"
+
+#, fuzzy
+#~| msgid "Remove Scheme"
+#~ msgid "Remove"
+#~ msgstr "স্কিম মুছে ফেলুন"
+
+#, fuzzy
+#~| msgid "Get new color schemes from the Internet"
+#~ msgid "Import a color scheme from a file"
+#~ msgstr "ইন্টারনেট থেকে, রঙের নতুন স্কিম প্রাপ্ত করুন"
+
+#~ msgid "Get new color schemes from the Internet"
+#~ msgstr "ইন্টারনেট থেকে, রঙের নতুন স্কিম প্রাপ্ত করুন"
+
+#, fuzzy
+#~| msgid "Get &New Schemes..."
+#~ msgid "Get &New Color Schemes..."
+#~ msgstr "নতুন স্কিম প্রাপ্ত করুন...(&N)"
+
+#, fuzzy
+#~| msgid "Apply colors to &non-KDE4 applications"
+#~ msgid "Apply colors to &non-Qt applications"
+#~ msgstr "KDE4 ভিন্ন অন্যান্য অ্যাপ্লিকেশনের জন্য রঙ প্রয়োগ করা হবে (&n)"
+
+#~ msgid "(c) 2007 Matthew Woehlke"
+#~ msgstr "(c) ২০০৭ ম্যাথিউ ওয়েলকে"
+
+#~ msgctxt "Default color scheme"
+#~ msgid "Default"
+#~ msgstr "ডিফল্ট"
+
+#~ msgctxt "Current color scheme"
+#~ msgid "Current"
+#~ msgstr "বর্তমান"
+
+#~ msgid "You do not have permission to delete that scheme"
+#~ msgstr "আপনি, চিহ্নিত স্কিম মুছে ফেলার অনুমতিপ্রাপ্ত নন"
+
+#, fuzzy
+#~| msgid "None"
+#~ msgid "Notice"
+#~ msgstr "শূণ্য"
+
+#~ msgid "Selecting another scheme will discard any changes you have made"
+#~ msgstr "পৃথক স্কিম নির্বাচিত হলে, সকল পরিবর্তিত মান বর্জন করা হবে"
+
+#~ msgid "Are you sure?"
+#~ msgstr "আপনি কি নিশ্চিত?"
+
+#, fuzzy
+#~| msgid "Inactive"
+#~ msgctxt "@title:tab color transformations on inactive elements"
+#~ msgid "Inactive"
+#~ msgstr "নিষ্ক্রিয়"
+
+#, fuzzy
+#~| msgid "Disabled contrast type"
+#~ msgid "Inactive intensity effect type"
+#~ msgstr "নিষ্ক্রিয় বৈপরিত্যের ধরন"
+
+#, fuzzy
+#~| msgid "None"
+#~ msgctxt "no inactive intensity effect"
+#~ msgid "None"
+#~ msgstr "শূণ্য"
+
+#, fuzzy
+#~| msgid "Shade"
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Shade"
+#~ msgstr "ছায়াবৃত"
+
+#, fuzzy
+#~| msgid "Darken"
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Darken"
+#~ msgstr "গাঢ় রঙ"
+
+#, fuzzy
+#~| msgid "Lighten"
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Lighten"
+#~ msgstr "হালকা রঙ"
+
+#, fuzzy
+#~| msgid "Disabled contrast amount"
+#~ msgid "Inactive intensity effect amount"
+#~ msgstr "নিষ্ক্রিয় বৈপরিত্যের পরিমাণ"
+
+#, fuzzy
+#~| msgid "Inactive color"
+#~ msgid "Inactive color effect type"
+#~ msgstr "নিষ্ক্রিয় রঙ"
+
+#, fuzzy
+#~| msgid "None"
+#~ msgctxt "no inactive color effect"
+#~ msgid "None"
+#~ msgstr "শূণ্য"
+
+#, fuzzy
+#~| msgid "Desaturate"
+#~ msgctxt "inactive color effect"
+#~ msgid "Desaturate"
+#~ msgstr "ডি-স্যাচুরেট"
+
+#, fuzzy
+#~| msgid "Inactive color"
+#~ msgid "Inactive color amount"
+#~ msgstr "নিষ্ক্রিয় রঙ"
+
+#, fuzzy
+#~| msgid "Disabled contrast type"
+#~ msgid "Inactive contrast effect type"
+#~ msgstr "নিষ্ক্রিয় বৈপরিত্যের ধরন"
+
+#, fuzzy
+#~| msgid "None"
+#~ msgctxt "no inactive contrast effect"
+#~ msgid "None"
+#~ msgstr "শূণ্য"
+
+#, fuzzy
+#~| msgid "Disabled contrast amount"
+#~ msgid "Inactive contrast effect amount"
+#~ msgstr "নিষ্ক্রিয় বৈপরিত্যের পরিমাণ"
+
+#~ msgid "Preview"
+#~ msgstr "পূর্বরূপের ঝলক"
+
+#~ msgid "Import Scheme..."
+#~ msgstr "স্কিম ইম্পোর্ট করুন..."

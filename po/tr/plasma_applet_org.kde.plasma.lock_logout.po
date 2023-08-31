@@ -4,14 +4,15 @@
 # Serdar Soytetir <tulliana@gmail.com>, 2009.
 # Serdar SOYTETİR <tulliana@gmail.com>, 2010, 2012.
 # Ozan Çağlayan <ozan@pardus.org.tr>, 2011.
-# Volkan Gezer <volkangezer@gmail.com>, 2013, 2021.
+# Volkan Gezer <volkangezer@gmail.com>, 2013, 2021, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_lockout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-01-16 14:11+0100\n"
-"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
+"PO-Revision-Date: 2023-02-08 21:26+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-POOTLE-MTIME: 1413102242.000000\n"
-"X-Generator: Lokalize 20.08.2\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: contents/config/config.qml:13
 #, kde-format
@@ -36,7 +37,7 @@ msgstr "Eylemleri göster:"
 #: contents/ui/ConfigGeneral.qml:37
 #, kde-format
 msgid "Logout"
-msgstr "Çıkış yap"
+msgstr "Oturumu Kapat"
 
 #: contents/ui/ConfigGeneral.qml:43
 #, kde-format
@@ -46,7 +47,7 @@ msgstr "Kapat"
 #: contents/ui/ConfigGeneral.qml:48
 #, kde-format
 msgid "Reboot"
-msgstr "Yeniden başlat"
+msgstr "Yeniden Başlat"
 
 #: contents/ui/ConfigGeneral.qml:53 contents/ui/data.js:5
 #, kde-format
@@ -61,13 +62,13 @@ msgstr "Kullanıcı Değiştir"
 #: contents/ui/ConfigGeneral.qml:63 contents/ui/data.js:46
 #, kde-format
 msgid "Hibernate"
-msgstr "Askıya Al"
+msgstr "Hazırda Beklet"
 
 #: contents/ui/ConfigGeneral.qml:68 contents/ui/data.js:39
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
-msgstr "Beklet"
+msgstr "Uyut"
 
 #: contents/ui/data.js:6
 #, kde-format
@@ -77,7 +78,7 @@ msgstr "Ekranı kilitle"
 #: contents/ui/data.js:12
 #, kde-format
 msgid "Switch user"
-msgstr "Kullanıcı değiştir"
+msgstr "Kullanıcıyı değiştir"
 
 #: contents/ui/data.js:13
 #, kde-format
@@ -85,21 +86,19 @@ msgid "Start a parallel session as a different user"
 msgstr "Başka bir kullanıcı olarak paralel oturum başlat"
 
 #: contents/ui/data.js:18
-#, fuzzy, kde-format
-#| msgid "Shutdown"
+#, kde-format
 msgid "Shutdown…"
-msgstr "Kapat"
+msgstr "Kapat…"
 
 #: contents/ui/data.js:19
 #, kde-format
 msgid "Turn off the computer"
-msgstr "bilgisayarı kapat"
+msgstr "Bilgisayarı kapat"
 
 #: contents/ui/data.js:25
-#, fuzzy, kde-format
-#| msgid "Restart..."
+#, kde-format
 msgid "Restart…"
-msgstr "Yeniden başlat..."
+msgstr "Yeniden Başlat…"
 
 #: contents/ui/data.js:26
 #, kde-format
@@ -107,22 +106,21 @@ msgid "Reboot the computer"
 msgstr "Bilgisayarı yeniden başlat"
 
 #: contents/ui/data.js:32
-#, fuzzy, kde-format
-#| msgid "Logout"
+#, kde-format
 msgid "Logout…"
-msgstr "Çıkış yap"
+msgstr "Oturumu Kapat…"
 
 #: contents/ui/data.js:33
 #, kde-format
 msgid "End the session"
-msgstr "Oturumu bitir"
+msgstr "Oturumu sonlandır"
 
 #: contents/ui/data.js:40
 #, kde-format
 msgid "Sleep (suspend to RAM)"
-msgstr "Beklet (bellek kullanarak askıya al)"
+msgstr "Uyut (bellek kullanarak askıya al)"
 
 #: contents/ui/data.js:47
 #, kde-format
 msgid "Hibernate (suspend to disk)"
-msgstr "Askıya Al (disk kullanarak beklet)"
+msgstr "Hazırda beklet (disk kullanarak askıya al)"

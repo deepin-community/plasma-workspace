@@ -11,4 +11,6 @@
 
 #define WORKSPACE_VERSION_STRING "${PROJECT_VERSION}"
 
-#cmakedefine HAVE_PACKAGEKIT "${HAVE_PACKAGEKIT}"
+#cmakedefine OS_UBUNTU 1
+#cmakedefine GLIBC_LOCALE 1
+#cmakedefine LOCALE_GENERATED 1

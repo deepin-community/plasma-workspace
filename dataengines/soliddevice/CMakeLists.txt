@@ -7,6 +7,12 @@ set(soliddevice_engine_SRCS
     hddtemp.cpp
     soliddeviceservice.cpp
     soliddevicejob.cpp
+    soliddeviceengine.h
+    devicesignalmapper.h
+    devicesignalmapmanager.h
+    hddtemp.h
+    soliddeviceservice.h
+    soliddevicejob.h
 )
 
 kcoreaddons_add_plugin(plasma_engine_soliddevice SOURCES ${soliddevice_engine_SRCS} INSTALL_NAMESPACE plasma/dataengine)
@@ -20,7 +26,5 @@ target_link_libraries(plasma_engine_soliddevice
   KF5::CoreAddons
   KF5::Notifications
 )
-
-kcoreaddons_desktop_to_json(plasma_engine_soliddevice plasma-dataengine-soliddevice.desktop)
 
 install(FILES soliddevice.operations DESTINATION ${PLASMA_DATA_INSTALL_DIR}/services )

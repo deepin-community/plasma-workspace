@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-desktop package.
 #
-# Alexander Yavorsky <kekcuha@gmail.com>, 2019, 2020, 2021.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2019, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-desktop\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-06 00:21+0000\n"
-"PO-Revision-Date: 2021-08-20 21:00+0300\n"
+"POT-Creation-Date: 2022-12-27 00:50+0000\n"
+"PO-Revision-Date: 2023-01-18 10:20+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -16,34 +16,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.08.0\n"
+"X-Generator: Lokalize 21.08.3\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Александр Яворский"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "KekcuHa@gmail.com"
-
-#: kcm.cpp:61
-#, kde-format
-msgid "Notifications"
-msgstr "Уведомления"
-
-#: kcm.cpp:62
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "Kai Uwe Broulik"
-
-#: kcm.cpp:71
+#: kcm.cpp:64
 #, kde-format
 msgid "Toggle do not disturb"
 msgstr "Включение и отключение режима «Не беспокоить»"
 
-#: kcm.cpp:199
+#: kcm.cpp:192
 #, kde-format
 msgid "Configure Notifications"
 msgstr "Настройка уведомлений"
@@ -112,26 +92,39 @@ msgstr "Уведомления выводятся сторонним прило�
 
 #: package/contents/ui/main.qml:64
 #, kde-format
-msgid "Do Not Disturb mode:"
-msgstr "Режим «Не беспокоить»:"
+msgctxt "@title:group"
+msgid "Do Not Disturb mode"
+msgstr "Режим «Не беспокоить»"
 
-#: package/contents/ui/main.qml:65
+#: package/contents/ui/main.qml:69
 #, kde-format
-msgctxt "Do not disturb when screens are mirrored"
-msgid "Enable when screens are mirrored"
+msgctxt "Enable Do Not Disturb mode when screens are mirrored"
+msgid "Enable:"
+msgstr "Включать:"
+
+#: package/contents/ui/main.qml:70
+#, kde-format
+msgctxt "Enable Do Not Disturb mode when screens are mirrored"
+msgid "When screens are mirrored"
 msgstr "При дублировании изображения на внешний экран"
 
-#: package/contents/ui/main.qml:77
+#: package/contents/ui/main.qml:82
 #, kde-format
-msgctxt "Do not disturb while screen sharing"
-msgid "Enable while screen sharing"
+msgctxt "Enable Do Not Disturb mode during screen sharing"
+msgid "During screen sharing"
 msgstr "При трансляции изображения"
 
-#: package/contents/ui/main.qml:95
+#: package/contents/ui/main.qml:97
 #, kde-format
-msgctxt "Turn do not disturb mode on/off with keyboard shortcut"
-msgid "Toggle with:"
-msgstr "Комбинация клавиш для переключения состояния:"
+msgctxt "Keyboard shortcut to turn Do Not Disturb mode on and off"
+msgid "Keyboard shortcut:"
+msgstr "Комбинация клавиш:"
+
+#: package/contents/ui/main.qml:104
+#, kde-format
+msgctxt "@title:group"
+msgid "Visibility conditions"
+msgstr "Условия видимости"
 
 #: package/contents/ui/main.qml:109
 #, kde-format
@@ -163,23 +156,30 @@ msgstr "Неприоритетные уведомления:"
 msgid "Show popup"
 msgstr "Показывать всплывающие уведомления"
 
-#: package/contents/ui/main.qml:170
+#: package/contents/ui/main.qml:165
 #, kde-format
-msgid "Popup:"
-msgstr "Выпадающие уведомления:"
+msgctxt "@title:group As in: 'notification popups'"
+msgid "Popups"
+msgstr "Выпадающие уведомления"
 
 #: package/contents/ui/main.qml:171
 #, kde-format
+msgctxt "@label"
+msgid "Location:"
+msgstr "Расположение:"
+
+#: package/contents/ui/main.qml:172
+#, kde-format
 msgctxt "Popup position near notification plasmoid"
-msgid "Show near notification icon"
+msgid "Near notification icon"
 msgstr "Рядом со значком уведомления"
 
-#: package/contents/ui/main.qml:208
+#: package/contents/ui/main.qml:209
 #, kde-format
 msgid "Choose Custom Position…"
-msgstr "Задать расположение..."
+msgstr "Задать расположение…"
 
-#: package/contents/ui/main.qml:217 package/contents/ui/main.qml:241
+#: package/contents/ui/main.qml:218 package/contents/ui/main.qml:234
 #, kde-format
 msgid "%1 second"
 msgid_plural "%1 seconds"
@@ -188,48 +188,55 @@ msgstr[1] "%1 секунды"
 msgstr[2] "%1 секунд"
 msgstr[3] "секунду"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:223
 #, kde-format
 msgctxt "Part of a sentence like, 'Hide popup after n seconds'"
 msgid "Hide after:"
 msgstr "Скрывать через:"
 
-#: package/contents/ui/main.qml:258
+#: package/contents/ui/main.qml:246
+#, kde-format
+msgctxt "@title:group"
+msgid "Additional feedback"
+msgstr "Дополнительная обратная связь"
+
+#: package/contents/ui/main.qml:251
 #, kde-format
 msgid "Application progress:"
 msgstr "Ход выполнения:"
 
-#: package/contents/ui/main.qml:259 package/contents/ui/main.qml:303
+#: package/contents/ui/main.qml:252 package/contents/ui/main.qml:292
 #, kde-format
 msgid "Show in task manager"
 msgstr "Показывать на панели задач"
 
-#: package/contents/ui/main.qml:271
+#: package/contents/ui/main.qml:264
 #, kde-format
 msgctxt "Show application jobs in notification widget"
 msgid "Show in notifications"
 msgstr "Показывать в уведомлениях"
 
-#: package/contents/ui/main.qml:285
+#: package/contents/ui/main.qml:278
 #, kde-format
 msgctxt "Keep application job popup open for entire duration of job"
 msgid "Keep popup open during progress"
 msgstr "Не закрывать всплывающее окно во время выполнения"
 
-#: package/contents/ui/main.qml:302
+#: package/contents/ui/main.qml:291
 #, kde-format
 msgid "Notification badges:"
 msgstr "Счётчики уведомлений:"
 
-#: package/contents/ui/main.qml:318
+#: package/contents/ui/main.qml:303
 #, kde-format
-msgid "Applications:"
-msgstr "Приложения:"
+msgctxt "@title:group"
+msgid "Application-specific settings"
+msgstr "Индивидуальные параметры приложений"
 
-#: package/contents/ui/main.qml:319
+#: package/contents/ui/main.qml:308
 #, kde-format
 msgid "Configure…"
-msgstr "Настроить..."
+msgstr "Настроить…"
 
 #: package/contents/ui/PopupPositionPage.qml:15
 #, kde-format
@@ -241,22 +248,22 @@ msgstr "Расположение всплывающих уведомлений"
 msgid "Application Settings"
 msgstr "Параметры приложения"
 
-#: package/contents/ui/SourcesPage.qml:91
+#: package/contents/ui/SourcesPage.qml:93
 #, kde-format
 msgid "Applications"
 msgstr "Приложения"
 
-#: package/contents/ui/SourcesPage.qml:92
+#: package/contents/ui/SourcesPage.qml:94
 #, kde-format
 msgid "System Services"
 msgstr "Системные службы"
 
-#: package/contents/ui/SourcesPage.qml:130
+#: package/contents/ui/SourcesPage.qml:132
 #, kde-format
 msgid "No application or event matches your search term."
 msgstr "Не найдено приложений или событий, соответствующих запросу "
 
-#: package/contents/ui/SourcesPage.qml:150
+#: package/contents/ui/SourcesPage.qml:152
 #, kde-format
 msgid ""
 "Select an application from the list to configure its notification settings "
@@ -265,7 +272,34 @@ msgstr ""
 "Выберите из списка, чтобы настроить для него параметры и поведение "
 "уведомлений."
 
-#: sourcesmodel.cpp:365
+#: sourcesmodel.cpp:363
 #, kde-format
 msgid "Other Applications"
 msgstr "Другие приложения"
+
+#~ msgctxt "Turn do not disturb mode on/off with keyboard shortcut"
+#~ msgid "Toggle with:"
+#~ msgstr "Комбинация клавиш для переключения состояния:"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Александр Яворский"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "KekcuHa@gmail.com"
+
+#~ msgid "Notifications"
+#~ msgstr "Уведомления"
+
+#~ msgid "Kai Uwe Broulik"
+#~ msgstr "Kai Uwe Broulik"
+
+#~ msgid "Show critical notifications"
+#~ msgstr "Выводить критические уведомления"
+
+#~ msgid "Always keep on top"
+#~ msgstr "Всегда поверх других окон"
+
+#~ msgid "Popup position:"
+#~ msgstr "Расположение всплывающих уведомлений:"

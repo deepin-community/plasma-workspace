@@ -15,6 +15,7 @@
 #include <KConfigGroup>
 #include <KDesktopFile>
 #include <KDirWatch>
+#include <KService>
 #include <Plasma/DataContainer>
 #include <QDebug>
 #include <kdesktopfileactions.h>
@@ -27,7 +28,7 @@
 #include <Solid/StorageDrive>
 #include <Solid/StorageVolume>
 
-//#define HOTPLUGENGINE_TIMING
+// #define HOTPLUGENGINE_TIMING
 
 HotplugEngine::HotplugEngine(QObject *parent, const QVariantList &args)
     : Plasma::DataEngine(parent, args)
@@ -170,7 +171,7 @@ QVariantList HotplugEngine::actionsForPredicates(const QStringList &predicates) 
 
     for (const QString &desktop : predicates) {
         const QString actionUrl = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "solid/actions/" + desktop);
-        QList<KServiceAction> services = KDesktopFileActions::userDefinedServices(actionUrl, true);
+        QList<KServiceAction> services = KDesktopFileActions::userDefinedServices(KService(actionUrl), true);
         if (!services.isEmpty()) {
             Plasma::DataEngine::Data action;
             action.insert(QStringLiteral("predicate"), desktop);

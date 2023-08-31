@@ -20,8 +20,10 @@
 #include "launchertasksmodel_p.h"
 
 #include <QGuiApplication>
+#include <QTime>
 #include <QTimer>
 #include <QUrl>
+#include <QVector>
 
 #include <numeric>
 
@@ -151,9 +153,13 @@ void TasksModel::Private::initModels()
     //     -> flattenGroupsProxyModel (optionally, if groupInline == true) flattens groups out.
     //      -> TasksModel collapses (top-level) items into task lifecycle abstraction; sorts.
 
+    concatProxyModel = new ConcatenateTasksProxyModel(q);
+
     if (!windowTasksModel) {
         windowTasksModel = new WindowTasksModel();
     }
+
+    concatProxyModel->addSourceModel(windowTasksModel);
 
     QObject::connect(windowTasksModel, &QAbstractItemModel::rowsInserted, q, [this]() {
         if (sortMode == SortActivity) {
@@ -166,6 +172,9 @@ void TasksModel::Private::initModels()
             updateActivityTaskCounts();
             forceResort();
         }
+        // the active task may have potentially changed, so signal that so that users
+        // will recompute it
+        Q_EMIT q->activeTaskChanged();
     });
 
     QObject::connect(windowTasksModel,
@@ -180,7 +189,7 @@ void TasksModel::Private::initModels()
                          }
 
                          if (roles.contains(AbstractTasksModel::IsActive)) {
-                             emit q->activeTaskChanged();
+                             Q_EMIT q->activeTaskChanged();
                          }
 
                          // In manual sort mode, updateManualSortMap() may consult the sortRowInsertQueue
@@ -200,9 +209,6 @@ void TasksModel::Private::initModels()
         startupTasksModel = new StartupTasksModel();
     }
 
-    concatProxyModel = new ConcatenateTasksProxyModel(q);
-
-    concatProxyModel->addSourceModel(windowTasksModel);
     concatProxyModel->addSourceModel(startupTasksModel);
 
     // If we're in manual sort mode, we need to seed the sort map on pending row
@@ -215,13 +221,9 @@ void TasksModel::Private::initModels()
         }
 
         const int delta = (end - start) + 1;
-        QMutableListIterator<int> it(sortedPreFilterRows);
-
-        while (it.hasNext()) {
-            it.next();
-
-            if (it.value() >= start) {
-                it.setValue(it.value() + delta);
+        for (auto it = sortedPreFilterRows.begin(); it != sortedPreFilterRows.end(); ++it) {
+            if ((*it) >= start) {
+                *it += delta;
             }
         }
 
@@ -268,13 +270,9 @@ void TasksModel::Private::initModels()
         }
 
         const int delta = (last - first) + 1;
-        QMutableListIterator<int> it(sortedPreFilterRows);
-
-        while (it.hasNext()) {
-            it.next();
-
-            if (it.value() > last) {
-                it.setValue(it.value() - delta);
+        for (auto it = sortedPreFilterRows.begin(); it != sortedPreFilterRows.end(); ++it) {
+            if ((*it) > last) {
+                *it -= delta;
             }
         }
     });
@@ -287,6 +285,7 @@ void TasksModel::Private::initModels()
     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByVirtualDesktopChanged, q, &TasksModel::filterByVirtualDesktopChanged);
     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByScreenChanged, q, &TasksModel::filterByScreenChanged);
     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByActivityChanged, q, &TasksModel::filterByActivityChanged);
+    QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterMinimizedChanged, q, &TasksModel::filterMinimizedChanged);
     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterNotMinimizedChanged, q, &TasksModel::filterNotMinimizedChanged);
     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterNotMaximizedChanged, q, &TasksModel::filterNotMaximizedChanged);
     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterHiddenChanged, q, &TasksModel::filterHiddenChanged);
@@ -321,8 +320,8 @@ void TasksModel::Private::initModels()
             if (sourceIndex.data(AbstractTasksModel::IsWindow).toBool()) {
                 const QString &appName = sourceIndex.data(AbstractTasksModel::AppName).toString();
 
-                for (int i = 0; i < filterProxyModel->rowCount(); ++i) {
-                    QModelIndex filterIndex = filterProxyModel->index(i, 0);
+                for (int j = 0; j < filterProxyModel->rowCount(); ++j) {
+                    QModelIndex filterIndex = filterProxyModel->index(j, 0);
 
                     if (!filterIndex.data(AbstractTasksModel::IsStartup).toBool()) {
                         continue;
@@ -337,8 +336,8 @@ void TasksModel::Private::initModels()
 
             // When we get a window or startup we have a launcher for, cause the launcher to be re-filtered.
             if (sourceIndex.data(AbstractTasksModel::IsWindow).toBool() || sourceIndex.data(AbstractTasksModel::IsStartup).toBool()) {
-                for (int i = 0; i < filterProxyModel->rowCount(); ++i) {
-                    const QModelIndex &filterIndex = filterProxyModel->index(i, 0);
+                for (int j = 0; j < filterProxyModel->rowCount(); ++j) {
+                    const QModelIndex &filterIndex = filterProxyModel->index(j, 0);
 
                     if (!filterIndex.data(AbstractTasksModel::IsLauncher).toBool()) {
                         continue;
@@ -583,14 +582,14 @@ void TasksModel::Private::updateManualSortMap()
             // Try to move the task up to its right-most app sibling, unless this
             // is us sorting in a launcher list for the first time.
             if (launchersEverSet && !idx.data(AbstractTasksModel::IsLauncher).toBool()) {
-                for (int i = (row - 1); i >= 0; --i) {
-                    const QModelIndex &concatProxyIndex = concatProxyModel->index(sortedPreFilterRows.at(i), 0);
+                for (int j = (row - 1); j >= 0; --j) {
+                    const QModelIndex &concatProxyIndex = concatProxyModel->index(sortedPreFilterRows.at(j), 0);
 
                     // Once we got a match, check if the filter model accepts the potential
                     // sibling. We don't want to sort new tasks in next to tasks it will
                     // filter out once it sees it anyway.
                     if (appsMatch(concatProxyIndex, idx) && filterProxyModel->acceptsRow(concatProxyIndex.row())) {
-                        sortedPreFilterRows.move(row, i + 1);
+                        sortedPreFilterRows.move(row, j + 1);
                         moved = true;
 
                         break;
@@ -604,12 +603,12 @@ void TasksModel::Private::updateManualSortMap()
             // the rightmost launcher or launcher-backed task in the map, or failing
             // that at the start of the map.
             if (!moved && idx.data(AbstractTasksModel::IsLauncher).toBool()) {
-                for (int i = 0; i < row; ++i) {
-                    const QModelIndex &concatProxyIndex = concatProxyModel->index(sortedPreFilterRows.at(i), 0);
+                for (int j = 0; j < row; ++j) {
+                    const QModelIndex &concatProxyIndex = concatProxyModel->index(sortedPreFilterRows.at(j), 0);
 
                     if (concatProxyIndex.data(AbstractTasksModel::IsLauncher).toBool()
                         || launcherTasksModel->launcherPosition(concatProxyIndex.data(AbstractTasksModel::LauncherUrlWithoutIcon).toUrl()) != -1) {
-                        insertPos = i + 1;
+                        insertPos = j + 1;
                     } else {
                         break;
                     }
@@ -622,14 +621,14 @@ void TasksModel::Private::updateManualSortMap()
             // If we sorted in a launcher and it's the first time we're sorting in a
             // launcher list, move existing windows to the launcher position now.
             if (moved && !launchersEverSet) {
-                for (int i = (sortedPreFilterRows.count() - 1); i >= 0; --i) {
-                    const QModelIndex &concatProxyIndex = concatProxyModel->index(sortedPreFilterRows.at(i), 0);
+                for (int j = (sortedPreFilterRows.count() - 1); j >= 0; --j) {
+                    const QModelIndex &concatProxyIndex = concatProxyModel->index(sortedPreFilterRows.at(j), 0);
 
                     if (!concatProxyIndex.data(AbstractTasksModel::IsLauncher).toBool()
                         && idx.data(AbstractTasksModel::LauncherUrlWithoutIcon) == concatProxyIndex.data(AbstractTasksModel::LauncherUrlWithoutIcon)) {
-                        sortedPreFilterRows.move(i, insertPos);
+                        sortedPreFilterRows.move(j, insertPos);
 
-                        if (insertPos > i) {
+                        if (insertPos > j) {
                             --insertPos;
                         }
                     }
@@ -757,11 +756,11 @@ void TasksModel::Private::updateActivityTaskCounts()
         const QStringList &activities = windowIndex.data(AbstractTasksModel::Activities).toStringList();
 
         if (activities.isEmpty()) {
-            QMutableHashIterator<QString, int> i(activityTaskCounts);
+            QMutableHashIterator<QString, int> it(activityTaskCounts);
 
-            while (i.hasNext()) {
-                i.next();
-                i.setValue(i.value() + 1);
+            while (it.hasNext()) {
+                it.next();
+                it.setValue(it.value() + 1);
             }
         } else {
             foreach (const QString &activity, activities) {
@@ -831,6 +830,38 @@ bool TasksModel::Private::lessThan(const QModelIndex &left, const QModelIndex &r
 
     // Sort other cases by sort mode.
     switch (sortMode) {
+    case SortLastActivated: {
+        QTime leftSortTime, rightSortTime;
+
+        // Check if the task is in a group
+        if (left.parent().isValid()) {
+            leftSortTime = left.parent().data(AbstractTasksModel::LastActivated).toTime();
+        } else {
+            leftSortTime = left.data(AbstractTasksModel::LastActivated).toTime();
+        }
+
+        if (!leftSortTime.isValid()) {
+            leftSortTime = left.data(Qt::DisplayRole).toTime();
+        }
+
+        if (right.parent().isValid()) {
+            rightSortTime = right.parent().data(AbstractTasksModel::LastActivated).toTime();
+        } else {
+            rightSortTime = right.data(AbstractTasksModel::LastActivated).toTime();
+        }
+
+        if (!rightSortTime.isValid()) {
+            rightSortTime = right.data(Qt::DisplayRole).toTime();
+        }
+
+        if (leftSortTime != rightSortTime) {
+            // Move latest to leftmost
+            return leftSortTime > rightSortTime;
+        }
+
+        Q_FALLTHROUGH();
+    }
+
     case SortVirtualDesktop: {
         const bool leftAll = left.data(AbstractTasksModel::IsOnAllVirtualDesktops).toBool();
         const bool rightAll = right.data(AbstractTasksModel::IsOnAllVirtualDesktops).toBool();
@@ -883,24 +914,15 @@ bool TasksModel::Private::lessThan(const QModelIndex &left, const QModelIndex &r
         // activity. This will sort tasks by comparing a cumulative score made
         // up of the task counts for each activity a task is assigned to, and
         // otherwise fall through to alphabetical sorting.
-        int leftScore = -1;
-        int rightScore = -1;
-
         const QStringList &leftActivities = left.data(AbstractTasksModel::Activities).toStringList();
-
-        if (!leftActivities.isEmpty()) {
-            foreach (const QString &activity, leftActivities) {
-                leftScore += activityTaskCounts[activity];
-            }
-        }
+        int leftScore = std::accumulate(leftActivities.cbegin(), leftActivities.cend(), -1, [this](int a, const QString &activity) {
+            return a + activityTaskCounts[activity];
+        });
 
         const QStringList &rightActivities = right.data(AbstractTasksModel::Activities).toStringList();
-
-        if (!rightActivities.isEmpty()) {
-            foreach (const QString &activity, rightActivities) {
-                rightScore += activityTaskCounts[activity];
-            }
-        }
+        int rightScore = std::accumulate(rightActivities.cbegin(), rightActivities.cend(), -1, [this](int a, const QString &activity) {
+            return a + activityTaskCounts[activity];
+        });
 
         if (leftScore == -1 || rightScore == -1) {
             const int sumScore = std::accumulate(activityTaskCounts.constBegin(), activityTaskCounts.constEnd(), 0);
@@ -1056,7 +1078,7 @@ void TasksModel::updateLauncherCount()
 
     if (d->launcherCount != count) {
         d->launcherCount = count;
-        emit launcherCountChanged();
+        Q_EMIT launcherCountChanged();
     }
 }
 
@@ -1128,6 +1150,16 @@ bool TasksModel::filterByActivity() const
 void TasksModel::setFilterByActivity(bool filter)
 {
     d->filterProxyModel->setFilterByActivity(filter);
+}
+
+bool TasksModel::filterMinimized() const
+{
+    return d->filterProxyModel->filterMinimized();
+}
+
+void TasksModel::setFilterMinimized(bool filter)
+{
+    d->filterProxyModel->setFilterMinimized(filter);
 }
 
 bool TasksModel::filterNotMinimized() const
@@ -1214,11 +1246,15 @@ void TasksModel::setSortMode(SortMode mode)
             setSortRole(Qt::DisplayRole);
         }
 
+        if (mode == SortLastActivated) {
+            setSortRole(AbstractTasksModel::LastActivated);
+        }
+
         d->sortMode = mode;
 
         d->forceResort();
 
-        emit sortModeChanged();
+        Q_EMIT sortModeChanged();
     }
 }
 
@@ -1235,7 +1271,7 @@ void TasksModel::setSeparateLaunchers(bool separate)
         d->updateManualSortMap();
         d->forceResort();
 
-        emit separateLaunchersChanged();
+        Q_EMIT separateLaunchersChanged();
     }
 }
 
@@ -1251,7 +1287,7 @@ void TasksModel::setLaunchInPlace(bool launchInPlace)
 
         d->forceResort();
 
-        emit launchInPlaceChanged();
+        Q_EMIT launchInPlaceChanged();
     }
 }
 
@@ -1288,7 +1324,7 @@ void TasksModel::setGroupInline(bool groupInline)
 
         d->updateGroupInline();
 
-        emit groupInlineChanged();
+        Q_EMIT groupInlineChanged();
     }
 }
 
@@ -1306,7 +1342,7 @@ void TasksModel::setGroupingWindowTasksThreshold(int threshold)
             d->groupingProxyModel->setWindowTasksThreshold(threshold);
         }
 
-        emit groupingWindowTasksThresholdChanged();
+        Q_EMIT groupingWindowTasksThresholdChanged();
     }
 }
 
@@ -1340,6 +1376,18 @@ void TasksModel::setGroupingLauncherUrlBlacklist(const QStringList &list)
     if (d->groupingProxyModel) {
         d->groupingProxyModel->setBlacklistedLauncherUrls(list);
     }
+}
+
+bool TasksModel::taskReorderingEnabled() const
+{
+    return dynamicSortFilter();
+}
+
+void TasksModel::setTaskReorderingEnabled(bool enabled)
+{
+    enabled ? setDynamicSortFilter(true) : setDynamicSortFilter(false);
+
+    Q_EMIT taskReorderingEnabledChanged();
 }
 
 QStringList TasksModel::launcherList() const
@@ -1555,9 +1603,10 @@ void TasksModel::requestActivities(const QModelIndex &index, const QStringList &
 
 void TasksModel::requestPublishDelegateGeometry(const QModelIndex &index, const QRect &geometry, QObject *delegate)
 {
-    if (index.isValid() && index.model() == this) {
-        d->abstractTasksSourceModel->requestPublishDelegateGeometry(mapToSource(index), geometry, delegate);
+    if (!index.isValid() || index.model() != this || !index.data(AbstractTasksModel::IsWindow).toBool()) {
+        return;
     }
+    d->abstractTasksSourceModel->requestPublishDelegateGeometry(mapToSource(index), geometry, delegate);
 }
 
 void TasksModel::requestToggleGrouping(const QModelIndex &index)
@@ -1570,11 +1619,18 @@ void TasksModel::requestToggleGrouping(const QModelIndex &index)
 
 bool TasksModel::move(int row, int newPos, const QModelIndex &parent)
 {
+    /*
+     * NOTE After doing any modification in TasksModel::move, make sure fixes listed below are not regressed.
+     * - https://bugs.kde.org/444816
+     * - https://bugs.kde.org/448912
+     * - https://invent.kde.org/plasma/plasma-workspace/-/commit/ea51795e8c571513e1ff583350ab8649bc857fc2
+     */
+
     if (d->sortMode != SortManual || row == newPos || newPos < 0 || newPos >= rowCount(parent)) {
         return false;
     }
 
-    const QModelIndex &idx = index(row, 0);
+    const QModelIndex &idx = index(row, 0, parent);
     bool isLauncherMove = false;
 
     // Figure out if we're moving a launcher so we can run barrier checks.
@@ -1594,8 +1650,15 @@ bool TasksModel::move(int row, int newPos, const QModelIndex &parent)
         return false;
     }
 
-    if (d->separateLaunchers) {
-        const int firstTask = (d->launcherTasksModel ? (d->launchInPlace ? d->launcherTasksModel->rowCount() : launcherCount()) : 0);
+    if (d->separateLaunchers && !parent.isValid() /* Exclude tasks in a group */) {
+        int firstTask = 0;
+        if (d->launcherTasksModel) {
+            if (d->launchInPlace) {
+                firstTask = d->launcherTasksModel->rowCountForActivity(d->activityInfo->currentActivity());
+            } else {
+                firstTask = launcherCount();
+            }
+        }
 
         // Don't allow launchers to be moved past the last launcher.
         if (isLauncherMove && newPos >= firstTask) {
@@ -1650,60 +1713,125 @@ bool TasksModel::move(int row, int newPos, const QModelIndex &parent)
         // Update sort mappings.
         d->sortedPreFilterRows.move(row, newPos);
 
+        endMoveRows();
+
         if (groupingRowIndexParent.isValid()) {
             d->consolidateManualSortMapForGroup(groupingRowIndexParent);
         }
 
-        endMoveRows();
     } else {
         beginMoveRows(parent, row, row, parent, (newPos > row) ? newPos + 1 : newPos);
 
         // Translate to sort map indices.
         const QModelIndex &groupingRowIndex = mapToSource(index(row, 0, parent));
         const QModelIndex &preFilterRowIndex = d->preFilterIndex(groupingRowIndex);
+
+        const bool groupNotDisabled = !parent.isValid() && groupMode() != GroupDisabled;
+        QModelIndex adjacentGroupingRowIndex; // Also consolidate the adjacent group parent
+        if (groupNotDisabled) {
+            if (newPos > row && row + 1 < rowCount(parent)) {
+                adjacentGroupingRowIndex = mapToSource(index(row + 1, 0, parent) /* task on the right */);
+            } else if (newPos < row && row - 1 >= 0) {
+                adjacentGroupingRowIndex = mapToSource(index(row - 1, 0, parent) /* task on the left */);
+            }
+        }
+
         row = d->sortedPreFilterRows.indexOf(preFilterRowIndex.row());
         newPos = d->sortedPreFilterRows.indexOf(d->preFilterIndex(mapToSource(index(newPos, 0, parent))).row());
 
         // Update sort mapping.
         d->sortedPreFilterRows.move(row, newPos);
 
-        // If we moved a group parent, consolidate sort map for children.
-        if (!parent.isValid() && groupMode() != GroupDisabled && d->groupingProxyModel->rowCount(groupingRowIndex)) {
-            d->consolidateManualSortMapForGroup(groupingRowIndex);
-        }
-
         endMoveRows();
+
+        // If we moved a group parent, consolidate sort map for children.
+        if (groupNotDisabled) {
+            if (d->groupingProxyModel->rowCount(groupingRowIndex)) {
+                d->consolidateManualSortMapForGroup(groupingRowIndex);
+            }
+            // Special case: Before moving, the task at newPos is a group parent
+            // Before moving: [Task] [Group parent] [Other task in group]
+            // After moving: [Group parent (not consolidated yet)] [Task, newPos] [Other task in group]
+            if (int childCount = d->groupingProxyModel->rowCount(adjacentGroupingRowIndex); childCount && adjacentGroupingRowIndex.isValid()) {
+                d->consolidateManualSortMapForGroup(adjacentGroupingRowIndex);
+                if (newPos > row) {
+                    newPos += childCount - 1;
+                    // After consolidation: [Group parent (not consolidated yet)] [Other task in group] [Task, newPos]
+                }
+                // No need to consider newPos < row
+                // Before moving: [Group parent, newPos] [Other task in group] [Task]
+                // After moving: [Task, newPos] [Group parent] [Other task in group]
+            }
+        }
     }
 
     // Resort.
     d->forceResort();
 
-    if (!d->separateLaunchers && isLauncherMove) {
-        const QModelIndex &idx = d->concatProxyModel->index(d->sortedPreFilterRows.at(newPos), 0);
-        const QUrl &launcherUrl = idx.data(AbstractTasksModel::LauncherUrlWithoutIcon).toUrl();
+    if (!d->separateLaunchers) {
+        if (isLauncherMove) {
+            const QModelIndex &idx = d->concatProxyModel->index(d->sortedPreFilterRows.at(newPos), 0);
+            const QUrl &launcherUrl = idx.data(AbstractTasksModel::LauncherUrlWithoutIcon).toUrl();
 
-        // Move launcher for launcher-backed task along with task if launchers
-        // are not being kept separate.
-        // We don't need to resort again because the launcher is implicitly hidden
-        // at this time.
-        if (!idx.data(AbstractTasksModel::IsLauncher).toBool()) {
-            const int launcherPos = d->launcherTasksModel->launcherPosition(launcherUrl);
-            const QModelIndex &launcherIndex = d->launcherTasksModel->index(launcherPos, 0);
-            const int sortIndex = d->sortedPreFilterRows.indexOf(d->concatProxyModel->mapFromSource(launcherIndex).row());
-            d->sortedPreFilterRows.move(sortIndex, newPos);
-            // Otherwise move matching windows to after the launcher task (they are
-            // currently hidden but might be on another virtual desktop).
-        } else {
-            for (int i = (d->sortedPreFilterRows.count() - 1); i >= 0; --i) {
-                const QModelIndex &concatProxyIndex = d->concatProxyModel->index(d->sortedPreFilterRows.at(i), 0);
+            // Move launcher for launcher-backed task along with task if launchers
+            // are not being kept separate.
+            // We don't need to resort again because the launcher is implicitly hidden
+            // at this time.
+            if (!idx.data(AbstractTasksModel::IsLauncher).toBool()) {
+                const int launcherPos = d->launcherTasksModel->launcherPosition(launcherUrl);
+                const QModelIndex &launcherIndex = d->launcherTasksModel->index(launcherPos, 0);
+                const int sortIndex = d->sortedPreFilterRows.indexOf(d->concatProxyModel->mapFromSource(launcherIndex).row());
+                d->sortedPreFilterRows.move(sortIndex, newPos);
 
-                if (launcherUrl == concatProxyIndex.data(AbstractTasksModel::LauncherUrlWithoutIcon).toUrl()) {
-                    d->sortedPreFilterRows.move(i, newPos);
+                if (row > newPos && newPos >= 1) {
+                    const QModelIndex beforeIdx = d->concatProxyModel->index(d->sortedPreFilterRows.at(newPos - 1), 0);
+                    if (beforeIdx.data(AbstractTasksModel::IsLauncher).toBool()) {
+                        // Search forward to skip grouped tasks
+                        int afterPos = newPos + 1;
+                        for (; afterPos < d->sortedPreFilterRows.size(); ++afterPos) {
+                            const QModelIndex tempIdx = d->concatProxyModel->index(d->sortedPreFilterRows.at(afterPos), 0);
+                            if (!appsMatch(idx, tempIdx)) {
+                                break;
+                            }
+                        }
 
-                    if (newPos > i) {
-                        --newPos;
+                        const QModelIndex afterIdx = d->concatProxyModel->index(d->sortedPreFilterRows.at(afterPos), 0);
+                        if (appsMatch(beforeIdx, afterIdx)) {
+                            d->sortedPreFilterRows.move(newPos - 1, afterPos - 1);
+                        }
                     }
                 }
+                // Otherwise move matching windows to after the launcher task (they are
+                // currently hidden but might be on another virtual desktop).
+            } else {
+                for (int i = (d->sortedPreFilterRows.count() - 1); i >= 0; --i) {
+                    const QModelIndex &concatProxyIndex = d->concatProxyModel->index(d->sortedPreFilterRows.at(i), 0);
+
+                    if (launcherUrl == concatProxyIndex.data(AbstractTasksModel::LauncherUrlWithoutIcon).toUrl()) {
+                        d->sortedPreFilterRows.move(i, newPos);
+
+                        if (newPos > i) {
+                            --newPos;
+                        }
+                    }
+                }
+            }
+        } else if (newPos > 0 && newPos < d->sortedPreFilterRows.size() - 1) {
+            /*
+             * When dragging an unpinned task, a pinned task can also be moved.
+             * In this case, sortedPreFilterRows is like:
+             *  - before moving: [pinned 1 (launcher item)] [pinned 1 (window)] [unpinned]
+             *  - after moving: [pinned 1 (launcher item)] [unpinned] [pinned 1 (window)]
+             * So also check the indexes before and after the unpinned task.
+             */
+            const QModelIndex beforeIdx = d->concatProxyModel->index(d->sortedPreFilterRows.at(newPos - 1), 0, parent);
+            const QModelIndex afterIdx = d->concatProxyModel->index(d->sortedPreFilterRows.at(newPos + 1), 0, parent);
+            // BUG 462508: check if any item is a launcher
+            const bool hasLauncher = beforeIdx.data(AbstractTasksModel::IsLauncher).toBool() || afterIdx.data(AbstractTasksModel::IsLauncher).toBool();
+
+            if (hasLauncher && appsMatch(beforeIdx, afterIdx)) {
+                // after adjusting: [unpinned] [pinned 1 (launcher item)] [pinned 1]
+                d->sortedPreFilterRows.move(newPos, newPos + (row < newPos ? 1 : -1));
             }
         }
     }
@@ -1781,6 +1909,11 @@ void TasksModel::syncLaunchers()
     }
 
     setLauncherList(sortedShownLaunchers.values() + sortedHiddenLaunchers);
+
+    // The accepted rows are outdated after the item order is changed
+    invalidateFilter();
+    d->forceResort();
+
     d->launcherSortingDirty = false;
 }
 

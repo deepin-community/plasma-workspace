@@ -1,16 +1,16 @@
 # Translation of plasma_package_plasmashell.po to Catalan
-# Copyright (C) 2014-2021 This_file_is_part_of_KDE
+# Copyright (C) 2014-2022 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2020, 2021.
+# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2020, 2021, 2022.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-10-23 23:36+0200\n"
+"POT-Creation-Date: 2022-01-22 00:46+0000\n"
+"PO-Revision-Date: 2022-01-22 14:18+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -88,10 +88,15 @@ msgstr "Component en QML per a triar una miniaplicació alternativa"
 
 #: shellpackage.cpp:63
 #, kde-format
+msgid "QML component for the configuration dialog of containments"
+msgstr "Component en QML per al diàleg de configuració dels contenidors"
+
+#: shellpackage.cpp:66
+#, kde-format
 msgid "Widgets explorer UI"
 msgstr "IU de l'explorador de ginys"
 
-#: shellpackage.cpp:67
+#: shellpackage.cpp:70
 #, kde-format
 msgid ""
 "A UI for writing, loading and running desktop scripts in the current live "

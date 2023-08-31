@@ -9,8 +9,6 @@
 
 AbstractModel::AbstractModel(QObject *parent)
     : QAbstractListModel(parent)
-    , m_favoritesModel(nullptr)
-    , m_iconSize(32)
 {
 }
 
@@ -33,6 +31,7 @@ QHash<int, QByteArray> AbstractModel::roleNames() const
     roles.insert(Kicker::ActionListRole, "actionList");
     roles.insert(Kicker::UrlRole, "url");
     roles.insert(Kicker::DisabledRole, "disabled");
+    roles.insert(Kicker::IsMultilineTextRole, "isMultilineText");
 
     return roles;
 }
@@ -45,15 +44,6 @@ int AbstractModel::count() const
 int AbstractModel::separatorCount() const
 {
     return 0;
-}
-
-int AbstractModel::columnCount(const QModelIndex &parent) const
-{
-    if (parent.isValid()) {
-        return 0;
-    }
-
-    return 1;
 }
 
 int AbstractModel::iconSize() const
@@ -122,7 +112,7 @@ void AbstractModel::setFavoritesModel(AbstractModel *model)
     if (m_favoritesModel != model) {
         m_favoritesModel = model;
 
-        emit favoritesModelChanged();
+        Q_EMIT favoritesModelChanged();
     }
 }
 
@@ -146,6 +136,11 @@ AbstractModel *AbstractModel::rootModel()
     }
 
     return rootModel;
+}
+
+QVariantList AbstractModel::sections() const
+{
+    return {};
 }
 
 void AbstractModel::entryChanged(AbstractEntry *entry)

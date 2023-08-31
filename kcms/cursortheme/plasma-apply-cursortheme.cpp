@@ -20,6 +20,33 @@
 #include <QFile>
 #include <QTimer>
 
+namespace
+{
+/** Apply a theme, log warnings
+ *
+ * Applies @p theme; if @p sizeSpecifier is an integer that is an available
+ * size for the theme, use it rather than the theme's default size.
+ * If @p sizeSpecifier is non-empty but doesn't name an integer that
+ * is an available size, prints an error message to @p ts and uses the
+ * theme's default size instead.
+ */
+bool applyThemeAndSize(const CursorTheme *theme, const QString &sizeSpecifier, QTextStream &ts)
+{
+    auto chosenSize = theme->defaultCursorSize();
+    if (!sizeSpecifier.isEmpty()) {
+        bool ok = false;
+        int specificSize = sizeSpecifier.toInt(&ok);
+        if (ok && theme->availableSizes().contains(specificSize)) {
+            chosenSize = specificSize;
+        } else {
+            ts << i18n("The requested size '%1' is not available, using %2 instead.").arg(sizeSpecifier).arg(chosenSize) << Qt::endl;
+            // Not an error condition
+        }
+    }
+    return applyTheme(theme, chosenSize);
+}
+}
+
 int main(int argc, char **argv)
 {
     // This is a CLI application, but we require at least a QGuiApplication for things
@@ -39,6 +66,7 @@ int main(int argc, char **argv)
         QStringLiteral("cursortheme"),
         i18n("The name of the cursor theme you wish to set for your current Plasma session (passing a full path will only use the last part of the path)"));
     parser->addOption(QCommandLineOption(QStringLiteral("list-themes"), i18n("Show all the themes available on the system (and which is the current theme)")));
+    parser->addOption(QCommandLineOption(QStringLiteral("size"), i18n("Use a specific size, rather than the theme default size"), QStringLiteral("size")));
     parser->process(app);
 
     int errorCode{0};
@@ -51,8 +79,8 @@ int main(int argc, char **argv)
         if (requestedTheme.contains(dirSplit)) {
             QStringList splitTheme = requestedTheme.split(dirSplit, Qt::SkipEmptyParts);
             // Cursor themes installed through KNewStuff will commonly be given an installed files entry
-            // which has the main directory name and an asterix to say the cursors are all in that directory,
-            // and since one of the main purposes of this tool is to allow adopting things from a kns dialog,
+            // which has the main directory name and an asterisk to say the cursors are all in that directory,
+            // and since one of the main purposes of this tool is to allow adopting things from a KNS dialog,
             // we handle that little weirdness here.
             splitTheme.removeAll(QStringLiteral("*"));
             requestedTheme = splitTheme.last();
@@ -68,7 +96,7 @@ int main(int argc, char **argv)
 
             if (theme) {
                 settings->setCursorTheme(theme->name());
-                if (settings->save() && applyTheme(theme, theme->defaultCursorSize())) {
+                if (settings->save() && applyThemeAndSize(theme, parser->value("size"), ts)) {
                     notifyKcmChange(GlobalChangeType::CursorChanged);
                     ts << i18n("Successfully applied the mouse cursor theme %1 to your current Plasma session", theme->title()) << Qt::endl;
                 } else {
@@ -93,11 +121,11 @@ int main(int argc, char **argv)
         ts << i18n("You have the following mouse cursor themes on your system:") << Qt::endl;
         for (int i = 0; i < model->rowCount(); ++i) {
             const CursorTheme *theme = model->theme(model->index(i, 0));
+            ts << QString(" * %1 [%2]").arg(theme->title()).arg(theme->name());
             if (settings->cursorTheme() == theme->name()) {
-                ts << QString(" * %1 (%2 - current theme for this Plasma session)").arg(theme->title()).arg(theme->name()) << Qt::endl;
-            } else {
-                ts << QString(" * %1 (%2)").arg(theme->title()).arg(theme->name()) << Qt::endl;
+                ts << QChar(' ') << i18n("(Current theme for this Plasma session)");
             }
+            ts << Qt::endl;
         }
     } else {
         parser->showHelp();

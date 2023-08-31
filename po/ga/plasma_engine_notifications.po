@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_notifications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2009-12-24 06:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -27,7 +27,7 @@ msgstr "Níl an t-inneall sonraí fógartha socraithe."
 msgid "Invalid destination: %1"
 msgstr "Sprioc neamhbhailí: %1"
 
-#: notificationsengine.cpp:87
+#: notificationsengine.cpp:88
 #, kde-format
 msgid "Unknown Application"
 msgstr "Feidhmchlár Anaithnid"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-09-05 00:46+0000\n"
 "PO-Revision-Date: 2019-10-30 21:01+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -17,47 +17,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 19.08.1\n"
 
-#: baloosearchrunner.cpp:63
+#: baloosearchrunner.cpp:65
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Ava vastav kataloog"
 
-#: baloosearchrunner.cpp:79
+#: baloosearchrunner.cpp:87
 #, kde-format
 msgid "Audio"
 msgstr "Heli"
 
-#: baloosearchrunner.cpp:80
+#: baloosearchrunner.cpp:88
 #, kde-format
 msgid "Image"
 msgstr "Pilt"
 
-#: baloosearchrunner.cpp:81
+#: baloosearchrunner.cpp:89
 #, kde-format
 msgid "Video"
 msgstr "Video"
 
-#: baloosearchrunner.cpp:82
+#: baloosearchrunner.cpp:90
 #, kde-format
 msgid "Spreadsheet"
 msgstr "Arvutustabel"
 
-#: baloosearchrunner.cpp:83
+#: baloosearchrunner.cpp:91
 #, kde-format
 msgid "Presentation"
 msgstr "Esitlus"
 
-#: baloosearchrunner.cpp:84
+#: baloosearchrunner.cpp:92
 #, kde-format
 msgid "Folder"
 msgstr "Kataloog"
 
-#: baloosearchrunner.cpp:85
+#: baloosearchrunner.cpp:93
 #, kde-format
 msgid "Document"
 msgstr "Dokument"
 
-#: baloosearchrunner.cpp:86
+#: baloosearchrunner.cpp:94
 #, kde-format
 msgid "Archive"
 msgstr "Arhiiv"
+
+#: baloosearchrunner.cpp:95
+#, kde-format
+msgid "Text"
+msgstr ""
+
+#~ msgid "Search through files, emails and contacts"
+#~ msgstr "Otsimine failides, e-kirjades ja kontaktides"

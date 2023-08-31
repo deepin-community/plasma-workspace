@@ -28,3 +28,15 @@ msgstr "Žarko Pintar"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "zarko.pintar@gmail.com"
+
+#~ msgid "create method returned 0"
+#~ msgstr "stvorena metoda je vratila 0"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt>Nije moguće koristiti <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Nije moguće pronaći Multimedia Backend"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Nije moguće pronaći zatraženi Multimedia Backend"

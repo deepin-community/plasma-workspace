@@ -6,11 +6,13 @@
 
 #include "recentdocuments.h"
 
-#include <QAction>
+#include <QApplication>
 #include <QDir>
 #include <QMimeData>
 
 #include <KIO/Job>
+#include <KIO/JobUiDelegate>
+#include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenFileManagerWindowJob>
 #include <KIO/OpenUrlJob>
 #include <KLocalizedString>
@@ -54,12 +56,14 @@ void RecentDocuments::match(Plasma::RunnerContext &context)
             | Order::RecentlyUsedFirst
             | Agent::any()
             // we search only on file name, as KActivity does not support better options
-            | Url("/*/" + term + "*")
+            | Url("/*/*" + term + "*")
             | Limit(20);
     // clang-format on
 
     const auto result = new ResultModel(query);
 
+    float relevance = 0.75;
+    Plasma::QueryMatch::Type type = Plasma::QueryMatch::CompletionMatch;
     for (int i = 0; i < result->rowCount(); ++i) {
         const auto index = result->index(i, 0);
 
@@ -71,17 +75,20 @@ void RecentDocuments::match(Plasma::RunnerContext &context)
 
         Plasma::QueryMatch match(this);
 
-        auto relevance = 0.5;
-        match.setType(Plasma::QueryMatch::PossibleMatch);
-        if (url.fileName() == term) {
-            relevance = 1.0;
-            match.setType(Plasma::QueryMatch::ExactMatch);
-        } else if (url.fileName().startsWith(term)) {
-            relevance = 0.9;
-            match.setType(Plasma::QueryMatch::PossibleMatch);
-        }
-        match.setIconName(KIO::iconNameForUrl(url));
         match.setRelevance(relevance);
+        match.setType(type);
+        if (term.size() >= 5
+            && (url.fileName().compare(term, Qt::CaseInsensitive) == 0 || QFileInfo(url.fileName()).baseName().compare(term, Qt::CaseInsensitive) == 0)) {
+            match.setRelevance(relevance + 0.1);
+            match.setType(Plasma::QueryMatch::ExactMatch);
+        } else if (url.fileName().startsWith(term, Qt::CaseInsensitive)) {
+            match.setRelevance(relevance + 0.1);
+            match.setType(Plasma::QueryMatch::PossibleMatch);
+        } else if (!url.fileName().contains(term)) {
+            continue;
+        }
+
+        match.setIconName(KIO::iconNameForUrl(url));
         match.setData(QVariant(url));
         match.setUrls({url});
         match.setId(url.toString());
@@ -89,9 +96,10 @@ void RecentDocuments::match(Plasma::RunnerContext &context)
             match.setActions(m_actions);
         }
         match.setText(name);
-
         QString destUrlString = KShell::tildeCollapse(url.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).path());
         match.setSubtext(destUrlString);
+
+        relevance -= 0.05;
 
         context.addMatch(match);
     }
@@ -109,8 +117,8 @@ void RecentDocuments::run(const Plasma::RunnerContext &context, const Plasma::Qu
     }
 
     auto *job = new KIO::OpenUrlJob(url);
-    job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
-    job->setRunExecutables(false);
+    job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, QApplication::activeWindow()));
+    job->setShowOpenOrExecuteDialog(true);
     job->start();
 }
 

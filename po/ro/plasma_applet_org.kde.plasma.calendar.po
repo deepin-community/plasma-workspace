@@ -49,3 +49,15 @@ msgstr "Arată ziua din lună"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Arată numărul săptămânii"
+
+#~ msgid "Working Day"
+#~ msgstr "Zi lucrătoare"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Începe la 9"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Se termină la 17"
+
+#~ msgid "Agenda"
+#~ msgstr "Agendă"

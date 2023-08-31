@@ -120,3 +120,32 @@ msgstr ""
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr ""
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "តើ​អ្នក​ចង់​ផ្អាក​ទៅ​ថាស​ដែរ​ឬទេ (សម្ងំ) ?"
+
+#~ msgid "Yes"
+#~ msgstr "បាទ/ចាស"
+
+#~ msgid "No"
+#~ msgstr "ទេ"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "តើ​អ្នក​ចង់​ផ្អាក​ទៅ​អង្គ​ចងចាំ​​ដែរ​ឬទេ (ដេក)?"
+
+#~ msgid "Leave"
+#~ msgstr "ចាកចេញ"
+
+#, fuzzy
+#~| msgid "Leave"
+#~ msgid "Leave..."
+#~ msgstr "ចាកចេញ"
+
+#~ msgid "Suspend"
+#~ msgstr "ផ្អាក"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "កំណត់​រចនាសម្ព័ន្ធ​ការ​ចាក់សោ/ចេញ"
+
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "សូម​ជ្រើស​ធាតុ​មួយ ឬ​ច្រើនពី​​បញ្ជី​ខាងក្រោម​"

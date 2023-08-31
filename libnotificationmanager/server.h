@@ -9,6 +9,7 @@
 #include <QObject>
 
 #include "notificationmanager_export.h"
+#include "notifications.h"
 
 namespace NotificationManager
 {
@@ -130,8 +131,20 @@ public:
      *
      * @param id The notification ID
      * @param actionName The name of the action, e.g. "Action 1", or "default"
+     * @param xdgActivationToken The token the application needs to send to raise itself.
+     * @param window the window that invokes the action
      */
-    void invokeAction(uint id, const QString &actionName);
+    void invokeAction(uint id, const QString &actionName, const QString &xdgActivationToken, Notifications::InvokeBehavior behavior, QWindow *window);
+
+    /**
+     * Convenience call to maintain ABI
+     *
+     * @deprecated
+     */
+    void invokeAction(uint id, const QString &actionName, const QString &xdgActivationToken, Notifications::InvokeBehavior behavior)
+    {
+        invokeAction(id, actionName, xdgActivationToken, behavior, nullptr);
+    }
 
     /**
      * Sends a notification reply text
@@ -141,7 +154,7 @@ public:
      * @param text The reply message text
      * @since 5.18
      */
-    void reply(const QString &dbusService, uint id, const QString &text);
+    void reply(const QString &dbusService, uint id, const QString &text, Notifications::InvokeBehavior behavior);
 
     /**
      * Adds a notification

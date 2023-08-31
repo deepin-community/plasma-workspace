@@ -29,3 +29,15 @@ msgstr "संगीता कुमारी"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sangeeta09@gmail.com"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt>मल्टीमीडिया बैकएण्ड <b>%1</b> प्रयोग करबा मे अक्षम:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "मल्टीमीडिया बैकएण्ड प्राप्त करबामे अक्षम"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "निवेदित मल्टीमीडिया बैकएण्ड प्राप्त करबामे अक्षम"
+
+#~ msgid "create method returned 0"
+#~ msgstr "क्रिएट मैथड  घुरैलक 0 "

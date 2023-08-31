@@ -124,3 +124,40 @@ msgstr "Valmiustila (keskeytä muistiin)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Lepotila (keskeytä levylle)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "Sammuta…"
+
+#~ msgid "Logout..."
+#~ msgstr "Kirjaudu ulos…"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Haluatko keskeyttää järjestelmän levylle?"
+
+#~ msgid "Yes"
+#~ msgstr "Kyllä"
+
+#~ msgid "No"
+#~ msgstr "Ei"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Haluatko keskeyttää järjestelmän muistiin?"
+
+#~ msgid "Leave"
+#~ msgstr "Poistu"
+
+#~ msgid "Leave..."
+#~ msgstr "Poistu…"
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Toiminnot"
+
+#~ msgid "Suspend"
+#~ msgstr "Valmiustila"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Asetukset: Lukitus/uloskirjautuminen"
+
+#~ msgid "SystemTray Settings"
+#~ msgstr "Ilmoitusalueen asetukset"

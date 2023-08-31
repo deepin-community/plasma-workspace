@@ -5,6 +5,7 @@
 */
 
 #include "osd.h"
+#include "debug.h"
 #include "shellcorona.h"
 
 #include <QDBusConnection>
@@ -171,7 +172,7 @@ bool Osd::init()
     m_osdObject->setSource(m_osdUrl);
 
     if (m_osdObject->status() != QQmlComponent::Ready) {
-        qWarning() << "Failed to load OSD QML file" << m_osdUrl;
+        qCWarning(PLASMASHELL) << "Failed to load OSD QML file" << m_osdUrl;
         return false;
     }
 
@@ -200,7 +201,7 @@ void Osd::showProgress(const QString &icon, const int percent, const int maximum
     rootObject->setProperty("showingProgress", true);
     rootObject->setProperty("icon", icon);
 
-    emit osdProgress(icon, value, additionalText);
+    Q_EMIT osdProgress(icon, value, additionalText);
     showOsd();
 }
 
@@ -216,7 +217,7 @@ void Osd::showText(const QString &icon, const QString &text)
     rootObject->setProperty("osdValue", text);
     rootObject->setProperty("icon", icon);
 
-    emit osdText(icon, text);
+    Q_EMIT osdText(icon, text);
     showOsd();
 }
 

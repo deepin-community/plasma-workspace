@@ -1,20 +1,20 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# A S Alam <aalam@users.sf.net>, 2009, 2010, 2011, 2014, 2016, 2020.
+# A S Alam <aalam@users.sf.net>, 2009, 2010, 2011, 2014, 2016, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2020-11-01 21:03-0800\n"
-"Last-Translator: A S Alam <aalam.yellow@gmail.com>\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
+"PO-Revision-Date: 2022-01-03 11:31-0800\n"
+"Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 21.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: bbcukmet_i18n.dat:1
@@ -2702,74 +2702,87 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr ""
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "ਬਰਤਾਨੀਆ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "ਅਮਰੀਕਾ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr ""
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, kde-format
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "ਅੱਜ ਰਾਤ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "ਸ਼ਨਿੱ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "ਐਤ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "ਸੋਮ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "ਮੰਗਲ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "ਬੁੱਧ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "ਵੀਰ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "ਸ਼ੁੱਕਰ"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
+msgstr ""
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
 msgstr ""
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
@@ -4580,13 +4593,13 @@ msgstr "ਹਲਕਾ ਮੀਂਹ"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance Freezing Rain"
-msgstr ""
+msgstr "ਜਮਾਉ ਮੀਂਹ ਦੀ ਸੰਭਾਵਨਾ"
 
 #: noaa_i18n.dat:295
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing Rain Likely"
-msgstr ""
+msgstr "ਹਲਕਾ ਜਮਾਉ ਮੀਂਹ"
 
 #: noaa_i18n.dat:296
 #, kde-format
@@ -4606,7 +4619,7 @@ msgstr "ਹਲਕਾ ਮੀਂਹ"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance Rain/Snow"
-msgstr ""
+msgstr "ਮੀਂਹ/ਬਰਫ਼ ਦੀ ਸੰਭਾਵਨਾ"
 
 #: noaa_i18n.dat:299
 #, kde-format
@@ -4901,3 +4914,149 @@ msgstr "ਧੁੱਪ ਨਿਕਲ ਰਹੀ ਹੈ"
 msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr "ਆਮ ਤੌਰ ਉੱਤੇ ਸਾਫ਼"
+
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "ਮੌਸਮ ਹਾਲਤ"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "N"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNE"
+#~ msgstr "NNE"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "NE"
+
+#~ msgctxt "wind direction"
+#~ msgid "ENE"
+#~ msgstr "ENE"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSE"
+#~ msgstr "SSE"
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "SE"
+
+#~ msgctxt "wind direction"
+#~ msgid "ESE"
+#~ msgstr "ESE"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNW"
+#~ msgstr "NNW"
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "NW"
+
+#~ msgctxt "wind direction"
+#~ msgid "WNW"
+#~ msgstr "WNW"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "W"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSW"
+#~ msgstr "SSW"
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "SW"
+
+#~ msgctxt "wind direction"
+#~ msgid "WSW"
+#~ msgstr "WSW"
+
+#~ msgctxt "wind direction"
+#~ msgid "VR"
+#~ msgstr "VR"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "ਚੜ੍ਹਨਾ"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "ਡੁੱਬਣਾ"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "ਕੋਈ ਬਦਲਾਅ ਨਹੀਂ"
+
+#~ msgctxt "wind speed"
+#~ msgid "N/A"
+#~ msgstr "ਉਪਲੱਬਧ ਨਹੀਂ"
+
+#~ msgctxt "wind direction - wind speed is too low to measure"
+#~ msgid "VR"
+#~ msgstr "VR"
+
+#~ msgid "N"
+#~ msgstr "N"
+
+#~ msgid "NNE"
+#~ msgstr "NNE"
+
+#~ msgid "NE"
+#~ msgstr "NE"
+
+#~ msgid "ENE"
+#~ msgstr "ENE"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "SSE"
+#~ msgstr "SSE"
+
+#~ msgid "SE"
+#~ msgstr "SE"
+
+#~ msgid "ESE"
+#~ msgstr "ESE"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "NNW"
+#~ msgstr "NNW"
+
+#~ msgid "NW"
+#~ msgstr "NW"
+
+#~ msgid "WNW"
+#~ msgstr "WNW"
+
+#~ msgid "W"
+#~ msgstr "W"
+
+#~ msgid "SSW"
+#~ msgstr "SSW"
+
+#~ msgid "SW"
+#~ msgstr "SW"
+
+#~ msgid "WSW"
+#~ msgstr "WSW"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "ਮੌਸਮੀ ਡਾਟਾ ਇੰਨਵਾਇਰਮੈਂਟ ਕੇਨੈਡਾ ਵਲੋਂ ਦਿੱਤਾ ਗਿਆ"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr "UK MET ਆਫਿਸ ਤੋਂ ਡਾਟਾ / backstage.bbc.co.uk ਵਲੋਂ ਸਹਾਇਕ"

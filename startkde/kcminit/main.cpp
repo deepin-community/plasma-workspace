@@ -10,6 +10,7 @@
 
 #include <unistd.h>
 
+#include <KFileUtils>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusPendingCall>
@@ -17,13 +18,13 @@
 #include <QFile>
 #include <QGuiApplication>
 #include <QLibrary>
+#include <QPluginLoader>
 #include <QTimer>
 
 #include <KAboutData>
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
-#include <KServiceTypeTrader>
 #include <kworkspace.h>
 
 static int ready[2];
@@ -47,66 +48,28 @@ static void waitForReady()
     close(ready[0]);
 }
 
-bool KCMInit::runModule(const QString &libName, KService::Ptr service)
+bool KCMInit::runModule(const KPluginMetaData &data)
 {
-    QString KCMINIT_PREFIX = QStringLiteral("kcminit_");
-    const QVariant tmp = service->property(QStringLiteral("X-KDE-Init-Symbol"), QVariant::String);
-    QString kcminit;
-    if (tmp.isValid()) {
-        kcminit = tmp.toString();
-        if (!kcminit.startsWith(KCMINIT_PREFIX))
-            kcminit = KCMINIT_PREFIX + kcminit;
-    } else
-        kcminit = KCMINIT_PREFIX + libName;
-
-    QString path = QPluginLoader(libName).fileName();
-    if (path.isEmpty()) {
-        path = QPluginLoader(QStringLiteral("kcms/") + libName).fileName();
-    }
-
-    if (path.isEmpty()) {
-        qWarning() << "Module" << libName << "was not found";
-        return false;
-    }
+    QString path = QPluginLoader(data.fileName()).fileName();
 
     // get the kcminit_ function
-    QFunctionPointer init = QLibrary::resolve(path, kcminit.toUtf8().constData());
+    QFunctionPointer init = QLibrary::resolve(path, "kcminit");
     if (!init) {
-        qWarning() << "Module" << libName << "does not actually have a kcminit function";
+        qWarning() << "Module" << data.fileName() << "does not actually have a kcminit function";
         return false;
     }
 
     // initialize the module
-    qDebug() << "Initializing " << libName << ": " << kcminit;
+    qDebug() << "Initializing " << data.fileName();
     init();
     return true;
 }
 
 void KCMInit::runModules(int phase)
 {
-    QString KCMINIT_PREFIX = QStringLiteral("kcminit_");
-    for (const KService::Ptr &service : qAsConst(m_list)) {
-        const QVariant tmp = service->property(QStringLiteral("X-KDE-Init-Library"), QVariant::String);
-        QString library;
-        if (tmp.isValid()) {
-            library = tmp.toString();
-            if (!library.startsWith(KCMINIT_PREFIX))
-                library = KCMINIT_PREFIX + library;
-        } else {
-            library = service->library();
-        }
-
-        if (library.isEmpty()) {
-            qWarning() << Q_FUNC_INFO << "library is empty, skipping";
-            continue; // Skip
-        }
-
+    for (const KPluginMetaData &data : qAsConst(m_list)) {
         // see ksmserver's README for the description of the phases
-        const QVariant vphase = service->property(QStringLiteral("X-KDE-Init-Phase"), QVariant::Int);
-
-        int libphase = 1;
-        if (vphase.isValid())
-            libphase = vphase.toInt();
+        int libphase = data.value(QStringLiteral("X-KDE-Init-Phase"), 1);
 
         if (libphase > 1) {
             libphase = 1;
@@ -116,46 +79,39 @@ void KCMInit::runModules(int phase)
             continue;
 
         // try to load the library
-        if (!m_alreadyInitialized.contains(library)) {
-            runModule(library, service);
-            m_alreadyInitialized.append(library);
+        if (!m_alreadyInitialized.contains(data.pluginId())) {
+            runModule(data);
+            m_alreadyInitialized.append(data.pluginId());
         }
     }
 }
 
 KCMInit::KCMInit(const QCommandLineParser &args)
 {
-    QString arg;
-    if (args.positionalArguments().size() == 1) {
-        arg = args.positionalArguments().first();
-    }
-
     if (args.isSet(QStringLiteral("list"))) {
-        m_list = KServiceTypeTrader::self()->query(QStringLiteral("KCModuleInit"));
-
-        for (const KService::Ptr &service : qAsConst(m_list)) {
-            if (service->library().isEmpty())
-                continue; // Skip
-            printf("%s\n", QFile::encodeName(service->desktopEntryName()).data());
+        m_list = KPluginMetaData::findPlugins(QStringLiteral("plasma/kcminit"));
+        for (const KPluginMetaData &data : qAsConst(m_list)) {
+            printf("%s\n", QFile::encodeName(data.fileName()).data());
         }
         return;
     }
 
-    if (!arg.isEmpty()) {
-        QString module = arg;
-        if (!module.endsWith(QLatin1String(".desktop")))
-            module += QLatin1String(".desktop");
+    const auto positionalArguments = args.positionalArguments();
+    if (!positionalArguments.isEmpty()) {
+        for (const auto &arg : positionalArguments) {
+            KPluginMetaData data(arg);
+            if (!data.isValid()) {
+                data = KPluginMetaData::findPluginById(QStringLiteral("plasma/kcminit"), arg);
+            }
 
-        KService::Ptr serv = KService::serviceByStorageId(module);
-        if (!serv || serv->library().isEmpty()) {
-            qCritical() << i18n("Module %1 not found", module);
-            return;
-        } else {
-            m_list.append(serv);
+            if (data.isValid()) {
+                m_list << data.fileName();
+            } else {
+                qWarning() << "Could not find" << arg;
+            }
         }
     } else {
-        // locate the desktop files
-        m_list = KServiceTypeTrader::self()->query(QStringLiteral("KCModuleInit"));
+        m_list = KPluginMetaData::findPlugins(QStringLiteral("plasma/kcminit"));
     }
 
     if (startup) {

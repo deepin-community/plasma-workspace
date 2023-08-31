@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-26 00:18+0000\n"
+"POT-Creation-Date: 2022-08-28 00:47+0000\n"
 "PO-Revision-Date: 2020-01-17 19:05+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -17,26 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 19.08.1\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Marek Laane"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "qiilaq69@gmail.com"
-
-#: feedback.cpp:50
-#, kde-format
-msgid "User Feedback"
-msgstr "Kasutaja tagasiside"
-
-#: feedback.cpp:52
-#, kde-format
-msgid "Configure user feedback settings"
-msgstr "Kasutaja tagasiside seadistamine"
-
 #: package/contents/ui/main.qml:34
 #, kde-format
 msgid ""
@@ -45,12 +25,12 @@ msgstr ""
 "Kasutaja tagasiside on tsentraalselt keelatud. Palun võta ühendust oma "
 "distributsiooniga."
 
-#: package/contents/ui/main.qml:38 package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:44 package/contents/ui/main.qml:77
 #, kde-format
 msgid "Plasma:"
 msgstr "Plasma:"
 
-#: package/contents/ui/main.qml:45
+#: package/contents/ui/main.qml:51
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -66,8 +46,8 @@ msgid ""
 "it, so we can focus on things that matter to you.<nl/><nl/>Contributing this "
 "information is optional and entirely anonymous. We never collect your "
 "personal data, files you use, websites you visit, or information that could "
-"identify you.<nl/><nl/>You can read about our privacy policy in the "
-"following link:"
+"identify you.<nl/><nl/>You can read about <link url='https://kde.org/"
+"privacypolicy-apps.php'>our privacy policy here.</link>"
 msgstr ""
 "Sa võid abistada KDE arendajaid Plasma täiustamisel, kui jagad nendega "
 "teavet, mil moel sina seda kasutad, mis võimaldab meil keskenduda just sulle "
@@ -77,17 +57,35 @@ msgstr ""
 "külastad, samuti mitte mingit muud teavet, mis võimaldaks sind tuvastada.<nl/"
 "><nl/>Meie reeglitest saab lugeda järgmisel lingil:"
 
-#: package/contents/ui/main.qml:99
+#: package/contents/ui/main.qml:112
 #, kde-format
 msgid "Plasma"
 msgstr "Plasma"
 
-#: package/contents/ui/main.qml:117
+#: package/contents/ui/main.qml:133
 #, kde-format
 msgid "The following information will be sent:"
 msgstr "Edastatakse järgmine teave:"
 
-#: package/contents/ui/main.qml:162
+#: package/contents/ui/main.qml:178
 #, kde-format
 msgid "View sent data:"
 msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Marek Laane"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "qiilaq69@gmail.com"
+
+#~ msgid "User Feedback"
+#~ msgstr "Kasutaja tagasiside"
+
+#~ msgid "Configure user feedback settings"
+#~ msgstr "Kasutaja tagasiside seadistamine"
+
+#~ msgctxt "@info"
+#~ msgid "You can read about our policy in the following link:"
+#~ msgstr "Meie reeglite kohta saab lugeda järgmiselt lingilt:"

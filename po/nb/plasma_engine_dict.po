@@ -1,6 +1,6 @@
 # Translation of plasma_engine_dict to Norwegian Bokmål
 #
-# Øystein Steffensen-Alværvik <ystein@posteo.net>, 2018.
+# Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"

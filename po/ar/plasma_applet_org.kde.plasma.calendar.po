@@ -51,3 +51,20 @@ msgstr "أظهر أيام الشهر"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "أظهر رقم الأسبوع"
+
+#~ msgid "Working Day"
+#~ msgstr "يوم العمل"
+
+#~ msgid "Starts at 9"
+#~ msgstr "يبدأ في التّاسعة"
+
+#~ msgid "Ends at 5"
+#~ msgstr "وينتهي في الخامسة"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "الأيقونة:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "اليوم في الشّهر"

@@ -18,7 +18,11 @@
 #include <QGuiApplication>
 #include <QScreen>
 #include <QTimer>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 
 #include <QBitmap>
 
@@ -28,9 +32,10 @@
 #include "statusnotifieritemadaptor.h"
 #include "statusnotifierwatcher_interface.h"
 
+#include "../c_ptr.h"
 #include "xtestsender.h"
 
-//#define VISUAL_DEBUG
+// #define VISUAL_DEBUG
 
 #define SNI_WATCHER_SERVICE_NAME "org.kde.StatusNotifierWatcher"
 #define SNI_WATCHER_PATH "/StatusNotifierWatcher"
@@ -165,7 +170,7 @@ SNIProxy::SNIProxy(xcb_window_t wid, QObject *parent)
     // we query if the client selected button presses in the event mask
     // if the client does supports that we send directly, otherwise we'll use xtest
     auto waCookie = xcb_get_window_attributes(c, wid);
-    QScopedPointer<xcb_get_window_attributes_reply_t, QScopedPointerPodDeleter> windowAttributes(xcb_get_window_attributes_reply(c, waCookie, nullptr));
+    UniqueCPointer<xcb_get_window_attributes_reply_t> windowAttributes(xcb_get_window_attributes_reply(c, waCookie, nullptr));
     if (windowAttributes && !(windowAttributes->all_event_masks & XCB_EVENT_MASK_BUTTON_PRESS)) {
         m_injectMode = XTest;
     }
@@ -200,8 +205,8 @@ void SNIProxy::update()
         qCDebug(SNIPROXY) << "Scaling pixmap of window" << m_windowId << Title() << "from w*h" << w << h;
         m_pixmap = m_pixmap.scaled(s_embedSize, s_embedSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     }
-    emit NewIcon();
-    emit NewToolTip();
+    Q_EMIT NewIcon();
+    Q_EMIT NewToolTip();
 }
 
 void SNIProxy::resizeWindow(const uint16_t width, const uint16_t height) const
@@ -230,7 +235,7 @@ QSize SNIProxy::calculateClientWindowSize() const
     auto c = QX11Info::connection();
 
     auto cookie = xcb_get_geometry(c, m_windowId);
-    QScopedPointer<xcb_get_geometry_reply_t, QScopedPointerPodDeleter> clientGeom(xcb_get_geometry_reply(c, cookie, nullptr));
+    UniqueCPointer<xcb_get_geometry_reply_t> clientGeom(xcb_get_geometry_reply(c, cookie, nullptr));
 
     QSize clientWindowSize;
     if (clientGeom) {
@@ -387,8 +392,8 @@ QPoint SNIProxy::calculateClickPoint() const
     // at the same time make the request for rectangles (even if this request isn't needed)
     xcb_shape_get_rectangles_cookie_t rectaglesCookie = xcb_shape_get_rectangles(c, m_windowId, XCB_SHAPE_SK_BOUNDING);
 
-    QScopedPointer<xcb_shape_query_extents_reply_t, QScopedPointerPodDeleter> extentsReply(xcb_shape_query_extents_reply(c, extentsCookie, nullptr));
-    QScopedPointer<xcb_shape_get_rectangles_reply_t, QScopedPointerPodDeleter> rectanglesReply(xcb_shape_get_rectangles_reply(c, rectaglesCookie, nullptr));
+    UniqueCPointer<xcb_shape_query_extents_reply_t> extentsReply(xcb_shape_query_extents_reply(c, extentsCookie, nullptr));
+    UniqueCPointer<xcb_shape_get_rectangles_reply_t> rectanglesReply(xcb_shape_get_rectangles_reply(c, rectaglesCookie, nullptr));
 
     if (!extentsReply || !rectanglesReply || !extentsReply->bounding_shaped) {
         return clickPoint;
@@ -508,14 +513,12 @@ void SNIProxy::sendClick(uint8_t mouseButton, int x, int y)
     auto c = QX11Info::connection();
 
     auto cookieSize = xcb_get_geometry(c, m_windowId);
-    QScopedPointer<xcb_get_geometry_reply_t, QScopedPointerPodDeleter> clientGeom(xcb_get_geometry_reply(c, cookieSize, nullptr));
+    UniqueCPointer<xcb_get_geometry_reply_t> clientGeom(xcb_get_geometry_reply(c, cookieSize, nullptr));
 
     if (!clientGeom) {
         return;
     }
 
-    auto cookie = xcb_query_pointer(c, m_windowId);
-    QScopedPointer<xcb_query_pointer_reply_t, QScopedPointerPodDeleter> pointer(xcb_query_pointer_reply(c, cookie, nullptr));
     /*qCDebug(SNIPROXY) << "samescreen" << pointer->same_screen << endl
     << "root x*y" << pointer->root_x << pointer->root_y << endl
     << "win x*y" << pointer->win_x << pointer->win_y;*/
@@ -525,17 +528,13 @@ void SNIProxy::sendClick(uint8_t mouseButton, int x, int y)
     const QPoint clickPoint = calculateClickPoint();
     if (mouseButton >= XCB_BUTTON_INDEX_4) {
         // scroll event, take pointer position
+        auto cookie = xcb_query_pointer(c, m_windowId);
+        UniqueCPointer<xcb_query_pointer_reply_t> pointer(xcb_query_pointer_reply(c, cookie, nullptr));
         configVals[0] = pointer->root_x;
         configVals[1] = pointer->root_y;
     } else {
-        if (pointer->root_x > x + clientGeom->width)
-            configVals[0] = pointer->root_x - clientGeom->width + 1;
-        else
-            configVals[0] = static_cast<uint32_t>(x - clickPoint.x());
-        if (pointer->root_y > y + clientGeom->height)
-            configVals[1] = pointer->root_y - clientGeom->height + 1;
-        else
-            configVals[1] = static_cast<uint32_t>(y - clickPoint.y());
+        configVals[0] = static_cast<uint32_t>(x - clickPoint.x());
+        configVals[1] = static_cast<uint32_t>(y - clickPoint.y());
     }
     xcb_configure_window(c, m_containerWid, XCB_CONFIG_WINDOW_X | XCB_CONFIG_WINDOW_Y, configVals);
 

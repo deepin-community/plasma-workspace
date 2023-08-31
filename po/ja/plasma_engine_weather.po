@@ -1,19 +1,20 @@
 # Taiki Komoda <kom@kde.gr.jp>, 2010.
-# Fumiaki Okushi <okushi@kde.gr.jp>, 2010.
+# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022.
+# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2010, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: libgweather trunk\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2010-09-06 02:23-0700\n"
-"Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
+"PO-Revision-Date: 2022-08-20 23:20-0700\n"
+"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 22.04.1\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
@@ -21,7 +22,7 @@ msgstr ""
 #, kde-format
 msgctxt "weather condition"
 msgid "clear"
-msgstr "雲のない"
+msgstr "雲なし"
 
 #: bbcukmet_i18n.dat:2
 #, kde-format
@@ -128,9 +129,7 @@ msgid "heavy rain shower"
 msgstr "激しく打ちつけるような雨"
 
 #: bbcukmet_i18n.dat:19
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "heavy rain shower"
+#, kde-format
 msgctxt "weather condition"
 msgid "heavy rain showers"
 msgstr "激しく打ちつけるような雨"
@@ -166,9 +165,7 @@ msgid "heavy snow showers"
 msgstr "激しく打ちつけるような雪"
 
 #: bbcukmet_i18n.dat:25
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "white cloud"
+#, kde-format
 msgctxt "weather condition"
 msgid "light cloud"
 msgstr "白色の雲"
@@ -187,9 +184,7 @@ msgid "light rain shower"
 msgstr "軽く打ちつけるような雨"
 
 #: bbcukmet_i18n.dat:28
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "light rain shower"
+#, kde-format
 msgctxt "weather condition"
 msgid "light rain showers"
 msgstr "軽く打ちつけるような雨"
@@ -292,12 +287,10 @@ msgid "sunny intervals"
 msgstr "晴れの期間"
 
 #: bbcukmet_i18n.dat:45
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "white cloud"
+#, kde-format
 msgctxt "weather condition"
 msgid "thick cloud"
-msgstr "白色の雲"
+msgstr "厚い雲"
 
 #: bbcukmet_i18n.dat:46 ions/wetter.com/ion_wettercom.cpp:196
 #: ions/wetter.com/ion_wettercom.cpp:197
@@ -313,9 +306,7 @@ msgid "thundery shower"
 msgstr "打ちつけるような雷雨"
 
 #: bbcukmet_i18n.dat:48
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "thundery shower"
+#, kde-format
 msgctxt "weather condition"
 msgid "thundery showers"
 msgstr "打ちつけるような雷雨"
@@ -441,9 +432,7 @@ msgid "heavy rain shower"
 msgstr "激しく打ちつけるような雨"
 
 #: bbcukmet_i18n.dat:69
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "heavy rain shower"
+#, kde-format
 msgctxt "weather forecast"
 msgid "heavy rain showers"
 msgstr "激しく打ちつけるような雨"
@@ -479,9 +468,7 @@ msgid "heavy snow showers"
 msgstr "激しく打ちつけるような雪"
 
 #: bbcukmet_i18n.dat:75
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "white cloud"
+#, kde-format
 msgctxt "weather forecast"
 msgid "light cloud"
 msgstr "白色の雲"
@@ -499,9 +486,7 @@ msgid "light rain shower"
 msgstr "軽く打ちつけるような雨"
 
 #: bbcukmet_i18n.dat:78
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "light rain shower"
+#, kde-format
 msgctxt "weather forecast"
 msgid "light rain showers"
 msgstr "軽く打ちつけるような雨"
@@ -597,17 +582,13 @@ msgid "sunny intervals"
 msgstr "晴れの期間"
 
 #: bbcukmet_i18n.dat:94
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "white cloud"
+#, kde-format
 msgctxt "weather forecast"
 msgid "thick cloud"
 msgstr "白色の雲"
 
 #: bbcukmet_i18n.dat:95
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "thunderstorm"
+#, kde-format
 msgctxt "weather forecast"
 msgid "thunderstorm"
 msgstr "雷雨"
@@ -619,9 +600,7 @@ msgid "thundery shower"
 msgstr "打ちつけるような雷雨"
 
 #: bbcukmet_i18n.dat:97
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "thundery shower"
+#, kde-format
 msgctxt "weather forecast"
 msgid "thundery showers"
 msgstr "打ちつけるような雷雨"
@@ -639,17 +618,13 @@ msgid "white cloud"
 msgstr "白色の雲"
 
 #: bbcukmet_i18n.dat:100
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Ice pellet"
+#, kde-format
 msgctxt "visibility"
 msgid "Excellent"
-msgstr "氷のペレット"
+msgstr "非常に良好"
 
 #: bbcukmet_i18n.dat:101
-#, fuzzy, kde-format
-#| msgctxt "visibility"
-#| msgid "Very good"
+#, kde-format
 msgctxt "visibility"
 msgid "Very Good"
 msgstr "とても良好"
@@ -673,9 +648,7 @@ msgid "Poor"
 msgstr "悪い"
 
 #: bbcukmet_i18n.dat:105
-#, fuzzy, kde-format
-#| msgctxt "visibility"
-#| msgid "Very poor"
+#, kde-format
 msgctxt "visibility"
 msgid "Very Poor"
 msgstr "とても悪い"
@@ -1110,7 +1083,7 @@ msgstr "今しがた雷雨時々雨"
 #, kde-format
 msgctxt "weather condition"
 msgid "Sand or Dust Storm"
-msgstr "塵 (じん)か砂嵐"
+msgstr "塵(じん)か砂嵐"
 
 #: envcan_i18n.dat:74
 #, kde-format
@@ -1173,20 +1146,16 @@ msgid "Thunderstorm with Rain"
 msgstr "雷雨時々雨"
 
 #: envcan_i18n.dat:84
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "Thunderstorm with Rain"
+#, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm with light rainshowers"
-msgstr "雷雨時々雨"
+msgstr "雷雨時々軽い雨"
 
 #: envcan_i18n.dat:85
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "Recent Thunderstorm with Heavy Rain"
+#, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm with heavy rainshowers"
-msgstr "今しがた雷雨時々激しい雨"
+msgstr "雷雨時々激しい雨"
 
 #: envcan_i18n.dat:86
 #, kde-format
@@ -1663,20 +1632,16 @@ msgid "Cloudy"
 msgstr "曇り"
 
 #: envcan_i18n.dat:165
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "partly cloudy"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Partly cloudy"
 msgstr "部分的に曇り"
 
 #: envcan_i18n.dat:166
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "partly cloudy"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Mainly cloudy"
-msgstr "部分的に曇り"
+msgstr "おおよそ曇り"
 
 #: envcan_i18n.dat:167
 #, kde-format
@@ -1853,41 +1818,31 @@ msgid "Ice fog dissipating"
 msgstr "消散中の氷霧"
 
 #: envcan_i18n.dat:196
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Ice pellet"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Ice pellets"
 msgstr "氷のペレット"
 
 #: envcan_i18n.dat:197
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Ice pellet mixed with freezing rain"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Ice pellets mixed with freezing rain"
 msgstr "凍った雨が混じった氷のペレット"
 
 #: envcan_i18n.dat:198
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Ice pellet mixed with snow"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Ice pellets mixed with snow"
 msgstr "雪が混じった氷のペレット"
 
 #: envcan_i18n.dat:199
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Ice pellet or freezing rain"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Ice pellets or freezing rain"
 msgstr "氷のペレットか凍った雨"
 
 #: envcan_i18n.dat:200
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Ice pellet or snow"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Ice pellets or snow"
 msgstr "氷のペレットか雪"
@@ -2097,41 +2052,31 @@ msgid "Periods of freezing rain or snow"
 msgstr "時々凍った雨か雪"
 
 #: envcan_i18n.dat:235
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Periods of ice pellet"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Periods of ice pellets"
 msgstr "時々氷のペレット"
 
 #: envcan_i18n.dat:236
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Periods of ice pellet mixed with freezing rain"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Periods of ice pellets mixed with freezing rain"
 msgstr "時々凍った雨が混じった氷のペレット"
 
 #: envcan_i18n.dat:237
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Periods of ice pellet mixed with snow"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Periods of ice pellets mixed with snow"
 msgstr "時々雪が混じった氷のペレット"
 
 #: envcan_i18n.dat:238
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Periods of ice pellet or freezing rain"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Periods of ice pellets or freezing rain"
 msgstr "時々氷のペレットか凍った雨"
 
 #: envcan_i18n.dat:239
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Periods of ice pellet or snow"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Periods of ice pellets or snow"
 msgstr "時々氷のペレットか雪"
@@ -2665,9 +2610,7 @@ msgid "Sunny"
 msgstr "晴れ"
 
 #: envcan_i18n.dat:328
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "Mainly Sunny"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Mainly sunny"
 msgstr "おおよそ晴れ"
@@ -2750,83 +2693,88 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr "風"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "UK"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "USA"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
-msgstr ""
+msgstr "今日"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
-#, fuzzy, kde-format
-#| msgid "Night"
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
+#, kde-format
 msgctxt "Short for Tonight"
 msgid "Tonight"
-msgstr "夜"
+msgstr "今夜"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
-#, fuzzy, kde-format
-#| msgid "Sat"
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
+#, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "土"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
-#, fuzzy, kde-format
-#| msgid "Sun"
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
+#, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "日"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
-#, fuzzy, kde-format
-#| msgid "Mon"
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
+#, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "月"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
-#, fuzzy, kde-format
-#| msgid "Tue"
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
+#, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "火"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
-#, fuzzy, kde-format
-#| msgid "Wed"
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
+#, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "水"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
-#, fuzzy, kde-format
-#| msgid "Thu"
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
+#, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "木"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
-#, fuzzy, kde-format
-#| msgid "Fri"
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
+#, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "金"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
-msgstr ""
+msgstr "BBC Weather のデータ"
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
+msgstr "ソース: Deutscher Wetterdienst"
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
 #: ions/envcan/ion_envcan.cpp:1403 ions/envcan/ion_envcan.cpp:1544
@@ -2842,15 +2790,13 @@ msgid "day"
 msgstr "昼"
 
 #: ions/envcan/ion_envcan.cpp:1549
-#, fuzzy, kde-format
-#| msgid "nite"
+#, kde-format
 msgctxt "Short for tonight"
 msgid "nite"
 msgstr "夜"
 
 #: ions/envcan/ion_envcan.cpp:1550
-#, fuzzy, kde-format
-#| msgid "nt"
+#, kde-format
 msgctxt "Short for night, appended to the end of the weekday"
 msgid "nt"
 msgstr "nt"
@@ -2865,14 +2811,13 @@ msgstr "追跡"
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from Environment and Climate Change Canada"
-msgstr ""
+msgstr "Environment and Climate Change Canada のデータ"
 
 #: ions/noaa/ion_noaa.cpp:633
-#, fuzzy, kde-format
-#| msgid "Data provided by NOAA National Weather Service"
+#, kde-format
 msgctxt "credit line, keep string short)"
 msgid "Data from NOAA National Weather Service"
-msgstr "NOAA National Weather Service からの提供データ"
+msgstr "NOAA National Weather Service のデータ"
 
 #: ions/wetter.com/ion_wettercom.cpp:156 ions/wetter.com/ion_wettercom.cpp:157
 #, kde-format
@@ -3972,12 +3917,10 @@ msgid "Partly Cloudy with Haze"
 msgstr "霞んで、部分的に曇り"
 
 #: noaa_i18n.dat:178
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "Heavy Freezing Fog"
+#, kde-format
 msgctxt "weather condition"
 msgid "Patchy Freezing Fog"
-msgstr "激しい凍った霧"
+msgstr "とぎれとぎれの凍った霧"
 
 #: noaa_i18n.dat:179
 #, kde-format
@@ -4493,7 +4436,7 @@ msgstr "霜"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Thunderstorms"
-msgstr "雷雨のわずかな可能性"
+msgstr "わずかな雷雨の可能性"
 
 #: noaa_i18n.dat:271
 #, kde-format
@@ -4514,12 +4457,10 @@ msgid "Severe Tstms"
 msgstr "深刻な雷雨"
 
 #: noaa_i18n.dat:275
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Snow"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Snow/Sleet"
-msgstr "雪の可能性"
+msgstr "わずかな雪・みぞれの可能性"
 
 #: noaa_i18n.dat:276
 #, kde-format
@@ -4540,12 +4481,10 @@ msgid "Snow/Sleet"
 msgstr "雪・みぞれ"
 
 #: noaa_i18n.dat:279
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Rain"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Rain/Sleet"
-msgstr "雨の可能性"
+msgstr "わずかな雨・みぞれの可能性"
 
 #: noaa_i18n.dat:280
 #, kde-format
@@ -4566,12 +4505,10 @@ msgid "Rain/Sleet"
 msgstr "雨・みぞれ"
 
 #: noaa_i18n.dat:283
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Rain/Freezing Rain"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Rain/Freezing Rain"
-msgstr "雨・凍った雨の可能性"
+msgstr "わずかな雨・凍った雨の可能性"
 
 #: noaa_i18n.dat:284
 #, kde-format
@@ -4592,26 +4529,22 @@ msgid "Rain/Freezing Rain"
 msgstr "雨・凍った雨"
 
 #: noaa_i18n.dat:287
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Wintry Mix"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Wintry Mix Likely"
-msgstr "冬並"
+msgstr "おそらく冬の天気"
 
 #: noaa_i18n.dat:288
 #, kde-format
 msgctxt "weather forecast"
 msgid "Wintry Mix"
-msgstr "冬並"
+msgstr "冬の天気"
 
 #: noaa_i18n.dat:289
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Freezing Drizzle"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Freezing Drizzle"
-msgstr "凍った霧雨の可能性"
+msgstr "わずかな凍った霧雨の可能性"
 
 #: noaa_i18n.dat:290
 #, kde-format
@@ -4632,12 +4565,10 @@ msgid "Freezing Drizzle"
 msgstr "凍った霧雨"
 
 #: noaa_i18n.dat:293
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Freezing Rain"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Freezing Rain"
-msgstr "凍った雨の可能性"
+msgstr "わずかな凍った雨の可能性"
 
 #: noaa_i18n.dat:294
 #, kde-format
@@ -4658,12 +4589,10 @@ msgid "Freezing Rain"
 msgstr "凍った雨"
 
 #: noaa_i18n.dat:297
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Rain"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Rain/Snow"
-msgstr "雨の可能性"
+msgstr "わずかな雨・雪の可能性"
 
 #: noaa_i18n.dat:298
 #, kde-format
@@ -4684,12 +4613,10 @@ msgid "Rain/Snow"
 msgstr "雨・雪"
 
 #: noaa_i18n.dat:301
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Snow"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Snow"
-msgstr "雪の可能性"
+msgstr "わずかな雪の可能性"
 
 #: noaa_i18n.dat:302
 #, kde-format
@@ -4710,12 +4637,10 @@ msgid "Heavy Snow"
 msgstr "激しい雪"
 
 #: noaa_i18n.dat:306
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Flurries"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Flurries"
-msgstr "小雨の可能性"
+msgstr "わずかな小雨の可能性"
 
 #: noaa_i18n.dat:307
 #, kde-format
@@ -4730,12 +4655,10 @@ msgid "Flurries Likely"
 msgstr "おそらく小雨"
 
 #: noaa_i18n.dat:310
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Snow Showers"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Snow Showers"
-msgstr "打ちつけるような雪の可能性"
+msgstr "わずかな打ちつけるような雪の可能性"
 
 #: noaa_i18n.dat:311
 #, kde-format
@@ -4756,12 +4679,10 @@ msgid "Snow Showers"
 msgstr "打ちつけるような雪"
 
 #: noaa_i18n.dat:314
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Drizzle"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Drizzle"
-msgstr "霧雨の可能性"
+msgstr "わずかな霧雨の可能性"
 
 #: noaa_i18n.dat:315
 #, kde-format
@@ -4776,12 +4697,10 @@ msgid "Drizzle Likely"
 msgstr "おそらく霧雨"
 
 #: noaa_i18n.dat:318
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Rain"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Rain"
-msgstr "雨の可能性"
+msgstr "わずかな雨の可能性"
 
 #: noaa_i18n.dat:319
 #, kde-format
@@ -4802,12 +4721,10 @@ msgid "Heavy Rain"
 msgstr "激しい雨"
 
 #: noaa_i18n.dat:323
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Chance Snow Showers"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Rain Showers"
-msgstr "打ちつけるような雪の可能性"
+msgstr "わずかな打ちつけるような雨の可能性"
 
 #: noaa_i18n.dat:324
 #, kde-format
@@ -4918,12 +4835,10 @@ msgid "Mostly Sunny"
 msgstr "ほぼ晴れ"
 
 #: noaa_i18n.dat:346
-#, fuzzy, kde-format
-#| msgctxt "weather forecast"
-#| msgid "Mostly Sunny"
+#, kde-format
 msgctxt "weather forecast"
 msgid "Partly Sunny"
-msgstr "ほぼ晴れ"
+msgstr "部分的に晴れ"
 
 #: noaa_i18n.dat:348
 #, kde-format

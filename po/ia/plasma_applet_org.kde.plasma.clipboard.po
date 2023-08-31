@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-26 01:42+0000\n"
-"PO-Revision-Date: 2021-06-24 23:18+0200\n"
+"POT-Creation-Date: 2023-01-02 01:06+0000\n"
+"PO-Revision-Date: 2021-12-21 21:58+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,110 +15,112 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.04.2\n"
+"X-Generator: Lokalize 21.12.0\n"
 
-#: contents/ui/BarcodePage.qml:28
+#: contents/ui/BarcodePage.qml:36
 #, kde-format
 msgid "Return to Clipboard"
 msgstr "Retorna a area de transferentia"
 
-#: contents/ui/BarcodePage.qml:49
+#: contents/ui/BarcodePage.qml:57
 #, kde-format
 msgid "QR Code"
 msgstr "QR Code (Codice QR)"
 
-#: contents/ui/BarcodePage.qml:50
+#: contents/ui/BarcodePage.qml:58
 #, kde-format
 msgid "Data Matrix"
 msgstr "Data Matrix"
 
-#: contents/ui/BarcodePage.qml:51
+#: contents/ui/BarcodePage.qml:59
 #, kde-format
 msgctxt "Aztec barcode"
 msgid "Aztec"
 msgstr "Aztec"
 
-#: contents/ui/BarcodePage.qml:52
+#: contents/ui/BarcodePage.qml:60
 #, kde-format
 msgid "Code 39"
 msgstr "Codice 39"
 
-#: contents/ui/BarcodePage.qml:53
+#: contents/ui/BarcodePage.qml:61
 #, kde-format
 msgid "Code 93"
 msgstr "Codice 93"
 
-#: contents/ui/BarcodePage.qml:54
+#: contents/ui/BarcodePage.qml:62
 #, kde-format
 msgid "Code 128"
 msgstr "Codice 128"
 
-#: contents/ui/BarcodePage.qml:77
+#: contents/ui/BarcodePage.qml:85
 #, kde-format
-msgid "Change the barcode type"
-msgstr "Cambia le typo de barcode (codice a barras)"
+msgid "Change the QR code type"
+msgstr "Cambia le typo de codice QR "
 
-#: contents/ui/BarcodePage.qml:101
+#: contents/ui/BarcodePage.qml:114
 #, kde-format
-msgid "Creating barcode failed"
-msgstr "Il falleva a crear codice a barras"
+msgid "Creating QR code failed"
+msgstr "Il falleva a crear codice QR"
 
-#: contents/ui/BarcodePage.qml:110
+#: contents/ui/BarcodePage.qml:123
 #, kde-format
-msgid "The barcode is too large to be displayed"
-msgstr "Le codice a barras es troppo grane per esser monstrate"
+msgid "The QR code is too large to be displayed"
+msgstr "Le codice QR es troppo grande per esser monstrate"
 
-#: contents/ui/clipboard.qml:26
+#: contents/ui/clipboard.qml:27
 #, kde-format
 msgid "Clipboard Contents"
 msgstr "Contentos de Area de Transferentia"
 
-#: contents/ui/clipboard.qml:27 contents/ui/Menu.qml:58
+#: contents/ui/clipboard.qml:28 contents/ui/Menu.qml:126
 #, kde-format
 msgid "Clipboard is empty"
 msgstr "Area de transferentia  es vacue"
 
-#: contents/ui/clipboard.qml:55
+#: contents/ui/clipboard.qml:56
 #, kde-format
 msgid "Configure Clipboard…"
 msgstr "Configura area de Trasferentia…"
 
-#: contents/ui/clipboard.qml:57
+#: contents/ui/clipboard.qml:58
 #, kde-format
 msgid "Clear History"
-msgstr "Netta historia"
-
-#: contents/ui/ClipboardPage.qml:76
-#, kde-format
-msgid "Search…"
-msgstr "Cerca…"
-
-#: contents/ui/ClipboardPage.qml:112
-#, kde-format
-msgid "Clear history"
-msgstr "Netta historia"
+msgstr "Netta Chronologia"
 
 #: contents/ui/DelegateToolButtons.qml:23
 #, kde-format
 msgid "Invoke action"
 msgstr "Invoca action"
 
-#: contents/ui/DelegateToolButtons.qml:33
+#: contents/ui/DelegateToolButtons.qml:38
 #, kde-format
-msgid "Show barcode"
-msgstr "Monstra codice a barras"
+msgid "Show QR code"
+msgstr "Monstra codice QR"
 
-#: contents/ui/DelegateToolButtons.qml:43
+#: contents/ui/DelegateToolButtons.qml:54
 #, kde-format
 msgid "Edit contents"
 msgstr "Edita contentos"
 
-#: contents/ui/DelegateToolButtons.qml:51
+#: contents/ui/DelegateToolButtons.qml:68
 #, kde-format
 msgid "Remove from history"
-msgstr "Remove ex historia"
+msgstr "Remove ex chronologia"
 
-#: contents/ui/Menu.qml:58
+#: contents/ui/EditPage.qml:86
+#, kde-format
+msgctxt "@action:button"
+msgid "Save"
+msgstr "Salveguarda"
+
+#: contents/ui/EditPage.qml:94
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Cancella"
+
+#: contents/ui/Menu.qml:126
 #, kde-format
 msgid "No matches"
 msgstr "Nulle correspondentias"
@@ -129,3 +131,9 @@ msgctxt ""
 "Indicator that there are more urls in the clipboard than previews shown"
 msgid "+%1"
 msgstr "+%1"
+
+#~ msgid "Clear history"
+#~ msgstr "Netta chronologia"
+
+#~ msgid "Search…"
+#~ msgstr "Cerca…"

@@ -78,9 +78,13 @@ QString CurrentContainmentActionsModel::mouseEventString(int mouseButton, int mo
     return string;
 }
 
-QString CurrentContainmentActionsModel::wheelEventString(const QPointF &delta, int mouseButtons, int modifiers)
+QString CurrentContainmentActionsModel::wheelEventString(QObject *quickWheelEvent)
 {
-    QWheelEvent wheel(QPointF(), QPointF(), delta.toPoint(), {}, Qt::MouseButtons(mouseButtons), Qt::KeyboardModifiers(modifiers), Qt::NoScrollPhase, false);
+    const QPoint angleDelta = quickWheelEvent->property("angleDelta").toPoint();
+    const auto buttons = Qt::MouseButtons(quickWheelEvent->property("buttons").toInt());
+    const auto modifiers = Qt::KeyboardModifiers(quickWheelEvent->property("modifiers").toInt());
+
+    QWheelEvent wheel(QPointF(), QPointF(), QPoint(), angleDelta, buttons, modifiers, Qt::NoScrollPhase, false);
 
     return Plasma::ContainmentActions::eventToString(&wheel);
 }
@@ -116,7 +120,7 @@ bool CurrentContainmentActionsModel::append(const QString &action, const QString
 
     appendRow(item);
 
-    emit configurationChanged();
+    Q_EMIT configurationChanged();
     return true;
 }
 
@@ -154,7 +158,7 @@ void CurrentContainmentActionsModel::update(int row, const QString &action, cons
                     HasConfigurationInterfaceRole);
         }
 
-        emit configurationChanged();
+        Q_EMIT configurationChanged();
     }
 }
 
@@ -167,7 +171,7 @@ void CurrentContainmentActionsModel::remove(int row)
         delete m_plugins[action];
         m_plugins.remove(action);
         m_removedTriggers << action;
-        emit configurationChanged();
+        Q_EMIT configurationChanged();
     }
 }
 
@@ -217,26 +221,15 @@ void CurrentContainmentActionsModel::showConfiguration(int row, QQuickItem *ctx)
     configDlg->show();
 }
 
-void CurrentContainmentActionsModel::showAbout(int row, QQuickItem *ctx)
+QVariant CurrentContainmentActionsModel::aboutMetaData(int row) const
 {
     const QString action = itemData(index(row, 0)).value(ActionRole).toString();
 
     if (!m_plugins.contains(action)) {
-        return;
+        return QVariant();
     }
 
-    KPluginMetaData info = m_plugins[action]->metadata();
-
-    auto aboutDialog = new KAboutPluginDialog(info, qobject_cast<QWidget *>(parent()));
-    aboutDialog->setWindowIcon(QIcon::fromTheme(info.iconName()));
-    aboutDialog->setAttribute(Qt::WA_DeleteOnClose);
-
-    if (ctx && ctx->window()) {
-        aboutDialog->setWindowModality(Qt::WindowModal);
-        aboutDialog->winId(); // so it creates the windowHandle();
-        aboutDialog->windowHandle()->setTransientParent(ctx->window());
-    }
-    aboutDialog->show();
+    return QVariant::fromValue(m_plugins[action]->metadata());
 }
 
 void CurrentContainmentActionsModel::save()

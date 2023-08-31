@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2009-04-21 11:46+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros.info>\n"
@@ -23,6 +23,12 @@ msgstr ""
 #, kde-format
 msgid "Appearance"
 msgstr "រូបរាង"
+
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
 
 #: contents/ui/configGeneral.qml:23
 #, fuzzy, kde-format
@@ -40,3 +46,21 @@ msgstr ""
 #| msgid "Show &time zone"
 msgid "Show time zone"
 msgstr "បង្ហាញ​តំបន់​ពេលវេលា"
+
+#~ msgid "Show the seconds"
+#~ msgstr "គូស​ធីក​វា ប្រសិន​បើ​អ្នកចង់​បង្ហាញ​វិនាទី​ជា​រូបដៃ ដើម្បី​មើល​វិនាទី ។"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "បង្ហាញ​វិនាទី"
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "បង្ហាញ​ទ្រនិច​វិនាទី"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "បង្ហាញ​តំបន់​ពេលវេលា​ជា​អត្ថបទ"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "គូស​ធីក​វា ប្រសិន​បើ​អ្នក​​ចង់​បង្ហាញ​ពេលវេលា​ជា​អត្ថបទ ។"
+
+#~ msgid "Show &time zone"
+#~ msgstr "បង្ហាញ​តំបន់​ពេលវេលា"

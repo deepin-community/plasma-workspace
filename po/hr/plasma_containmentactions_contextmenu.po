@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_containmentactions_contextmenu\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-09-11 00:47+0000\n"
 "PO-Revision-Date: 2009-11-04 10:25+0100\n"
 "Last-Translator: Andrej Dundovic <adundovi@gmail.com>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -21,50 +21,70 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: menu.cpp:95
+#: menu.cpp:99
 #, kde-format
 msgctxt "plasma_containmentactions_contextmenu"
 msgid "Show KRunner"
 msgstr ""
 
-#: menu.cpp:100
+#: menu.cpp:104
+#, kde-format
+msgid "Open Terminal"
+msgstr ""
+
+#: menu.cpp:108
 #, fuzzy, kde-format
 #| msgid "Lock Screen"
 msgctxt "plasma_containmentactions_contextmenu"
 msgid "Lock Screen"
 msgstr "Zaključaj zaslon"
 
-#: menu.cpp:109
+#: menu.cpp:117
 #, fuzzy, kde-format
 #| msgid "Leave..."
 msgctxt "plasma_containmentactions_contextmenu"
 msgid "Leave…"
 msgstr "Napusti …"
 
-#: menu.cpp:234
+#: menu.cpp:126
+#, kde-format
+msgctxt "plasma_containmentactions_contextmenu"
+msgid "Configure Display Settings…"
+msgstr ""
+
+#: menu.cpp:291
 #, fuzzy, kde-format
 #| msgid "Configure Contextual Menu Plugin"
 msgctxt "plasma_containmentactions_contextmenu"
 msgid "Configure Contextual Menu Plugin"
 msgstr "Podesi priključak kontekstnog izbornika"
 
-#: menu.cpp:244
+#: menu.cpp:301
 #, fuzzy, kde-format
 #| msgid "[Other Actions]"
 msgctxt "plasma_containmentactions_contextmenu"
 msgid "[Other Actions]"
 msgstr "[Ostale radnje]"
 
-#: menu.cpp:247
+#: menu.cpp:304
 #, fuzzy, kde-format
 #| msgid "Wallpaper Actions"
 msgctxt "plasma_containmentactions_contextmenu"
 msgid "Wallpaper Actions"
 msgstr "Radnje podloge"
 
-#: menu.cpp:251
+#: menu.cpp:308
 #, fuzzy, kde-format
 #| msgid "[Separator]"
 msgctxt "plasma_containmentactions_contextmenu"
 msgid "[Separator]"
 msgstr "[Razdjelnik]"
+
+#, fuzzy
+#~| msgid "Run Command..."
+#~ msgctxt "plasma_containmentactions_contextmenu"
+#~ msgid "Run Command..."
+#~ msgstr "Izvrši naredbu …"
+
+#~ msgid "Add Panel"
+#~ msgstr "Dodaj panel"

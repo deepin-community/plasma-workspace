@@ -9,6 +9,29 @@ set(kcm_colors_SRCS
     filterproxymodel.cpp
 )
 
+qt_generate_dbus_interface(
+    accentColorService/accentColorService.h
+    org.kde.plasmashell.accentColor.xml
+    OPTIONS -M
+)
+
+set(plasma-accentcolor-service_SRCS
+    accentColorService/accentColorService.cpp
+    colorsapplicator.cpp
+    ../kcms-common.cpp
+    ../krdb/krdb.cpp
+)
+
+
+set(plasma-accentcolor-service_SRCS
+    ${plasma-accentcolor-service_SRCS}
+    ${CMAKE_CURRENT_BINARY_DIR}/org.kde.plasmashell.accentColor.xml
+)
+
+qt_add_dbus_adaptor(plasma-accentcolor-service_SRCS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.plasmashell.accentColor.xml
+                     accentColorService/accentColorService.h AccentColorService
+                     accentcolor_service_adaptor AccentColorServiceAdaptor)
+
 kcmutils_generate_module_data(
     kcm_colors_SRCS
     MODULE_DATA_HEADER colorsdata.h
@@ -20,7 +43,8 @@ kcmutils_generate_module_data(
 # needed for krdb
 kconfig_add_kcfg_files(kcm_colors_SRCS colorssettings.kcfgc GENERATE_MOC)
 
-kcoreaddons_add_plugin(kcm_colors SOURCES ${kcm_colors_SRCS} INSTALL_NAMESPACE "kcms")
+kcoreaddons_add_plugin(kcm_colors SOURCES ${kcm_colors_SRCS} INSTALL_NAMESPACE "plasma/kcms/systemsettings")
+kcmutils_generate_desktop_file (kcm_colors)
 target_link_libraries(kcm_colors
     Qt::DBus
     KF5::KCMUtils
@@ -36,12 +60,14 @@ target_link_libraries(kcm_colors
     krdb
 )
 
-if(X11_FOUND)
-    target_link_libraries(kcm_colors X11::X11 Qt::X11Extras)
+if(HAVE_X11)
+    target_link_libraries(kcm_colors X11::X11)
+    if (QT_MAJOR_VERSION EQUAL "5")
+        target_link_libraries(kcm_colors Qt::X11Extras)
+    else()
+        target_link_libraries(kcm_colors Qt::GuiPrivate)
+    endif()
 endif()
-
-kcoreaddons_desktop_to_json(kcm_colors "kcm_colors.desktop")
-
 
 set(plasma-apply-colorscheme_SRCS
     plasma-apply-colorscheme.cpp
@@ -52,14 +78,15 @@ set(plasma-apply-colorscheme_SRCS
 )
 
 kconfig_add_kcfg_files(plasma-apply-colorscheme_SRCS colorssettings.kcfgc GENERATE_MOC)
+kconfig_add_kcfg_files(plasma-accentcolor-service_SRCS colorssettings.kcfgc GENERATE_MOC)
 
 add_executable(plasma-apply-colorscheme ${plasma-apply-colorscheme_SRCS})
+kcoreaddons_add_plugin(plasma_accentcolor_service SOURCES ${plasma-accentcolor-service_SRCS} INSTALL_NAMESPACE "kf${QT_MAJOR_VERSION}/kded")
 
 target_link_libraries(plasma-apply-colorscheme
     Qt::Core
     Qt::DBus
     Qt::Gui
-    Qt::X11Extras
     KF5::GuiAddons
     KF5::KCMUtils
     KF5::I18n
@@ -68,8 +95,33 @@ target_link_libraries(plasma-apply-colorscheme
     X11::X11
 )
 
+target_link_libraries(plasma_accentcolor_service
+    Qt::Core
+    Qt::DBus
+    KF5::GuiAddons
+    KF5::KCMUtils
+    KF5::I18n
+    KF5::WindowSystem
+    KF5::ConfigCore
+    KF5::DBusAddons
+    PW::KWorkspace
+    X11::X11
+)
+
+
+if (QT_MAJOR_VERSION EQUAL "5")
+    target_link_libraries(plasma-apply-colorscheme Qt::X11Extras)
+else()
+    target_link_libraries(plasma-apply-colorscheme Qt::GuiPrivate)
+endif()
+
+if (QT_MAJOR_VERSION EQUAL "5")
+    target_link_libraries(plasma_accentcolor_service Qt::X11Extras)
+else()
+    target_link_libraries(plasma_accentcolor_service Qt::GuiPrivate)
+endif()
+
 install(FILES colorssettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
-install(FILES kcm_colors.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 install(TARGETS plasma-apply-colorscheme DESTINATION ${KDE_INSTALL_BINDIR})
 install(FILES colorschemes.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR})
 

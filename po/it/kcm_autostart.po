@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Federico Zenith <zenith@chemeng.ntnu.no>, 2008.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2008, 2010, 2012, 2015.
-# Paolo Zamponi <zapaolo@email.it>, 2017, 2020, 2021.
+# Paolo Zamponi <feus73@gmail.com>, 2017, 2020, 2021, 2022.
 # Vincenzo Reale <smart2128vr@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_autostart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-05-29 14:45+0200\n"
+"POT-Creation-Date: 2023-01-29 02:56+0000\n"
+"PO-Revision-Date: 2022-07-04 18:24+0200\n"
 "Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -19,111 +19,81 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.04.0\n"
+"X-Generator: Lokalize 22.04.2\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Federico Zenith"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "federico.zenith@member.fsf.org"
-
-#: autostart.cpp:24
-#, kde-format
-msgid "Autostart"
-msgstr "Avvia automaticamente"
-
-#: autostart.cpp:26
-#, kde-format
-msgid "Session Autostart Manager Control Panel Module"
-msgstr ""
-"Modulo del pannello di controllo del gestore di avvio automatico della "
-"sessione"
-
-#: autostart.cpp:28
-#, kde-format
-msgid "Copyright © 2006–2020 Autostart Manager team"
-msgstr "Copyright © 2006-2020 della squadra del gestore di avvio automatico"
-
-#: autostart.cpp:29
-#, kde-format
-msgid "Stephen Leaf"
-msgstr "Stephen Leaf"
-
-#: autostart.cpp:30
-#, kde-format
-msgid "Montel Laurent"
-msgstr "Montel Laurent"
-
-#: autostart.cpp:30
-#, kde-format
-msgid "Maintainer"
-msgstr "Responsabile"
-
-#: autostart.cpp:31
-#, kde-format
-msgid "Nicolas Fella"
-msgstr "Nicolas Fella"
-
-#: autostartmodel.cpp:288
+#: autostartmodel.cpp:322
 #, kde-format
 msgid "\"%1\" is not an absolute url."
 msgstr "«%1» non è un URL assoluto."
 
-#: autostartmodel.cpp:291
+#: autostartmodel.cpp:325
 #, kde-format
 msgid "\"%1\" does not exist."
 msgstr "«%1» non esiste."
 
-#: autostartmodel.cpp:294
+#: autostartmodel.cpp:328
 #, kde-format
 msgid "\"%1\" is not a file."
 msgstr "«%1» non è un file."
 
-#: autostartmodel.cpp:297
+#: autostartmodel.cpp:331
 #, kde-format
 msgid "\"%1\" is not readable."
 msgstr "«%1» non è un leggibile."
 
-#: package/contents/ui/main.qml:62
+#: package/contents/ui/main.qml:40
+#, kde-format
+msgid "Make Executable"
+msgstr "Rendi eseguibile"
+
+#: package/contents/ui/main.qml:54
+#, kde-format
+msgid "The file '%1' must be executable to run at logout."
+msgstr ""
+"Il file «%1» deve essere eseguibile per poter essere avviato all'uscita."
+
+#: package/contents/ui/main.qml:56
+#, kde-format
+msgid "The file '%1' must be executable to run at login."
+msgstr ""
+"Il file «%1» deve essere eseguibile per poter essere avviato all'accesso."
+
+#: package/contents/ui/main.qml:94
 #, kde-format
 msgid "Properties"
 msgstr "Proprietà"
 
-#: package/contents/ui/main.qml:68
+#: package/contents/ui/main.qml:100
 #, kde-format
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: package/contents/ui/main.qml:79
+#: package/contents/ui/main.qml:111
 #, kde-format
 msgid "Applications"
 msgstr "Applicazioni"
 
-#: package/contents/ui/main.qml:82
+#: package/contents/ui/main.qml:114
 #, kde-format
 msgid "Login Scripts"
 msgstr "Script di accesso"
 
-#: package/contents/ui/main.qml:85
+#: package/contents/ui/main.qml:117
 #, kde-format
 msgid "Pre-startup Scripts"
 msgstr "Scegli script di pre-avvio"
 
-#: package/contents/ui/main.qml:88
+#: package/contents/ui/main.qml:120
 #, kde-format
 msgid "Logout Scripts"
 msgstr "Script di uscita"
 
-#: package/contents/ui/main.qml:97
+#: package/contents/ui/main.qml:129
 #, kde-format
 msgid "No user-specified autostart items"
 msgstr "Nessuna voce di avvio automatico specificata dall'utente"
 
-#: package/contents/ui/main.qml:98
+#: package/contents/ui/main.qml:130
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add…</interface> button below to add some"
@@ -131,32 +101,128 @@ msgstr ""
 "Fai clic sul pulsante <interface>Aggiungi...</interface> qui sotto per "
 "aggiungere"
 
-#: package/contents/ui/main.qml:112
+#: package/contents/ui/main.qml:144
 #, kde-format
 msgid "Choose Login Script"
 msgstr "Scegli script di accesso"
 
-#: package/contents/ui/main.qml:133
+#: package/contents/ui/main.qml:165
 #, kde-format
 msgid "Choose Logout Script"
 msgstr "Scegli script di uscita"
 
-#: package/contents/ui/main.qml:151
+#: package/contents/ui/main.qml:183
 #, kde-format
 msgid "Add…"
 msgstr "Aggiungi…"
 
-#: package/contents/ui/main.qml:177
+#: package/contents/ui/main.qml:198
 #, kde-format
 msgid "Add Application…"
 msgstr "Aggiungi applicazione..."
 
-#: package/contents/ui/main.qml:183
+#: package/contents/ui/main.qml:204
 #, kde-format
 msgid "Add Login Script…"
 msgstr "Aggiungi script di accesso…"
 
-#: package/contents/ui/main.qml:189
+#: package/contents/ui/main.qml:210
 #, kde-format
 msgid "Add Logout Script…"
 msgstr "Aggiungi script di uscita…"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Federico Zenith"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "federico.zenith@member.fsf.org"
+
+#~ msgid "Autostart"
+#~ msgstr "Avvia automaticamente"
+
+#~ msgid "Session Autostart Manager Control Panel Module"
+#~ msgstr ""
+#~ "Modulo del pannello di controllo del gestore di avvio automatico della "
+#~ "sessione"
+
+#~ msgid "Copyright © 2006–2020 Autostart Manager team"
+#~ msgstr "Copyright © 2006-2020 della squadra del gestore di avvio automatico"
+
+#~ msgid "Stephen Leaf"
+#~ msgstr "Stephen Leaf"
+
+#~ msgid "Montel Laurent"
+#~ msgstr "Montel Laurent"
+
+#~ msgid "Maintainer"
+#~ msgstr "Responsabile"
+
+#~ msgid "Nicolas Fella"
+#~ msgstr "Nicolas Fella"
+
+#~ msgid "Add..."
+#~ msgstr "Aggiungi..."
+
+#~ msgid "Shell script path:"
+#~ msgstr "Percorso dello script di shell:"
+
+#~ msgid "Create as symlink"
+#~ msgstr "Crea come collegamento simbolico"
+
+#~ msgid "Autostart only in Plasma"
+#~ msgstr "Avvia automaticamente solo in Plasma"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgid "Command"
+#~ msgstr "Comando"
+
+#~ msgid "Status"
+#~ msgstr "Stato"
+
+#~ msgctxt ""
+#~ "@title:column The name of the column that decides if the program is run "
+#~ "on session startup, on session shutdown, etc"
+#~ msgid "Run On"
+#~ msgstr "Esegui su"
+
+#~ msgid "Session Autostart Manager"
+#~ msgstr "Gestore di avvio automatico della sessione"
+
+#~ msgctxt "The program will be run"
+#~ msgid "Enabled"
+#~ msgstr "Abilitato"
+
+#~ msgctxt "The program won't be run"
+#~ msgid "Disabled"
+#~ msgstr "Disabilitato"
+
+#~ msgid "Desktop File"
+#~ msgstr "File del desktop"
+
+#~ msgid "Script File"
+#~ msgstr "File di script"
+
+#~ msgid "Add Program..."
+#~ msgstr "Aggiungi programma..."
+
+#~ msgid "Startup"
+#~ msgstr "Avvio"
+
+#~ msgid "Before session startup"
+#~ msgstr "Prima dell'avvio della sessione"
+
+#~ msgid ""
+#~ "Only files with “.sh” extensions are allowed for setting up the "
+#~ "environment."
+#~ msgstr ""
+#~ "Sono ammessi solo file con estensione «.sh» per impostare l'ambiente."
+
+#~ msgid "Shutdown"
+#~ msgstr "Spegnimento"
+
+#~ msgid "1"
+#~ msgstr "1"

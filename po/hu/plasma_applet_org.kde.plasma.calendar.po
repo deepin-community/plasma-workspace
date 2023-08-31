@@ -49,3 +49,15 @@ msgstr "A hónap napjának megjelenítése"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Hét számának megjelenítése"
+
+#~ msgid "Working Day"
+#~ msgstr "Munkanap"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Kilenckor kezdődik"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Ötkor ér véget"
+
+#~ msgid "Agenda"
+#~ msgstr "Napirend"

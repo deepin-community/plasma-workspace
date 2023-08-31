@@ -32,3 +32,23 @@ msgstr "Андрей Черепанов"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "skull@kde.ru"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Невозможно использовать библиотеку воспроизведения <b>%1</b>:<br/>%2</"
+#~ "qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Библиотека воспроизведения не найдена"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Невозможно найти указанную библиотеку воспроизведения"
+
+#~ msgid "create method returned 0"
+#~ msgstr "метод создания вернул 0"
+
+#~ msgid "%1 (OSS)"
+#~ msgstr "%1 (OSS)"
+
+#~ msgid "%1 (ALSA)"
+#~ msgstr "%1 (ALSA)"

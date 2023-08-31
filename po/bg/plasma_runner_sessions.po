@@ -3,86 +3,117 @@
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2008.
 # Yasen Pramatarov <yasen@lindeas.com>, 2009, 2010, 2011.
+# Mincho Kondarev <mkondarev@yahoo.de>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_sessions\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2011-04-29 22:11+0300\n"
-"Last-Translator: Yasen Pramatarov <yasen@lindeas.com>\n"
-"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
+"POT-Creation-Date: 2022-12-17 11:11+0000\n"
+"PO-Revision-Date: 2022-12-20 19:21+0100\n"
+"Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
+"Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.12.0\n"
 
-#: sessionrunner.cpp:28 sessionrunner.cpp:64
+#: sessionrunner.cpp:23
 #, kde-format
-msgctxt "log out command"
-msgid "logout"
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to log out of the "
+"session"
+msgid "logout;log out"
 msgstr "изход"
 
-#: sessionrunner.cpp:28
+#: sessionrunner.cpp:26
 #, kde-format
 msgid "Logs out, exiting the current desktop session"
-msgstr "Излизане с приключване на текущата настолна сесия"
+msgstr "Излизане от текущата сесия на работния плот"
 
-#: sessionrunner.cpp:29 sessionrunner.cpp:81
-#, fuzzy, kde-format
-#| msgctxt "shutdown computer command"
-#| msgid "shutdown"
-msgctxt "shut down computer command"
-msgid "shut down"
+#: sessionrunner.cpp:33
+#, kde-format
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to shut down the "
+"computer"
+msgid "shutdown;shut down"
 msgstr "изключване"
 
-#: sessionrunner.cpp:29
+#: sessionrunner.cpp:36
 #, kde-format
 msgid "Turns off the computer"
 msgstr "Изключване на компютъра"
 
-#: sessionrunner.cpp:33 sessionrunner.cpp:90
+#: sessionrunner.cpp:43
 #, kde-format
-msgctxt "lock screen command"
-msgid "lock"
-msgstr "заключване"
-
-#: sessionrunner.cpp:33
-#, kde-format
-msgid "Locks the current sessions and starts the screen saver"
-msgstr "Заключване на текущата сесия и включване на екранния предпазител"
-
-#: sessionrunner.cpp:36 sessionrunner.cpp:72
-#, kde-format
-msgctxt "restart computer command"
-msgid "restart"
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to restart the "
+"computer"
+msgid "restart;reboot"
 msgstr "рестартиране"
 
-#: sessionrunner.cpp:36
+#: sessionrunner.cpp:46
 #, kde-format
 msgid "Reboots the computer"
 msgstr "Рестартиране на компютъра"
 
-#: sessionrunner.cpp:37 sessionrunner.cpp:73
+#: sessionrunner.cpp:54
 #, kde-format
-msgctxt "restart computer command"
-msgid "reboot"
-msgstr "рестартиране"
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to lock the screen"
+msgid "lock;lock screen"
+msgstr "заключване на екрана"
 
-#: sessionrunner.cpp:40
+#: sessionrunner.cpp:56
 #, kde-format
-msgctxt "switch user command"
+msgid "Locks the current sessions and starts the screen saver"
+msgstr "Заключване на текущата сесия и включване на екранния предпазител"
+
+#: sessionrunner.cpp:63
+#, kde-format
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to save the "
+"desktop session"
+msgid "save;save session"
+msgstr "запазване на сесията"
+
+#: sessionrunner.cpp:66
+#, kde-format
+msgid "Saves the current session for session restoration"
+msgstr "Запазване на текущата сесия за последващо възстановяване"
+
+#: sessionrunner.cpp:73
+#, kde-format
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to switch user "
+"sessions"
+msgid "switch user;new session"
+msgstr "превключване на потребител"
+
+#: sessionrunner.cpp:76
+#, kde-format
+msgid "Starts a new session as a different user"
+msgstr "Стартиране на нова сесия като друг потребител"
+
+#: sessionrunner.cpp:83
+#, kde-format
+msgctxt "KRunner keyword to list user sessions"
+msgid "sessions"
+msgstr "сесии"
+
+#: sessionrunner.cpp:84
+#, kde-format
+msgid "Lists all sessions"
+msgstr "Списък на всички сесии"
+
+#: sessionrunner.cpp:87
+#, kde-format
+msgctxt "KRunner keyword to switch user sessions"
 msgid "switch"
 msgstr "превключване"
 
-#: sessionrunner.cpp:41
-#, kde-format
-msgctxt "switch user command"
-msgid "switch :q:"
-msgstr "превключване на :q:"
-
-#: sessionrunner.cpp:42
+#: sessionrunner.cpp:89
 #, kde-format
 msgid ""
 "Switches to the active session for the user :q:, or lists all active "
@@ -91,98 +122,56 @@ msgstr ""
 "Превключване към активната сесия на потребителя :q: или показване на списък "
 "с всички активни сесии, ако не е зададен :q:"
 
-#: sessionrunner.cpp:45 sessionrunner.cpp:130
-#, kde-format
-msgid "switch user"
-msgstr "превключване на потребител"
-
-#: sessionrunner.cpp:45
-#, kde-format
-msgid "Starts a new session as a different user"
-msgstr "Стартиране на нова сесия като друг потребител"
-
-#: sessionrunner.cpp:46 sessionrunner.cpp:130
-#, kde-format
-msgid "new session"
-msgstr "нова сесия"
-
-#: sessionrunner.cpp:50
-#, kde-format
-msgid "Lists all sessions"
-msgstr "Списък на всички сесии"
-
-#: sessionrunner.cpp:64
-#, kde-format
-msgid "log out"
-msgstr "изход"
-
-#: sessionrunner.cpp:66
+#: sessionrunner.cpp:111
 #, kde-format
 msgctxt "log out command"
-msgid "Logout"
-msgstr "Изход"
+msgid "Log Out"
+msgstr "Излизане от сесия"
 
-#: sessionrunner.cpp:75
+#: sessionrunner.cpp:121
 #, kde-format
-msgid "Restart the computer"
-msgstr "Рестартиране на компютъра"
+msgctxt "turn off computer command"
+msgid "Shut Down"
+msgstr "Изключване"
 
-#: sessionrunner.cpp:82
-#, fuzzy, kde-format
-#| msgctxt "shutdown computer command"
-#| msgid "shutdown"
-msgctxt "shut down computer command"
-msgid "shutdown"
-msgstr "изключване"
-
-#: sessionrunner.cpp:84
-#, fuzzy, kde-format
-#| msgid "Shutdown the computer"
-msgid "Shut down the computer"
-msgstr "Изключване на компютъра"
-
-#: sessionrunner.cpp:93
+#: sessionrunner.cpp:131
 #, kde-format
-msgid "Lock the screen"
-msgstr "Заключване на екрана"
+msgctxt "restart computer command"
+msgid "Restart"
+msgstr "Рестартиране"
 
-#: sessionrunner.cpp:115
+#: sessionrunner.cpp:141
 #, kde-format
-msgctxt "User sessions"
-msgid "sessions"
-msgstr "сесии"
+msgctxt "lock screen command"
+msgid "Lock"
+msgstr "Заключване"
 
-#: sessionrunner.cpp:136
+#: sessionrunner.cpp:151
 #, kde-format
-msgid "New Session"
-msgstr "Нова сесия"
+msgid "Save Session"
+msgstr "Запазване на сесията"
 
-#: sessionrunner.cpp:211
+#: sessionrunner.cpp:194
 #, kde-format
-msgid "Warning - New Session"
-msgstr "Предупреждение - нова сесия"
+msgid "Switch User"
+msgstr "Превключване на потребител"
 
-#: sessionrunner.cpp:212
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>You have chosen to open another desktop session.<br />The current "
-#| "session will be hidden and a new login screen will be displayed.<br />An "
-#| "F-key is assigned to each session; F%1 is usually assigned to the first "
-#| "session, F%2 to the second session and so on. You can switch between "
-#| "sessions by pressing Ctrl, Alt and the appropriate F-key at the same "
-#| "time. Additionally, the KDE Panel and Desktop menus have actions for "
-#| "switching between sessions.</p>"
+#: sessionrunner.cpp:278
+#, kde-format
 msgid ""
-"<p>You have chosen to open another desktop session.<br />The current session "
-"will be hidden and a new login screen will be displayed.<br />An F-key is "
-"assigned to each session; F%1 is usually assigned to the first session, F%2 "
-"to the second session and so on. You can switch between sessions by pressing "
-"Ctrl, Alt and the appropriate F-key at the same time. Additionally, the "
-"Plasma Panel and Desktop menus have actions for switching between sessions.</"
-"p>"
+"<p>You are about to enter a new desktop session.</p><p>A login screen will "
+"be displayed and the current session will be hidden.</p><p>You can switch "
+"between desktop sessions using:</p><ul><li>Ctrl+Alt+F{number of session}</"
+"li><li>Plasma search (type '%1')</li><li>Plasma widgets (such as the "
+"application launcher)</li></ul>"
 msgstr ""
-"<p>Избрахте да отворите друга сесия.<br />Текущата ще бъде скрита и ще се "
-"покаже нов прозорец за влизане.<br />Всяка сесия е достъпна чрез F-"
-"клавишите; F%1 обикновено за първата сесия, F%2 за втората и т.н. Можете да "
-"превключвате между тях чрез Ctrl+Alt +съответния F-клавиш. Освен по този "
-"начин можете да направите същото от менюто на KDE.</p>"
+"<p>Ще влезете в нова сесия на работния плот.</p><p>Ще се появи екран за вход "
+"и текущата сесия ще бъде скрита.</p><p>Можете да превключвате между сесиите "
+"на работния плот, като използвате:</p><ul><li>Ctrl+Alt+F{номер на сесия}</"
+"li><li>Търсене на Plasma (въведете '%1')</li><li>Уиджети на Plasma (като "
+"например програмата за стартиране на приложения)</li></ul>"
+
+#: sessionrunner.cpp:287
+#, kde-format
+msgid "New Desktop Session"
+msgstr "Нова сесия на работната среда"

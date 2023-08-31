@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2008-11-24 00:32+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -23,6 +23,12 @@ msgstr ""
 #, kde-format
 msgid "Appearance"
 msgstr "รูปลักษณ์"
+
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
 
 #: contents/ui/configGeneral.qml:23
 #, fuzzy, kde-format
@@ -41,3 +47,45 @@ msgstr "ค่าทั่วไป"
 #| msgid "Show &time zone"
 msgid "Show time zone"
 msgstr "แสดง&พื้นที่เวลา"
+
+#~ msgid "Show the seconds"
+#~ msgstr "แสดงหน่วยวินาที"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "กาเลือกที่นี่ หากว่าคุณต้องการให้มีการแสดงหน่วยวินาทีด้วย"
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "แสดงเ&ข็มวินาที"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "แสดงพื้นที่เวลาเป็นข้อความ"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "กาเลือกที่นี่ หากว่าคุณต้องการที่จะแสดงพื้นที่เวลาเป็นข้อความ"
+
+#~ msgid "Show &time zone"
+#~ msgstr "แสดง&พื้นที่เวลา"
+
+#, fuzzy
+#~| msgid "Also show the time as text"
+#~ msgid "Also show the Timezone as text"
+#~ msgstr "แสดงเวลาเป็นข้อความด้วย"
+
+#~ msgid "Timezones"
+#~ msgstr "เขตเวลา"
+
+#~ msgid "Use &local timezone"
+#~ msgstr "ใช้เขตเวลาของระบบ"
+
+#~ msgid "Area"
+#~ msgstr "พื้นที่"
+
+#~ msgid "Region"
+#~ msgstr "เขตพื้นที่"
+
+#~ msgid "Comment"
+#~ msgstr "หมายเหตุ"
+
+#~ msgctxt "@title:window"
+#~ msgid "Configure Clock"
+#~ msgstr "ปรับแต่งนาฬิกา"

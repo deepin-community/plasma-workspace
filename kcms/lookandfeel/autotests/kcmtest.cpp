@@ -6,6 +6,7 @@
 */
 
 #include "../kcm.h"
+#include "../lookandfeelmanager.h"
 // Qt
 #include <KJob>
 #include <KPackage/Package>
@@ -46,6 +47,7 @@ private:
 void KcmTest::initTestCase()
 {
     QStandardPaths::setTestModeEnabled(true);
+    qunsetenv("XDG_CONFIG_DIRS");
 
     m_configDir = QDir(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation));
     m_configDir.removeRecursively();
@@ -75,7 +77,7 @@ void KcmTest::initTestCase()
     KConfigGroup cg(&config, "KDE");
     cg.writeEntry("LookAndFeelPackage", "org.kde.test");
     cg.sync();
-    m_KCMLookandFeel = new KCMLookandFeel(nullptr, QVariantList());
+    m_KCMLookandFeel = new KCMLookandFeel(nullptr, KPluginMetaData(), QVariantList());
     m_KCMLookandFeel->load();
 }
 
@@ -87,7 +89,7 @@ void KcmTest::cleanupTestCase()
 
 void KcmTest::testWidgetStyle()
 {
-    m_KCMLookandFeel->setWidgetStyle(QStringLiteral("Fusion"));
+    m_KCMLookandFeel->lookAndFeel()->setWidgetStyle(QStringLiteral("Fusion"));
 
     KConfig config(QStringLiteral("kdeglobals"));
     KConfigGroup cg(&config, "KDE");
@@ -103,7 +105,7 @@ void KcmTest::testWidgetStyle()
 void KcmTest::testColors()
 {
     // TODO: test colorFile as well
-    m_KCMLookandFeel->setColors(QStringLiteral("customTestValue"), QString());
+    m_KCMLookandFeel->lookAndFeel()->setColors(QStringLiteral("customTestValue"), QString());
 
     KConfig config(QStringLiteral("kdeglobals"));
     KConfigGroup cg(&config, "General");
@@ -116,7 +118,7 @@ void KcmTest::testColors()
 
 void KcmTest::testIcons()
 {
-    m_KCMLookandFeel->setIcons(QStringLiteral("customTestValue"));
+    m_KCMLookandFeel->lookAndFeel()->setIcons(QStringLiteral("customTestValue"));
 
     KConfig config(QStringLiteral("kdeglobals"));
     KConfigGroup cg(&config, "Icons");
@@ -129,7 +131,7 @@ void KcmTest::testIcons()
 
 void KcmTest::testPlasmaTheme()
 {
-    m_KCMLookandFeel->setPlasmaTheme(QStringLiteral("customTestValue"));
+    m_KCMLookandFeel->lookAndFeel()->setPlasmaTheme(QStringLiteral("customTestValue"));
 
     KConfig config(QStringLiteral("plasmarc"));
     KConfigGroup cg(&config, "Theme");
@@ -142,7 +144,7 @@ void KcmTest::testPlasmaTheme()
 
 void KcmTest::testCursorTheme()
 {
-    m_KCMLookandFeel->setCursorTheme(QStringLiteral("customTestValue"));
+    m_KCMLookandFeel->lookAndFeel()->setCursorTheme(QStringLiteral("customTestValue"));
 
     KConfig config(QStringLiteral("kcminputrc"));
     KConfigGroup cg(&config, "Mouse");
@@ -155,7 +157,7 @@ void KcmTest::testCursorTheme()
 
 void KcmTest::testSplashScreen()
 {
-    m_KCMLookandFeel->setSplashScreen(QStringLiteral("customTestValue"));
+    m_KCMLookandFeel->lookAndFeel()->setSplashScreen(QStringLiteral("customTestValue"));
 
     KConfig config(QStringLiteral("ksplashrc"));
     KConfigGroup cg(&config, "KSplash");
@@ -170,7 +172,7 @@ void KcmTest::testSplashScreen()
 
 void KcmTest::testLockScreen()
 {
-    m_KCMLookandFeel->setLockScreen(QStringLiteral("customTestValue"));
+    m_KCMLookandFeel->lookAndFeel()->setLockScreen(QStringLiteral("customTestValue"));
 
     KConfig config(QStringLiteral("kscreenlockerrc"));
     KConfigGroup cg(&config, "Greeter");
@@ -183,7 +185,7 @@ void KcmTest::testLockScreen()
 
 void KcmTest::testWindowSwitcher()
 {
-    m_KCMLookandFeel->setWindowSwitcher(QStringLiteral("customTestValue"));
+    m_KCMLookandFeel->lookAndFeel()->setWindowSwitcher(QStringLiteral("customTestValue"));
 
     KConfig config(QStringLiteral("kwinrc"));
     KConfigGroup cg(&config, "TabBox");
@@ -196,7 +198,7 @@ void KcmTest::testWindowSwitcher()
 
 void KcmTest::testDesktopSwitcher()
 {
-    m_KCMLookandFeel->setDesktopSwitcher(QStringLiteral("customTestValue"));
+    m_KCMLookandFeel->lookAndFeel()->setDesktopSwitcher(QStringLiteral("customTestValue"));
 
     KConfig config(QStringLiteral("kwinrc"));
     KConfigGroup cg(&config, "TabBox");
@@ -227,26 +229,26 @@ void KcmTest::testKCMSave()
     cgd = KConfigGroup(&configDefault, "General");
     // save() capitalizes the ColorScheme
     QCOMPARE(cg.readEntry("ColorScheme", QString()), QString());
-    QCOMPARE(cgd.readEntry("ColorScheme", QString()), QStringLiteral("TestValue"));
+    QCOMPARE(cgd.readEntry("ColorScheme", QString()), QStringLiteral("customTestValue"));
 
     cg = KConfigGroup(&config, "Icons");
     cgd = KConfigGroup(&configDefault, "Icons");
     QCOMPARE(cg.readEntry("Theme", QString()), QString());
-    QCOMPARE(cgd.readEntry("Theme", QString()), QStringLiteral("testValue"));
+    QCOMPARE(cgd.readEntry("Theme", QString()), QStringLiteral("customTestValue"));
 
     KConfig plasmaConfig(QStringLiteral("plasmarc"));
     KConfig plasmaConfigDefault(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + "/kdedefaults/plasmarc", KConfig::SimpleConfig);
     cg = KConfigGroup(&plasmaConfig, "Theme");
     cgd = KConfigGroup(&plasmaConfigDefault, "Theme");
     QCOMPARE(cg.readEntry("name", QString()), QString());
-    QCOMPARE(cgd.readEntry("name", QString()), QStringLiteral("testValue"));
+    QCOMPARE(cgd.readEntry("name", QString()), QStringLiteral("customTestValue"));
 
     KConfig inputConfig(QStringLiteral("kcminputrc"));
     KConfig inputConfigDefault(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + "/kdedefaults/kcminputrc", KConfig::SimpleConfig);
     cg = KConfigGroup(&inputConfig, "Mouse");
     cgd = KConfigGroup(&inputConfigDefault, "Mouse");
     QCOMPARE(cg.readEntry("cursorTheme", QString()), QString());
-    QCOMPARE(cgd.readEntry("cursorTheme", QString()), QStringLiteral("testValue"));
+    QCOMPARE(cgd.readEntry("cursorTheme", QString()), QStringLiteral("customTestValue"));
 
     KConfig splashConfig(QStringLiteral("ksplashrc"));
     KConfig splashConfigDefault(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + "/kdedefaults/ksplashrc", KConfig::SimpleConfig);
@@ -263,7 +265,7 @@ void KcmTest::testKCMSave()
     cg = KConfigGroup(&lockerConfig, "Greeter");
     cgd = KConfigGroup(&lockerConfigDefault, "Greeter");
     QCOMPARE(cg.readEntry("Theme", QString()), QString());
-    QCOMPARE(cgd.readEntry("Theme", QString()), QStringLiteral("org.kde.test"));
+    QCOMPARE(cgd.readEntry("Theme", QString()), QStringLiteral("customTestValue"));
 
     KConfig kwinConfig(QStringLiteral("kwinrc"));
     KConfig kwinConfigDefault(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + "/kdedefaults/kwinrc", KConfig::SimpleConfig);
@@ -272,9 +274,9 @@ void KcmTest::testKCMSave()
     QCOMPARE(cg.readEntry("LayoutName", QString()), QString());
     QCOMPARE(cg.readEntry("DesktopLayout", QString()), QString());
     QCOMPARE(cg.readEntry("DesktopListLayout", QString()), QString());
-    QCOMPARE(cgd.readEntry("LayoutName", QString()), QStringLiteral("testValue"));
-    QCOMPARE(cgd.readEntry("DesktopLayout", QString()), QStringLiteral("testDesktopValue"));
-    QCOMPARE(cgd.readEntry("DesktopListLayout", QString()), QStringLiteral("testDesktopValue"));
+    QCOMPARE(cgd.readEntry("LayoutName", QString()), QStringLiteral("customTestValue"));
+    QCOMPARE(cgd.readEntry("DesktopLayout", QString()), QStringLiteral("customTestValue"));
+    QCOMPARE(cgd.readEntry("DesktopListLayout", QString()), QStringLiteral("customTestValue"));
 }
 
 QTEST_MAIN(KcmTest)

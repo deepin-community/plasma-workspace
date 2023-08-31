@@ -7,10 +7,11 @@
 
 #pragma once
 
+#include <KConfigWatcher>
 #include <KNSCore/EntryWrapper>
 #include <QColor>
+#include <QDBusPendingCallWatcher>
 #include <QPointer>
-#include <QScopedPointer>
 
 #include <KSharedConfig>
 
@@ -40,11 +41,12 @@ class KCMColors : public KQuickAddons::ManagedConfigModule
     Q_PROPERTY(FilterProxyModel *filteredModel READ filteredModel CONSTANT)
     Q_PROPERTY(ColorsSettings *colorsSettings READ colorsSettings CONSTANT)
     Q_PROPERTY(bool downloadingFile READ downloadingFile NOTIFY downloadingFileChanged)
-
     Q_PROPERTY(QColor accentColor READ accentColor WRITE setAccentColor NOTIFY accentColorChanged)
+    Q_PROPERTY(QColor lastUsedCustomAccentColor READ lastUsedCustomAccentColor WRITE setLastUsedCustomAccentColor NOTIFY lastUsedCustomAccentColorChanged)
+    Q_PROPERTY(bool accentColorFromWallpaper READ accentColorFromWallpaper WRITE setAccentColorFromWallpaper NOTIFY accentColorFromWallpaperChanged)
 
 public:
-    KCMColors(QObject *parent, const QVariantList &args);
+    KCMColors(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
     ~KCMColors() override;
 
     enum SchemeFilter {
@@ -63,19 +65,34 @@ public:
     Q_INVOKABLE void knsEntryChanged(KNSCore::EntryWrapper *entry);
 
     QColor accentColor() const;
-    void setAccentColor(const QColor& accentColor);
+    void setAccentColor(const QColor &accentColor);
     void resetAccentColor();
     Q_SIGNAL void accentColorChanged();
+
+    QColor lastUsedCustomAccentColor() const;
+    void setLastUsedCustomAccentColor(const QColor &accentColor);
+    Q_SIGNAL void lastUsedCustomAccentColorChanged();
+
+    bool accentColorFromWallpaper() const;
+    void setAccentColorFromWallpaper(bool boolean);
+    Q_SIGNAL void accentColorFromWallpaperChanged();
 
     Q_INVOKABLE void installSchemeFromFile(const QUrl &url);
 
     Q_INVOKABLE void editScheme(const QString &schemeName, QQuickItem *ctx);
 
-    Q_INVOKABLE QColor accentBackground(const QColor& accent, const QColor& background);
+    // we take an extraneous reference to the accent colour here in order to have the bindings
+    // re-evaluate when it changes
+    Q_INVOKABLE QColor tinted(const QColor &color, const QColor &accent, bool tints, qreal tintFactor);
+    Q_INVOKABLE QColor accentBackground(const QColor &accent, const QColor &background);
+    Q_INVOKABLE QColor accentForeground(const QColor &accent, const bool &isActive);
 
 public Q_SLOTS:
     void load() override;
     void save() override;
+
+private Q_SLOTS:
+    void wallpaperAccentColorArrivedSlot(QDBusPendingCallWatcher *call);
 
 Q_SIGNALS:
     void downloadingFileChanged();
@@ -91,6 +108,8 @@ private:
     void saveColors();
     void processPendingDeletions();
 
+    void applyWallpaperAccentColor();
+
     void installSchemeFile(const QString &path);
 
     ColorsModel *m_model;
@@ -100,12 +119,11 @@ private:
     bool m_selectedSchemeDirty = false;
     bool m_activeSchemeEdited = false;
 
-    bool m_applyToAlien = true;
-
     QProcess *m_editDialogProcess = nullptr;
 
     KSharedConfigPtr m_config;
+    KConfigWatcher::Ptr m_configWatcher;
 
-    QScopedPointer<QTemporaryFile> m_tempInstallFile;
+    std::unique_ptr<QTemporaryFile> m_tempInstallFile;
     QPointer<KIO::FileCopyJob> m_tempCopyJob;
 };

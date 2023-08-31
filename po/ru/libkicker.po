@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2023-02-11 02:38+0000\n"
 "PO-Revision-Date: 2021-10-10 11:52+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -20,82 +20,82 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 21.08.2\n"
 
-#: plugin/actionlist.cpp:83
+#: plugin/actionlist.cpp:86
 #, kde-format
 msgid "Open with:"
 msgstr "Открыть с помощью:"
 
-#: plugin/actionlist.cpp:96
+#: plugin/actionlist.cpp:99
 #, kde-format
 msgid "Properties"
 msgstr "Свойства"
 
-#: plugin/actionlist.cpp:143
+#: plugin/actionlist.cpp:146
 #, kde-format
 msgid "Add to Desktop"
 msgstr "Добавить значок на рабочий стол"
 
-#: plugin/actionlist.cpp:148
+#: plugin/actionlist.cpp:151
 #, kde-format
 msgid "Add to Panel (Widget)"
 msgstr "Добавить виджет запуска на панель"
 
-#: plugin/actionlist.cpp:153
+#: plugin/actionlist.cpp:156
 #, kde-format
 msgid "Pin to Task Manager"
 msgstr "Закрепить на панели задач"
 
-#: plugin/actionlist.cpp:304 plugin/rootmodel.cpp:431
+#: plugin/actionlist.cpp:307 plugin/rootmodel.cpp:429
 #, kde-format
 msgid "Recent Files"
 msgstr "Последние файлы"
 
-#: plugin/actionlist.cpp:314
+#: plugin/actionlist.cpp:317
 #, kde-format
 msgid "Forget Recent Files"
 msgstr "Очистить список последних файлов"
 
-#: plugin/actionlist.cpp:393
+#: plugin/actionlist.cpp:395
 #, kde-format
 msgid "Edit Application…"
 msgstr "Изменить приложение…"
 
-#: plugin/actionlist.cpp:437
+#: plugin/actionlist.cpp:429
 #, kde-format
 msgctxt "@action opens a software center with the application"
 msgid "Uninstall or Manage Add-Ons…"
 msgstr "Удалить или настроить дополнения…"
 
-#: plugin/appentry.cpp:185
+#: plugin/appentry.cpp:308
 #, kde-format
 msgid "Hide Application"
 msgstr "Скрыть приложение"
 
-#: plugin/appentry.cpp:249
+#: plugin/appentry.cpp:367
 #, kde-format
 msgctxt "App name (Generic name)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: plugin/appentry.cpp:251
+#: plugin/appentry.cpp:369
 #, kde-format
 msgctxt "Generic name (App name)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: plugin/appsmodel.cpp:31 plugin/appsmodel.cpp:55 plugin/computermodel.cpp:98
-#: plugin/computermodel.cpp:226 plugin/recentusagemodel.cpp:156
-#: plugin/recentusagemodel.cpp:218
+#: plugin/appsmodel.cpp:34 plugin/appsmodel.cpp:58 plugin/computermodel.cpp:98
+#: plugin/computermodel.cpp:226 plugin/recentusagemodel.cpp:153
+#: plugin/recentusagemodel.cpp:216
 #, kde-format
 msgid "Applications"
 msgstr "Приложения"
 
-#: plugin/appsmodel.cpp:150
+#: plugin/appsmodel.cpp:151
 #, kde-format
 msgid "Unhide Applications in this Submenu"
 msgstr "Вернуть все скрытые приложения в этом подменю"
 
-#: plugin/appsmodel.cpp:159
+#: plugin/appsmodel.cpp:160
 #, kde-format
 msgid "Unhide Applications in '%1'"
 msgstr "Вернуть скрытые приложения в подменю «%1»"
@@ -115,13 +115,13 @@ msgstr "Выполнить команду, вычисление или поис�
 msgid "Computer"
 msgstr "Компьютер"
 
-#: plugin/contactentry.cpp:107 plugin/recentcontactsmodel.cpp:82
+#: plugin/contactentry.cpp:106 plugin/recentcontactsmodel.cpp:82
 #, kde-format
 msgid "Show Contact Information…"
 msgstr "Свойства контакта…"
 
 #. i18n.
-#: plugin/kastatsfavoritesmodel.cpp:467 plugin/rootmodel.cpp:418
+#: plugin/kastatsfavoritesmodel.cpp:548 plugin/rootmodel.cpp:416
 #: plugin/simplefavoritesmodel.cpp:31
 #, kde-format
 msgid "Favorites"
@@ -143,42 +143,42 @@ msgid "Forget All Contacts"
 msgstr "Убрать все контакты"
 
 # BUGME: where is this visible in UI? --aspotashev
-#: plugin/recentusagemodel.cpp:154
+#: plugin/recentusagemodel.cpp:151
 #, kde-format
 msgid "Recently Used"
 msgstr "Последние"
 
-#: plugin/recentusagemodel.cpp:159 plugin/recentusagemodel.cpp:292
+#: plugin/recentusagemodel.cpp:156 plugin/recentusagemodel.cpp:298
 #, kde-format
 msgid "Files"
 msgstr "Файлы"
 
-#: plugin/recentusagemodel.cpp:236
+#: plugin/recentusagemodel.cpp:238
 #, kde-format
 msgid "Forget Application"
 msgstr "Убрать приложение"
 
-#: plugin/recentusagemodel.cpp:326
+#: plugin/recentusagemodel.cpp:332
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Открыть содержащую объект папку"
 
-#: plugin/recentusagemodel.cpp:329
+#: plugin/recentusagemodel.cpp:335
 #, kde-format
 msgid "Forget File"
 msgstr "Убрать этот файл"
 
-#: plugin/recentusagemodel.cpp:475
+#: plugin/recentusagemodel.cpp:472
 #, kde-format
 msgid "Forget All"
 msgstr "Убрать все"
 
-#: plugin/recentusagemodel.cpp:477
+#: plugin/recentusagemodel.cpp:474
 #, kde-format
 msgid "Forget All Applications"
 msgstr "Убрать все приложения"
 
-#: plugin/recentusagemodel.cpp:480
+#: plugin/recentusagemodel.cpp:477
 #, kde-format
 msgid "Forget All Files"
 msgstr "Убрать все файлы"
@@ -188,138 +188,138 @@ msgstr "Убрать все файлы"
 msgid "Hide %1"
 msgstr "Скрыть %1|/|Скрыть $[lowercase %1]"
 
-#: plugin/rootmodel.cpp:400
+#: plugin/rootmodel.cpp:398
 #, kde-format
 msgid "All Applications"
 msgstr "Все приложения"
 
-#: plugin/rootmodel.cpp:412
+#: plugin/rootmodel.cpp:410
 #, kde-format
 msgid "This shouldn't be visible! Use KICKER_FAVORITES_MODEL"
 msgstr "Этот пункт не должен быть видимым. Используйте KICKER_FAVORITES_MODEL"
 
-#: plugin/rootmodel.cpp:424
+#: plugin/rootmodel.cpp:422
 #, kde-format
 msgid "Recent Contacts"
 msgstr "Последние контакты"
 
-#: plugin/rootmodel.cpp:431
+#: plugin/rootmodel.cpp:429
 #, kde-format
 msgid "Often Used Files"
 msgstr "Часто используемые файлы"
 
-#: plugin/rootmodel.cpp:440
+#: plugin/rootmodel.cpp:438
 #, kde-format
 msgid "Recent Applications"
 msgstr "Последние приложения"
 
-#: plugin/rootmodel.cpp:440
+#: plugin/rootmodel.cpp:438
 #, kde-format
 msgid "Often Used Applications"
 msgstr "Часто используемые приложения"
 
-#: plugin/rootmodel.cpp:454
+#: plugin/rootmodel.cpp:453
 #, kde-format
 msgid "Power / Session"
 msgstr "Завершение работы"
 
-#: plugin/runnermodel.cpp:226
+#: plugin/runnermodel.cpp:231
 #, kde-format
 msgid "Search results"
 msgstr "Результаты поиска"
 
-#: plugin/systementry.cpp:194
+#: plugin/systementry.cpp:195
 #, kde-format
 msgid "Lock"
 msgstr "Заблокировать"
 
-#: plugin/systementry.cpp:197
+#: plugin/systementry.cpp:198
 #, kde-format
 msgid "Log Out"
 msgstr "Завершить сеанс"
 
-#: plugin/systementry.cpp:200 plugin/systementry.cpp:268
+#: plugin/systementry.cpp:201 plugin/systementry.cpp:269
 #, kde-format
 msgid "Save Session"
 msgstr "Сохранить сеанс"
 
-#: plugin/systementry.cpp:203
+#: plugin/systementry.cpp:204
 #, kde-format
 msgid "Switch User"
 msgstr "Переключить пользователя"
 
 # shutdown-method
-#: plugin/systementry.cpp:206
+#: plugin/systementry.cpp:207
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "Ждущий режим"
 
 # shutdown-method
-#: plugin/systementry.cpp:209
+#: plugin/systementry.cpp:210
 #, kde-format
 msgid "Hibernate"
 msgstr "Спящий режим"
 
 # shutdown-method
-#: plugin/systementry.cpp:212
+#: plugin/systementry.cpp:213
 #, kde-format
 msgid "Restart"
 msgstr "Перезагрузить"
 
 # shutdown-method
-#: plugin/systementry.cpp:215
+#: plugin/systementry.cpp:216
 #, kde-format
 msgid "Shut Down"
 msgstr "Выключить"
 
-#: plugin/systementry.cpp:228 plugin/systementry.cpp:231
-#: plugin/systementry.cpp:234 plugin/systementry.cpp:237
+#: plugin/systementry.cpp:229 plugin/systementry.cpp:232
+#: plugin/systementry.cpp:235 plugin/systementry.cpp:238
 #, kde-format
 msgid "Session"
 msgstr "Сеанс"
 
-#: plugin/systementry.cpp:240 plugin/systementry.cpp:243
-#: plugin/systementry.cpp:246 plugin/systementry.cpp:249
+#: plugin/systementry.cpp:241 plugin/systementry.cpp:244
+#: plugin/systementry.cpp:247 plugin/systementry.cpp:250
 #, kde-format
 msgid "System"
 msgstr "Система"
 
-#: plugin/systementry.cpp:262
+#: plugin/systementry.cpp:263
 #, kde-format
 msgid "Lock screen"
 msgstr "Заблокировать экран"
 
-#: plugin/systementry.cpp:265
+#: plugin/systementry.cpp:266
 #, kde-format
 msgid "End session"
 msgstr "Завершить сеанс работы"
 
-#: plugin/systementry.cpp:271
+#: plugin/systementry.cpp:272
 #, kde-format
 msgid "Start a parallel session as a different user"
 msgstr "Начать параллельный сеанс от имени другого пользователя"
 
 # shutdown-method
-#: plugin/systementry.cpp:274
+#: plugin/systementry.cpp:275
 #, kde-format
 msgid "Suspend to RAM"
 msgstr "Приостановить с сохранением в ОЗУ"
 
 # shutdown-method
-#: plugin/systementry.cpp:277
+#: plugin/systementry.cpp:278
 #, kde-format
 msgid "Suspend to disk"
 msgstr "Приостановить с сохранением на диск"
 
 # shutdown-method
-#: plugin/systementry.cpp:280
+#: plugin/systementry.cpp:281
 #, kde-format
 msgid "Restart computer"
 msgstr "Перезагрузить компьютер"
 
 # shutdown-method
-#: plugin/systementry.cpp:283
+#: plugin/systementry.cpp:284
 #, kde-format
 msgid "Turn off computer"
 msgstr "Выключить компьютер"
@@ -329,169 +329,477 @@ msgstr "Выключить компьютер"
 msgid "System actions"
 msgstr "Системные действия"
 
+#~ msgid "Documents"
+#~ msgstr "Документы"
 
+#~ msgid "Forget Document"
+#~ msgstr "Убрать документ"
 
+#~ msgid "Forget All Documents"
+#~ msgstr "Убрать все документы"
 
+#~ msgid "General"
+#~ msgstr "Основное"
 
+#~ msgid "Remove from Favorites"
+#~ msgstr "Убрать из избранного"
 
+#~ msgid "Add to Favorites"
+#~ msgstr "Добавить в избранное"
 
+#~ msgid "On All Activities"
+#~ msgstr "Во всех комнатах"
 
+#~ msgid "On The Current Activity"
+#~ msgstr "В текущей комнате"
 
+#~ msgid "Show In Favorites"
+#~ msgstr "Показывать в избранном"
 
+#~ msgid "Icon:"
+#~ msgstr "Значок:"
 
+#~ msgctxt "@item:inmenu Open icon chooser dialog"
+#~ msgid "Choose..."
+#~ msgstr "Выбрать..."
 
+#~ msgctxt "@item:inmenu Reset icon to default"
+#~ msgid "Clear Icon"
+#~ msgstr "Вернуть стандартный значок"
 
+#~ msgid "Show applications as:"
+#~ msgstr "Формат наименования программ:"
 
+#~ msgid "Name only"
+#~ msgstr "Только названия"
 
+#~ msgid "Description only"
+#~ msgstr "Только описания"
 
+#~ msgid "Name (Description)"
+#~ msgstr "Название (Описание)"
 
+#~ msgid "Description (Name)"
+#~ msgstr "Описание (Название)"
 
+#~ msgid "Behavior:"
+#~ msgstr "Поведение:"
 
+#~ msgid "Sort applications alphabetically"
+#~ msgstr "Сортировать приложения по алфавиту"
 
+#~ msgid "Flatten sub-menus to a single level"
+#~ msgstr "Упростить вложенные меню до одного уровня"
 
+#~ msgid "Show categories:"
+#~ msgstr "Показывать категории:"
 
+#~ msgid "Recent applications"
+#~ msgstr "Последние приложения"
 
+#~ msgid "Often used applications"
+#~ msgstr "Часто используемые приложения"
 
+#~ msgid "Recent documents"
+#~ msgstr "Последние документы"
 
+#~ msgid "Often used documents"
+#~ msgstr "Часто используемые документы"
 
+#~ msgid "Recent contacts"
+#~ msgstr "Последние контакты"
 
+#~ msgid "Often used contacts"
+#~ msgstr "Часто используемые контакты"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#~ msgid "Sort items in categories by:"
+#~ msgstr "Сортировка объектов:"
 
 # BUGME: where is this visible in UI? --aspotashev
+#~ msgctxt ""
+#~ "@item:inlistbox Sort items in categories by [Recently used | Often used]"
+#~ msgid "Recently used"
+#~ msgstr "По времени последнего использования"
 
+#~ msgctxt ""
+#~ "@item:inlistbox Sort items in categories by [Recently used | Ofetn used]"
+#~ msgid "Often used"
+#~ msgstr "По частоте использования"
 
+#~ msgid "Search:"
+#~ msgstr "Поиск:"
 
+#~ msgid "Expand search to bookmarks, files and emails"
+#~ msgstr "Искать также среди закладок, файлов и электронной почты"
 
+#~ msgid "Align search results to bottom"
+#~ msgstr "Расположить результаты поиска внизу"
 
+#~ msgid "Searching for '%1'"
+#~ msgstr "Поиск «%1»"
 
+#~ msgid "Type to search..."
+#~ msgstr "Введите текст для поиска..."
 
+#~ msgid "Widgets"
+#~ msgstr "Виджеты"
 
+#~ msgid "Apps & Docs"
+#~ msgstr "Программы и документы"
 
+#~ msgid "Edit Applications..."
+#~ msgstr "Редактировать меню..."
 
+#~ msgid "Search..."
+#~ msgstr "Поиск"
 
+#~ msgctxt "@action opens a software center with the application"
+#~ msgid "Manage '%1'..."
+#~ msgstr "Обновить или удалить приложение «%1»..."
 
+#~ msgid "Run Command..."
+#~ msgstr "Выполнить команду..."
 
+#~ msgid "Run a command or a search query"
+#~ msgstr "Выполнить команду или поисковый запрос"
 
+#~ msgid "Show:"
+#~ msgstr "Показывать"
 
+#~ msgid "Show recent applications"
+#~ msgstr "Показывать последние приложения"
 
+#~ msgid "Show often used applications"
+#~ msgstr "Показывать часто используемые приложения"
 
+#~ msgid "Show recent documents"
+#~ msgstr "Показывать последние документы"
 
+#~ msgid "Show often used documents"
+#~ msgstr "Показывать часто используемые документы"
 
+#~ msgid "Show recent contacts"
+#~ msgstr "Показывать последние контакты"
 
+#~ msgid "Removable Storage"
+#~ msgstr "Внешние носители"
 
+#~ msgid "Places"
+#~ msgstr "Точки входа"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#~ msgid "Logout"
+#~ msgstr "Завершить сеанс"
 
 # shutdown-method
-
-
+#~ msgid "Suspend"
+#~ msgstr "Ждущий режим"
 
 # shutdown-method
+#~ msgid "Reboot"
+#~ msgstr "Перезагрузить"
+
+#~ msgid "Use custom image:"
+#~ msgstr "Использовать нестандартное изображение:"
+
+#~ msgid "Choose an image"
+#~ msgstr "Выбор изображения"
+
+#~ msgid "Image Files (*.png *.jpg *.jpeg *.bmp *.svg *.svgz)"
+#~ msgstr "Изображения (*.png *.jpg *.jpeg *.bmp *.svg *.svgz)"
+
+#~ msgid "Add as Launcher"
+#~ msgstr "Поместить на панель задач"
+
+#~ msgid "New Session"
+#~ msgstr "Переключить пользователя"
+
+#~ msgid "(Empty)"
+#~ msgstr "(пусто)"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Юрий Ефремов"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "yur.arh@gmail.com"
+
+#~ msgid "Runner: %1"
+#~ msgstr "Модуль KRunner: %1"
+
+#~ msgid "Browse installed applications by categories"
+#~ msgstr "Просмотр установленных приложений по категориям"
+
+#~ msgid "All Installed Applications"
+#~ msgstr "Все установленные приложения"
+
+#~ msgid ""
+#~ "List all installed applications in a flat list, grouped by categories"
+#~ msgstr ""
+#~ "Просмотр всех установленных приложений в виде простого списка, "
+#~ "сгруппированных по категориям"
+
+#, fuzzy
+#~| msgid "All Installed Applications"
+#~ msgid "All Installed Applications With Filters"
+#~ msgstr "Все установленные приложения"
+
+#, fuzzy
+#~| msgid ""
+#~| "List all installed applications in a flat list, grouped by categories"
+#~ msgid "List all installed applications and filter via the sidebar"
+#~ msgstr ""
+#~ "Просмотр всех установленных приложений в виде простого списка, "
+#~ "сгруппированных по категориям"
+
+#~ msgid "Folder"
+#~ msgstr "Папка"
+
+#~ msgid "List the content of a folder and let you browse into sub-folders"
+#~ msgstr ""
+#~ "Просмотр содержимого папки с возможностью перехода по вложенным папкам"
+
+#~ msgid "Browse the content of your favorite places"
+#~ msgstr "Просмотр точек входа"
+
+#~ msgid "List applications marked as favorite"
+#~ msgstr "Просмотр избранных приложений"
+
+#~ msgid "Power Management"
+#~ msgstr "Система"
+
+#~ msgid "Provide buttons to suspend, hibernate, reboot or halt your computer"
+#~ msgstr ""
+#~ "Кнопки для перехода в ждущий и спящий режим, перезагрузки и выключения "
+#~ "компьютера"
+
+#~ msgid ""
+#~ "Provide buttons to lock the screen, log out, or switch to another user"
+#~ msgstr ""
+#~ "Кнопки для блокировки экрана, выхода из системы и переключения "
+#~ "пользователя"
+
+#~ msgid "Provide buttons to switch to opened sessions"
+#~ msgstr "Кнопки для переключения открытых сеансов"
+
+#, fuzzy
+#~| msgid "Provide buttons to suspend, hibernate, reboot or halt your computer"
+#~ msgid ""
+#~ "Provide buttons to manage your workspace session and the power state of "
+#~ "your computer"
+#~ msgstr ""
+#~ "Кнопки для перехода в ждущий и спящий режим, перезагрузки и выключения "
+#~ "компьютера"
+
+#~ msgid "Perform searchs using a selection of runners"
+#~ msgstr "Поиск в выбранных модулях KRunner"
+
+#~ msgid "Folder to show:"
+#~ msgstr "Показываемая папка:"
+
+#~ msgid "Title:"
+#~ msgstr "Заголовок:"
+
+#~ msgid "If title is left empty, the folder name will be used"
+#~ msgstr ""
+#~ "Если не будет указано название, то будет использоваться название папки."
+
+#~ msgctxt "KFile System Bookmarks"
+#~ msgid "Home"
+#~ msgstr "Домашняя папка"
+
+#~ msgctxt "KFile System Bookmarks"
+#~ msgid "Network"
+#~ msgstr "Сеть"
+
+#~ msgctxt "KFile System Bookmarks"
+#~ msgid "Root"
+#~ msgstr "Корневая папка"
+
+#~ msgctxt "KFile System Bookmarks"
+#~ msgid "Trash"
+#~ msgstr "Корзина"
+
+#, fuzzy
+#~ msgid "&Release '%1'"
+#~ msgstr "О&тключить «%1»"
+
+#~ msgid "&Eject '%1'"
+#~ msgstr "&Извлечь «%1»"
+
+#~ msgid "The device '%1' is not a disk and cannot be ejected."
+#~ msgstr "Устройство «%1» не является диском и не может быть извлечено."
+
+#~ msgid "An error occurred while accessing '%1', the system responded: %2"
+#~ msgstr "При обращении к «%1» произошла ошибка, ответ системы: %2"
+
+#~ msgid "An error occurred while accessing '%1'"
+#~ msgstr "При обращении к «%1» произошла ошибка"
+
+#~ msgid "Pick the application folder to display:"
+#~ msgstr "Выбор категории приложений для отображения:"
+
+#, fuzzy
+#~| msgid "Remove from Favorites"
+#~ msgid "Remove from Sidebar"
+#~ msgstr "Удалить из избранного"
+
+#, fuzzy
+#~| msgid "Add to Favorites"
+#~ msgid "Add to Sidebar"
+#~ msgstr "Добавить в избранное"
+
+#~ msgid "Power"
+#~ msgstr "Система"
+
+#~ msgid "Pick the runners you would like to use in this source:"
+#~ msgstr ""
+#~ "Выберите модули KRunner, которые следует использовать в этом источнике:"
+
+#~ msgid "Hello"
+#~ msgstr "Привет"
+
+#~ msgid "World"
+#~ msgstr "Мир"
+
+#~ msgid "Hello World"
+#~ msgstr "Привет, мир"
+
+#~ msgid "Text Color:"
+#~ msgstr "Цвет текста:"
+
+#~ msgid "Text Shadow:"
+#~ msgstr "Тень текста:"
+
+#~ msgid "None"
+#~ msgstr "Отсутствует"
+
+#~ msgid "Automatic"
+#~ msgstr "Автоматическая"
+
+#~ msgid "Custom:"
+#~ msgstr "Другая:"
+
+#~ msgid "Go to previous tab"
+#~ msgstr "Предыдущая вкладка"
+
+#~ msgid "Go to next tab"
+#~ msgstr "Следующая вкладка"
+
+#~ msgid "Go back"
+#~ msgstr "Назад"
+
+#~ msgid "Go forward"
+#~ msgstr "Вперёд"
+
+#~ msgid "Go up"
+#~ msgstr "Вверх"
+
+#~ msgctxt "Used for tabs which have no name"
+#~ msgid "<Untitled>"
+#~ msgstr "<Без названия>"
+
+#~ msgctxt "Button to leave configure mode"
+#~ msgid "Done"
+#~ msgstr "Готово"
+
+#~ msgid "Search in current tab..."
+#~ msgstr "Поиск в текущей вкладке..."
+
+#, fuzzy
+#~| msgid "End Configure"
+#~ msgid "End Configure Tabs"
+#~ msgstr "Закончить настройку"
+
+#, fuzzy
+#~| msgid "Configure"
+#~ msgid "Configure Tabs"
+#~ msgstr "Настройка"
+
+#~ msgid "Configure Shortcuts..."
+#~ msgstr "Настройка комбинаций клавиш..."
+
+#~ msgid "Restore Tabs to Default"
+#~ msgstr "Восстановить вкладки по умолчанию"
+
+#~ msgid ""
+#~ "Are you sure you want to restore tabs?\n"
+#~ "Restoring tabs will reset your configuration to the default Homerun "
+#~ "tabs.\n"
+#~ "Your lists of favorite applications and places will remain untouched."
+#~ msgstr ""
+#~ "Вы действительно хотите восстановить вкладки?\n"
+#~ "Восстановление сбросит конфигурацию вкладок Homerun по умолчанию.\n"
+#~ "Список избранных приложений и точки входа останутся нетронутыми."
+
+#~ msgid "Restore Tabs"
+#~ msgstr "Восстановить вкладки"
+
+#~ msgid "About %1"
+#~ msgstr "О %1"
+
+#~ msgid "Broken source '%1'"
+#~ msgstr "Повреждённый источник «%1»"
+
+#~ msgid "Tab Label:"
+#~ msgstr "Название вкладки:"
+
+#~ msgid ""
+#~ "<p><b>Sorry, Homerun failed to load</b></p><p>Do you want to report this "
+#~ "error?</p><p>If you decide to report it, please copy and paste the "
+#~ "following output in your report:</p><pre>%1</pre>"
+#~ msgstr ""
+#~ "<p><b>Ошибка загрузки Homerun</b></p><p>Хотите сообщить об этой ошибке?</"
+#~ "p> <p>Для этого скопируйте и вставьте в отчёт следующие данные:</p><pre>"
+#~ "%1</pre>"
+
+#~ msgid "Report Error"
+#~ msgstr "Сообщить об ошибке"
+
+#~ msgid "Log focused item (for debug purposes)"
+#~ msgstr "Записывать в журнал определённый пункт (для отладки)"
+
+#~ msgid "Use a plain window (for debug purposes)"
+#~ msgstr "Использовать обычное окно (для отладки)"
+
+#~ msgctxt "Program name"
+#~ msgid "Homerun"
+#~ msgstr "Homerun"
+
+#, fuzzy
+#~| msgid "(C) 2012-2013 Blue Systems"
+#~ msgid "(C) 2012-2014 Blue Systems"
+#~ msgstr "© Blue Systems, 2012-2013"
+
+#~ msgid "Shaun Reich"
+#~ msgstr "Shaun Reich"
+
+#~ msgid "Developer"
+#~ msgstr "Разработчик"
+
+#~ msgid "Aurélien Gâteau"
+#~ msgstr "Aurélien Gâteau"
+
+#~ msgctxt "Tab title"
+#~ msgid "Home"
+#~ msgstr "Главная"
+
+#~ msgctxt "Tab title"
+#~ msgid "Power"
+#~ msgstr "Система"
+
+#, fuzzy
+#~| msgctxt "Program name"
+#~| msgid "Homerun"
+#~ msgid "Homerun Kicker"
+#~ msgstr "Homerun"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Empty Trash"
+#~ msgstr "Очистить корзину"
+
+#~ msgid "Show on screen <screen>"
+#~ msgstr "Показать на экране <screen>"
+
+#~ msgid "Nightly build using source from: %1"
+#~ msgstr "Ночная сборка использует код от: %1"

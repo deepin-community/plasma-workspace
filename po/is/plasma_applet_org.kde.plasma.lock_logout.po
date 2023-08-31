@@ -2,20 +2,21 @@
 # Copyright (C) 2009 This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Sveinn í Felli <sveinki@nett.is>, 2009, 2010, 2011.
+# Sveinn í Felli <sveinki@nett.is>, 2009, 2010, 2011, 2022.
+# Guðmundur Erlingsson <gudmundure@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_lockout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2011-08-16 16:08+0000\n"
-"Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
-"Language-Team: Icelandic <kde-isl@molar.is>\n"
+"PO-Revision-Date: 2022-10-22 16:30+0000\n"
+"Last-Translator: Gummi <gudmundure@gmail.com>\n"
+"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 22.08.2\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "\n"
 "\n"
@@ -25,29 +26,29 @@ msgstr ""
 #: contents/config/config.qml:13
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Almennt"
 
 #: contents/ui/ConfigGeneral.qml:36
 #, kde-format
 msgctxt ""
 "Heading for a list of actions (leave, lock, switch user, hibernate, suspend)"
 msgid "Show actions:"
-msgstr ""
+msgstr "Birta aðgerðir:"
 
 #: contents/ui/ConfigGeneral.qml:37
 #, kde-format
 msgid "Logout"
-msgstr ""
+msgstr "Útskráning"
 
 #: contents/ui/ConfigGeneral.qml:43
 #, kde-format
 msgid "Shutdown"
-msgstr ""
+msgstr "Slökkva"
 
 #: contents/ui/ConfigGeneral.qml:48
 #, kde-format
 msgid "Reboot"
-msgstr ""
+msgstr "Endurræsa"
 
 #: contents/ui/ConfigGeneral.qml:53 contents/ui/data.js:5
 #, kde-format
@@ -55,8 +56,7 @@ msgid "Lock"
 msgstr "Læsa"
 
 #: contents/ui/ConfigGeneral.qml:58
-#, fuzzy, kde-format
-#| msgid "Switch user"
+#, kde-format
 msgid "Switch User"
 msgstr "Skipta um notanda"
 
@@ -66,8 +66,7 @@ msgid "Hibernate"
 msgstr "Leggja í dvala"
 
 #: contents/ui/ConfigGeneral.qml:68 contents/ui/data.js:39
-#, fuzzy, kde-format
-#| msgid "Sleep"
+#, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "Svæfa"
@@ -85,38 +84,37 @@ msgstr "Skipta um notanda"
 #: contents/ui/data.js:13
 #, kde-format
 msgid "Start a parallel session as a different user"
-msgstr "Hefja samhliða setu sem annar notandi"
+msgstr "Byrja samhliða setu sem annar notandi"
 
 #: contents/ui/data.js:18
 #, kde-format
 msgid "Shutdown…"
-msgstr ""
+msgstr "Slökkva…"
 
 #: contents/ui/data.js:19
-#, fuzzy, kde-format
-#| msgid "Logout, turn off or restart the computer"
+#, kde-format
 msgid "Turn off the computer"
-msgstr "Útskrá, slökkva eða endurræsa tölvu"
+msgstr "Slökkva á tölvunni"
 
 #: contents/ui/data.js:25
 #, kde-format
 msgid "Restart…"
-msgstr ""
+msgstr "Endurræsa…"
 
 #: contents/ui/data.js:26
 #, kde-format
 msgid "Reboot the computer"
-msgstr ""
+msgstr "Endurræsa tölvuna"
 
 #: contents/ui/data.js:32
 #, kde-format
 msgid "Logout…"
-msgstr ""
+msgstr "Skrá út…"
 
 #: contents/ui/data.js:33
 #, kde-format
 msgid "End the session"
-msgstr ""
+msgstr "Ljúka setunni"
 
 #: contents/ui/data.js:40
 #, kde-format
@@ -127,3 +125,30 @@ msgstr "Svæfa (setja í bið í RAM)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Leggja í dvala (setja í bið á diski)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Viltu setja í bið á diski (leggja í dvala - hibernate)"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Viltu setja í bið í vinnsluminni (svæfa - sleep)"
+
+#~ msgid "Leave"
+#~ msgstr "Fara"
+
+#~ msgid "Leave..."
+#~ msgstr "Fara..."
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Aðgerðir"
+
+#~ msgid "Suspend"
+#~ msgstr "Setja í bið"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Stilla 'Læsa/Útskrá'"
+
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "Veldu eitt eða fleiri atriði á listanum hér að neðan."

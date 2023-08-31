@@ -28,3 +28,18 @@ msgstr "Michael Moroni"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "michael.moroni@mailoo.org"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt>La aŭdvida interno <b>%1</b> ne uzeblas:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Aŭdvida interno ne troveblas"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "La petita aŭdvida interno ne troveblas"
+
+#~ msgid "create method returned 0"
+#~ msgstr "krea metodo liveris 0"
+
+#~ msgid "Unable to use the <b>%1</b> Multimedia Backend:"
+#~ msgstr "Ne povas uzi la <b>%1</b> aŭdvidan internon:"

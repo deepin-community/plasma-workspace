@@ -6,6 +6,7 @@
 
 #include "appletslayout.h"
 #include "appletcontainer.h"
+#include "containmentlayoutmanager_debug.h"
 #include "gridlayoutmanager.h"
 
 #include <QQmlContext>
@@ -17,6 +18,10 @@
 #include <Containment>
 #include <Corona>
 #include <PlasmaQuick/AppletQuickItem>
+#include <chrono>
+#include <plasma/containment.h>
+
+using namespace std::chrono_literals;
 
 AppletsLayout::AppletsLayout(QQuickItem *parent)
     : QQuickItem(parent)
@@ -28,7 +33,7 @@ AppletsLayout::AppletsLayout(QQuickItem *parent)
 
     m_saveLayoutTimer = new QTimer(this);
     m_saveLayoutTimer->setSingleShot(true);
-    m_saveLayoutTimer->setInterval(100);
+    m_saveLayoutTimer->setInterval(100ms);
     connect(m_layoutManager, &AbstractLayoutManager::layoutNeedsSaving, m_saveLayoutTimer, QOverload<>::of(&QTimer::start));
     connect(m_saveLayoutTimer, &QTimer::timeout, this, [this]() {
         // We can't assume m_containment to be valid: if we load in a plasmoid that can run also
@@ -52,20 +57,24 @@ AppletsLayout::AppletsLayout(QQuickItem *parent)
 
     m_layoutChangeTimer = new QTimer(this);
     m_layoutChangeTimer->setSingleShot(true);
-    m_layoutChangeTimer->setInterval(100);
+    m_layoutChangeTimer->setInterval(100ms);
     connect(m_layoutChangeTimer, &QTimer::timeout, this, [this]() {
         // We can't assume m_containment to be valid: if we load in a plasmoid that can run also
         // in "applet" mode, m_containment will never be valid
-        if (!m_containment) {
+        if (!m_containment || width() <= 0 || height() <= 0 || m_relayoutLock) {
             return;
         }
+
         const QString &serializedConfig = m_containment->config().readEntry(m_configKey, "");
-        if ((m_layoutChanges & ConfigKeyChange) && !serializedConfig.isEmpty()) {
+        if ((m_layoutChanges & ConfigKeyChange)) {
             if (!m_configKey.isEmpty() && m_containment) {
                 m_layoutManager->parseLayout(serializedConfig);
-
                 if (width() > 0 && height() > 0) {
-                    m_layoutManager->resetLayoutFromConfig();
+                    if (m_geometryBeforeResolutionChange.isEmpty()) {
+                        m_layoutManager->resetLayoutFromConfig(QRectF(), QRectF());
+                    } else {
+                        m_layoutManager->resetLayoutFromConfig(QRectF(x(), y(), width(), height()), m_geometryBeforeResolutionChange);
+                    }
                     m_savedSize = size();
                 }
             }
@@ -73,16 +82,17 @@ AppletsLayout::AppletsLayout(QQuickItem *parent)
             const QRect newGeom(x(), y(), width(), height());
             // The size has been restored from the last one it has been saved: restore that exact same layout
             if (newGeom.size() == m_savedSize) {
-                m_layoutManager->resetLayoutFromConfig();
+                m_layoutManager->resetLayoutFromConfig(QRectF(), QRectF());
 
                 // If the resize is consequence of a screen resolution change, queue a relayout maintaining the distance between screen edges
             } else if (!m_geometryBeforeResolutionChange.isEmpty()) {
                 m_layoutManager->layoutGeometryChanged(newGeom, m_geometryBeforeResolutionChange);
                 m_geometryBeforeResolutionChange = QRectF();
 
-                // Heuristically relayout items only when the plasma startup is fully completed
-            } else {
-                polish();
+                // If the user doesn't move a widget after this is done, the widget positions won't be saved and they will be in the wrong
+                // places on next login, so save them now.
+
+                save();
             }
         }
         m_layoutChanges = NoChange;
@@ -107,7 +117,7 @@ void AppletsLayout::setContainment(PlasmaQuick::AppletQuickItem *containmentItem
 {
     // Forbid changing containmentItem at runtime
     if (m_containmentItem || containmentItem == m_containmentItem || !containmentItem->applet() || !containmentItem->applet()->isContainment()) {
-        qWarning() << "Error: cannot change the containment to AppletsLayout";
+        qCWarning(CONTAINMENTLAYOUTMANAGER_DEBUG) << "Error: cannot change the containment to AppletsLayout";
         return;
     }
 
@@ -130,7 +140,7 @@ void AppletsLayout::setContainment(PlasmaQuick::AppletQuickItem *containmentItem
 
     connect(m_containmentItem, SIGNAL(appletRemoved(QObject *)), this, SLOT(appletRemoved(QObject *)));
 
-    emit containmentChanged();
+    Q_EMIT containmentChanged();
 }
 
 QString AppletsLayout::configKey() const
@@ -150,7 +160,7 @@ void AppletsLayout::setConfigKey(const QString &key)
     m_layoutChanges |= ConfigKeyChange;
     m_layoutChangeTimer->start();
 
-    emit configKeyChanged();
+    Q_EMIT configKeyChanged();
 }
 
 QString AppletsLayout::fallbackConfigKey() const
@@ -166,7 +176,27 @@ void AppletsLayout::setFallbackConfigKey(const QString &key)
 
     m_fallbackConfigKey = key;
 
-    emit fallbackConfigKeyChanged();
+    Q_EMIT fallbackConfigKeyChanged();
+}
+
+bool AppletsLayout::relayoutLock() const
+{
+    return m_relayoutLock;
+}
+
+void AppletsLayout::setRelayoutLock(bool lock)
+{
+    if (lock == m_relayoutLock) {
+        return;
+    }
+
+    m_relayoutLock = lock;
+
+    if (!lock && m_layoutChanges != NoChange) {
+        m_layoutChangeTimer->start();
+    }
+
+    Q_EMIT relayoutLockChanged();
 }
 
 QJSValue AppletsLayout::acceptsAppletCallback() const
@@ -187,7 +217,7 @@ void AppletsLayout::setMinimumItemWidth(qreal width)
 
     m_minimumItemSize.setWidth(width);
 
-    emit minimumItemWidthChanged();
+    Q_EMIT minimumItemWidthChanged();
 }
 
 qreal AppletsLayout::minimumItemHeight() const
@@ -203,7 +233,7 @@ void AppletsLayout::setMinimumItemHeight(qreal height)
 
     m_minimumItemSize.setHeight(height);
 
-    emit minimumItemHeightChanged();
+    Q_EMIT minimumItemHeightChanged();
 }
 
 qreal AppletsLayout::defaultItemWidth() const
@@ -219,7 +249,7 @@ void AppletsLayout::setDefaultItemWidth(qreal width)
 
     m_defaultItemSize.setWidth(width);
 
-    emit defaultItemWidthChanged();
+    Q_EMIT defaultItemWidthChanged();
 }
 
 qreal AppletsLayout::defaultItemHeight() const
@@ -235,7 +265,7 @@ void AppletsLayout::setDefaultItemHeight(qreal height)
 
     m_defaultItemSize.setHeight(height);
 
-    emit defaultItemHeightChanged();
+    Q_EMIT defaultItemHeightChanged();
 }
 
 qreal AppletsLayout::cellWidth() const
@@ -251,7 +281,7 @@ void AppletsLayout::setCellWidth(qreal width)
 
     m_layoutManager->setCellSize(QSizeF(width, m_layoutManager->cellSize().height()));
 
-    emit cellWidthChanged();
+    Q_EMIT cellWidthChanged();
 }
 
 qreal AppletsLayout::cellHeight() const
@@ -267,7 +297,7 @@ void AppletsLayout::setCellHeight(qreal height)
 
     m_layoutManager->setCellSize(QSizeF(m_layoutManager->cellSize().width(), height));
 
-    emit cellHeightChanged();
+    Q_EMIT cellHeightChanged();
 }
 
 void AppletsLayout::setAcceptsAppletCallback(const QJSValue &callback)
@@ -298,7 +328,7 @@ void AppletsLayout::setAppletContainerComponent(QQmlComponent *component)
 
     m_appletContainerComponent = component;
 
-    emit appletContainerComponentChanged();
+    Q_EMIT appletContainerComponentChanged();
 }
 
 AppletsLayout::EditModeCondition AppletsLayout::editModeCondition() const
@@ -318,7 +348,7 @@ void AppletsLayout::setEditModeCondition(AppletsLayout::EditModeCondition condit
 
     m_editModeCondition = condition;
 
-    emit editModeConditionChanged();
+    Q_EMIT editModeConditionChanged();
 }
 
 bool AppletsLayout::editMode() const
@@ -334,7 +364,7 @@ void AppletsLayout::setEditMode(bool editMode)
 
     m_editMode = editMode;
 
-    emit editModeChanged();
+    Q_EMIT editModeChanged();
 }
 
 ItemContainer *AppletsLayout::placeHolder() const
@@ -353,7 +383,7 @@ void AppletsLayout::setPlaceHolder(ItemContainer *placeHolder)
     m_placeHolder->setZ(9999);
     m_placeHolder->setOpacity(false);
 
-    emit placeHolderChanged();
+    Q_EMIT placeHolderChanged();
 }
 
 QQuickItem *AppletsLayout::eventManagerToFilter() const
@@ -369,7 +399,7 @@ void AppletsLayout::setEventManagerToFilter(QQuickItem *item)
 
     m_eventManagerToFilter = item;
     setFiltersChildMouseEvents(m_eventManagerToFilter);
-    emit eventManagerToFilterChanged();
+    Q_EMIT eventManagerToFilterChanged();
 }
 
 void AppletsLayout::save()
@@ -453,27 +483,43 @@ void AppletsLayout::releaseSpace(ItemContainer *item)
     m_layoutManager->releaseSpace(item);
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void AppletsLayout::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
+#else
+void AppletsLayout::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry)
+#endif
 {
     // Ignore completely moves without resize
     if (newGeometry.size() == oldGeometry.size()) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         QQuickItem::geometryChanged(newGeometry, oldGeometry);
+#else
+        QQuickItem::geometryChange(newGeometry, oldGeometry);
+#endif
         return;
     }
 
     // Don't care for anything happening before startup completion
     if (!m_containment || !m_containment->corona() || !m_containment->corona()->isStartupCompleted()) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         QQuickItem::geometryChanged(newGeometry, oldGeometry);
+#else
+        QQuickItem::geometryChange(newGeometry, oldGeometry);
+#endif
         return;
     }
 
     // Only do a layouting procedure if we received a valid size
-    if (!newGeometry.isEmpty()) {
+    if (!newGeometry.isEmpty() && newGeometry != oldGeometry) {
         m_layoutChanges |= SizeChange;
         m_layoutChangeTimer->start();
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QQuickItem::geometryChanged(newGeometry, oldGeometry);
+#else
+    QQuickItem::geometryChange(newGeometry, oldGeometry);
+#endif
 }
 
 void AppletsLayout::updatePolish()
@@ -533,7 +579,13 @@ void AppletsLayout::componentComplete()
         connect(m_containment->corona(), &Plasma::Corona::screenGeometryChanged, this, [this](int id) {
             if (m_containment->screen() == id) {
                 m_geometryBeforeResolutionChange = QRectF(x(), y(), width(), height());
+                m_layoutChangeTimer->start();
             }
+        });
+        // If the containment is moved to a different screen, treat it like a resolution change
+        connect(m_containment, &Plasma::Containment::screenChanged, this, [this]() {
+            m_geometryBeforeResolutionChange = QRectF(x(), y(), width(), height());
+            m_layoutChangeTimer->start();
         });
     }
     QQuickItem::componentComplete();
@@ -577,6 +629,22 @@ void AppletsLayout::mousePressEvent(QMouseEvent *event)
 {
     forceActiveFocus(Qt::MouseFocusReason);
 
+    // Only accept synthesized events i.e. touch events, because we only want
+    // to support press-and-hold. Click-and-hold is weird. See 457979.
+    if (!(event->source() == Qt::MouseEventSynthesizedBySystem || event->source() == Qt::MouseEventSynthesizedByQt)) {
+        const auto children = childItems();
+        // If any container is in edit mode, accept the press event so we can
+        // cancel the edit mode. If not, don't accept the event so it can be
+        // passed on to other parts.
+        if (std::none_of(children.begin(), children.end(), [](QQuickItem *child) {
+                auto container = qobject_cast<ItemContainer *>(child);
+                return container ? container->editMode() : false;
+            })) {
+            event->setAccepted(false);
+        }
+        return;
+    }
+
     if (!m_editMode && m_editModeCondition == AppletsLayout::Manual) {
         return;
     }
@@ -587,8 +655,6 @@ void AppletsLayout::mousePressEvent(QMouseEvent *event)
 
     m_mouseDownWasEditMode = m_editMode;
     m_mouseDownPosition = event->windowPos();
-
-    // event->setAccepted(false);
 }
 
 void AppletsLayout::mouseMoveEvent(QMouseEvent *event)
@@ -648,7 +714,7 @@ void AppletsLayout::appletAdded(QObject *applet, int x, int y)
         args << engine->newQObject(applet) << QJSValue(x) << QJSValue(y);
 
         if (!m_acceptsAppletCallback.call(args).toBool()) {
-            emit appletRefused(applet, x, y);
+            Q_EMIT appletRefused(applet, x, y);
             return;
         }
     }
@@ -698,7 +764,7 @@ AppletContainer *AppletsLayout::createContainerForApplet(PlasmaQuick::AppletQuic
         if (container) {
             container->setParentItem(this);
         } else {
-            qWarning() << "Error: provided component not an AppletContainer instance";
+            qCWarning(CONTAINMENTLAYOUTMANAGER_DEBUG) << "Error: provided component not an AppletContainer instance";
             if (instance) {
                 instance->deleteLater();
             }

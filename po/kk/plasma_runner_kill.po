@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2010-03-14 06:23+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -17,32 +17,32 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: killrunner.cpp:29
+#: killrunner.cpp:30
 #, kde-format
 msgid "Send SIGTERM"
 msgstr "SIGTERM сигналын жіберу"
 
-#: killrunner.cpp:31
+#: killrunner.cpp:32
 #, kde-format
 msgid "Send SIGKILL"
 msgstr "SIGKILL сигналын жіберу"
 
-#: killrunner.cpp:50 killrunner_config.cpp:51 killrunner_config.cpp:77
+#: killrunner.cpp:51 killrunner_config.cpp:51 killrunner_config.cpp:77
 #, kde-format
 msgid "kill"
 msgstr "құрту"
 
-#: killrunner.cpp:56
+#: killrunner.cpp:57
 #, kde-format
 msgid "Terminate running applications whose names match the query."
 msgstr "Атауы сұранысқа сәйкесті қолданбаларды доғару."
 
-#: killrunner.cpp:119
+#: killrunner.cpp:120
 #, kde-format
 msgid "Terminate %1"
 msgstr "%1 дегенді доғару"
 
-#: killrunner.cpp:120
+#: killrunner.cpp:121
 #, kde-format
 msgid "Process ID: %1"
 msgstr ""
@@ -91,3 +91,10 @@ msgstr "&Реттеу тәртібі:"
 #, kde-format
 msgid "It is not sure, that this will take effect"
 msgstr "Кейбірде бұл тәртіп сақталмайды"
+
+#~ msgid ""
+#~ "Process ID: %1\n"
+#~ "Running as user: %2"
+#~ msgstr ""
+#~ "Процестың ID-і: %1\n"
+#~ "Пайдаланушысы %2"

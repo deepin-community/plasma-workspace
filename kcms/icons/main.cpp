@@ -27,7 +27,6 @@
 #include <QStringList>
 #include <QSvgRenderer>
 
-#include <KAboutData>
 #include <KConfigGroup>
 #include <KIconLoader>
 #include <KIconTheme>
@@ -36,7 +35,6 @@
 #include <KPluginFactory>
 #include <KSharedConfig>
 #include <KTar>
-#include <Kdelibs4Migration>
 
 #include <KIO/DeleteJob>
 #include <KIO/FileCopyJob>
@@ -53,33 +51,21 @@
 
 K_PLUGIN_FACTORY_WITH_JSON(IconsFactory, "kcm_icons.json", registerPlugin<IconModule>(); registerPlugin<IconsData>();)
 
-IconModule::IconModule(QObject *parent, const QVariantList &args)
-    : KQuickAddons::ManagedConfigModule(parent, args)
+IconModule::IconModule(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KQuickAddons::ManagedConfigModule(parent, data, args)
     , m_data(new IconsData(this))
     , m_model(new IconsModel(m_data->settings(), this))
     , m_iconSizeCategoryModel(new IconSizeCategoryModel(this))
 {
-    qmlRegisterType<IconsSettings>();
-    qmlRegisterType<IconsModel>();
-    qmlRegisterType<IconSizeCategoryModel>();
+    auto uri = "org.kde.private.kcms.icons";
+    qmlRegisterAnonymousType<IconsSettings>(uri, 1);
+    qmlRegisterAnonymousType<IconsModel>(uri, 1);
+    qmlRegisterAnonymousType<IconSizeCategoryModel>(uri, 1);
 
     // to be able to access its enums
-    qmlRegisterUncreatableType<KIconLoader>("org.kde.private.kcms.icons", 1, 0, "KIconLoader", QString());
+    qmlRegisterUncreatableType<KIconLoader>(uri, 1, 0, "KIconLoader", QString());
 
-    KAboutData *about = new KAboutData(QStringLiteral("kcm5_icons"),
-                                       i18n("Icons"),
-                                       QStringLiteral("1.0"),
-                                       i18n("Icons Control Panel Module"),
-                                       KAboutLicense::GPL,
-                                       i18n("(c) 2000-2003 Geert Jansen"));
-    about->addAuthor(i18n("Geert Jansen"), QString(), QStringLiteral("jansen@kde.org"));
-    about->addAuthor(i18n("Antonio Larrosa Jimenez"), QString(), QStringLiteral("larrosa@kde.org"));
-    about->addCredit(i18n("Torsten Rahn"), QString(), QStringLiteral("torsten@kde.org"));
-    about->addAuthor(i18n("Jonathan Riddell"), QString(), QStringLiteral("jr@jriddell.org"));
-    about->addAuthor(i18n("Kai Uwe Broulik"), QString(), QStringLiteral("kde@privat.broulik.de>"));
-    setAboutData(about);
-
-    setButtons(Apply | Default);
+    setButtons(Apply | Default | Help);
 
     connect(m_model, &IconsModel::pendingDeletionsChanged, this, &IconModule::settingsChanged);
 
@@ -125,13 +111,11 @@ void IconModule::load()
     ManagedConfigModule::load();
     m_model->load();
     // Model has been cleared so pretend the theme name changed to force view update
-    emit iconsSettings()->ThemeChanged();
+    Q_EMIT iconsSettings()->ThemeChanged();
 }
 
 void IconModule::save()
 {
-    bool needToExportToKDE4 = iconsSettings()->isSaveNeeded();
-
     // keep track of Group of icons size that has changed
     QList<int> notifyList;
     for (int i = 0; i < m_iconSizeCategoryModel->rowCount(); ++i) {
@@ -143,11 +127,6 @@ void IconModule::save()
     }
 
     ManagedConfigModule::save();
-
-    if (needToExportToKDE4) {
-        // Is this still needed?
-        exportToKDE4();
-    }
 
     processPendingDeletions();
 
@@ -200,18 +179,18 @@ void IconModule::installThemeFromFile(const QUrl &url)
 
     m_tempInstallFile.reset(new QTemporaryFile());
     if (!m_tempInstallFile->open()) {
-        emit showErrorMessage(i18n("Unable to create a temporary file."));
+        Q_EMIT showErrorMessage(i18n("Unable to create a temporary file."));
         m_tempInstallFile.reset();
         return;
     }
 
     m_tempCopyJob = KIO::file_copy(url, QUrl::fromLocalFile(m_tempInstallFile->fileName()), -1, KIO::Overwrite);
     m_tempCopyJob->uiDelegate()->setAutoErrorHandlingEnabled(true);
-    emit downloadingFileChanged();
+    Q_EMIT downloadingFileChanged();
 
     connect(m_tempCopyJob, &KIO::FileCopyJob::result, this, [this, url](KJob *job) {
         if (job->error() != KJob::NoError) {
-            emit showErrorMessage(i18n("Unable to download the icon theme archive: %1", job->errorText()));
+            Q_EMIT showErrorMessage(i18n("Unable to download the icon theme archive: %1", job->errorText()));
             return;
         }
 
@@ -225,78 +204,19 @@ void IconModule::installThemeFile(const QString &path)
 {
     const QStringList themesNames = findThemeDirs(path);
     if (themesNames.isEmpty()) {
-        emit showErrorMessage(i18n("The file is not a valid icon theme archive."));
+        Q_EMIT showErrorMessage(i18n("The file is not a valid icon theme archive."));
         return;
     }
 
     if (!installThemes(themesNames, path)) {
-        emit showErrorMessage(i18n("A problem occurred during the installation process; however, most of the themes in the archive have been installed"));
+        Q_EMIT showErrorMessage(i18n("A problem occurred during the installation process; however, most of the themes in the archive have been installed"));
         return;
     }
 
-    emit showSuccessMessage(i18n("Theme installed successfully."));
+    Q_EMIT showSuccessMessage(i18n("Theme installed successfully."));
 
     KIconLoader::global()->newIconLoader();
     m_model->load();
-}
-
-void IconModule::exportToKDE4()
-{
-    // TODO: killing the kde4 icon cache: possible? (kde4migration doesn't let access the cache folder)
-    Kdelibs4Migration migration;
-    QString configFilePath = migration.saveLocation("config");
-    if (configFilePath.isEmpty()) {
-        return;
-    }
-
-    configFilePath += QLatin1String("kdeglobals");
-
-    KSharedConfigPtr kglobalcfg = KSharedConfig::openConfig(QStringLiteral("kdeglobals"));
-    KConfig kde4config(configFilePath, KConfig::SimpleConfig);
-
-    KConfigGroup kde4IconGroup(&kde4config, "Icons");
-    kde4IconGroup.writeEntry("Theme", iconsSettings()->theme());
-
-    // Synchronize icon effects
-    for (int row = 0; row < m_iconSizeCategoryModel->rowCount(); row++) {
-        QModelIndex idx(m_iconSizeCategoryModel->index(row, 0));
-        QString group = m_iconSizeCategoryModel->data(idx, IconSizeCategoryModel::ConfigSectionRole).toString();
-        const QString groupName = group + QLatin1String("Icons");
-        KConfigGroup cg(kglobalcfg, groupName);
-        KConfigGroup kde4Cg(&kde4config, groupName);
-
-        // HACK copyTo only copies keys, it doesn't replace the entire group
-        // which means if we removed the effects in our config it won't remove
-        // them from the kde4 config, hence revert all of them prior to copying
-        const QStringList keys = cg.keyList() + kde4Cg.keyList();
-        for (const QString &key : keys) {
-            kde4Cg.revertToDefault(key);
-        }
-        // now copy over the new values
-        cg.copyTo(&kde4Cg);
-    }
-
-    kde4config.sync();
-
-    QProcess *cachePathProcess = new QProcess(this);
-    connect(cachePathProcess,
-            QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            this,
-            [cachePathProcess](int exitCode, QProcess::ExitStatus status) {
-                if (status == QProcess::NormalExit && exitCode == 0) {
-                    QString path = cachePathProcess->readAllStandardOutput().trimmed();
-                    path.append(QLatin1String("icon-cache.kcache"));
-                    QFile::remove(path);
-                }
-
-                // message kde4 apps that icon theme has changed
-                for (int i = 0; i < KIconLoader::LastGroup; ++i) {
-                    notifyKcmChange(GlobalChangeType::IconChanged, KIconLoader::Group(i));
-                }
-
-                cachePathProcess->deleteLater();
-            });
-    cachePathProcess->start(QStringLiteral("kde4-config"), {QStringLiteral("--path"), QStringLiteral("cache")});
 }
 
 QStringList IconModule::findThemeDirs(const QString &archiveName)
@@ -337,7 +257,7 @@ bool IconModule::installThemes(const QStringList &themes, const QString &archive
     bool everythingOk = true;
     const QString localThemesDir(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/icons/./"));
 
-    emit showProgress(i18n("Installing icon themes…"));
+    Q_EMIT showProgress(i18n("Installing icon themes…"));
 
     KTar archive(archiveName);
     archive.open(QIODevice::ReadOnly);
@@ -347,7 +267,7 @@ bool IconModule::installThemes(const QStringList &themes, const QString &archive
 
     KArchiveDirectory *currentTheme = nullptr;
     for (const QString &theme : themes) {
-        emit showProgress(i18n("Installing %1 theme…", theme));
+        Q_EMIT showProgress(i18n("Installing %1 theme…", theme));
 
         qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
 
@@ -364,7 +284,7 @@ bool IconModule::installThemes(const QStringList &themes, const QString &archive
 
     archive.close();
 
-    emit hideProgress();
+    Q_EMIT hideProgress();
     return everythingOk;
 }
 
@@ -393,7 +313,7 @@ QVariantList IconModule::previewIcons(const QString &themeName, int size, qreal 
         {QStringLiteral("folder-video"), QStringLiteral("folder-videos")}};
 
     // created on-demand as it is quite expensive to do and we don't want to do it every loop iteration either
-    QScopedPointer<KIconTheme> theme;
+    std::unique_ptr<KIconTheme> theme;
 
     QVariantList pixmaps;
 
@@ -407,7 +327,7 @@ QVariantList IconModule::previewIcons(const QString &themeName, int size, qreal 
                 theme.reset(new KIconTheme(themeName));
             }
 
-            pix = getBestIcon(*theme.data(), iconNames, size, dpr);
+            pix = getBestIcon(*theme.get(), iconNames, size, dpr);
 
             // Inserting a pixmap even if null so we know whether we searched for it already
             QPixmapCache::insert(cacheKey, pix);
@@ -439,34 +359,40 @@ QPixmap IconModule::getBestIcon(KIconTheme &theme, const QStringList &iconNames,
         KIconTheme theme(themeName);
 
         for (const QString &iconName : iconNames) {
-            QString path = theme.iconPath(QStringLiteral("%1.png").arg(iconName), iconSize, KIconLoader::MatchBest);
-            if (!path.isEmpty()) {
-                QPixmap pixmap(path);
+            const QString pixmapPath = theme.iconPath(QStringLiteral("%1.png").arg(iconName), iconSize, KIconLoader::MatchBest);
+            QPixmap pixmap(pixmapPath);
+            if (!pixmap.isNull()) {
                 pixmap.setDevicePixelRatio(dpr);
-                return pixmap;
+                if (pixmap.width() >= iconSize && pixmap.height() >= iconSize) {
+                    return pixmap;
+                }
             }
 
             // could not find the .png, try loading the .svg or .svgz
-            path = theme.iconPath(QStringLiteral("%1.svg").arg(iconName), iconSize, KIconLoader::MatchBest);
-            if (path.isEmpty()) {
-                path = theme.iconPath(QStringLiteral("%1.svgz").arg(iconName), iconSize, KIconLoader::MatchBest);
+            QString scalablePath = theme.iconPath(QStringLiteral("%1.svg").arg(iconName), iconSize, KIconLoader::MatchBest);
+            if (scalablePath.isEmpty()) {
+                scalablePath = theme.iconPath(QStringLiteral("%1.svgz").arg(iconName), iconSize, KIconLoader::MatchBest);
             }
 
-            if (path.isEmpty()) {
+            if (scalablePath.isEmpty()) {
+                if (!pixmap.isNull()) {
+                    return pixmap;
+                }
+
                 continue;
             }
 
-            if (!renderer.load(path)) {
+            if (!renderer.load(scalablePath)) {
                 continue;
             }
 
-            QPixmap pixmap(iconSize, iconSize);
-            pixmap.setDevicePixelRatio(dpr);
-            pixmap.fill(QColor(Qt::transparent));
-            QPainter p(&pixmap);
+            QPixmap svgPixmap(iconSize, iconSize);
+            svgPixmap.setDevicePixelRatio(dpr);
+            svgPixmap.fill(QColor(Qt::transparent));
+            QPainter p(&svgPixmap);
             p.setViewport(0, 0, size, size);
             renderer.render(&p);
-            return pixmap;
+            return svgPixmap;
         }
     }
 

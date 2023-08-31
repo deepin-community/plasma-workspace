@@ -21,6 +21,7 @@ int main(int argc, char **argv)
     // When the X server dies we get a HUP signal from xinit. We must ignore it
     // because we still need to do some cleanup.
     signal(SIGHUP, sighupHandler);
+    qputenv("QT_NO_XDG_DESKTOP_PORTAL", QByteArrayLiteral("1"));
 
     QCoreApplication app(argc, argv);
 
@@ -49,17 +50,13 @@ int main(int argc, char **argv)
         const auto screenScaleFactors = kscreenGroup.readEntry("ScreenScaleFactors", QByteArray());
         if (!screenScaleFactors.isEmpty()) {
             qputenv("QT_SCREEN_SCALE_FACTORS", screenScaleFactors);
-            qreal scaleFactor = qFloor(kscreenGroup.readEntry("ScaleFactor", 1.0));
-            if (scaleFactor > 1) {
-                qputenv("GDK_SCALE", QByteArray::number(scaleFactor, 'g', 0));
-                qputenv("GDK_DPI_SCALE", QByteArray::number(1.0 / scaleFactor, 'g', 3));
-            }
         }
     }
 
+    // NOTE: Be very mindful of what you start this early in the process. The environment is not yet complete.
     setupCursor(false);
-    setupFontDpi();
-    QScopedPointer<QProcess, KillBeforeDeleter> ksplash(setupKSplash());
+    std::unique_ptr<QProcess, KillBeforeDeleter> ksplash(setupKSplash());
+    Q_UNUSED(ksplash)
 
     runEnvironmentScripts();
 
@@ -68,6 +65,7 @@ int main(int argc, char **argv)
     setupPlasmaEnvironment();
     setupX11();
 
+    qunsetenv("QT_NO_XDG_DESKTOP_PORTAL");
     auto oldSystemdEnvironment = getSystemdEnvironment();
     if (!syncDBusEnvironment()) {
         // Startup error

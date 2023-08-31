@@ -6,11 +6,11 @@
 
 #include "notifications.h"
 
+#include <QConcatenateTablesProxyModel>
 #include <QDebug>
 #include <QMetaEnum>
 #include <QSharedPointer>
 
-#include <KConcatenateRowsProxyModel>
 #include <KDescendantsProxyModel>
 
 #include "limitedrowcountproxymodel_p.h"
@@ -67,7 +67,7 @@ public:
     JobsModel::Ptr jobsModel;
     QSharedPointer<Settings> settings() const;
 
-    KConcatenateRowsProxyModel *notificationsAndJobsModel = nullptr;
+    QConcatenateTablesProxyModel *notificationsAndJobsModel = nullptr;
 
     NotificationFilterProxyModel *filterModel = nullptr;
     NotificationSortProxyModel *sortModel = nullptr;
@@ -96,11 +96,12 @@ void Notifications::Private::initSourceModels()
 
     if (showNotifications && !notificationsModel) {
         notificationsModel = NotificationsModel::createNotificationsModel();
+        notificationsAndJobsModel->addSourceModel(notificationsModel.data());
+        connect(notificationsModel.data(), &NotificationsModel::windowChanged, q, &Notifications::windowChanged);
         connect(notificationsModel.data(), &NotificationsModel::lastReadChanged, q, [this] {
             updateCount();
-            emit q->lastReadChanged();
+            Q_EMIT q->lastReadChanged();
         });
-        notificationsAndJobsModel->addSourceModel(notificationsModel.data());
     } else if (!showNotifications && notificationsModel) {
         notificationsAndJobsModel->removeSourceModel(notificationsModel.data());
         disconnect(notificationsModel.data(), nullptr, q, nullptr); // disconnect all
@@ -125,7 +126,7 @@ void Notifications::Private::initProxyModels()
      * NotificationsModel      JobsModel
      *        \\                 /
      *         \\               /
-     *     KConcatenateRowsProxyModel
+     *     QConcatenateTablesProxyModel
      *               |||
      *               |||
      *     NotificationFilterProxyModel
@@ -158,7 +159,7 @@ void Notifications::Private::initProxyModels()
      */
 
     if (!notificationsAndJobsModel) {
-        notificationsAndJobsModel = new KConcatenateRowsProxyModel(q);
+        notificationsAndJobsModel = new QConcatenateTablesProxyModel(q);
     }
 
     if (!filterModel) {
@@ -168,6 +169,8 @@ void Notifications::Private::initProxyModels()
         connect(filterModel, &NotificationFilterProxyModel::showDismissedChanged, q, &Notifications::showDismissedChanged);
         connect(filterModel, &NotificationFilterProxyModel::blacklistedDesktopEntriesChanged, q, &Notifications::blacklistedDesktopEntriesChanged);
         connect(filterModel, &NotificationFilterProxyModel::blacklistedNotifyRcNamesChanged, q, &Notifications::blacklistedNotifyRcNamesChanged);
+
+        filterModel->setSourceModel(notificationsAndJobsModel);
 
         connect(filterModel, &QAbstractItemModel::rowsInserted, q, [this] {
             updateCount();
@@ -187,8 +190,6 @@ void Notifications::Private::initProxyModels()
                         updateCount();
                     }
                 });
-
-        filterModel->setSourceModel(notificationsAndJobsModel);
     }
 
     if (!sortModel) {
@@ -278,29 +279,29 @@ void Notifications::Private::updateCount()
 
     if (activeNotificationsCount != active) {
         activeNotificationsCount = active;
-        emit q->activeNotificationsCountChanged();
+        Q_EMIT q->activeNotificationsCountChanged();
     }
     if (expiredNotificationsCount != expired) {
         expiredNotificationsCount = expired;
-        emit q->expiredNotificationsCountChanged();
+        Q_EMIT q->expiredNotificationsCountChanged();
     }
     if (unreadNotificationsCount != unread) {
         unreadNotificationsCount = unread;
-        emit q->unreadNotificationsCountChanged();
+        Q_EMIT q->unreadNotificationsCountChanged();
     }
     if (activeJobsCount != jobs) {
         activeJobsCount = jobs;
-        emit q->activeJobsCountChanged();
+        Q_EMIT q->activeJobsCountChanged();
     }
 
     const int percentage = (jobs > 0 ? totalPercentage / jobs : 0);
     if (jobsPercentage != percentage) {
         jobsPercentage = percentage;
-        emit q->jobsPercentageChanged();
+        Q_EMIT q->jobsPercentageChanged();
     }
 
-    // TODO don't emit in dataChanged
-    emit q->countChanged();
+    // TODO don't Q_EMIT in dataChanged
+    Q_EMIT q->countChanged();
 }
 
 bool Notifications::Private::isGroup(const QModelIndex &idx)
@@ -344,8 +345,7 @@ QModelIndex Notifications::Private::mapFromModel(const QModelIndex &idx) const
                     found = true;
                     break;
                 }
-            } else if (auto *concatenateModel = qobject_cast<KConcatenateRowsProxyModel *>(model)) {
-                // There's no "sourceModels()" on KConcatenateRowsProxyModel
+            } else if (auto *concatenateModel = qobject_cast<QConcatenateTablesProxyModel *>(model)) {
                 if (idxModel == notificationsModel.data() || idxModel == jobsModel.data()) {
                     resolvedIdx = concatenateModel->mapFromSource(resolvedIdx);
                     found = true;
@@ -427,7 +427,7 @@ void Notifications::setGroupLimit(int limit)
     if (d->groupCollapsingModel) {
         d->groupCollapsingModel->setLimit(limit);
     }
-    emit groupLimitChanged();
+    Q_EMIT groupLimitChanged();
 }
 
 bool Notifications::expandUnread() const
@@ -445,7 +445,21 @@ void Notifications::setExpandUnread(bool expand)
     if (d->groupCollapsingModel) {
         d->groupCollapsingModel->setExpandUnread(expand);
     }
-    emit expandUnreadChanged();
+    Q_EMIT expandUnreadChanged();
+}
+
+QWindow *Notifications::window() const
+{
+    return d->notificationsModel ? d->notificationsModel->window() : nullptr;
+}
+
+void Notifications::setWindow(QWindow *window)
+{
+    if (d->notificationsModel) {
+        d->notificationsModel->setWindow(window);
+    } else {
+        qCWarning(NOTIFICATIONMANAGER) << "Setting window before initialising the model" << this << window;
+    }
 }
 
 bool Notifications::showExpired() const
@@ -521,7 +535,7 @@ void Notifications::setShowNotifications(bool show)
 
     d->showNotifications = show;
     d->initSourceModels();
-    emit showNotificationsChanged();
+    Q_EMIT showNotificationsChanged();
 }
 
 bool Notifications::showJobs() const
@@ -537,7 +551,7 @@ void Notifications::setShowJobs(bool show)
 
     d->showJobs = show;
     d->initSourceModels();
-    emit showJobsChanged();
+    Q_EMIT showJobsChanged();
 }
 
 Notifications::Urgencies Notifications::urgencies() const
@@ -580,7 +594,7 @@ void Notifications::setGroupMode(GroupMode groupMode)
     if (d->groupMode != groupMode) {
         d->groupMode = groupMode;
         d->initProxyModels();
-        emit groupModeChanged();
+        Q_EMIT groupModeChanged();
     }
 }
 
@@ -710,24 +724,24 @@ void Notifications::configure(const QModelIndex &idx)
     d->notificationsModel->configure(Private::notificationId(idx));
 }
 
-void Notifications::invokeDefaultAction(const QModelIndex &idx)
+void Notifications::invokeDefaultAction(const QModelIndex &idx, InvokeBehavior behavior)
 {
     if (d->notificationsModel) {
-        d->notificationsModel->invokeDefaultAction(Private::notificationId(idx));
+        d->notificationsModel->invokeDefaultAction(Private::notificationId(idx), behavior);
     }
 }
 
-void Notifications::invokeAction(const QModelIndex &idx, const QString &actionId)
+void Notifications::invokeAction(const QModelIndex &idx, const QString &actionId, InvokeBehavior behavior)
 {
     if (d->notificationsModel) {
-        d->notificationsModel->invokeAction(Private::notificationId(idx), actionId);
+        d->notificationsModel->invokeAction(Private::notificationId(idx), actionId, behavior);
     }
 }
 
-void Notifications::reply(const QModelIndex &idx, const QString &text)
+void Notifications::reply(const QModelIndex &idx, const QString &text, InvokeBehavior behavior)
 {
     if (d->notificationsModel) {
-        d->notificationsModel->reply(Private::notificationId(idx), text);
+        d->notificationsModel->reply(Private::notificationId(idx), text, behavior);
     }
 }
 

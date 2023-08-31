@@ -30,3 +30,6 @@ msgstr "אין אפשרות למצוא את תצוגת JobView עבור %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1 לשנייה"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "המשימה בוטלה על ידי המשתמש."

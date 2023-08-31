@@ -5,66 +5,81 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-import QtQuick 2.0
-import QtQuick.Layouts 1.1
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
 
-import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 3.0 as PlasmaComponents3
+import org.kde.plasma.core 2.1 as PlasmaCore
 
-RowLayout {
-    id: item
-    property alias icon: brightnessIcon.source
-    property alias label: brightnessLabel.text
-    property alias value: brightnessSlider.value
-    property alias maximumValue: brightnessSlider.to
-    property alias stepSize: brightnessSlider.stepSize
-    property alias showPercentage: brightnessPercent.visible
+PlasmaComponents3.ItemDelegate {
+    id: root
+
+    property alias slider: control
+    property alias value: control.value
+    property alias maximumValue: control.to
+    property alias stepSize: control.stepSize
+    property alias showPercentage: percent.visible
+
+    readonly property real percentage: Math.round(100 * value / maximumValue)
+
     signal moved()
 
-    spacing: PlasmaCore.Units.gridUnit
+    background.visible: highlighted
+    highlighted: activeFocus
+    hoverEnabled: false
 
-    PlasmaCore.IconItem {
-        id: brightnessIcon
-        Layout.alignment: Qt.AlignTop
-        Layout.preferredWidth: PlasmaCore.Units.iconSizes.medium
-        Layout.preferredHeight: width
-    }
+    Accessible.description: percent.text
+    Accessible.role: Accessible.Slider
+    Keys.forwardTo: [slider]
 
-    Column {
-        id: brightnessColumn
-        Layout.fillWidth: true
-        Layout.alignment: Qt.AlignTop
-        spacing: 0
+    contentItem: RowLayout {
+        spacing: PlasmaCore.Units.gridUnit
 
-        RowLayout {
-            id: infoRow
-            width: parent.width
-            spacing: PlasmaCore.Units.smallSpacing
-
-            function percentage(from, to, value) {
-                return Math.round(100 * (value - from) / (to - from));
-            }
-
-            PlasmaComponents3.Label {
-                id: brightnessLabel
-                Layout.fillWidth: true
-            }
-
-            PlasmaComponents3.Label {
-                id: brightnessPercent
-                horizontalAlignment: Text.AlignRight
-                text: i18nc("Placeholder is brightness percentage", "%1%", infoRow.percentage(0, brightnessSlider.to, brightnessSlider.value))
-            }
+        PlasmaCore.IconItem {
+            id: image
+            Layout.alignment: Qt.AlignTop
+            Layout.preferredWidth: PlasmaCore.Units.iconSizes.medium
+            Layout.preferredHeight: PlasmaCore.Units.iconSizes.medium
+            source: root.icon.name
         }
 
-        PlasmaComponents3.Slider {
-            id: brightnessSlider
-            width: parent.width
-            // Don't allow the slider to turn off the screen
-            // Please see https://git.reviewboard.kde.org/r/122505/ for more information
-            from: to > 100 ? 1 : 0
-            stepSize: 1
-            onMoved: item.moved()
+        ColumnLayout {
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignTop
+            spacing: 0
+
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: PlasmaCore.Units.smallSpacing
+
+                PlasmaComponents3.Label {
+                    id: title
+                    Layout.fillWidth: true
+                    text: root.text
+                }
+
+                PlasmaComponents3.Label {
+                    id: percent
+                    Layout.alignment: Qt.AlignRight
+                    text: i18nc("Placeholder is brightness percentage", "%1%", root.percentage)
+                }
+            }
+
+            PlasmaComponents3.Slider {
+                id: control
+                Layout.fillWidth: true
+
+                activeFocusOnTab: false
+                // Don't allow the slider to turn off the screen
+                // Please see https://git.reviewboard.kde.org/r/122505/ for more information
+                from: to > 100 ? 1 : 0
+                stepSize: 1
+
+                Accessible.name: root.text
+                Accessible.description: percent.text
+
+                onMoved: root.moved()
+            }
         }
     }
 }

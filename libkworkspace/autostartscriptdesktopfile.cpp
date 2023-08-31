@@ -5,15 +5,13 @@
 
 #include "autostartscriptdesktopfile.h"
 #include <KConfigGroup>
-#include <KDesktopFile>
-#include <QDir>
 #include <QStandardPaths>
 
 static const auto autostartScriptKey = QStringLiteral("X-KDE-AutostartScript");
 
 QDir AutostartScriptDesktopFile::autostartLocation()
 {
-    return QDir(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation)).filePath("autostart");
+    return QDir(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation)).filePath(QStringLiteral("autostart"));
 }
 
 AutostartScriptDesktopFile::AutostartScriptDesktopFile(const QString &name, const QString &execPath)

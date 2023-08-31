@@ -1,20 +1,20 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# g.sora <g.sora@tiscali.it>, 2010, 2011, 2020.
+# g.sora <g.sora@tiscali.it>, 2010, 2011, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2020-02-23 16:28+0100\n"
-"Last-Translator: Giovanni Sora <g.sora@tiscali.it>\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
+"PO-Revision-Date: 2021-12-21 22:28+0100\n"
+"Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 21.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: bbcukmet_i18n.dat:1
@@ -167,7 +167,7 @@ msgstr "passageres forte de nive"
 #, kde-format
 msgctxt "weather condition"
 msgid "light cloud"
-msgstr "Nube legier"
+msgstr "nube legier"
 
 #: bbcukmet_i18n.dat:26 ions/wetter.com/ion_wettercom.cpp:175
 #: ions/wetter.com/ion_wettercom.cpp:176
@@ -296,7 +296,7 @@ msgstr "nube spisse"
 #, kde-format
 msgctxt "weather condition"
 msgid "thunderstorm"
-msgstr "Tempesta de tonitro"
+msgstr "tempesta de tonitro"
 
 #: bbcukmet_i18n.dat:47
 #, kde-format
@@ -320,7 +320,7 @@ msgstr "tempesta tropical"
 #, kde-format
 msgctxt "weather condition"
 msgid "white cloud"
-msgstr "Nube blanc"
+msgstr "nube blanc"
 
 #: bbcukmet_i18n.dat:51
 #, kde-format
@@ -470,7 +470,7 @@ msgstr "passageres de nive forte"
 #, kde-format
 msgctxt "weather forecast"
 msgid "light cloud"
-msgstr "Nube legier"
+msgstr "nube legier"
 
 #: bbcukmet_i18n.dat:76
 #, kde-format
@@ -584,13 +584,13 @@ msgstr "intervallos de sol"
 #, kde-format
 msgctxt "weather forecast"
 msgid "thick cloud"
-msgstr "Nube spisse"
+msgstr "nube spisse"
 
 #: bbcukmet_i18n.dat:95
 #, kde-format
 msgctxt "weather forecast"
 msgid "thunderstorm"
-msgstr "Tempesta de tonitro"
+msgstr "tempesta de tonitro"
 
 #: bbcukmet_i18n.dat:96
 #, kde-format
@@ -614,7 +614,7 @@ msgstr "tempesta tropical"
 #, kde-format
 msgctxt "weather forecast"
 msgid "white cloud"
-msgstr "Nube blanc"
+msgstr "nube blanc"
 
 #: bbcukmet_i18n.dat:100
 #, kde-format
@@ -800,7 +800,7 @@ msgstr "Forte pluvia miscite e passager de nive"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Rain"
-msgstr "pluvia forte"
+msgstr "Pluvia forte"
 
 #: envcan_i18n.dat:27
 #, kde-format
@@ -818,7 +818,7 @@ msgstr "Passager de pluvia forte"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Snow"
-msgstr "nive forte"
+msgstr "Nive forte"
 
 #: envcan_i18n.dat:30
 #, kde-format
@@ -1196,7 +1196,7 @@ msgstr "Un pauc de turbines miscite con glacie graupel"
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few flurries or rain showers"
-msgstr "un pauc de turbines o passageres de pluvia"
+msgstr "Un pauc de turbines o passageres de pluvia"
 
 #: envcan_i18n.dat:93
 #, kde-format
@@ -1250,7 +1250,7 @@ msgstr "Un pauc de tempesta de tonitro"
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few thunderstorms"
-msgstr "un pauc de tempestas de tonitro"
+msgstr "Un pauc de tempestas de tonitro"
 
 #: envcan_i18n.dat:102
 #, kde-format
@@ -2692,75 +2692,88 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr "Ventose"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "UK"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "USA"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr "Hodie"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, kde-format
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "Iste Nocte"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "Sab"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "Dom"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "Lun"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "Mar"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "Mer"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "Jov"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "Ven"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
 msgstr "Datos ex BBC Weather"
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
+msgstr "Fonte: Deutscher Wetterdienst"
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
 #: ions/envcan/ion_envcan.cpp:1403 ions/envcan/ion_envcan.cpp:1544
@@ -4867,3 +4880,165 @@ msgstr "Deveniente In le Sol"
 msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr "Majormente Clar"
+
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "condition meteorologic"
+
+#~ msgctxt "weather condition"
+#~ msgid "thunder storm"
+#~ msgstr "tempesta de tonitro"
+
+#~ msgctxt "weather forecast"
+#~ msgid "thunder storm"
+#~ msgstr "tempesta de tonitro"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "N"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNE"
+#~ msgstr "NNE"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "NE"
+
+#~ msgctxt "wind direction"
+#~ msgid "ENE"
+#~ msgstr "ENE"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSE"
+#~ msgstr "SSE"
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "SE"
+
+#~ msgctxt "wind direction"
+#~ msgid "ESE"
+#~ msgstr "ESE"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNW"
+#~ msgstr "NNW"
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "NW"
+
+#~ msgctxt "wind direction"
+#~ msgid "WNW"
+#~ msgstr "WNW"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "W"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSW"
+#~ msgstr "SSW"
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "SW"
+
+#~ msgctxt "wind direction"
+#~ msgid "WSW"
+#~ msgstr "WSW"
+
+#~ msgctxt "wind direction"
+#~ msgid "VR"
+#~ msgstr "VR"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "crescente"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "cadente"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "necun variation"
+
+#~ msgctxt "wind speed"
+#~ msgid "Calm"
+#~ msgstr "Calme"
+
+#~ msgctxt "wind speed"
+#~ msgid "N/A"
+#~ msgstr "n/d"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "steady"
+#~ msgstr "stabile"
+
+#~ msgctxt "wind direction - wind speed is too low to measure"
+#~ msgid "VR"
+#~ msgstr "VR"
+
+#~ msgid "N"
+#~ msgstr "N"
+
+#~ msgid "NNE"
+#~ msgstr "NNE"
+
+#~ msgid "NE"
+#~ msgstr "NE"
+
+#~ msgid "ENE"
+#~ msgstr "ENE"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "SSE"
+#~ msgstr "SSE"
+
+#~ msgid "SE"
+#~ msgstr "SE"
+
+#~ msgid "ESE"
+#~ msgstr "ESE"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "NNW"
+#~ msgstr "NNW"
+
+#~ msgid "NW"
+#~ msgstr "NW"
+
+#~ msgid "WNW"
+#~ msgstr "WNW"
+
+#~ msgid "W"
+#~ msgstr "W"
+
+#~ msgid "SSW"
+#~ msgstr "SSW"
+
+#~ msgid "SW"
+#~ msgstr "SW"
+
+#~ msgid "WSW"
+#~ msgstr "WSW"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "Datos Meteorologic es fornite per Environment Canada"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr "Supportate per backstage.bbc.co.uk /Datos ex Officio UK MET"

@@ -1,11 +1,12 @@
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2020.
-# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2020.
+# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022.
+# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-26 00:18+0000\n"
-"PO-Revision-Date: 2020-01-18 20:10-0800\n"
+"POT-Creation-Date: 2022-08-28 00:47+0000\n"
+"PO-Revision-Date: 2022-06-17 23:44-0700\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
@@ -15,40 +16,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 19.12.1\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr ""
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr ""
-
-#: feedback.cpp:50
-#, kde-format
-msgid "User Feedback"
-msgstr "ユーザ フィードバック"
-
-#: feedback.cpp:52
-#, kde-format
-msgid "Configure user feedback settings"
-msgstr "ユーザ フィードバック設定を変更"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: package/contents/ui/main.qml:34
 #, kde-format
 msgid ""
 "User Feedback has been disabled centrally. Please contact your distributor."
 msgstr ""
+"ユーザフィードバックが中心的に無効化されています。ディストリビュータに連絡し"
+"てください。"
 
-#: package/contents/ui/main.qml:38 package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:44 package/contents/ui/main.qml:77
 #, kde-format
 msgid "Plasma:"
 msgstr ""
 
-#: package/contents/ui/main.qml:45
+#: package/contents/ui/main.qml:51
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -56,21 +39,27 @@ msgid ""
 "it, so we can focus on things that matter to you.<nl/><nl/>Contributing this "
 "information is optional and entirely anonymous. We never collect your "
 "personal data, files you use, websites you visit, or information that could "
-"identify you.<nl/><nl/>You can read about our privacy policy in the "
-"following link:"
+"identify you.<nl/><nl/>You can read about <link url='https://kde.org/"
+"privacypolicy-apps.php'>our privacy policy here.</link>"
 msgstr ""
+"あなたの Plasma の使用状況に関する情報を提供していただくことで、KDE はあなた"
+"にとって重要なことに集中できます。<nl/><nl/>情報の提供は任意であり、完全に匿"
+"名です。私たちはあなたの個人情報、使用するファイル、訪問するウェブサイト、そ"
+"の他のあなたを特定できる情報を絶対に収集しません。<nl/><nl/>私たちのプライバ"
+"シーポリシーについては<link url='https://kde.org/privacypolicy-apps.php'>ここ"
+"</link>で読むことができます。"
 
-#: package/contents/ui/main.qml:99
+#: package/contents/ui/main.qml:112
 #, kde-format
 msgid "Plasma"
 msgstr ""
 
-#: package/contents/ui/main.qml:117
+#: package/contents/ui/main.qml:133
 #, kde-format
 msgid "The following information will be sent:"
-msgstr ""
+msgstr "以下の情報が送信されます:"
 
-#: package/contents/ui/main.qml:162
+#: package/contents/ui/main.qml:178
 #, kde-format
 msgid "View sent data:"
-msgstr ""
+msgstr "送信されたデータを見る:"

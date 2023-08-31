@@ -53,7 +53,7 @@ void MirroredScreensTracker::setScreensMirrored(bool mirrored)
 {
     if (m_screensMirrored != mirrored) {
         m_screensMirrored = mirrored;
-        emit screensMirroredChanged(mirrored);
+        Q_EMIT screensMirroredChanged(mirrored);
     }
 }
 
@@ -75,9 +75,9 @@ void MirroredScreensTracker::checkScreensMirrored()
                 continue;
             }
 
-            if (output->geometry().intersects(checkOutput->geometry())) {
-                qCDebug(NOTIFICATIONMANAGER) << "Screen geometry" << checkOutput->geometry() << "intersects" << output->geometry()
-                                             << "- considering them to be mirrored";
+            if (output->geometry().contains(checkOutput->geometry()) || checkOutput->geometry().contains(output->geometry())) {
+                qCDebug(NOTIFICATIONMANAGER) << "Screen geometry" << checkOutput->geometry() << "and" << output->geometry()
+                                             << "are completely overlapping - considering them to be mirrored";
                 setScreensMirrored(true);
                 return;
             }

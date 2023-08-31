@@ -16,10 +16,11 @@ import org.kde.kquickcontrolsaddons 2.0 as KQCAddons
 
 import org.kde.notificationmanager 1.0 as NotificationManager
 
+import org.kde.plasma.private.notifications 2.0 as Notifications
+
 ColumnLayout {
     id: notificationItem
 
-    property bool hovered: false
     property int maximumLineCount: 0
     property alias bodyCursorShape: bodyLabel.cursorShape
 
@@ -27,6 +28,7 @@ ColumnLayout {
 
     property bool inGroup: false
     property bool inHistory: false
+    property ListView listViewParent: null
 
     property alias applicationIconSource: notificationHeading.applicationIconSource
     property alias applicationName: notificationHeading.applicationName
@@ -42,6 +44,7 @@ ColumnLayout {
 
     // This isn't an alias because TextEdit RichText adds some HTML tags to it
     property string body
+    property string accessibleDescription
     property var icon
     property var urls: []
 
@@ -82,6 +85,8 @@ ColumnLayout {
                                         || (jobLoader.item && jobLoader.item.dragging)
     property bool replying: false
     readonly property bool hasPendingReply: replyLoader.item && replyLoader.item.text !== ""
+    readonly property alias headerHeight: headingElement.height
+    property int extraSpaceForCriticalNotificationLine: 0
 
     signal bodyClicked
     signal closeClicked
@@ -91,6 +96,7 @@ ColumnLayout {
     signal replied(string text)
     signal openUrl(string url)
     signal fileActionInvoked(QtObject action)
+    signal forceActiveFocusRequested
 
     signal suspendJobClicked
     signal resumeJobClicked
@@ -98,19 +104,27 @@ ColumnLayout {
 
     spacing: PlasmaCore.Units.smallSpacing
 
+    // Header
     Item {
         id: headingElement
-        Layout.fillWidth: true
+        Layout.fillWidth: !notificationItem.inGroup
         Layout.preferredHeight: notificationHeading.implicitHeight
         Layout.preferredWidth: notificationHeading.implicitWidth
-        Layout.bottomMargin: -parent.spacing
+        Layout.alignment: notificationItem.inGroup && summaryLabel.lineCount > 1 ? Qt.AlignTop : 0
+        Layout.topMargin: notificationItem.inGroup && summaryLabel.lineCount > 1 ? Math.max(0, (summaryLabelTextMetrics.height - Layout.preferredHeight) / 2) : 0
+        Layout.bottomMargin: notificationItem.inGroup ? 0 : -parent.spacing
 
         PlasmaCore.ColorScope.colorGroup: PlasmaCore.Theme.HeaderColorGroup
         PlasmaCore.ColorScope.inherit: false
 
         PlasmaExtras.PlasmoidHeading {
+            topInset: 0
             anchors.fill: parent
             visible: !notificationItem.inHistory
+
+            // HACK PlasmoidHeading is a QQC2 Control which accepts left mouse button by default,
+            // which breaks the popup default action mouse handler, cf. QTBUG-89785
+            Component.onCompleted: Notifications.InputDisabler.makeTransparentForInput(this)
         }
 
         NotificationHeader {
@@ -125,6 +139,7 @@ ColumnLayout {
             PlasmaCore.ColorScope.inherit: false
 
             inGroup: notificationItem.inGroup
+            inHistory: notificationItem.inHistory
 
             notificationType: notificationItem.notificationType
             jobState: notificationItem.jobState
@@ -136,123 +151,133 @@ ColumnLayout {
         }
     }
 
-    RowLayout {
-        id: defaultHeaderContainer
+    // Everything else that goes below the header
+    // This is its own ColumnLayout-within-a-ColumnLayout because it lets us set
+    // the left margin once rather than several times, in each of its children
+    Item {
         Layout.fillWidth: true
-    }
+        Layout.preferredHeight: childrenRect.height
+        Layout.leftMargin: notificationItem.extraSpaceForCriticalNotificationLine + (notificationItem.inGroup || !notificationItem.inHistory ? 0 : notificationItem.spacing)
 
-    // Notification body
-    RowLayout {
-        id: bodyRow
-        Layout.fillWidth: true
-        spacing: PlasmaCore.Units.smallSpacing
+        Accessible.role: notificationItem.inHistory ? Accessible.NoRole : Accessible.Notification
+        Accessible.name: summaryLabel.text
+        Accessible.description: notificationItem.accessibleDescription
 
-        ColumnLayout {
-            Layout.fillWidth: true
-            spacing: 0
+        // Notification body
+        RowLayout {
+            id: summaryRow
+            anchors {
+                left: parent.left
+                right: notificationItem.inGroup ? parent.right : iconContainer.left
+                rightMargin: notificationItem.inGroup ? 0 : notificationItem.spacing
+            }
+            visible: summaryLabel.text !== ""
 
-            RowLayout {
-                id: summaryRow
+            PlasmaExtras.Heading {
+                id: summaryLabel
                 Layout.fillWidth: true
-                visible: summaryLabel.text !== ""
-
-                PlasmaExtras.Heading {
-                    id: summaryLabel
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: implicitHeight
-                    textFormat: Text.PlainText
-                    maximumLineCount: 3
-                    wrapMode: Text.WordWrap
-                    elide: Text.ElideRight
-                    level: 4
-                    text: {
-                        if (notificationItem.notificationType === NotificationManager.Notifications.JobType) {
-                            if (notificationItem.jobState === NotificationManager.Notifications.JobStateSuspended) {
+                Layout.preferredHeight: implicitHeight
+                Layout.topMargin: notificationItem.inGroup && lineCount > 1 ? Math.max(0, (headingElement.Layout.preferredHeight - summaryLabelTextMetrics.height) / 2) : 0
+                textFormat: Text.PlainText
+                maximumLineCount: 3
+                wrapMode: Text.WordWrap
+                elide: Text.ElideRight
+                level: 4
+                // Give it a bit more visual prominence than the app name in the header
+                type: PlasmaExtras.Heading.Type.Primary
+                text: {
+                    if (notificationItem.notificationType === NotificationManager.Notifications.JobType) {
+                        if (notificationItem.jobState === NotificationManager.Notifications.JobStateSuspended) {
+                            if (notificationItem.summary) {
+                                return i18ndc("plasma_applet_org.kde.plasma.notifications", "Job name, e.g. Copying is paused", "%1 (Paused)", notificationItem.summary);
+                            }
+                        } else if (notificationItem.jobState === NotificationManager.Notifications.JobStateStopped) {
+                            if (notificationItem.jobError) {
                                 if (notificationItem.summary) {
-                                    return i18ndc("plasma_applet_org.kde.plasma.notifications", "Job name, e.g. Copying is paused", "%1 (Paused)", notificationItem.summary);
-                                }
-                            } else if (notificationItem.jobState === NotificationManager.Notifications.JobStateStopped) {
-                                if (notificationItem.jobError) {
-                                    if (notificationItem.summary) {
-                                        return i18ndc("plasma_applet_org.kde.plasma.notifications", "Job name, e.g. Copying has failed", "%1 (Failed)", notificationItem.summary);
-                                    } else {
-                                        return i18nd("plasma_applet_org.kde.plasma.notifications", "Job Failed");
-                                    }
+                                    return i18ndc("plasma_applet_org.kde.plasma.notifications", "Job name, e.g. Copying has failed", "%1 (Failed)", notificationItem.summary);
                                 } else {
-                                    if (notificationItem.summary) {
-                                        return i18ndc("plasma_applet_org.kde.plasma.notifications", "Job name, e.g. Copying has finished", "%1 (Finished)", notificationItem.summary);
-                                    } else {
-                                        return i18nd("plasma_applet_org.kde.plasma.notifications", "Job Finished");
-                                    }
+                                    return i18nd("plasma_applet_org.kde.plasma.notifications", "Job Failed");
+                                }
+                            } else {
+                                if (notificationItem.summary) {
+                                    return i18ndc("plasma_applet_org.kde.plasma.notifications", "Job name, e.g. Copying has finished", "%1 (Finished)", notificationItem.summary);
+                                } else {
+                                    return i18nd("plasma_applet_org.kde.plasma.notifications", "Job Finished");
                                 }
                             }
                         }
-                        // some apps use their app name as summary, avoid showing the same text twice
-                        // try very hard to match the two
-                        if (notificationItem.summary && notificationItem.summary.toLocaleLowerCase().trim() != notificationItem.applicationName.toLocaleLowerCase().trim()) {
-                            return notificationItem.summary;
-                        }
-                        return "";
                     }
-                    visible: text !== ""
+                    // some apps use their app name as summary, avoid showing the same text twice
+                    // try very hard to match the two
+                    if (notificationItem.summary && notificationItem.summary.toLocaleLowerCase().trim() != notificationItem.applicationName.toLocaleLowerCase().trim()) {
+                        return notificationItem.summary;
+                    }
+                    return "";
                 }
+                visible: text !== ""
 
-                // inGroup headerItem is reparented here
+                TextMetrics {
+                    id: summaryLabelTextMetrics
+                    font: summaryLabel.font
+                    text: summaryLabel.text
+                }
             }
 
-            RowLayout {
-                id: bodyTextRow
+            // inGroup headerItem is reparented here
+        }
 
-                Layout.fillWidth: true
-                spacing: PlasmaCore.Units.smallSpacing
+        SelectableLabel {
+            id: bodyLabel
 
-                SelectableLabel {
-                    id: bodyLabel
-                    // FIXME how to assign this via State? target: bodyLabel.Layout doesn't work and just assigning the property doesn't either
-                    Layout.alignment: notificationItem.inGroup ? Qt.AlignTop : Qt.AlignVCenter
-                    Layout.fillWidth: true
+            readonly property real maximumHeight: theme.mSize(theme.defaultFont).height * notificationItem.maximumLineCount
+            readonly property bool truncated: notificationItem.maximumLineCount > 0 && bodyLabel.implicitHeight > maximumHeight
 
-                    Layout.maximumHeight: notificationItem.maximumLineCount > 0
-                                          ? (theme.mSize(font).height * notificationItem.maximumLineCount) : -1
-
-                    // HACK RichText does not allow to specify link color and since LineEdit
-                    // does not support StyledText, we have to inject some CSS to force the color,
-                    // cf. QTBUG-81463 and to some extent QTBUG-80354
-                    text: "<style>a { color: " + PlasmaCore.Theme.linkColor + "; }</style>" + notificationItem.body
-
-                    // Cannot do text !== "" because RichText adds some HTML tags even when empty
-                    visible: notificationItem.body !== ""
-                    onClicked: notificationItem.bodyClicked(mouse)
-                    onLinkActivated: Qt.openUrlExternally(link)
-                }
-
-                // inGroup iconContainer is reparented here
+            height: truncated ? maximumHeight : implicitHeight
+            anchors {
+                top: summaryRow.bottom
+                topMargin: summaryRow.visible && notificationItem.inGroup && iconContainer.visible ? notificationItem.spacing : 0
+                left: parent.left
+                right: iconContainer.left
+                rightMargin: iconContainer.visible ? notificationItem.spacing : 0
             }
+
+            listViewParent: notificationItem.listViewParent
+            // HACK RichText does not allow to specify link color and since LineEdit
+            // does not support StyledText, we have to inject some CSS to force the color,
+            // cf. QTBUG-81463 and to some extent QTBUG-80354
+            text: "<style>a { color: " + PlasmaCore.Theme.linkColor + "; }</style>" + notificationItem.body
+
+            // Cannot do text !== "" because RichText adds some HTML tags even when empty
+            visible: notificationItem.body !== ""
+            onClicked: notificationItem.bodyClicked(mouse)
+            onLinkActivated: Qt.openUrlExternally(link)
         }
 
         Item {
             id: iconContainer
 
-            Layout.preferredWidth: PlasmaCore.Units.iconSizes.large
-            Layout.preferredHeight: PlasmaCore.Units.iconSizes.large
-            Layout.topMargin: PlasmaCore.Units.smallSpacing
-            Layout.bottomMargin: PlasmaCore.Units.smallSpacing
-
+            width: visible ? iconItem.width : 0
+            height: visible ? Math.max(iconItem.height + notificationItem.spacing * 2, bodyLabel.height + bodyLabel.anchors.topMargin + (notificationItem.inGroup ? 0 : summaryRow.implicitHeight)) : 0
+            anchors {
+                top: notificationItem.inGroup ? bodyLabel.top : parent.top
+                right: parent.right
+            }
             visible: iconItem.active
 
             PlasmaCore.IconItem {
                 id: iconItem
+
+                width: PlasmaCore.Units.iconSizes.large
+                height: PlasmaCore.Units.iconSizes.large
+                anchors.verticalCenter: parent.verticalCenter
+
                 // don't show two identical icons
                 readonly property bool active: valid && source != notificationItem.applicationIconSource
-                anchors.fill: parent
+
                 usesPlasmaTheme: false
                 smooth: true
-                // don't show a generic "info" icon since this is a notification already
-                source: notificationItem.icon !== "dialog-information" ? notificationItem.icon : ""
-                visible: active
+                source: notificationItem.icon
             }
-
-            // JobItem reparents a file icon here for finished jobs with one total file
         }
     }
 
@@ -260,8 +285,8 @@ ColumnLayout {
     Loader {
         id: jobLoader
         Layout.fillWidth: true
+        Layout.preferredHeight: item ? item.implicitHeight : 0
         active: notificationItem.notificationType === NotificationManager.Notifications.JobType
-        height: item ? item.implicitHeight : 0
         visible: active
         sourceComponent: JobItem {
             iconContainerItem: iconContainer
@@ -280,20 +305,21 @@ ColumnLayout {
 
             onOpenUrl: notificationItem.openUrl(url)
             onFileActionInvoked: notificationItem.fileActionInvoked(action)
-
-            hovered: notificationItem.hovered
         }
     }
 
+    // Actions
     Item {
         id: actionContainer
         Layout.fillWidth: true
-        Layout.preferredHeight: Math.max(actionFlow.implicitHeight, replyLoader.height)
-        visible: actionRepeater.count > 0
+        Layout.preferredHeight: childrenRect.height
+        visible: actionRepeater.count > 0 && actionFlow.parent === this
 
         // Notification actions
         Flow { // it's a Flow so it can wrap if too long
             id: actionFlow
+            // For a cleaner look, if there is a thumbnail, puts the actions next to the thumbnail strip's menu button
+            parent: thumbnailStripLoader.item ? thumbnailStripLoader.item.actionContainer : actionContainer
             width: parent.width
             spacing: PlasmaCore.Units.smallSpacing
             layoutDirection: Qt.RightToLeft
@@ -374,7 +400,7 @@ ColumnLayout {
             function beginReply() {
                 notificationItem.replying = true;
 
-                plasmoid.nativeInterface.forceActivateWindow(notificationItem.Window.window);
+                notificationItem.forceActiveFocusRequested();
                 replyLoader.item.activate();
             }
 
@@ -390,7 +416,7 @@ ColumnLayout {
         }
     }
 
-    // thumbnails
+    // Thumbnails
     Loader {
         id: thumbnailStripLoader
         Layout.leftMargin: notificationItem.thumbnailLeftPadding
@@ -399,6 +425,7 @@ ColumnLayout {
         Layout.topMargin: 0
         Layout.bottomMargin: notificationItem.thumbnailBottomPadding
         Layout.fillWidth: true
+        Layout.preferredHeight: item ? item.implicitHeight : 0
         active: notificationItem.urls.length > 0
         visible: active
         sourceComponent: ThumbnailStrip {
@@ -433,11 +460,6 @@ ColumnLayout {
                 target: bodyLabel.Label
                 alignment: Qt.AlignTop
             }*/
-
-            PropertyChanges {
-                target: iconContainer
-                parent: bodyTextRow
-            }
         }
     ]
 }

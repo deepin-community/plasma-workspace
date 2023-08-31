@@ -121,3 +121,51 @@ msgstr "Uni (passiivne seisund mälus)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Talveuni (passiivne seisund kettal)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Kas minna passiivseisundisse kettal (talveunne)?"
+
+#~ msgid "Yes"
+#~ msgstr "Jah"
+
+#~ msgid "No"
+#~ msgstr "Ei"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Kas minna passiivseisundisse mälus (unne)?"
+
+#~ msgid "Leave"
+#~ msgstr "Väljumine"
+
+#~ msgid "Leave..."
+#~ msgstr "Väljumine..."
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Toimingud"
+
+#~ msgid "Suspend"
+#~ msgstr "Passiivseisund"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Lukustamise/väljalogimise seadistamine"
+
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "Palun vali nimekirjast vähemalt üks kirje."
+
+#~ msgid "Entries"
+#~ msgstr "Kirjed"
+
+#, fuzzy
+#~| msgid "Show sleep button"
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Unenupu näitamine"
+
+#~ msgid "Show logout button"
+#~ msgstr "Väljalogimisnupu näitamine"
+
+#~ msgid "Show hibernate button"
+#~ msgstr "Talveunenupu näitamine"
+
+#~ msgid "Show sleep button"
+#~ msgstr "Unenupu näitamine"

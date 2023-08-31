@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: powerdevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2020-12-28 13:37+0000\n"
+"POT-Creation-Date: 2022-01-27 00:45+0000\n"
+"PO-Revision-Date: 2022-03-26 21:27+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -20,37 +20,37 @@ msgstr ""
 "X-POFile-SpellExtra: PowerDevil governor perfisDisponiveis switch scheme\n"
 "X-POFile-SpellExtra: perfilActual change XSync ram\n"
 
-#: PowerDevilRunner.cpp:33
+#: PowerDevilRunner.cpp:32
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "suspend"
 msgstr "suspender"
 
-#: PowerDevilRunner.cpp:35
+#: PowerDevilRunner.cpp:34
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "to ram"
 msgstr "para a ram"
 
-#: PowerDevilRunner.cpp:37
+#: PowerDevilRunner.cpp:36
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "sleep"
 msgstr "adormecer"
 
-#: PowerDevilRunner.cpp:39
+#: PowerDevilRunner.cpp:38
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "hibernate"
 msgstr "hibernar"
 
-#: PowerDevilRunner.cpp:41
+#: PowerDevilRunner.cpp:40
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "to disk"
 msgstr "para o disco"
 
-#: PowerDevilRunner.cpp:43 PowerDevilRunner.cpp:45 PowerDevilRunner.cpp:68
+#: PowerDevilRunner.cpp:42 PowerDevilRunner.cpp:44 PowerDevilRunner.cpp:69
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "dim screen"
@@ -75,65 +75,68 @@ msgstr "Suspende o sistema para a RAM"
 msgid "Suspends the system to disk"
 msgstr "Suspende o sistema para o disco"
 
-#: PowerDevilRunner.cpp:64
+#: PowerDevilRunner.cpp:65
 #, kde-format
-msgctxt "Note this is a KRunner keyword"
-msgid "screen brightness"
-msgstr "brilho do ecrã"
+msgctxt ""
+"Note this is a KRunner keyword, <> is a placeholder and should be at the end"
+msgid "screen brightness <percent value>"
+msgstr "brilho do ecrã <percentagem>"
 
-#: PowerDevilRunner.cpp:66
+#: PowerDevilRunner.cpp:67
 #, no-c-format, kde-format
 msgid ""
-"Lists screen brightness options or sets it to the brightness defined by :q:; "
-"e.g. screen brightness 50 would dim the screen to 50% maximum brightness"
+"Lists screen brightness options or sets it to the brightness defined by the "
+"search term; e.g. screen brightness 50 would dim the screen to 50% maximum "
+"brightness"
 msgstr ""
-"Apresenta todas as opções de brilho ou configura-a com o brilho definido em :"
-"q:, p.ex., 'brilho do ecrã 50' iria colocar o ecrã a 50% do seu brilho máximo"
+"Apresenta todas as opções de brilho ou configura-a com o brilho definido no "
+"termo de pesquisa, p.ex., 'brilho do ecrã 50' iria colocar o ecrã a 50% do "
+"seu brilho máximo"
 
-#: PowerDevilRunner.cpp:94
+#: PowerDevilRunner.cpp:95
 #, kde-format
 msgid "Set Brightness to %1%"
 msgstr "Mudar o Brilho para %1%"
 
-#: PowerDevilRunner.cpp:103
+#: PowerDevilRunner.cpp:104
 #, kde-format
 msgid "Dim screen totally"
 msgstr "Escurecer o ecrã por completo"
 
-#: PowerDevilRunner.cpp:111
+#: PowerDevilRunner.cpp:112
 #, kde-format
 msgid "Dim screen by half"
 msgstr "Escurecer o ecrã a 50%"
 
-#: PowerDevilRunner.cpp:141
+#: PowerDevilRunner.cpp:142
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "Suspender"
 
-#: PowerDevilRunner.cpp:142
+#: PowerDevilRunner.cpp:143
 #, kde-format
 msgid "Suspend to RAM"
 msgstr "Suspender para a RAM"
 
-#: PowerDevilRunner.cpp:147
+#: PowerDevilRunner.cpp:148
 #, kde-format
 msgctxt "Suspend to disk"
 msgid "Hibernate"
 msgstr "Hibernar"
 
-#: PowerDevilRunner.cpp:148
+#: PowerDevilRunner.cpp:149
 #, kde-format
 msgid "Suspend to disk"
 msgstr "Suspender para o disco"
 
-#: PowerDevilRunner.cpp:217
+#: PowerDevilRunner.cpp:218
 #, kde-format
 msgctxt "Note this is a KRunner keyword, it should end with a space"
 msgid "screen brightness "
 msgstr "brilho do ecrã "
 
-#: PowerDevilRunner.cpp:219
+#: PowerDevilRunner.cpp:220
 #, kde-format
 msgctxt "Note this is a KRunner keyword, it should end with a space"
 msgid "dim screen "

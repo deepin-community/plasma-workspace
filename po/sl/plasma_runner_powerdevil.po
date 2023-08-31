@@ -3,13 +3,13 @@
 #
 # Jure Repinc <jlp@holodeck1.com>, 2009, 2010, 2012.
 # Andrej Mernik <andrejm@ubuntu.si>, 2013.
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2020.
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: krunner_powerdevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-04-30 13:46+0200\n"
+"POT-Creation-Date: 2022-01-27 00:45+0000\n"
+"PO-Revision-Date: 2021-12-28 09:11+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -17,41 +17,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Lokalize 21.04.3\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 
-#: PowerDevilRunner.cpp:33
+#: PowerDevilRunner.cpp:32
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "suspend"
 msgstr "zaustavi"
 
-#: PowerDevilRunner.cpp:35
+#: PowerDevilRunner.cpp:34
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "to ram"
 msgstr "v pomnilnik"
 
-#: PowerDevilRunner.cpp:37
+#: PowerDevilRunner.cpp:36
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "sleep"
 msgstr "v pripravljenost"
 
-#: PowerDevilRunner.cpp:39
+#: PowerDevilRunner.cpp:38
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "hibernate"
 msgstr "v mirovanje"
 
-#: PowerDevilRunner.cpp:41
+#: PowerDevilRunner.cpp:40
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "to disk"
 msgstr "na disk"
 
-#: PowerDevilRunner.cpp:43 PowerDevilRunner.cpp:45 PowerDevilRunner.cpp:68
+#: PowerDevilRunner.cpp:42 PowerDevilRunner.cpp:44 PowerDevilRunner.cpp:69
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "dim screen"
@@ -74,66 +74,104 @@ msgstr "Zaustavi sistem v pomnilnik"
 msgid "Suspends the system to disk"
 msgstr "Zaustavi sistem na disk"
 
-#: PowerDevilRunner.cpp:64
+#: PowerDevilRunner.cpp:65
 #, kde-format
-msgctxt "Note this is a KRunner keyword"
-msgid "screen brightness"
-msgstr "svetlost zaslona"
+msgctxt ""
+"Note this is a KRunner keyword, <> is a placeholder and should be at the end"
+msgid "screen brightness <percent value>"
+msgstr "svetlost zaslona <vrednost v odstotkih>"
 
-#: PowerDevilRunner.cpp:66
+#: PowerDevilRunner.cpp:67
 #, no-c-format, kde-format
 msgid ""
-"Lists screen brightness options or sets it to the brightness defined by :q:; "
-"e.g. screen brightness 50 would dim the screen to 50% maximum brightness"
+"Lists screen brightness options or sets it to the brightness defined by the "
+"search term; e.g. screen brightness 50 would dim the screen to 50% maximum "
+"brightness"
 msgstr ""
-"Izpiše seznam možnosti za svetlost zaslona, ali pa jo nastavi na svetlost :"
-"q:, npr. svetlost zaslona 50 zatemni zaslon na 50% največje svetlosti"
+"Izpiše seznam možnosti za svetlost zaslona, ali pa jo nastavi na svetlost "
+"določeno z določbo iskanja: npr. svetlost zaslona 50 zatemni zaslon na 50% "
+"največje svetlosti"
 
-#: PowerDevilRunner.cpp:94
+#: PowerDevilRunner.cpp:95
 #, kde-format
 msgid "Set Brightness to %1%"
 msgstr "Nastavi svetlost na %1%"
 
-#: PowerDevilRunner.cpp:103
+#: PowerDevilRunner.cpp:104
 #, kde-format
 msgid "Dim screen totally"
 msgstr "Popolnoma zatemni zaslon"
 
-#: PowerDevilRunner.cpp:111
+#: PowerDevilRunner.cpp:112
 #, kde-format
 msgid "Dim screen by half"
 msgstr "Zatemni zaslon na polovico"
 
-#: PowerDevilRunner.cpp:141
+#: PowerDevilRunner.cpp:142
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "V pripravljenost"
 
-#: PowerDevilRunner.cpp:142
+#: PowerDevilRunner.cpp:143
 #, kde-format
 msgid "Suspend to RAM"
 msgstr "Zaustavi v pomnilnik"
 
-#: PowerDevilRunner.cpp:147
+#: PowerDevilRunner.cpp:148
 #, kde-format
 msgctxt "Suspend to disk"
 msgid "Hibernate"
 msgstr "V mirovanje"
 
-#: PowerDevilRunner.cpp:148
+#: PowerDevilRunner.cpp:149
 #, kde-format
 msgid "Suspend to disk"
 msgstr "Zaustavi na disk"
 
-#: PowerDevilRunner.cpp:217
+#: PowerDevilRunner.cpp:218
 #, kde-format
 msgctxt "Note this is a KRunner keyword, it should end with a space"
 msgid "screen brightness "
 msgstr "svetlost zaslona "
 
-#: PowerDevilRunner.cpp:219
+#: PowerDevilRunner.cpp:220
 #, kde-format
 msgctxt "Note this is a KRunner keyword, it should end with a space"
 msgid "dim screen "
 msgstr "zatemni zaslon "
+
+#~ msgctxt "Note this is a KRunner keyword"
+#~ msgid "screen brightness"
+#~ msgstr "svetlost zaslona"
+
+#~ msgctxt "Note this is a KRunner keyword; %1 is a parameter"
+#~ msgid "screen brightness %1"
+#~ msgstr "svetlost zaslona %1"
+
+#~ msgctxt "Note this is a KRunner keyword; %1 is a parameter"
+#~ msgid "dim screen %1"
+#~ msgstr "zatemni zaslon %1"
+
+#, fuzzy
+#~| msgctxt "Note this is a KRunner keyword"
+#~| msgid "suspend"
+#~ msgid "Suspend"
+#~ msgstr "zaustavi"
+
+#~ msgctxt "Note this is a KRunner keyword"
+#~ msgid "power profile"
+#~ msgstr "energijski profil"
+
+#~ msgid "Lists all power profiles and allows them to be activated"
+#~ msgstr "Izpiše seznam vseh energijskih profilov, ki jih lahko vklopite"
+
+#~ msgctxt "Note this is a KRunner keyword; %1 is a parameter"
+#~ msgid "power profile %1"
+#~ msgstr "energijski profil %1"
+
+#~ msgid "Set Profile to '%1'"
+#~ msgstr "Nastavi profil na »%1«"
+
+#~ msgid "Turn off screen"
+#~ msgstr "Izklopi zaslon"

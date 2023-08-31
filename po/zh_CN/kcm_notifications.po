@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-06 00:21+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"POT-Creation-Date: 2022-12-27 00:50+0000\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -17,32 +17,12 @@ msgstr ""
 "X-Crowdin-File: /kf5-stable/messages/plasma-workspace/kcm_notifications.pot\n"
 "X-Crowdin-File-ID: 10570\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "KDE China, Guo Yunhe, Tyson Tan"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "kde-china@kde.org, i@guoyunhe.me, tysontan@tysontan.com"
-
-#: kcm.cpp:61
-#, kde-format
-msgid "Notifications"
-msgstr "通知"
-
-#: kcm.cpp:62
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "Kai Uwe Broulik"
-
-#: kcm.cpp:71
+#: kcm.cpp:64
 #, kde-format
 msgid "Toggle do not disturb"
-msgstr "开关勿扰模式"
+msgstr "勿扰模式开关"
 
-#: kcm.cpp:199
+#: kcm.cpp:192
 #, kde-format
 msgid "Configure Notifications"
 msgstr "配置通知"
@@ -61,7 +41,7 @@ msgstr "勿扰模式下显示"
 #: package/contents/ui/main.qml:148
 #, kde-format
 msgid "Show in history"
-msgstr "显示于历史记录"
+msgstr "显示在历史记录"
 
 #: package/contents/ui/ApplicationConfiguration.qml:101
 #, kde-format
@@ -92,8 +72,8 @@ msgid ""
 "notifications. Make sure that it is enabled either in your System Tray or as "
 "a standalone widget."
 msgstr ""
-"无法找到“通知”部件，显示通知需要使用该部件。请确保已在系统托盘中或者作为独立"
-"部件启用了该部件。"
+"无法找到“通知”挂件，显示通知必须使用该挂件。请确保已在系统托盘中或者作为独立"
+"窗口挂件启用了该挂件。"
 
 #: package/contents/ui/main.qml:53
 #, kde-format
@@ -108,26 +88,39 @@ msgstr "通知目前不是由 Plasma 提供。"
 
 #: package/contents/ui/main.qml:64
 #, kde-format
-msgid "Do Not Disturb mode:"
-msgstr "勿扰模式："
+msgctxt "@title:group"
+msgid "Do Not Disturb mode"
+msgstr "勿扰模式"
 
-#: package/contents/ui/main.qml:65
+#: package/contents/ui/main.qml:69
 #, kde-format
-msgctxt "Do not disturb when screens are mirrored"
-msgid "Enable when screens are mirrored"
-msgstr "屏幕镜像时开启"
+msgctxt "Enable Do Not Disturb mode when screens are mirrored"
+msgid "Enable:"
+msgstr "启用："
 
-#: package/contents/ui/main.qml:77
+#: package/contents/ui/main.qml:70
 #, kde-format
-msgctxt "Do not disturb while screen sharing"
-msgid "Enable while screen sharing"
-msgstr "共享屏幕时启用"
+msgctxt "Enable Do Not Disturb mode when screens are mirrored"
+msgid "When screens are mirrored"
+msgstr "当屏幕处于镜像状态时"
 
-#: package/contents/ui/main.qml:95
+#: package/contents/ui/main.qml:82
 #, kde-format
-msgctxt "Turn do not disturb mode on/off with keyboard shortcut"
-msgid "Toggle with:"
-msgstr "切换快捷键："
+msgctxt "Enable Do Not Disturb mode during screen sharing"
+msgid "During screen sharing"
+msgstr "在屏幕分享时"
+
+#: package/contents/ui/main.qml:97
+#, kde-format
+msgctxt "Keyboard shortcut to turn Do Not Disturb mode on and off"
+msgid "Keyboard shortcut:"
+msgstr "键盘快捷键："
+
+#: package/contents/ui/main.qml:104
+#, kde-format
+msgctxt "@title:group"
+msgid "Visibility conditions"
+msgstr "可见条件"
 
 #: package/contents/ui/main.qml:109
 #, kde-format
@@ -159,67 +152,81 @@ msgstr "低优先级通知："
 msgid "Show popup"
 msgstr "显示弹出窗口"
 
-#: package/contents/ui/main.qml:170
+#: package/contents/ui/main.qml:165
 #, kde-format
-msgid "Popup:"
-msgstr "弹出："
+msgctxt "@title:group As in: 'notification popups'"
+msgid "Popups"
+msgstr "弹出窗口"
 
 #: package/contents/ui/main.qml:171
 #, kde-format
-msgctxt "Popup position near notification plasmoid"
-msgid "Show near notification icon"
-msgstr "靠近通知图标显示"
+msgctxt "@label"
+msgid "Location:"
+msgstr "位置："
 
-#: package/contents/ui/main.qml:208
+#: package/contents/ui/main.qml:172
+#, kde-format
+msgctxt "Popup position near notification plasmoid"
+msgid "Near notification icon"
+msgstr "靠近通知图标"
+
+#: package/contents/ui/main.qml:209
 #, kde-format
 msgid "Choose Custom Position…"
 msgstr "选择自定义位置…"
 
-#: package/contents/ui/main.qml:217 package/contents/ui/main.qml:241
+#: package/contents/ui/main.qml:218 package/contents/ui/main.qml:234
 #, kde-format
 msgid "%1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "%1 秒"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:223
 #, kde-format
 msgctxt "Part of a sentence like, 'Hide popup after n seconds'"
 msgid "Hide after:"
 msgstr "停留时长："
 
-#: package/contents/ui/main.qml:258
+#: package/contents/ui/main.qml:246
+#, kde-format
+msgctxt "@title:group"
+msgid "Additional feedback"
+msgstr "额外反馈"
+
+#: package/contents/ui/main.qml:251
 #, kde-format
 msgid "Application progress:"
 msgstr "应用程序执行进度："
 
-#: package/contents/ui/main.qml:259 package/contents/ui/main.qml:303
+#: package/contents/ui/main.qml:252 package/contents/ui/main.qml:292
 #, kde-format
 msgid "Show in task manager"
 msgstr "在任务管理器中显示"
 
-#: package/contents/ui/main.qml:271
+#: package/contents/ui/main.qml:264
 #, kde-format
 msgctxt "Show application jobs in notification widget"
 msgid "Show in notifications"
 msgstr "在通知中显示"
 
-#: package/contents/ui/main.qml:285
+#: package/contents/ui/main.qml:278
 #, kde-format
 msgctxt "Keep application job popup open for entire duration of job"
 msgid "Keep popup open during progress"
 msgstr "在任务执行过程中保持弹窗打开"
 
-#: package/contents/ui/main.qml:302
+#: package/contents/ui/main.qml:291
 #, kde-format
 msgid "Notification badges:"
 msgstr "通知计数："
 
-#: package/contents/ui/main.qml:318
+#: package/contents/ui/main.qml:303
 #, kde-format
-msgid "Applications:"
-msgstr "应用程序："
+msgctxt "@title:group"
+msgid "Application-specific settings"
+msgstr "应用程序特定设置"
 
-#: package/contents/ui/main.qml:319
+#: package/contents/ui/main.qml:308
 #, kde-format
 msgid "Configure…"
 msgstr "配置…"
@@ -234,29 +241,29 @@ msgstr "弹出位置"
 msgid "Application Settings"
 msgstr "应用程序设置"
 
-#: package/contents/ui/SourcesPage.qml:91
+#: package/contents/ui/SourcesPage.qml:93
 #, kde-format
 msgid "Applications"
 msgstr "应用程序"
 
-#: package/contents/ui/SourcesPage.qml:92
+#: package/contents/ui/SourcesPage.qml:94
 #, kde-format
 msgid "System Services"
 msgstr "系统服务"
 
-#: package/contents/ui/SourcesPage.qml:130
+#: package/contents/ui/SourcesPage.qml:132
 #, kde-format
 msgid "No application or event matches your search term."
 msgstr "没有找到匹配搜索的应用或事件。"
 
-#: package/contents/ui/SourcesPage.qml:150
+#: package/contents/ui/SourcesPage.qml:152
 #, kde-format
 msgid ""
 "Select an application from the list to configure its notification settings "
 "and behavior."
 msgstr "从列表中选择应用程序来配置其通知设置和行为。"
 
-#: sourcesmodel.cpp:365
+#: sourcesmodel.cpp:363
 #, kde-format
 msgid "Other Applications"
 msgstr "其他应用"

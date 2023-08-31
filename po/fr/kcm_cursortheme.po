@@ -14,35 +14,25 @@
 # xavier <ktranslator31@yahoo.fr>, 2013.
 # Yoann Laissus <yoann.laissus@gmail.com>, 2015, 2016, 2018.
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019.
-# Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021.
+# Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
+# Xavier BESNARD <xavier.besnard]neuf.fr>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcminput\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-15 00:20+0000\n"
-"PO-Revision-Date: 2021-05-27 14:46+0200\n"
-"Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
-"Language-Team: French <kde-francophone@kde.org>\n"
+"POT-Creation-Date: 2023-01-10 00:58+0000\n"
+"PO-Revision-Date: 2023-01-04 13:04+0100\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
+"Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.04.1\n"
+"X-Generator: Lokalize 22.12.0\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Nicolas Ternisien, Simon Depiets, Xavier Besnard"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr ""
-"nicolas.ternisien@gmail.com, sdepiets@gmail.com, xavier.besnard@neuf.fr"
 
 #. i18n: ectx: label, entry (cursorTheme), group (Mouse)
 #: cursorthemesettings.kcfg:9
@@ -56,54 +46,34 @@ msgstr "Nom du thème courant du pointeur de la souris"
 msgid "Current cursor size"
 msgstr "Taille courante du pointeur de souris"
 
-#: kcmcursortheme.cpp:62
-#, kde-format
-msgid "Cursors"
-msgstr "Pointeurs"
-
-#: kcmcursortheme.cpp:66
-#, kde-format
-msgid "(c) 2003-2007 Fredrik Höglund"
-msgstr "(c) 2003-2007 Fredrik Höglund"
-
-#: kcmcursortheme.cpp:67
-#, kde-format
-msgid "Fredrik Höglund"
-msgstr "Fredrik Höglund"
-
-#: kcmcursortheme.cpp:68
-#, kde-format
-msgid "Marco Martin"
-msgstr "Marco Martin"
-
-#: kcmcursortheme.cpp:311
+#: kcmcursortheme.cpp:308
 #, kde-format
 msgid ""
 "You have to restart the Plasma session for these changes to take effect."
 msgstr ""
 "KDE doit être redémarré pour que ces changements soient pris en compte."
 
-#: kcmcursortheme.cpp:389
+#: kcmcursortheme.cpp:382
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr "Impossible de créer un fichier temporaire."
 
-#: kcmcursortheme.cpp:400
+#: kcmcursortheme.cpp:393
 #, kde-format
 msgid "Unable to download the icon theme archive: %1"
 msgstr "Impossible de trouver l'archive du thème d'icônes : « %1 »."
 
-#: kcmcursortheme.cpp:431
+#: kcmcursortheme.cpp:424
 #, kde-format
 msgid "The file is not a valid icon theme archive."
 msgstr "Ce fichier n'est pas une archive de thème d'icônes valable."
 
-#: kcmcursortheme.cpp:438
+#: kcmcursortheme.cpp:431
 #, kde-format
 msgid "Failed to create 'icons' folder."
 msgstr "La création du dossier « icons » a échoué"
 
-#: kcmcursortheme.cpp:447
+#: kcmcursortheme.cpp:440
 #, kde-format
 msgid ""
 "A theme named %1 already exists in your icon theme folder. Do you want "
@@ -112,15 +82,22 @@ msgstr ""
 "Un thème nommé %1 existe déjà dans votre dossier de thèmes d'icônes. Voulez-"
 "vous le remplacer par celui-ci ?"
 
-#: kcmcursortheme.cpp:451
+#: kcmcursortheme.cpp:444
 #, kde-format
 msgid "Overwrite Theme?"
 msgstr "Écraser le thème ?"
 
-#: kcmcursortheme.cpp:475
+#: kcmcursortheme.cpp:468
 #, kde-format
 msgid "Theme installed successfully."
 msgstr "Thème installé avec succès."
+
+#. i18n: ectx: label, entry (cursorTimeout), group (BusyCursorSettings)
+#. i18n: ectx: label, entry (taskbarTimeout), group (TaskbarButtonSettings)
+#: launchfeedbacksettings.kcfg:19 launchfeedbacksettings.kcfg:33
+#, kde-format
+msgid "Timeout in seconds"
+msgstr "Temps imparti en secondes"
 
 #: package/contents/ui/Delegate.qml:54
 #, kde-format
@@ -131,6 +108,74 @@ msgstr "Supprimer un thème"
 #, kde-format
 msgid "Restore Cursor Theme"
 msgstr "Restaurer le thème de curseur"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:16
+#, kde-format
+msgctxt "@title"
+msgid "Launch Feedback"
+msgstr "Réaction du lancement"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:25
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Configure the animations played while an application is launching."
+msgstr "Configurer l'animation à exécuter lors du lancement d'une application"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:46
+#, kde-format
+msgctxt "@label"
+msgid "Cursor feedback:"
+msgstr "Réaction du curseur :"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:47
+#, kde-format
+msgctxt "@option:radio No cursor feedback when launching apps"
+msgid "None"
+msgstr "Aucun"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:56
+#, kde-format
+msgctxt "@option:radio"
+msgid "Static"
+msgstr "Statique"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:65
+#, kde-format
+msgctxt "@option:radio"
+msgid "Blinking"
+msgstr "Clignotant"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:74
+#, kde-format
+msgctxt "@option:radio"
+msgid "Bouncing"
+msgstr "Rebondissant"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:89
+#, kde-format
+msgctxt "@label"
+msgid "Task Manager feedback:"
+msgstr "Réaction du gestionnaire de tâches :"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:91
+#, kde-format
+msgctxt "@option:check"
+msgid "Enable animation"
+msgstr "Activer une animation"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:110
+#, kde-format
+msgctxt "@label"
+msgid "Stop animations after:"
+msgstr "Arrêter une animation après :"
+
+#: package/contents/ui/LaunchFeedbackDialog.qml:124
+#: package/contents/ui/LaunchFeedbackDialog.qml:136
+#, kde-format
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 seconde"
+msgstr[1] "%1 secondes"
 
 #: package/contents/ui/main.qml:20
 #, kde-format
@@ -144,25 +189,38 @@ msgstr "Taille : "
 
 #: package/contents/ui/main.qml:134
 #, kde-format
+msgctxt "@action:button"
+msgid "&Configure Launch Feedback…"
+msgstr "&Configurer le retour de lancement..."
+
+#: package/contents/ui/main.qml:145
+#, kde-format
 msgid "&Install from File…"
 msgstr "&Installer à partir d'un fichier..."
 
-#: package/contents/ui/main.qml:140
+#: package/contents/ui/main.qml:151
 #, kde-format
 msgid "&Get New Cursors…"
 msgstr "&Obtenir de nouveaux pointeurs..."
 
-#: package/contents/ui/main.qml:190
+#: package/contents/ui/main.qml:168
 #, kde-format
 msgid "Open Theme"
 msgstr "Ouvrir un thème"
 
-#: package/contents/ui/main.qml:192
+#: package/contents/ui/main.qml:170
 #, kde-format
 msgid "Cursor Theme Files (*.tar.gz *.tar.bz2)"
 msgstr "Fichiers de thème de curseur (*.tar.gz *.tar.bz2)"
 
-#: plasma-apply-cursortheme.cpp:36
+#: plasma-apply-cursortheme.cpp:42
+#, kde-format
+msgid "The requested size '%1' is not available, using %2 instead."
+msgstr ""
+"La taille demandée « %1 » est non disponible. La taille %2 a été utilisée à "
+"la place."
+
+#: plasma-apply-cursortheme.cpp:63
 #, kde-format
 msgid ""
 "This tool allows you to set the mouse cursor theme for the current Plasma "
@@ -173,7 +231,7 @@ msgstr ""
 "votre session courante de Plasma, sans le faire par inadvertance vers un "
 "thème, soit indisponible, soit déjà utilisé."
 
-#: plasma-apply-cursortheme.cpp:40
+#: plasma-apply-cursortheme.cpp:67
 #, kde-format
 msgid ""
 "The name of the cursor theme you wish to set for your current Plasma session "
@@ -183,7 +241,7 @@ msgstr ""
 "session courante de Plasma (La fourniture d'un emplacement n'utilisera que "
 "la dernière partie de l'emplacement)."
 
-#: plasma-apply-cursortheme.cpp:41
+#: plasma-apply-cursortheme.cpp:68
 #, kde-format
 msgid ""
 "Show all the themes available on the system (and which is the current theme)"
@@ -191,7 +249,13 @@ msgstr ""
 "Afficher tous les thèmes disponibles sur le système (y compris le thème "
 "courant)."
 
-#: plasma-apply-cursortheme.cpp:62
+#: plasma-apply-cursortheme.cpp:69
+#, kde-format
+msgid "Use a specific size, rather than the theme default size"
+msgstr ""
+"Utilisez une taille spécifique plutôt que la taille par défaut du thème."
+
+#: plasma-apply-cursortheme.cpp:90
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
@@ -200,7 +264,7 @@ msgstr ""
 "Le thème demandé « %1 » est déjà assignée comme thème pour la session "
 "courante de Plasma."
 
-#: plasma-apply-cursortheme.cpp:73
+#: plasma-apply-cursortheme.cpp:101
 #, kde-format
 msgid ""
 "Successfully applied the mouse cursor theme %1 to your current Plasma session"
@@ -208,7 +272,7 @@ msgstr ""
 "Application avec succès du thème %1 de pointeur de souris pour votre session "
 "courante de Plasma."
 
-#: plasma-apply-cursortheme.cpp:75
+#: plasma-apply-cursortheme.cpp:103
 #, kde-format
 msgid ""
 "You have to restart the Plasma session for your newly applied mouse cursor "
@@ -217,7 +281,7 @@ msgstr ""
 "Vous devez redémarrer la session de Plasma, après application du nouveau "
 "thème de pointeur de souris, pour qu'il s'affiche correctement."
 
-#: plasma-apply-cursortheme.cpp:85
+#: plasma-apply-cursortheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
@@ -226,26 +290,48 @@ msgstr ""
 "Impossible de trouver le thème « %1 ». Le thème devrait avoir l'une des "
 "options suivantes : %2"
 
-#: plasma-apply-cursortheme.cpp:93
+#: plasma-apply-cursortheme.cpp:121
 #, kde-format
 msgid "You have the following mouse cursor themes on your system:"
 msgstr ""
 "Vous possédez les thèmes suivants de pointeurs de souris sur votre système :"
 
-#: xcursor/thememodel.cpp:67
+#: plasma-apply-cursortheme.cpp:126
 #, kde-format
-msgid "Name"
-msgstr "Nom"
+msgid "(Current theme for this Plasma session)"
+msgstr "(Thème courant pour cette session de Plasma)"
 
-#: xcursor/thememodel.cpp:70
-#, kde-format
-msgid "Description"
-msgstr "Description"
-
-#: xcursor/xcursortheme.cpp:56
+#: xcursor/xcursortheme.cpp:60
 #, kde-format
 msgctxt ""
 "@info The argument is the list of available sizes (in pixel). Example: "
 "'Available sizes: 24' or 'Available sizes: 24, 36, 48'"
 msgid "(Available sizes: %1)"
 msgstr "(Tailles disponibles : %1)"
+
+#~ msgid "Name"
+#~ msgstr "Nom"
+
+#~ msgid "Description"
+#~ msgstr "Description"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Nicolas Ternisien, Simon Depiets, Xavier Besnard"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr ""
+#~ "nicolas.ternisien@gmail.com, sdepiets@gmail.com, xavier.besnard@neuf.fr"
+
+#~ msgid "Cursors"
+#~ msgstr "Pointeurs"
+
+#~ msgid "(c) 2003-2007 Fredrik Höglund"
+#~ msgstr "(c) 2003-2007 Fredrik Höglund"
+
+#~ msgid "Fredrik Höglund"
+#~ msgstr "Fredrik Höglund"
+
+#~ msgid "Marco Martin"
+#~ msgstr "Marco Martin"

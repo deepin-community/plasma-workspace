@@ -53,10 +53,11 @@ QVariant SimpleFavoritesModel::data(const QModelIndex &index, int role) const
 
     const AbstractEntry *entry = m_entryList.at(mappedIndex);
 
+    // TODO: Use a Switch for Enums.
     if (role == Qt::DisplayRole) {
         return entry->name();
     } else if (role == Qt::DecorationRole) {
-        if (entry->icon().name() != "")
+        if (!entry->icon().name().isEmpty())
             return entry->icon().name();
         else
             return entry->icon();
@@ -99,7 +100,7 @@ void SimpleFavoritesModel::setEnabled(bool enable)
     if (m_enabled != enable) {
         m_enabled = enable;
 
-        emit enabledChanged();
+        Q_EMIT enabledChanged();
     }
 }
 
@@ -133,7 +134,7 @@ void SimpleFavoritesModel::setMaxFavorites(int max)
             refresh();
         }
 
-        emit maxFavoritesChanged();
+        Q_EMIT maxFavoritesChanged();
     }
 }
 
@@ -170,8 +171,8 @@ void SimpleFavoritesModel::addFavorite(const QString &id, int index)
 
     endInsertRows();
 
-    emit countChanged();
-    emit favoritesChanged();
+    Q_EMIT countChanged();
+    Q_EMIT favoritesChanged();
 }
 
 void SimpleFavoritesModel::removeFavorite(const QString &id)
@@ -193,8 +194,8 @@ void SimpleFavoritesModel::removeFavorite(const QString &id)
 
         endRemoveRows();
 
-        emit countChanged();
-        emit favoritesChanged();
+        Q_EMIT countChanged();
+        Q_EMIT favoritesChanged();
     }
 }
 
@@ -220,7 +221,7 @@ void SimpleFavoritesModel::moveRow(int from, int to)
 
         endMoveRows();
 
-        emit favoritesChanged();
+        Q_EMIT favoritesChanged();
     }
 }
 
@@ -238,7 +239,7 @@ void SimpleFavoritesModel::setDropPlaceholderIndex(int index)
 
         endRemoveRows();
 
-        emit countChanged();
+        Q_EMIT countChanged();
     } else if (index != -1 && m_dropPlaceholderIndex == -1) {
         beginInsertRows(QModelIndex(), index, index);
 
@@ -246,7 +247,7 @@ void SimpleFavoritesModel::setDropPlaceholderIndex(int index)
 
         endInsertRows();
 
-        emit countChanged();
+        Q_EMIT countChanged();
     } else if (m_dropPlaceholderIndex != index) {
         int modelTo = index + (index > m_dropPlaceholderIndex ? 1 : 0);
 
@@ -278,7 +279,7 @@ void SimpleFavoritesModel::refresh()
 
     QStringList newFavorites;
 
-    foreach (const QString &id, m_favorites) {
+    for (const QString &id : std::as_const(m_favorites)) {
         AbstractEntry *entry = favoriteFromId(id);
 
         if (entry && entry->isValid()) {
@@ -298,10 +299,10 @@ void SimpleFavoritesModel::refresh()
     endResetModel();
 
     if (oldCount != m_entryList.count()) {
-        emit countChanged();
+        Q_EMIT countChanged();
     }
 
-    emit favoritesChanged();
+    Q_EMIT favoritesChanged();
 }
 
 AbstractEntry *SimpleFavoritesModel::favoriteFromId(const QString &id)

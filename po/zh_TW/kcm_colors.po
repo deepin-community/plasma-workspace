@@ -10,143 +10,147 @@
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2008, 2009, 2010.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmcolors\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
-"PO-Revision-Date: 2020-01-16 14:33+0800\n"
-"Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"POT-Creation-Date: 2023-02-22 02:35+0000\n"
+"PO-Revision-Date: 2022-12-26 04:03+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.12.1\n"
+"X-Generator: Lokalize 22.12.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Jing-Jong Shyue, Chao-Hsiung Liao, Jeff Huang, pan93412"
+msgstr "Jing-Jong Shyue, Chao-Hsiung Liao, Jeff Huang, pan93412, Kisaragi Hiu"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "shyue@sonoma.com.tw, pesder.liao@msa.hinet.net, s8321414@gmail.com, "
-"pan93412@gmail.com"
+"pan93412@gmail.com, mail@kisaragi-hiu.com"
 
-#: colors.cpp:65 editor/scmeditordialog.cpp:66
-#, kde-format
-msgid "Colors"
-msgstr "顏色"
-
-#: colors.cpp:67
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "Kai Uwe Broulik"
-
-#: colors.cpp:192
+#: colors.cpp:235
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr "無法建立暫存檔。"
 
-#: colors.cpp:205
+#: colors.cpp:248
 #, kde-format
 msgid "Unable to download the color scheme: %1"
 msgstr "無法下載配色：%1"
 
-#: colors.cpp:223
+#: colors.cpp:266
 #, kde-format
 msgid "This file is not a color scheme file."
 msgstr "此檔案不是配色檔。"
 
-#: colors.cpp:242
+#: colors.cpp:285
 #, kde-format
 msgid "Failed to create 'color-scheme' data folder."
 msgstr "'color-scheme' 資料夾建立失敗。"
 
-#: colors.cpp:249
+#: colors.cpp:292
 #, kde-format
 msgid "Failed to copy color scheme into 'color-scheme' data folder."
 msgstr "複製配色到 'color-scheme' 資料夾失敗。"
 
-#: colors.cpp:266
+#: colors.cpp:309
 #, kde-format
 msgid "Color scheme installed successfully."
 msgstr "配色順利安裝成功。"
 
 #. i18n: ectx: label, entry (colorScheme), group (General)
 #: colorssettings.kcfg:9
-#, fuzzy, kde-format
-#| msgid "Color Schemes"
+#, kde-format
 msgid "Color scheme name"
-msgstr "配色"
+msgstr "配色方案名稱"
 
 #. i18n: ectx: label, entry (accentColor), group (General)
 #: colorssettings.kcfg:13
 #, kde-format
 msgid "Accent color"
-msgstr ""
+msgstr "強調色"
 
-#: editor/kcolorschemeeditor.cpp:23
+#. i18n: ectx: label, entry (lastUsedCustomAccentColor), group (General)
+#: colorssettings.kcfg:17
+#, kde-format
+msgid ""
+"The last used custom accent color before user switched to wallpaper "
+"generated color or default color"
+msgstr "使用者切換至桌布顏色或預設顏色之前所最後使用的自訂強調色"
+
+#. i18n: ectx: label, entry (accentColorFromWallpaper), group (General)
+#: colorssettings.kcfg:21
+#, kde-format
+msgid "Whether accent color from wallpaper should be applied"
+msgstr "是否應該套用來自桌布的強調色"
+
+#: editor/kcolorschemeeditor.cpp:25
 #, kde-format
 msgid "KColorSchemeEditor"
 msgstr "KColorSchemeEditor"
 
-#: editor/kcolorschemeeditor.cpp:25
+#: editor/kcolorschemeeditor.cpp:27
 #, kde-format
 msgid "Utility to edit and create color schemes"
 msgstr "編輯並建立配色的工具"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Olivier Churlaud"
 msgstr "Olivier Churlaud"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Utility creation"
 msgstr "工具建立"
 
-#: editor/kcolorschemeeditor.cpp:28
+#: editor/kcolorschemeeditor.cpp:30
 #, kde-format
 msgid "Jeremy Whiting"
 msgstr "Jeremy Whiting"
 
-#: editor/kcolorschemeeditor.cpp:28 editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:30 editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "KCM code (reused in here)"
 msgstr "KCM 程式碼（在此重用）"
 
-#: editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: editor/kcolorschemeeditor.cpp:33
+#: editor/kcolorschemeeditor.cpp:35
 #, kde-format
 msgid "Scheme to edit or to use as a base."
-msgstr "要編輯或是做為基礎的機制。"
+msgstr "要編輯或是做為基礎的配色方案。"
 
-#: editor/kcolorschemeeditor.cpp:35
+#: editor/kcolorschemeeditor.cpp:37
 #, kde-format
 msgid ""
 "Show 'Apply' button that saves changes without asking (unlike 'Save As' "
 "button)"
 msgstr "顯示「套用」按鈕，直接儲存變更而不像「另存新檔」按鈕般詢問"
 
-#: editor/kcolorschemeeditor.cpp:39
+#: editor/kcolorschemeeditor.cpp:41
 #, kde-format
 msgid ""
 "Makes the dialog transient for another application window specified by handle"
 msgstr "讓對話框能暫時讓其他應用程式視窗能透過處理函式指定"
 
-#: editor/kcolorschemeeditor.cpp:55
+#: editor/kcolorschemeeditor.cpp:57
 #, kde-format
 msgid "Scheme not found, falling back to current one.\n"
-msgstr "找不到機制，退回至目前這一個。\n"
+msgstr "找不到配色方案，退回至目前這一個。\n"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
 #: editor/preview.ui:29
@@ -506,7 +510,7 @@ msgstr "互補"
 #, kde-format
 msgctxt "color-sets"
 msgid "Header"
-msgstr ""
+msgstr "標頭"
 
 #. i18n: ectx: property (text), widget (QTableWidget, commonColorTable)
 #: editor/scmeditorcolors.ui:118 editor/scmeditorcolors.ui:123
@@ -640,47 +644,42 @@ msgstr "非作用中標題列文字"
 msgid "Inactive Titlebar Secondary"
 msgstr "非作用中次要標題列"
 
-#: editor/scmeditordialog.cpp:65
+#: editor/scmeditordialog.cpp:60
 #, kde-format
 msgid "Options"
 msgstr "選項"
 
-#: editor/scmeditordialog.cpp:67
+#: editor/scmeditordialog.cpp:61
+#, kde-format
+msgid "Colors"
+msgstr "顏色"
+
+#: editor/scmeditordialog.cpp:62
 #, kde-format
 msgid "Disabled"
 msgstr "關閉"
 
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "This colour scheme was not saved. Continue?"
-msgstr "這個配色尚未儲存。要繼續？"
-
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "Do you really want to upload?"
-msgstr "您真的想要上傳嗎？"
-
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:94
 #, kde-format
 msgid "You have unsaved changes. Do you really want to quit?"
 msgstr "您有尚未儲存的變更。您真的想要離開嗎？"
 
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:95
 #, kde-format
 msgid "Unsaved changes"
 msgstr "未儲存的變更"
 
-#: editor/scmeditordialog.cpp:133 editor/scmeditordialog.cpp:158
+#: editor/scmeditordialog.cpp:115 editor/scmeditordialog.cpp:140
 #, kde-format
 msgid "Save Color Scheme"
 msgstr "儲存配色"
 
-#: editor/scmeditordialog.cpp:133
+#: editor/scmeditordialog.cpp:115
 #, kde-format
 msgid "&Enter a name for the color scheme:"
 msgstr "輸入此配色的名稱(&E)："
 
-#: editor/scmeditordialog.cpp:157
+#: editor/scmeditordialog.cpp:139
 #, kde-format
 msgid ""
 "A color scheme with that name already exists.\n"
@@ -689,32 +688,20 @@ msgstr ""
 "已有配色使用此名稱。\n"
 "您要覆寫它嗎？"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "You do not have permission to overwrite that scheme"
-msgstr "您沒有覆寫該機制的權限"
+msgstr "您沒有覆寫該配色方案的權限"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "Error"
 msgstr "錯誤"
 
-#: editor/scmeditordialog.cpp:209
+#: editor/scmeditordialog.cpp:191
 #, kde-format
 msgid "Inactive"
 msgstr "非作用中"
-
-#. i18n: ectx: property (toolTip), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:42
-#, kde-format
-msgid "Share the selected scheme on the Internet"
-msgstr "將選取機制分享至網際網路"
-
-#. i18n: ectx: property (text), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:45
-#, kde-format
-msgid "Upload Scheme"
-msgstr "上傳機制"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: editor/scmeditoreffects.ui:17
@@ -871,32 +858,50 @@ msgstr "對非作用中選取區域使用不同顏色(&A)"
 msgid "Shade sorted column &in lists"
 msgstr "暗化列表中的已排序欄位"
 
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (text), widget (QCheckBox, tintColors)
 #: editor/scmeditoroptions.ui:38
+#, kde-format
+msgid "Tint all colors with accent color"
+msgstr "將所有顏色輕微的染上強調色"
+
+#. i18n: ectx: property (text), widget (QCheckBox, accentTitlebar)
+#: editor/scmeditoroptions.ui:45
+#, kde-format
+msgid "Make window titlebars a&ccent-colored"
+msgstr "讓視窗標題列使用強調色"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: editor/scmeditoroptions.ui:52
+#, kde-format
+msgid "Tint strength:"
+msgstr "染色力道："
+
+#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#: editor/scmeditoroptions.ui:69
 #, kde-format
 msgid "Shading of frames and lighting (\"3D\") effects"
 msgstr "影格與光源 (\"3D\") 效果的陰影"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:41
+#: editor/scmeditoroptions.ui:72
 #, kde-format
 msgid "Shading"
 msgstr "陰影"
 
-#. i18n: ectx: property (text), widget (QLabel, label_9)
-#: editor/scmeditoroptions.ui:53
-#, kde-format
-msgid "Minimum"
-msgstr "最小化"
-
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: editor/scmeditoroptions.ui:73
+#: editor/scmeditoroptions.ui:97
 #, kde-format
 msgid "Maximum"
 msgstr "最大化"
 
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: editor/scmeditoroptions.ui:117
+#, kde-format
+msgid "Minimum"
+msgstr "最小化"
+
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: editor/scmeditoroptions.ui:80
+#: editor/scmeditoroptions.ui:124
 #, kde-format
 msgid "Contrast"
 msgstr "濃度"
@@ -1150,7 +1155,7 @@ msgstr "未安裝配色「%1」。改選擇預設主題。"
 #: package/contents/ui/main.qml:108
 #, kde-format
 msgid "All Schemes"
-msgstr "所有機制"
+msgstr "所有配色方案"
 
 #: package/contents/ui/main.qml:109
 #, kde-format
@@ -1165,95 +1170,102 @@ msgstr "暗色配色"
 #: package/contents/ui/main.qml:143
 #, kde-format
 msgid "Use accent color:"
-msgstr ""
+msgstr "使用強調色："
 
 #: package/contents/ui/main.qml:144
-#, fuzzy, kde-format
-#| msgid "Restore Color Scheme"
+#, kde-format
 msgid "From current color scheme"
-msgstr "復原配色"
+msgstr "來自目前配色方案"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
-msgid "Custom:"
-msgstr ""
+msgctxt "@option:radio wallpaper accent color option"
+msgid "From current wallpaper"
+msgstr "來自目前桌布"
 
-#: package/contents/ui/main.qml:268
+#: package/contents/ui/main.qml:266
+#, kde-format
+msgid "Custom:"
+msgstr "自訂："
+
+#: package/contents/ui/main.qml:273
+#, kde-format
+msgid "Choose custom accent color"
+msgstr "選擇自訂強調色"
+
+#: package/contents/ui/main.qml:361
 #, kde-format
 msgid "Window Title"
 msgstr "視窗標題"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:383
 #, kde-format
 msgid "Window text"
 msgstr "視窗文字"
 
-#: package/contents/ui/main.qml:297
+#: package/contents/ui/main.qml:390
 #, kde-format
 msgid "Button"
 msgstr "按鈕"
 
-#: package/contents/ui/main.qml:331
+#: package/contents/ui/main.qml:427
 #, kde-format
 msgctxt "Hyperlink"
 msgid "link"
 msgstr "連結"
 
-#: package/contents/ui/main.qml:333
+#: package/contents/ui/main.qml:429
 #, kde-format
 msgctxt "Visited hyperlink"
 msgid "visited"
 msgstr "已造訪"
 
-#: package/contents/ui/main.qml:340
+#: package/contents/ui/main.qml:436
 #, kde-format
 msgid "Normal text"
 msgstr "一般文字"
 
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:444
 #, kde-format
 msgid "Highlighted text"
 msgstr "突顯文字"
 
-#: package/contents/ui/main.qml:355
+#: package/contents/ui/main.qml:451
 #, kde-format
 msgid "Disabled text"
 msgstr "停用文字"
 
-#: package/contents/ui/main.qml:373
-#, fuzzy, kde-format
-#| msgid "Edit Color Scheme..."
+#: package/contents/ui/main.qml:469
+#, kde-format
 msgid "Edit Color Scheme…"
-msgstr "編輯配色…"
+msgstr "編輯配色方案…"
 
-#: package/contents/ui/main.qml:379
+#: package/contents/ui/main.qml:475
 #, kde-format
 msgid "Remove Color Scheme"
 msgstr "移除配色"
 
-#: package/contents/ui/main.qml:386
+#: package/contents/ui/main.qml:482
 #, kde-format
 msgid "Restore Color Scheme"
 msgstr "復原配色"
 
-#: package/contents/ui/main.qml:430
-#, fuzzy, kde-format
-#| msgid "Install from File..."
+#: package/contents/ui/main.qml:526
+#, kde-format
 msgid "Install from File…"
 msgstr "從檔案安裝…"
 
-#: package/contents/ui/main.qml:435
-#, fuzzy, kde-format
-#| msgid "Get New Color Schemes..."
+#: package/contents/ui/main.qml:531
+#, kde-format
 msgid "Get New Color Schemes…"
-msgstr "取得新的顏色方案…"
+msgstr "取得新配色方案…"
 
-#: package/contents/ui/main.qml:486
+#: package/contents/ui/main.qml:549
 #, kde-format
 msgid "Open Color Scheme"
 msgstr "開啟配色"
 
-#: package/contents/ui/main.qml:488
+#: package/contents/ui/main.qml:551
 #, kde-format
 msgid "Color Scheme Files (*.colors)"
 msgstr "配色檔案 (*.colors)"
@@ -1265,6 +1277,8 @@ msgid ""
 "without accidentally setting it to one that is either not available, or "
 "which is already set."
 msgstr ""
+"此工具讓您能為目前 Plasma 工作階段設定配色方案，而不會意外套用無法使用或是已"
+"經設定的配色方案。"
 
 #: plasma-apply-colorscheme.cpp:43
 #, kde-format
@@ -1272,53 +1286,103 @@ msgid ""
 "The name of the color scheme you wish to set for your current Plasma session "
 "(passing a full path will only use the last part of the path)"
 msgstr ""
+"您希望為目前 Plasma 工作階段設定的配色方案名稱（若輸入完整路徑，將只會使用它"
+"尾端的部分）"
 
-#: plasma-apply-colorscheme.cpp:45
+#: plasma-apply-colorscheme.cpp:46
 #, kde-format
 msgid ""
 "Show all the color schemes available on the system (and which is the current "
 "theme)"
-msgstr ""
+msgstr "顯示系統上可用的配色方案（以及目前使用的方案）"
 
-#: plasma-apply-colorscheme.cpp:69
+#: plasma-apply-colorscheme.cpp:51
+#, kde-format
+msgid ""
+"The name of the accent color you want to set. SVG color names (https://www."
+"w3.org/TR/SVG11/types.html#ColorKeywords) and hex color codes are supported. "
+"Quote the hex code if there is possibility of shell expansion"
+msgstr ""
+"您想要設定的強調色名稱。支援 SVG 顏色名稱 (https://www.w3.org/TR/SVG11/types."
+"html#ColorKeywords) 與十六進位色碼。如果 shell 可能會把色碼當成註解的話，請記"
+"得加引號"
+
+#: plasma-apply-colorscheme.cpp:78
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
 "Plasma session."
-msgstr ""
+msgstr "您要求設定的配色主題「%1」已經是目前 Plasma 工作階段的配色主題了。"
 
-#: plasma-apply-colorscheme.cpp:92
+#: plasma-apply-colorscheme.cpp:111
 #, kde-format
 msgid "Successfully applied the color scheme %1 to your current Plasma session"
-msgstr ""
+msgstr "成功套用配色方案 %1 到您目前的 Plasma 工作階段"
 
-#: plasma-apply-colorscheme.cpp:94
+#: plasma-apply-colorscheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
 "options: %2"
-msgstr ""
+msgstr "找不到主題「%1」。主題應該要是以下選項之一：%2"
 
-#: plasma-apply-colorscheme.cpp:101
+#: plasma-apply-colorscheme.cpp:120
 #, kde-format
 msgid ""
 "You have managed to pass an empty color scheme name, which isn't supported "
 "behavior."
-msgstr ""
+msgstr "您提供了空白的配色方案名稱，而這不被支援。"
 
-#: plasma-apply-colorscheme.cpp:105
+#: plasma-apply-colorscheme.cpp:124
 #, kde-format
 msgid ""
 "The file you attempted to set as your scheme, %1, could not be identified as "
 "a color scheme."
-msgstr ""
+msgstr "您嘗試設為配色的檔案 %1 看起來不是一個配色方案。"
 
-#: plasma-apply-colorscheme.cpp:110
+#: plasma-apply-colorscheme.cpp:147
+#, kde-format
+msgid "Successfully applied the accent color %1"
+msgstr "成功套用強調色 %1"
+
+#: plasma-apply-colorscheme.cpp:149
+#, kde-format
+msgid "Invalid accent color "
+msgstr "無效的強調色"
+
+#: plasma-apply-colorscheme.cpp:154
 #, kde-format
 msgid "You have the following color schemes on your system:"
-msgstr ""
+msgstr "您的系統中有下列的配色方案："
 
-#: plasma-apply-colorscheme.cpp:115
+#: plasma-apply-colorscheme.cpp:159
 #, kde-format
 msgid " * %1 (current color scheme)"
-msgstr ""
+msgstr " * %1 (目前配色方案)"
+
+#~ msgid "Apply a&ccent color to active window titlebars"
+#~ msgstr "套用強調色至作用中標題列(&A)"
+
+#~ msgid "Apply acce&nt color to inactive window titlebars"
+#~ msgstr "套用強調色至非作用中標題列(&N)"
+
+#~ msgid "Kai Uwe Broulik"
+#~ msgstr "Kai Uwe Broulik"
+
+#~ msgid "This colour scheme was not saved. Continue?"
+#~ msgstr "這個配色尚未儲存。要繼續？"
+
+#~ msgid "Do you really want to upload?"
+#~ msgstr "您真的想要上傳嗎？"
+
+#~ msgid "Share the selected scheme on the Internet"
+#~ msgstr "將選取機制分享至網際網路"
+
+#~ msgid "Upload Scheme"
+#~ msgstr "上傳機制"
+
+#~ msgid "Search..."
+#~ msgstr "搜尋…"
+
+#~ msgid "Download New Color Schemes"
+#~ msgstr "下載新的配色"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2019-01-27 17:46+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -24,6 +24,12 @@ msgstr ""
 #, kde-format
 msgid "Appearance"
 msgstr "Aparencia"
+
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
 
 #: contents/ui/configGeneral.qml:23
 #, kde-format
@@ -39,3 +45,21 @@ msgstr "Xeral:"
 #, kde-format
 msgid "Show time zone"
 msgstr "Mostrar o fuso horario"
+
+#~ msgid "Show the seconds"
+#~ msgstr "Mostrar os segundos"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "Escolla esta opción se quer mostrar os segundos."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "Mostrar a agulla dos &segundos"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "Mostrar o fuso horario no texto"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "Escolla isto se quer mostrar o fuso horario como un texto."
+
+#~ msgid "Show &time zone"
+#~ msgstr "Mostrar o &fuso horario"

@@ -29,3 +29,24 @@ msgstr "ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "aalam@users.sf.net"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt><b>%1</b> ਮਲਟੀਮੀਡਿਆ ਬੈਕਐਂਡ ਵਰਤਣ ਲਈ ਅਸਮਰੱਥ ਹੈ:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "ਇੱਕ ਮਲਟੀਮੀਡਿਆ ਬੈਕਐਂਡ ਲੱਭਣ ਲਈ ਅਸਫ਼ਲ ਹੈ"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "ਮੰਗਿਆ ਮਲਟੀਮੀਡਿਆ ਬੈਕਐਂਡ ਲੱਭਣ ਲਈ ਅਸਮਰੱਥ ਹੈ"
+
+#~ msgid "create method returned 0"
+#~ msgstr "ਬਣਾਏ ਢੰਗ ਨੇ ਦਿੱਤਾ ਹੈ 0"
+
+#~ msgid "%1 (OSS)"
+#~ msgstr "%1 (OSS)"
+
+#~ msgid "%1 (ALSA)"
+#~ msgstr "%1 (ALSA)"
+
+#~ msgid "Unable to use the <b>%1</b> Multimedia Backend:"
+#~ msgstr "<b>%1</b> ਮਲਟੀਮੀਡਿਆ ਬੈਕਐਂਡ ਵਰਤਣ ਲਈ ਅਸਮਰੱਥ ਹੈ:"

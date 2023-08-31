@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-desktop package.
-# Sergiu Bivol <sergiu@cip.md>, 2020, 2021.
+# Sergiu Bivol <sergiu@cip.md>, 2020, 2021, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-desktop\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-06 00:21+0000\n"
-"PO-Revision-Date: 2021-07-25 13:42+0100\n"
+"POT-Creation-Date: 2022-12-27 00:50+0000\n"
+"PO-Revision-Date: 2022-02-04 16:05+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
@@ -16,34 +16,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 21.12.2\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Sergiu Bivol"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "sergiu@cip.md"
-
-#: kcm.cpp:61
-#, kde-format
-msgid "Notifications"
-msgstr "Notificări"
-
-#: kcm.cpp:62
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "Kai Uwe Broulik"
-
-#: kcm.cpp:71
+#: kcm.cpp:64
 #, kde-format
 msgid "Toggle do not disturb"
 msgstr "Comută „nu deranja”"
 
-#: kcm.cpp:199
+#: kcm.cpp:192
 #, kde-format
 msgid "Configure Notifications"
 msgstr "Configurează notificările"
@@ -88,17 +68,15 @@ msgstr ""
 "Acest modul vă permite să gestionați notificările sistemului și aplicațiilor."
 
 #: package/contents/ui/main.qml:42
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not find a 'Notifications' widget which is required for displaying "
-#| "notifications."
+#, kde-format
 msgid ""
 "Could not find a 'Notifications' widget, which is required for displaying "
 "notifications. Make sure that it is enabled either in your System Tray or as "
 "a standalone widget."
 msgstr ""
 "Nu a fost găsit un control grafic „Notificări” care e necesar pentru "
-"afișarea notificărilor."
+"afișarea notificărilor. Asigurați-vă că e activat în tava de sistem sau ca "
+"control grafic separat."
 
 #: package/contents/ui/main.qml:53
 #, kde-format
@@ -112,27 +90,45 @@ msgid "Notifications are currently not provided by Plasma."
 msgstr "Notificările nu sunt furnizate momentan de Plasma."
 
 #: package/contents/ui/main.qml:64
-#, kde-format
-msgid "Do Not Disturb mode:"
+#, fuzzy, kde-format
+#| msgid "Do Not Disturb mode:"
+msgctxt "@title:group"
+msgid "Do Not Disturb mode"
 msgstr "Regimul „nu deranja”:"
 
-#: package/contents/ui/main.qml:65
+#: package/contents/ui/main.qml:69
 #, kde-format
-msgctxt "Do not disturb when screens are mirrored"
-msgid "Enable when screens are mirrored"
+msgctxt "Enable Do Not Disturb mode when screens are mirrored"
+msgid "Enable:"
+msgstr ""
+
+#: package/contents/ui/main.qml:70
+#, fuzzy, kde-format
+#| msgctxt "Do not disturb when screens are mirrored"
+#| msgid "Enable when screens are mirrored"
+msgctxt "Enable Do Not Disturb mode when screens are mirrored"
+msgid "When screens are mirrored"
 msgstr "Activează când ecranele sunt oglindite"
 
-#: package/contents/ui/main.qml:77
-#, kde-format
-msgctxt "Do not disturb while screen sharing"
-msgid "Enable while screen sharing"
+#: package/contents/ui/main.qml:82
+#, fuzzy, kde-format
+#| msgctxt "Do not disturb while screen sharing"
+#| msgid "Enable while screen sharing"
+msgctxt "Enable Do Not Disturb mode during screen sharing"
+msgid "During screen sharing"
 msgstr "Activează în timpul partajării ecranului"
 
-#: package/contents/ui/main.qml:95
+#: package/contents/ui/main.qml:97
 #, kde-format
-msgctxt "Turn do not disturb mode on/off with keyboard shortcut"
-msgid "Toggle with:"
-msgstr "Comută cu:"
+msgctxt "Keyboard shortcut to turn Do Not Disturb mode on and off"
+msgid "Keyboard shortcut:"
+msgstr ""
+
+#: package/contents/ui/main.qml:104
+#, kde-format
+msgctxt "@title:group"
+msgid "Visibility conditions"
+msgstr ""
 
 #: package/contents/ui/main.qml:109
 #, kde-format
@@ -164,23 +160,34 @@ msgstr "Notificări cu prioritate joasă:"
 msgid "Show popup"
 msgstr "Arată indiciu"
 
-#: package/contents/ui/main.qml:170
-#, kde-format
-msgid "Popup:"
+#: package/contents/ui/main.qml:165
+#, fuzzy, kde-format
+#| msgid "Popup:"
+msgctxt "@title:group As in: 'notification popups'"
+msgid "Popups"
 msgstr "Indiciu:"
 
 #: package/contents/ui/main.qml:171
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Applications:"
+msgctxt "@label"
+msgid "Location:"
+msgstr "Aplicații:"
+
+#: package/contents/ui/main.qml:172
+#, fuzzy, kde-format
+#| msgctxt "Popup position near notification plasmoid"
+#| msgid "Show near notification icon"
 msgctxt "Popup position near notification plasmoid"
-msgid "Show near notification icon"
+msgid "Near notification icon"
 msgstr "Arată lângă pictograma de notificare"
 
-#: package/contents/ui/main.qml:208
+#: package/contents/ui/main.qml:209
 #, kde-format
 msgid "Choose Custom Position…"
 msgstr "Alege poziție personalizată…"
 
-#: package/contents/ui/main.qml:217 package/contents/ui/main.qml:241
+#: package/contents/ui/main.qml:218 package/contents/ui/main.qml:234
 #, kde-format
 msgid "%1 second"
 msgid_plural "%1 seconds"
@@ -188,45 +195,53 @@ msgstr[0] "%1 secundă"
 msgstr[1] "%1 secunde"
 msgstr[2] "%1 de secunde"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:223
 #, kde-format
 msgctxt "Part of a sentence like, 'Hide popup after n seconds'"
 msgid "Hide after:"
 msgstr "Ascunde după:"
 
-#: package/contents/ui/main.qml:258
+#: package/contents/ui/main.qml:246
+#, kde-format
+msgctxt "@title:group"
+msgid "Additional feedback"
+msgstr ""
+
+#: package/contents/ui/main.qml:251
 #, kde-format
 msgid "Application progress:"
 msgstr "Progres aplicație:"
 
-#: package/contents/ui/main.qml:259 package/contents/ui/main.qml:303
+#: package/contents/ui/main.qml:252 package/contents/ui/main.qml:292
 #, kde-format
 msgid "Show in task manager"
 msgstr "Arată în gestionarul de sarcini"
 
-#: package/contents/ui/main.qml:271
+#: package/contents/ui/main.qml:264
 #, kde-format
 msgctxt "Show application jobs in notification widget"
 msgid "Show in notifications"
 msgstr "Arată în notificări"
 
-#: package/contents/ui/main.qml:285
+#: package/contents/ui/main.qml:278
 #, kde-format
 msgctxt "Keep application job popup open for entire duration of job"
 msgid "Keep popup open during progress"
 msgstr "Ține indiciul deschis pe durata progresului"
 
-#: package/contents/ui/main.qml:302
+#: package/contents/ui/main.qml:291
 #, kde-format
 msgid "Notification badges:"
 msgstr "Ecusoane de notificare:"
 
-#: package/contents/ui/main.qml:318
-#, kde-format
-msgid "Applications:"
-msgstr "Aplicații:"
+#: package/contents/ui/main.qml:303
+#, fuzzy, kde-format
+#| msgid "Application Settings"
+msgctxt "@title:group"
+msgid "Application-specific settings"
+msgstr "Configurări aplicație"
 
-#: package/contents/ui/main.qml:319
+#: package/contents/ui/main.qml:308
 #, kde-format
 msgid "Configure…"
 msgstr "Configurează…"
@@ -241,22 +256,22 @@ msgstr "Poziție indiciu"
 msgid "Application Settings"
 msgstr "Configurări aplicație"
 
-#: package/contents/ui/SourcesPage.qml:91
+#: package/contents/ui/SourcesPage.qml:93
 #, kde-format
 msgid "Applications"
 msgstr "Aplicații"
 
-#: package/contents/ui/SourcesPage.qml:92
+#: package/contents/ui/SourcesPage.qml:94
 #, kde-format
 msgid "System Services"
 msgstr "Servicii de sistem"
 
-#: package/contents/ui/SourcesPage.qml:130
+#: package/contents/ui/SourcesPage.qml:132
 #, kde-format
 msgid "No application or event matches your search term."
 msgstr "Nicio aplicație sau eveniment nu se potrivește cu termenul căutat."
 
-#: package/contents/ui/SourcesPage.qml:150
+#: package/contents/ui/SourcesPage.qml:152
 #, kde-format
 msgid ""
 "Select an application from the list to configure its notification settings "
@@ -265,7 +280,31 @@ msgstr ""
 "Alegeți o aplicație din listă pentru a-i configura parametrii și "
 "comportamentul de notificare."
 
-#: sourcesmodel.cpp:365
+#: sourcesmodel.cpp:363
 #, kde-format
 msgid "Other Applications"
 msgstr "Alte aplicații"
+
+#~ msgctxt "Turn do not disturb mode on/off with keyboard shortcut"
+#~ msgid "Toggle with:"
+#~ msgstr "Comută cu:"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Sergiu Bivol"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "sergiu@cip.md"
+
+#~ msgid "Notifications"
+#~ msgstr "Notificări"
+
+#~ msgid "Kai Uwe Broulik"
+#~ msgstr "Kai Uwe Broulik"
+
+#~ msgid "Show critical notifications"
+#~ msgstr "Arată notificări critice"
+
+#~ msgid "Always keep on top"
+#~ msgstr "Ține mereu deasupra"

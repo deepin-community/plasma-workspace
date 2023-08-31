@@ -6,4 +6,8 @@ target_link_libraries(plasma_containmentactions_paste
     KF5::KIOCore
 )
 
-kcoreaddons_desktop_to_json(plasma_containmentactions_paste plasma-containmentactions-paste.desktop)
+ecm_qt_declare_logging_category(plasma_containmentactions_paste
+    HEADER containmentactions_paste_debug.h
+    IDENTIFIER CONTAINMENTACTIONS_PASTE_DEBUG
+    CATEGORY_NAME org.kde.plasma.containmentactions_paste
+)

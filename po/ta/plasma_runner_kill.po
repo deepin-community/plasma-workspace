@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2021-04-29 20:02+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 21.04.0\n"
 
-#: killrunner.cpp:29
+#: killrunner.cpp:30
 #, kde-format
 msgid "Send SIGTERM"
 msgstr "SIGTERM அனுப்பு"
 
-#: killrunner.cpp:31
+#: killrunner.cpp:32
 #, kde-format
 msgid "Send SIGKILL"
 msgstr "SIGKILL அனுப்பு"
 
-#: killrunner.cpp:50 killrunner_config.cpp:51 killrunner_config.cpp:77
+#: killrunner.cpp:51 killrunner_config.cpp:51 killrunner_config.cpp:77
 #, kde-format
 msgid "kill"
 msgstr ""
 
-#: killrunner.cpp:56
+#: killrunner.cpp:57
 #, kde-format
 msgid "Terminate running applications whose names match the query."
 msgstr "செயலிகளின் பெயர்கள் வினாவிற்கு பொருந்தினால் அவற்றை நிறுத்தும்"
 
-#: killrunner.cpp:119
+#: killrunner.cpp:120
 #, kde-format
 msgid "Terminate %1"
 msgstr "%1 என்பதை நிறுத்து"
 
-#: killrunner.cpp:120
+#: killrunner.cpp:121
 #, kde-format
 msgid "Process ID: %1"
 msgstr "பணியின் எண்: %1"

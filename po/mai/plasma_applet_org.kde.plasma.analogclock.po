@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2009-01-12 18:50+0530\n"
 "Last-Translator: \n"
 "Language-Team: maithili <en@li.org>\n"
@@ -27,6 +27,12 @@ msgstr ""
 msgid "Appearance"
 msgstr ""
 
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
+
 #: contents/ui/configGeneral.qml:23
 #, fuzzy, kde-format
 #| msgid "Show &seconds hand"
@@ -44,3 +50,21 @@ msgstr "सामान्य"
 #| msgid "Show &time zone"
 msgid "Show time zone"
 msgstr "समयक्षेत्र देखाबू (&t)"
+
+#~ msgid "Show the seconds"
+#~ msgstr "सकेंड देखाबू "
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "जाँचू जँ अहाँ सकेंड देखओनाइ चाहैत छी"
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "सकेण्ड सुई देखाबू (&s)"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "समयक्षेत्रकेँ पाठ केर रूपमे देखाबू"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "एकरा जाँचू जँ अहाँ समयक्षेत्रकेँ पाठ रूपमे देखओनाइ चाहैत छी."
+
+#~ msgid "Show &time zone"
+#~ msgstr "समयक्षेत्र देखाबू (&t)"

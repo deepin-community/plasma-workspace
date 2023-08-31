@@ -40,7 +40,7 @@ public:
                        bool sorted = true,
                        bool separators = true,
                        QObject *parent = nullptr);
-    explicit AppsModel(const QList<AbstractEntry *> entryList, bool deleteEntriesOnDestruction, QObject *parent = nullptr);
+    explicit AppsModel(const QList<AbstractEntry *> &entryList, bool deleteEntriesOnDestruction, QObject *parent = nullptr);
     ~AppsModel() override;
 
     QString description() const override;
@@ -88,6 +88,8 @@ public:
 
     QStringList hiddenEntries() const;
 
+    QVariantList sections() const override;
+
     void entryChanged(AbstractEntry *entry) override;
 
     void classBegin() override;
@@ -111,6 +113,7 @@ protected Q_SLOTS:
 
 protected:
     void refreshInternal();
+    void sortEntries(QList<AbstractEntry *> &entryList);
 
     bool m_complete;
 
@@ -127,9 +130,11 @@ protected:
 
 private:
     void processServiceGroup(KServiceGroup::Ptr group);
-    void sortEntries();
+    void refreshSectionList();
 
     bool m_autoPopulate;
+
+    QVariantList m_sectionList;
 
     QString m_description;
     QString m_entryPath;

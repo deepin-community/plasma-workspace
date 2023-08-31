@@ -8,6 +8,9 @@
 #include "placeholdermodel.h"
 #include "actionlist.h"
 #include "debug.h"
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 PlaceholderModel::PlaceholderModel(QObject *parent)
     : AbstractModel(parent)
@@ -19,7 +22,7 @@ PlaceholderModel::PlaceholderModel(QObject *parent)
         m_isTriggerInhibited = false;
     });
 
-    m_triggerInhibitor.setInterval(500);
+    m_triggerInhibitor.setInterval(500ms);
     m_triggerInhibitor.setSingleShot(true);
 }
 
@@ -61,9 +64,9 @@ void PlaceholderModel::setSourceModel(QAbstractItemModel *sourceModel)
 
     endResetModel();
 
-    emit countChanged();
-    emit sourceModelChanged();
-    emit descriptionChanged();
+    Q_EMIT countChanged();
+    Q_EMIT sourceModelChanged();
+    Q_EMIT descriptionChanged();
 }
 
 bool PlaceholderModel::canFetchMore(const QModelIndex &parent) const
@@ -228,8 +231,8 @@ void PlaceholderModel::reset()
 {
     beginResetModel();
     endResetModel();
-    emit countChanged();
-    emit separatorCountChanged();
+    Q_EMIT countChanged();
+    Q_EMIT separatorCountChanged();
 }
 
 void PlaceholderModel::connectSignals()
@@ -243,12 +246,12 @@ void PlaceholderModel::connectSignals()
     connect(sourceModelPtr, SIGNAL(destroyed()), this, SLOT(reset()));
 
     connect(sourceModelPtr, &QAbstractItemModel::dataChanged, this, [this](const QModelIndex &from, const QModelIndex &to, const QVector<int> &roles) {
-        emit dataChanged(sourceIndexToIndex(from), sourceIndexToIndex(to), roles);
+        Q_EMIT dataChanged(sourceIndexToIndex(from), sourceIndexToIndex(to), roles);
     });
 
     connect(sourceModelPtr, &QAbstractItemModel::rowsAboutToBeInserted, this, [this](const QModelIndex &parent, int from, int to) {
         if (parent.isValid()) {
-            qWarning() << "We do not support tree models";
+            qCWarning(KICKER_DEBUG) << "We do not support tree models";
 
         } else {
             beginInsertRows(QModelIndex(), sourceRowToRow(from), sourceRowToRow(to));
@@ -257,7 +260,7 @@ void PlaceholderModel::connectSignals()
 
     connect(sourceModelPtr, &QAbstractItemModel::rowsInserted, this, [this] {
         endInsertRows();
-        emit countChanged();
+        Q_EMIT countChanged();
     });
 
     connect(sourceModelPtr,
@@ -265,7 +268,7 @@ void PlaceholderModel::connectSignals()
             this,
             [this](const QModelIndex &source, int from, int to, const QModelIndex &dest, int destRow) {
                 if (source.isValid() || dest.isValid()) {
-                    qWarning() << "We do not support tree models";
+                    qCWarning(KICKER_DEBUG) << "We do not support tree models";
 
                 } else {
                     beginMoveRows(QModelIndex(), sourceRowToRow(from), sourceRowToRow(to), QModelIndex(), sourceRowToRow(destRow));
@@ -278,7 +281,7 @@ void PlaceholderModel::connectSignals()
 
     connect(sourceModelPtr, &QAbstractItemModel::rowsAboutToBeRemoved, this, [this](const QModelIndex &parent, int from, int to) {
         if (parent.isValid()) {
-            qWarning() << "We do not support tree models";
+            qCWarning(KICKER_DEBUG) << "We do not support tree models";
 
         } else {
             beginRemoveRows(QModelIndex(), sourceRowToRow(from), sourceRowToRow(to));
@@ -287,7 +290,7 @@ void PlaceholderModel::connectSignals()
 
     connect(sourceModelPtr, &QAbstractItemModel::rowsRemoved, this, [this] {
         endRemoveRows();
-        emit countChanged();
+        Q_EMIT countChanged();
     });
 
     connect(sourceModelPtr, &QAbstractItemModel::modelAboutToBeReset, this, [this] {
@@ -296,7 +299,7 @@ void PlaceholderModel::connectSignals()
 
     connect(sourceModelPtr, &QAbstractItemModel::modelReset, this, [this] {
         endResetModel();
-        emit countChanged();
+        Q_EMIT countChanged();
     });
 
     // We do not have persistant indices
@@ -334,7 +337,7 @@ void PlaceholderModel::setDropPlaceholderIndex(int index)
         m_dropPlaceholderIndex = index;
         endRemoveRows();
 
-        emit countChanged();
+        Q_EMIT countChanged();
 
     } else if (index != -1 && m_dropPlaceholderIndex == -1) {
         // Creating the placeholder
@@ -342,7 +345,7 @@ void PlaceholderModel::setDropPlaceholderIndex(int index)
         m_dropPlaceholderIndex = index;
         endInsertRows();
 
-        emit countChanged();
+        Q_EMIT countChanged();
 
     } else if (m_dropPlaceholderIndex != index) {
         // Moving the placeholder
@@ -354,5 +357,5 @@ void PlaceholderModel::setDropPlaceholderIndex(int index)
         }
     }
 
-    emit dropPlaceholderIndexChanged();
+    Q_EMIT dropPlaceholderIndexChanged();
 }

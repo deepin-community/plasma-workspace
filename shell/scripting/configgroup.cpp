@@ -6,11 +6,16 @@
 */
 
 #include "configgroup.h"
+#include "debug.h"
+
 #include <QDebug>
 #include <QTimer>
+#include <chrono>
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <ksharedconfig.h>
+
+using namespace std::chrono_literals;
 
 class ConfigGroupPrivate
 {
@@ -42,7 +47,7 @@ ConfigGroup::ConfigGroup(QObject *parent)
     // Delay and compress everything within 5 seconds into one sync
     d->synchTimer = new QTimer(this);
     d->synchTimer->setSingleShot(true);
-    d->synchTimer->setInterval(1500);
+    d->synchTimer->setInterval(1500ms);
     connect(d->synchTimer, &QTimer::timeout, this, &ConfigGroup::sync);
 }
 
@@ -75,7 +80,7 @@ void ConfigGroup::setFile(const QString &filename)
     d->file = filename;
     d->config = nullptr;
     readConfigFile();
-    emit fileChanged();
+    Q_EMIT fileChanged();
 }
 
 KSharedConfigPtr ConfigGroup::config() const
@@ -112,8 +117,8 @@ void ConfigGroup::setGroup(const QString &groupname)
     }
     d->group = groupname;
     readConfigFile();
-    emit groupChanged();
-    emit keyListChanged();
+    Q_EMIT groupChanged();
+    Q_EMIT keyListChanged();
 }
 
 QStringList ConfigGroup::keyList() const
@@ -154,7 +159,7 @@ bool ConfigGroup::readConfigFile()
     } else {
         if (!d->config) {
             if (d->file.isEmpty()) {
-                qWarning() << "Could not find KConfig Parent: specify a file or parent to another ConfigGroup";
+                qCWarning(PLASMASHELL) << "Could not find KConfig Parent: specify a file or parent to another ConfigGroup";
                 return false;
             }
 

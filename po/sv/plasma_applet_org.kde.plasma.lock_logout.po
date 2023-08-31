@@ -119,3 +119,40 @@ msgstr "Vila (viloläge i minne)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Dvala (viloläge på disk)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "Stäng av..."
+
+#~ msgid "Logout..."
+#~ msgstr "Logga ut..."
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Vill du gå till viloläge på disk (dvala)?"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nej"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Vill du gå till viloläge i minne (vila)?"
+
+#~ msgid "Leave"
+#~ msgstr "Gå ifrån"
+
+#~ msgid "Leave..."
+#~ msgstr "Gå ifrån..."
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Åtgärder"
+
+#~ msgid "Suspend"
+#~ msgstr "Gå till viloläge"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "Inställningar av låsning och utloggning"
+
+#~ msgid "SystemTray Settings"
+#~ msgstr "Inställningar av systembrickan"

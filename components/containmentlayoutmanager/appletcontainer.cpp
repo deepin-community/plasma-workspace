@@ -5,6 +5,7 @@
 */
 
 #include "appletcontainer.h"
+#include "containmentlayoutmanager_debug.h"
 
 #include <QQmlContext>
 #include <QQmlEngine>
@@ -24,7 +25,7 @@ AppletContainer::AppletContainer(QQuickItem *parent)
         connectBusyIndicator();
         connectConfigurationRequired();
 
-        emit appletChanged();
+        Q_EMIT appletChanged();
     });
 }
 
@@ -62,7 +63,7 @@ void AppletContainer::setBusyIndicatorComponent(QQmlComponent *component)
         m_busyIndicatorItem = nullptr;
     }
 
-    emit busyIndicatorComponentChanged();
+    Q_EMIT busyIndicatorComponentChanged();
 }
 
 void AppletContainer::connectBusyIndicator()
@@ -80,7 +81,7 @@ void AppletContainer::connectBusyIndicator()
             m_busyIndicatorItem = qobject_cast<QQuickItem *>(instance);
 
             if (!m_busyIndicatorItem) {
-                qWarning() << "Error: busyIndicatorComponent not of Item type";
+                qCWarning(CONTAINMENTLAYOUTMANAGER_DEBUG) << "Error: busyIndicatorComponent not of Item type";
                 if (instance) {
                     instance->deleteLater();
                 }
@@ -112,7 +113,7 @@ void AppletContainer::setConfigurationRequiredComponent(QQmlComponent *component
         m_configurationRequiredItem = nullptr;
     }
 
-    emit configurationRequiredComponentChanged();
+    Q_EMIT configurationRequiredComponentChanged();
 }
 
 void AppletContainer::connectConfigurationRequired()
@@ -131,7 +132,7 @@ void AppletContainer::connectConfigurationRequired()
             m_configurationRequiredItem = qobject_cast<QQuickItem *>(instance);
 
             if (!m_configurationRequiredItem) {
-                qWarning() << "Error: configurationRequiredComponent not of Item type";
+                qCWarning(CONTAINMENTLAYOUTMANAGER_DEBUG) << "Error: configurationRequiredComponent not of Item type";
                 if (instance) {
                     instance->deleteLater();
                 }

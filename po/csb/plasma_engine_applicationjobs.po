@@ -32,3 +32,6 @@ msgstr "Wëzdrzatk robòtów dlô %1 nie je nalazłi"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Robòta òprzestónô przez brëkòwnika."

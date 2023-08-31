@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
+"POT-Creation-Date: 2023-01-07 00:51+0000\n"
 "PO-Revision-Date: 2021-08-21 16:25+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -27,56 +27,51 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "raghu@raghukamath.com"
 
-#: kcm.cpp:79
-#, kde-format
-msgid "Global Theme"
-msgstr "वैश्विक प्रसंग"
-
-#: kcm.cpp:80 lnftool.cpp:37
-#, kde-format
-msgid "Marco Martin"
-msgstr "मार्को मार्टिन"
-
-#: kcm.cpp:608
+#: kcm.cpp:590
 #, kde-format
 msgid ""
 "You have to restart the Plasma session for these changes to take effect."
 msgstr ""
 "इन परिवर्तनों को प्रभावी करने के लिए आपको प्लाज़्मा सत्र को फिर से प्रारंभ करना होगा।"
 
-#: kcm.cpp:609
+#: kcm.cpp:591
 #, kde-format
 msgid "Cursor Settings Changed"
 msgstr "कर्सर सेटिंग्स बदल गए"
 
-#: lnftool.cpp:32
+#: lnftool.cpp:33
 #, kde-format
 msgid "Global Theme Tool"
 msgstr "वैश्विक प्रसंग साधन"
 
-#: lnftool.cpp:34
+#: lnftool.cpp:35
 #, kde-format
 msgid ""
 "Command line tool to apply global theme packages for changing the look and "
 "feel."
 msgstr "रंगरूप और अनुभव बदलने हेतु वैश्विक प्रसंग पैकेज लागू करने के लिए एक कमांड लाइन साधन।"
 
-#: lnftool.cpp:36
+#: lnftool.cpp:37
 #, kde-format
 msgid "Copyright 2017, Marco Martin"
 msgstr "सर्वाधिकार २०१७, मार्को मार्टिन"
 
-#: lnftool.cpp:37
+#: lnftool.cpp:38
+#, kde-format
+msgid "Marco Martin"
+msgstr "मार्को मार्टिन"
+
+#: lnftool.cpp:38
 #, kde-format
 msgid "Maintainer"
 msgstr "प्रबंधक"
 
-#: lnftool.cpp:45
+#: lnftool.cpp:46
 #, kde-format
 msgid "List available global theme packages"
 msgstr "उपलब्ध वैश्विक प्रसंग पैकेजों की सूची दिखाएँ"
 
-#: lnftool.cpp:48
+#: lnftool.cpp:49
 #, kde-format
 msgid ""
 "Apply a global theme package. This can be the name of a package, or a full "
@@ -87,12 +82,12 @@ msgstr ""
 "पूर्ण पथ हो सकता है, उस स्तिथी में यह साधन सुनिश्चित करेगा कि यह एक वैश्विक थीम पैकेज है "
 "और फिर इसे लागू करने का प्रयास करेगा।"
 
-#: lnftool.cpp:50
+#: lnftool.cpp:51
 #, kde-format
 msgid "packagename"
 msgstr "पैकेज का नाम"
 
-#: lnftool.cpp:51
+#: lnftool.cpp:52
 #, kde-format
 msgid "Reset the Plasma Desktop layout"
 msgstr "प्लाज्मा डेस्कटॉप अभिन्यास रीसेट करें"
@@ -103,32 +98,180 @@ msgstr "प्लाज्मा डेस्कटॉप अभिन्या�
 msgid "Global look and feel"
 msgstr "वैश्विक रंगरूप और अनुभव"
 
-#: package/contents/ui/main.qml:18
+#: package/contents/ui/main.qml:21
 #, kde-format
 msgid "This module lets you choose the global look and feel."
 msgstr "यह मॉड्यूल आपको वैश्विक रंगरूप और अनुभव चुनने देता है।"
 
-#: package/contents/ui/main.qml:45
+#: package/contents/ui/main.qml:62
+#, fuzzy, kde-format
+#| msgid "Reset the Plasma Desktop layout"
+msgid "Contains Desktop layout"
+msgstr "प्लाज्मा डेस्कटॉप अभिन्यास रीसेट करें"
+
+#: package/contents/ui/main.qml:76
 #, kde-format
 msgid "Preview Theme"
 msgstr "प्रसंग पूर्वावलोकन करें"
 
-#: package/contents/ui/main.qml:66
+#: package/contents/ui/main.qml:92
 #, kde-format
-msgid ""
-"Your current layout and configuration of panels, desktop widgets, and "
-"wallpapers will be lost and reset to the default layout provided by the "
-"selected theme."
+msgctxt ""
+"Confirmation question about applying the Global Theme - %1 is the Global "
+"Theme's name"
+msgid "Apply %1?"
 msgstr ""
-"आपका वर्तमान अभिन्यास और पैनल, डेस्कटॉप विजेट और वॉलपेपर का विन्यास खो जाएगा और "
-"चयनित प्रसंग द्वारा प्रदान किए गए पूर्वन्यस्त अभिन्यास पर रीसेट हो जाएगा।"
 
-#: package/contents/ui/main.qml:76
+#: package/contents/ui/main.qml:110
 #, kde-format
-msgid "Use desktop layout from theme"
-msgstr "प्रसंग में से डेस्कटॉप अभिन्यास का उपयोग करें"
+msgid "Choose what to apply…"
+msgstr ""
 
-#: package/contents/ui/main.qml:85
+#: package/contents/ui/main.qml:110
+#, kde-format
+msgid "Show fewer options…"
+msgstr ""
+
+#: package/contents/ui/main.qml:127
+#, kde-format
+msgid "Apply"
+msgstr ""
+
+#: package/contents/ui/main.qml:139
+#, kde-format
+msgid "Cancel"
+msgstr ""
+
+#: package/contents/ui/main.qml:156
 #, kde-format
 msgid "Get New Global Themes…"
 msgstr "नई वैश्विक प्रसंग प्राप्त करें…"
+
+#: package/contents/ui/MoreOptions.qml:23
+#, kde-format
+msgid "Layout settings:"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:27
+#, fuzzy, kde-format
+#| msgid "Reset the Plasma Desktop layout"
+msgid "Desktop layout"
+msgstr "प्लाज्मा डेस्कटॉप अभिन्यास रीसेट करें"
+
+#: package/contents/ui/MoreOptions.qml:34
+#, kde-format
+msgid "Titlebar Buttons layout"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:48
+#: package/contents/ui/SimpleOptions.qml:63
+#, kde-format
+msgid ""
+"Applying a Desktop layout replaces your current configuration of desktops, "
+"panels, docks, and widgets"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:56
+#, kde-format
+msgid "Appearance settings:"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:60
+#, kde-format
+msgid "Colors"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:61
+#, kde-format
+msgid "Application Style"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:62
+#, kde-format
+msgid "Window Decorations"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:63
+#, kde-format
+msgid "Icons"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:64
+#, kde-format
+msgid "Plasma Style"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:65
+#, kde-format
+msgid "Cursors"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:66
+#, kde-format
+msgid "Fonts"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:67
+#, kde-format
+msgid "Task Switcher"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:68
+#, kde-format
+msgid "Splash Screen"
+msgstr ""
+
+#: package/contents/ui/MoreOptions.qml:69
+#, kde-format
+msgid "Lock Screen"
+msgstr ""
+
+#: package/contents/ui/SimpleOptions.qml:20
+#, kde-format
+msgid "The following will be applied by this Global Theme:"
+msgstr ""
+
+#: package/contents/ui/SimpleOptions.qml:33
+#, kde-format
+msgid "Appearance settings"
+msgstr ""
+
+#: package/contents/ui/SimpleOptions.qml:41
+#, kde-format
+msgctxt "List item"
+msgid "• Appearance settings"
+msgstr ""
+
+#: package/contents/ui/SimpleOptions.qml:47
+#, fuzzy, kde-format
+#| msgid "Reset the Plasma Desktop layout"
+msgid "Desktop and window layout"
+msgstr "प्लाज्मा डेस्कटॉप अभिन्यास रीसेट करें"
+
+#: package/contents/ui/SimpleOptions.qml:56
+#, fuzzy, kde-format
+#| msgid "Reset the Plasma Desktop layout"
+msgctxt "List item"
+msgid "• Desktop and window layout"
+msgstr "प्लाज्मा डेस्कटॉप अभिन्यास रीसेट करें"
+
+#: package/contents/ui/SimpleOptions.qml:74
+#, kde-format
+msgid ""
+"This Global Theme does not provide any applicable settings. Please contact "
+"the maintainer of this Global Theme as it might be broken."
+msgstr ""
+
+#~ msgid ""
+#~ "Your current layout and configuration of panels, desktop widgets, and "
+#~ "wallpapers will be lost and reset to the default layout provided by the "
+#~ "selected theme."
+#~ msgstr ""
+#~ "आपका वर्तमान अभिन्यास और पैनल, डेस्कटॉप विजेट और वॉलपेपर का विन्यास खो जाएगा और "
+#~ "चयनित प्रसंग द्वारा प्रदान किए गए पूर्वन्यस्त अभिन्यास पर रीसेट हो जाएगा।"
+
+#~ msgid "Use desktop layout from theme"
+#~ msgstr "प्रसंग में से डेस्कटॉप अभिन्यास का उपयोग करें"
+
+#~ msgid "Global Theme"
+#~ msgstr "वैश्विक प्रसंग"

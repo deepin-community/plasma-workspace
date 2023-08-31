@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_kill\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2021-08-21 16:25+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -21,32 +21,32 @@ msgstr ""
 "\n"
 "\n"
 
-#: killrunner.cpp:29
+#: killrunner.cpp:30
 #, kde-format
 msgid "Send SIGTERM"
 msgstr "SIGTERM भेजें"
 
-#: killrunner.cpp:31
+#: killrunner.cpp:32
 #, kde-format
 msgid "Send SIGKILL"
 msgstr "SIGKILL भेजें"
 
-#: killrunner.cpp:50 killrunner_config.cpp:51 killrunner_config.cpp:77
+#: killrunner.cpp:51 killrunner_config.cpp:51 killrunner_config.cpp:77
 #, kde-format
 msgid "kill"
 msgstr "किल करें"
 
-#: killrunner.cpp:56
+#: killrunner.cpp:57
 #, kde-format
 msgid "Terminate running applications whose names match the query."
 msgstr "उन चल रहे अनुप्रयोगों को बन्द करें जिनके नाम क्वैरी से मेल खाते हैं।"
 
-#: killrunner.cpp:119
+#: killrunner.cpp:120
 #, kde-format
 msgid "Terminate %1"
 msgstr "बन्द करें %1"
 
-#: killrunner.cpp:120
+#: killrunner.cpp:121
 #, kde-format
 msgid "Process ID: %1"
 msgstr "प्रक्रिया आइडी : %1"
@@ -95,3 +95,9 @@ msgstr "छाँटें द्वारा (&S)"
 #, kde-format
 msgid "It is not sure, that this will take effect"
 msgstr "यह निश्चित नहीं है कि यह प्रभावी होगा"
+
+#, fuzzy
+#~ msgid ""
+#~ "Process ID: %1\n"
+#~ "Running as user: %2"
+#~ msgstr "प्रक्रिया आईडी जैसे प्रयोक्ता 2"

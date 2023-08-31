@@ -30,3 +30,6 @@ msgstr "%1-র ক্ষেত্রে JobView পাওয়া যায়নি"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr ""
+
+#~ msgid "Job canceled by user."
+#~ msgstr "কাজটি ব্যবহারকারী বাতিল করেছেন।"

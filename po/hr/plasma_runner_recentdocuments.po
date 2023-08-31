@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_recentdocuments\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-09-05 00:46+0000\n"
 "PO-Revision-Date: 2010-01-28 01:04+0100\n"
 "Last-Translator: Andrej Dundovic <adundovi@gmail.com>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -20,12 +20,15 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: recentdocuments.cpp:34
+#: recentdocuments.cpp:36
 #, kde-format
 msgid "Looks for documents recently used with names matching :q:."
 msgstr "Traži nedavno korištene dokumente s nazivima koji se podudaraju s :q:."
 
-#: recentdocuments.cpp:36
+#: recentdocuments.cpp:38
 #, kde-format
 msgid "Open Containing Folder"
 msgstr ""
+
+#~ msgid "Recent Document"
+#~ msgstr "Nedavni dokument"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-desktop\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2021-05-28 19:20+0400\n"
 "Last-Translator: Kheyyam Gojayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -17,31 +17,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 21.04.1\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Xəyyam Qocayev"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "xxmn77@gmail.com"
-
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
 #, kde-format
 msgid "Name of the current Plasma Style"
 msgstr "Cari Plasma Üslubunun Adı"
-
-#: kcm.cpp:51
-#, kde-format
-msgid "Plasma Style"
-msgstr "Plama Üslubu"
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr "David Rosca"
 
 #: kcm.cpp:110
 #, kde-format
@@ -63,7 +43,7 @@ msgstr "Mövzu uğurla quraşdırıldı."
 msgid "Theme installation failed."
 msgstr "Mövzu quraşdırılması alınmadı."
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr "Silinməsi mümkün olmayan mövzu: %1"
@@ -123,12 +103,12 @@ msgstr "Fayldan quraşdırmaq..."
 msgid "Get New Plasma Styles…"
 msgstr "Yeni Plasma Üslubları almaq…"
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgid "Open Theme"
 msgstr "Mövzunu açmaq"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr "Mövzu Faylları (*.zip *.tar.gz *.tar.bz2)"
@@ -184,3 +164,17 @@ msgstr ""
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
 msgstr "Sisteminizdə aşağıdakı Plasma mövzuları var:"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Xəyyam Qocayev"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "xxmn77@gmail.com"
+
+#~ msgid "Plasma Style"
+#~ msgstr "Plama Üslubu"
+
+#~ msgid "David Rosca"
+#~ msgstr "David Rosca"

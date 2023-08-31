@@ -13,6 +13,7 @@
 
 extern QTextStream out;
 
+void sigtermHandler(int signalNumber);
 QStringList allServices(const QLatin1String &prefix);
 int runSync(const QString &program, const QStringList &args, const QStringList &env = {});
 void sourceFiles(const QStringList &files);
@@ -21,11 +22,11 @@ void messageBox(const QString &text);
 void createConfigDirectory();
 void runStartupConfig();
 void setupCursor(bool wayland);
-std::optional<QStringList> getSystemdEnvironment();
+std::optional<QProcessEnvironment> getSystemdEnvironment();
 void importSystemdEnvrionment();
 void runEnvironmentScripts();
 void setupPlasmaEnvironment();
-void cleanupPlasmaEnvironment(const std::optional<QStringList> &oldSystemdEnvironment);
+void cleanupPlasmaEnvironment(const std::optional<QProcessEnvironment> &oldSystemdEnvironment);
 bool syncDBusEnvironment();
 void setupFontDpi();
 QProcess *setupKSplash();
@@ -35,16 +36,16 @@ bool startPlasmaSession(bool wayland);
 
 void waitForKonqi();
 
-static void resetSystemdFailedUnits();
-static bool hasSystemdService(const QString &serviceName);
-static bool useSystemdBoot();
-static void migrateUserScriptsAutostart();
+void playStartupSound();
+
+void gentleTermination(QProcess *process);
 
 struct KillBeforeDeleter {
-    static inline void cleanup(QProcess *pointer)
+    void operator()(QProcess *pointer)
     {
-        if (pointer)
-            pointer->kill();
+        if (pointer) {
+            gentleTermination(pointer);
+        }
         delete pointer;
     }
 };

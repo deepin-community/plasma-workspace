@@ -22,7 +22,8 @@
 #include <KNotificationJobUiDelegate>
 #include <KService>
 #include <KStringHandler>
-#include <KWindowSystem>
+#include <KWindowInfo>
+#include <KX11Extras>
 
 #include "clipcommandprocess.h"
 #include "klippersettings.h"
@@ -144,7 +145,7 @@ void URLGrabber::checkNewData(HistoryItemConstPtr item)
 void URLGrabber::actionMenu(HistoryItemConstPtr item, bool automatically_invoked)
 {
     if (!item) {
-        qWarning("Attempt to invoke URLGrabber without an item");
+        qCWarning(KLIPPER_LOG, "Attempt to invoke URLGrabber without an item");
         return;
     }
     QString text(item->text());
@@ -164,12 +165,12 @@ void URLGrabber::actionMenu(HistoryItemConstPtr item, bool automatically_invoked
         m_myPopupKillTimer->stop();
 
         m_myMenu = new QMenu;
+        m_myMenu->setWindowFlags(m_myMenu->windowFlags() | Qt::FramelessWindowHint);
 
         connect(m_myMenu, &QMenu::triggered, this, &URLGrabber::slotItemSelected);
 
         foreach (ClipAction *clipAct, matchingActionsList) {
-            m_myMenu->addSection(QIcon::fromTheme(QStringLiteral("klipper")),
-                                 i18n("%1 - Actions For: %2", clipAct->description(), KStringHandler::csqueeze(text, 45)));
+            m_myMenu->addSection(QIcon::fromTheme(QStringLiteral("klipper")), clipAct->description());
             QList<ClipCommand> cmdList = clipAct->commands();
             int listSize = cmdList.count();
             for (int i = 0; i < listSize; ++i) {
@@ -210,7 +211,7 @@ void URLGrabber::actionMenu(HistoryItemConstPtr item, bool automatically_invoked
         if (m_myPopupKillTimeout > 0)
             m_myPopupKillTimer->start(1000 * m_myPopupKillTimeout);
 
-        emit sigPopup(m_myMenu);
+        Q_EMIT sigPopup(m_myMenu);
     }
 }
 
@@ -304,7 +305,7 @@ void URLGrabber::saveSettings() const
 // find out whether the active window's WM_CLASS is in our avoid-list
 bool URLGrabber::isAvoidedWindow() const
 {
-    const WId active = KWindowSystem::activeWindow();
+    const WId active = KX11Extras::activeWindow();
     if (!active) {
         return false;
     }

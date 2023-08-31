@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-03-10 00:46+0000\n"
 "PO-Revision-Date: 2014-09-29 18:51+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -19,62 +19,50 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: timesource.cpp:45
-#, kde-format
+#: timesource.cpp:46
 msgid "Local"
 msgstr "Lokal"
 
-#: timesource.cpp:60
-#, kde-format
+#: timesource.cpp:61
 msgid "Timezone"
 msgstr "Tidssone"
 
-#: timesource.cpp:65 timesource.cpp:68 timesource.cpp:72
-#, kde-format
+#: timesource.cpp:66 timesource.cpp:69 timesource.cpp:73
 msgid "Timezone City"
 msgstr "Tidssone by "
 
-#: timesource.cpp:67 timesource.cpp:70
-#, kde-format
+#: timesource.cpp:68 timesource.cpp:71
 msgid "Timezone Continent"
 msgstr "Tidssone kontinent"
 
-#: timesource.cpp:71
-#, kde-format
+#: timesource.cpp:72
 msgid "Timezone Country"
 msgstr "Tidssone Land"
 
-#: timesource.cpp:96
-#, kde-format
+#: timesource.cpp:97
 msgid "Offset"
 msgstr "Forskyvning"
 
-#: timesource.cpp:99
-#, kde-format
+#: timesource.cpp:100
 msgid "Timezone Abbreviation"
 msgstr "Forkortelse for tidssone"
 
-#: timesource.cpp:130 timesource.cpp:149 timesource.cpp:170
-#, kde-format
+#: timesource.cpp:131 timesource.cpp:150 timesource.cpp:171
 msgid "DateTime"
 msgstr "Dato og klokkeslett"
 
-#: timesource.cpp:145
-#, kde-format
+#: timesource.cpp:146
 msgid "Latitude"
 msgstr "Bredde"
 
-#: timesource.cpp:146
-#, kde-format
+#: timesource.cpp:147
 msgid "Longitude"
 msgstr "Lengde"
 
-#: timesource.cpp:147
-#, kde-format
+#: timesource.cpp:148
 msgid "Solar"
 msgstr "Solar"
 
-#: timesource.cpp:148
-#, kde-format
+#: timesource.cpp:149
 msgid "Moon"
 msgstr "Månen"

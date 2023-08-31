@@ -10,12 +10,15 @@ import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 3.0 as PlasmaComponents
 
-import org.kde.plasma.private.containmentlayoutmanager 1.0 as ContainmentLayoutManager 
+import org.kde.plasma.private.containmentlayoutmanager 1.0 as ContainmentLayoutManager
 
 import "private"
 
 ContainmentLayoutManager.ConfigOverlay {
     id: overlay
+
+    LayoutMirroring.enabled: false
+    LayoutMirroring.childrenInherit: true
 
     opacity: open
     Behavior on opacity {
@@ -46,10 +49,10 @@ ContainmentLayoutManager.ConfigOverlay {
         }
 
         onUpdated: {
-            var minX;
-            var minY;
-            var maxX;
-            var maxY;
+            let minX;
+            let minY;
+            let maxX;
+            let maxY;
 
             if (point1.pressed && point2.pressed) {
                 minX = Math.min(point1.sceneX, point2.sceneX);
@@ -64,7 +67,7 @@ ContainmentLayoutManager.ConfigOverlay {
                 maxY = -1;
             }
 
-            if (pinching == (point1.pressed && point2.pressed)) {
+            if (pinching === (point1.pressed && point2.pressed)) {
                 overlay.itemContainer.x += minX - previousMinX;
                 overlay.itemContainer.y += minY - previousMinY;
 
@@ -87,7 +90,7 @@ ContainmentLayoutManager.ConfigOverlay {
             }
             overlay.itemContainer.layout.positionItem(overlay.itemContainer);
             overlay.itemContainer.layout.hidePlaceHolder();
-            pinching = false
+            pinching = false;
         }
         onCanceled: released()
     }
@@ -149,4 +152,3 @@ ContainmentLayoutManager.ConfigOverlay {
         }
     }
 }
-

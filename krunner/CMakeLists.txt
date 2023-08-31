@@ -1,6 +1,7 @@
 set(krunner_SRCS
     main.cpp
     view.cpp
+    qml/krunner.qrc
 )
 
 set(krunner_dbusAppXML dbus/org.kde.krunner.App.xml)
@@ -22,7 +23,6 @@ target_link_libraries(krunner
     KF5::DBusAddons
     KF5::Crash
     KF5::WaylandClient
-    KF5::QuickAddons
     KF5::Runner
     PW::KWorkspace
 )
@@ -43,6 +43,6 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/KRunnerAppDBusInterfaceConfig.cmake
     DESTINATION ${CMAKECONFIG_INSTALL_DIR})
 
 ecm_install_configured_files(INPUT plasma-krunner.service.in @ONLY DESTINATION
-        ${SYSTEMD_USER_UNIT_INSTALL_DIR})
+        ${KDE_INSTALL_SYSTEMDUSERUNITDIR})
 
 add_subdirectory(update)

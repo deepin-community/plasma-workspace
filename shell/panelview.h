@@ -9,6 +9,9 @@
 #include <Plasma/Theme>
 #include <QPointer>
 #include <QTimer>
+#ifdef HAVE_X11
+#include <QWindow> // For WId
+#endif
 
 #include <PlasmaQuick/ConfigView>
 #include <PlasmaQuick/ContainmentView>
@@ -40,12 +43,16 @@ class PanelView : public PlasmaQuick::ContainmentView
     Q_PROPERTY(int offset READ offset WRITE setOffset NOTIFY offsetChanged)
 
     /**
-     * height of horizontal panels, width of vertical panels
+     * Height of horizontal panels or width of vertical panels, set by the user.
      */
     Q_PROPERTY(int thickness READ thickness WRITE setThickness NOTIFY thicknessChanged)
 
     /**
-     * width of horizontal panels, height of vertical panels
+     * Preferred (natural) width of horizontal panels or height of vertical
+     * panels, given its current thickness and content.  When the panel is
+     * constrained by other factors such as minimumLength, maximumLength or
+     * screen size, its reported length may differ from an actual width or
+     * height.
      */
     Q_PROPERTY(int length READ length WRITE setLength NOTIFY lengthChanged)
 
@@ -99,6 +106,18 @@ class PanelView : public PlasmaQuick::ContainmentView
      */
     Q_PROPERTY(bool adaptiveOpacityEnabled READ adaptiveOpacityEnabled NOTIFY adaptiveOpacityEnabledChanged)
 
+    /**
+     * Property that determines whether the panel is currently floating or not
+     * @since 5.25
+     */
+    Q_PROPERTY(int floating READ floating WRITE setFloating NOTIFY floatingChanged)
+
+    /**
+     * The minimum thickness in pixels that the panel can have.
+     * @since 5.27
+     */
+    Q_PROPERTY(int minThickness READ minThickness NOTIFY minThicknessChanged)
+
 public:
     enum VisibilityMode {
         NormalPanel = 0, /** default, always visible panel, the windowmanager reserves a places for it */
@@ -133,6 +152,7 @@ public:
 
     int thickness() const;
     void setThickness(int thickness);
+    int totalThickness() const;
 
     int length() const;
     void setLength(int value);
@@ -145,6 +165,11 @@ public:
 
     int distance() const;
     void setDistance(int dist);
+
+    bool floating() const;
+    void setFloating(bool floating);
+
+    int minThickness() const;
 
     Plasma::Types::BackgroundHints backgroundHints() const;
     void setBackgroundHints(Plasma::Types::BackgroundHints hint);
@@ -162,7 +187,7 @@ public:
     /**
      * @returns the geometry of the panel given a distance
      */
-    QRect geometryByDistance(int distance) const;
+    Q_INVOKABLE QRect geometryByDistance(int distance) const;
 
     /* Both Shared with script/panel.cpp */
     static KConfigGroup panelConfig(ShellCorona *corona, Plasma::Containment *containment, QScreen *screen);
@@ -180,6 +205,7 @@ protected:
     void resizeEvent(QResizeEvent *ev) override;
     void showEvent(QShowEvent *event) override;
     void moveEvent(QMoveEvent *ev) override;
+    void keyPressEvent(QKeyEvent *event) override;
     bool event(QEvent *e) override;
 
 Q_SIGNALS:
@@ -193,6 +219,8 @@ Q_SIGNALS:
     void distanceChanged();
     void backgroundHintsChanged();
     void enabledBordersChanged();
+    void floatingChanged();
+    void minThicknessChanged();
 
     // QWindow does not have a property for screen. Adding this property requires re-implementing the signal
     void screenToFollowChanged(QScreen *screen);
@@ -220,6 +248,8 @@ private Q_SLOTS:
     void updateMask();
     void updateEnabledBorders();
     void updatePadding();
+    void updateFloating();
+    void updateShadows();
 
 private:
     int readConfigValueWithFallBack(const QString &key, int defaultValue);
@@ -242,7 +272,14 @@ private:
     int m_topPadding;
     int m_leftPadding;
     int m_rightPadding;
+    int m_bottomFloatingPadding;
+    int m_topFloatingPadding;
+    int m_leftFloatingPadding;
+    int m_rightFloatingPadding;
+    int m_minDrawingWidth;
+    int m_minDrawingHeight;
     bool m_initCompleted;
+    bool m_floating;
     bool m_containsMouse = false;
     bool m_fakeEventPending = false;
     Qt::Alignment m_alignment;
@@ -252,7 +289,6 @@ private:
     VisibilityMode m_visibilityMode;
     OpacityMode m_opacityMode;
     Plasma::Theme m_theme;
-    QTimer m_positionPaneltimer;
     QTimer m_unhideTimer;
     Plasma::Types::BackgroundHints m_backgroundHints;
     Plasma::FrameSvg::EnabledBorders m_enabledBorders = Plasma::FrameSvg::AllBorders;

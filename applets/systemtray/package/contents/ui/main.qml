@@ -7,17 +7,18 @@
 
 import QtQuick 2.5
 import QtQuick.Layouts 1.1
+import QtQuick.Window 2.15
 import org.kde.plasma.core 2.1 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.draganddrop 2.0 as DnD
-import org.kde.kirigami 2.5 as Kirigami
+import org.kde.kirigami 2.5 as Kirigami // For Settings.tabletMode
 
 import "items"
 
 MouseArea {
     id: root
 
-    readonly property bool vertical: plasmoid.formFactor === PlasmaCore.Types.Vertical
+    readonly property bool vertical: Plasmoid.formFactor === PlasmaCore.Types.Vertical
 
     Layout.minimumWidth: vertical ? PlasmaCore.Units.iconSizes.small : mainLayout.implicitWidth + PlasmaCore.Units.smallSpacing
     Layout.minimumHeight: vertical ? mainLayout.implicitHeight + PlasmaCore.Units.smallSpacing : PlasmaCore.Units.iconSizes.small
@@ -29,7 +30,7 @@ MouseArea {
     readonly property alias itemSize: tasksGrid.itemSize
     readonly property alias visibleLayout: tasksGrid
     readonly property alias hiddenLayout: expandedRepresentation.hiddenLayout
-    readonly property bool oneRowOrColumn: tasksGrid.rowsOrColumns == 1
+    readonly property bool oneRowOrColumn: tasksGrid.rowsOrColumns === 1
 
     onWheel: {
         // Don't propagate unhandled wheel events
@@ -47,14 +48,14 @@ MouseArea {
     }
 
     CurrentItemHighLight {
-        location: plasmoid.location
+        location: Plasmoid.location
         parent: root
     }
 
     DnD.DropArea {
         anchors.fill: parent
 
-        preventStealing: true;
+        preventStealing: true
 
         /** Extracts the name of the system tray applet in the drag data if present
          * otherwise returns null*/
@@ -62,9 +63,9 @@ MouseArea {
             if (event.mimeData.formats.indexOf("text/x-plasmoidservicename") < 0) {
                 return null;
             }
-            var plasmoidId = event.mimeData.getDataAsByteArray("text/x-plasmoidservicename");
+            const plasmoidId = event.mimeData.getDataAsByteArray("text/x-plasmoidservicename");
 
-            if (!plasmoid.nativeInterface.isSystemTrayApplet(plasmoidId)) {
+            if (!Plasmoid.nativeInterface.isSystemTrayApplet(plasmoidId)) {
                 return null;
             }
             return plasmoidId;
@@ -77,16 +78,16 @@ MouseArea {
         }
 
         onDrop: {
-            var plasmoidId = systemTrayAppletName(event);
+            const plasmoidId = systemTrayAppletName(event);
             if (!plasmoidId) {
                 event.ignore();
                 return;
             }
 
-            if (plasmoid.configuration.extraItems.indexOf(plasmoidId) < 0) {
-                var extraItems = plasmoid.configuration.extraItems;
+            if (Plasmoid.configuration.extraItems.indexOf(plasmoidId) < 0) {
+                const extraItems = Plasmoid.configuration.extraItems;
                 extraItems.push(plasmoidId);
-                plasmoid.configuration.extraItems = extraItems;
+                Plasmoid.configuration.extraItems = extraItems;
             }
         }
     }
@@ -114,17 +115,19 @@ MouseArea {
 
             // Automatically use autoSize setting when in tablet mode, if it's
             // not already being used
-            readonly property bool autoSize: plasmoid.configuration.scaleIconsToFit || Kirigami.Settings.tabletMode
+            readonly property bool autoSize: Plasmoid.configuration.scaleIconsToFit || Kirigami.Settings.tabletMode
 
             readonly property int gridThickness: root.vertical ? root.width : root.height
             // Should change to 2 rows/columns on a 56px panel (in standard DPI)
             readonly property int rowsOrColumns: autoSize ? 1 : Math.max(1, Math.min(count, Math.floor(gridThickness / (smallIconSize + PlasmaCore.Units.smallSpacing))))
 
             // Add margins only if the panel is larger than a small icon (to avoid large gaps between tiny icons)
-            readonly property int smallSizeCellLength: gridThickness < smallIconSize ? smallIconSize : smallIconSize + PlasmaCore.Units.smallSpacing * 2
+            readonly property int cellSpacing: PlasmaCore.Units.smallSpacing * (Kirigami.Settings.tabletMode ? 6 : Plasmoid.configuration.iconSpacing)
+            readonly property int smallSizeCellLength: gridThickness < smallIconSize ? smallIconSize : smallIconSize + cellSpacing
+
             cellHeight: {
                 if (root.vertical) {
-                    return autoSize ? root.width + PlasmaCore.Units.smallSpacing : smallSizeCellLength
+                    return autoSize ? itemSize + (gridThickness < itemSize ? 0 : cellSpacing) : smallSizeCellLength
                 } else {
                     return autoSize ? root.height : Math.floor(root.height / rowsOrColumns)
                 }
@@ -133,32 +136,45 @@ MouseArea {
                 if (root.vertical) {
                     return autoSize ? root.width : Math.floor(root.width / rowsOrColumns)
                 } else {
-                    return autoSize ? root.height + PlasmaCore.Units.smallSpacing : smallSizeCellLength
+                    return autoSize ? itemSize + (gridThickness < itemSize ? 0 : cellSpacing) : smallSizeCellLength
                 }
             }
 
-            //depending on the form factor, we are calculating only one dimention, second is always the same as root/parent
+            //depending on the form factor, we are calculating only one dimension, second is always the same as root/parent
             implicitHeight: root.vertical ? cellHeight * Math.ceil(count / rowsOrColumns) : root.height
             implicitWidth: !root.vertical ? cellWidth * Math.ceil(count / rowsOrColumns) : root.width
 
             readonly property int itemSize: {
                 if (autoSize) {
-                    const size = Math.min(implicitWidth / rowsOrColumns, implicitHeight / rowsOrColumns)
-                    return PlasmaCore.Units.roundToIconSize(Math.min(size, PlasmaCore.Units.iconSizes.enormous))
+                    return PlasmaCore.Units.roundToIconSize(Math.min(Math.min(root.width, root.height) / rowsOrColumns, PlasmaCore.Units.iconSizes.enormous))
                 } else {
                     return smallIconSize
                 }
             }
 
             model: PlasmaCore.SortFilterModel {
-                sourceModel: plasmoid.nativeInterface.systemTrayModel
+                sourceModel: Plasmoid.nativeInterface.systemTrayModel
                 filterRole: "effectiveStatus"
-                filterCallback: function(source_row, value) {
-                    return value === PlasmaCore.Types.ActiveStatus
-                }
+                filterCallback: (source_row, value) => value === PlasmaCore.Types.ActiveStatus
             }
 
-            delegate: ItemLoader {}
+            delegate: ItemLoader {
+                id: delegate
+                // We need to recalculate the stacking order of the z values due to how keyboard navigation works
+                // the tab order depends exclusively from this, so we redo it as the position in the list
+                // ensuring tab navigation focuses the expected items
+                Component.onCompleted: {
+                    let item = tasksGrid.itemAtIndex(index - 1);
+                    if (item) {
+                        Plasmoid.nativeInterface.stackItemBefore(delegate, item)
+                    } else {
+                        item = tasksGrid.itemAtIndex(index + 1);
+                    }
+                    if (item) {
+                        Plasmoid.nativeInterface.stackItemAfter(delegate, item)
+                    }
+                }
+            }
 
             add: Transition {
                 enabled: itemSize > 0
@@ -202,17 +218,36 @@ MouseArea {
         }
     }
 
+    Timer {
+        id: expandedSync
+        interval: 100
+        onTriggered: systemTrayState.expanded = dialog.visible;
+    }
+
     //Main popup
     PlasmaCore.Dialog {
         id: dialog
+        objectName: "popupWindow"
         visualParent: root
         flags: Qt.WindowStaysOnTopHint
-        location: plasmoid.location
-        hideOnWindowDeactivate: !plasmoid.configuration.pin
+        location: Plasmoid.location
+        hideOnWindowDeactivate: !Plasmoid.configuration.pin
         visible: systemTrayState.expanded
+        // visualParent: implicitly set to parent
+        backgroundHints: (Plasmoid.containmentDisplayHints & PlasmaCore.Types.DesktopFullyCovered) ? PlasmaCore.Dialog.SolidBackground : PlasmaCore.Dialog.StandardBackground
+        type: PlasmaCore.Dialog.AppletPopup
+        appletInterface: Plasmoid.self
 
         onVisibleChanged: {
-            systemTrayState.expanded = visible
+            if (!visible) {
+                expandedSync.restart();
+            } else {
+                if (expandedRepresentation.plasmoidContainer.visible) {
+                    expandedRepresentation.plasmoidContainer.forceActiveFocus();
+                } else if (expandedRepresentation.hiddenLayout.visible) {
+                    expandedRepresentation.hiddenLayout.forceActiveFocus();
+                }
+            }
         }
         mainItem: ExpandedRepresentation {
             id: expandedRepresentation
@@ -223,20 +258,23 @@ MouseArea {
 
             // Draws a line between the applet dialog and the panel
             PlasmaCore.SvgItem {
+                // Only draw for popups of panel applets, not desktop applets
+                visible: [PlasmaCore.Types.TopEdge, PlasmaCore.Types.LeftEdge, PlasmaCore.Types.RightEdge, PlasmaCore.Types.BottomEdge]
+                    .includes(Plasmoid.location)
                 anchors {
-                    top: plasmoid.location == PlasmaCore.Types.BottomEdge ? undefined : parent.top
-                    left: plasmoid.location == PlasmaCore.Types.RightEdge ? undefined : parent.left
-                    right: plasmoid.location == PlasmaCore.Types.LeftEdge ? undefined : parent.right
-                    bottom: plasmoid.location == PlasmaCore.Types.TopEdge ? undefined : parent.bottom
-                    topMargin: plasmoid.location == PlasmaCore.Types.BottomEdge ? undefined : -dialog.margins.top
-                    leftMargin: plasmoid.location == PlasmaCore.Types.RightEdge ? undefined : -dialog.margins.left
-                    rightMargin: plasmoid.location == PlasmaCore.Types.LeftEdge ? undefined : -dialog.margins.right
-                    bottomMargin: plasmoid.location == PlasmaCore.Types.TopEdge ? undefined : -dialog.margins.bottom
+                    top: Plasmoid.location === PlasmaCore.Types.BottomEdge ? undefined : parent.top
+                    left: Plasmoid.location === PlasmaCore.Types.RightEdge ? undefined : parent.left
+                    right: Plasmoid.location === PlasmaCore.Types.LeftEdge ? undefined : parent.right
+                    bottom: Plasmoid.location === PlasmaCore.Types.TopEdge ? undefined : parent.bottom
+                    topMargin: Plasmoid.location === PlasmaCore.Types.BottomEdge ? undefined : -dialog.margins.top
+                    leftMargin: Plasmoid.location === PlasmaCore.Types.RightEdge ? undefined : -dialog.margins.left
+                    rightMargin: Plasmoid.location === PlasmaCore.Types.LeftEdge ? undefined : -dialog.margins.right
+                    bottomMargin: Plasmoid.location === PlasmaCore.Types.TopEdge ? undefined : -dialog.margins.bottom
                 }
-                height: (plasmoid.location == PlasmaCore.Types.TopEdge || plasmoid.location == PlasmaCore.Types.BottomEdge) ? 1 : undefined
-                width: (plasmoid.location == PlasmaCore.Types.LeftEdge || plasmoid.location == PlasmaCore.Types.RightEdge) ? 1 : undefined
+                height: (Plasmoid.location === PlasmaCore.Types.TopEdge || Plasmoid.location === PlasmaCore.Types.BottomEdge) ? PlasmaCore.Units.devicePixelRatio : undefined
+                width: (Plasmoid.location === PlasmaCore.Types.LeftEdge || Plasmoid.location === PlasmaCore.Types.RightEdge) ? PlasmaCore.Units.devicePixelRatio : undefined
                 z: 999 /* Draw the line on top of the applet */
-                elementId: (plasmoid.location == PlasmaCore.Types.TopEdge || plasmoid.location == PlasmaCore.Types.BottomEdge) ? "horizontal-line" : "vertical-line"
+                elementId: (Plasmoid.location === PlasmaCore.Types.TopEdge || Plasmoid.location === PlasmaCore.Types.BottomEdge) ? "horizontal-line" : "vertical-line"
                 svg: PlasmaCore.Svg {
                     imagePath: "widgets/line"
                 }

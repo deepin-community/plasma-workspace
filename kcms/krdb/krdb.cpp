@@ -7,6 +7,7 @@
     SPDX-FileCopyrightText: 1998 Mark Donohoe
     SPDX-FileCopyrightText: 2001 Waldo Bastian <bastian@kde.org>
     SPDX-FileCopyrightText: 2002 Karol Szwed <gallium@kde.org>
+    SPDX-FileCopyrightText: 2022 Harald Sitter <sitter@kde.org>
 
     reworked for KDE 2.0:
     SPDX-FileCopyrightText: 1999 Dirk A. Mueller
@@ -30,7 +31,6 @@
 #include <QDir>
 #include <QFontDatabase>
 #include <QSettings>
-#include <QTextCodec>
 
 #include <QByteArray>
 #include <QDBusConnection>
@@ -47,38 +47,44 @@
 #include <KLocalizedString>
 #include <KProcess>
 #include <KWindowSystem>
-#include <Kdelibs4Migration>
 
 #include <updatelaunchenvjob.h>
 
 #include "krdb.h"
 #if HAVE_X11
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 #include <X11/Xlib.h>
 #endif
+
+#include <filesystem>
+
 inline const char *gtkEnvVar(int version)
 {
     return 2 == version ? "GTK2_RC_FILES" : "GTK_RC_FILES";
 }
 
-inline const char *sysGtkrc(int version)
+inline QLatin1String sysGtkrc(int version)
 {
-    if (2 == version) {
-        if (access("/etc/opt/gnome/gtk-2.0", F_OK) == 0)
-            return "/etc/opt/gnome/gtk-2.0/gtkrc";
-        else
-            return "/etc/gtk-2.0/gtkrc";
-    } else {
-        if (access("/etc/opt/gnome/gtk", F_OK) == 0)
-            return "/etc/opt/gnome/gtk/gtkrc";
-        else
-            return "/etc/gtk/gtkrc";
+    std::error_code error;
+    if (version == 2) {
+        if (std::filesystem::exists("/etc/opt/gnome/gtk-2.0", error) && !error) {
+            return QLatin1String("/etc/opt/gnome/gtk-2.0/gtkrc");
+        }
+        return QLatin1String("/etc/gtk-2.0/gtkrc");
     }
+    if (std::filesystem::exists("/etc/opt/gnome/gtk", error) && !error) {
+        return QLatin1String("/etc/opt/gnome/gtk/gtkrc");
+    }
+    return QLatin1String("/etc/gtk/gtkrc");
 }
 
-inline const char *userGtkrc(int version)
+inline QLatin1String userGtkrc(int version)
 {
-    return 2 == version ? "/.gtkrc-2.0" : "/.gtkrc";
+    return version == 2 ? QLatin1String("/.gtkrc-2.0") : QLatin1String("/.gtkrc");
 }
 
 // -----------------------------------------------------------------------------
@@ -94,23 +100,33 @@ static QString writableGtkrc(int version)
 // -----------------------------------------------------------------------------
 static void applyGtkStyles(int version)
 {
-    QString gtkkde = writableGtkrc(version);
-    QByteArray gtkrc = getenv(gtkEnvVar(version));
+    const char *varName = gtkEnvVar(version);
+    const char *envVar = getenv(varName);
+    if (envVar) { // Already set by user, don't override it
+        return;
+    }
+
+    const QByteArray gtkrc(envVar);
+    const QString userHomeGtkrc = QDir::homePath() + userGtkrc(version);
     QStringList list = QFile::decodeName(gtkrc).split(QLatin1Char(':'));
-    QString userHomeGtkrc = QDir::homePath() + userGtkrc(version);
-    if (!list.contains(userHomeGtkrc))
+    if (!list.contains(userHomeGtkrc)) {
         list.prepend(userHomeGtkrc);
-    QLatin1String systemGtkrc = QLatin1String(sysGtkrc(version));
-    if (!list.contains(systemGtkrc))
+    }
+
+    const QLatin1String systemGtkrc = sysGtkrc(version);
+    if (!list.contains(systemGtkrc)) {
         list.prepend(systemGtkrc);
+    }
+
     list.removeAll(QLatin1String(""));
+
+    const QString gtkkde = writableGtkrc(version);
     list.removeAll(gtkkde);
     list.append(gtkkde);
 
     // Pass env. var to kdeinit.
-    QString name = gtkEnvVar(version);
-    QString value = list.join(QLatin1Char(':'));
-    UpdateLaunchEnvJob(name, value);
+    const QString value = list.join(QLatin1Char(':'));
+    UpdateLaunchEnvJob(varName, value);
 }
 
 // -----------------------------------------------------------------------------
@@ -214,15 +230,6 @@ static void applyQtSettings(KSharedConfigPtr kglobalcfg, QSettings &settings)
 
 // -----------------------------------------------------------------------------
 
-static void addColorDef(QString &s, const char *n, const QColor &col)
-{
-    s += QStringLiteral("#define %1 ").arg(QString::fromUtf8(n));
-    s += col.name().toLower();
-    s += QLatin1Char('\n');
-}
-
-// -----------------------------------------------------------------------------
-
 static void copyFile(QFile &tmp, QString const &filename, bool)
 {
     QFile f(filename);
@@ -249,8 +256,6 @@ static void createGtkrc(const QPalette &cg, bool exportGtkTheme, const QString &
         return;
 
     QTextStream t(&saveFile);
-    t.setCodec(QTextCodec::codecForLocale());
-
     t << i18n(
         "# created by KDE Plasma, %1\n"
         "#\n",
@@ -501,110 +506,8 @@ void runRdb(uint flags)
                             PropModeReplace,
                             (unsigned char *)stamp.buffer().data(),
                             stamp.buffer().size());
-            QApplication::flush();
+            qApp->processEvents();
         }
 #endif
     }
-
-    // Legacy support:
-    // Try to sync kde4 settings with ours
-
-    Kdelibs4Migration migration;
-    // kf5 congig groups for general and icons
-    KConfigGroup generalGroup(kglobalcfg, "General");
-    KConfigGroup iconsGroup(kglobalcfg, "Icons");
-
-    const QString colorSchemeName = generalGroup.readEntry("ColorScheme", QStringLiteral("BreezeLight"));
-
-    QString colorSchemeSrcFile;
-    if (colorSchemeName != QLatin1String("Default")) {
-        // fix filename, copied from ColorsCM::saveScheme()
-        QString colorSchemeFilename = colorSchemeName;
-        colorSchemeFilename.remove('\''); // So Foo's does not become FooS
-        QRegExp fixer(QStringLiteral("[\\W,.-]+(.?)"));
-        int offset;
-        while ((offset = fixer.indexIn(colorSchemeFilename)) >= 0)
-            colorSchemeFilename.replace(offset, fixer.matchedLength(), fixer.cap(1).toUpper());
-        colorSchemeFilename.replace(0, 1, colorSchemeFilename.at(0).toUpper());
-
-        // clone the color scheme
-        colorSchemeSrcFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "color-schemes/" + colorSchemeFilename + ".colors");
-        const QString dest = migration.saveLocation("data", QStringLiteral("color-schemes")) + colorSchemeName + ".colors";
-        QFile::remove(dest);
-        QFile::copy(colorSchemeSrcFile, dest);
-    }
-
-    // Apply the color scheme
-    QString configFilePath = migration.saveLocation("config") + "kdeglobals";
-
-    if (configFilePath.isEmpty()) {
-        return;
-    }
-
-    KConfig kde4config(configFilePath, KConfig::SimpleConfig);
-
-    KConfigGroup kde4generalGroup(&kde4config, "General");
-    kde4generalGroup.writeEntry("ColorScheme", colorSchemeName);
-
-    // fonts
-    QString font = generalGroup.readEntry("font", QString());
-    if (!font.isEmpty()) {
-        kde4generalGroup.writeEntry("font", font);
-    }
-    font = generalGroup.readEntry("desktopFont", QString());
-    if (!font.isEmpty()) {
-        kde4generalGroup.writeEntry("desktopFont", font);
-    }
-    font = generalGroup.readEntry("menuFont", QString());
-    if (!font.isEmpty()) {
-        kde4generalGroup.writeEntry("menuFont", font);
-    }
-    font = generalGroup.readEntry("smallestReadableFont", QString());
-    if (!font.isEmpty()) {
-        kde4generalGroup.writeEntry("smallestReadableFont", font);
-    }
-    font = generalGroup.readEntry("taskbarFont", QString());
-    if (!font.isEmpty()) {
-        kde4generalGroup.writeEntry("taskbarFont", font);
-    }
-    font = generalGroup.readEntry("toolBarFont", QString());
-    if (!font.isEmpty()) {
-        kde4generalGroup.writeEntry("toolBarFont", font);
-    }
-
-    // TODO: does exist any way to check if a qt4 widget style is present from a qt5 app?
-    // kde4generalGroup.writeEntry("widgetStyle", "qtcurve");
-    kde4generalGroup.sync();
-
-    KConfigGroup kde4IconGroup(&kde4config, "Icons");
-    QString iconTheme = iconsGroup.readEntry("Theme", QString());
-    if (!iconTheme.isEmpty()) {
-        kde4IconGroup.writeEntry("Theme", iconTheme);
-    }
-    kde4IconGroup.sync();
-
-    if (!colorSchemeSrcFile.isEmpty()) {
-        // copy all the groups in the color scheme in kdeglobals
-        KSharedConfigPtr kde4ColorConfig = KSharedConfig::openConfig(colorSchemeSrcFile, KConfig::SimpleConfig);
-
-        foreach (const QString &grp, kde4ColorConfig->groupList()) {
-            KConfigGroup cg(kde4ColorConfig, grp);
-            KConfigGroup cg2(&kde4config, grp);
-            cg.copyTo(&cg2);
-        }
-    }
-
-    // widgets settings
-    KConfigGroup kglobals4(&kde4config, "KDE");
-    kglobals4.writeEntry("ShowIconsInMenuItems", kglobals.readEntry("ShowIconsInMenuItems", true));
-    kglobals4.writeEntry("ShowIconsOnPushButtons", kglobals.readEntry("ShowIconsOnPushButtons", true));
-    kglobals4.writeEntry("contrast", kglobals.readEntry("contrast", 4));
-    // FIXME: this should somehow check if the kde4 version of the style is installed
-    kde4generalGroup.writeEntry("widgetStyle", kglobals.readEntry("widgetStyle", "breeze"));
-
-    // toolbar style
-    KConfigGroup toolbars4(&kde4config, "Toolbar style");
-    KConfigGroup toolbars5(kglobalcfg, "Toolbar style");
-    toolbars4.writeEntry("ToolButtonStyle", toolbars5.readEntry("ToolButtonStyle", "TextBesideIcon"));
-    toolbars4.writeEntry("ToolButtonStyleOtherToolbars", toolbars5.readEntry("ToolButtonStyleOtherToolbars", "TextBesideIcon"));
 }

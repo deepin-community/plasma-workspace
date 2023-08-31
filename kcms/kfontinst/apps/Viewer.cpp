@@ -6,6 +6,8 @@
 #include "Viewer.h"
 #include "KfiConstants.h"
 #include "config-workspace.h"
+#include "kfontview_debug.h"
+
 #include <KAboutData>
 #include <KActionCollection>
 #include <KConfigGroup>
@@ -26,28 +28,34 @@ namespace KFI
 {
 CViewer::CViewer()
 {
-    const auto result = KPluginFactory::instantiatePlugin<KParts::ReadOnlyPart>(KPluginMetaData(QStringLiteral("kf5/parts/kfontviewpart")), this);
+    const auto result =
+        KPluginFactory::instantiatePlugin<KParts::ReadOnlyPart>(KPluginMetaData(QStringLiteral("kf" QT_STRINGIFY(QT_VERSION_MAJOR) "/parts/kfontviewpart")),
+                                                                this);
 
     if (!result) {
-        qWarning() << "Error loading kfontviewpart:" << result.errorString;
+        qCWarning(KFONTVIEW_DEBUG) << "Error loading kfontviewpart:" << result.errorString;
         exit(1);
     }
 
-    itsPreview = result.plugin;
+    m_preview = result.plugin;
 
-    actionCollection()->addAction(KStandardAction::Open, this, SLOT(fileOpen()));
+    m_openAct = actionCollection()->addAction(KStandardAction::Open, this, SLOT(fileOpen()));
     actionCollection()->addAction(KStandardAction::Quit, this, SLOT(close()));
     actionCollection()->addAction(KStandardAction::KeyBindings, this, SLOT(configureKeys()));
-    itsPrintAct = actionCollection()->addAction(KStandardAction::Print, itsPreview, SLOT(print()));
+    m_printAct = actionCollection()->addAction(KStandardAction::Print, m_preview, SLOT(print()));
 
-    itsPrintAct->setEnabled(false);
+    // Make tooltips more specific, instead of "document".
+    m_openAct->setToolTip(i18n("Open an existing font file"));
+    m_printAct->setToolTip(i18n("Print font preview"));
 
-    if (itsPreview->browserExtension()) {
-        connect(itsPreview->browserExtension(), &KParts::BrowserExtension::enableAction, this, &CViewer::enableAction);
+    m_printAct->setEnabled(false);
+
+    if (m_preview->browserExtension()) {
+        connect(m_preview->browserExtension(), &KParts::BrowserExtension::enableAction, this, &CViewer::enableAction);
     }
 
-    setCentralWidget(itsPreview->widget());
-    createGUI(itsPreview);
+    setCentralWidget(m_preview->widget());
+    createGUI(m_preview);
 
     setAutoSaveSettings();
     applyMainWindowSettings(KSharedConfig::openConfig()->group("MainWindow"));
@@ -73,7 +81,7 @@ void CViewer::fileOpen()
 void CViewer::showUrl(const QUrl &url)
 {
     if (url.isValid()) {
-        itsPreview->openUrl(url);
+        m_preview->openUrl(url);
     }
 }
 
@@ -88,7 +96,7 @@ void CViewer::configureKeys()
 void CViewer::enableAction(const char *name, bool enable)
 {
     if (0 == qstrcmp("print", name)) {
-        itsPrintAct->setEnabled(enable);
+        m_printAct->setEnabled(enable);
     }
 }
 

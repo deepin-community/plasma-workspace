@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_kill\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2020-05-14 22:11+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -18,34 +18,34 @@ msgstr ""
 "X-POFile-SpellExtra: SIGTERM SIGKILL\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: killrunner.cpp:29
+#: killrunner.cpp:30
 #, kde-format
 msgid "Send SIGTERM"
 msgstr "Enviar um SIGTERM"
 
-#: killrunner.cpp:31
+#: killrunner.cpp:32
 #, kde-format
 msgid "Send SIGKILL"
 msgstr "Enviar um SIGKILL"
 
-#: killrunner.cpp:50 killrunner_config.cpp:51 killrunner_config.cpp:77
+#: killrunner.cpp:51 killrunner_config.cpp:51 killrunner_config.cpp:77
 #, kde-format
 msgid "kill"
 msgstr "matar"
 
-#: killrunner.cpp:56
+#: killrunner.cpp:57
 #, kde-format
 msgid "Terminate running applications whose names match the query."
 msgstr ""
 "Terminar as aplicações em execução que corresponderem ao critério de "
 "pesquisa."
 
-#: killrunner.cpp:119
+#: killrunner.cpp:120
 #, kde-format
 msgid "Terminate %1"
 msgstr "Terminar o %1"
 
-#: killrunner.cpp:120
+#: killrunner.cpp:121
 #, kde-format
 msgid "Process ID: %1"
 msgstr "ID do Processo: %1"

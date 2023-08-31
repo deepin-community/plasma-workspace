@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksmserver\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2023-01-11 01:00+0000\n"
 "PO-Revision-Date: 2020-04-25 11:11+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -32,66 +32,57 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: logout.cpp:350
+#: logout.cpp:340
 #, kde-format
 msgid "Logout canceled by '%1'"
 msgstr "Выход отменён программой «%1»"
 
-#: main.cpp:37
-#, kde-format
-msgid ""
-"The reliable Plasma session manager that talks the standard X11R6 \n"
-"session management protocol (XSMP)."
-msgstr ""
-"Диспетчер сеанса Plasma, использующий стандартный \n"
-"протокол управления сеансами X11R6 (XSMP)."
-
-#: main.cpp:113
+#: main.cpp:118
 #, kde-format
 msgid "$HOME not set!"
 msgstr "Переменная $HOME не установлена."
 
-#: main.cpp:117 main.cpp:123
+#: main.cpp:122 main.cpp:128
 #, kde-format
 msgid "$HOME directory (%1) does not exist."
 msgstr "Домашний каталог (%1) не существует."
 
-#: main.cpp:119
+#: main.cpp:124
 #, kde-format
 msgid "No write access to $HOME directory (%1)."
 msgstr "Нет прав на запись в домашний каталог (%1)."
 
-#: main.cpp:125
+#: main.cpp:130
 #, kde-format
 msgid "No read access to $HOME directory (%1)."
 msgstr "Нет прав на чтение из домашнего каталога (%1)."
 
-#: main.cpp:129
+#: main.cpp:134
 #, kde-format
 msgid "$HOME directory (%1) is out of disk space."
 msgstr "Нет свободного места в домашнем домашнем каталоге (%1)."
 
-#: main.cpp:132
+#: main.cpp:137
 #, kde-format
 msgid "Writing to the $HOME directory (%2) failed with the error '%1'"
 msgstr "Не удалось записать в домашний каталог (%2): произошла ошибка «%1»"
 
-#: main.cpp:145 main.cpp:180
+#: main.cpp:150 main.cpp:185
 #, kde-format
 msgid "No write access to '%1'."
 msgstr "Нет прав на запись в «%1»."
 
-#: main.cpp:147 main.cpp:182
+#: main.cpp:152 main.cpp:187
 #, kde-format
 msgid "No read access to '%1'."
 msgstr "Нет прав на чтение из «%1»."
 
-#: main.cpp:155 main.cpp:168
+#: main.cpp:160 main.cpp:173
 #, kde-format
 msgid "Temp directory (%1) is out of disk space."
 msgstr "Нет свободного места в каталоге для временных файлов (%1)."
 
-#: main.cpp:158 main.cpp:171
+#: main.cpp:163 main.cpp:176
 #, kde-format
 msgid ""
 "Writing to the temp directory (%2) failed with\n"
@@ -101,7 +92,7 @@ msgstr ""
 "    произошла ошибка «%1»"
 
 # BUGME: KDE is a comminity, not software --aspotashev
-#: main.cpp:186
+#: main.cpp:191
 #, kde-format
 msgid ""
 "The following installation problem was detected\n"
@@ -110,7 +101,7 @@ msgstr ""
 "При попытке запуска Plasma обнаружена\n"
 "следующая проблема:"
 
-#: main.cpp:189
+#: main.cpp:194
 #, kde-format
 msgid ""
 "\n"
@@ -122,27 +113,36 @@ msgstr ""
 "Не удалось запустить сеанс Plasma.\n"
 
 # BUGME: please don't use exclamation marks --aspotashev
-#: main.cpp:196
+#: main.cpp:201
 #, kde-format
 msgid "Plasma Workspace installation problem!"
 msgstr "Не удалось запустить сеанс Plasma"
 
-#: main.cpp:236
+#: main.cpp:237
+#, kde-format
+msgid ""
+"The reliable Plasma session manager that talks the standard X11R6 \n"
+"session management protocol (XSMP)."
+msgstr ""
+"Диспетчер сеанса Plasma, использующий стандартный \n"
+"протокол управления сеансами X11R6 (XSMP)."
+
+#: main.cpp:241
 #, kde-format
 msgid "Restores the saved user session if available"
 msgstr "Восстанавливать предыдущий сеанс (если возможно)"
 
-#: main.cpp:239
+#: main.cpp:244
 #, kde-format
 msgid "Also allow remote connections"
 msgstr "Разрешить также удалённые соединения"
 
-#: main.cpp:242
+#: main.cpp:247
 #, kde-format
 msgid "Starts the session in locked mode"
 msgstr "Запускать сеанс в режиме блокировки"
 
-#: main.cpp:246
+#: main.cpp:251
 #, kde-format
 msgid ""
 "Starts without lock screen support. Only needed if other component provides "
@@ -151,121 +151,174 @@ msgstr ""
 "Запустить без поддержки блокировки экрана. Необходимо только если другой "
 "компонент обеспечивает блокировку экрана."
 
-#: server.cpp:857
+#: server.cpp:884
 #, kde-format
 msgid "Session Management"
 msgstr "Управление сеансами"
 
 # shutdown-method
-#: server.cpp:860
+#: server.cpp:887
 #, kde-format
 msgid "Log Out"
 msgstr "Завершить сеанс"
 
 # shutdown-method
-#: server.cpp:865
+#: server.cpp:892
 #, kde-format
 msgid "Log Out Without Confirmation"
 msgstr "Завершить сеанс без подтверждения"
 
 # shutdown-method
-#: server.cpp:870
+#: server.cpp:897
 #, kde-format
 msgid "Halt Without Confirmation"
 msgstr "Выключить компьютер без подтверждения"
 
 # shutdown-method
-#: server.cpp:875
+#: server.cpp:902
 #, kde-format
 msgid "Reboot Without Confirmation"
 msgstr "Перезагрузить компьютер без подтверждения"
 
+#~ msgid ""
+#~ "Starts <wm> in case no other window manager is \n"
+#~ "participating in the session. Default is 'kwin'"
+#~ msgstr ""
+#~ "Запускать <ДО> в том случае, если не используется другой \n"
+#~ "диспетчер окон. По умолчанию используется «kwin»."
 
+#~ msgid "wm"
+#~ msgstr "ДО"
 
+#~ msgid "Shut Down"
+#~ msgstr "Выключить"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# shutdown-method
-
-
+#~ msgid "Reboot"
+#~ msgstr "Перезагрузить"
 
 # shutdown-method
-
-
-
-
-
-
-
-
-
-
-
-
+#~ msgid "Logout"
+#~ msgstr "Завершить сеанс"
 
 # shutdown-method
+#~ msgid "Sleeping in 1 second"
+#~ msgid_plural "Sleeping in %1 seconds"
+#~ msgstr[0] "Переход в ждущий режим через %1 секунду."
+#~ msgstr[1] "Переход в ждущий режим через %1 cекунды."
+#~ msgstr[2] "Переход в ждущий режим через %1 секунд."
+#~ msgstr[3] "Переход в ждущий режим через %1 секунду."
 
+#~ msgid "Lock"
+#~ msgstr "Заблокировать"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#~ msgid "ksmserver"
+#~ msgstr "ksmserver"
 
 # shutdown-method
+#~ msgid "Turn off"
+#~ msgstr "Выключить"
 
+#~ msgid "Sleep"
+#~ msgstr "Ждущий режим"
 
+#~ msgid "Logging out in 1 second."
+#~ msgid_plural "Logging out in %1 seconds."
+#~ msgstr[0] "Выход через %1 секунду."
+#~ msgstr[1] "Выход через %1 секунды."
+#~ msgstr[2] "Выход через %1 секунд."
+#~ msgstr[3] "Выход через %1 секунду."
 
+#~ msgid "Turning off computer in 1 second."
+#~ msgid_plural "Turning off computer in %1 seconds."
+#~ msgstr[0] "Выключение через %1 секунду."
+#~ msgstr[1] "Выключение через %1 секунды."
+#~ msgstr[2] "Выключение через %1 секунд."
+#~ msgstr[3] "Выключение через %1 секунду."
+
+#~ msgid "Restarting computer in 1 second."
+#~ msgid_plural "Restarting computer in %1 seconds."
+#~ msgstr[0] "Перезагрузка через %1 секунду."
+#~ msgstr[1] "Перезагрузка через %1 секунды."
+#~ msgstr[2] "Перезагрузка через %1 секунд."
+#~ msgstr[3] "Перезагрузка через %1 секунду."
 
 # shutdown-method
-
-
-
-
-
-
-
-
-
-
-
+#, fuzzy
+#~| msgid "&Turn Off Computer"
+#~ msgid "Turn Off Computer"
+#~ msgstr "&Выключить компьютер"
 
 # shutdown-method
+#, fuzzy
+#~| msgid "&Restart Computer"
+#~ msgid "Restart Computer"
+#~ msgstr "&Перезагрузить компьютер"
 
+#~ msgctxt "default option in boot loader"
+#~ msgid " (default)"
+#~ msgstr " (по умолчанию)"
 
+#, fuzzy
+#~| msgid "&Cancel"
+#~ msgid "Cancel"
+#~ msgstr "О&тмена"
 
 # shutdown-method
-
-
+#~ msgid "&Standby"
+#~ msgstr "&Остановка"
 
 # shutdown-method
+#~ msgid "Suspend to &RAM"
+#~ msgstr "&Ждущий режим"
+
+# shutdown-method
+#~ msgid "Suspend to &Disk"
+#~ msgstr "&Спящий режим"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Дмитрий Овечкин,Григорий Мохин, Альберт Валиев, Леонид Кантер"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr ""
+#~ "d_ovechkin@hotmail.com,mokhin@bog.msu.ru,darkstar@altlinux.ru,"
+#~ "leon@asplinux.ru"
+
+#~ msgid "(C) 2000, The KDE Developers"
+#~ msgstr "© Разработчики KDE, 2000"
+
+#~ msgid "Matthias Ettrich"
+#~ msgstr "Matthias Ettrich"
+
+#~ msgid "Luboš Luňák"
+#~ msgstr "Luboš Luňák"
+
+#~ msgid "Maintainer"
+#~ msgstr "Сопровождающий"
+
+#~ msgctxt "current option in boot loader"
+#~ msgid " (current)"
+#~ msgstr " (текущий)"
+
+#~ msgid ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Your names"
+#~ msgstr "Дмитрий Овечкин,Григорий Мохин, Альберт Валиев, Леонид Кантер"
+
+#~ msgid ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "Your emails"
+#~ msgstr ""
+#~ "d_ovechkin@hotmail.com,mokhin@bog.msu.ru,arkstone@mail.ru,leon@asplinux.ru"
+
+#~ msgid "End Session for \"%1\""
+#~ msgstr "Завершение сеанса пользователя \"%1\""
+
+#~ msgid "&End Current Session"
+#~ msgstr "&Завершить текущий сеанс"
+
+#~ msgid ""
+#~ "_: current option in boot loader\n"
+#~ " (current)"
+#~ msgstr " (текущий)"

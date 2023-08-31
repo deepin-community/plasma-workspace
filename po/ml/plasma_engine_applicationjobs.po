@@ -28,3 +28,8 @@ msgstr "%1-ഇനുള്ള ജോലി-വ്യു കണ്ടെത്ത
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/സെ."
+
+#~ msgid "1 file"
+#~ msgid_plural "%1 files"
+#~ msgstr[0] "ഒരു ഫയല്‍"
+#~ msgstr[1] "%1 ഫയലുകള്‍"

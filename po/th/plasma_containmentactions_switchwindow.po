@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2010-02-11 22:27+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -35,21 +35,21 @@ msgstr "แสดงเมนูย่อยสำหรับแต่ละพ
 msgid "Display only the current desktop's windows"
 msgstr "แสดงเฉพาะหน้าต่างของพื้นที่ทำงานปัจจุบันเท่านั้น"
 
-#: switch.cpp:71
+#: switch.cpp:75
 #, fuzzy, kde-format
 #| msgid "Configure Switch Window Plugin"
 msgctxt "plasma_containmentactions_switchwindow"
 msgid "Configure Switch Window Plugin"
 msgstr "ปรับแต่งส่วนเสริมการสลับหน้าต่าง"
 
-#: switch.cpp:151
+#: switch.cpp:155
 #, fuzzy, kde-format
 #| msgid "Windows"
 msgctxt "plasma_containmentactions_switchwindow"
 msgid "Windows"
 msgstr "หน้าต่างต่าง ๆ"
 
-#: switch.cpp:175 switch.cpp:196 switch.cpp:198
+#: switch.cpp:179 switch.cpp:200 switch.cpp:202
 #, fuzzy, kde-format
 #| msgid "All Desktops"
 msgctxt "plasma_containmentactions_switchwindow"

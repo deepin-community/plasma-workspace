@@ -23,18 +23,16 @@ public:
         return m_lastResult;
     }
 
+    static bool findPrefix(QString basePrefix, int *base, QString *customBase);
+
 public Q_SLOTS:
-    QString evaluate(const QString &expression, bool *isApproximate = nullptr);
+    QString evaluate(const QString &expression, bool *isApproximate = nullptr, int base = 10, const QString &customBase = "");
     void updateExchangeRates();
 
     void copyToClipboard(bool flag = true);
 
 protected Q_SLOTS:
     void updateResult(KJob *);
-
-Q_SIGNALS:
-    void resultReady(const QString &);
-    void formattedResultReady(const QString &);
 
 private:
     QString m_lastResult;

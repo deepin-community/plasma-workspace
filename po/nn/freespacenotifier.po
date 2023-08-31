@@ -1,19 +1,20 @@
 # Translation of freespacenotifier to Norwegian Nynorsk
 #
 # Karl Ove Hufthammer <karl@huftis.org>, 2011, 2015, 2017, 2020.
+# Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-20 01:43+0000\n"
-"PO-Revision-Date: 2020-06-14 13:42+0200\n"
-"Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
+"POT-Creation-Date: 2022-10-17 00:48+0000\n"
+"PO-Revision-Date: 2021-12-16 12:44+0100\n"
+"Last-Translator: Oystein Steffensen-Alvaervik <ystein@posteo.net>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.07.70\n"
+"X-Generator: Lokalize 21.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
@@ -22,7 +23,7 @@ msgstr ""
 #: freespacenotifier.cpp:91
 #, kde-format
 msgid "Configure Warning…"
-msgstr ""
+msgstr "Set opp varsling …"
 
 #: freespacenotifier.cpp:95
 #, kde-format
@@ -73,7 +74,7 @@ msgstr ""
 "Det er no lite ledig diskplass i heimemappa di. Du har %1 MiB ledig plass "
 "att (%2 %)."
 
-#: module.cpp:46
+#: module.cpp:45
 #, kde-format
 msgid ""
 "Your Root partition is running out of disk space, you have %1 MiB remaining "
@@ -82,7 +83,7 @@ msgstr ""
 "Det er no lite ledig diskplass på rotpartisjonen. Du har %1 MiB ledig plass "
 "att (%2 %)."
 
-#: module.cpp:63
+#: module.cpp:62
 #, kde-format
 msgctxt "The settings dialog main page name, as in 'general settings'"
 msgid "General"

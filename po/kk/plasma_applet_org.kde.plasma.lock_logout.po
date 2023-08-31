@@ -124,3 +124,53 @@ msgstr "Қалғу (күйін RAM-жадына сақтап)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Ұйықтау (күйін дискіге сақтап)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Күйін дискіге сақтап ұйықтау режіміне ауысуды қалайсыз ба?"
+
+#~ msgid "Yes"
+#~ msgstr "Иә"
+
+#~ msgid "No"
+#~ msgstr "Жоқ"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "Күйін RAM-жадына сақтап қалғу режіміне ауысуды қалайсыз ба?"
+
+#~ msgid "Leave"
+#~ msgstr "Шығып кету"
+
+#~ msgid "Leave..."
+#~ msgstr "Шығып кету..."
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Әрекеттер"
+
+#~ msgid "Suspend"
+#~ msgstr "Қалғу"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Бұғаттау/Шығуды баптау"
+
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "Төмендегі тізімінен бір не бірнешеісн таңдаңыз."
+
+#~ msgid "Entries"
+#~ msgstr "Тармақтары"
+
+#, fuzzy
+#~| msgid "Show sleep button"
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Қалғу батырмасы көрсетілсін"
+
+#~ msgid "Show logout button"
+#~ msgstr "Шығу батырмасы көрсетілсін"
+
+#~ msgid "Show hibernate button"
+#~ msgstr "Ұйықтау батырмасы көрсетілсін"
+
+#~ msgid "Show sleep button"
+#~ msgstr "Қалғу батырмасы көрсетілсін"

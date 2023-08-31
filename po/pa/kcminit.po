@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcminit\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-26 00:47+0000\n"
 "PO-Revision-Date: 2008-11-23 23:00+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi <punjabi-l10n@users.sf.net>\n"
@@ -28,27 +28,25 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "aalam@users.sf.net"
 
-#: main.cpp:151
-#, kde-format
-msgid "Module %1 not found"
-msgstr "ਮੋਡੀਊਲ %1 ਨਹੀਂ ਲੱਭਿਆ"
-
-#: main.cpp:214
+#: main.cpp:170
 #, kde-format
 msgid "KCMInit"
 msgstr "KCMInit"
 
-#: main.cpp:216
+#: main.cpp:172
 #, kde-format
 msgid "KCMInit - runs startup initialization for Control Modules."
 msgstr "KCMInit - ਕੰਟਰੋਲ ਮੋਡੀਊਲਾਂ ਲਈ ਸ਼ੁਰੂ ਸਮੇਂ ਸ਼ੁਰੂਆਤੀ ਚਲਾਉਦਾ ਹੈ।"
 
-#: main.cpp:222
+#: main.cpp:178
 #, kde-format
 msgid "List modules that are run at startup"
 msgstr "ਸ਼ੁਰੂ ਸਮੇਂ ਚੱਲਣ ਵਾਲੇ ਮੋਡੀਊਲਾਂ ਦੀ ਲਿਸਟ"
 
-#: main.cpp:223
+#: main.cpp:179
 #, kde-format
 msgid "Configuration module to run"
 msgstr "ਚਲਾਉਣ ਲਈ ਮੋਡੀਊਲ ਸੰਰਚਨਾ"
+
+#~ msgid "Module %1 not found"
+#~ msgstr "ਮੋਡੀਊਲ %1 ਨਹੀਂ ਲੱਭਿਆ"

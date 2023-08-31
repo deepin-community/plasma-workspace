@@ -12,7 +12,7 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 
-import org.kde.plasma.calendar 2.0
+import org.kde.plasma.workspace.calendar 2.0
 
 Item {
     Plasmoid.switchWidth: PlasmaCore.Units.gridUnit * 12
@@ -42,7 +42,7 @@ Item {
     }
 
     Plasmoid.compactRepresentation: MouseArea {
-        onClicked: plasmoid.expanded = !plasmoid.expanded
+        onClicked: Plasmoid.expanded = !Plasmoid.expanded
 
         PlasmaCore.IconItem {
             anchors.fill: parent
@@ -87,10 +87,10 @@ Item {
                 color: "black"
                 text: {
                     var d = new Date(dataSource.data.Local.DateTime)
-                    var format = plasmoid.configuration.compactDisplay
+                    var format = Plasmoid.configuration.compactDisplay
 
                     if (format === "w") {
-                        return plasmoid.nativeInterface.weekNumber(d)
+                        return Plasmoid.nativeInterface.weekNumber(d)
                     }
 
                     return Qt.formatDate(d, format)
@@ -104,14 +104,17 @@ Item {
         // sizing taken from digital clock
         readonly property int _minimumWidth: calendar.showWeekNumbers ? Math.round(_minimumHeight * 1.75) : Math.round(_minimumHeight * 1.5)
         readonly property int _minimumHeight: PlasmaCore.Units.gridUnit * 14
+        readonly property var appletInterface: Plasmoid.self
 
-        Layout.preferredWidth: _minimumWidth
-        Layout.preferredHeight: Math.round(_minimumHeight * 1.5)
+        Layout.minimumWidth: _minimumWidth
+        Layout.maximumWidth: PlasmaCore.Units.gridUnit * 80
+        Layout.minimumHeight: _minimumHeight
+        Layout.maximumHeight: PlasmaCore.Units.gridUnit * 40
 
         MonthView {
             id: calendar
             today: dataSource.data["Local"]["DateTime"]
-            showWeekNumbers: plasmoid.configuration.showWeekNumbers
+            showWeekNumbers: Plasmoid.configuration.showWeekNumbers
 
             anchors.fill: parent
         }

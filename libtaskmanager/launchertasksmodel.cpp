@@ -10,7 +10,6 @@
 #include <KDesktopFile>
 #include <KNotificationJobUiDelegate>
 #include <KService>
-#include <KStartupInfo>
 #include <KSycoca>
 #include <KWindowSystem>
 
@@ -19,18 +18,16 @@
 
 #include <KIO/ApplicationLauncherJob>
 
-#include <config-X11.h>
-
 #include <QHash>
 #include <QIcon>
 #include <QSet>
 #include <QTimer>
 #include <QUrlQuery>
-#if HAVE_X11
-#include <QX11Info>
-#endif
 
 #include "launchertasksmodel_p.h"
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 namespace TaskManager
 {
@@ -82,7 +79,7 @@ LauncherTasksModel::Private::Private(LauncherTasksModel *q)
 void LauncherTasksModel::Private::init()
 {
     sycocaChangeTimer.setSingleShot(true);
-    sycocaChangeTimer.setInterval(100);
+    sycocaChangeTimer.setInterval(100ms);
 
     QObject::connect(&sycocaChangeTimer, &QTimer::timeout, q, [this]() {
         if (!launchersOrder.count()) {
@@ -103,12 +100,8 @@ void LauncherTasksModel::Private::init()
                                            AbstractTasksModel::LauncherUrlWithoutIcon});
     });
 
-    void (KSycoca::*myDatabaseChangeSignal)(const QStringList &) = &KSycoca::databaseChanged;
-    QObject::connect(KSycoca::self(), myDatabaseChangeSignal, q, [this](const QStringList &changedResources) {
-        if (changedResources.contains(QLatin1String("services")) || changedResources.contains(QLatin1String("apps"))
-            || changedResources.contains(QLatin1String("xdgdata-apps"))) {
-            sycocaChangeTimer.start();
-        }
+    QObject::connect(KSycoca::self(), &KSycoca::databaseChanged, q, [this]() {
+        sycocaChangeTimer.start();
     });
 }
 
@@ -187,9 +180,9 @@ bool LauncherTasksModel::Private::requestAddLauncherToActivities(const QUrl &_ur
             if (newActivities != activitiesForLauncher[launcher]) {
                 setActivitiesForLauncher(launcher, newActivities);
 
-                emit q->dataChanged(q->index(row, 0), q->index(row, 0));
+                Q_EMIT q->dataChanged(q->index(row, 0), q->index(row, 0));
 
-                emit q->launcherListChanged();
+                Q_EMIT q->launcherListChanged();
                 return true;
             }
 
@@ -204,7 +197,7 @@ bool LauncherTasksModel::Private::requestAddLauncherToActivities(const QUrl &_ur
     launchersOrder.append(url);
     q->endInsertRows();
 
-    emit q->launcherListChanged();
+    Q_EMIT q->launcherListChanged();
 
     return true;
 }
@@ -269,11 +262,11 @@ bool LauncherTasksModel::Private::requestRemoveLauncherFromActivities(const QUrl
             } else if (update) {
                 setActivitiesForLauncher(url, newActivities);
 
-                emit q->dataChanged(q->index(row, 0), q->index(row, 0));
+                Q_EMIT q->dataChanged(q->index(row, 0), q->index(row, 0));
             }
 
             if (remove || update) {
-                emit q->launcherListChanged();
+                Q_EMIT q->launcherListChanged();
                 return true;
             }
         }
@@ -333,6 +326,8 @@ QVariant LauncherTasksModel::data(const QModelIndex &index, int role) const
         return true;
     } else if (role == Activities) {
         return QStringList(d->activitiesForLauncher[url].values());
+    } else if (role == CanLaunchNewInstance) {
+        return false;
     }
 
     return QVariant();
@@ -341,6 +336,18 @@ QVariant LauncherTasksModel::data(const QModelIndex &index, int role) const
 int LauncherTasksModel::rowCount(const QModelIndex &parent) const
 {
     return parent.isValid() ? 0 : d->launchersOrder.count();
+}
+
+int LauncherTasksModel::rowCountForActivity(const QString &activity) const
+{
+    if (activity == NULL_UUID || activity.isEmpty()) {
+        return rowCount();
+    }
+
+    return std::count_if(d->launchersOrder.cbegin(), d->launchersOrder.cend(), [this, &activity](const QUrl &url) {
+        const auto &set = d->activitiesForLauncher[url];
+        return set.contains(NULL_UUID) || set.contains(activity);
+    });
 }
 
 QStringList LauncherTasksModel::launcherList() const
@@ -440,17 +447,56 @@ void LauncherTasksModel::setLauncherList(const QStringList &serializedLaunchers)
         }
     }
 
-    if (newLaunchersOrder != d->launchersOrder || newActivitiesForLauncher != d->activitiesForLauncher) {
-        beginResetModel();
+    if (newLaunchersOrder != d->launchersOrder) {
+        const bool isOrderChanged = std::all_of(newLaunchersOrder.cbegin(),
+                                                newLaunchersOrder.cend(),
+                                                [this](const QUrl &url) {
+                                                    return d->launchersOrder.contains(url);
+                                                })
+            && newLaunchersOrder.size() == d->launchersOrder.size();
 
-        std::swap(newLaunchersOrder, d->launchersOrder);
-        std::swap(newActivitiesForLauncher, d->activitiesForLauncher);
+        if (isOrderChanged) {
+            for (int i = 0; i < newLaunchersOrder.size(); i++) {
+                int oldRow = d->launchersOrder.indexOf(newLaunchersOrder.at(i));
 
-        d->appDataCache.clear();
+                if (oldRow != i) {
+                    beginMoveRows(QModelIndex(), oldRow, oldRow, QModelIndex(), i);
+                    d->launchersOrder.move(oldRow, i);
+                    endMoveRows();
+                }
+            }
+        } else {
+            // Use Remove/Insert to update the manual sort map in TasksModel
+            if (!d->launchersOrder.empty()) {
+                beginRemoveRows(QModelIndex(), 0, d->launchersOrder.size() - 1);
 
-        endResetModel();
+                d->launchersOrder.clear();
+                d->activitiesForLauncher.clear();
 
-        emit launcherListChanged();
+                endRemoveRows();
+            }
+
+            if (!newLaunchersOrder.empty()) {
+                beginInsertRows(QModelIndex(), 0, newLaunchersOrder.size() - 1);
+
+                d->launchersOrder = newLaunchersOrder;
+                d->activitiesForLauncher = newActivitiesForLauncher;
+
+                endInsertRows();
+            }
+        }
+
+        Q_EMIT launcherListChanged();
+
+    } else if (newActivitiesForLauncher != d->activitiesForLauncher) {
+        for (int i = 0; i < d->launchersOrder.size(); i++) {
+            const QUrl &url = d->launchersOrder.at(i);
+
+            if (d->activitiesForLauncher[url] != newActivitiesForLauncher[url]) {
+                d->activitiesForLauncher[url] = newActivitiesForLauncher[url];
+                Q_EMIT dataChanged(index(i, 0), index(i, 0), {Activities});
+            }
+        }
     }
 }
 
@@ -523,14 +569,6 @@ void LauncherTasksModel::requestOpenUrls(const QModelIndex &index, const QList<Q
 
     const QUrl &url = d->launchersOrder.at(index.row());
 
-    quint32 timeStamp = 0;
-
-#if HAVE_X11
-    if (KWindowSystem::isPlatformX11()) {
-        timeStamp = QX11Info::appUserTime();
-    }
-#endif
-
     KService::Ptr service;
 
     if (url.scheme() == QLatin1String("applications")) {
@@ -548,7 +586,7 @@ void LauncherTasksModel::requestOpenUrls(const QModelIndex &index, const QList<Q
     auto *job = new KIO::ApplicationLauncherJob(service);
     job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
     job->setUrls(urls);
-    job->setStartupId(KStartupInfo::createNewStartupIdForTimestamp(timeStamp));
+
     job->start();
 
     KActivities::ResourceInstance::notifyAccessed(QUrl(QStringLiteral("applications:") + service->storageId()), QStringLiteral("org.kde.libtaskmanager"));

@@ -18,6 +18,7 @@
 
 #include <KActionCollection>
 #include <KWindowSystem>
+#include <KX11Extras>
 #include <klocalizedstring.h>
 #include <kwindoweffects.h>
 
@@ -26,6 +27,10 @@
 
 #include <KWayland/Client/plasmashell.h>
 #include <KWayland/Client/surface.h>
+
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 //////////////////////////////PanelConfigView
 PanelConfigView::PanelConfigView(Plasma::Containment *containment, PanelView *panelView, QWindow *parent)
@@ -39,7 +44,7 @@ PanelConfigView::PanelConfigView(Plasma::Containment *containment, PanelView *pa
 
     connect(panelView, &QWindow::screenChanged, &m_screenSyncTimer, QOverload<>::of(&QTimer::start));
     m_screenSyncTimer.setSingleShot(true);
-    m_screenSyncTimer.setInterval(150);
+    m_screenSyncTimer.setInterval(150ms);
     connect(&m_screenSyncTimer, &QTimer::timeout, [=]() {
         setScreen(panelView->screen());
         KWindowSystem::setType(winId(), NET::Dock);
@@ -50,7 +55,7 @@ PanelConfigView::PanelConfigView(Plasma::Containment *containment, PanelView *pa
 
     KWindowSystem::setType(winId(), NET::Dock);
     KWindowSystem::setState(winId(), NET::KeepAbove);
-    KWindowSystem::forceActiveWindow(winId());
+    KX11Extras::forceActiveWindow(winId());
 
     updateBlurBehindAndContrast();
     connect(&m_theme, &Plasma::Theme::themeChanged, this, &PanelConfigView::updateBlurBehindAndContrast);
@@ -177,7 +182,7 @@ void PanelConfigView::syncLocation()
 
         PanelShadows::self()->setEnabledBorders(this, enabledBorders);
 
-        emit enabledBordersChanged();
+        Q_EMIT enabledBordersChanged();
     }
 }
 
@@ -186,9 +191,10 @@ void PanelConfigView::showEvent(QShowEvent *ev)
     QQuickWindow::showEvent(ev);
 
     KWindowSystem::setType(winId(), NET::Dock);
-    setFlags(Qt::WindowFlags((flags() | Qt::FramelessWindowHint) & (~Qt::WindowDoesNotAcceptFocus)));
+    setFlags(Qt::WindowFlags((flags() | Qt::FramelessWindowHint) & (~Qt::WindowDoesNotAcceptFocus)) | Qt::X11BypassWindowManagerHint
+             | Qt::WindowStaysOnTopHint);
     KWindowSystem::setState(winId(), NET::KeepAbove);
-    KWindowSystem::forceActiveWindow(winId());
+    KX11Extras::forceActiveWindow(winId());
     updateBlurBehindAndContrast();
     syncGeometry();
     syncLocation();
@@ -269,7 +275,7 @@ bool PanelConfigView::event(QEvent *e)
 void PanelConfigView::setVisibilityMode(PanelView::VisibilityMode mode)
 {
     m_panelView->setVisibilityMode(mode);
-    emit visibilityModeChanged();
+    Q_EMIT visibilityModeChanged();
 }
 
 PanelView::VisibilityMode PanelConfigView::visibilityMode() const
@@ -280,7 +286,7 @@ PanelView::VisibilityMode PanelConfigView::visibilityMode() const
 void PanelConfigView::setOpacityMode(PanelView::OpacityMode mode)
 {
     m_panelView->setOpacityMode(mode);
-    emit opacityModeChanged();
+    Q_EMIT opacityModeChanged();
 }
 
 PanelView::OpacityMode PanelConfigView::opacityMode() const

@@ -6,10 +6,8 @@
 
 #pragma once
 
+#include <KRunner/AbstractRunner>
 #include <KService>
-
-//#include <KRunner/AbstractRunner>
-#include <krunner/abstractrunner.h>
 
 /**
  * This class looks for matches in the set of .desktop files installed by
@@ -28,9 +26,6 @@ public:
 
     void match(Plasma::RunnerContext &context) override;
     void run(const Plasma::RunnerContext &context, const Plasma::QueryMatch &match) override;
-
-protected Q_SLOTS:
-    QMimeData *mimeDataForMatch(const Plasma::QueryMatch &match) override;
 
 protected:
     void setupMatch(const KService::Ptr &service, Plasma::QueryMatch &action);

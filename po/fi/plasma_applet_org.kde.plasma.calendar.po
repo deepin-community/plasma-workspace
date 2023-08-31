@@ -51,3 +51,23 @@ msgstr "Näytä kuukaudenpäivä"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Näytä viikkonumero"
+
+#~ msgid "Working Day"
+#~ msgstr "Työpäivä"
+
+#~ msgid "Starts at 9"
+#~ msgstr "Alkaa yhdeksältä"
+
+#~ msgid "Ends at 5"
+#~ msgstr "Päättyy viideltä"
+
+#~ msgctxt "What information is shown in the calendar icon"
+#~ msgid "Icon:"
+#~ msgstr "Kuvake:"
+
+#~ msgctxt "Show the number of the day (eg. 31) in the icon"
+#~ msgid "Day in month"
+#~ msgstr "Kuukauden päivä"
+
+#~ msgid "Agenda"
+#~ msgstr "Päivyri"

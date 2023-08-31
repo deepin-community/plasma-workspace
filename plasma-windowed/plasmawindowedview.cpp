@@ -20,8 +20,6 @@
 #include <KLocalizedString>
 #include <KStatusNotifierItem>
 
-#include <Plasma/Package>
-
 PlasmaWindowedView::PlasmaWindowedView(QWindow *parent)
     : QQuickView(parent)
     , m_applet(nullptr)
@@ -176,7 +174,7 @@ void PlasmaWindowedView::mouseReleaseEvent(QMouseEvent *ev)
         return;
     }
 
-    emit m_applet->contextualActionsAboutToShow();
+    Q_EMIT m_applet->contextualActionsAboutToShow();
 
     QMenu menu;
 

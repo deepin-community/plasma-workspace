@@ -74,7 +74,11 @@
 
 #include <KScreenLocker/KsldApp>
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 #include <krandom.h>
 #include <qstandardpaths.h>
 #include <startup_interface.h>
@@ -83,6 +87,17 @@
 #include "kwinsession_interface.h"
 
 #include <updatelaunchenvjob.h>
+
+extern "C" {
+#include <X11/ICE/ICEmsg.h>
+#include <X11/ICE/ICEproto.h>
+#include <X11/ICE/ICEutil.h>
+}
+
+// ICEmsg.h has a static_assert macro, which conflicts with C++'s static_assert.
+#ifdef static_assert
+#undef static_assert
+#endif
 
 KSMServer *the_server = nullptr;
 
@@ -201,7 +216,7 @@ void KSMCloseConnectionProc(SmsConn smsConn, SmPointer managerData, int count, c
         SmFreeReasons(count, reasonMsgs);
     IceConn iceConn = SmsGetIceConnection(smsConn);
     SmsCleanUp(smsConn);
-    IceSetShutdownNegotiation(iceConn, int(QCborSimpleType::False));
+    IceSetShutdownNegotiation(iceConn, false);
     IceCloseConnection(iceConn);
 }
 
@@ -250,8 +265,8 @@ class KSMListener : public QSocketNotifier
 public:
     KSMListener(IceListenObj obj)
         : QSocketNotifier(IceGetListenConnectionNumber(obj), QSocketNotifier::Read)
+        , listenObj(obj)
     {
-        listenObj = obj;
     }
 
     IceListenObj listenObj;
@@ -262,8 +277,8 @@ class KSMConnection : public QSocketNotifier
 public:
     KSMConnection(IceConn conn)
         : QSocketNotifier(IceConnectionNumber(conn), QSocketNotifier::Read)
+        , iceConn(conn)
     {
-        iceConn = conn;
     }
 
     IceConn iceConn;
@@ -457,6 +472,15 @@ static Status KSMNewClientProc(SmsConn conn, SmPointer manager_data, unsigned lo
     *failure_reason_ret = nullptr;
 
     void *client = ((KSMServer *)manager_data)->newClient(conn);
+    if (client == NULL) {
+        const char *errstr = "Connection rejected: ksmserver is shutting down";
+        qCWarning(KSMSERVER, "%s", errstr);
+
+        if ((*failure_reason_ret = (char *)malloc(strlen(errstr) + 1)) != NULL) {
+            strcpy(*failure_reason_ret, errstr);
+        }
+        return 0;
+    }
 
     cb->register_client.callback = KSMRegisterClientProc;
     cb->register_client.manager_data = client;
@@ -674,7 +698,7 @@ void KSMServer::processData(int /*socket*/)
     IceConn iceConn = ((KSMConnection *)sender())->iceConn;
     IceProcessMessagesStatus status = IceProcessMessages(iceConn, nullptr, nullptr);
     if (status == IceProcessMessagesIOError) {
-        IceSetShutdownNegotiation(iceConn, int(QCborSimpleType::False));
+        IceSetShutdownNegotiation(iceConn, false);
         QList<KSMClient *>::iterator it = clients.begin();
         QList<KSMClient *>::iterator const itEnd = clients.end();
         while ((it != itEnd) && *it && (SmsGetIceConnection((*it)->connection()) != iceConn))
@@ -690,8 +714,11 @@ void KSMServer::processData(int /*socket*/)
 
 KSMClient *KSMServer::newClient(SmsConn conn)
 {
-    KSMClient *client = new KSMClient(conn);
-    clients.append(client);
+    KSMClient *client = nullptr;
+    if (state != Killing) {
+        client = new KSMClient(conn);
+        clients.append(client);
+    }
     return client;
 }
 
@@ -721,7 +748,7 @@ void KSMServer::newConnection(int /*socket*/)
     IceConn iceConn = IceAcceptConnection(((KSMListener *)sender())->listenObj, &status);
     if (iceConn == nullptr)
         return;
-    IceSetShutdownNegotiation(iceConn, int(QCborSimpleType::False));
+    IceSetShutdownNegotiation(iceConn, false);
     IceConnectStatus cstatus;
     while ((cstatus = IceConnectionStatus(iceConn)) == IceConnectPending) {
         (void)IceProcessMessages(iceConn, nullptr, nullptr);
@@ -789,7 +816,7 @@ void KSMServer::storeSession()
             continue;
         executeCommand(discardCommand);
     }
-    config->deleteGroup(sessionGroup); //### does not work with global config object...
+    config->deleteGroup(sessionGroup); // ### does not work with global config object...
     KConfigGroup cg(config, sessionGroup);
     count = 0;
 
@@ -858,7 +885,7 @@ void KSMServer::setupShortcuts()
         QAction *a;
         a = actionCollection->addAction(QStringLiteral("Log Out"));
         a->setText(i18n("Log Out"));
-        KGlobalAccel::self()->setGlobalShortcut(a, QList<QKeySequence>() << Qt::ALT + Qt::CTRL + Qt::Key_Delete);
+        KGlobalAccel::self()->setGlobalShortcut(a, QList<QKeySequence>() << (Qt::ALT | Qt::CTRL | Qt::Key_Delete));
         connect(a, &QAction::triggered, this, &KSMServer::defaultLogout);
 
         a = actionCollection->addAction(QStringLiteral("Log Out Without Confirmation"));
@@ -878,16 +905,13 @@ void KSMServer::setupShortcuts()
     }
 }
 
-/*!  Restores the previous session.
- */
-void KSMServer::restoreSession(const QString &sessionName)
+void KSMServer::setRestoreSession(const QString &sessionName)
 {
     if (state != Idle)
         return;
 #ifdef KSMSERVER_STARTUP_DEBUG1
     t.start();
 #endif
-    state = RestoringWMSession;
 
     qCDebug(KSMSERVER) << "KSMServer::restoreSession " << sessionName;
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
@@ -897,15 +921,6 @@ void KSMServer::restoreSession(const QString &sessionName)
 
     int count = configSessionGroup.readEntry("count", 0);
     appsToStart = count;
-
-    auto reply = m_kwinInterface->loadSession(sessionName);
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-        watcher->deleteLater();
-        if (state == RestoringWMSession) {
-            state = Idle;
-        }
-    });
 }
 
 /*!
@@ -915,7 +930,6 @@ void KSMServer::startDefaultSession()
 {
     if (state != Idle)
         return;
-    state = RestoringWMSession;
 #ifdef KSMSERVER_STARTUP_DEBUG1
     t.start();
 #endif
@@ -933,11 +947,20 @@ void KSMServer::restoreSession()
     setDelayedReply(true);
     m_restoreSessionCall = message();
 
-    restoreLegacySession(KSharedConfig::openConfig().data());
     lastAppStarted = 0;
     lastIdStarted.clear();
     state = KSMServer::Restoring;
-    tryRestoreNext();
+
+    auto reply = m_kwinInterface->loadSession(currentSession());
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, reply](QDBusPendingCallWatcher *watcher) {
+        watcher->deleteLater();
+        if (reply.isError()) {
+            qWarning() << "Failed to notify kwin of current session " << reply.error().message();
+        }
+        restoreLegacySession(KSharedConfig::openConfig().data());
+        tryRestoreNext();
+    });
 }
 
 void KSMServer::restoreSubSession(const QString &name)
@@ -1001,9 +1024,9 @@ void KSMServer::tryRestoreNext()
     lastIdStarted.clear();
 
     if (state == Restoring) {
-        emit sessionRestored();
+        Q_EMIT sessionRestored();
     } else { // subsession
-        emit subSessionOpened();
+        Q_EMIT subSessionOpened();
     }
     state = Idle;
 }

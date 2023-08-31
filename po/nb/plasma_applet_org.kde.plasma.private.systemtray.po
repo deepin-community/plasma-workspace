@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2023-01-19 00:59+0000\n"
 "PO-Revision-Date: 2021-03-18 08:08+0100\n"
 "Last-Translator: Jacob Dybvald Ludvigsen <jacob.ludvigsen@protonmail.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -29,11 +29,6 @@ msgstr "Generelt"
 #, kde-format
 msgid "Entries"
 msgstr "Oppføringer"
-
-#: package/contents/ui/ConfigEntries.qml:28
-#, kde-format
-msgid "Always show all entries"
-msgstr "Vis alltid alle oppføringene"
 
 #: package/contents/ui/ConfigEntries.qml:34
 #, kde-format
@@ -60,97 +55,140 @@ msgstr "Styring av maskinvare"
 msgid "Miscellaneous"
 msgstr "Diverse"
 
-#: package/contents/ui/ConfigEntries.qml:75
+#: package/contents/ui/ConfigEntries.qml:89
 #, kde-format
 msgctxt "Name of the system tray entry"
 msgid "Entry"
 msgstr "Oppføring"
 
-#: package/contents/ui/ConfigEntries.qml:80
+#: package/contents/ui/ConfigEntries.qml:94
 #, kde-format
 msgid "Visibility"
 msgstr "Synlighet"
 
-#: package/contents/ui/ConfigEntries.qml:86
+#: package/contents/ui/ConfigEntries.qml:100
 #, kde-format
 msgid "Keyboard Shortcut"
 msgstr "Tastatur-snarvei"
 
-#: package/contents/ui/ConfigEntries.qml:220
+#: package/contents/ui/ConfigEntries.qml:246
 #, kde-format
 msgid "Shown when relevant"
 msgstr "Vis når relevant"
 
-#: package/contents/ui/ConfigEntries.qml:221
+#: package/contents/ui/ConfigEntries.qml:247
 #, kde-format
 msgid "Always shown"
 msgstr "Vis alltid"
 
-#: package/contents/ui/ConfigEntries.qml:222
+#: package/contents/ui/ConfigEntries.qml:248
 #, kde-format
 msgid "Always hidden"
 msgstr "Alltid skjult"
 
-#: package/contents/ui/ConfigEntries.qml:223
+#: package/contents/ui/ConfigEntries.qml:249
 #, kde-format
 msgid "Disabled"
 msgstr "Slått av"
 
-#: package/contents/ui/ConfigGeneral.qml:21
+#: package/contents/ui/ConfigEntries.qml:314
+#, kde-format
+msgid "Always show all entries"
+msgstr "Vis alltid alle oppføringene"
+
+#: package/contents/ui/ConfigGeneral.qml:23
 #, kde-format
 msgctxt "The arrangement of system tray icons in the Panel"
 msgid "Panel icon size:"
 msgstr "Standard ikonstørrelse:"
 
-#: package/contents/ui/ConfigGeneral.qml:23
+#: package/contents/ui/ConfigGeneral.qml:25
 #, kde-format
 msgid "Small"
 msgstr "Liten"
 
-#: package/contents/ui/ConfigGeneral.qml:30
+#: package/contents/ui/ConfigGeneral.qml:32
 #, kde-format
 msgid "Scale with Panel height"
 msgstr "Skaler med panelhøyden"
 
-#: package/contents/ui/ConfigGeneral.qml:31
+#: package/contents/ui/ConfigGeneral.qml:33
 #, kde-format
 msgid "Scale with Panel width"
 msgstr "Skaler med panelbredden"
 
-#: package/contents/ui/ConfigGeneral.qml:37
+#: package/contents/ui/ConfigGeneral.qml:39
 #, kde-format
-msgid "Automatically enabled when in tablet mode"
+msgid "Automatically enabled when in Touch Mode"
 msgstr ""
 
-#: package/contents/ui/ExpandedRepresentation.qml:74
+#: package/contents/ui/ConfigGeneral.qml:48
+#, kde-format
+msgctxt "@label:listbox The spacing between system tray icons in the Panel"
+msgid "Panel icon spacing:"
+msgstr ""
+
+#: package/contents/ui/ConfigGeneral.qml:51
+#, kde-format
+msgctxt "@item:inlistbox Icon spacing"
+msgid "Small"
+msgstr ""
+
+#: package/contents/ui/ConfigGeneral.qml:55
+#, kde-format
+msgctxt "@item:inlistbox Icon spacing"
+msgid "Normal"
+msgstr ""
+
+#: package/contents/ui/ConfigGeneral.qml:59
+#, kde-format
+msgctxt "@item:inlistbox Icon spacing"
+msgid "Large"
+msgstr ""
+
+#: package/contents/ui/ConfigGeneral.qml:82
+#, kde-format
+msgctxt "@info:usagetip under a combobox when Touch Mode is on"
+msgid "Automatically set to Large when in Touch Mode"
+msgstr ""
+
+#: package/contents/ui/ExpandedRepresentation.qml:64
+#, kde-format
+msgctxt "@action:button"
+msgid "Go Back"
+msgstr ""
+
+#: package/contents/ui/ExpandedRepresentation.qml:76
 #, kde-format
 msgid "Status and Notifications"
 msgstr "Status og varslinger"
 
-#: package/contents/ui/ExpandedRepresentation.qml:113
+#: package/contents/ui/ExpandedRepresentation.qml:139
 #, kde-format
 msgid "More actions"
 msgstr "Flere handlinger"
 
-#: package/contents/ui/ExpandedRepresentation.qml:159
+#: package/contents/ui/ExpandedRepresentation.qml:230
 #, kde-format
 msgid "Keep Open"
 msgstr "Hold åpen"
 
-#: package/contents/ui/ExpanderArrow.qml:20
+#: package/contents/ui/ExpanderArrow.qml:23
+#, kde-format
+msgid "Expand System Tray"
+msgstr ""
+
+#: package/contents/ui/ExpanderArrow.qml:24
+#, kde-format
+msgid "Show all the items in the system tray in a popup"
+msgstr ""
+
+#: package/contents/ui/ExpanderArrow.qml:37
 #, kde-format
 msgid "Close popup"
 msgstr "Lukk sprettoppvindu"
 
-#: package/contents/ui/ExpanderArrow.qml:20
+#: package/contents/ui/ExpanderArrow.qml:37
 #, kde-format
 msgid "Show hidden icons"
 msgstr "Vis skjulte ikoner"
-
-#: systemtraymodel.cpp:124
-#, kde-format
-msgctxt ""
-"Suffix added to the applet name if the applet is autoloaded via DBus "
-"activation"
-msgid "%1 (Automatic load)"
-msgstr "%1 (Automatisk lastet)"

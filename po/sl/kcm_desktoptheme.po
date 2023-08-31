@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_desktopthemedetails\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2021-05-27 09:38+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -22,31 +22,11 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Andrej Vernekar,Andrej Mernik,Matjaž Jeran"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "andrej.vernekar@moj.net,andrejm@ubuntu.si,matjaz.jeran@amis.net"
-
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
 #, kde-format
 msgid "Name of the current Plasma Style"
 msgstr "Ime trenutnega sloga Plazme"
-
-#: kcm.cpp:51
-#, kde-format
-msgid "Plasma Style"
-msgstr "Slog Plazme"
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr "David Rosca"
 
 #: kcm.cpp:110
 #, kde-format
@@ -68,7 +48,7 @@ msgstr "Tema je bila uspešno nameščena."
 msgid "Theme installation failed."
 msgstr "Namestitev teme je spodletela."
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr "Ni bilo mogoče odstraniti teme: %1"
@@ -128,12 +108,12 @@ msgstr "Namesti iz datoteke…"
 msgid "Get New Plasma Styles…"
 msgstr "Dobi sloge Plazme…"
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgid "Open Theme"
 msgstr "Odpri temo"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr "Datoteke s temami (*.zip *.tar.gz *.tar.bz2)"
@@ -189,3 +169,278 @@ msgstr ""
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
 msgstr "V sistemu imate naslednje teme Plasme:"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Andrej Vernekar,Andrej Mernik,Matjaž Jeran"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "andrej.vernekar@moj.net,andrejm@ubuntu.si,matjaz.jeran@amis.net"
+
+#~ msgid "Plasma Style"
+#~ msgstr "Slog Plazme"
+
+#~ msgid "David Rosca"
+#~ msgstr "David Rosca"
+
+#~ msgid "Search..."
+#~ msgstr "Išči..."
+
+#~ msgid "Plasma Styles"
+#~ msgstr "Slogi Plazme"
+
+#~| msgid "Configure Desktop Theme"
+#~ msgid "Download New Plasma Styles"
+#~ msgstr "Prenesi nove sloge Plazme"
+
+#~ msgid "Configure Desktop Theme"
+#~ msgstr "Nastavi namizno temo"
+
+#~ msgid "Theme removal failed."
+#~ msgstr "Odstranitev teme je spodletela."
+
+#~ msgid ""
+#~ "<h1>Desktop Theme</h1>This module allows you to modify the visual "
+#~ "appearance of the desktop."
+#~ msgstr ""
+#~ "<h1>Tema za namizje</h1> Ta modul vam omogoča prilagoditi videz namizja."
+
+#~ msgid "KDE Desktop Theme Module"
+#~ msgstr "Modul teme za KDE-jevo namizje"
+
+#~ msgid "(c) 2002 Karol Szwed, Daniel Molkentin"
+#~ msgstr "© 2002 Karol Szwed, Daniel Molkentin"
+
+#~ msgid "Theme installation failed. (%1)"
+#~ msgstr "Namestitev teme je spodletela. (%1)"
+
+#~ msgid "Details"
+#~ msgstr "Podrobnosti"
+
+#~ msgctxt "plasma name"
+#~ msgid "Panel Background"
+#~ msgstr "Ozadje pulta"
+
+#~ msgctxt "plasma name"
+#~ msgid "Kickoff"
+#~ msgstr "Kickoff"
+
+#~ msgctxt "plasma name"
+#~ msgid "Task Items"
+#~ msgstr "Gumbi opravil"
+
+#~ msgctxt "plasma name"
+#~ msgid "Widget Background"
+#~ msgstr "Ozadje gradnika"
+
+#~ msgctxt "plasma name"
+#~ msgid "Translucent Background"
+#~ msgstr "Prosojno ozadje"
+
+#~ msgctxt "plasma name"
+#~ msgid "Dialog Background"
+#~ msgstr "Ozadje pogovornega okna"
+
+#~ msgctxt "plasma name"
+#~ msgid "Analog Clock"
+#~ msgstr "Analogna ura"
+
+#~ msgctxt "plasma name"
+#~ msgid "Notes"
+#~ msgstr "Sporočilca"
+
+#~ msgctxt "plasma name"
+#~ msgid "Tooltip"
+#~ msgstr "Orodni namig"
+
+#~ msgctxt "plasma name"
+#~ msgid "Pager"
+#~ msgstr "Pozivnik"
+
+#~ msgctxt "plasma name"
+#~ msgid "Run Command Dialog"
+#~ msgstr "Pogovorno okno za zaganjanje ukazov"
+
+#~ msgctxt "plasma name"
+#~ msgid "Shutdown Dialog"
+#~ msgstr "Pogovorno okno za izklop"
+
+#~ msgctxt "plasma name"
+#~ msgid "Icons"
+#~ msgstr "Ikone"
+
+#~ msgid "(Customized)"
+#~ msgstr "(prilagojeno)"
+
+#~ msgid "User customized theme"
+#~ msgstr "Uporabniško prilagojena tema"
+
+#~ msgid ""
+#~ "Theme items have been changed.  Do you still wish remove the \"%1\" theme?"
+#~ msgstr ""
+#~ "Deli teme so bili spremenjeni. Ali še vedno želite odstraniti temo »%1«?"
+
+#~ msgid "Removal of the default desktop theme is not allowed."
+#~ msgstr "Odstranitev privzete teme za namizje ni dovoljena."
+
+#~ msgid "Are you sure you wish remove the \"%1\" theme?"
+#~ msgstr "Ali res želite odstraniti temo »%1«?"
+
+#~ msgid ""
+#~ "Please apply theme item changes (with a new theme name) before attempting "
+#~ "to export theme."
+#~ msgstr ""
+#~ "Preden poskusite izvoziti temo, uveljavite spremembe (z novim imenom za "
+#~ "temo)."
+
+#~ msgid "Export Desktop Theme"
+#~ msgstr "Izvozi namizno temo"
+
+#~ msgid "Export theme to file"
+#~ msgstr "Izvozi temo v datoteko"
+
+#~ msgid "Archive (*.zip)"
+#~ msgstr "Arhiv (*.zip)"
+
+#~ msgid "Theme Item"
+#~ msgstr "Predmet teme"
+
+#~ msgid "Source"
+#~ msgstr "Vir"
+
+#~ msgctxt ""
+#~ "%1 is the name of the theme, %2 is the type of the element (background, "
+#~ "icon, note, etc)"
+#~ msgid "%1 %2"
+#~ msgstr "%2 za temo %1"
+
+#~ msgid "File..."
+#~ msgstr "Datoteka ..."
+
+#~ msgid "Select File to Use for %1"
+#~ msgstr "Izberite datoteko, ki bo uporabljena za %1"
+
+#~ msgid " Author: %1"
+#~ msgstr " Avtor: %1"
+
+#~ msgid "Version: %1"
+#~ msgstr "Različica: %1"
+
+#~ msgid "Desktop Theme Details"
+#~ msgstr "Podrobnosti namizne teme"
+
+#~ msgid "Choose an item and customize it by assigning it a theme"
+#~ msgstr "Izberite predmet in ga prilagodite s tem, da mu dodelite temo"
+
+#~ msgid ""
+#~ "You can set any theme to any item. The available themes for the item are "
+#~ "in the dropdown box on the right."
+#~ msgstr ""
+#~ "Kateremkoli predmetu lahko priredite katerokoli temo. Razpoložljive teme "
+#~ "za predmet so v spustnem seznamu na desni."
+
+#~ msgid "Enable more options"
+#~ msgstr "Omogoči dodatne možnosti"
+
+#~ msgid ""
+#~ "This will expand the dialog and give you options to export your custom "
+#~ "theme as well as to remove a theme."
+#~ msgstr ""
+#~ "To razširi pogovorno okno in razkrije možnosti za izvoz teme po meri ter "
+#~ "odstranitev teme."
+
+#~ msgid "More"
+#~ msgstr "Več"
+
+#~ msgid "Remove the selected theme"
+#~ msgstr "Odstrani izbrano temo"
+
+#~ msgid ""
+#~ "Clicking this button will remove the selected theme. You will be asked "
+#~ "for confirmation."
+#~ msgstr ""
+#~ "S klikom na ta gumb odstranite izbrano temo. Odstranitev boste morali "
+#~ "potrditi."
+
+#~ msgid "Save your theme in a zip archive"
+#~ msgstr "Shranite svojo temo v arhiv ZIP"
+
+#~ msgid ""
+#~ "You can save your theme in a zip archive in order to share it with the "
+#~ "community."
+#~ msgstr "Svojo temo lahko shranite v arhiv ZIP in jo delite s skupnostjo."
+
+#~ msgid "Export Theme to File..."
+#~ msgstr "Izvozi temo v datoteko ..."
+
+#~ msgid "New theme name:"
+#~ msgstr "Ime nove teme:"
+
+#~ msgid "Custom theme name"
+#~ msgstr "Ime teme po meri"
+
+#~ msgid "Give a name to your custom theme."
+#~ msgstr "Svoji temi po meri dajte ime."
+
+#~ msgid "Author:"
+#~ msgstr "Avtor:"
+
+#~ msgid "Custom theme author "
+#~ msgstr "Avtor teme po meri "
+
+#~ msgid "Enter the author name of your custom theme."
+#~ msgstr "Vnesite ime avtorja teme po meri."
+
+#~ msgid "Version:"
+#~ msgstr "Različica:"
+
+#~ msgid "Custom theme version number"
+#~ msgstr "Številka različice teme po meri"
+
+#~ msgid "Enter the version number of your custom theme."
+#~ msgstr "Vnesite številko različice svoje teme po meri."
+
+#~ msgid "Description:"
+#~ msgstr "Opis:"
+
+#~ msgid "Custom theme description"
+#~ msgstr "Opis teme po meri"
+
+#~ msgid "Enter a description which will explain your custom theme."
+#~ msgstr "Vnesite opis, ki razlaga vašo temo po meri."
+
+#~ msgid "Select theme from above to customize"
+#~ msgstr "Zgoraj izberite temo za prilagoditi"
+
+#~ msgid "Theme Author"
+#~ msgstr "Avtor teme"
+
+#~ msgid "Theme Name"
+#~ msgstr "Ime teme"
+
+#~ msgid "Theme Version"
+#~ msgstr "Različica teme"
+
+#~ msgid "The theme description goes here..."
+#~ msgstr "Sem spada opis teme ..."
+
+#~ msgid ""
+#~ "Choose a start theme in this list then customize some items below. All "
+#~ "less important items not listed below will use this start theme."
+#~ msgstr ""
+#~ "S tega seznama izberite začetno temo in nato spodaj prilagodite nekaj "
+#~ "predmetov. Vsi manj pomembni predmeti, ki niso na spodnjem seznamu, bodo "
+#~ "uporabili začetno temo."
+
+#~ msgid "Karol Szwed"
+#~ msgstr "Karol Szwed"
+
+#~ msgid "Daniel Molkentin"
+#~ msgstr "Daniel Molkentin"
+
+#~ msgid "Ralf Nolden"
+#~ msgstr "Ralf Nolden"
+
+#~ msgid "KCMDesktopTheme"
+#~ msgstr "KCMDesktopTheme"

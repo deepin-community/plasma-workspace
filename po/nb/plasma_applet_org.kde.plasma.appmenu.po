@@ -1,11 +1,11 @@
 # Translation of plasma_applet_org.kde.plasma.appmenu to Norwegian Bokmål
 #
-# Øystein Steffensen-Alværvik <ystein@posteo.net>, 2018.
+# Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-09-22 00:47+0000\n"
 "PO-Revision-Date: 2018-06-27 19:03+0100\n"
 "Last-Translator: Øystein Steffensen-Alværvik <ystein@posteo.net>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -34,12 +34,18 @@ msgstr "Bruk enkeltknapp for programmeny"
 msgid "Show full application menu"
 msgstr "Vis full programmeny"
 
-#: plugin/appmenumodel.cpp:85
+#: package/contents/ui/MenuDelegate.qml:62
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Open a menu"
+msgstr ""
+
+#: plugin/appmenumodel.cpp:84
 #, kde-format
 msgid "Search"
 msgstr ""
 
-#: plugin/appmenumodel.cpp:92
+#: plugin/appmenumodel.cpp:91
 #, kde-format
 msgid "Search…"
 msgstr ""

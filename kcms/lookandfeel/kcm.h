@@ -3,6 +3,7 @@
     SPDX-FileCopyrightText: 2014 Vishesh Handa <me@vhanda.in>
     SPDX-FileCopyrightText: 2019 Cyril Rossi <cyril.rossi@enioka.com>
     SPDX-FileCopyrightText: 2021 Benjamin Port <benjamin.port@enioka.com>
+    SPDX-FileCopyrightText: 2022 Dominic Hayes <ferenosdev@outlook.com>
 
     SPDX-License-Identifier: LGPL-2.0-only
 */
@@ -20,17 +21,20 @@
 #include <KPackage/Package>
 #include <KQuickAddons/ManagedConfigModule>
 
+#include "lookandfeelmanager.h"
 #include "lookandfeelsettings.h"
 
 class QQuickItem;
-class LookAndFeelData;
+class LookAndFeelManager;
 
 class KCMLookandFeel : public KQuickAddons::ManagedConfigModule
 {
     Q_OBJECT
     Q_PROPERTY(LookAndFeelSettings *lookAndFeelSettings READ lookAndFeelSettings CONSTANT)
     Q_PROPERTY(QStandardItemModel *lookAndFeelModel READ lookAndFeelModel CONSTANT)
-    Q_PROPERTY(bool resetDefaultLayout READ resetDefaultLayout WRITE setResetDefaultLayout NOTIFY resetDefaultLayoutChanged)
+    Q_PROPERTY(LookAndFeelManager::AppearanceToApply appearanceToApply READ appearanceToApply WRITE setAppearanceToApply NOTIFY appearanceToApplyChanged RESET
+                   resetAppearanceToApply)
+    Q_PROPERTY(LookAndFeelManager::LayoutToApply layoutToApply READ layoutToApply WRITE setLayoutToApply NOTIFY layoutToApplyChanged RESET resetLayoutToApply)
 
 public:
     enum Roles {
@@ -42,6 +46,10 @@ public:
         HasLockScreenRole,
         HasRunCommandRole,
         HasLogoutRole,
+        HasGlobalThemeRole,
+        HasLayoutSettingsRole,
+        HasDesktopLayoutRole,
+        HasTitlebarLayoutRole,
         HasColorsRole,
         HasWidgetStyleRole,
         HasIconsRole,
@@ -49,42 +57,38 @@ public:
         HasCursorsRole,
         HasWindowSwitcherRole,
         HasDesktopSwitcherRole,
+        HasWindowDecorationRole,
+        HasFontsRole,
     };
+    Q_ENUM(Roles)
 
-    KCMLookandFeel(QObject *parent, const QVariantList &args);
+    KCMLookandFeel(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
     ~KCMLookandFeel() override;
 
     LookAndFeelSettings *lookAndFeelSettings() const;
     QStandardItemModel *lookAndFeelModel() const;
 
     Q_INVOKABLE int pluginIndex(const QString &pluginName) const;
-
-    bool resetDefaultLayout() const;
-    void setResetDefaultLayout(bool reset);
-
-    // Setters of the various theme pieces
-    void setWidgetStyle(const QString &style);
-    void setColors(const QString &scheme, const QString &colorFile);
-    void setIcons(const QString &theme);
-    void setPlasmaTheme(const QString &theme);
-    void setCursorTheme(const QString theme);
-    void setSplashScreen(const QString &theme);
-    void setLockScreen(const QString &theme);
-    void setWindowSwitcher(const QString &theme);
-    void setDesktopSwitcher(const QString &theme);
-    void setWindowDecoration(const QString &library, const QString &theme);
-    void setWindowPlacement(const QString &value);
-    void setShellPackage(const QString &name);
-
     Q_INVOKABLE void knsEntryChanged(KNSCore::EntryWrapper *wrapper);
     Q_INVOKABLE void reloadConfig()
     {
         ManagedConfigModule::load();
     }
 
+    LookAndFeelManager *lookAndFeel() const
+    {
+        return m_lnf;
+    };
     void addKPackageToModel(const KPackage::Package &pkg);
 
     bool isSaveNeeded() const override;
+
+    LookAndFeelManager::AppearanceToApply appearanceToApply() const;
+    void setAppearanceToApply(LookAndFeelManager::AppearanceToApply items);
+    void resetAppearanceToApply();
+    LookAndFeelManager::LayoutToApply layoutToApply() const;
+    void setLayoutToApply(LookAndFeelManager::LayoutToApply items);
+    void resetLayoutToApply();
 
 public Q_SLOTS:
     void load() override;
@@ -92,52 +96,21 @@ public Q_SLOTS:
     void defaults() override;
 
 Q_SIGNALS:
-    void resetDefaultLayoutChanged();
+    void showConfirmation();
+    void appearanceToApplyChanged();
+    void layoutToApplyChanged();
 
 private:
     // List only packages which provide at least one of the components
     QList<KPackage::Package> availablePackages(const QStringList &components);
     void loadModel();
     QDir cursorThemeDir(const QString &theme, const int depth);
-    const QStringList cursorSearchPaths();
+    QStringList cursorSearchPaths();
+    void cursorsChanged(const QString &name);
 
-    void revertKeyIfNeeded(KConfigGroup &group, KConfigGroup &home, KConfigGroup &defaults);
+    LookAndFeelManager *const m_lnf;
 
-    void writeNewDefaults(const QString &filename,
-                          const QString &group,
-                          const QString &key,
-                          const QString &value,
-                          KConfig::WriteConfigFlags writeFlags = KConfig::Normal);
-    void writeNewDefaults(KConfig &config,
-                          KConfig &configDefault,
-                          const QString &group,
-                          const QString &key,
-                          const QString &value,
-                          KConfig::WriteConfigFlags writeFlags = KConfig::Normal);
-    void
-    writeNewDefaults(KConfigGroup &cg, KConfigGroup &cgd, const QString &key, const QString &value, KConfig::WriteConfigFlags writeFlags = KConfig::Normal);
-
-    static KConfig configDefaults(const QString &filename);
-
-    LookAndFeelData *m_data;
     QStandardItemModel *m_model;
     KPackage::Package m_package;
     QStringList m_cursorSearchPaths;
-
-    KSharedConfig::Ptr m_config;
-    KConfigGroup m_configGroup;
-
-    bool m_applyColors : 1;
-    bool m_applyWidgetStyle : 1;
-    bool m_applyIcons : 1;
-    bool m_applyPlasmaTheme : 1;
-    bool m_applyCursors : 1;
-    bool m_applyWindowSwitcher : 1;
-    bool m_applyDesktopSwitcher : 1;
-    bool m_applyWindowPlacement : 1 = true;
-    bool m_applyShellPackage : 1 = true;
-    bool m_resetDefaultLayout : 1;
-    bool m_applyWindowDecoration : 1;
-
-    bool m_plasmashellChanged = false;
 };

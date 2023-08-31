@@ -27,6 +27,7 @@ enum {
     ActionListRole,
     UrlRole,
     DisabledRole,
+    IsMultilineTextRole,
 };
 
 QVariantMap createActionItem(const QString &label, const QString &icon, const QString &actionId, const QVariant &argument = QVariant());
@@ -44,7 +45,7 @@ bool handleAddLauncherAction(const QString &actionId, QObject *appletInterface, 
 QVariantList jumpListActions(KService::Ptr service);
 QVariantList systemSettingsActions();
 
-QVariantList recentDocumentActions(KService::Ptr service);
+QVariantList recentDocumentActions(const KService::Ptr &service);
 bool handleRecentDocumentAction(KService::Ptr service, const QString &actionId, const QVariant &argument);
 
 bool canEditApplication(const QString &entryPath);
@@ -53,7 +54,10 @@ QVariantList editApplicationAction(const KService::Ptr &service);
 bool handleEditApplicationAction(const QString &actionId, const KService::Ptr &service);
 
 QVariantList appstreamActions(const KService::Ptr &service);
-bool handleAppstreamActions(const QString &actionId, const QVariant &argument);
+bool handleAppstreamActions(const QString &actionId, const KService::Ptr &service);
+
+QVariantList additionalAppActions(const KService::Ptr &service);
+bool handleAdditionalAppActions(const QString &actionId, const KService::Ptr &service, const QVariant &argument);
 
 QString resolvedServiceEntryPath(const KService::Ptr &service);
 

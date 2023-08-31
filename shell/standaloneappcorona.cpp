@@ -6,10 +6,12 @@
 */
 
 #include "standaloneappcorona.h"
+#include "debug.h"
 #include "panelview.h"
 
 #include <QAction>
 #include <QDebug>
+#include <QFile>
 #include <QQuickItem>
 
 #include <KActionCollection>
@@ -118,7 +120,7 @@ void StandaloneAppCorona::loadDefaultLayout()
         WorkspaceScripting::ScriptEngine scriptEngine(this);
 
         connect(&scriptEngine, &WorkspaceScripting::ScriptEngine::printError, this, [](const QString &msg) {
-            qWarning() << msg;
+            qCWarning(PLASMASHELL) << msg;
         });
         connect(&scriptEngine, &WorkspaceScripting::ScriptEngine::print, this, [](const QString &msg) {
             qDebug() << msg;
@@ -151,7 +153,7 @@ void StandaloneAppCorona::activityAdded(const QString &id)
 {
     // TODO more sanity checks
     if (m_activityContainmentPlugins.contains(id)) {
-        qWarning() << "Activity added twice" << id;
+        qCWarning(PLASMASHELL) << "Activity added twice" << id;
         return;
     }
 

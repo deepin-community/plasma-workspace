@@ -4,13 +4,13 @@
 #
 # Malcolm Hunter <malcolm.hunter@gmx.co.uk>, 2008.
 # Andrew Coles <andrew_coles@yahoo.co.uk>, 2009.
-# Steve Allewell <steve.allewell@gmail.com>, 2014, 2019.
+# Steve Allewell <steve.allewell@gmail.com>, 2014, 2019, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2019-03-24 19:34+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
+"PO-Revision-Date: 2022-08-07 11:18+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
 "Language: en_GB\n"
@@ -18,12 +18,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.07.70\n"
+"X-Generator: Lokalize 22.04.3\n"
 
 #: contents/config/config.qml:13
 #, kde-format
 msgid "Appearance"
 msgstr "Appearance"
+
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr "Current time is %1; Current date is %2"
 
 #: contents/ui/configGeneral.qml:23
 #, kde-format
@@ -39,3 +45,41 @@ msgstr "General:"
 #, kde-format
 msgid "Show time zone"
 msgstr "Show time zone"
+
+#~ msgid "Show the seconds"
+#~ msgstr "Show the seconds"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "Check this if you want to show the seconds."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "Show &seconds hand"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "Show the Timezone in text"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "Check this if you want to display Timezone in text."
+
+#~ msgid "Show &time zone"
+#~ msgstr "Show &time zone"
+
+#, fuzzy
+#~| msgid "Also show the time as text"
+#~ msgid "Also show the Timezone as text"
+#~ msgstr "Also show the time as text"
+
+#~ msgid "Timezones"
+#~ msgstr "Timezones"
+
+#~ msgid "Use &local timezone"
+#~ msgstr "Use &local timezone"
+
+#~ msgid "Area"
+#~ msgstr "Area"
+
+#~ msgid "Region"
+#~ msgstr "Region"
+
+#~ msgid "Comment"
+#~ msgstr "Comment"

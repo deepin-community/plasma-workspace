@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_cursortheme\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-10 00:47+0000\n"
 "PO-Revision-Date: 2021-06-08 19:40+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -14,31 +14,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-POFile-IgnoreConsistency: Name\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "José Nuno Pires"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "zepires@gmail.com"
-
 #. i18n: ectx: label, entry (name), group (Theme)
 #: desktopthemesettings.kcfg:9
 #, kde-format
 msgid "Name of the current Plasma Style"
 msgstr "Nome do estilo actual do Plasma"
-
-#: kcm.cpp:51
-#, kde-format
-msgid "Plasma Style"
-msgstr "Estilo do Plasma"
-
-#: kcm.cpp:52
-#, kde-format
-msgid "David Rosca"
-msgstr "David Rosca"
 
 #: kcm.cpp:110
 #, kde-format
@@ -60,7 +40,7 @@ msgstr "O tema foi instalado com sucesso."
 msgid "Theme installation failed."
 msgstr "Não foi possível instalar o tema."
 
-#: kcm.cpp:247
+#: kcm.cpp:257
 #, kde-format
 msgid "Removing theme failed: %1"
 msgstr "Não foi possível remover o tema: %1"
@@ -120,12 +100,12 @@ msgstr "Instalar de um Ficheiro…"
 msgid "Get New Plasma Styles…"
 msgstr "Obter Novos Estilos do Plasma…"
 
-#: package/contents/ui/main.qml:224
+#: package/contents/ui/main.qml:193
 #, kde-format
 msgid "Open Theme"
 msgstr "Abrir um Tema"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:195
 #, kde-format
 msgid "Theme Files (*.zip *.tar.gz *.tar.bz2)"
 msgstr "Ficheiros de Temas (*.zip *.tar.gz *.tar.bz2)"
@@ -183,3 +163,17 @@ msgstr ""
 #, kde-format
 msgid "You have the following Plasma themes on your system:"
 msgstr "Tem os seguintes temas do Plasma no seu sistema:"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "José Nuno Pires"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "zepires@gmail.com"
+
+#~ msgid "Plasma Style"
+#~ msgstr "Estilo do Plasma"
+
+#~ msgid "David Rosca"
+#~ msgstr "David Rosca"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krunner_sessions\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2020-02-01 12:19+0000\n"
+"POT-Creation-Date: 2022-12-17 11:11+0000\n"
+"PO-Revision-Date: 2022-12-18 12:09+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -12,69 +12,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: sessionrunner.cpp:28 sessionrunner.cpp:64
+#: sessionrunner.cpp:23
 #, kde-format
-msgctxt "log out command"
-msgid "logout"
-msgstr "encerrar"
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to log out of the "
+"session"
+msgid "logout;log out"
+msgstr "encerrar;sair"
 
-#: sessionrunner.cpp:28
+#: sessionrunner.cpp:26
 #, kde-format
 msgid "Logs out, exiting the current desktop session"
 msgstr "Encerra, terminando a sessão do ambiente de trabalho actual"
 
-#: sessionrunner.cpp:29 sessionrunner.cpp:81
+#: sessionrunner.cpp:33
 #, kde-format
-msgctxt "shut down computer command"
-msgid "shut down"
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to shut down the "
+"computer"
+msgid "shutdown;shut down"
 msgstr "desligar"
 
-#: sessionrunner.cpp:29
+#: sessionrunner.cpp:36
 #, kde-format
 msgid "Turns off the computer"
 msgstr "Desliga o computador"
 
-#: sessionrunner.cpp:33 sessionrunner.cpp:90
+#: sessionrunner.cpp:43
 #, kde-format
-msgctxt "lock screen command"
-msgid "lock"
-msgstr "bloquear"
-
-#: sessionrunner.cpp:33
-#, kde-format
-msgid "Locks the current sessions and starts the screen saver"
-msgstr "Bloqueia as sessões actuais e inicia o protector de ecrã"
-
-#: sessionrunner.cpp:36 sessionrunner.cpp:72
-#, kde-format
-msgctxt "restart computer command"
-msgid "restart"
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to restart the "
+"computer"
+msgid "restart;reboot"
 msgstr "reiniciar"
 
-#: sessionrunner.cpp:36
+#: sessionrunner.cpp:46
 #, kde-format
 msgid "Reboots the computer"
 msgstr "Reinicia o computador"
 
-#: sessionrunner.cpp:37 sessionrunner.cpp:73
+#: sessionrunner.cpp:54
 #, kde-format
-msgctxt "restart computer command"
-msgid "reboot"
-msgstr "reiniciar"
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to lock the screen"
+msgid "lock;lock screen"
+msgstr "bloquear;bloquear o ecrã"
 
-#: sessionrunner.cpp:40
+#: sessionrunner.cpp:56
 #, kde-format
-msgctxt "switch user command"
+msgid "Locks the current sessions and starts the screen saver"
+msgstr "Bloqueia as sessões actuais e inicia o protector de ecrã"
+
+#: sessionrunner.cpp:63
+#, kde-format
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to save the "
+"desktop session"
+msgid "save;save session"
+msgstr "gravar;gravar a sessão"
+
+#: sessionrunner.cpp:66
+#, kde-format
+msgid "Saves the current session for session restoration"
+msgstr "Gravar a sessão actual para a reposição da mesma"
+
+#: sessionrunner.cpp:73
+#, kde-format
+msgctxt ""
+"KRunner keywords (split by semicolons without whitespace) to switch user "
+"sessions"
+msgid "switch user;new session"
+msgstr "mudar de utilizador;nova sessão"
+
+#: sessionrunner.cpp:76
+#, kde-format
+msgid "Starts a new session as a different user"
+msgstr "Inicia uma sessão nova como outro utilizador"
+
+#: sessionrunner.cpp:83
+#, kde-format
+msgctxt "KRunner keyword to list user sessions"
+msgid "sessions"
+msgstr "sessões"
+
+#: sessionrunner.cpp:84
+#, kde-format
+msgid "Lists all sessions"
+msgstr "Apresenta todas as sessões"
+
+#: sessionrunner.cpp:87
+#, kde-format
+msgctxt "KRunner keyword to switch user sessions"
 msgid "switch"
 msgstr "mudar"
 
-#: sessionrunner.cpp:41
-#, kde-format
-msgctxt "switch user command"
-msgid "switch :q:"
-msgstr "mudar para :q:"
-
-#: sessionrunner.cpp:42
+#: sessionrunner.cpp:89
 #, kde-format
 msgid ""
 "Switches to the active session for the user :q:, or lists all active "
@@ -83,88 +115,56 @@ msgstr ""
 "Muda para a sessão activa do utilizador :q:, ou apresenta todas as sessões "
 "activas caso o :q: não seja indicado"
 
-#: sessionrunner.cpp:45 sessionrunner.cpp:130
-#, kde-format
-msgid "switch user"
-msgstr "mudar de utilizador"
-
-#: sessionrunner.cpp:45
-#, kde-format
-msgid "Starts a new session as a different user"
-msgstr "Inicia uma sessão nova como outro utilizador"
-
-#: sessionrunner.cpp:46 sessionrunner.cpp:130
-#, kde-format
-msgid "new session"
-msgstr "nova sessão"
-
-#: sessionrunner.cpp:50
-#, kde-format
-msgid "Lists all sessions"
-msgstr "Apresenta todas as sessões"
-
-#: sessionrunner.cpp:64
-#, kde-format
-msgid "log out"
-msgstr "encerrar"
-
-#: sessionrunner.cpp:66
+#: sessionrunner.cpp:111
 #, kde-format
 msgctxt "log out command"
-msgid "Logout"
+msgid "Log Out"
 msgstr "Encerrar"
 
-#: sessionrunner.cpp:75
+#: sessionrunner.cpp:121
 #, kde-format
-msgid "Restart the computer"
-msgstr "Reiniciar o computador"
+msgctxt "turn off computer command"
+msgid "Shut Down"
+msgstr "Desligar"
 
-#: sessionrunner.cpp:82
+#: sessionrunner.cpp:131
 #, kde-format
-msgctxt "shut down computer command"
-msgid "shutdown"
-msgstr "desligar"
+msgctxt "restart computer command"
+msgid "Restart"
+msgstr "Reiniciar"
 
-#: sessionrunner.cpp:84
+#: sessionrunner.cpp:141
 #, kde-format
-msgid "Shut down the computer"
-msgstr "Desligar o computador"
+msgctxt "lock screen command"
+msgid "Lock"
+msgstr "Bloquear"
 
-#: sessionrunner.cpp:93
+#: sessionrunner.cpp:151
 #, kde-format
-msgid "Lock the screen"
-msgstr "Bloquear o ecrã"
+msgid "Save Session"
+msgstr "Gravar a Sessão"
 
-#: sessionrunner.cpp:115
+#: sessionrunner.cpp:194
 #, kde-format
-msgctxt "User sessions"
-msgid "sessions"
-msgstr "sessões"
+msgid "Switch User"
+msgstr "Mudar de Utilizador"
 
-#: sessionrunner.cpp:136
-#, kde-format
-msgid "New Session"
-msgstr "Nova Sessão"
-
-#: sessionrunner.cpp:211
-#, kde-format
-msgid "Warning - New Session"
-msgstr "Aviso - Nova Sessão"
-
-#: sessionrunner.cpp:212
+#: sessionrunner.cpp:278
 #, kde-format
 msgid ""
-"<p>You have chosen to open another desktop session.<br />The current session "
-"will be hidden and a new login screen will be displayed.<br />An F-key is "
-"assigned to each session; F%1 is usually assigned to the first session, F%2 "
-"to the second session and so on. You can switch between sessions by pressing "
-"Ctrl, Alt and the appropriate F-key at the same time. Additionally, the "
-"Plasma Panel and Desktop menus have actions for switching between sessions.</"
-"p>"
+"<p>You are about to enter a new desktop session.</p><p>A login screen will "
+"be displayed and the current session will be hidden.</p><p>You can switch "
+"between desktop sessions using:</p><ul><li>Ctrl+Alt+F{number of session}</"
+"li><li>Plasma search (type '%1')</li><li>Plasma widgets (such as the "
+"application launcher)</li></ul>"
 msgstr ""
-"<p>Escolheu iniciar outra sessão.<br/>A sessão actual será escondida e será "
-"mostrado um novo ecrã de autenticação.<br/>É atribuída uma tecla de função a "
-"cada sessão; F%1 é normalmente atribuída à primeira sessão, F%2 à segunda "
-"sessão e assim por diante. Pode mudar de sessão carregando ao mesmo tempo em "
-"Ctrl, Alt e tecla de função respectiva. Para além disso, o Painel do Plasma "
-"e os menus dos Ecrãs têm acções para mudar de sessões.</p>"
+"<p>Está prestes a entrar numa nova sessão do ambiente de trabalho.</"
+"p><p>Será apresentado um ecrã de autenticação e a sessão actual ficará "
+"escondida.</p><p>Poderá mudar de sessões do ambiente de trabalho se usar:</"
+"p><ul><li>Ctrl+Alt+F{número da sessão}</li><li>Pesquisar no Plasma (escreva "
+"'%1')</li><li>Elementos do Plasma (como o lançador de aplicações)</li></ul>"
+
+#: sessionrunner.cpp:287
+#, kde-format
+msgid "New Desktop Session"
+msgstr "Nova Sessão do Ambiente de Trabalho"

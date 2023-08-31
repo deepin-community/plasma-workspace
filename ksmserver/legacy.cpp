@@ -15,7 +15,11 @@
 
 #include <QDebug>
 #include <QElapsedTimer>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 
 #include <config-workspace.h>
 
@@ -30,6 +34,7 @@
 #include <unistd.h>
 
 #include <KSharedConfig>
+#include <KX11Extras>
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <kshell.h>
@@ -88,7 +93,7 @@ void KSMServer::performLegacySessionSave()
         wm_client_leader = atoms[2];
         sm_client_id = atoms[3];
     }
-    const QList<WId> windows = KWindowSystem::windows();
+    const QList<WId> windows = KX11Extras::windows();
     for (QList<WId>::ConstIterator it = windows.begin(); it != windows.end(); ++it) {
         WId leader = windowWmClientLeader(*it);
         if (!legacyWindows.contains(leader) && windowSessionId(*it, leader).isEmpty()) {

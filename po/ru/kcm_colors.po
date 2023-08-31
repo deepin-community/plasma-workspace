@@ -13,20 +13,20 @@
 # Yuri Efremov <yur.arh@gmail.com>, 2010.
 # Julia Dronova <juliette.tux@gmail.com>, 2012.
 # Yaroslav Sidlovsky <zawertun@gmail.com>, 2019.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2019, 2020, 2021.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmcolors\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
-"PO-Revision-Date: 2021-09-26 13:25+0300\n"
+"POT-Creation-Date: 2023-02-22 02:35+0000\n"
+"PO-Revision-Date: 2022-09-23 23:00+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.1\n"
+"X-Generator: Lokalize 21.08.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -44,42 +44,32 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "shaforostoff@kde.ru,zawertun@gmail.com"
 
-#: colors.cpp:65 editor/scmeditordialog.cpp:66
-#, kde-format
-msgid "Colors"
-msgstr "Цвета"
-
-#: colors.cpp:67
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "Kai Uwe Broulik"
-
-#: colors.cpp:192
+#: colors.cpp:235
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr "Не удалось создать временный файл."
 
-#: colors.cpp:205
+#: colors.cpp:248
 #, kde-format
 msgid "Unable to download the color scheme: %1"
 msgstr "Не удалось загрузить с сервера цветовую схему: %1"
 
-#: colors.cpp:223
+#: colors.cpp:266
 #, kde-format
 msgid "This file is not a color scheme file."
 msgstr "Это не файл цветовой схемы."
 
-#: colors.cpp:242
+#: colors.cpp:285
 #, kde-format
 msgid "Failed to create 'color-scheme' data folder."
 msgstr "Не удалось создать папку «color-scheme»."
 
-#: colors.cpp:249
+#: colors.cpp:292
 #, kde-format
 msgid "Failed to copy color scheme into 'color-scheme' data folder."
 msgstr "Не удалось скопировать цветовую схему в папку «color-scheme»."
 
-#: colors.cpp:266
+#: colors.cpp:309
 #, kde-format
 msgid "Color scheme installed successfully."
 msgstr "Цветовая схема успешно установлена."
@@ -96,49 +86,64 @@ msgstr "Название цветовой схемы"
 msgid "Accent color"
 msgstr "Цвет выделения"
 
-#: editor/kcolorschemeeditor.cpp:23
+#. i18n: ectx: label, entry (lastUsedCustomAccentColor), group (General)
+#: colorssettings.kcfg:17
+#, kde-format
+msgid ""
+"The last used custom accent color before user switched to wallpaper "
+"generated color or default color"
+msgstr ""
+"Последний использованный до переключения на цвет обоев или по умолчанию"
+
+#. i18n: ectx: label, entry (accentColorFromWallpaper), group (General)
+#: colorssettings.kcfg:21
+#, kde-format
+msgid "Whether accent color from wallpaper should be applied"
+msgstr "Определять цвет выделения на основе обоев"
+
+#: editor/kcolorschemeeditor.cpp:25
 #, kde-format
 msgid "KColorSchemeEditor"
 msgstr "KColorSchemeEditor"
 
-#: editor/kcolorschemeeditor.cpp:25
+#: editor/kcolorschemeeditor.cpp:27
 #, kde-format
 msgid "Utility to edit and create color schemes"
 msgstr "Программа для создания и редактирования цветовых схем"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Olivier Churlaud"
 msgstr "Olivier Churlaud"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Utility creation"
 msgstr "Автор программы"
 
-#: editor/kcolorschemeeditor.cpp:28
+#: editor/kcolorschemeeditor.cpp:30
 #, kde-format
 msgid "Jeremy Whiting"
 msgstr "Джереми Уайтинг (Jeremy Whiting)"
 
-#: editor/kcolorschemeeditor.cpp:28 editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:30 editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "KCM code (reused in here)"
 msgstr ""
 "Исходный код модуля настройки цветовых схем, который частично используется в "
 "этой программе"
 
-#: editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Мэттью Вёлке (Matthew Woehlke)"
 
-#: editor/kcolorschemeeditor.cpp:33
+#: editor/kcolorschemeeditor.cpp:35
 #, kde-format
 msgid "Scheme to edit or to use as a base."
 msgstr "Открываемая цветовая схема."
 
-#: editor/kcolorschemeeditor.cpp:35
+#: editor/kcolorschemeeditor.cpp:37
 #, kde-format
 msgid ""
 "Show 'Apply' button that saves changes without asking (unlike 'Save As' "
@@ -147,13 +152,13 @@ msgstr ""
 "Показывать кнопку «Применить», при нажатии которой, в отличии от кнопки "
 "«Сохранить как», сохранение выполняется без дополнительных запросов."
 
-#: editor/kcolorschemeeditor.cpp:39
+#: editor/kcolorschemeeditor.cpp:41
 #, kde-format
 msgid ""
 "Makes the dialog transient for another application window specified by handle"
 msgstr "Привязать диалог к окну приложения с указанным идентификатором окна."
 
-#: editor/kcolorschemeeditor.cpp:55
+#: editor/kcolorschemeeditor.cpp:57
 #, kde-format
 msgid "Scheme not found, falling back to current one.\n"
 msgstr ""
@@ -651,49 +656,42 @@ msgstr "Текст заголовка неактивного окна"
 msgid "Inactive Titlebar Secondary"
 msgstr "Вторичный заголовок неактивного окна"
 
-#: editor/scmeditordialog.cpp:65
+#: editor/scmeditordialog.cpp:60
 #, kde-format
 msgid "Options"
 msgstr "Параметры"
 
-#: editor/scmeditordialog.cpp:67
+#: editor/scmeditordialog.cpp:61
+#, kde-format
+msgid "Colors"
+msgstr "Цвета"
+
+#: editor/scmeditordialog.cpp:62
 #, kde-format
 msgid "Disabled"
 msgstr "Недоступные"
 
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "This colour scheme was not saved. Continue?"
-msgstr ""
-"Вы отредактировали цветовую схему, но не сохранили её.\n"
-"Продолжить публикацию?"
-
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "Do you really want to upload?"
-msgstr "Публикация цветовой схемы"
-
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:94
 #, kde-format
 msgid "You have unsaved changes. Do you really want to quit?"
 msgstr "Имеются несохранённые изменения. Закрыть окно, не сохранив их?"
 
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:95
 #, kde-format
 msgid "Unsaved changes"
 msgstr "Несохранённые изменения"
 
-#: editor/scmeditordialog.cpp:133 editor/scmeditordialog.cpp:158
+#: editor/scmeditordialog.cpp:115 editor/scmeditordialog.cpp:140
 #, kde-format
 msgid "Save Color Scheme"
 msgstr "Сохранить цветовую схему"
 
-#: editor/scmeditordialog.cpp:133
+#: editor/scmeditordialog.cpp:115
 #, kde-format
 msgid "&Enter a name for the color scheme:"
 msgstr "&Название цветовой схемы:"
 
-#: editor/scmeditordialog.cpp:157
+#: editor/scmeditordialog.cpp:139
 #, kde-format
 msgid ""
 "A color scheme with that name already exists.\n"
@@ -702,32 +700,20 @@ msgstr ""
 "Цветовая схема с этим названием уже существует.\n"
 "Хотите заменить её?"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "You do not have permission to overwrite that scheme"
 msgstr "Недостаточно прав, чтобы заменить эту схему"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "Error"
 msgstr "Ошибка"
 
-#: editor/scmeditordialog.cpp:209
+#: editor/scmeditordialog.cpp:191
 #, kde-format
 msgid "Inactive"
 msgstr "Неактивные"
-
-#. i18n: ectx: property (toolTip), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:42
-#, kde-format
-msgid "Share the selected scheme on the Internet"
-msgstr "Опубликовать выбранную схему в Интернете"
-
-#. i18n: ectx: property (text), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:45
-#, kde-format
-msgid "Upload Scheme"
-msgstr "Опубликовать схему..."
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: editor/scmeditoreffects.ui:17
@@ -884,32 +870,50 @@ msgstr "Из&менять цвет неактивного выделения"
 msgid "Shade sorted column &in lists"
 msgstr "Выделять &столбец, по которому отсортирован список"
 
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (text), widget (QCheckBox, tintColors)
 #: editor/scmeditoroptions.ui:38
+#, kde-format
+msgid "Tint all colors with accent color"
+msgstr "Использовать цвет выделения для тонирования"
+
+#. i18n: ectx: property (text), widget (QCheckBox, accentTitlebar)
+#: editor/scmeditoroptions.ui:45
+#, kde-format
+msgid "Make window titlebars a&ccent-colored"
+msgstr "Применять цвет &выделения для заголовков окон"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: editor/scmeditoroptions.ui:52
+#, kde-format
+msgid "Tint strength:"
+msgstr "Насыщенность тонирования"
+
+#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#: editor/scmeditoroptions.ui:69
 #, kde-format
 msgid "Shading of frames and lighting (\"3D\") effects"
 msgstr "Отрисовка рамок и рельефных эффектов элементов интерфейса"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:41
+#: editor/scmeditoroptions.ui:72
 #, kde-format
 msgid "Shading"
 msgstr "Обработка полутонов"
 
-#. i18n: ectx: property (text), widget (QLabel, label_9)
-#: editor/scmeditoroptions.ui:53
-#, kde-format
-msgid "Minimum"
-msgstr "Низкая"
-
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: editor/scmeditoroptions.ui:73
+#: editor/scmeditoroptions.ui:97
 #, kde-format
 msgid "Maximum"
 msgstr "Высокая"
 
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: editor/scmeditoroptions.ui:117
+#, kde-format
+msgid "Minimum"
+msgstr "Низкая"
+
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: editor/scmeditoroptions.ui:80
+#: editor/scmeditoroptions.ui:124
 #, kde-format
 msgid "Contrast"
 msgstr "Контрастность"
@@ -1195,82 +1199,93 @@ msgstr "В соответствии с выбранной цветовой сх�
 
 #: package/contents/ui/main.qml:157
 #, kde-format
+msgctxt "@option:radio wallpaper accent color option"
+msgid "From current wallpaper"
+msgstr "В соответствии с выбранными обоями"
+
+#: package/contents/ui/main.qml:266
+#, kde-format
 msgid "Custom:"
 msgstr "Другой:"
 
-#: package/contents/ui/main.qml:268
+#: package/contents/ui/main.qml:273
+#, kde-format
+msgid "Choose custom accent color"
+msgstr "Выбор цвета выделения"
+
+#: package/contents/ui/main.qml:361
 #, kde-format
 msgid "Window Title"
 msgstr "Заголовок окна"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:383
 #, kde-format
 msgid "Window text"
 msgstr "Текст в окне"
 
-#: package/contents/ui/main.qml:297
+#: package/contents/ui/main.qml:390
 #, kde-format
 msgid "Button"
 msgstr "Кнопка"
 
-#: package/contents/ui/main.qml:331
+#: package/contents/ui/main.qml:427
 #, kde-format
 msgctxt "Hyperlink"
 msgid "link"
 msgstr "ссылка"
 
-#: package/contents/ui/main.qml:333
+#: package/contents/ui/main.qml:429
 #, kde-format
 msgctxt "Visited hyperlink"
 msgid "visited"
 msgstr "посещённая ссылка"
 
-#: package/contents/ui/main.qml:340
+#: package/contents/ui/main.qml:436
 #, kde-format
 msgid "Normal text"
 msgstr "Обычный текст"
 
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:444
 #, kde-format
 msgid "Highlighted text"
 msgstr "Подсвеченный текст"
 
-#: package/contents/ui/main.qml:355
+#: package/contents/ui/main.qml:451
 #, kde-format
 msgid "Disabled text"
 msgstr "Недоступный текст"
 
-#: package/contents/ui/main.qml:373
+#: package/contents/ui/main.qml:469
 #, kde-format
 msgid "Edit Color Scheme…"
 msgstr "Изменить цветовую схему..."
 
-#: package/contents/ui/main.qml:379
+#: package/contents/ui/main.qml:475
 #, kde-format
 msgid "Remove Color Scheme"
 msgstr "Удалить цветовую схему"
 
-#: package/contents/ui/main.qml:386
+#: package/contents/ui/main.qml:482
 #, kde-format
 msgid "Restore Color Scheme"
 msgstr "Восстановить цветовую схему"
 
-#: package/contents/ui/main.qml:430
+#: package/contents/ui/main.qml:526
 #, kde-format
 msgid "Install from File…"
 msgstr "Установить из файла..."
 
-#: package/contents/ui/main.qml:435
+#: package/contents/ui/main.qml:531
 #, kde-format
 msgid "Get New Color Schemes…"
 msgstr "Загрузить цветовые схемы..."
 
-#: package/contents/ui/main.qml:486
+#: package/contents/ui/main.qml:549
 #, kde-format
 msgid "Open Color Scheme"
 msgstr "Открыть цветовую схему"
 
-#: package/contents/ui/main.qml:488
+#: package/contents/ui/main.qml:551
 #, kde-format
 msgid "Color Scheme Files (*.colors)"
 msgstr "Файлы цветовых схем (*.colors)"
@@ -1294,26 +1309,38 @@ msgstr ""
 "Цветовая схема для использования в Plasma (при передаче полного пути в "
 "качестве параметра, будет использована только его завершающая часть)"
 
-#: plasma-apply-colorscheme.cpp:45
+#: plasma-apply-colorscheme.cpp:46
 #, kde-format
 msgid ""
 "Show all the color schemes available on the system (and which is the current "
 "theme)"
 msgstr "Просмотр используемой цветовой схемы и списка доступных цветовых схем"
 
-#: plasma-apply-colorscheme.cpp:69
+#: plasma-apply-colorscheme.cpp:51
+#, kde-format
+msgid ""
+"The name of the accent color you want to set. SVG color names (https://www."
+"w3.org/TR/SVG11/types.html#ColorKeywords) and hex color codes are supported. "
+"Quote the hex code if there is possibility of shell expansion"
+msgstr ""
+"Название цвета выделения. Для описания цвета возможно использовать названия "
+"цветов SVG (https://www.w3.org/TR/SVG11/types.html#ColorKeywords) и "
+"шестнадцатеричные коды цветов. Заключите значение цвета в кавычки для "
+"исключения возможности его обработки оболочкой."
+
+#: plasma-apply-colorscheme.cpp:78
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
 "Plasma session."
 msgstr "Цветовая схема «%1» уже используется в Plasma."
 
-#: plasma-apply-colorscheme.cpp:92
+#: plasma-apply-colorscheme.cpp:111
 #, kde-format
 msgid "Successfully applied the color scheme %1 to your current Plasma session"
 msgstr "Цветовая схема %1 успешно задана для использования в Plasma"
 
-#: plasma-apply-colorscheme.cpp:94
+#: plasma-apply-colorscheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
@@ -1322,26 +1349,449 @@ msgstr ""
 "Не удалось найти цветовую схему «%1». Необходимо указать одну из следующих "
 "схем: %2"
 
-#: plasma-apply-colorscheme.cpp:101
+#: plasma-apply-colorscheme.cpp:120
 #, kde-format
 msgid ""
 "You have managed to pass an empty color scheme name, which isn't supported "
 "behavior."
 msgstr "Выбор пустой цветовой схемы не поддерживается."
 
-#: plasma-apply-colorscheme.cpp:105
+#: plasma-apply-colorscheme.cpp:124
 #, kde-format
 msgid ""
 "The file you attempted to set as your scheme, %1, could not be identified as "
 "a color scheme."
 msgstr "Указанный файл «%1» не является файлов цветовой схемы."
 
-#: plasma-apply-colorscheme.cpp:110
+#: plasma-apply-colorscheme.cpp:147
+#, kde-format
+msgid "Successfully applied the accent color %1"
+msgstr "Цвет выделения %1 успешно назначен."
+
+#: plasma-apply-colorscheme.cpp:149
+#, kde-format
+msgid "Invalid accent color "
+msgstr "Недопустимый цвет выделения "
+
+#: plasma-apply-colorscheme.cpp:154
 #, kde-format
 msgid "You have the following color schemes on your system:"
 msgstr "В системе установлены следующие цветовые схемы:"
 
-#: plasma-apply-colorscheme.cpp:115
+#: plasma-apply-colorscheme.cpp:159
 #, kde-format
 msgid " * %1 (current color scheme)"
 msgstr " * %1 (текущая цветовая схема)"
+
+#~ msgid "Apply a&ccent color to active window titlebars"
+#~ msgstr "Применять цвет выделения для заголовков &активных окон"
+
+#~ msgid "Apply acce&nt color to inactive window titlebars"
+#~ msgstr "Применять цвет выделения для заголовков &неактивных окон"
+
+#~ msgid "Kai Uwe Broulik"
+#~ msgstr "Kai Uwe Broulik"
+
+#~ msgid "This colour scheme was not saved. Continue?"
+#~ msgstr ""
+#~ "Вы отредактировали цветовую схему, но не сохранили её.\n"
+#~ "Продолжить публикацию?"
+
+#~ msgid "Do you really want to upload?"
+#~ msgstr "Публикация цветовой схемы"
+
+#~ msgid "Share the selected scheme on the Internet"
+#~ msgstr "Опубликовать выбранную схему в Интернете"
+
+#~ msgid "Upload Scheme"
+#~ msgstr "Опубликовать схему..."
+
+#~ msgid "Search..."
+#~ msgstr "Поиск..."
+
+#~ msgid "Download New Color Schemes"
+#~ msgstr "Загрузить &цветовые схемы..."
+
+#~ msgid "Edit..."
+#~ msgstr "Изменить..."
+
+#~ msgid "Remove the selected scheme"
+#~ msgstr "Удалить выбранную схему"
+
+#~ msgid "Remove"
+#~ msgstr "Удалить"
+
+#~ msgid "Import a color scheme from a file"
+#~ msgstr "Импорт схемы из файла"
+
+#~ msgid "&Install from File..."
+#~ msgstr "&Установить из файла..."
+
+#~ msgid "Get new color schemes from the Internet"
+#~ msgstr "Загрузка схем из Интернета"
+
+#~ msgid "Get &New Color Schemes..."
+#~ msgstr "Загрузить &цветовые схемы..."
+
+#~ msgid "Apply colors to &non-Qt applications"
+#~ msgstr "Применять указанные цвета к приложениям &не на Qt"
+
+#~ msgid "Overwrite edited theme when saving"
+#~ msgstr "Заменять отредактированную цветовую схему при сохранении."
+
+#~ msgid "(c) 2007 Matthew Woehlke"
+#~ msgstr "© Мэттью Вёлке (Matthew Woehlke), 2007"
+
+#~ msgctxt "Default color scheme"
+#~ msgid "Default"
+#~ msgstr "Схема по умолчанию"
+
+#~ msgctxt "Current color scheme"
+#~ msgid "Current"
+#~ msgstr "Текущая схема"
+
+#~ msgid "You do not have permission to delete that scheme"
+#~ msgstr "Недостаточно прав, чтобы удалить эту схему"
+
+#~ msgid ""
+#~ "The scheme you have selected appears to be a KDE3 scheme.\n"
+#~ "\n"
+#~ "This is not supported anymore."
+#~ msgstr ""
+#~ "Выбранная цветовая схема была создана для KDE 3.\n"
+#~ "\n"
+#~ "Теперь этот формат является устаревшим и не поддерживается."
+
+#~ msgid "Notice"
+#~ msgstr "Уведомление"
+
+#~ msgid "In&active selection changes color"
+#~ msgstr "Неактивное &выделение меняет цвет"
+
+#~ msgid "This scheme was not found."
+#~ msgstr "Выбранная цветовая схема не найдена."
+
+#~ msgid "File not found"
+#~ msgstr "Файл не найден"
+
+#~ msgid "Selecting another scheme will discard any changes you have made"
+#~ msgstr "Выбор другой схемы отменит все сделанные изменения"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Уверены?"
+
+#~ msgid ""
+#~ "The scheme you have selected appears to be a KDE3 scheme.\n"
+#~ "\n"
+#~ "KDE will attempt to import this scheme, however many color roles have "
+#~ "been added since KDE3. Some manual work will likely be required.\n"
+#~ "\n"
+#~ "This scheme will not be saved automatically."
+#~ msgstr ""
+#~ "Похоже, выбранная схема является схемой KDE3.\n"
+#~ "\n"
+#~ "KDE попытается импортировать эту схему, но со времени KDE3 было добавлено "
+#~ "много элементов для выбора цвета. Вероятно, потребуется ручная правка.\n"
+#~ "\n"
+#~ "Эта схема не будет сохранена автоматически."
+
+#~ msgid "Please save the color scheme before uploading it."
+#~ msgstr "Сохраните цветовую схему перед публикацией."
+
+#~ msgid "Please save"
+#~ msgstr "Выполните сохранение"
+
+#~ msgid "Import Scheme..."
+#~ msgstr "Импорт схемы..."
+
+#~ msgid "Save Scheme..."
+#~ msgstr "Сохранить схему..."
+
+#~ msgid "Preview"
+#~ msgstr "Предварительный просмотр"
+
+#~ msgctxt "@title:tab color transformations on inactive elements"
+#~ msgid "Inactive"
+#~ msgstr "Неактивные"
+
+#~ msgid "Inactive intensity effect type"
+#~ msgstr "Интенсивность неактивных окон"
+
+#~ msgctxt "no inactive intensity effect"
+#~ msgid "None"
+#~ msgstr "Без изменений"
+
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Shade"
+#~ msgstr "Затенить"
+
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Darken"
+#~ msgstr "Затемнить"
+
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Lighten"
+#~ msgstr "Осветлить"
+
+#~ msgid "Inactive intensity effect amount"
+#~ msgstr "Степень интенсивности неактивных окон"
+
+#~ msgid "Inactive color effect type"
+#~ msgstr "Цветность неактивных окон"
+
+#~ msgctxt "no inactive color effect"
+#~ msgid "None"
+#~ msgstr "Без изменений"
+
+#~ msgctxt "inactive color effect"
+#~ msgid "Desaturate"
+#~ msgstr "Убрать насыщенность"
+
+#~ msgctxt "inactive color effect"
+#~ msgid "Fade"
+#~ msgstr "Затухание"
+
+#~ msgctxt "inactive color effect"
+#~ msgid "Tint"
+#~ msgstr "Тонировать"
+
+#~ msgid "Inactive color amount"
+#~ msgstr "Степень цветности неактивных окон"
+
+#~ msgid "Inactive contrast effect type"
+#~ msgstr "Контрастность неактивных окон"
+
+#~ msgctxt "no inactive contrast effect"
+#~ msgid "None"
+#~ msgstr "Без изменений"
+
+#~ msgctxt "inactive contrast effect"
+#~ msgid "Fade"
+#~ msgstr "Затухание"
+
+#~ msgctxt "inactive contrast effect"
+#~ msgid "Tint"
+#~ msgstr "Тонировать"
+
+#~ msgid "Inactive contrast effect amount"
+#~ msgstr "Степень контрастности неактивных окон"
+
+#~ msgid "Contrast used for 3D objects"
+#~ msgstr "Сделать объёмные элементы более контрастными"
+
+#~ msgid "&Save..."
+#~ msgstr "&Сохранить..."
+
+#~ msgid "Rem&ove"
+#~ msgstr "У&далить"
+
+#~ msgid "I&mport..."
+#~ msgstr "&Импорт..."
+
+#~ msgid "&Effects"
+#~ msgstr "&Эффекты"
+
+#~ msgid ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Your names"
+#~ msgstr "Григорий Мохин"
+
+#~ msgid ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "Your emails"
+#~ msgstr "mok@kde.ru"
+
+#~ msgid ""
+#~ "<h1>Colors</h1> This module allows you to choose the color scheme used "
+#~ "for the KDE desktop. The different elements of the desktop, such as title "
+#~ "bars, menu text, etc., are called \"widgets\". You can choose the widget "
+#~ "whose color you want to change by selecting it from a list, or by "
+#~ "clicking on a graphical representation of the desktop.<p> You can save "
+#~ "color settings as complete color schemes, which can also be modified or "
+#~ "deleted. KDE comes with several predefined color schemes on which you can "
+#~ "base your own.<p> All KDE applications will obey the selected color "
+#~ "scheme. Non-KDE applications may also obey some or all of the color "
+#~ "settings, if this option is enabled."
+#~ msgstr ""
+#~ "<h1>Цвета</h1>В этом модуле вы можете настроить цветовые схемы, "
+#~ "используемые для рабочего стола KDE. Различные части рабочего стола, "
+#~ "такие как заголовки, текст меню и т. д. - это элементы графического "
+#~ "интерфейса. Вы можете указать элемент, цвет которого хотите изменить, "
+#~ "выбрав его из списка или щёлкнув мышкой на соответствующем элементе в "
+#~ "представлении рабочего стола.<p> Вы можете сохранять набор настроек "
+#~ "цветов как полную цветовую схему, которую также можно будет удалить или "
+#~ "изменить. В KDE уже существует несколько готовых схем, на основе которых "
+#~ "вы можете настроить свою собственную. <p> Все приложения KDE будут "
+#~ "отображаться согласно выбранной цветовой схеме. Приложения не из KDE "
+#~ "могут использовать часть параметров или все параметры текущей цветовой "
+#~ "схемы, если включена эта опция."
+
+#~ msgid ""
+#~ "This is a preview of the color settings which will be applied if you "
+#~ "click \"Apply\" or \"OK\". You can click on different parts of this "
+#~ "preview image. The widget name in the \"Widget color\" box will change to "
+#~ "reflect the part of the preview image you clicked."
+#~ msgstr ""
+#~ "На этой панели вы можете предварительно просмотреть, как будут выглядеть "
+#~ "различные графические элементы интерфейса, если вы нажмете на \"Применить"
+#~ "\". Вы можете выбирать мышкой разные части картинки, при этом имя "
+#~ "элемента в списке \"Цвет элемента\" будет также изменяться в соответствии "
+#~ "с вашим выбором элемента на изображении."
+
+#~ msgid ""
+#~ "This is a list of predefined color schemes, including any that you may "
+#~ "have created. You can preview an existing color scheme by selecting it "
+#~ "from the list. The current scheme will be replaced by the selected color "
+#~ "scheme.<p> Warning: if you have not yet applied any changes you may have "
+#~ "made to the current scheme, those changes will be lost if you select "
+#~ "another color scheme."
+#~ msgstr ""
+#~ "Это список существующих цветовых схем, включая ваши собственные, которые "
+#~ "вы сами создали. Вы можете просмотреть каждую, выбирая их из списка. "
+#~ "Текущая цветовая схема будет заменена на выбранную вами.<p> Внимание: "
+#~ "если вы не сохранили изменения, то все изменения в текущей цветовой схеме "
+#~ "будут потеряны, если вы выберете другую схему."
+
+#~ msgid ""
+#~ "Press this button if you want to save the current color settings as a "
+#~ "color scheme. You will be prompted for a name."
+#~ msgstr ""
+#~ "Нажмите эту кнопку, если вы желаете сохранить текущие цветовые настройки "
+#~ "как цветовую схему. Далее вы сможете задать имя схемы."
+
+#~ msgid ""
+#~ "Press this button to remove the selected color scheme. Note that this "
+#~ "button is disabled if you do not have permission to delete the color "
+#~ "scheme."
+#~ msgstr ""
+#~ "Нажмите эту кнопку, чтобы удалить выбранную цветовую схему. Если эта "
+#~ "кнопка не работает, то у вас нет прав на удаление цветовой схемы."
+
+#~ msgid ""
+#~ "Press this button to import a new color scheme. Note that the color "
+#~ "scheme will only be available for the current user."
+#~ msgstr ""
+#~ "Нажмите эту кнопку, чтобы импортировать новую цветовую схему. Примечание: "
+#~ "эта цветовая схема будет доступна только текущему пользователю."
+
+#~ msgid "&Widget Color"
+#~ msgstr "Цвет &виджетов"
+
+#~ msgid "Inactive Title Blend"
+#~ msgstr "Оттенок неактивного заголовка"
+
+#~ msgid "Active Title Blend"
+#~ msgstr "Оттенок активного заголовка"
+
+#~ msgid "Standard Background"
+#~ msgstr "Фон"
+
+#~ msgid "Standard Text"
+#~ msgstr "Обычный текст"
+
+#~ msgid "Active Title Button"
+#~ msgstr "Кнопка в активном заголовке"
+
+#~ msgid "Active Window Frame"
+#~ msgstr "Границы активного окна"
+
+#~ msgid "Active Window Handle"
+#~ msgstr "Рукоятка активного окна"
+
+#~ msgid "Inactive Window Frame"
+#~ msgstr "Границы неактивного окна"
+
+#~ msgid "Inactive Window Handle"
+#~ msgstr "Рукоятка неактивного окна"
+
+#~ msgid "Link"
+#~ msgstr "Ссылка"
+
+#~ msgid "Followed Link"
+#~ msgstr "Посещенная ссылка"
+
+#~ msgid ""
+#~ "Click here to select an element of the KDE desktop whose color you want "
+#~ "to change. You may either choose the \"widget\" here, or click on the "
+#~ "corresponding part of the preview image above."
+#~ msgstr ""
+#~ "Выберите элемент графического интерфейса рабочего стола KDE (\"widget\"), "
+#~ "цвет которого хотите изменить. Элемент можно выбрать из списка или нажав "
+#~ "на него мышкой на картинке предварительного просмотра."
+
+#~ msgid ""
+#~ "Click here to bring up a dialog box where you can choose a color for the "
+#~ "\"widget\" selected in the above list."
+#~ msgstr ""
+#~ "Нажмите здесь, чтобы открыть окно диалога выбора цвета для текущего "
+#~ "элемента из списка."
+
+#~ msgid ""
+#~ "Check this box to show the sorted column in a list with a shaded "
+#~ "background"
+#~ msgstr ""
+#~ "Столбец, по которому отсортирован список, будет выделен другим цветом фона"
+
+#~ msgid ""
+#~ "Use this slider to change the contrast level of the current color scheme. "
+#~ "Contrast does not affect all of the colors, only the edges of 3D objects."
+#~ msgstr ""
+#~ "Используйте этот движок для изменения контрастности текущей цветовой "
+#~ "схемы. Изменение контраста влияет только на края трехмерных объектов, а "
+#~ "не на все цвета."
+
+#~ msgid ""
+#~ "_: Low Contrast\n"
+#~ "Low"
+#~ msgstr "Низкий"
+
+#~ msgid ""
+#~ "_: High Contrast\n"
+#~ "High"
+#~ msgstr "Высокий"
+
+#~ msgid ""
+#~ "Check this box to apply the current color scheme to non-KDE applications."
+#~ msgstr ""
+#~ "Установите этот параметр, чтобы применить текущую схему к приложениям не "
+#~ "из KDE."
+
+#~ msgid "(c) 1997-2005 Colors Developers"
+#~ msgstr "(c) 1997-2005 Colors Developers"
+
+#~ msgid ""
+#~ "This color scheme could not be removed.\n"
+#~ "Perhaps you do not have permission to alter the filesystem where the "
+#~ "color scheme is stored."
+#~ msgstr ""
+#~ "Данная цветовая схема не может быть удалена.\n"
+#~ "Возможно, у вас нет прав на изменение файлов, в которых хранятся цветовые "
+#~ "схемы."
+
+#~ msgid "Overwrite"
+#~ msgstr "Переписать"
+
+#~ msgid "Import failed."
+#~ msgstr "Ошибка импорта."
+
+#~ msgid "Untitled Theme"
+#~ msgstr "Безымянная схема"
+
+#~ msgid "Active window"
+#~ msgstr "Активное окно"
+
+#~ msgid "Standard text"
+#~ msgstr "Обычный текст"
+
+#~ msgid "followed link"
+#~ msgstr "Посещенная ссылка"
+
+#~ msgid ""
+#~ "_: Menu item\n"
+#~ "Open"
+#~ msgstr "Открыть"
+
+#~ msgid ""
+#~ "_: Menu item\n"
+#~ "Save"
+#~ msgstr "Сохранить"

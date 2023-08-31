@@ -20,6 +20,8 @@
 #include <Baloo/IndexerConfig>
 #include <Baloo/Query>
 
+#include <KIO/JobUiDelegate>
+#include <KIO/JobUiDelegateFactory>
 #include <KIO/OpenFileManagerWindowJob>
 #include <KIO/OpenUrlJob>
 #include <KNotificationJobUiDelegate>
@@ -31,10 +33,6 @@ static const QString s_openParentDirId = QStringLiteral("openParentDir");
 
 int main(int argc, char **argv)
 {
-    Baloo::IndexerConfig config;
-    if (!config.fileIndexingEnabled()) {
-        return -1;
-    }
     QCoreApplication::setAttribute(Qt::AA_DisableSessionManager);
     QApplication::setQuitOnLastWindowClosed(false);
     QApplication app(argc, argv); // KRun needs widgets for error message boxes
@@ -60,11 +58,21 @@ SearchRunner::~SearchRunner()
 
 RemoteActions SearchRunner::Actions()
 {
+    Baloo::IndexerConfig config;
+    if (!config.fileIndexingEnabled()) {
+        sendErrorReply(QDBusError::ErrorType::NotSupported);
+    }
     return RemoteActions({RemoteAction{s_openParentDirId, i18n("Open Containing Folder"), QStringLiteral("document-open-folder")}});
 }
 
 RemoteMatches SearchRunner::Match(const QString &searchTerm)
 {
+    Baloo::IndexerConfig config;
+    if (!config.fileIndexingEnabled()) {
+        sendErrorReply(QDBusError::ErrorType::NotSupported);
+        return {};
+    }
+
     // Do not try to show results for queries starting with =
     // this should trigger the calculator, but the AdvancedQueryParser::parse method
     // in baloo interpreted it as an operator, BUG 345134
@@ -84,6 +92,7 @@ RemoteMatches SearchRunner::Match(const QString &searchTerm)
     matches << matchInternal(searchTerm, QStringLiteral("Folder"), i18n("Folder"), foundUrls);
     matches << matchInternal(searchTerm, QStringLiteral("Document"), i18n("Document"), foundUrls);
     matches << matchInternal(searchTerm, QStringLiteral("Archive"), i18n("Archive"), foundUrls);
+    matches << matchInternal(searchTerm, QStringLiteral("Text"), i18n("Text"), foundUrls);
 
     return matches;
 }
@@ -123,7 +132,11 @@ RemoteMatches SearchRunner::matchInternal(const QString &searchTerm, const QStri
         match.text = url.fileName();
         match.iconName = mimeDb.mimeTypeForFile(localUrl).iconName();
         match.relevance = relevance;
-        match.type = Plasma::QueryMatch::PossibleMatch;
+        match.type =
+            url.fileName().compare(searchTerm, Qt::CaseInsensitive) == 0 || QFileInfo(url.fileName()).baseName().compare(searchTerm, Qt::CaseInsensitive) == 0
+            ? Plasma::QueryMatch::ExactMatch
+            : url.fileName().contains(searchTerm, Qt::CaseInsensitive) ? Plasma::QueryMatch::PossibleMatch
+                                                                       : Plasma::QueryMatch::CompletionMatch;
         QVariantMap properties;
 
         QString folderPath = url.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash).toLocalFile();
@@ -151,7 +164,7 @@ void SearchRunner::Run(const QString &id, const QString &actionId)
     }
 
     auto *job = new KIO::OpenUrlJob(url);
-    job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
-    job->setRunExecutables(false);
+    job->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, QApplication::activeWindow()));
+    job->setShowOpenOrExecuteDialog(true);
     job->start();
 }

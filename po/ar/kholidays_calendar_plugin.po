@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-20 01:43+0000\n"
+"POT-Creation-Date: 2022-03-08 00:45+0000\n"
 "PO-Revision-Date: 2021-06-22 14:25+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: Arabic <kde-i18n-ar@kde.org>\n"
@@ -19,22 +19,23 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Lokalize 21.07.70\n"
 
-#: HolidaysConfig.qml:43
-#, kde-format
-msgid "Search…"
-msgstr "ابحث..."
-
-#: HolidaysConfig.qml:91
+#: HolidaysConfig.qml:90
 #, kde-format
 msgid "Region"
 msgstr "المنطقة"
 
-#: HolidaysConfig.qml:95
+#: HolidaysConfig.qml:94
 #, kde-format
 msgid "Name"
 msgstr "الاسم"
 
-#: HolidaysConfig.qml:99
+#: HolidaysConfig.qml:98
 #, kde-format
 msgid "Description"
 msgstr "الوصف"
+
+#~ msgid "Search…"
+#~ msgstr "ابحث..."
+
+#~ msgid "Search Holiday Regions"
+#~ msgstr "ابحث في مناطق العطل"

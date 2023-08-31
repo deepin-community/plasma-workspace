@@ -39,12 +39,12 @@ public:
 
     Q_INVOKABLE bool isTriggerUsed(const QString &trigger);
     Q_INVOKABLE QString mouseEventString(int mouseButtons, int modifiers);
-    Q_INVOKABLE QString wheelEventString(const QPointF &delta, int mouseButtons, int modifiers);
+    Q_INVOKABLE QString wheelEventString(QObject *quickWheelEvent);
     Q_INVOKABLE bool append(const QString &action, const QString &plugin);
     Q_INVOKABLE void update(int row, const QString &action, const QString &plugin);
     Q_INVOKABLE void remove(int row);
     Q_INVOKABLE void showConfiguration(int row, QQuickItem *ctx = nullptr);
-    Q_INVOKABLE void showAbout(int row, QQuickItem *ctx = nullptr);
+    Q_INVOKABLE QVariant aboutMetaData(int row) const;
     Q_INVOKABLE void save();
 
 Q_SIGNALS:

@@ -28,3 +28,15 @@ msgstr "உபுண்டு தமிழ் குழுமம்"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ubuntu-l10n-tam@lists.ubuntu.com"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt><b>%1</b> பல்லூடகப் பின்னணி:<br/>%2 யினைப் பயன்படுத்த இயலவில்லை</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "பல்லூடகப் பின்னணியை கண்டெடுக்க இயலவில்லை"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "கோரப்பட்ட பல்லூடக பின்னணியை கண்டெடுக்க இயலவில்லை"
+
+#~ msgid "create method returned 0"
+#~ msgstr "முறையுருவாக்கம் 0 தந்தது"

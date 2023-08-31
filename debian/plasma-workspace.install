@@ -1,4 +1,5 @@
 debian/40-kde-plasma-kf5.conf usr/share/lightdm/lightdm.conf.d/
+debian/kde-mimeapps.list usr/share/applications/
 etc/xdg/autostart/gmenudbusmenuproxy.desktop
 etc/xdg/autostart/klipper.desktop
 etc/xdg/autostart/org.kde.plasmashell.desktop
@@ -23,6 +24,7 @@ usr/bin/plasma-apply-desktoptheme
 usr/bin/plasma-apply-lookandfeel
 usr/bin/plasma-apply-wallpaperimage
 usr/bin/plasma-interactiveconsole
+usr/bin/plasma-localegen-helper
 usr/bin/plasma-shutdown
 usr/bin/plasma_session
 usr/bin/plasma_waitforname
@@ -33,22 +35,25 @@ usr/bin/systemmonitor
 usr/bin/xembedsniproxy
 usr/lib/*/kconf_update_bin/krunnerglobalshortcuts
 usr/lib/*/kconf_update_bin/krunnerhistory
+usr/lib/*/kconf_update_bin/plasmashell-5.27-use-panel-thickness-in-default-group
 usr/lib/*/libexec/baloorunner
 usr/lib/*/libexec/kfontprint
 usr/lib/*/libexec/ksmserver-logout-greeter
-usr/lib/*/libexec/plasma-sourceenv.sh
 usr/lib/*/libexec/plasma-changeicons
 usr/lib/*/libexec/plasma-dbus-run-session-if-needed
+usr/lib/*/libexec/plasma-sourceenv.sh
 usr/lib/*/libkrdb.so
 usr/lib/*/qt5/plugins/
 usr/lib/*/qt5/qml/org/kde/colorcorrect/
 usr/lib/*/qt5/qml/org/kde/holidayeventshelperplugin/
 usr/lib/*/qt5/qml/org/kde/notificationmanager/
+usr/lib/*/qt5/qml/org/kde/plasma/lookandfeel/
 usr/lib/*/qt5/qml/org/kde/plasma/private/appmenu/libappmenuplugin.so
 usr/lib/*/qt5/qml/org/kde/plasma/private/appmenu/qmldir
 usr/lib/*/qt5/qml/org/kde/plasma/private/containmentlayoutmanager/
 usr/lib/*/qt5/qml/org/kde/plasma/private/digitalclock/
 usr/lib/*/qt5/qml/org/kde/plasma/private/kicker/
+usr/lib/*/qt5/qml/org/kde/plasma/private/mediacontroller/
 usr/lib/*/qt5/qml/org/kde/plasma/private/sessions/
 usr/lib/*/qt5/qml/org/kde/plasma/private/shell/
 usr/lib/*/qt5/qml/org/kde/plasma/wallpapers/image/

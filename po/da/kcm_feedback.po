@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-26 00:18+0000\n"
+"POT-Creation-Date: 2022-08-28 00:47+0000\n"
 "PO-Revision-Date: 2020-02-08 15:51+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -17,26 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 18.12.3\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Martin Schlander"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "mschlander@opensuse.org"
-
-#: feedback.cpp:50
-#, kde-format
-msgid "User Feedback"
-msgstr "Brugerfeedback"
-
-#: feedback.cpp:52
-#, kde-format
-msgid "Configure user feedback settings"
-msgstr "Indstillinger for brugerfeedback"
-
 #: package/contents/ui/main.qml:34
 #, kde-format
 msgid ""
@@ -45,12 +25,12 @@ msgstr ""
 "Brugerfeedback er blevet deaktiveret centralt. Kontakt venligst din "
 "distributør."
 
-#: package/contents/ui/main.qml:38 package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:44 package/contents/ui/main.qml:77
 #, kde-format
 msgid "Plasma:"
 msgstr "Plasma:"
 
-#: package/contents/ui/main.qml:45
+#: package/contents/ui/main.qml:51
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -66,8 +46,8 @@ msgid ""
 "it, so we can focus on things that matter to you.<nl/><nl/>Contributing this "
 "information is optional and entirely anonymous. We never collect your "
 "personal data, files you use, websites you visit, or information that could "
-"identify you.<nl/><nl/>You can read about our privacy policy in the "
-"following link:"
+"identify you.<nl/><nl/>You can read about <link url='https://kde.org/"
+"privacypolicy-apps.php'>our privacy policy here.</link>"
 msgstr ""
 "Du kan hjælpe KDE med at forbedre Plasma ved at bidrage med information om "
 "hvordan du det, så vi kan fokusere på de ting der betyder noget for dig.<nl/"
@@ -76,17 +56,31 @@ msgstr ""
 "bruger, websider du besøger eller information der kan identificere dig.<nl/"
 "><nl/>Du kan læse om vores politik på følgende link:"
 
-#: package/contents/ui/main.qml:99
+#: package/contents/ui/main.qml:112
 #, kde-format
 msgid "Plasma"
 msgstr "Plasma"
 
-#: package/contents/ui/main.qml:117
+#: package/contents/ui/main.qml:133
 #, kde-format
 msgid "The following information will be sent:"
 msgstr "Følgende information vil blive sendt:"
 
-#: package/contents/ui/main.qml:162
+#: package/contents/ui/main.qml:178
 #, kde-format
 msgid "View sent data:"
 msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Martin Schlander"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "mschlander@opensuse.org"
+
+#~ msgid "User Feedback"
+#~ msgstr "Brugerfeedback"
+
+#~ msgid "Configure user feedback settings"
+#~ msgstr "Indstillinger for brugerfeedback"

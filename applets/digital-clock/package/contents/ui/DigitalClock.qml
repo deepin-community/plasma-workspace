@@ -9,34 +9,35 @@
 
 import QtQuick 2.6
 import QtQuick.Layouts 1.1
+import QtQuick.Window 2.2
+import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as Components // Date label height breaks on vertical panel with PC3 version
 import org.kde.plasma.private.digitalclock 1.0
 
-Item {
+MouseArea {
     id: main
 
     property string timeFormat
-    property date currentTime
 
-    property bool showSeconds: plasmoid.configuration.showSeconds
-    property bool showLocalTimezone: plasmoid.configuration.showLocalTimezone
-    property bool showDate: plasmoid.configuration.showDate
+    property bool showSeconds: Plasmoid.configuration.showSeconds
+    property bool showLocalTimezone: Plasmoid.configuration.showLocalTimezone
+    property bool showDate: Plasmoid.configuration.showDate
     property var dateFormat: {
-        if (plasmoid.configuration.dateFormat === "custom") {
-            return plasmoid.configuration.customDateFormat; // str
-        } else if (plasmoid.configuration.dateFormat === "longDate") {
+        if (Plasmoid.configuration.dateFormat === "custom") {
+            return Plasmoid.configuration.customDateFormat; // str
+        } else if (Plasmoid.configuration.dateFormat === "longDate") {
             return Qt.SystemLocaleLongDate; // int
-        } else if (plasmoid.configuration.dateFormat === "isoDate") {
+        } else if (Plasmoid.configuration.dateFormat === "isoDate") {
             return Qt.ISODate; // int
         } else { // "shortDate"
             return Qt.SystemLocaleShortDate; // int
         }
     }
 
-    property string lastSelectedTimezone: plasmoid.configuration.lastSelectedTimezone
-    property int displayTimezoneFormat: plasmoid.configuration.displayTimezoneFormat
-    property int use24hFormat: plasmoid.configuration.use24hFormat
+    property string lastSelectedTimezone: Plasmoid.configuration.lastSelectedTimezone
+    property int displayTimezoneFormat: Plasmoid.configuration.displayTimezoneFormat
+    property int use24hFormat: Plasmoid.configuration.use24hFormat
 
     property string lastDate: ""
     property int tzOffset
@@ -46,10 +47,23 @@ Item {
 
     // if showing the date and the time in one line or
     // if the date/timezone cannot be fit with the smallest font to its designated space
-    property bool oneLineMode: plasmoid.configuration.dateDisplayFormat === 1 ||
-                                        plasmoid.formFactor === PlasmaCore.Types.Horizontal &&
-                                        main.height <= 2 * PlasmaCore.Theme.smallestFont.pixelSize &&
-                                        (main.showDate || timezoneLabel.visible)
+    property bool oneLineMode: {
+        if (Plasmoid.configuration.dateDisplayFormat === 1) {
+            // BesideTime
+            return true;
+        } else if (Plasmoid.configuration.dateDisplayFormat === 2) {
+            // BelowTime
+            return false;
+        } else {
+            // Adaptive
+            return Plasmoid.formFactor === PlasmaCore.Types.Horizontal &&
+                main.height <= 2 * PlasmaCore.Theme.smallestFont.pixelSize &&
+                (main.showDate || timezoneLabel.visible);
+        }
+    }
+
+    property bool wasExpanded
+    property int wheelDelta: 0
 
     onDateFormatChanged: {
         setupLabels();
@@ -65,21 +79,21 @@ Item {
     onUse24hFormatChanged:         { timeFormatCorrection(Qt.locale().timeFormat(Locale.ShortFormat)) }
 
     Connections {
-        target: plasmoid
+        target: Plasmoid.self
         function onContextualActionsAboutToShow() {
             ClipboardMenu.secondsIncluded = main.showSeconds;
-            ClipboardMenu.currentDate = main.currentTime;
+            ClipboardMenu.currentDate = main.getCurrentTime();
         }
     }
 
     Connections {
-        target: plasmoid.configuration
+        target: Plasmoid.configuration
         function onSelectedTimeZonesChanged() {
             // If the currently selected timezone was removed,
             // default to the first one in the list
-            var lastSelectedTimezone = plasmoid.configuration.lastSelectedTimezone;
-            if (plasmoid.configuration.selectedTimeZones.indexOf(lastSelectedTimezone) === -1) {
-                plasmoid.configuration.lastSelectedTimezone = plasmoid.configuration.selectedTimeZones[0];
+            var lastSelectedTimezone = Plasmoid.configuration.lastSelectedTimezone;
+            if (Plasmoid.configuration.selectedTimeZones.indexOf(lastSelectedTimezone) === -1) {
+                Plasmoid.configuration.lastSelectedTimezone = Plasmoid.configuration.selectedTimeZones[0];
             }
 
             setupLabels();
@@ -87,10 +101,25 @@ Item {
         }
     }
 
+    function getCurrentTime() {
+        // get the time for the given timezone from the dataengine
+        var now = dataSource.data[Plasmoid.configuration.lastSelectedTimezone]["DateTime"];
+        // get current UTC time
+        var msUTC = now.getTime() + (now.getTimezoneOffset() * 60000);
+        // add the dataengine TZ offset to it
+        var currentTime = new Date(msUTC + (dataSource.data[Plasmoid.configuration.lastSelectedTimezone]["Offset"] * 1000));
+        return currentTime;
+    }
+
+    function pointToPixel(pointSize) {
+        var pixelsPerInch = Screen.pixelDensity * 25.4
+        return Math.round(pointSize / 72 * pixelsPerInch)
+    }
+
     states: [
         State {
             name: "horizontalPanel"
-            when: plasmoid.formFactor === PlasmaCore.Types.Horizontal && !main.oneLineMode
+            when: Plasmoid.formFactor === PlasmaCore.Types.Horizontal && !main.oneLineMode
 
             PropertyChanges {
                 target: main
@@ -104,7 +133,7 @@ Item {
                 target: contentItem
 
                 height: timeLabel.height + (main.showDate || timezoneLabel.visible ? 0.8 * timeLabel.height : 0)
-                width: Math.max(timeLabel.paintedWidth + (main.showDate ? timezoneLabel.paintedWidth : 0), 
+                width: Math.max(timeLabel.width + (main.showDate ? timezoneLabel.paintedWidth : 0),
                                 timezoneLabel.paintedWidth, dateLabel.paintedWidth) + PlasmaCore.Units.smallSpacing * 2
             }
 
@@ -166,7 +195,7 @@ Item {
                  * and still fits well into the panel with all the applied margins.
                  */
                 height: Math.min(main.showDate || timezoneLabel.visible ? main.height * 0.56 : main.height * 0.71,
-                                 3 * PlasmaCore.Theme.defaultFont.pixelSize)
+                                 fontHelper.font.pixelSize)
 
                 font.pixelSize: sizehelper.height
             }
@@ -175,7 +204,7 @@ Item {
         State {
             name: "oneLineDate"
             // the one-line mode has no effect on a vertical panel because it would never fit
-            when: plasmoid.formFactor !== PlasmaCore.Types.Vertical && main.oneLineMode
+            when: Plasmoid.formFactor !== PlasmaCore.Types.Vertical && main.oneLineMode
 
             PropertyChanges {
                 target: main
@@ -241,16 +270,16 @@ Item {
             PropertyChanges {
                 target: sizehelper
 
-                height: Math.min(main.height, 3 * PlasmaCore.Theme.defaultFont.pixelSize)
+                height: Math.min(main.height, fontHelper.contentHeight)
 
                 fontSizeMode: Text.VerticalFit
-                font.pixelSize: 3 * PlasmaCore.Theme.defaultFont.pixelSize
+                font.pixelSize: fontHelper.font.pixelSize
             }
         },
 
         State {
             name: "verticalPanel"
-            when: plasmoid.formFactor === PlasmaCore.Types.Vertical
+            when: Plasmoid.formFactor === PlasmaCore.Types.Vertical
 
             PropertyChanges {
                 target: main
@@ -279,8 +308,8 @@ Item {
                 height: sizehelper.contentHeight
                 width: main.width
 
-                font.pixelSize: Math.min(timeLabel.height, 3 * PlasmaCore.Theme.defaultFont.pixelSize)
-                fontSizeMode: Text.HorizontalFit
+                font.pixelSize: Math.min(timeLabel.height, fontHelper.font.pixelSize)
+                fontSizeMode: Text.VerticalFit
             }
 
             PropertyChanges {
@@ -323,13 +352,13 @@ Item {
                 width: main.width
 
                 fontSizeMode: Text.HorizontalFit
-                font.pixelSize: 3 * PlasmaCore.Theme.defaultFont.pixelSize
+                font.pixelSize: fontHelper.font.pixelSize
             }
         },
 
         State {
             name: "other"
-            when: plasmoid.formFactor !== PlasmaCore.Types.Vertical && plasmoid.formFactor !== PlasmaCore.Types.Horizontal
+            when: Plasmoid.formFactor !== PlasmaCore.Types.Vertical && Plasmoid.formFactor !== PlasmaCore.Types.Horizontal
 
             PropertyChanges {
                 target: main
@@ -381,6 +410,7 @@ Item {
 
                 fontSizeMode: Text.Fit
                 minimumPixelSize: 1
+                wrapMode: Text.WordWrap
             }
 
             AnchorChanges {
@@ -412,45 +442,39 @@ Item {
         }
     ]
 
-    MouseArea {
-        anchors.fill: parent
+    onPressed: wasExpanded = Plasmoid.expanded
+    onClicked: Plasmoid.expanded = !wasExpanded
+    onWheel: {
+        if (!Plasmoid.configuration.wheelChangesTimezone) {
+            return;
+        }
 
-        property int wheelDelta: 0
+        var delta = wheel.angleDelta.y || wheel.angleDelta.x
+        var newIndex = main.tzIndex;
+        wheelDelta += delta;
+        // magic number 120 for common "one click"
+        // See: https://doc.qt.io/qt-5/qml-qtquick-wheelevent.html#angleDelta-prop
+        while (wheelDelta >= 120) {
+            wheelDelta -= 120;
+            newIndex--;
+        }
+        while (wheelDelta <= -120) {
+            wheelDelta += 120;
+            newIndex++;
+        }
 
-        onClicked: plasmoid.expanded = !plasmoid.expanded
+        if (newIndex >= Plasmoid.configuration.selectedTimeZones.length) {
+            newIndex = 0;
+        } else if (newIndex < 0) {
+            newIndex = Plasmoid.configuration.selectedTimeZones.length - 1;
+        }
 
-        onWheel: {
-            if (!plasmoid.configuration.wheelChangesTimezone) {
-                return;
-            }
+        if (newIndex !== main.tzIndex) {
+            Plasmoid.configuration.lastSelectedTimezone = Plasmoid.configuration.selectedTimeZones[newIndex];
+            main.tzIndex = newIndex;
 
-            var delta = wheel.angleDelta.y || wheel.angleDelta.x
-            var newIndex = main.tzIndex;
-            wheelDelta += delta;
-            // magic number 120 for common "one click"
-            // See: https://doc.qt.io/qt-5/qml-qtquick-wheelevent.html#angleDelta-prop
-            while (wheelDelta >= 120) {
-                wheelDelta -= 120;
-                newIndex--;
-            }
-            while (wheelDelta <= -120) {
-                wheelDelta += 120;
-                newIndex++;
-            }
-
-            if (newIndex >= plasmoid.configuration.selectedTimeZones.length) {
-                newIndex = 0;
-            } else if (newIndex < 0) {
-                newIndex = plasmoid.configuration.selectedTimeZones.length - 1;
-            }
-
-            if (newIndex !== main.tzIndex) {
-                plasmoid.configuration.lastSelectedTimezone = plasmoid.configuration.selectedTimeZones[newIndex];
-                main.tzIndex = newIndex;
-
-                dataSource.dataChanged();
-                setupLabels();
-            }
+            dataSource.dataChanged();
+            setupLabels();
         }
     }
 
@@ -476,26 +500,16 @@ Item {
                 id: timeLabel
 
                 font {
-                    family: plasmoid.configuration.fontFamily || PlasmaCore.Theme.defaultFont.family
-                    weight: plasmoid.configuration.boldText ? Font.Bold : PlasmaCore.Theme.defaultFont.weight
-                    italic: plasmoid.configuration.italicText
+                    family: fontHelper.font.family
+                    weight: fontHelper.font.weight
+                    italic: fontHelper.font.italic
                     pixelSize: 1024
                     pointSize: -1 // Because we're setting the pixel size instead
                                   // TODO: remove once this label is ported to PC3
                 }
                 minimumPixelSize: 1
 
-                text: {
-                    // get the time for the given timezone from the dataengine
-                    var now = dataSource.data[plasmoid.configuration.lastSelectedTimezone]["DateTime"];
-                    // get current UTC time
-                    var msUTC = now.getTime() + (now.getTimezoneOffset() * 60000);
-                    // add the dataengine TZ offset to it
-                    var currentTime = new Date(msUTC + (dataSource.data[plasmoid.configuration.lastSelectedTimezone]["Offset"] * 1000));
-
-                    main.currentTime = currentTime;
-                    return Qt.formatTime(currentTime, main.timeFormat);
-                }
+                text: Qt.formatTime(main.getCurrentTime(), main.timeFormat)
 
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -550,6 +564,22 @@ Item {
         visible: false
     }
 
+    // To measure Label.height for maximum-sized font in VerticalFit mode
+    Components.Label {
+        id: fontHelper
+        
+        height: 1024
+
+        font.family: (Plasmoid.configuration.autoFontAndSize || Plasmoid.configuration.fontFamily.length === 0) ? PlasmaCore.Theme.defaultFont.family : Plasmoid.configuration.fontFamily
+        font.weight: Plasmoid.configuration.autoFontAndSize ? PlasmaCore.Theme.defaultFont.weight : Plasmoid.configuration.fontWeight
+        font.italic: Plasmoid.configuration.autoFontAndSize ? PlasmaCore.Theme.defaultFont.italic : Plasmoid.configuration.italicText
+        font.pixelSize: Plasmoid.configuration.autoFontAndSize ? 3 * PlasmaCore.Theme.defaultFont.pixelSize : pointToPixel(Plasmoid.configuration.fontSize)
+        font.pointSize: -1
+        fontSizeMode: Text.VerticalFit
+
+        visible: false
+    }
+
     FontMetrics {
         id: timeMetrics
 
@@ -594,8 +624,8 @@ Item {
     }
 
     function setupLabels() {
-        var showTimezone = main.showLocalTimezone || (plasmoid.configuration.lastSelectedTimezone !== "Local"
-                                                        && dataSource.data["Local"]["Timezone City"] !== dataSource.data[plasmoid.configuration.lastSelectedTimezone]["Timezone City"]);
+        var showTimezone = main.showLocalTimezone || (Plasmoid.configuration.lastSelectedTimezone !== "Local"
+                                                        && dataSource.data["Local"]["Timezone City"] !== dataSource.data[Plasmoid.configuration.lastSelectedTimezone]["Timezone City"]);
 
         var timezoneString = "";
 
@@ -614,7 +644,7 @@ Item {
                 timezoneString = "UTC" + symbol + hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
             }
 
-            timezoneLabel.text = (main.showDate || main.oneLineMode) && plasmoid.formFactor === PlasmaCore.Types.Horizontal ? "(" + timezoneString + ")" : timezoneString;
+            timezoneLabel.text = (main.showDate || main.oneLineMode) && Plasmoid.formFactor === PlasmaCore.Types.Horizontal ? "(" + timezoneString + ")" : timezoneString;
         } else {
             // this clears the label and that makes it hidden
             timezoneLabel.text = timezoneString;
@@ -622,7 +652,7 @@ Item {
 
 
         if (main.showDate) {
-            dateLabel.text = Qt.formatDate(main.currentTime, main.dateFormat);
+            dateLabel.text = Qt.formatDate(main.getCurrentTime(), main.dateFormat);
         } else {
             // clear it so it doesn't take space in the layout
             dateLabel.text = "";
@@ -653,6 +683,7 @@ Item {
         } else {
             sizehelper.text = timePm;
         }
+        fontHelper.text = sizehelper.text
     }
 
     function dateTimeChanged()
@@ -662,7 +693,7 @@ Item {
         if (main.showDate) {
             // If the date has changed, force size recalculation, because the day name
             // or the month name can now be longer/shorter, so we need to adjust applet size
-            var currentDate = Qt.formatDateTime(dataSource.data["Local"]["DateTime"], "yyyy-mm-dd");
+            const currentDate = Qt.formatDateTime(main.getCurrentTime(), "yyyy-MM-dd");
             if (main.lastDate !== currentDate) {
                 doCorrections = true;
                 main.lastDate = currentDate
@@ -682,8 +713,8 @@ Item {
     }
 
     function setTimezoneIndex() {
-        for (var i = 0; i < plasmoid.configuration.selectedTimeZones.length; i++) {
-            if (plasmoid.configuration.selectedTimeZones[i] === plasmoid.configuration.lastSelectedTimezone) {
+        for (var i = 0; i < Plasmoid.configuration.selectedTimeZones.length; i++) {
+            if (Plasmoid.configuration.selectedTimeZones[i] === Plasmoid.configuration.lastSelectedTimezone) {
                 main.tzIndex = i;
                 break;
             }
@@ -692,13 +723,13 @@ Item {
 
     Component.onCompleted: {
         // Sort the timezones according to their offset
-        // Calling sort() directly on plasmoid.configuration.selectedTimeZones
+        // Calling sort() directly on Plasmoid.configuration.selectedTimeZones
         // has no effect, so sort a copy and then assign the copy to it
-        var sortArray = plasmoid.configuration.selectedTimeZones;
+        var sortArray = Plasmoid.configuration.selectedTimeZones;
         sortArray.sort(function(a, b) {
             return dataSource.data[a]["Offset"] - dataSource.data[b]["Offset"];
         });
-        plasmoid.configuration.selectedTimeZones = sortArray;
+        Plasmoid.configuration.selectedTimeZones = sortArray;
 
         setTimezoneIndex();
         tzOffset = -(new Date().getTimezoneOffset());

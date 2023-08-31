@@ -1,25 +1,23 @@
 # Translation of plasma_engine_weather.po to Catalan (Valencian)
-# Copyright (C) 2009-2019 This_file_is_part_of_KDE
+# Copyright (C) 2009-2021 This_file_is_part_of_KDE
 #
-# Josep Ma. Ferrer <txemaq@gmail.com>, 2009, 2011, 2016, 2017, 2018, 2019.
+# Josep M. Ferrer <txemaq@gmail.com>, 2009, 2011, 2016, 2017, 2018, 2019, 2021.
 # Manuel Tortosa Moreno <manutortosa@chakra-project.org>, 2009.
 # Orestes Mas <orestes@tsc.upc.edu>, 2009.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2018.
-# Empar Montoro Martín <montoro_mde@gva.es>, 2019.
-# Alfredo vicente <alviboi@gmail.com>, 2019.
+# Antoni Bella Pérez <antonibella5@yahoo.com>, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2019-08-29 09:46+0200\n"
-"Last-Translator: Alfredo vicente <alviboi@gmail.com>\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
+"PO-Revision-Date: 2021-12-09 13:09+0100\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.04.2\n"
+"X-Generator: Lokalize 20.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -27,7 +25,7 @@ msgstr ""
 #, kde-format
 msgctxt "weather condition"
 msgid "clear"
-msgstr "ras"
+msgstr "clar"
 
 #: bbcukmet_i18n.dat:2
 #, kde-format
@@ -39,7 +37,7 @@ msgstr "intervals de clarianes"
 #, kde-format
 msgctxt "weather condition"
 msgid "clear sky"
-msgstr "cel ras"
+msgstr "cel clar"
 
 #: bbcukmet_i18n.dat:4 ions/wetter.com/ion_wettercom.cpp:158
 #: ions/wetter.com/ion_wettercom.cpp:159
@@ -52,7 +50,7 @@ msgstr "ennuvolat"
 #, kde-format
 msgctxt "weather condition"
 msgid "cloudy with hail"
-msgstr "ennuvolat amb pedra"
+msgstr "ennuvolat amb calamarsa"
 
 #: bbcukmet_i18n.dat:6
 #, kde-format
@@ -101,19 +99,19 @@ msgstr "núvols grisos"
 #, kde-format
 msgctxt "weather condition"
 msgid "hail"
-msgstr "pedra"
+msgstr "calamarsa"
 
 #: bbcukmet_i18n.dat:14
 #, kde-format
 msgctxt "weather condition"
 msgid "hail shower"
-msgstr "pedregada"
+msgstr "ruixat de calamarsa"
 
 #: bbcukmet_i18n.dat:15
 #, kde-format
 msgctxt "weather condition"
 msgid "hail showers"
-msgstr "pedregades"
+msgstr "ruixats de calamarsa"
 
 #: bbcukmet_i18n.dat:16
 #, kde-format
@@ -131,13 +129,13 @@ msgstr "pluja intensa"
 #, kde-format
 msgctxt "weather condition"
 msgid "heavy rain shower"
-msgstr "aiguat intens"
+msgstr "ruixat intens"
 
 #: bbcukmet_i18n.dat:19
 #, kde-format
 msgctxt "weather condition"
 msgid "heavy rain showers"
-msgstr "aiguats intensos"
+msgstr "ruixats de forta intensitat"
 
 #: bbcukmet_i18n.dat:20
 #, kde-format
@@ -161,13 +159,13 @@ msgstr "nevada intensa"
 #, kde-format
 msgctxt "weather condition"
 msgid "heavy snow shower"
-msgstr "precipitació intensa de neu"
+msgstr "precipitació de neu intensa"
 
 #: bbcukmet_i18n.dat:24
 #, kde-format
 msgctxt "weather condition"
 msgid "heavy snow showers"
-msgstr "precipitacions intenses de neu"
+msgstr "precipitacions de neu intenses"
 
 #: bbcukmet_i18n.dat:25
 #, kde-format
@@ -186,13 +184,13 @@ msgstr "pluja lleugera"
 #, kde-format
 msgctxt "weather condition"
 msgid "light rain shower"
-msgstr "aiguat lleuger"
+msgstr "ruixat lleuger"
 
 #: bbcukmet_i18n.dat:28
 #, kde-format
 msgctxt "weather condition"
 msgid "light rain showers"
-msgstr "aiguats lleugers"
+msgstr "ruixats de pluja lleugera"
 
 #: bbcukmet_i18n.dat:29
 #, kde-format
@@ -235,7 +233,7 @@ msgstr "boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "misty"
-msgstr "amb boirina"
+msgstr "boirós"
 
 #: bbcukmet_i18n.dat:36 envcan_i18n.dat:1 noaa_i18n.dat:264
 #, kde-format
@@ -308,13 +306,13 @@ msgstr "tempesta elèctrica"
 #, kde-format
 msgctxt "weather condition"
 msgid "thundery shower"
-msgstr "precipitació tempestuosa"
+msgstr "ruixat amb trons"
 
 #: bbcukmet_i18n.dat:48
 #, kde-format
 msgctxt "weather condition"
 msgid "thundery showers"
-msgstr "precipitacions tempestuoses"
+msgstr "ruixats amb trons"
 
 #: bbcukmet_i18n.dat:49
 #, kde-format
@@ -326,13 +324,13 @@ msgstr "tempesta tropical"
 #, kde-format
 msgctxt "weather condition"
 msgid "white cloud"
-msgstr "núvols blancs"
+msgstr "núvol blanc"
 
 #: bbcukmet_i18n.dat:51
 #, kde-format
 msgctxt "weather forecast"
 msgid "clear"
-msgstr "sense núvols"
+msgstr "clar"
 
 #: bbcukmet_i18n.dat:52
 #, kde-format
@@ -356,7 +354,7 @@ msgstr "ennuvolat"
 #, kde-format
 msgctxt "weather forecast"
 msgid "cloudy with hail"
-msgstr "ennuvolat amb pedregades"
+msgstr "ennuvolat amb calamarsa"
 
 #: bbcukmet_i18n.dat:56
 #, kde-format
@@ -398,31 +396,31 @@ msgstr "boirós"
 #, kde-format
 msgctxt "weather forecast"
 msgid "grey cloud"
-msgstr "núvols grisos"
+msgstr "núvol gris"
 
 #: bbcukmet_i18n.dat:63
 #, kde-format
 msgctxt "weather forecast"
 msgid "hail"
-msgstr "pedra"
+msgstr "calamarsa"
 
 #: bbcukmet_i18n.dat:64
 #, kde-format
 msgctxt "weather forecast"
 msgid "hail shower"
-msgstr "pedregada"
+msgstr "ruixat de calamarsa"
 
 #: bbcukmet_i18n.dat:65
 #, kde-format
 msgctxt "weather forecast"
 msgid "hail showers"
-msgstr "pedregades"
+msgstr "ruixats de calamarsa"
 
 #: bbcukmet_i18n.dat:66
 #, kde-format
 msgctxt "weather forecast"
 msgid "hazy"
-msgstr "amb boirina"
+msgstr "bromós"
 
 #: bbcukmet_i18n.dat:67
 #, kde-format
@@ -434,13 +432,13 @@ msgstr "pluja intensa"
 #, kde-format
 msgctxt "weather forecast"
 msgid "heavy rain shower"
-msgstr "aiguat intens"
+msgstr "ruixat intens"
 
 #: bbcukmet_i18n.dat:69
 #, kde-format
 msgctxt "weather forecast"
 msgid "heavy rain showers"
-msgstr "aiguats intensos"
+msgstr "ruixats de forta intensitat"
 
 #: bbcukmet_i18n.dat:70
 #, kde-format
@@ -488,13 +486,13 @@ msgstr "pluja lleugera"
 #, kde-format
 msgctxt "weather forecast"
 msgid "light rain shower"
-msgstr "aiguat lleuger"
+msgstr "ruixat lleuger"
 
 #: bbcukmet_i18n.dat:78
 #, kde-format
 msgctxt "weather forecast"
 msgid "light rain showers"
-msgstr "aiguats lleugers"
+msgstr "ruixats de pluja lleugera"
 
 #: bbcukmet_i18n.dat:79
 #, kde-format
@@ -536,7 +534,7 @@ msgstr "boirina"
 #, kde-format
 msgctxt "weather forecast"
 msgid "misty"
-msgstr "amb boirina"
+msgstr "boirós"
 
 #: bbcukmet_i18n.dat:86
 #, kde-format
@@ -602,13 +600,13 @@ msgstr "tempesta elèctrica"
 #, kde-format
 msgctxt "weather forecast"
 msgid "thundery shower"
-msgstr "precipitació tempestuosa"
+msgstr "ruixat amb trons"
 
 #: bbcukmet_i18n.dat:97
 #, kde-format
 msgctxt "weather forecast"
 msgid "thundery showers"
-msgstr "precipitacions tempestuoses"
+msgstr "ruixats amb trons"
 
 #: bbcukmet_i18n.dat:98
 #, kde-format
@@ -620,7 +618,7 @@ msgstr "tempesta tropical"
 #, kde-format
 msgctxt "weather forecast"
 msgid "white cloud"
-msgstr "núvols blancs"
+msgstr "núvol blanc"
 
 #: bbcukmet_i18n.dat:100
 #, kde-format
@@ -650,19 +648,19 @@ msgstr "Moderada"
 #, kde-format
 msgctxt "visibility"
 msgid "Poor"
-msgstr "Pobra"
+msgstr "Pobre"
 
 #: bbcukmet_i18n.dat:105
 #, kde-format
 msgctxt "visibility"
 msgid "Very Poor"
-msgstr "Molt pobra"
+msgstr "Molt pobre"
 
 #: envcan_i18n.dat:2 noaa_i18n.dat:7
 #, kde-format
 msgctxt "weather condition"
 msgid "Blowing Snow"
-msgstr "Vent amb neu"
+msgstr "Neu aixecada pel vent"
 
 #: envcan_i18n.dat:3 noaa_i18n.dat:10
 #, kde-format
@@ -710,7 +708,7 @@ msgstr "Pols"
 #, kde-format
 msgctxt "weather condition"
 msgid "Dust Devils"
-msgstr "Remolins de pols"
+msgstr "Mànegues de pols"
 
 #: envcan_i18n.dat:11 noaa_i18n.dat:27
 #, kde-format
@@ -728,7 +726,7 @@ msgstr "Banc de boira proper a l'estació"
 #, kde-format
 msgctxt "weather condition"
 msgid "Fog Depositing Ice"
-msgstr "Boira gebradora"
+msgstr "Boira amb deposició de gel"
 
 #: envcan_i18n.dat:14
 #, kde-format
@@ -740,13 +738,13 @@ msgstr "Fragments de boira"
 #, kde-format
 msgctxt "weather condition"
 msgid "Freezing drizzle"
-msgstr "Plugim gelant"
+msgstr "Plovineig"
 
 #: envcan_i18n.dat:16
 #, kde-format
 msgctxt "weather condition"
 msgid "Freezing rain"
-msgstr "Pluja gelada"
+msgstr "Pluja freda"
 
 #: envcan_i18n.dat:17 noaa_i18n.dat:40
 #, kde-format
@@ -758,43 +756,43 @@ msgstr "Núvol embut"
 #, kde-format
 msgctxt "weather condition"
 msgid "Hail"
-msgstr "Pedra"
+msgstr "Calamarsa"
 
 #: envcan_i18n.dat:19 noaa_i18n.dat:44
 #, kde-format
 msgctxt "weather condition"
 msgid "Haze"
-msgstr "Boirina"
+msgstr "Broma"
 
 #: envcan_i18n.dat:20 noaa_i18n.dat:45
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Blowing Snow"
-msgstr "Vent fort amb neu"
+msgstr "Neu intensa aixecada pel vent"
 
 #: envcan_i18n.dat:21
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Drifting Snow"
-msgstr "Neu baixa arrossegada pel vent intensa"
+msgstr "Neu intensa en cúmuls"
 
 #: envcan_i18n.dat:22 noaa_i18n.dat:46
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Drizzle"
-msgstr "Plugim intens"
+msgstr "Plovisqueig intens"
 
 #: envcan_i18n.dat:23
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Hail"
-msgstr "Pedregada intensa"
+msgstr "Calamarsa intensa"
 
 #: envcan_i18n.dat:24
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Mixed Rain and Drizzle"
-msgstr "Pluja intensa barrejada amb plugim"
+msgstr "Pluja intensa barrejada amb plovisqueig"
 
 #: envcan_i18n.dat:25
 #, kde-format
@@ -818,7 +816,7 @@ msgstr "Pluja intensa i neu"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Rainshower"
-msgstr "Aiguat intens"
+msgstr "Ruixat intens"
 
 #: envcan_i18n.dat:29 noaa_i18n.dat:78
 #, kde-format
@@ -830,7 +828,7 @@ msgstr "Nevada intensa"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Snow Pellets"
-msgstr "Neu granulada intensa"
+msgstr "Calabruix intens"
 
 #: envcan_i18n.dat:31
 #, kde-format
@@ -848,13 +846,13 @@ msgstr "Tempesta elèctrica"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Thunderstorm with Hail"
-msgstr "Tempesta elèctrica intensa amb pedregada"
+msgstr "Tempesta de trons intensa amb calamarsa"
 
 #: envcan_i18n.dat:34
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Thunderstorm with Rain"
-msgstr "Tempesta elèctrica intensa amb pluja"
+msgstr "Tempesta de trons intensa amb pluja"
 
 #: envcan_i18n.dat:35 noaa_i18n.dat:101
 #, kde-format
@@ -866,7 +864,7 @@ msgstr "Cristalls de gel"
 #, kde-format
 msgctxt "weather condition"
 msgid "Ice Pellets"
-msgstr "Grans de gel"
+msgstr "Calabruix"
 
 #: envcan_i18n.dat:37
 #, kde-format
@@ -884,13 +882,13 @@ msgstr "Plugim lleuger"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Freezing Drizzle"
-msgstr "Plugim gelant lleuger"
+msgstr "Plovineig lleuger"
 
 #: envcan_i18n.dat:40 noaa_i18n.dat:115
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Freezing Rain"
-msgstr "Pluja gelant lleugera"
+msgstr "Pluja freda lleugera"
 
 #: envcan_i18n.dat:41 noaa_i18n.dat:121
 #, kde-format
@@ -902,7 +900,7 @@ msgstr "Pluja lleugera"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Rainshower"
-msgstr "Aiguat lleuger"
+msgstr "Ruixat lleuger"
 
 #: envcan_i18n.dat:43 noaa_i18n.dat:137
 #, kde-format
@@ -914,7 +912,7 @@ msgstr "Nevada lleugera"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Snow Pellets"
-msgstr "Neu granulada lleugera"
+msgstr "Calabruix de neu lleuger"
 
 #: envcan_i18n.dat:45
 #, kde-format
@@ -926,7 +924,7 @@ msgstr "Precipitació de neu lleugera"
 #, kde-format
 msgctxt "weather condition"
 msgid "Lightning Visible"
-msgstr "Llamp visible"
+msgstr "Lluminositat visible"
 
 #: envcan_i18n.dat:47
 #, kde-format
@@ -968,7 +966,7 @@ msgstr "Majoritàriament ennuvolat"
 #, kde-format
 msgctxt "weather condition"
 msgid "Not Reported"
-msgstr "Sense dades"
+msgstr "No informat"
 
 #: envcan_i18n.dat:54 noaa_i18n.dat:174
 #, kde-format
@@ -992,7 +990,7 @@ msgstr "Pluja i neu"
 #, kde-format
 msgctxt "weather condition"
 msgid "Rainshower"
-msgstr "Aiguat"
+msgstr "Ruixat"
 
 #: envcan_i18n.dat:58
 #, kde-format
@@ -1016,13 +1014,13 @@ msgstr "Boira recent"
 #, kde-format
 msgctxt "weather condition"
 msgid "Recent Freezing Precipitation"
-msgstr "Precipitació gelant recent"
+msgstr "Precipitació freda recent"
 
 #: envcan_i18n.dat:62
 #, kde-format
 msgctxt "weather condition"
 msgid "Recent Hail"
-msgstr "Pedregada recent"
+msgstr "Calamarsa recent"
 
 #: envcan_i18n.dat:63
 #, kde-format
@@ -1040,7 +1038,7 @@ msgstr "Pluja i neu recents"
 #, kde-format
 msgctxt "weather condition"
 msgid "Recent Rainshower"
-msgstr "Aiguat recent"
+msgstr "Ruixat recent"
 
 #: envcan_i18n.dat:66
 #, kde-format
@@ -1064,13 +1062,13 @@ msgstr "Tempesta elèctrica recent"
 #, kde-format
 msgctxt "weather condition"
 msgid "Recent Thunderstorm with Hail"
-msgstr "Tempesta elèctrica amb pedra recent"
+msgstr "Tempesta elèctrica amb calamarsa recent"
 
 #: envcan_i18n.dat:70
 #, kde-format
 msgctxt "weather condition"
 msgid "Recent Thunderstorm with Heavy Hail"
-msgstr "Tempesta elèctrica amb pedregada intensa recent"
+msgstr "Tempesta elèctrica amb calamarsada intensa recent"
 
 #: envcan_i18n.dat:71
 #, kde-format
@@ -1130,7 +1128,7 @@ msgstr "Grans de neu"
 #, kde-format
 msgctxt "weather condition"
 msgid "Squalls"
-msgstr "Borrasca"
+msgstr "Torb"
 
 #: envcan_i18n.dat:81
 #, kde-format
@@ -1142,7 +1140,7 @@ msgstr "Assolellat"
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm with Hail"
-msgstr "Tempesta elèctrica amb pedregada"
+msgstr "Tempesta elèctrica amb calamarsa"
 
 #: envcan_i18n.dat:83
 #, kde-format
@@ -1151,20 +1149,16 @@ msgid "Thunderstorm with Rain"
 msgstr "Tempesta elèctrica amb pluja"
 
 #: envcan_i18n.dat:84
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "Thunderstorm with Rain"
+#, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm with light rainshowers"
-msgstr "Tempesta elèctrica amb pluja"
+msgstr "Tempesta elèctrica amb pluja lleugera"
 
 #: envcan_i18n.dat:85
-#, fuzzy, kde-format
-#| msgctxt "weather condition"
-#| msgid "Recent Thunderstorm with Heavy Rain"
+#, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm with heavy rainshowers"
-msgstr "Tempesta elèctrica amb pluja intensa recent"
+msgstr "Tempesta elèctrica amb pluja intensa"
 
 #: envcan_i18n.dat:86
 #, kde-format
@@ -1188,91 +1182,91 @@ msgstr "Tornado"
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few clouds"
-msgstr "Alguns núvols"
+msgstr "Uns pocs núvols"
 
 #: envcan_i18n.dat:90
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few flurries"
-msgstr "Algunes ràfegues de neu"
+msgstr "Unes poques ratxes"
 
 #: envcan_i18n.dat:91
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few flurries mixed with ice pellets"
-msgstr "Barreja d'algunes ràfegues de neu amb grans de neu"
+msgstr "Barreja d'unes poques ratxes i calabruix"
 
 #: envcan_i18n.dat:92
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few flurries or rain showers"
-msgstr "Algunes ràfegues de neu o aiguats"
+msgstr "Unes poques ratxes o ruixats"
 
 #: envcan_i18n.dat:93
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few flurries or thundershowers"
-msgstr "Algunes ràfegues de neu o tempestes"
+msgstr "Unes poques ratxes o tempestes elèctriques"
 
 #: envcan_i18n.dat:94
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few rain showers or flurries"
-msgstr "Alguns aiguats o ràfegues de neu"
+msgstr "Uns pocs ruixats o ratxes"
 
 #: envcan_i18n.dat:95
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few rain showers or wet flurries"
-msgstr "Alguns aiguats o ràfegues de neu humida"
+msgstr "Uns pocs ruixats o ratxes humides"
 
 #: envcan_i18n.dat:96
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few showers"
-msgstr "Alguns ruixats"
+msgstr "Uns pocs ruixats"
 
 #: envcan_i18n.dat:97
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few showers or drizzle"
-msgstr "Alguns ruixats o plugim"
+msgstr "Uns pocs ruixats o plugim"
 
 #: envcan_i18n.dat:98
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few showers or thundershowers"
-msgstr "Alguns ruixats o precipitacions tempestuoses"
+msgstr "Uns pocs ruixats o tempestes"
 
 #: envcan_i18n.dat:99
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few showers or thunderstorms"
-msgstr "Algunes ruixats o tempestes elèctriques"
+msgstr "Uns pocs ruixats o tempestes elèctriques"
 
 #: envcan_i18n.dat:100
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few thundershowers"
-msgstr "Algunes precipitacions tempestuoses"
+msgstr "Unes poques tempestes"
 
 #: envcan_i18n.dat:101
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few thunderstorms"
-msgstr "Algunes tempestes elèctriques"
+msgstr "Unes poques tempestes elèctriques"
 
 #: envcan_i18n.dat:102
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few wet flurries"
-msgstr "Algunes ràfegues de neu humida"
+msgstr "Unes poques ratxes humides"
 
 #: envcan_i18n.dat:103
 #, kde-format
 msgctxt "weather forecast"
 msgid "A few wet flurries or rain showers"
-msgstr "Algunes ràfegues de neu humida o aiguats"
+msgstr "Uns poques ratxes humides o ruixats"
 
 #: envcan_i18n.dat:104
 #, kde-format
@@ -1296,7 +1290,7 @@ msgstr "Possibilitat de plugim"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of drizzle mixed with freezing drizzle"
-msgstr "Possibilitat de barreja de plugim i plugim gelant"
+msgstr "Possibilitat de barreja de plugim i plovineig"
 
 #: envcan_i18n.dat:108
 #, kde-format
@@ -1314,67 +1308,67 @@ msgstr "Possibilitat de plugim o pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of flurries"
-msgstr "Possibilitat de ràfegues de neu"
+msgstr "Possibilitat de ratxes"
 
 #: envcan_i18n.dat:111
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of flurries at times heavy"
-msgstr "Possibilitat de ràfegues de neu amb intervals de forta intensitat"
+msgstr "Possibilitat de ratxes amb intervals de forta intensitat"
 
 #: envcan_i18n.dat:112
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of flurries mixed with ice pellets"
-msgstr "Possibilitat de barreja de ràfegues de neu amb grans de neu"
+msgstr "Possibilitat de barreja de ratxes i calabruix"
 
 #: envcan_i18n.dat:113
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of flurries or ice pellets"
-msgstr "Possibilitat de ràfegues de neu o grans de neu"
+msgstr "Possibilitat de ratxes o calabruix"
 
 #: envcan_i18n.dat:114
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of flurries or rain showers"
-msgstr "Possibilitat de ràfegues de neu o d'aiguats"
+msgstr "Possibilitat de ratxes o ruixats"
 
 #: envcan_i18n.dat:115
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of flurries or thundershowers"
-msgstr "Possibilitat de ràfegues de neu o tempestes"
+msgstr "Possibilitat de ratxes o tempestes"
 
 #: envcan_i18n.dat:116
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of freezing drizzle"
-msgstr "Possibilitat de plugim gelant"
+msgstr "Possibilitat de plovineig"
 
 #: envcan_i18n.dat:117
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of freezing rain"
-msgstr "Possibilitat de pluja gelant"
+msgstr "Possibilitat de pluja freda"
 
 #: envcan_i18n.dat:118
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of freezing rain mixed with snow"
-msgstr "Possibilitat de barreja de pluja gelant i neu"
+msgstr "Possibilitat de barreja de pluja freda i neu"
 
 #: envcan_i18n.dat:119
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of freezing rain or rain"
-msgstr "Possibilitat de pluja gelant o pluja"
+msgstr "Possibilitat de pluja freda o pluja"
 
 #: envcan_i18n.dat:120
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of freezing rain or snow"
-msgstr "Possibilitat de pluja gelant o neu"
+msgstr "Possibilitat de pluja freda o neu"
 
 #: envcan_i18n.dat:121
 #, kde-format
@@ -1386,37 +1380,37 @@ msgstr "Possibilitat de nevada lleugera"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of light snow and blowing snow"
-msgstr "Possibilitat de nevada lleugera i vent amb neu"
+msgstr "Possibilitat de nevada lleugera i ratxes de neu"
 
 #: envcan_i18n.dat:123
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of light snow mixed with freezing drizzle"
-msgstr "Possibilitat de barreja de nevada lleugera i plugim gelant"
+msgstr "Possibilitat de barreja de nevada lleugera i plovineig"
 
 #: envcan_i18n.dat:124
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of light snow mixed with ice pellets"
-msgstr "Possibilitat de barreja de nevada lleugera i grans de gel"
+msgstr "Possibilitat de barreja de nevada lleugera i calabruix"
 
 #: envcan_i18n.dat:125
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of light snow mixed with rain"
-msgstr "Possibilitat de barreja de nevada lleugera i pluja"
+msgstr "Possibilitat de barreja de navada lleugera i pluja"
 
 #: envcan_i18n.dat:126
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of light snow or freezing rain"
-msgstr "Possibilitat de nevada lleugera o pluja gelant"
+msgstr "Possibilitat de nevada lleugera o pluja freda"
 
 #: envcan_i18n.dat:127
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of light snow or ice pellets"
-msgstr "Possibilitat de nevada lleugera o grans de neu"
+msgstr "Possibilitat de nevada lleugera o calabruix"
 
 #: envcan_i18n.dat:128
 #, kde-format
@@ -1428,7 +1422,7 @@ msgstr "Possibilitat de nevada lleugera o pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of light wet snow"
-msgstr "Possibilitat de neu humida lleugera"
+msgstr "Possibilitat de nevada humida lleugera"
 
 #: envcan_i18n.dat:130
 #, kde-format
@@ -1458,7 +1452,7 @@ msgstr "Possibilitat de pluja o plugim"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of rain or freezing rain"
-msgstr "Possibilitat de pluja o pluja gelant"
+msgstr "Possibilitat de pluja o pluja freda"
 
 #: envcan_i18n.dat:135
 #, kde-format
@@ -1470,13 +1464,13 @@ msgstr "Possibilitat de pluja o neu"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of rain showers or flurries"
-msgstr "Possibilitat d'aiguats o ràfegues de neu"
+msgstr "Possibilitat de ruixats o ratxes"
 
 #: envcan_i18n.dat:137
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of rain showers or wet flurries"
-msgstr "Possibilitat d'aiguats o ràfegues de neu humida"
+msgstr "Possibilitat de ruixats o ratxes humides"
 
 #: envcan_i18n.dat:138
 #, kde-format
@@ -1544,19 +1538,19 @@ msgstr "Possibilitat de nevada i tempesta de vent i neu"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of snow mixed with freezing drizzle"
-msgstr "Possibilitat de barreja de nevada i plugim gelant"
+msgstr "Possibilitat de barreja de nevada i plovineig"
 
 #: envcan_i18n.dat:149
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of snow mixed with freezing rain"
-msgstr "Possibilitat de barreja de nevada i pluja gelant"
+msgstr "Possibilitat de barreja de nevada i pluja freda"
 
 #: envcan_i18n.dat:150
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of snow mixed with rain"
-msgstr "Possibilitat de barreja de nevada i pluja"
+msgstr "Possibilitat de barreja de navada i pluja"
 
 #: envcan_i18n.dat:151
 #, kde-format
@@ -1568,7 +1562,7 @@ msgstr "Possibilitat de nevada o pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of snow squalls"
-msgstr "Possibilitat de borrasques de neu"
+msgstr "Possibilitat de torbonades de neu"
 
 #: envcan_i18n.dat:153
 #, kde-format
@@ -1586,26 +1580,25 @@ msgstr "Possibilitat de tempestes elèctriques"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of thunderstorms and possible hail"
-msgstr "Possibilitat de tempestes elèctriques i possiblement pedra"
+msgstr "Possibilitat de tempestes elèctriques i possiblement calamarsa"
 
 #: envcan_i18n.dat:156
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of wet flurries"
-msgstr "Possibilitat de ràfegues de neu humida"
+msgstr "Possibilitat de ratxes humides"
 
 #: envcan_i18n.dat:157
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of wet flurries at times heavy"
-msgstr ""
-"Possibilitat de ràfegues de neu humida amb intervals de forta intensitat"
+msgstr "Possibilitat de ratxes humides"
 
 #: envcan_i18n.dat:158
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance of wet flurries or rain showers"
-msgstr "Possibilitat de ràfegues de neu humida o aiguats"
+msgstr "Possibilitat de ratxes humides o ruixats"
 
 #: envcan_i18n.dat:159
 #, kde-format
@@ -1629,7 +1622,7 @@ msgstr "Possibilitat de nevada humida o pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Clear"
-msgstr "Clar"
+msgstr "Serè"
 
 #: envcan_i18n.dat:163 noaa_i18n.dat:350
 #, kde-format
@@ -1677,7 +1670,7 @@ msgstr "Plugim"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Drizzle mixed with freezing drizzle"
-msgstr "Barreja de plugim i plugim gelant"
+msgstr "Barreja de plugim i plovineig"
 
 #: envcan_i18n.dat:171
 #, kde-format
@@ -1689,7 +1682,7 @@ msgstr "Barreja de plugim i pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Drizzle or freezing drizzle"
-msgstr "Plugim o plugim gelant"
+msgstr "Plugim o plovineig"
 
 #: envcan_i18n.dat:173
 #, kde-format
@@ -1701,43 +1694,43 @@ msgstr "Plugim o pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Flurries"
-msgstr "Ràfegues de neu"
+msgstr "Ratxes"
 
 #: envcan_i18n.dat:175
 #, kde-format
 msgctxt "weather forecast"
 msgid "Flurries at times heavy"
-msgstr "Ràfegues de neu amb intervals de forta intensitat"
+msgstr "Ratxes amb intervals de forta intensitat"
 
 #: envcan_i18n.dat:176
 #, kde-format
 msgctxt "weather forecast"
 msgid "Flurries at times heavy or rain showers"
-msgstr "Ràfegues de neu amb intervals de forta intensitat o aiguats"
+msgstr "Ratxes amb intervals de forta intensitat o ruixats"
 
 #: envcan_i18n.dat:177
 #, kde-format
 msgctxt "weather forecast"
 msgid "Flurries mixed with ice pellets"
-msgstr "Barreja d'algunes ràfegues de neu amb grans de neu"
+msgstr "Barreja de ratxes i calabruix"
 
 #: envcan_i18n.dat:178
 #, kde-format
 msgctxt "weather forecast"
 msgid "Flurries or ice pellets"
-msgstr "Ràfegues de neu o grans de neu"
+msgstr "Ratxes o calabruix"
 
 #: envcan_i18n.dat:179
 #, kde-format
 msgctxt "weather forecast"
 msgid "Flurries or rain showers"
-msgstr "Ràfegues de neu o aiguats"
+msgstr "Ratxes o ruixats"
 
 #: envcan_i18n.dat:180
 #, kde-format
 msgctxt "weather forecast"
 msgid "Flurries or thundershowers"
-msgstr "Ràfegues de neu o tempestes"
+msgstr "Ratxes o tempestes"
 
 #: envcan_i18n.dat:181 noaa_i18n.dat:336
 #, kde-format
@@ -1755,7 +1748,7 @@ msgstr "Boira en desenvolupament"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Fog dissipating"
-msgstr "Boira que es dissipa"
+msgstr "Boira en dissolució"
 
 #: envcan_i18n.dat:184
 #, kde-format
@@ -1767,49 +1760,49 @@ msgstr "Clapes de boira"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing drizzle"
-msgstr "Plugim gelant"
+msgstr "Plovineig"
 
 #: envcan_i18n.dat:186
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing rain"
-msgstr "Pluja gelant"
+msgstr "Pluja freda"
 
 #: envcan_i18n.dat:187
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing rain mixed with ice pellets"
-msgstr "Barreja de pluja gelant i grans de gel"
+msgstr "Barreja de pluja freda i calabruix"
 
 #: envcan_i18n.dat:188
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing rain mixed with rain"
-msgstr "Barreja de pluja gelant i pluja"
+msgstr "Barreja de pluja freda i pluja"
 
 #: envcan_i18n.dat:189
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing rain mixed with snow"
-msgstr "Barreja de pluja gelant i neu"
+msgstr "Barreja de pluja freda i neu"
 
 #: envcan_i18n.dat:190
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing rain or ice pellets"
-msgstr "Barreja de pluja i grans de gel"
+msgstr "Barreja de pluja i calabruix"
 
 #: envcan_i18n.dat:191
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing rain or rain"
-msgstr "Pluja gelant o pluja"
+msgstr "Pluja freda o pluja"
 
 #: envcan_i18n.dat:192
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing rain or snow"
-msgstr "Pluja gelant o neu"
+msgstr "Pluja freda o neu"
 
 #: envcan_i18n.dat:193
 #, kde-format
@@ -1833,31 +1826,31 @@ msgstr "Boira gebradora en dissolució"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Ice pellets"
-msgstr "Grans de gel"
+msgstr "Calabruix"
 
 #: envcan_i18n.dat:197
 #, kde-format
 msgctxt "weather forecast"
 msgid "Ice pellets mixed with freezing rain"
-msgstr "Barreja grans de gel i pluja gelant"
+msgstr "Barreja de calabruix i pluja freda"
 
 #: envcan_i18n.dat:198
 #, kde-format
 msgctxt "weather forecast"
 msgid "Ice pellets mixed with snow"
-msgstr "Barreja de grans de neu i neu"
+msgstr "Barreja de calabruix i neu"
 
 #: envcan_i18n.dat:199
 #, kde-format
 msgctxt "weather forecast"
 msgid "Ice pellets or freezing rain"
-msgstr "Grans de gel o pluja gelant"
+msgstr "Calabruix o pluja freda"
 
 #: envcan_i18n.dat:200
 #, kde-format
 msgctxt "weather forecast"
 msgid "Ice pellets or snow"
-msgstr "Grans de gel o neu"
+msgstr "Calabruix o neu"
 
 #: envcan_i18n.dat:201
 #, kde-format
@@ -1887,31 +1880,31 @@ msgstr "Nevada lleugera i tempesta de vent i neu"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Light snow and blizzard and blowing snow"
-msgstr "Nevada lleugera amb tempesta de vent i neu i ràfegues de neu"
+msgstr "Nevada lleugera amb tempesta de vent i ratxes de neu"
 
 #: envcan_i18n.dat:206
 #, kde-format
 msgctxt "weather forecast"
 msgid "Light snow and blowing snow"
-msgstr "Nevada lleugera i vent amb neu"
+msgstr "Nevada lleugera i ratxes de neu"
 
 #: envcan_i18n.dat:207
 #, kde-format
 msgctxt "weather forecast"
 msgid "Light snow mixed with freezing drizzle"
-msgstr "Barreja de nevada lleugera i plugim gelant"
+msgstr "Barreja de nevada lleugera i plovineig"
 
 #: envcan_i18n.dat:208
 #, kde-format
 msgctxt "weather forecast"
 msgid "Light snow mixed with freezing rain"
-msgstr "Barreja de nevada i pluja gelant"
+msgstr "Barreja de nevada i pluja freda"
 
 #: envcan_i18n.dat:209
 #, kde-format
 msgctxt "weather forecast"
 msgid "Light snow mixed with ice pellets"
-msgstr "Barreja de nevada i grans de gel"
+msgstr "Barreja de nevada i calabruix"
 
 #: envcan_i18n.dat:210
 #, kde-format
@@ -1923,19 +1916,19 @@ msgstr "Barreja de nevada lleugera i pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Light snow or freezing drizzle"
-msgstr "Nevada lleugera o plugim gelant"
+msgstr "Nevada lleugera o plovineig"
 
 #: envcan_i18n.dat:212
 #, kde-format
 msgctxt "weather forecast"
 msgid "Light snow or freezing rain"
-msgstr "Nevada lleugera o pluja gelant"
+msgstr "Nevada lleugera o pluja freda"
 
 #: envcan_i18n.dat:213
 #, kde-format
 msgctxt "weather forecast"
 msgid "Light snow or ice pellets"
-msgstr "Nevada lleugera o grans de gel"
+msgstr "Neva lleugera o calabruix"
 
 #: envcan_i18n.dat:214
 #, kde-format
@@ -1959,7 +1952,7 @@ msgstr "Nevada lleugera humida o pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Local snow squalls"
-msgstr "Borrasques de neu locals"
+msgstr "Torbonades de neu locals"
 
 #: envcan_i18n.dat:218
 #, kde-format
@@ -1971,7 +1964,7 @@ msgstr "Tempesta de vent i neu propera"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Overcast"
-msgstr "Cobert"
+msgstr "Ennuvolat"
 
 #: envcan_i18n.dat:220
 #, kde-format
@@ -1983,7 +1976,7 @@ msgstr "Intervals de plugim"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of drizzle mixed with freezing drizzle"
-msgstr "Intervals de barreja de plugim i de plugim gelant"
+msgstr "Intervals de barreja de plugim i plovineig"
 
 #: envcan_i18n.dat:222
 #, kde-format
@@ -1995,7 +1988,7 @@ msgstr "Intervals de barreja de plugim i pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of drizzle or freezing drizzle"
-msgstr "Intervals de plugim o pluja gelant"
+msgstr "Intervals de plugim o plovineig"
 
 #: envcan_i18n.dat:224
 #, kde-format
@@ -2007,91 +2000,91 @@ msgstr "Intervals de plugim o pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of freezing drizzle"
-msgstr "Intervals de plugim gelant"
+msgstr "Intervals de plovineig"
 
 #: envcan_i18n.dat:226
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of freezing drizzle or drizzle"
-msgstr "Intervals de plugim gelant o plugim"
+msgstr "Intervals de plovineig o plugim"
 
 #: envcan_i18n.dat:227
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of freezing drizzle or rain"
-msgstr "Intervals de plugim gelant o pluja"
+msgstr "Intervals de plovineig o pluja"
 
 #: envcan_i18n.dat:228
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of freezing rain"
-msgstr "Intervals de pluja gelant"
+msgstr "Intervals de pluja freda"
 
 #: envcan_i18n.dat:229
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of freezing rain mixed with ice pellets"
-msgstr "Intervals de barreja de pluja gelant i grans de gel"
+msgstr "Intervals de barreja de pluja freda i calabruix"
 
 #: envcan_i18n.dat:230
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of freezing rain mixed with rain"
-msgstr "Intervals de barreja de pluja gelant i pluja"
+msgstr "Intervals de barreja de pluja freda i pluja"
 
 #: envcan_i18n.dat:231
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of freezing rain mixed with snow"
-msgstr "Intervals de barreja de pluja gelant i neu"
+msgstr "Intervals de barreja de pluja freda i neu"
 
 #: envcan_i18n.dat:232
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of freezing rain or ice pellets"
-msgstr "Intervals de pluja gelant o grans de gel"
+msgstr "Intervals de pluja freda o calabruix"
 
 #: envcan_i18n.dat:233
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of freezing rain or rain"
-msgstr "Intervals de pluja gelant o pluja"
+msgstr "Intervals de pluja freda o pluja"
 
 #: envcan_i18n.dat:234
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of freezing rain or snow"
-msgstr "Intervals de pluja gelant o neu"
+msgstr "Intervals de pluja freda o neu"
 
 #: envcan_i18n.dat:235
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of ice pellets"
-msgstr "Intervals de grans de gel"
+msgstr "Intervals de calabruix"
 
 #: envcan_i18n.dat:236
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of ice pellets mixed with freezing rain"
-msgstr "Intervals de barreja de grans de gel i pluja gelant"
+msgstr "Intervals de barreja de calabruix i pluja freda"
 
 #: envcan_i18n.dat:237
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of ice pellets mixed with snow"
-msgstr "Intervals de barreja de grans de gel i neu"
+msgstr "Intervals de barreja de calabruix i neu"
 
 #: envcan_i18n.dat:238
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of ice pellets or freezing rain"
-msgstr "Intervals de grans de gel o pluja gelant"
+msgstr "Intervals de calabruix o pluja freda"
 
 #: envcan_i18n.dat:239
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of ice pellets or snow"
-msgstr "Intervals de grans de gel o neu"
+msgstr "Intervals de calabruix o neu"
 
 #: envcan_i18n.dat:240
 #, kde-format
@@ -2109,31 +2102,31 @@ msgstr "Intervals de nevada lleugera i tempesta de vent i neu"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of light snow and blizzard and blowing snow"
-msgstr "Intervals de nevada lleugera i tempesta de vent i ràfegues de neu"
+msgstr "Intervals de nevada lleugera i tempesta de vent i ratxes de neu"
 
 #: envcan_i18n.dat:243
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of light snow and blowing snow"
-msgstr "Intervals de nevada lleugera i vent amb neu"
+msgstr "Intervals de nevada lleugera i ratxes de neu"
 
 #: envcan_i18n.dat:244
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of light snow mixed with freezing drizzle"
-msgstr "Intervals de barreja de nevada lleugera i plugim gelant"
+msgstr "Intervals de barreja de nevada lleugera i plovineig"
 
 #: envcan_i18n.dat:245
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of light snow mixed with freezing rain"
-msgstr "Intervals de barreja de nevada lleugera i pluja gelant"
+msgstr "Intervals de barreja de nevada lleugera i pluja freda"
 
 #: envcan_i18n.dat:246
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of light snow mixed with ice pellets"
-msgstr "Intervals de barreja de nevada lleugera i grans de gel"
+msgstr "Intervals de barreja de nevada lleugera i calabruix"
 
 #: envcan_i18n.dat:247
 #, kde-format
@@ -2145,19 +2138,19 @@ msgstr "Intervals de barreja de nevada lleugera i pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of light snow or freezing drizzle"
-msgstr "Intervals de nevada lleugera o plugim gelant"
+msgstr "Intervals de nevada lleugera o plovineig"
 
 #: envcan_i18n.dat:249
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of light snow or freezing rain"
-msgstr "Intervals de nevada lleugera o pluja gelant"
+msgstr "Intervals de nevada lleugera o pluja freda"
 
 #: envcan_i18n.dat:250
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of light snow or ice pellets"
-msgstr "Intervals de nevada lleugera o grans de gel"
+msgstr "Intervals de nevada lleugera o calabruix"
 
 #: envcan_i18n.dat:251
 #, kde-format
@@ -2193,7 +2186,7 @@ msgstr "Intervals de pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of rain mixed with freezing rain"
-msgstr "Intervals de barreja de pluja i pluja gelant"
+msgstr "Intervals de barreja de pluja i pluja freda"
 
 #: envcan_i18n.dat:257
 #, kde-format
@@ -2211,7 +2204,7 @@ msgstr "Intervals de pluja o plugim"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of rain or freezing rain"
-msgstr "Intervals de pluja o pluja gelant"
+msgstr "Intervals de pluja o pluja freda"
 
 #: envcan_i18n.dat:260
 #, kde-format
@@ -2247,31 +2240,31 @@ msgstr "Intervals de neu i tempesta de vent i neu"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of snow and blizzard and blowing snow"
-msgstr "Intervals de neu i tempesta de vent i ràfegues de neu"
+msgstr "Intervals de neu i tempesta de vent i ratxes de neu"
 
 #: envcan_i18n.dat:266
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of snow and blowing snow"
-msgstr "Intervals de neu i vent amb neu"
+msgstr "Intervals de neu i ratxes de neu"
 
 #: envcan_i18n.dat:267
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of snow mixed with freezing drizzle"
-msgstr "Intervals de barreja de neu i plugim gelant"
+msgstr "Intervals de barreja de neu i plovineig"
 
 #: envcan_i18n.dat:268
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of snow mixed with freezing rain"
-msgstr "Intervals de barreja de neu i pluja gelant"
+msgstr "Intervals de barreja de neu i pluja freda"
 
 #: envcan_i18n.dat:269
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of snow mixed with ice pellets"
-msgstr "Intervals de barreja de neu i grans de gel"
+msgstr "Intervals de barreja de neu i calabruix"
 
 #: envcan_i18n.dat:270
 #, kde-format
@@ -2283,19 +2276,19 @@ msgstr "Intervals de barreja de neu i pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of snow or freezing drizzle"
-msgstr "Intervals de neu o plugim gelant"
+msgstr "Intervals de neu o plovineig"
 
 #: envcan_i18n.dat:272
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of snow or freezing rain"
-msgstr "Intervals de neu o pluja gelant"
+msgstr "Intervals de neu o pluja freda"
 
 #: envcan_i18n.dat:273
 #, kde-format
 msgctxt "weather forecast"
 msgid "Periods of snow or ice pellets"
-msgstr "Intervals de neu o grans de neu"
+msgstr "Intervals de neu o calabruix"
 
 #: envcan_i18n.dat:274
 #, kde-format
@@ -2337,7 +2330,7 @@ msgstr "Pluja amb intervals de forta intensitat"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Rain at times heavy mixed with freezing rain"
-msgstr "Barreja de pluja amb intervals de forta intensitat i pluja gelant"
+msgstr "Barreja de pluja amb intervals de forta intensitat i pluja freda"
 
 #: envcan_i18n.dat:281
 #, kde-format
@@ -2355,7 +2348,7 @@ msgstr "Pluja amb intervals de forta intensitat o plugim"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Rain at times heavy or freezing rain"
-msgstr "Pluja amb intervals de forta intensitat o pluja gelant"
+msgstr "Pluja amb intervals de forta intensitat o pluja freda"
 
 #: envcan_i18n.dat:284
 #, kde-format
@@ -2379,7 +2372,7 @@ msgstr "Pluja amb intervals de forta intensitat o tempestes elèctriques"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Rain mixed with freezing rain"
-msgstr "Barreja de pluja amb pluja gelant"
+msgstr "Barreja de pluja amb pluja freda"
 
 #: envcan_i18n.dat:288
 #, kde-format
@@ -2397,7 +2390,7 @@ msgstr "Pluja o plugim"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Rain or freezing rain"
-msgstr "Pluja o pluja gelant"
+msgstr "Pluja o pluja freda"
 
 #: envcan_i18n.dat:291
 #, kde-format
@@ -2421,13 +2414,13 @@ msgstr "Pluja o tempestes elèctriques"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Rain showers or flurries"
-msgstr "Aiguats o ràfegues de neu"
+msgstr "Ruixats o ratxes"
 
 #: envcan_i18n.dat:295
 #, kde-format
 msgctxt "weather forecast"
 msgid "Rain showers or wet flurries"
-msgstr "Aiguats o ràfegues de neu humida"
+msgstr "Ruixats o ratxes humides"
 
 #: envcan_i18n.dat:296
 #, kde-format
@@ -2493,13 +2486,13 @@ msgstr "Neu i tempesta de vent i neu"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow and blizzard and blowing snow"
-msgstr "Neu i tempesta de vent amb ràfegues de neu"
+msgstr "Neu i tempesta de vent amb ratxes de neu"
 
 #: envcan_i18n.dat:307
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow and blowing snow"
-msgstr "Neu i vent amb neu"
+msgstr "Neu i ratxes de neu"
 
 #: envcan_i18n.dat:308
 #, kde-format
@@ -2517,25 +2510,26 @@ msgstr "Neu amb intervals de forta intensitat i tempesta de vent i neu"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow at times heavy and blowing snow"
-msgstr "Neu amb intervals de forta intensitat i vent amb neu"
+msgstr ""
+"Neu amb intervals de forta intensitat i tempesta de vent i ratxes de neu"
 
 #: envcan_i18n.dat:311
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow at times heavy mixed with freezing drizzle"
-msgstr "Barreja de neu amb intervals de forta intensitat i plugim gelant"
+msgstr "Barreja de neu amb intervals de forta intensitat i plovineig"
 
 #: envcan_i18n.dat:312
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow at times heavy mixed with freezing rain"
-msgstr "Barreja de neu amb intervals de forta intensitat i pluja gelant"
+msgstr "Barreja de neu amb intervals de forta intensitat i pluja freda"
 
 #: envcan_i18n.dat:313
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow at times heavy mixed with ice pellets"
-msgstr "Barreja de neu amb intervals de forta intensitat i grans de gel"
+msgstr "Barreja de neu amb intervals de forta intensitat i calabruix"
 
 #: envcan_i18n.dat:314
 #, kde-format
@@ -2547,13 +2541,13 @@ msgstr "Barreja de neu amb intervals de forta intensitat i pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow at times heavy or freezing rain"
-msgstr "Neu amb intervals de forta intensitat i pluja gelant"
+msgstr "Neu amb intervals de forta intensitat i pluja freda"
 
 #: envcan_i18n.dat:316
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow at times heavy or ice pellets"
-msgstr "Neu amb intervals de forta intensitat o grans de gel"
+msgstr "Neu amb intervals de forta intensitat o calabruix"
 
 #: envcan_i18n.dat:317
 #, kde-format
@@ -2565,19 +2559,19 @@ msgstr "Neu amb intervals de forta intensitat o pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow mixed with freezing drizzle"
-msgstr "Barreja de neu i plugim gelant"
+msgstr "Barreja de neu i plovineig"
 
 #: envcan_i18n.dat:319
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow mixed with freezing rain"
-msgstr "Barreja de neu i pluja gelant"
+msgstr "Barreja de neu i pluja freda"
 
 #: envcan_i18n.dat:320
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow mixed with ice pellets"
-msgstr "Barreja de neu i grans de neu"
+msgstr "Barreja de neu i calabruix"
 
 #: envcan_i18n.dat:321
 #, kde-format
@@ -2589,19 +2583,19 @@ msgstr "Barreja de neu i pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow or freezing drizzle"
-msgstr "Neu o plugim gelant"
+msgstr "Neu o plovineig"
 
 #: envcan_i18n.dat:323
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow or freezing rain"
-msgstr "Neu o pluja gelant"
+msgstr "Neu o pluja freda"
 
 #: envcan_i18n.dat:324
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow or ice pellets"
-msgstr "Neu o grans de gel"
+msgstr "Neu o calabruix"
 
 #: envcan_i18n.dat:325
 #, kde-format
@@ -2613,7 +2607,7 @@ msgstr "Neu o pluja"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Snow squalls"
-msgstr "Borrasques de neu"
+msgstr "Torbonades de neu"
 
 #: envcan_i18n.dat:327 noaa_i18n.dat:347
 #, kde-format
@@ -2643,31 +2637,31 @@ msgstr "Tempestes"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Thunderstorms and possible hail"
-msgstr "Tempestes i possiblement pedra"
+msgstr "Tempestes i possiblement calamarsa"
 
 #: envcan_i18n.dat:332
 #, kde-format
 msgctxt "weather forecast"
 msgid "Wet flurries"
-msgstr "Ràfegues de neu humida"
+msgstr "Ratxes humides"
 
 #: envcan_i18n.dat:333
 #, kde-format
 msgctxt "weather forecast"
 msgid "Wet flurries at times heavy"
-msgstr "Ràfegues de neu humida amb intervals de forta intensitat"
+msgstr "Ratxes humides amb intervals de forta intensitat"
 
 #: envcan_i18n.dat:334
 #, kde-format
 msgctxt "weather forecast"
 msgid "Wet flurries at times heavy or rain showers"
-msgstr "Ràfegues de neu humida amb intervals de forta intensitat o aiguats"
+msgstr "Ratxes humides amb intervals de forta intensitat o ruixats"
 
 #: envcan_i18n.dat:335
 #, kde-format
 msgctxt "weather forecast"
 msgid "Wet flurries or rain showers"
-msgstr "Ràfegues de neu humida o aiguats"
+msgstr "Ratxes humides o ruixats"
 
 #: envcan_i18n.dat:336
 #, kde-format
@@ -2705,75 +2699,88 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr "Ventades"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "RU"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "EUA"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr "Hui"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, kde-format
 msgctxt "Short for Tonight"
 msgid "Tonight"
-msgstr "Aquesta nit"
+msgstr "Esta nit"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "Ds."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "Dg."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "Dl."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "Dt."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "Dc."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "Dj."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "Dv."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
 msgstr "Dades de «BBC Weather»"
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
+msgstr "Font: Deutscher Wetterdienst"
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
 #: ions/envcan/ion_envcan.cpp:1403 ions/envcan/ion_envcan.cpp:1544
@@ -2798,7 +2805,7 @@ msgstr "nit"
 #, kde-format
 msgctxt "Short for night, appended to the end of the weekday"
 msgid "nt"
-msgstr "nit"
+msgstr "nt"
 
 #: ions/envcan/ion_envcan.cpp:1581
 #, kde-format
@@ -2807,18 +2814,16 @@ msgid "Trace"
 msgstr "Traça"
 
 #: ions/envcan/ion_envcan.cpp:1607
-#, fuzzy, kde-format
-#| msgctxt "credit line, keep string short"
-#| msgid "Data from Environment Canada"
+#, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from Environment and Climate Change Canada"
-msgstr "Dades d'«Environment Canada»"
+msgstr "Dades del medi ambient i canvi climàtic del Canadà"
 
 #: ions/noaa/ion_noaa.cpp:633
 #, kde-format
 msgctxt "credit line, keep string short)"
 msgid "Data from NOAA National Weather Service"
-msgstr "Dades subministrades per «NOAA National Weather Service»"
+msgstr "Dades subministrades pel «NOAA National Weather Service»"
 
 #: ions/wetter.com/ion_wettercom.cpp:156 ions/wetter.com/ion_wettercom.cpp:157
 #, kde-format
@@ -2830,7 +2835,7 @@ msgstr "pocs núvols"
 #, kde-format
 msgctxt "weather condition"
 msgid "overcast"
-msgstr "cobert"
+msgstr "ennuvolat"
 
 #: ions/wetter.com/ion_wettercom.cpp:162 ions/wetter.com/ion_wettercom.cpp:163
 #: ions/wetter.com/ion_wettercom.cpp:164
@@ -2855,19 +2860,19 @@ msgstr "plugim lleuger"
 #, kde-format
 msgctxt "weather condition"
 msgid "heavy drizzle"
-msgstr "plugim intens"
+msgstr "plovisqueig intens"
 
 #: ions/wetter.com/ion_wettercom.cpp:172
 #, kde-format
 msgctxt "weather condition"
 msgid "freezing drizzle"
-msgstr "plugim gelant"
+msgstr "plovineig"
 
 #: ions/wetter.com/ion_wettercom.cpp:173
 #, kde-format
 msgctxt "weather condition"
 msgid "heavy freezing drizzle"
-msgstr "plugim gelant intens"
+msgstr "plovineig de forta intensitat"
 
 #: ions/wetter.com/ion_wettercom.cpp:174
 #, kde-format
@@ -2885,25 +2890,25 @@ msgstr "pluja moderada"
 #, kde-format
 msgctxt "weather condition"
 msgid "light freezing rain"
-msgstr "pluja gelant lleugera"
+msgstr "pluja freda lleugera"
 
 #: ions/wetter.com/ion_wettercom.cpp:180
 #, kde-format
 msgctxt "weather condition"
 msgid "freezing rain"
-msgstr "pluja gelant"
+msgstr "pluja freda"
 
 #: ions/wetter.com/ion_wettercom.cpp:181
 #, kde-format
 msgctxt "weather condition"
 msgid "light rain snow"
-msgstr "pluja lleugera i neu"
+msgstr "pluja lleugera, neu"
 
 #: ions/wetter.com/ion_wettercom.cpp:182
 #, kde-format
 msgctxt "weather condition"
 msgid "heavy rain snow"
-msgstr "pluja intensa i neu"
+msgstr "pluja intensa, neu"
 
 #: ions/wetter.com/ion_wettercom.cpp:183
 #, kde-format
@@ -2927,13 +2932,13 @@ msgstr "ruixats"
 #, kde-format
 msgctxt "weather condition"
 msgid "light snow rain showers"
-msgstr "ruixats lleugers de neu i pluja"
+msgstr "precipitacions lleugeres de neu, pluja"
 
 #: ions/wetter.com/ion_wettercom.cpp:193
 #, kde-format
 msgctxt "weather condition"
 msgid "heavy snow rain showers"
-msgstr "ruixats intensos de neu i pluja"
+msgstr "precipitacions de neu intenses, pluja"
 
 #: ions/wetter.com/ion_wettercom.cpp:195
 #, kde-format
@@ -2985,85 +2990,85 @@ msgstr "Nit"
 #, kde-format
 msgctxt "weather condition"
 msgid "A Few Clouds"
-msgstr "Alguns núvols"
+msgstr "Uns pocs núvols"
 
 #: noaa_i18n.dat:2
 #, kde-format
 msgctxt "weather condition"
 msgid "A Few Clouds and Breezy"
-msgstr "Alguns núvols i un poc de vent"
+msgstr "Uns pocs núvols i una mica de vent"
 
 #: noaa_i18n.dat:3
 #, kde-format
 msgctxt "weather condition"
 msgid "A Few Clouds and Windy"
-msgstr "Alguns núvols i ventades"
+msgstr "Uns pocs núvols i ventades"
 
 #: noaa_i18n.dat:4
 #, kde-format
 msgctxt "weather condition"
 msgid "A Few Clouds with Haze"
-msgstr "Alguns núvols i broma"
+msgstr "Uns pocs núvols i broma"
 
 #: noaa_i18n.dat:5
 #, kde-format
 msgctxt "weather condition"
 msgid "Blowing Dust"
-msgstr "Vent amb pols"
+msgstr "Ratxes de pols"
 
 #: noaa_i18n.dat:6
 #, kde-format
 msgctxt "weather condition"
 msgid "Blowing Sand"
-msgstr "Vent amb arena"
+msgstr "Ratxes d'arena"
 
 #: noaa_i18n.dat:8
 #, kde-format
 msgctxt "weather condition"
 msgid "Blowing Snow in Vicinity"
-msgstr "Proximitat de vent amb neu"
+msgstr "Proximitat de ratxes de neu"
 
 #: noaa_i18n.dat:9
 #, kde-format
 msgctxt "weather condition"
 msgid "Breezy"
-msgstr "Brisa"
+msgstr "Vent suau"
 
 #: noaa_i18n.dat:11
 #, kde-format
 msgctxt "weather condition"
 msgid "Clear and Breezy"
-msgstr "Ras i brisa"
+msgstr "Serè i vent suau"
 
 #: noaa_i18n.dat:12
 #, kde-format
 msgctxt "weather condition"
 msgid "Clear with Haze"
-msgstr "Ras amb broma"
+msgstr "Serè amb broma"
 
 #: noaa_i18n.dat:14
 #, kde-format
 msgctxt "weather condition"
 msgid "Drizzle Fog"
-msgstr "Boira pixanera"
+msgstr "Boira ploranera"
 
 #: noaa_i18n.dat:15
 #, kde-format
 msgctxt "weather condition"
 msgid "Drizzle Fog/Mist"
-msgstr "Boira/boirina pixanera"
+msgstr "Boira/boirina ploranera"
 
 #: noaa_i18n.dat:16
 #, kde-format
 msgctxt "weather condition"
 msgid "Drizzle Ice Pellets"
-msgstr "Plugim amb grans de gel"
+msgstr "Plugim de calabruix"
 
 #: noaa_i18n.dat:17
 #, kde-format
 msgctxt "weather condition"
 msgid "Drizzle Snow"
-msgstr "Plugim amb neu"
+msgstr "Plugim de neu"
 
 #: noaa_i18n.dat:19
 #, kde-format
@@ -3093,25 +3098,25 @@ msgstr "Proximitat de tempesta de pols"
 #, kde-format
 msgctxt "weather condition"
 msgid "Fair"
-msgstr "Bo"
+msgstr "Net"
 
 #: noaa_i18n.dat:24
 #, kde-format
 msgctxt "weather condition"
 msgid "Fair and Breezy"
-msgstr "Bo amb brisa"
+msgstr "Net amb vent suau"
 
 #: noaa_i18n.dat:25
 #, kde-format
 msgctxt "weather condition"
 msgid "Fair and Windy"
-msgstr "Bo i ventós"
+msgstr "Net amb ventades"
 
 #: noaa_i18n.dat:26
 #, kde-format
 msgctxt "weather condition"
 msgid "Fair with Haze"
-msgstr "Bo amb broma"
+msgstr "Net amb broma"
 
 #: noaa_i18n.dat:28
 #, kde-format
@@ -3129,25 +3134,25 @@ msgstr "Boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Freezing Drizzle"
-msgstr "Plugim gelant"
+msgstr "Plovineig"
 
 #: noaa_i18n.dat:31
 #, kde-format
 msgctxt "weather condition"
 msgid "Freezing Drizzle in Vicinity"
-msgstr "Proximitat de plugim gelant"
+msgstr "Proximitat de plovineig"
 
 #: noaa_i18n.dat:32
 #, kde-format
 msgctxt "weather condition"
 msgid "Freezing Drizzle Rain"
-msgstr "Pluja gelant, pluja"
+msgstr "Plovineig, pluja"
 
 #: noaa_i18n.dat:33
 #, kde-format
 msgctxt "weather condition"
 msgid "Freezing Drizzle Snow"
-msgstr "Pluja gelant, neu"
+msgstr "Plovineig, neu"
 
 #: noaa_i18n.dat:34
 #, kde-format
@@ -3165,55 +3170,55 @@ msgstr "Proximitat de boira gebradora"
 #, kde-format
 msgctxt "weather condition"
 msgid "Freezing Rain"
-msgstr "Pluja gelant"
+msgstr "Pluja freda"
 
 #: noaa_i18n.dat:37
 #, kde-format
 msgctxt "weather condition"
 msgid "Freezing Rain in Vicinity"
-msgstr "Proximitat de pluja gelant"
+msgstr "Proximitat de pluja freda"
 
 #: noaa_i18n.dat:38
 #, kde-format
 msgctxt "weather condition"
 msgid "Freezing Rain Rain"
-msgstr "Pluja gelant, pluja"
+msgstr "Pluja freda, pluja"
 
 #: noaa_i18n.dat:39
 #, kde-format
 msgctxt "weather condition"
 msgid "Freezing Rain Snow"
-msgstr "Pluja gelant, neu"
+msgstr "Pluja freda, neu"
 
 #: noaa_i18n.dat:41
 #, kde-format
 msgctxt "weather condition"
 msgid "Funnel Cloud in Vicinity"
-msgstr "Proximitat de núvol d'embut"
+msgstr "Proximitat de núvols convectius"
 
 #: noaa_i18n.dat:43
 #, kde-format
 msgctxt "weather condition"
 msgid "Hail Showers"
-msgstr "Pedregades"
+msgstr "Calamarsades"
 
 #: noaa_i18n.dat:47
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Drizzle Fog"
-msgstr "Boira pixanera de forta densitat"
+msgstr "Boira ploranera de forta densitat"
 
 #: noaa_i18n.dat:48
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Drizzle Fog/Mist"
-msgstr "Boira/boirina pixanera de forta densitat"
+msgstr "Boira/boirina ploranera de forta densitat"
 
 #: noaa_i18n.dat:49
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Drizzle Ice Pellets"
-msgstr "Plugim gelant de forta intensitat, grans de gel"
+msgstr "Plugim de forta intensitat, calabruix"
 
 #: noaa_i18n.dat:50
 #, kde-format
@@ -3231,19 +3236,19 @@ msgstr "Tempesta de pols de forta intensitat"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Freezing Drizzle"
-msgstr "Plugim gelant de forta intensitat"
+msgstr "Plovineig de forta intensitat"
 
 #: noaa_i18n.dat:53
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Freezing Drizzle Rain"
-msgstr "Plugim gelant de forta intensitat, pluja"
+msgstr "Plovineig de forta intensitat, pluja"
 
 #: noaa_i18n.dat:54
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Freezing Drizzle Snow"
-msgstr "Plugim gelant de forta intensitat, neu"
+msgstr "Plovineig de forta intensitat, neu"
 
 #: noaa_i18n.dat:55
 #, kde-format
@@ -3255,37 +3260,37 @@ msgstr "Boira gebradora de forta densitat"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Freezing Rain"
-msgstr "Pluja gelant de forta intensitat"
+msgstr "Pluja freda de forta intensitat"
 
 #: noaa_i18n.dat:57
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Freezing Rain Rain"
-msgstr "Pluja gelant de forta intensitat, pluja"
+msgstr "Pluja freda de forta intensitat, pluja"
 
 #: noaa_i18n.dat:58
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Freezing Rain Snow"
-msgstr "Pluja gelant de forta intensitat, neu"
+msgstr "Pluja freda de forta intensitat, neu"
 
 #: noaa_i18n.dat:59
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Ice Pellets"
-msgstr "Grans de gel de forta intensitat"
+msgstr "Calabruix de forta intensitat"
 
 #: noaa_i18n.dat:60
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Ice Pellets Drizzle"
-msgstr "Grans de gel de forta intensitat, plugim"
+msgstr "Calabruix de forta intensitat, plugim"
 
 #: noaa_i18n.dat:61
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Ice Pellets Rain"
-msgstr "Grans de gel de forta intensitat, pluja"
+msgstr "Calabruix de forta intensitat, pluja"
 
 #: noaa_i18n.dat:63
 #, kde-format
@@ -3303,31 +3308,31 @@ msgstr "Pluja intensa, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Rain Freezing Drizzle"
-msgstr "Pluja intensa, plugim gelant"
+msgstr "Pluja intensa, plovineig"
 
 #: noaa_i18n.dat:66
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Rain Freezing Rain"
-msgstr "Pluja intensa, pluja gelant"
+msgstr "Pluja intensa, pluja freda"
 
 #: noaa_i18n.dat:67
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Rain Ice Pellets"
-msgstr "Pluja intensa, grans de gel"
+msgstr "Pluja intensa, calabruix"
 
 #: noaa_i18n.dat:68
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Rain Showers"
-msgstr "Aiguats de forta intensitat"
+msgstr "Ruixats de forta intensitat"
 
 #: noaa_i18n.dat:69
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Rain Showers Fog/Mist"
-msgstr "Aiguats de forta intensitat, boira/boirina"
+msgstr "Ruixats de forta intensitat, boira/boirina"
 
 #: noaa_i18n.dat:70
 #, kde-format
@@ -3339,19 +3344,19 @@ msgstr "Pluja intensa, neu"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Sand Storm"
-msgstr "Tempesta de sorra de forta intensitat"
+msgstr "Tempesta d'arena de forta intensitat"
 
 #: noaa_i18n.dat:72
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Showers Rain"
-msgstr "Aiguats de forta intensitat"
+msgstr "Ruixats de forta intensitat"
 
 #: noaa_i18n.dat:73
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Showers Rain Fog/Mist"
-msgstr "Aiguats de forta intensitat, boira/boirina"
+msgstr "Ruixats de forta intensitat, boira/boirina"
 
 #: noaa_i18n.dat:74
 #, kde-format
@@ -3375,13 +3380,13 @@ msgstr "Ruixats de forta intensitat, neu, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy small Hail/Snow Pellets"
-msgstr "Intensa calamarsa, calabruix "
+msgstr "Intensa calamarsada de xicoteta dimensió, calabruix"
 
 #: noaa_i18n.dat:79
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Snow Blowing Snow"
-msgstr "Nevada intensa, vent amb neu neu"
+msgstr "Nevada intensa, ratxes de neu"
 
 #: noaa_i18n.dat:80
 #, kde-format
@@ -3399,25 +3404,25 @@ msgstr "Nevada intensa, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Snow Freezing Drizzle"
-msgstr "Nevada intensa, plugim gelant"
+msgstr "Nevada intensa, plovineig"
 
 #: noaa_i18n.dat:83
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Snow Freezing Rain"
-msgstr "Nevada intensa, pluja gelant"
+msgstr "Nevada intensa, pluja freda"
 
 #: noaa_i18n.dat:84
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Snow Grains"
-msgstr "Neu granulada intensa"
+msgstr "Nevada intensa, granets de glaç"
 
 #: noaa_i18n.dat:85
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Snow Low Drifting Snow"
-msgstr "Nevada intensa, neu baixa arrossegada pel vent"
+msgstr "Nevada intensa, nevada dispersa"
 
 #: noaa_i18n.dat:86
 #, kde-format
@@ -3471,25 +3476,25 @@ msgstr "Tempesta elèctrica intensa, pluja, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Thunderstorm Rain Hail"
-msgstr "Tempesta elèctrica intensa, pluja, pedregada"
+msgstr "Tempesta elèctrica intensa, pluja, calamarsa"
 
 #: noaa_i18n.dat:95
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Thunderstorm Rain Hail Fog"
-msgstr "Tempesta elèctrica intensa, pluja, pedregada, boira"
+msgstr "Tempesta elèctrica intensa, pluja, calamarsa, boira"
 
 #: noaa_i18n.dat:96
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Thunderstorm Rain Hail Fog/Hail"
-msgstr "Tempesta elèctrica intensa, pluja, pedregada, boira/boirina"
+msgstr "Tempesta elèctrica intensa, pluja, calamarsa, boira/boirina"
 
 #: noaa_i18n.dat:97
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Thunderstorm Rain Hail Haze"
-msgstr "Tempesta elèctrica intensa, pluja, pedregada, broma"
+msgstr "Tempesta elèctrica intensa, pluja, calamarsa, broma"
 
 #: noaa_i18n.dat:98
 #, kde-format
@@ -3501,7 +3506,8 @@ msgstr "Tempesta elèctrica intensa, pluja, broma"
 #, kde-format
 msgctxt "weather condition"
 msgid "Heavy Thunderstorm Rain Small Hail/Snow Pellets"
-msgstr "Tempesta elèctrica intensa, pluja, calamarsa/calabruix"
+msgstr ""
+"Tempesta elèctrica intensa, pluja, calamarsa de xicoteta dimensió/calabruix"
 
 #: noaa_i18n.dat:100
 #, kde-format
@@ -3513,19 +3519,19 @@ msgstr "Tempesta elèctrica intensa, neu"
 #, kde-format
 msgctxt "weather condition"
 msgid "Ice Pellets Drizzle"
-msgstr "Plugim, grans de gel"
+msgstr "Plugim de calabruix"
 
 #: noaa_i18n.dat:104
 #, kde-format
 msgctxt "weather condition"
 msgid "Ice Pellets in Vicinity"
-msgstr "Proximitat de grans de gel"
+msgstr "Proximitat de calabruix"
 
 #: noaa_i18n.dat:105
 #, kde-format
 msgctxt "weather condition"
 msgid "Ice Pellets Rain"
-msgstr "Grans de gel, pluja"
+msgstr "Calabruix, pluja"
 
 #: noaa_i18n.dat:107
 #, kde-format
@@ -3543,7 +3549,7 @@ msgstr "Plugim lleuger, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Drizzle Ice Pellets"
-msgstr "Plugim lleuger, grans de gel"
+msgstr "Plugim lleuger, calabruix"
 
 #: noaa_i18n.dat:110
 #, kde-format
@@ -3555,13 +3561,13 @@ msgstr "Plugim lleuger, neu"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Freezing Drizzle Rain"
-msgstr "Plugim gelant lleuger, pluja"
+msgstr "Plovineig lleuger, pluja"
 
 #: noaa_i18n.dat:113
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Freezing Drizzle Snow"
-msgstr "Plugim gelant lleuger, neu"
+msgstr "Plovineig lleuger, neu"
 
 #: noaa_i18n.dat:114
 #, kde-format
@@ -3573,37 +3579,37 @@ msgstr "Boira gebradora lleugera"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Freezing Rain Rain"
-msgstr "Pluja gelant lleugera, pluja"
+msgstr "Pluja freda lleugera, pluja"
 
 #: noaa_i18n.dat:117
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Freezing Rain Snow"
-msgstr "Pluja gelant lleugera, neu"
+msgstr "Pluja freda lleugera, neu"
 
 #: noaa_i18n.dat:118
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Ice Pellets"
-msgstr "Grans de gel lleugers"
+msgstr "Calabruix lleuger"
 
 #: noaa_i18n.dat:119
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Ice Pellets Drizzle"
-msgstr "Grans de gel lleugers, plugim"
+msgstr "Calabruix lleuger, plugim"
 
 #: noaa_i18n.dat:120
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Ice Pellets Rain"
-msgstr "Grans de gel lleugers, pluja"
+msgstr "Calabruix lleuger, pluja"
 
 #: noaa_i18n.dat:122
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Rain and Breezy"
-msgstr "Pluja lleugera i brisa"
+msgstr "Pluja lleugera i vent suau"
 
 #: noaa_i18n.dat:123
 #, kde-format
@@ -3621,37 +3627,37 @@ msgstr "Pluja lleugera, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Rain Freezing Drizzle"
-msgstr "Pluja lleugera, plugim gelant"
+msgstr "Pluja lleugera, plovineig"
 
 #: noaa_i18n.dat:126
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Rain Freezing Rain"
-msgstr "Pluja lleugera, pluja gelant"
+msgstr "Pluja lleugera, pluja freda"
 
 #: noaa_i18n.dat:127
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Rain Ice Pellets"
-msgstr "Pluja lleugera, grans de gel"
+msgstr "Pluja lleugera, calabruix"
 
 #: noaa_i18n.dat:128
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Rain Showers"
-msgstr "Aiguats lleugers"
+msgstr "Pluja lleugera, ruixats"
 
 #: noaa_i18n.dat:129
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Rain Showers Fog/Mist"
-msgstr "Aiguats lleugers, boira/boirina"
+msgstr "Pluja lleugera, ruixats, boira/boirina"
 
 #: noaa_i18n.dat:130
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Rain Snow"
-msgstr "Precipitació de neu lleugera"
+msgstr "Pluja lleugera, neu"
 
 #: noaa_i18n.dat:131
 #, kde-format
@@ -3663,7 +3669,7 @@ msgstr "Ruixats lleugers, pluja"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Showers Rain Fog/Mist"
-msgstr "Aiguats lleugers, boira/boirina"
+msgstr "Ruixats lleugers, pluja, boira/boirina"
 
 #: noaa_i18n.dat:133
 #, kde-format
@@ -3687,19 +3693,19 @@ msgstr "Ruixats lleugers, neu, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Small Hail/Snow Pellets"
-msgstr "Calamarsa lleugera/calabruix"
+msgstr "Lleugera calamarsada de xicoteta dimensió/calabruix"
 
 #: noaa_i18n.dat:138
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Snow Blowing Snow"
-msgstr "Vent lleuger amb neu, neu"
+msgstr "Lleugeres ratxes de neu, neu"
 
 #: noaa_i18n.dat:139
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Snow Blowing Snow Fog/Mist"
-msgstr "Vent lleuger amb neu, neu, boira/boirina"
+msgstr "Lleugeres ratxes de neu, neu, boira/boirina"
 
 #: noaa_i18n.dat:140
 #, kde-format
@@ -3723,25 +3729,25 @@ msgstr "Nevada lleugera, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Snow Freezing Drizzle"
-msgstr "Nevada lleugera, plugim gelant"
+msgstr "Nevada lleugera, plovineig"
 
 #: noaa_i18n.dat:144
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Snow Freezing Rain"
-msgstr "Nevada lleugera, pluja gelant"
+msgstr "Nevada lleugera, pluja freda"
 
 #: noaa_i18n.dat:145
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Snow Grains"
-msgstr "Neu granulada lleugera"
+msgstr "Nevada lleugera, granets de glaç"
 
 #: noaa_i18n.dat:146
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Snow Low Drifting Snow"
-msgstr "Nevada lleugera, neu baixa arrossegada pel vent"
+msgstr "Nevada lleugera, nevada dispersa"
 
 #: noaa_i18n.dat:147
 #, kde-format
@@ -3789,25 +3795,25 @@ msgstr "Tempesta elèctrica lleugera, pluja, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Thunderstorm Rain Hail"
-msgstr "Tempesta elèctrica lleugera, pluja, pedra"
+msgstr "Tempesta elèctrica lleugera, pluja, calamarsa"
 
 #: noaa_i18n.dat:155
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Thunderstorm Rain Hail Fog"
-msgstr "Tempesta elèctrica lleugera, pluja, pedra, boira"
+msgstr "Tempesta elèctrica lleugera, pluja, calamarsa, boira"
 
 #: noaa_i18n.dat:156
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Thunderstorm Rain Hail Fog/Mist"
-msgstr "Tempesta elèctrica lleugera, pluja, pedra, boira/boirina"
+msgstr "Tempesta elèctrica lleugera, pluja, calamarsa, boira/boirina"
 
 #: noaa_i18n.dat:157
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Thunderstorm Rain Hail Haze"
-msgstr "Tempesta elèctrica lleugera, pluja, pedra, broma"
+msgstr "Tempesta elèctrica lleugera, pluja, calamarsa, broma"
 
 #: noaa_i18n.dat:158
 #, kde-format
@@ -3819,7 +3825,8 @@ msgstr "Tempesta elèctrica lleugera, pluja, broma"
 #, kde-format
 msgctxt "weather condition"
 msgid "Light Thunderstorm Rain Small Hail/Snow Pellets"
-msgstr "Tempesta elèctrica lleugera, pluja, calamarsa/calabruix"
+msgstr ""
+"Tempesta elèctrica lleugera, pluja, calamarsa de xicoteta dimensió/calabruix"
 
 #: noaa_i18n.dat:160
 #, kde-format
@@ -3831,31 +3838,31 @@ msgstr "Tempesta elèctrica lleugera, neu"
 #, kde-format
 msgctxt "weather condition"
 msgid "Low Drifting Dust"
-msgstr "Pols baixa arrossegada pel vent"
+msgstr "Pols dispersa"
 
 #: noaa_i18n.dat:162
 #, kde-format
 msgctxt "weather condition"
 msgid "Low Drifting Sand"
-msgstr "Arena baixa arrossegada pel vent"
+msgstr "Arena dispersa"
 
 #: noaa_i18n.dat:163
 #, kde-format
 msgctxt "weather condition"
 msgid "Low Drifting Snow"
-msgstr "Neu baixa arrossegada pel vent "
+msgstr "Nevada dispersa"
 
 #: noaa_i18n.dat:165
 #, kde-format
 msgctxt "weather condition"
 msgid "Mostly Cloudy and Breezy"
-msgstr "Majoritàriament ennuvolat i amb brisa"
+msgstr "Majoritàriament ennuvolat i vent suau"
 
 #: noaa_i18n.dat:166
 #, kde-format
 msgctxt "weather condition"
 msgid "Mostly Cloudy and Windy"
-msgstr "Majoritàriament ennuvolat i ventós"
+msgstr "Majoritàriament ennuvolat i ventades"
 
 #: noaa_i18n.dat:167
 #, kde-format
@@ -3867,13 +3874,13 @@ msgstr "Majoritàriament ennuvolat amb broma"
 #, kde-format
 msgctxt "weather condition"
 msgid "Overcast"
-msgstr "Cobert"
+msgstr "Molt ennuvolat"
 
 #: noaa_i18n.dat:169
 #, kde-format
 msgctxt "weather condition"
 msgid "Overcast and Breezy"
-msgstr "Cobert i amb brisa"
+msgstr "Molt ennuvolat i vent suau"
 
 #: noaa_i18n.dat:170
 #, kde-format
@@ -3903,13 +3910,13 @@ msgstr "Proximitat de boira parcial"
 #, kde-format
 msgctxt "weather condition"
 msgid "Partly Cloudy and Breezy"
-msgstr "Parcialment ennuvolat i amb brisa"
+msgstr "Parcialment ennuvolat i vent suau"
 
 #: noaa_i18n.dat:176
 #, kde-format
 msgctxt "weather condition"
 msgid "Partly Cloudy and Windy"
-msgstr "Parcialment ennuvolat i ventós"
+msgstr "Parcialment ennuvolat i ventades"
 
 #: noaa_i18n.dat:177
 #, kde-format
@@ -3951,43 +3958,43 @@ msgstr "Pluja, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Rain Freezing Drizzle"
-msgstr "Pluja, plugim gelant"
+msgstr "Pluja, plovineig"
 
 #: noaa_i18n.dat:184
 #, kde-format
 msgctxt "weather condition"
 msgid "Rain Freezing Rain"
-msgstr "Pluja, pluja gelant"
+msgstr "Pluja, pluja freda"
 
 #: noaa_i18n.dat:185
 #, kde-format
 msgctxt "weather condition"
 msgid "Rain Ice Pellets"
-msgstr "Pluja, grans de gel"
+msgstr "Pluja, calabruix"
 
 #: noaa_i18n.dat:186
 #, kde-format
 msgctxt "weather condition"
 msgid "Rain Showers"
-msgstr "Aiguats"
+msgstr "Ruixats"
 
 #: noaa_i18n.dat:187
 #, kde-format
 msgctxt "weather condition"
 msgid "Rain Showers Fog/Mist"
-msgstr "Aiguats, boira/boirina"
+msgstr "Ruixats, boira/boirina"
 
 #: noaa_i18n.dat:188
 #, kde-format
 msgctxt "weather condition"
 msgid "Rain Showers in Vicinity"
-msgstr "Proximitat d'aiguats"
+msgstr "Proximitat de ruixats"
 
 #: noaa_i18n.dat:189
 #, kde-format
 msgctxt "weather condition"
 msgid "Rain Showers in Vicinity Fog/Mist"
-msgstr "Proximitat d'aiguats, boira/boirina"
+msgstr "Proximitat de ruixats, boira/boirina"
 
 #: noaa_i18n.dat:190
 #, kde-format
@@ -4023,13 +4030,13 @@ msgstr "Boira baixa a les proximitats"
 #, kde-format
 msgctxt "weather condition"
 msgid "Showers Hail"
-msgstr "Ruixats, pedra"
+msgstr "Ruixats, calamarsa"
 
 #: noaa_i18n.dat:197
 #, kde-format
 msgctxt "weather condition"
 msgid "Showers Ice Pellets"
-msgstr "Ruixats, grans de gel"
+msgstr "Ruixats, calabruix"
 
 #: noaa_i18n.dat:198
 #, kde-format
@@ -4089,13 +4096,13 @@ msgstr "Ruixats, neu, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Small Hail/Snow Pellets"
-msgstr "Calamarsa/calabruix"
+msgstr "Calamarsada de xicoteta dimensió/calabruix"
 
 #: noaa_i18n.dat:210
 #, kde-format
 msgctxt "weather condition"
 msgid "Snow Blowing Snow"
-msgstr "Neu, vent amb neu"
+msgstr "Neu, ratxes de neu"
 
 #: noaa_i18n.dat:211
 #, kde-format
@@ -4119,19 +4126,19 @@ msgstr "Neu, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Snow Freezing Drizzle"
-msgstr "Neu, plugim gelant"
+msgstr "Neu, plovineig"
 
 #: noaa_i18n.dat:215
 #, kde-format
 msgctxt "weather condition"
 msgid "Snow Freezing Rain"
-msgstr "Neu, pluja gelant"
+msgstr "Neu, pluja freda"
 
 #: noaa_i18n.dat:217
 #, kde-format
 msgctxt "weather condition"
 msgid "Snow Low Drifting Snow"
-msgstr "Neu, neu baixa arrossegada pel vent"
+msgstr "Neu, nevada dispersa"
 
 #: noaa_i18n.dat:218
 #, kde-format
@@ -4185,25 +4192,25 @@ msgstr "Tempesta elèctrica, boira"
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Hail"
-msgstr "Tempesta elèctrica, pedra"
+msgstr "Tempesta elèctrica, calamarsa"
 
 #: noaa_i18n.dat:228
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Hail Fog"
-msgstr "Tempesta elèctrica, pedra, boira"
+msgstr "Tempesta elèctrica, calamarsa, boira"
 
 #: noaa_i18n.dat:229
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Haze in Vicinity"
-msgstr "Tempesta elèctrica, proximitat de broma"
+msgstr "Tempesta elèctrica, proximitat de calamarsa"
 
 #: noaa_i18n.dat:230
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Haze in Vicinity Hail"
-msgstr "Tempesta elèctrica, proximitat de broma, pedra"
+msgstr "Tempesta elèctrica, proximitat de broma, calamarsa"
 
 #: noaa_i18n.dat:231
 #, kde-format
@@ -4227,25 +4234,25 @@ msgstr "Tempesta elèctrica, pluja intensa, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Heavy Rain Hail"
-msgstr "Tempesta elèctrica, pluja intensa, pedra"
+msgstr "Tempesta elèctrica, pluja intensa, calamarsa"
 
 #: noaa_i18n.dat:235
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Heavy Rain Hail Fog"
-msgstr "Tempesta elèctrica, pluja intensa, pedra, boira"
+msgstr "Tempesta elèctrica, pluja intensa, calamarsa, boira"
 
 #: noaa_i18n.dat:236
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Heavy Rain Hail Fog/Mist"
-msgstr "Tempesta elèctrica, pluja intensa, pedra, boira/boirina"
+msgstr "Tempesta elèctrica, pluja intensa, calamarsa, boira/boirina"
 
 #: noaa_i18n.dat:237
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Heavy Rain Hail Haze"
-msgstr "Tempesta elèctrica, pluja intensa, pedra, broma"
+msgstr "Tempesta elèctrica, pluja intensa, calamarsa, broma"
 
 #: noaa_i18n.dat:238
 #, kde-format
@@ -4257,7 +4264,7 @@ msgstr "Tempesta elèctrica, pluja de forta intensitat, broma"
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Ice Pellets"
-msgstr "Tempesta elèctrica, grans de neu"
+msgstr "Tempesta elèctrica, calabruix"
 
 #: noaa_i18n.dat:240
 #, kde-format
@@ -4281,13 +4288,13 @@ msgstr "Proximitat de tempesta elèctrica, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm in Vicinity Hail"
-msgstr "Proximitat de tempesta elèctrica, pedra"
+msgstr "Proximitat de tempesta elèctrica, calamarsa"
 
 #: noaa_i18n.dat:244
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm in Vicinity Hail Haze"
-msgstr "Proximitat de tempesta elèctrica, pedra, broma"
+msgstr "Proximitat de tempesta elèctrica, calamarsa. broma"
 
 #: noaa_i18n.dat:245
 #, kde-format
@@ -4317,25 +4324,25 @@ msgstr "Tempesta elèctrica, pluja lleugera, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Light Rain Hail"
-msgstr "Tempesta elèctrica, pluja lleugera, pedra"
+msgstr "Tempesta elèctrica, pluja lleugera, calamarsa"
 
 #: noaa_i18n.dat:250
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Light Rain Hail Fog"
-msgstr "Tempesta elèctrica, pluja lleugera, pedra, boira"
+msgstr "Tempesta elèctrica, pluja lleugera, calamarsa, boira"
 
 #: noaa_i18n.dat:251
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Light Rain Hail Fog/Mist"
-msgstr "Tempesta elèctrica, pluja lleugera, pedra, boira/boirina"
+msgstr "Tempesta elèctrica, pluja lleugera, calamarsa, boira/boirina"
 
 #: noaa_i18n.dat:252
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Light Rain Hail Haze"
-msgstr "Tempesta elèctrica, pluja lleugera, pedra, broma"
+msgstr "Tempesta elèctrica, pluja lleugera, calamarsa, broma"
 
 #: noaa_i18n.dat:253
 #, kde-format
@@ -4359,13 +4366,13 @@ msgstr "Tempesta elèctrica, pluja, boira/boirina"
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Rain Hail Fog/Mist"
-msgstr "Tempesta elèctrica, pluja, pedra, boira/boirina"
+msgstr "Tempesta elèctrica, pluja, calamarsa, boira/boirina"
 
 #: noaa_i18n.dat:257
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Rain Small Hail/Snow Pellets"
-msgstr "Tempesta elèctrica, pluja, calamarsa/calabruix"
+msgstr "Tempesta elèctrica, pluja, calamarsa de xicoteta dimensió/calabruix"
 
 #: noaa_i18n.dat:258
 #, kde-format
@@ -4377,13 +4384,13 @@ msgstr "Tempesta elèctrica, proximitat de ruixats"
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Showers in Vicinity Hail"
-msgstr "Tempesta elèctrica, proximitat de ruixats, pedra"
+msgstr "Tempesta elèctrica, proximitat de ruixats, calamarsa"
 
 #: noaa_i18n.dat:260
 #, kde-format
 msgctxt "weather condition"
 msgid "Thunderstorm Small Hail/Snow Pellets"
-msgstr "Tempesta elèctrica, calamarsa/calabruix"
+msgstr "Tempesta elèctrica, calamarsa de xicoteta dimensió/calabruix"
 
 #: noaa_i18n.dat:261
 #, kde-format
@@ -4395,7 +4402,7 @@ msgstr "Tempesta elèctrica, neu"
 #, kde-format
 msgctxt "weather condition"
 msgid "Tornado/Water Spout"
-msgstr "Tornado/tromba marina"
+msgstr "Tornado/tromba d'aigua"
 
 #: noaa_i18n.dat:263
 #, kde-format
@@ -4419,19 +4426,19 @@ msgstr "Cendra volcànica"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Water Spout"
-msgstr "Tromba marina"
+msgstr "Tromba d'aigua"
 
 #: noaa_i18n.dat:268
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing Spray"
-msgstr "Gotes espargides d'aigua gelants"
+msgstr "Ruixat gelat"
 
 #: noaa_i18n.dat:269
 #, kde-format
 msgctxt "weather forecast"
 msgid "Frost"
-msgstr "Gebre"
+msgstr "Gel"
 
 #: noaa_i18n.dat:270
 #, kde-format
@@ -4509,25 +4516,25 @@ msgstr "Pluja/aiguaneu"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Rain/Freezing Rain"
-msgstr "Lleugera possibilitat de pluja/pluja gelant"
+msgstr "Lleugera possibilitat de pluja/pluja freda"
 
 #: noaa_i18n.dat:284
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance Rain/Freezing Rain"
-msgstr "Possibilitat de pluja/pluja gelant"
+msgstr "Possibilitat de pluja/pluja freda"
 
 #: noaa_i18n.dat:285
 #, kde-format
 msgctxt "weather forecast"
 msgid "Rain/Freezing Rain Likely"
-msgstr "Probabilitat de pluja/pluja gelant"
+msgstr "Probabilitat de pluja/pluja freda"
 
 #: noaa_i18n.dat:286
 #, kde-format
 msgctxt "weather forecast"
 msgid "Rain/Freezing Rain"
-msgstr "Pluja/pluja gelant"
+msgstr "Pluja/pluja freda"
 
 #: noaa_i18n.dat:287
 #, kde-format
@@ -4545,49 +4552,49 @@ msgstr "Barreja hivernal"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Freezing Drizzle"
-msgstr "Lleugera possibilitat de plugim gelant"
+msgstr "Lleugera possibilitat de plovineig"
 
 #: noaa_i18n.dat:290
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance Freezing Drizzle"
-msgstr "Possibilitat de plugim gelant"
+msgstr "Possibilitat de plovineig"
 
 #: noaa_i18n.dat:291
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing Drizzle Likely"
-msgstr "Probabilitat de plugim gelant"
+msgstr "Probabilitat de plovineig"
 
 #: noaa_i18n.dat:292
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing Drizzle"
-msgstr "Plugim gelant"
+msgstr "Plovineig"
 
 #: noaa_i18n.dat:293
 #, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Freezing Rain"
-msgstr "Lleugera possibilitat de pluja gelant"
+msgstr "Lleugera possibilitat de pluja freda"
 
 #: noaa_i18n.dat:294
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance Freezing Rain"
-msgstr "Possibilitat de pluja gelant"
+msgstr "Possibilitat de pluja freda"
 
 #: noaa_i18n.dat:295
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing Rain Likely"
-msgstr "Probabilitat de pluja gelant"
+msgstr "Probabilitat de pluja freda"
 
 #: noaa_i18n.dat:296
 #, kde-format
 msgctxt "weather forecast"
 msgid "Freezing Rain"
-msgstr "Pluja gelant"
+msgstr "Pluja freda"
 
 #: noaa_i18n.dat:297
 #, kde-format
@@ -4641,19 +4648,19 @@ msgstr "Nevada intensa"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Flurries"
-msgstr "Lleugera possibilitat de ràfegues de neu"
+msgstr "Lleugera possibilitat de ratxes"
 
 #: noaa_i18n.dat:307
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance Flurries"
-msgstr "Possibilitat de ràfegues de neu"
+msgstr "Possibilitat de ratxes"
 
 #: noaa_i18n.dat:308
 #, kde-format
 msgctxt "weather forecast"
 msgid "Flurries Likely"
-msgstr "Probabilitat de ràfegues de neu"
+msgstr "Probabilitat de ratxes"
 
 #: noaa_i18n.dat:310
 #, kde-format
@@ -4725,25 +4732,25 @@ msgstr "Pluja intensa"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Slight Chance Rain Showers"
-msgstr "Lleugera possibilitat d'aiguats"
+msgstr "Lleugera possibilitat de precipitacions de pluja"
 
 #: noaa_i18n.dat:324
 #, kde-format
 msgctxt "weather forecast"
 msgid "Chance Rain Showers"
-msgstr "Possibilitat d'aiguats"
+msgstr "Possibilitat de ruixats"
 
 #: noaa_i18n.dat:325
 #, kde-format
 msgctxt "weather forecast"
 msgid "Rain Showers Likely"
-msgstr "Probabilitat d'aiguats"
+msgstr "Possibilitat de ruixats"
 
 #: noaa_i18n.dat:326
 #, kde-format
 msgctxt "weather forecast"
 msgid "Rain Showers"
-msgstr "Aiguats"
+msgstr "Ruixats"
 
 #: noaa_i18n.dat:327
 #, kde-format
@@ -4767,25 +4774,25 @@ msgstr "Boira gebradora"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Haze"
-msgstr "Broma"
+msgstr "Boirina"
 
 #: noaa_i18n.dat:332
 #, kde-format
 msgctxt "weather forecast"
 msgid "Blowing Sand"
-msgstr "Arena amb vent"
+msgstr "Ratxes d'arena"
 
 #: noaa_i18n.dat:333
 #, kde-format
 msgctxt "weather forecast"
 msgid "Blowing Dust"
-msgstr "Pols amb vent"
+msgstr "Ratxes de pols"
 
 #: noaa_i18n.dat:334
 #, kde-format
 msgctxt "weather forecast"
 msgid "Blowing Snow"
-msgstr "Vent amb neu"
+msgstr "Ratxes de neu"
 
 #: noaa_i18n.dat:335
 #, kde-format
@@ -4797,13 +4804,13 @@ msgstr "Boira densa"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Blustery"
-msgstr "Venteguera"
+msgstr "Tempestuós"
 
 #: noaa_i18n.dat:339
 #, kde-format
 msgctxt "weather forecast"
 msgid "Breezy"
-msgstr "Brisa"
+msgstr "Vent suau"
 
 #: noaa_i18n.dat:340
 #, kde-format
@@ -4863,7 +4870,7 @@ msgstr "Clarianes graduals"
 #, kde-format
 msgctxt "weather forecast"
 msgid "Clearing Late"
-msgstr "Clarianes cap al vespre"
+msgstr "Clarianes al tard"
 
 #: noaa_i18n.dat:353
 #, kde-format

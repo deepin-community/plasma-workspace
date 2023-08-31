@@ -5,9 +5,11 @@
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
-import QtQuick 2.0
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.8
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
+// Deliberately imported after QtQuick to avoid missing restoreMode property in Binding. Fix in Qt 6.
+import QtQml 2.15
 
 import org.kde.plasma.plasmoid 2.0
 import org.kde.kquickcontrolsaddons 2.0 // For KCMShell
@@ -19,18 +21,15 @@ import org.kde.kirigami 2.5 as Kirigami
 Item {
     id: root
 
-    readonly property bool vertical: plasmoid.formFactor === PlasmaCore.Types.Vertical
-    readonly property bool view: plasmoid.configuration.compactView
-    readonly property bool menuAvailable: appMenuModel.menuAvailable
-
-    readonly property bool kcmAuthorized: KCMShell.authorize(["style.desktop"]).length > 0
+    readonly property bool vertical: Plasmoid.formFactor === PlasmaCore.Types.Vertical
+    readonly property bool view: Plasmoid.configuration.compactView
 
     onViewChanged: {
-        plasmoid.nativeInterface.view = view
+        Plasmoid.nativeInterface.view = view;
     }
 
     Plasmoid.constraintHints: PlasmaCore.Types.CanFillArea
-    Plasmoid.preferredRepresentation: (plasmoid.configuration.compactView) ? Plasmoid.compactRepresentation : Plasmoid.fullRepresentation
+    Plasmoid.preferredRepresentation: Plasmoid.configuration.compactView ? Plasmoid.compactRepresentation : Plasmoid.fullRepresentation
 
     Plasmoid.compactRepresentation: PlasmaComponents3.ToolButton {
         readonly property int fakeIndex: 0
@@ -38,18 +37,23 @@ Item {
         Layout.fillHeight: false
         Layout.minimumWidth: implicitWidth
         Layout.maximumWidth: implicitWidth
-        enabled:  menuAvailable
-        checkable: menuAvailable && plasmoid.nativeInterface.currentIndex === fakeIndex
+        enabled: appMenuModel.menuAvailable
+        checkable: appMenuModel.menuAvailable && Plasmoid.nativeInterface.currentIndex === fakeIndex
         checked: checkable
         icon.name: "application-menu"
-        onClicked: plasmoid.nativeInterface.trigger(this, 0);
+
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        text: Plasmoid.title
+        Accessible.description: Plasmoid.toolTipSubText
+
+        onClicked: Plasmoid.nativeInterface.trigger(this, 0);
     }
 
     Plasmoid.fullRepresentation: GridLayout {
         id: buttonGrid
 
         Plasmoid.status: {
-            if (menuAvailable && plasmoid.nativeInterface.currentIndex > -1 && buttonRepeater.count > 0) {
+            if (appMenuModel.menuAvailable && Plasmoid.nativeInterface.currentIndex > -1 && buttonRepeater.count > 0) {
                 return PlasmaCore.Types.NeedsAttentionStatus;
             } else {
                 //when we're not enabled set to active to show the configure button
@@ -64,24 +68,31 @@ Item {
         rowSpacing: 0
         columnSpacing: 0
 
-        Component.onCompleted: {
-            plasmoid.nativeInterface.buttonGrid = buttonGrid
+        Binding {
+            target: plasmoid.nativeInterface
+            property: "buttonGrid"
+            value: buttonGrid
+            restoreMode: Binding.RestoreNone
+        }
 
-            // using a Connections {} doesn't work for some reason in Qt >= 5.8
-            plasmoid.nativeInterface.requestActivateIndex.connect(function (index) {
-                var idx = Math.max(0, Math.min(buttonRepeater.count - 1, index))
-                var button = buttonRepeater.itemAt(index)
+        Connections {
+            target: Plasmoid.nativeInterface
+            function onRequestActivateIndex(index: int) {
+                const button = buttonRepeater.itemAt(index);
                 if (button) {
-                    button.clicked()
+                    button.activated();
                 }
-            });
+            }
+        }
 
-            plasmoid.activated.connect(function () {
-                var button = buttonRepeater.itemAt(0);
+        Connections {
+            target: Plasmoid.self
+            function onActivated() {
+                const button = buttonRepeater.itemAt(0);
                 if (button) {
-                    button.clicked();
+                    button.activated();
                 }
-            });
+            }
         }
 
         // So we can show mnemonic underlines only while Alt is pressed
@@ -93,8 +104,8 @@ Item {
 
         PlasmaComponents3.ToolButton {
             id: noMenuPlaceholder
-            visible: buttonRepeater.count == 0
-            text: plasmoid.title
+            visible: buttonRepeater.count === 0
+            text: Plasmoid.title
             Layout.fillWidth: root.vertical
             Layout.fillHeight: !root.vertical
         }
@@ -109,42 +120,31 @@ Item {
                 Layout.fillWidth: root.vertical
                 Layout.fillHeight: !root.vertical
                 text: activeMenu
-                Kirigami.MnemonicData.active: {
-                    try {
-                        return keystateSource.data.Alt && keystateSource.data.Alt.Pressed
-                    } catch (error) {
-                        return false
-                    }
-                }
+                // TODO: Alt and other modifiers might be unavailable on Wayland
+                Kirigami.MnemonicData.active: keystateSource.data.Alt !== undefined && keystateSource.data.Alt.Pressed
 
-                down: pressed || plasmoid.nativeInterface.currentIndex === index
+                down: pressed || Plasmoid.nativeInterface.currentIndex === index
+                visible: text !== "" && model.activeActions.visible
 
-                visible: text !== ""
-                onClicked: {
-                    plasmoid.nativeInterface.trigger(this, index)
-
-                    checked = Qt.binding(function() {
-                        return plasmoid.nativeInterface.currentIndex === index;
-                    });
-                }
-
-                // QMenu opens on press, so we'll replicate that here
-                MouseArea {
-                    anchors.fill: parent
-                    hoverEnabled: plasmoid.nativeInterface.currentIndex !== -1
-                    onPressed: parent.clicked()
-                    onEntered: parent.clicked()
-                }
+                menuIsOpen: Plasmoid.nativeInterface.currentIndex !== -1
+                onActivated: Plasmoid.nativeInterface.trigger(this, index)
             }
+        }
+        Item {
+            Layout.preferredWidth: 0
+            Layout.preferredHeight: 0
+            Layout.fillWidth: true
+            Layout.fillHeight: true
         }
     }
 
     AppMenuPrivate.AppMenuModel {
         id: appMenuModel
-        screenGeometry: plasmoid.screenGeometry
-        onRequestActivateIndex: plasmoid.nativeInterface.requestActivateIndex(index)
+        containmentStatus: Plasmoid.nativeInterface.containment.status
+        screenGeometry: Plasmoid.screenGeometry
+        onRequestActivateIndex: Plasmoid.nativeInterface.requestActivateIndex(index)
         Component.onCompleted: {
-            plasmoid.nativeInterface.model = appMenuModel
+            Plasmoid.nativeInterface.model = appMenuModel;
         }
     }
 }

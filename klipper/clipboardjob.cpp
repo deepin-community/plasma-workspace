@@ -7,6 +7,7 @@
 #include "clipboardjob.h"
 #include "history.h"
 #include "historyitem.h"
+#include "historystringitem.h"
 #include "klipper.h"
 
 #include "klipper_debug.h"
@@ -15,7 +16,7 @@
 #include <QIcon>
 #include <QtConcurrent>
 
-#include <prison/Prison>
+#include <Prison/Prison>
 
 const static QString s_iconKey = QStringLiteral("icon");
 const static QString s_previewKey = QStringLiteral("preview");
@@ -56,6 +57,18 @@ void ClipboardJob::start()
         m_klipper->history()->remove(item);
         setResult(true);
     } else if (operation == QLatin1String("edit")) {
+        if (parameters().contains(QLatin1String("text"))) {
+            const QString text = parameters()[QLatin1String("text")].toString();
+            if (item) {
+                m_klipper->history()->remove(item);
+            }
+            m_klipper->history()->insert(HistoryItemPtr(new HistoryStringItem(text)));
+            if (m_klipper->urlGrabber()) {
+                m_klipper->urlGrabber()->checkNewData(HistoryItemConstPtr(m_klipper->history()->first()));
+            }
+            setResult(true);
+            return;
+        }
         connect(m_klipper, &Klipper::editFinished, this, [this, item](HistoryItemConstPtr editedItem, int result) {
             if (item != editedItem) {
                 // not our item
@@ -106,7 +119,11 @@ void ClipboardJob::start()
                 watcher->deleteLater();
                 delete code;
             });
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             auto future = QtConcurrent::run(code, &Prison::AbstractBarcode::toImage, QSizeF(pixelWidth, pixelHeight));
+#else
+            auto future = QtConcurrent::run(&Prison::AbstractBarcode::toImage, code, QSizeF(pixelWidth, pixelHeight));
+#endif
             watcher->setFuture(future);
             return;
         } else {

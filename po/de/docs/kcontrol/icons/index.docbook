@@ -35,9 +35,9 @@
 </authorgroup>
 
 <date
->2018-12-10</date>
+>2021-04-09</date>
 <releaseinfo
->Plasma 5.14</releaseinfo>
+>Plasma 5.20</releaseinfo>
 
 <keywordset>
 <keyword
@@ -99,19 +99,17 @@
 >Halten Sie den Mauszeiger auf ein Design, wird eine animierte Vorschau als Zufallsauswahl, übliche MIME-Typen und Symbole für gemeinsame Ordner angezeigt. </para>
 
 <para
->If you want to remove a theme, use the <inlinemediaobject
+>Möchten Sie ein Design entfernen, klicken Sie auf das Symbol <inlinemediaobject
 ><imageobject
 ><imagedata fileref="edit-delete.png" format="PNG"/></imageobject
 ></inlinemediaobject
-> overlay icon at the bottom right of the theme icon. To undo this action click on the <inlinemediaobject
+> rechts auf dem Designsymbol. Um diese Aktion rückgängig zu machen, benutzen Sie das Symbol <inlinemediaobject
 ><imageobject
 ><imagedata fileref="edit-undo.png" format="PNG"/></imageobject
 ></inlinemediaobject
-> icon. If you hit <guibutton
->Apply</guibutton
-> or <guibutton
->OK</guibutton
-> the themes selected for removal are actually deleted, so you cannot undo individual or all deletions. </para>
+>. Klicken Sie auf <guibutton
+>Anwenden</guibutton
+>, dann werden die ausgewählten Designs tatsächlich gelöscht. So können Sie das Löschen einzelner Designs oder aller Designs zurücknehmen. </para>
 
 <variablelist>
 <varlistentry
@@ -154,14 +152,14 @@
 <para>
 <screenshot>
 <screeninfo
->Get New Icon Themes</screeninfo>
+>Neue Symbole holen</screeninfo>
   <mediaobject>
     <imageobject>
       <imagedata fileref="get-new-theme.png" format="PNG"/>
     </imageobject>
     <textobject>
       <phrase
->Get New Icon Themes</phrase>
+>Neue Symbole holen</phrase>
     </textobject>
   </mediaobject>
 </screenshot>

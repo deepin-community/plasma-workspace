@@ -6,32 +6,45 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-import QtQuick 2.0
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.calendar 2.0 as PlasmaCalendar
+import QtQuick 2.15
 import QtQuick.Layouts 1.1
 
+import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 3.0 as PlasmaComponents
+
+import org.kde.plasma.workspace.calendar 2.0 as PlasmaCalendar
 
 Item {
     id: analogclock
 
     width: PlasmaCore.Units.gridUnit * 15
     height: PlasmaCore.Units.gridUnit * 15
+
+    readonly property string currentTime: Qt.formatTime(dataSource.data["Local"]["DateTime"],  Qt.locale().timeFormat(Locale.LongFormat))
+    readonly property string currentDate: Qt.formatDate(dataSource.data["Local"]["DateTime"], Qt.locale().dateFormat(Locale.LongFormat).replace(/(^dddd.?\s)|(,?\sdddd$)/, ""))
+
     property int hours
     property int minutes
     property int seconds
-    property bool showSecondsHand: plasmoid.configuration.showSecondHand
-    property bool showTimezone: plasmoid.configuration.showTimezoneString
+    property bool showSecondsHand: Plasmoid.configuration.showSecondHand
+    property bool showTimezone: Plasmoid.configuration.showTimezoneString
     property int tzOffset
 
     Plasmoid.backgroundHints: "NoBackground";
     Plasmoid.preferredRepresentation: Plasmoid.compactRepresentation
 
     Plasmoid.toolTipMainText: Qt.formatDate(dataSource.data["Local"]["DateTime"],"dddd")
-    Plasmoid.toolTipSubText: Qt.formatTime(dataSource.data["Local"]["DateTime"],  Qt.locale().timeFormat(Locale.LongFormat)) + "\n" +
-        Qt.formatDate(dataSource.data["Local"]["DateTime"], Qt.locale().dateFormat(Locale.LongFormat).replace(/(^dddd.?\s)|(,?\sdddd$)/, ""))
+    Plasmoid.toolTipSubText: `${currentTime}\n${currentDate}`
+
+
+    function dateTimeChanged() {
+        var currentTZOffset = dataSource.data["Local"]["Offset"] / 60;
+        if (currentTZOffset !== tzOffset) {
+            tzOffset = currentTZOffset;
+            Date.timeZoneUpdated(); // inform the QML JS engine about TZ change
+        }
+    }
 
     PlasmaCore.DataSource {
         id: dataSource
@@ -49,37 +62,29 @@ Item {
         }
     }
 
-    function dateTimeChanged()
-    {
-        //console.log("Date/time changed!");
-
-        var currentTZOffset = dataSource.data["Local"]["Offset"] / 60;
-        if (currentTZOffset !== tzOffset) {
-            tzOffset = currentTZOffset;
-            //console.log("TZ offset changed: " + tzOffset);
-            Date.timeZoneUpdated(); // inform the QML JS engine about TZ change
-        }
-    }
-
-    Component.onCompleted: {
-        tzOffset = new Date().getTimezoneOffset();
-        //console.log("Initial TZ offset: " + tzOffset);
-        dataSource.onDataChanged.connect(dateTimeChanged);
-    }
-
-    Plasmoid.compactRepresentation: Item {
+    Plasmoid.compactRepresentation: MouseArea {
         id: representation
-        Layout.minimumWidth: plasmoid.formFactor !== PlasmaCore.Types.Vertical ? representation.height : PlasmaCore.Units.gridUnit
-        Layout.minimumHeight: plasmoid.formFactor === PlasmaCore.Types.Vertical ? representation.width : PlasmaCore.Units.gridUnit
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: plasmoid.expanded = !plasmoid.expanded
-        }
+        Layout.minimumWidth: Plasmoid.formFactor !== PlasmaCore.Types.Vertical ? representation.height : PlasmaCore.Units.gridUnit
+        Layout.minimumHeight: Plasmoid.formFactor === PlasmaCore.Types.Vertical ? representation.width : PlasmaCore.Units.gridUnit
 
+        property bool wasExpanded
+
+        activeFocusOnTab: true
+
+        Accessible.name: Plasmoid.title
+        Accessible.description: i18nc("@info:tooltip", "Current time is %1; Current date is %2", analogclock.currentTime, analogclock.currentDate)
+        Accessible.role: Accessible.Button
+
+        onPressed: wasExpanded = Plasmoid.expanded
+        onClicked: Plasmoid.expanded = !wasExpanded
 
         PlasmaCore.Svg {
             id: clockSvg
+
+            property double naturalHorizontalHandShadowOffset: estimateHorizontalHandShadowOffset()
+            property double naturalVerticalHandShadowOffset: estimateVerticalHandShadowOffset()
+
             imagePath: "widgets/clock"
             function estimateHorizontalHandShadowOffset() {
                 var id = "hint-hands-shadow-offset-to-west";
@@ -103,8 +108,7 @@ Item {
                 }
                 return 0;
             }
-            property double naturalHorizontalHandShadowOffset: estimateHorizontalHandShadowOffset()
-            property double naturalVerticalHandShadowOffset: estimateVerticalHandShadowOffset()
+
             onRepaintNeeded: {
                 naturalHorizontalHandShadowOffset = estimateHorizontalHandShadowOffset();
                 naturalVerticalHandShadowOffset = estimateVerticalHandShadowOffset();
@@ -113,11 +117,13 @@ Item {
 
         Item {
             id: clock
-            width: parent.width
+
             anchors {
                 top: parent.top
                 bottom: showTimezone ? timezoneBg.top : parent.bottom
             }
+            width: parent.width
+
             readonly property double svgScale: face.width / face.naturalSize.width
             readonly property double horizontalShadowOffset:
                 Math.round(clockSvg.naturalHorizontalHandShadowOffset * svgScale) + Math.round(clockSvg.naturalHorizontalHandShadowOffset * svgScale) % 2
@@ -165,27 +171,27 @@ Item {
             }
 
             Hand {
+                visible: showSecondsHand
                 elementId: "SecondHandShadow"
                 rotationCenterHintId: "hint-secondhandshadow-rotation-center-offset"
                 horizontalRotationOffset: clock.horizontalShadowOffset
                 verticalRotationOffset: clock.verticalShadowOffset
                 rotation: 180 + seconds * 6
-                visible: showSecondsHand
                 svgScale: clock.svgScale
             }
             Hand {
+                visible: showSecondsHand
                 elementId: "SecondHand"
                 rotationCenterHintId: "hint-secondhand-rotation-center-offset"
                 rotation: 180 + seconds * 6
-                visible: showSecondsHand
                 svgScale: clock.svgScale
             }
 
             PlasmaCore.SvgItem {
                 id: center
+                anchors.centerIn: clock
                 width: naturalSize.width * clock.svgScale
                 height: naturalSize.height * clock.svgScale
-                anchors.centerIn: clock
                 svg: clockSvg
                 elementId: "HandCenterScrew"
                 z: 1000
@@ -193,24 +199,27 @@ Item {
 
             PlasmaCore.SvgItem {
                 anchors.fill: face
-                svg: clockSvg
-                elementId: "Glass"
                 width: naturalSize.width * clock.svgScale
                 height: naturalSize.height * clock.svgScale
+                svg: clockSvg
+                elementId: "Glass"
             }
         }
 
         PlasmaCore.FrameSvgItem {
             id: timezoneBg
+
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 bottom: parent.bottom
                 bottomMargin: 10
             }
-            imagePath: "widgets/background"
             width: childrenRect.width + margins.right + margins.left
             height: childrenRect.height + margins.top + margins.bottom
             visible: showTimezone
+
+            imagePath: "widgets/background"
+
             PlasmaComponents.Label {
                 id: timezoneText
                 x: timezoneBg.margins.left
@@ -219,11 +228,20 @@ Item {
             }
         }
     }
+
     Plasmoid.fullRepresentation: PlasmaCalendar.MonthView {
-        Layout.minimumWidth: PlasmaCore.Units.gridUnit * 20
-        Layout.minimumHeight: PlasmaCore.Units.gridUnit * 20
+        Layout.minimumWidth: PlasmaCore.Units.gridUnit * 22
+        Layout.maximumWidth: PlasmaCore.Units.gridUnit * 80
+        Layout.minimumHeight: PlasmaCore.Units.gridUnit * 22
+        Layout.maximumHeight: PlasmaCore.Units.gridUnit * 40
+
+        readonly property var appletInterface: Plasmoid.self
 
         today: dataSource.data["Local"]["DateTime"]
     }
 
+    Component.onCompleted: {
+        tzOffset = new Date().getTimezoneOffset();
+        dataSource.onDataChanged.connect(dateTimeChanged);
+    }
 }

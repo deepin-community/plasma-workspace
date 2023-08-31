@@ -4,6 +4,9 @@ set(notifications_engine_SRCS
     notificationsengine.cpp
     notificationservice.cpp
     notificationaction.cpp
+    notificationsengine.h
+    notificationservice.h
+    notificationaction.h
 )
 
 ecm_qt_declare_logging_category(notifications_engine_SRCS HEADER debug.h
@@ -24,7 +27,5 @@ target_link_libraries(plasma_engine_notifications
     KF5::NotifyConfig
     PW::LibNotificationManager
 )
-
-kcoreaddons_desktop_to_json(plasma_engine_notifications plasma-dataengine-notifications.desktop)
 
 install(FILES notifications.operations DESTINATION ${PLASMA_DATA_INSTALL_DIR}/services)

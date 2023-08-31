@@ -29,3 +29,36 @@ msgstr "Māris Nartišs, Viesturs Zariņš"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "maris.kde@gmail.com, viesturs.zarins@mii.lu.lv"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Nav iespējams izmantot <b>%1</b> multivides aizmuguri:<br />%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Neizdevās atrast multivides aizmuguri"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Neizdevās atrast pieprasīto multivides aizmuguri"
+
+#~ msgid "create method returned 0"
+#~ msgstr "izveidošanas metode atgrieza 0"
+
+#~ msgid "%1 (OSS)"
+#~ msgstr "%1 (OSS)"
+
+#~ msgid "%1 (ALSA)"
+#~ msgstr "%1 (ALSA)"
+
+#~ msgid ""
+#~ "<html>This device is currently not available (either it is unplugged or "
+#~ "the driver is not loaded).</html>"
+#~ msgstr ""
+#~ "<html>Šī ierīce šobrīd nav pieejama (vai nu ir atvienota, vai nav "
+#~ "ielādēts draiveris).</html>"
+
+#~ msgid ""
+#~ "<html>This will try the following devices and use the first that works: "
+#~ "<ol><li>%1</li></ol></html>"
+#~ msgstr ""
+#~ "<html>Šis mēģinās šādas ierīces un izmantos pirmo strādājošo: <ol><li>%1</"
+#~ "li></ol></html>"

@@ -22,7 +22,7 @@ set(taskmanager_LIB_SRCS
     windowtasksmodel.cpp
 )
 
-if (X11_FOUND)
+if (HAVE_X11)
     set(taskmanager_LIB_SRCS
         ${taskmanager_LIB_SRCS}
         xstartuptasksmodel.cpp
@@ -56,17 +56,26 @@ target_link_libraries(taskmanager
         KF5::WindowSystem
 )
 
-if (X11_FOUND)
-    target_link_libraries(taskmanager
-        PRIVATE
-            Qt::X11Extras
-            KF5::IconThemes)
+if (HAVE_X11)
+    target_link_libraries(taskmanager PRIVATE KF5::IconThemes)
+    if (QT_MAJOR_VERSION EQUAL "5")
+        target_link_libraries(taskmanager PRIVATE Qt::X11Extras)
+    else()
+        target_link_libraries(taskmanager PRIVATE Qt::GuiPrivate)
+    endif()
 endif()
 
 set_target_properties(taskmanager PROPERTIES
                       VERSION ${PROJECT_VERSION}
                       SOVERSION 6
                       EXPORT_NAME LibTaskManager)
+
+
+ecm_qt_declare_logging_category(taskmanager
+    HEADER libtaskmanager_debug.h
+    IDENTIFIER TASKMANAGER_DEBUG
+    CATEGORY_NAME org.kde.plasma.libtaskmanager
+)
 
 install(TARGETS taskmanager EXPORT libtaskmanagerLibraryTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
@@ -92,7 +101,7 @@ install(FILES
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/taskmanager COMPONENT Devel
 )
 
-if (X11_FOUND)
+if (HAVE_X11)
     install(FILES
         xstartuptasksmodel.h
         xwindowtasksmodel.h
@@ -102,7 +111,7 @@ endif()
 
 write_basic_config_version_file(${CMAKE_CURRENT_BINARY_DIR}/LibTaskManagerConfigVersion.cmake VERSION "${PROJECT_VERSION}" COMPATIBILITY AnyNewerVersion)
 
-set(CMAKECONFIG_INSTALL_DIR ${KDE_INSTALL_LIBDIR}/cmake/LibTaskManager)
+set(CMAKECONFIG_INSTALL_DIR ${KDE_INSTALL_CMAKEPACKAGEDIR}/LibTaskManager)
 
 configure_package_config_file(LibTaskManagerConfig.cmake.in
     "${CMAKE_CURRENT_BINARY_DIR}/LibTaskManagerConfig.cmake"

@@ -28,3 +28,6 @@ msgstr "Le vista de labor pro %1 non pote esser trovate"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Labor cancellate per le usator."

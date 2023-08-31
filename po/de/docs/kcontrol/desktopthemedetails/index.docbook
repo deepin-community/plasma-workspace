@@ -39,9 +39,9 @@
 </authorgroup>
 
 <date
->2019-03-08</date>
+>2021-04-09</date>
 <releaseinfo
->Plasma 5.16</releaseinfo>
+>Plasma 5.20</releaseinfo>
 
 <keywordset>
 <keyword
@@ -51,6 +51,8 @@
 <keyword
 >Arbeitsfläche</keyword>
 <keyword
+>Stil</keyword>
+<keyword
 >Design</keyword>
 <keyword
 >Plasma</keyword>
@@ -58,19 +60,19 @@
 </articleinfo>
 
 <para
->&plasma; comes with multiple themes. The &plasma; theme defines how the different components of &plasma; are displayed (&eg; Plasmoids, panels, widgets). </para>
+>&plasma; enthält mehrere Stile. Der &plasma;-Stile legt fest, wie die einzelnen Komponenten von &plasma; wie &eg; Plasmoids, Kontrollleisten und Bedienungselement angezeigt werden. </para>
 
 <para>
   <screenshot>
     <screeninfo
->Here's a screenshot of the &plasma; theme manager</screeninfo>
+>Bildschirmfoto der Verwaltung von &plasma;-Stilen</screeninfo>
     <mediaobject>
       <imageobject>
         <imagedata fileref="main.png" format="PNG"/>
       </imageobject>
       <textobject>
         <phrase
->Customizing &plasma; theme</phrase>
+>&plasma;-Stile anpassen</phrase>
       </textobject>
     </mediaobject>
   </screenshot>
@@ -81,40 +83,49 @@
 <itemizedlist>
   <listitem
 ><para
->install and choose &plasma; themes</para
+>&plasma;-Stile auswählen und installieren</para
 ></listitem>
   <listitem
 ><para
->edit &plasma; themes</para
+>&plasma;-Stile bearbeiten</para
 ></listitem>
   <listitem
 ><para
->remove &plasma; themes</para
+>&plasma;-Stile entfernen</para
 ></listitem>
 </itemizedlist>
 
 <para
->If you want to remove a theme, use the <inlinemediaobject
+>Sie können die Stilliste mit dem Feld <guilabel
+>Suchen</guilabel
+> über den angezeigten Stilen filtern. Außerdem können Sie mit dem Kombinationsfeld neben dem Suchfeld nur <guimenuitem
+>Helle Designs</guimenuitem
+>, <guimenuitem
+>Dunkle Designs</guimenuitem
+> oder Designs <guimenuitem
+>Kompatibel zum Farbschema</guimenuitem
+> anzeigen. </para>
+
+<para
+>Möchten Sie einen Stile entfernen, klicken Sie auf das Symbol <inlinemediaobject
 ><imageobject
 ><imagedata fileref="edit-delete.png" format="PNG"/></imageobject
 ></inlinemediaobject
-> overlay icon at the bottom right of the theme icon. To undo this action click on the <inlinemediaobject
+> rechts auf dem Stilsymbol. Um diese Aktion rückgängig zu machen, benutzen Sie das Symbol <inlinemediaobject
 ><imageobject
 ><imagedata fileref="edit-undo.png" format="PNG"/></imageobject
 ></inlinemediaobject
-> icon. If you hit <guibutton
->Apply</guibutton
-> or <guibutton
->OK</guibutton
-> the themes selected for removal are actually deleted, so you cannot undo individual or all deletions. </para>
+>. Klicken Sie auf <guibutton
+>Anwenden</guibutton
+>, dann werden die ausgewählten Stile tatsächlich gelöscht. So können Sie das Löschen einzelner Stile oder aller Stile zurücknehmen. </para>
 
 <para
->If the plasma-sdk package is installed on your system, a button appears hovering a theme preview and lets you start the <application
->Plasma Theme Explorer</application
->. </para>
+>Ist das Paket „plasma-sdk“ auf Ihrem System installiert, dann erscheint ein Knopf bei Überfahren eines Sile mit dem Mauszeiger. Damit können Sie das Programm <application
+>Plasma-Designexplorer</application
+> starten. </para>
 <para
->For more technical information visit <ulink url="https://techbase.kde.org/Development/Tutorials/Plasma5/ThemeDetails"
->this page</ulink
+>Weitere technische Informationen finden Sie auf <ulink url="https://develop.kde.org/docs/plasma/theme/theme-details/"
+>dieser Seite</ulink
 >. </para>
 
 <variablelist>
@@ -125,11 +136,11 @@
 ></term>
     <listitem>
     <para
->You need to be connected to the Internet to use it. Clicking on this button will display a dialog where you can choose a new plasma theme. Clicking on <guibutton
->Install</guibutton
-> in the dialog will install the chosen &plasma; theme and after you <guibutton
->Close</guibutton
-> the installer your new theme is immediately available. </para>
+>Sie müssen mit dem Internet verbunden sein, um diese Funktion benutzen zu können. Klicken Sie auf diesen Knopf, um einen Dialog zur Auswahl eines neuen Plasma-Stils zu öffnen. Um einen &plasma;.-Stil zu installieren, klicken Sie auf den Knopf <guibutton
+>Installieren</guibutton
+>. Nachdem Sie den Installationsdialog mit <guibutton
+>Schließen</guibutton
+> beendet haben, können Sie den neuen Stil sofort benutzen. </para>
     <para>
     <screenshot>
     <screeninfo
@@ -154,12 +165,12 @@
 ></term>
     <listitem>
       <para
->If you downloaded new themes from the internet, you can use this to browse to the location of those newly downloaded themes. Clicking on this button will bring you the file dialog to point to the &plasma; theme tarball you have on your disk.</para>
+>Wenn Sie bereits neue Stile aus dem Internet heruntergeladen haben, können Sie mit diesem Knopf bereits heruntergeladene Stile öffnen. Dazu wird der Dateidialog angezeigt, in dem Sie die Adresse des &plasma;-Stilarchivs auf Ihrem System eingeben müssen.</para>
 
       <para
->Clicking <guibutton
->Open</guibutton
-> in this dialog will install the theme you pointed to and make it available in the theme list. </para>
+>Klicken Sie in diesem Dialog auf <guibutton
+>Öffnen</guibutton
+>, damit wird der ausgewählte Stil installiert und kann dann in der Liste der Stile ausgewählt werden. </para>
     </listitem>
   </varlistentry>
 </variablelist>

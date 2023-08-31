@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-workspace package.
 #
-# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2020, 2021.
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
-"PO-Revision-Date: 2021-08-27 17:24+0200\n"
+"POT-Creation-Date: 2023-02-22 02:35+0000\n"
+"PO-Revision-Date: 2022-08-03 09:29+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -27,42 +27,32 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "stefan.asserhall@bredband.net"
 
-#: colors.cpp:65 editor/scmeditordialog.cpp:66
-#, kde-format
-msgid "Colors"
-msgstr "Färger"
-
-#: colors.cpp:67
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "Kai Uwe Broulik"
-
-#: colors.cpp:192
+#: colors.cpp:235
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr "Kan inte skapa en tillfällig fil."
 
-#: colors.cpp:205
+#: colors.cpp:248
 #, kde-format
 msgid "Unable to download the color scheme: %1"
 msgstr "Kan inte ladda ner färgschemat: %1"
 
-#: colors.cpp:223
+#: colors.cpp:266
 #, kde-format
 msgid "This file is not a color scheme file."
 msgstr "Filen är inte en färgschemafil"
 
-#: colors.cpp:242
+#: colors.cpp:285
 #, kde-format
 msgid "Failed to create 'color-scheme' data folder."
 msgstr "Misslyckades skapa datakatalogen 'color-scheme'."
 
-#: colors.cpp:249
+#: colors.cpp:292
 #, kde-format
 msgid "Failed to copy color scheme into 'color-scheme' data folder."
 msgstr "Misslyckades kopiera färgschema till datakatalogen 'color-scheme'."
 
-#: colors.cpp:266
+#: colors.cpp:309
 #, kde-format
 msgid "Color scheme installed successfully."
 msgstr "Färgschema installerat med lyckat resultat."
@@ -79,47 +69,63 @@ msgstr "Namn på färgschema"
 msgid "Accent color"
 msgstr "Accentfärg"
 
-#: editor/kcolorschemeeditor.cpp:23
+#. i18n: ectx: label, entry (lastUsedCustomAccentColor), group (General)
+#: colorssettings.kcfg:17
+#, kde-format
+msgid ""
+"The last used custom accent color before user switched to wallpaper "
+"generated color or default color"
+msgstr ""
+"Den senast använda egna accentfärgen innan användaren bytte till färg "
+"genererad av skrivbordsunderlägg eller standardfärg"
+
+#. i18n: ectx: label, entry (accentColorFromWallpaper), group (General)
+#: colorssettings.kcfg:21
+#, kde-format
+msgid "Whether accent color from wallpaper should be applied"
+msgstr "Om accentfärg från skrivbordsunderlägg ska användas"
+
+#: editor/kcolorschemeeditor.cpp:25
 #, kde-format
 msgid "KColorSchemeEditor"
 msgstr "Färgschemaeditor"
 
-#: editor/kcolorschemeeditor.cpp:25
+#: editor/kcolorschemeeditor.cpp:27
 #, kde-format
 msgid "Utility to edit and create color schemes"
 msgstr "Verktyg för att redigera och skapa färgscheman"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Olivier Churlaud"
 msgstr "Olivier Churlaud"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Utility creation"
 msgstr "Verktyg skapat"
 
-#: editor/kcolorschemeeditor.cpp:28
+#: editor/kcolorschemeeditor.cpp:30
 #, kde-format
 msgid "Jeremy Whiting"
 msgstr "Jeremy Whiting"
 
-#: editor/kcolorschemeeditor.cpp:28 editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:30 editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "KCM code (reused in here)"
 msgstr "IM-kod (återanvänd här)"
 
-#: editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: editor/kcolorschemeeditor.cpp:33
+#: editor/kcolorschemeeditor.cpp:35
 #, kde-format
 msgid "Scheme to edit or to use as a base."
 msgstr "Schema att redigera eller använda som grund."
 
-#: editor/kcolorschemeeditor.cpp:35
+#: editor/kcolorschemeeditor.cpp:37
 #, kde-format
 msgid ""
 "Show 'Apply' button that saves changes without asking (unlike 'Save As' "
@@ -128,14 +134,14 @@ msgstr ""
 "Visa knappen 'Verkställ' som sparar ändringar utan att fråga (i motsats till "
 "knappen 'Spara som')"
 
-#: editor/kcolorschemeeditor.cpp:39
+#: editor/kcolorschemeeditor.cpp:41
 #, kde-format
 msgid ""
 "Makes the dialog transient for another application window specified by handle"
 msgstr ""
 "Gör dialogrutan tillfällig för ett annat programfönster angivet med grepp"
 
-#: editor/kcolorschemeeditor.cpp:55
+#: editor/kcolorschemeeditor.cpp:57
 #, kde-format
 msgid "Scheme not found, falling back to current one.\n"
 msgstr "Schemat hittades inte, återgår till nuvarande.\n"
@@ -632,47 +638,42 @@ msgstr "Inaktiv namnlist text"
 msgid "Inactive Titlebar Secondary"
 msgstr "Inaktiv namnlist sekundär text"
 
-#: editor/scmeditordialog.cpp:65
+#: editor/scmeditordialog.cpp:60
 #, kde-format
 msgid "Options"
 msgstr "Alternativ"
 
-#: editor/scmeditordialog.cpp:67
+#: editor/scmeditordialog.cpp:61
+#, kde-format
+msgid "Colors"
+msgstr "Färger"
+
+#: editor/scmeditordialog.cpp:62
 #, kde-format
 msgid "Disabled"
 msgstr "Inaktiverad"
 
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "This colour scheme was not saved. Continue?"
-msgstr "Färgschemat har inte sparats. Fortsätt?"
-
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "Do you really want to upload?"
-msgstr "Vill du verkligen ladda upp?"
-
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:94
 #, kde-format
 msgid "You have unsaved changes. Do you really want to quit?"
 msgstr "Du har osparade ändringar. Vill du verkligen avsluta?"
 
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:95
 #, kde-format
 msgid "Unsaved changes"
 msgstr "Osparade ändringar"
 
-#: editor/scmeditordialog.cpp:133 editor/scmeditordialog.cpp:158
+#: editor/scmeditordialog.cpp:115 editor/scmeditordialog.cpp:140
 #, kde-format
 msgid "Save Color Scheme"
 msgstr "Spara färgschema"
 
-#: editor/scmeditordialog.cpp:133
+#: editor/scmeditordialog.cpp:115
 #, kde-format
 msgid "&Enter a name for the color scheme:"
 msgstr "Ange &ett namn på färgschemat:"
 
-#: editor/scmeditordialog.cpp:157
+#: editor/scmeditordialog.cpp:139
 #, kde-format
 msgid ""
 "A color scheme with that name already exists.\n"
@@ -681,32 +682,20 @@ msgstr ""
 "Ett färgschema med samma namn finns redan.\n"
 "Vill du skriva över det?"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "You do not have permission to overwrite that scheme"
 msgstr "Du har inte rättigheter att skriva över färgschemat"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "Error"
 msgstr "Fel"
 
-#: editor/scmeditordialog.cpp:209
+#: editor/scmeditordialog.cpp:191
 #, kde-format
 msgid "Inactive"
 msgstr "Inaktiv"
-
-#. i18n: ectx: property (toolTip), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:42
-#, kde-format
-msgid "Share the selected scheme on the Internet"
-msgstr "Dela det markerade färgschemat på Internet"
-
-#. i18n: ectx: property (text), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:45
-#, kde-format
-msgid "Upload Scheme"
-msgstr "Ladda upp schema"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: editor/scmeditoreffects.ui:17
@@ -863,32 +852,50 @@ msgstr "Använd andra färger för in&aktiva markeringar"
 msgid "Shade sorted column &in lists"
 msgstr "Skugga sorterad kolumn &i listor"
 
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (text), widget (QCheckBox, tintColors)
 #: editor/scmeditoroptions.ui:38
+#, kde-format
+msgid "Tint all colors with accent color"
+msgstr "Färga alla färger med accentfärg"
+
+#. i18n: ectx: property (text), widget (QCheckBox, accentTitlebar)
+#: editor/scmeditoroptions.ui:45
+#, kde-format
+msgid "Make window titlebars a&ccent-colored"
+msgstr "Gör fönstrens namnlister a&ccentfärglagda"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: editor/scmeditoroptions.ui:52
+#, kde-format
+msgid "Tint strength:"
+msgstr "Färgningsstyrka:"
+
+#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#: editor/scmeditoroptions.ui:69
 #, kde-format
 msgid "Shading of frames and lighting (\"3D\") effects"
 msgstr "Skuggning av ramar och ljuseffekter (tredimensionella)"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:41
+#: editor/scmeditoroptions.ui:72
 #, kde-format
 msgid "Shading"
 msgstr "Rulla upp"
 
-#. i18n: ectx: property (text), widget (QLabel, label_9)
-#: editor/scmeditoroptions.ui:53
-#, kde-format
-msgid "Minimum"
-msgstr "Minimum"
-
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: editor/scmeditoroptions.ui:73
+#: editor/scmeditoroptions.ui:97
 #, kde-format
 msgid "Maximum"
 msgstr "Maximum"
 
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: editor/scmeditoroptions.ui:117
+#, kde-format
+msgid "Minimum"
+msgstr "Minimum"
+
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: editor/scmeditoroptions.ui:80
+#: editor/scmeditoroptions.ui:124
 #, kde-format
 msgid "Contrast"
 msgstr "Kontrast"
@@ -1172,82 +1179,93 @@ msgstr "Från aktuellt färgschema"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
+msgctxt "@option:radio wallpaper accent color option"
+msgid "From current wallpaper"
+msgstr "Från aktuellt skrivbordsunderlägg"
+
+#: package/contents/ui/main.qml:266
+#, kde-format
 msgid "Custom:"
 msgstr "Eget:"
 
-#: package/contents/ui/main.qml:268
+#: package/contents/ui/main.qml:273
+#, kde-format
+msgid "Choose custom accent color"
+msgstr "Välj en egen accentfärg"
+
+#: package/contents/ui/main.qml:361
 #, kde-format
 msgid "Window Title"
 msgstr "Fönsternamn"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:383
 #, kde-format
 msgid "Window text"
 msgstr "Fönstertext"
 
-#: package/contents/ui/main.qml:297
+#: package/contents/ui/main.qml:390
 #, kde-format
 msgid "Button"
 msgstr "Knapp"
 
-#: package/contents/ui/main.qml:331
+#: package/contents/ui/main.qml:427
 #, kde-format
 msgctxt "Hyperlink"
 msgid "link"
 msgstr "länk"
 
-#: package/contents/ui/main.qml:333
+#: package/contents/ui/main.qml:429
 #, kde-format
 msgctxt "Visited hyperlink"
 msgid "visited"
 msgstr "besökt"
 
-#: package/contents/ui/main.qml:340
+#: package/contents/ui/main.qml:436
 #, kde-format
 msgid "Normal text"
 msgstr "Normal text"
 
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:444
 #, kde-format
 msgid "Highlighted text"
 msgstr "Markerad text"
 
-#: package/contents/ui/main.qml:355
+#: package/contents/ui/main.qml:451
 #, kde-format
 msgid "Disabled text"
 msgstr "Inaktiverad text"
 
-#: package/contents/ui/main.qml:373
+#: package/contents/ui/main.qml:469
 #, kde-format
 msgid "Edit Color Scheme…"
 msgstr "Redigera färgschema…"
 
-#: package/contents/ui/main.qml:379
+#: package/contents/ui/main.qml:475
 #, kde-format
 msgid "Remove Color Scheme"
 msgstr "Ta bort färgschema"
 
-#: package/contents/ui/main.qml:386
+#: package/contents/ui/main.qml:482
 #, kde-format
 msgid "Restore Color Scheme"
 msgstr "Återställ färgschema"
 
-#: package/contents/ui/main.qml:430
+#: package/contents/ui/main.qml:526
 #, kde-format
 msgid "Install from File…"
 msgstr "Installera från fil…"
 
-#: package/contents/ui/main.qml:435
+#: package/contents/ui/main.qml:531
 #, kde-format
 msgid "Get New Color Schemes…"
 msgstr "Hämta nya färgscheman…"
 
-#: package/contents/ui/main.qml:486
+#: package/contents/ui/main.qml:549
 #, kde-format
 msgid "Open Color Scheme"
 msgstr "Öppna färgschema"
 
-#: package/contents/ui/main.qml:488
+#: package/contents/ui/main.qml:551
 #, kde-format
 msgid "Color Scheme Files (*.colors)"
 msgstr "Färgschemafiler (*.colors)"
@@ -1272,7 +1290,7 @@ msgstr ""
 "Namnet på färgschemat som du vill använda för den aktuella Plasma-sessionen "
 "(om en fullständig sökväg anges används bara den senare delen av sökvägen)"
 
-#: plasma-apply-colorscheme.cpp:45
+#: plasma-apply-colorscheme.cpp:46
 #, kde-format
 msgid ""
 "Show all the color schemes available on the system (and which is the current "
@@ -1281,7 +1299,18 @@ msgstr ""
 "Visa alla tillgängliga färgscheman på system (och vilket som är det aktuella "
 "temat)"
 
-#: plasma-apply-colorscheme.cpp:69
+#: plasma-apply-colorscheme.cpp:51
+#, kde-format
+msgid ""
+"The name of the accent color you want to set. SVG color names (https://www."
+"w3.org/TR/SVG11/types.html#ColorKeywords) and hex color codes are supported. "
+"Quote the hex code if there is possibility of shell expansion"
+msgstr ""
+"Namnet på accentfärgen du vill använda. SVG-färgnamn (https://www.w3.org/TR/"
+"SVG11/types.html#ColorKeywords) och hexadecimala färgkoder stöds. Citera den "
+"hexadecimala koden om det finns en möjlighet att den expanderas av skalet."
+
+#: plasma-apply-colorscheme.cpp:78
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
@@ -1290,13 +1319,13 @@ msgstr ""
 "Begärt tema \"%1\" är redan använt som tema för den aktuella Plasma-"
 "sessionen."
 
-#: plasma-apply-colorscheme.cpp:92
+#: plasma-apply-colorscheme.cpp:111
 #, kde-format
 msgid "Successfully applied the color scheme %1 to your current Plasma session"
 msgstr ""
 "Införde färgschemat %1 med lyckat resultat för den aktuella Plasma-sessionen"
 
-#: plasma-apply-colorscheme.cpp:94
+#: plasma-apply-colorscheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
@@ -1304,7 +1333,7 @@ msgid ""
 msgstr ""
 "Kunde inte hitta temat \"%1\". Temat ska vara ett av följande alternativ: %2"
 
-#: plasma-apply-colorscheme.cpp:101
+#: plasma-apply-colorscheme.cpp:120
 #, kde-format
 msgid ""
 "You have managed to pass an empty color scheme name, which isn't supported "
@@ -1312,7 +1341,7 @@ msgid ""
 msgstr ""
 "Du har lyckats ange ett tomt färgschemanamn, vilket beteende inte stöds."
 
-#: plasma-apply-colorscheme.cpp:105
+#: plasma-apply-colorscheme.cpp:124
 #, kde-format
 msgid ""
 "The file you attempted to set as your scheme, %1, could not be identified as "
@@ -1321,12 +1350,43 @@ msgstr ""
 "Filen du försökte ange som schema, %1, kunde inte identifieras som ett "
 "färgschema."
 
-#: plasma-apply-colorscheme.cpp:110
+#: plasma-apply-colorscheme.cpp:147
+#, kde-format
+msgid "Successfully applied the accent color %1"
+msgstr "Införde accentfärgen %1 med lyckat resultat"
+
+#: plasma-apply-colorscheme.cpp:149
+#, kde-format
+msgid "Invalid accent color "
+msgstr "Ogiltig accentfärg "
+
+#: plasma-apply-colorscheme.cpp:154
 #, kde-format
 msgid "You have the following color schemes on your system:"
 msgstr "Du har följande färgscheman på systemet:"
 
-#: plasma-apply-colorscheme.cpp:115
+#: plasma-apply-colorscheme.cpp:159
 #, kde-format
 msgid " * %1 (current color scheme)"
 msgstr " * %1 (aktuellt färgschema)"
+
+#~ msgid "Apply a&ccent color to active window titlebars"
+#~ msgstr "Verkställ a&ccentfärg i namnlister för aktiva fönster"
+
+#~ msgid "Apply acce&nt color to inactive window titlebars"
+#~ msgstr "Verkställ acce&ntfärg i namnlister för inaktiva fönster"
+
+#~ msgid "Kai Uwe Broulik"
+#~ msgstr "Kai Uwe Broulik"
+
+#~ msgid "This colour scheme was not saved. Continue?"
+#~ msgstr "Färgschemat har inte sparats. Fortsätt?"
+
+#~ msgid "Do you really want to upload?"
+#~ msgstr "Vill du verkligen ladda upp?"
+
+#~ msgid "Share the selected scheme on the Internet"
+#~ msgstr "Dela det markerade färgschemat på Internet"
+
+#~ msgid "Upload Scheme"
+#~ msgstr "Ladda upp schema"

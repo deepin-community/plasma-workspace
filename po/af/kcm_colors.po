@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmcolors stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
+"POT-Creation-Date: 2023-02-22 02:35+0000\n"
 "PO-Revision-Date: 2005-11-23 16:45+0200\n"
 "Last-Translator: Kobus <kabousv@therugby.co.za>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -28,44 +28,34 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "juanita.franz@vr-web.de, kabousv@therugby.co.za"
 
-#: colors.cpp:65 editor/scmeditordialog.cpp:66
-#, kde-format
-msgid "Colors"
-msgstr "Kleure"
-
-#: colors.cpp:67
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr ""
-
-#: colors.cpp:192
+#: colors.cpp:235
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr ""
 
-#: colors.cpp:205
+#: colors.cpp:248
 #, fuzzy, kde-format
 #| msgid "Enter a name for the color scheme:"
 msgid "Unable to download the color scheme: %1"
 msgstr "Invoer 'n naam vir die kleur skema:"
 
-#: colors.cpp:223
+#: colors.cpp:266
 #, fuzzy, kde-format
 #| msgid "Color Scheme"
 msgid "This file is not a color scheme file."
 msgstr "Kleur Skema"
 
-#: colors.cpp:242
+#: colors.cpp:285
 #, kde-format
 msgid "Failed to create 'color-scheme' data folder."
 msgstr ""
 
-#: colors.cpp:249
+#: colors.cpp:292
 #, kde-format
 msgid "Failed to copy color scheme into 'color-scheme' data folder."
 msgstr ""
 
-#: colors.cpp:266
+#: colors.cpp:309
 #, kde-format
 msgid "Color scheme installed successfully."
 msgstr ""
@@ -84,62 +74,76 @@ msgstr "Stoor Kleur Skema"
 msgid "Accent color"
 msgstr "Onaktiewe venster"
 
-#: editor/kcolorschemeeditor.cpp:23
+#. i18n: ectx: label, entry (lastUsedCustomAccentColor), group (General)
+#: colorssettings.kcfg:17
+#, kde-format
+msgid ""
+"The last used custom accent color before user switched to wallpaper "
+"generated color or default color"
+msgstr ""
+
+#. i18n: ectx: label, entry (accentColorFromWallpaper), group (General)
+#: colorssettings.kcfg:21
+#, kde-format
+msgid "Whether accent color from wallpaper should be applied"
+msgstr ""
+
+#: editor/kcolorschemeeditor.cpp:25
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "KColorSchemeEditor"
 msgstr "Stoor Kleur Skema"
 
-#: editor/kcolorschemeeditor.cpp:25
+#: editor/kcolorschemeeditor.cpp:27
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Utility to edit and create color schemes"
 msgstr "Stoor Kleur Skema"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Olivier Churlaud"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Utility creation"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:28
+#: editor/kcolorschemeeditor.cpp:30
 #, kde-format
 msgid "Jeremy Whiting"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:28 editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:30 editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "KCM code (reused in here)"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:33
+#: editor/kcolorschemeeditor.cpp:35
 #, kde-format
 msgid "Scheme to edit or to use as a base."
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:35
+#: editor/kcolorschemeeditor.cpp:37
 #, kde-format
 msgid ""
 "Show 'Apply' button that saves changes without asking (unlike 'Save As' "
 "button)"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:39
+#: editor/kcolorschemeeditor.cpp:41
 #, kde-format
 msgid ""
 "Makes the dialog transient for another application window specified by handle"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:55
+#: editor/kcolorschemeeditor.cpp:57
 #, kde-format
 msgid "Scheme not found, falling back to current one.\n"
 msgstr ""
@@ -667,49 +671,44 @@ msgstr "Onaktiewe titel balk"
 msgid "Inactive Titlebar Secondary"
 msgstr "Onaktiewe titel balk"
 
-#: editor/scmeditordialog.cpp:65
+#: editor/scmeditordialog.cpp:60
 #, kde-format
 msgid "Options"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:67
+#: editor/scmeditordialog.cpp:61
+#, kde-format
+msgid "Colors"
+msgstr "Kleure"
+
+#: editor/scmeditordialog.cpp:62
 #, fuzzy, kde-format
 #| msgid "Inactive Title Button"
 msgid "Disabled"
 msgstr "Onaktiewe titel Knoppie"
 
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "This colour scheme was not saved. Continue?"
-msgstr ""
-
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "Do you really want to upload?"
-msgstr ""
-
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:94
 #, kde-format
 msgid "You have unsaved changes. Do you really want to quit?"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:95
 #, kde-format
 msgid "Unsaved changes"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:133 editor/scmeditordialog.cpp:158
+#: editor/scmeditordialog.cpp:115 editor/scmeditordialog.cpp:140
 #, kde-format
 msgid "Save Color Scheme"
 msgstr "Stoor Kleur Skema"
 
-#: editor/scmeditordialog.cpp:133
+#: editor/scmeditordialog.cpp:115
 #, fuzzy, kde-format
 #| msgid "Enter a name for the color scheme:"
 msgid "&Enter a name for the color scheme:"
 msgstr "Invoer 'n naam vir die kleur skema:"
 
-#: editor/scmeditordialog.cpp:157
+#: editor/scmeditordialog.cpp:139
 #, fuzzy, kde-format
 #| msgid ""
 #| "A color scheme with the name '%1' already exists.\n"
@@ -721,35 +720,21 @@ msgstr ""
 "'n kleur skema met die naam '%1' alreeds bestaan.\n"
 "Doen jy wil hê na oorskryf dit?\n"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "You do not have permission to overwrite that scheme"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "Error"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:209
+#: editor/scmeditordialog.cpp:191
 #, fuzzy, kde-format
 #| msgid "Inactive window"
 msgid "Inactive"
 msgstr "Onaktiewe venster"
-
-#. i18n: ectx: property (toolTip), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:42
-#, fuzzy, kde-format
-#| msgid "Color Scheme"
-msgid "Share the selected scheme on the Internet"
-msgstr "Kleur Skema"
-
-#. i18n: ectx: property (text), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:45
-#, fuzzy, kde-format
-#| msgid "Color Scheme"
-msgid "Upload Scheme"
-msgstr "Kleur Skema"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: editor/scmeditoreffects.ui:17
@@ -920,34 +905,53 @@ msgstr ""
 msgid "Shade sorted column &in lists"
 msgstr "Skadu sorteer kolom in lys"
 
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (text), widget (QCheckBox, tintColors)
 #: editor/scmeditoroptions.ui:38
+#, fuzzy, kde-format
+#| msgid "Inactive window"
+msgid "Tint all colors with accent color"
+msgstr "Onaktiewe venster"
+
+#. i18n: ectx: property (text), widget (QCheckBox, accentTitlebar)
+#: editor/scmeditoroptions.ui:45
+#, kde-format
+msgid "Make window titlebars a&ccent-colored"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: editor/scmeditoroptions.ui:52
+#, kde-format
+msgid "Tint strength:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#: editor/scmeditoroptions.ui:69
 #, kde-format
 msgid "Shading of frames and lighting (\"3D\") effects"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:41
+#: editor/scmeditoroptions.ui:72
 #, fuzzy, kde-format
 msgid "Shading"
 msgstr ""
 "_: Menu item\n"
 "Stoor"
 
-#. i18n: ectx: property (text), widget (QLabel, label_9)
-#: editor/scmeditoroptions.ui:53
-#, kde-format
-msgid "Minimum"
-msgstr ""
-
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: editor/scmeditoroptions.ui:73
+#: editor/scmeditoroptions.ui:97
 #, kde-format
 msgid "Maximum"
 msgstr ""
 
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: editor/scmeditoroptions.ui:117
+#, kde-format
+msgid "Minimum"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: editor/scmeditoroptions.ui:80
+#: editor/scmeditoroptions.ui:124
 #, fuzzy, kde-format
 #| msgid "Con&trast"
 msgid "Contrast"
@@ -1224,92 +1228,104 @@ msgid "From current color scheme"
 msgstr "Stoor Kleur Skema"
 
 #: package/contents/ui/main.qml:157
+#, fuzzy, kde-format
+#| msgid "Save Color Scheme"
+msgctxt "@option:radio wallpaper accent color option"
+msgid "From current wallpaper"
+msgstr "Stoor Kleur Skema"
+
+#: package/contents/ui/main.qml:266
 #, kde-format
 msgid "Custom:"
 msgstr ""
 
-#: package/contents/ui/main.qml:268
+#: package/contents/ui/main.qml:273
+#, kde-format
+msgid "Choose custom accent color"
+msgstr ""
+
+#: package/contents/ui/main.qml:361
 #, fuzzy, kde-format
 msgid "Window Title"
 msgstr "Venster teks"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:383
 #, fuzzy, kde-format
 msgid "Window text"
 msgstr "Venster teks"
 
-#: package/contents/ui/main.qml:297
+#: package/contents/ui/main.qml:390
 #, fuzzy, kde-format
 msgid "Button"
 msgstr "Knoppie Teks"
 
-#: package/contents/ui/main.qml:331
+#: package/contents/ui/main.qml:427
 #, fuzzy, kde-format
 #| msgid "link"
 msgctxt "Hyperlink"
 msgid "link"
 msgstr "skakel"
 
-#: package/contents/ui/main.qml:333
+#: package/contents/ui/main.qml:429
 #, fuzzy, kde-format
 #| msgid "Active Title Text"
 msgctxt "Visited hyperlink"
 msgid "visited"
 msgstr "Aktiewe titel teks"
 
-#: package/contents/ui/main.qml:340
+#: package/contents/ui/main.qml:436
 #, kde-format
 msgid "Normal text"
 msgstr ""
 
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:444
 #, fuzzy, kde-format
 #| msgid "Active Title Text"
 msgid "Highlighted text"
 msgstr "Aktiewe titel teks"
 
-#: package/contents/ui/main.qml:355
+#: package/contents/ui/main.qml:451
 #, fuzzy, kde-format
 #| msgid "Inactive Title Button"
 msgid "Disabled text"
 msgstr "Onaktiewe titel Knoppie"
 
-#: package/contents/ui/main.qml:373
+#: package/contents/ui/main.qml:469
 #, fuzzy, kde-format
 #| msgid "Color Scheme"
 msgid "Edit Color Scheme…"
 msgstr "Kleur Skema"
 
-#: package/contents/ui/main.qml:379
+#: package/contents/ui/main.qml:475
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Remove Color Scheme"
 msgstr "Stoor Kleur Skema"
 
-#: package/contents/ui/main.qml:386
+#: package/contents/ui/main.qml:482
 #, fuzzy, kde-format
 #| msgid "Color Scheme"
 msgid "Restore Color Scheme"
 msgstr "Kleur Skema"
 
-#: package/contents/ui/main.qml:430
+#: package/contents/ui/main.qml:526
 #, kde-format
 msgid "Install from File…"
 msgstr ""
 
-#: package/contents/ui/main.qml:435
+#: package/contents/ui/main.qml:531
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Get New Color Schemes…"
 msgstr "Stoor Kleur Skema"
 
-#: package/contents/ui/main.qml:486
+#: package/contents/ui/main.qml:549
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Open Color Scheme"
 msgstr "Stoor Kleur Skema"
 
-#: package/contents/ui/main.qml:488
+#: package/contents/ui/main.qml:551
 #, kde-format
 msgid "Color Scheme Files (*.colors)"
 msgstr ""
@@ -1329,53 +1345,420 @@ msgid ""
 "(passing a full path will only use the last part of the path)"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:45
+#: plasma-apply-colorscheme.cpp:46
 #, kde-format
 msgid ""
 "Show all the color schemes available on the system (and which is the current "
 "theme)"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:69
+#: plasma-apply-colorscheme.cpp:51
+#, kde-format
+msgid ""
+"The name of the accent color you want to set. SVG color names (https://www."
+"w3.org/TR/SVG11/types.html#ColorKeywords) and hex color codes are supported. "
+"Quote the hex code if there is possibility of shell expansion"
+msgstr ""
+
+#: plasma-apply-colorscheme.cpp:78
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
 "Plasma session."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:92
+#: plasma-apply-colorscheme.cpp:111
 #, kde-format
 msgid "Successfully applied the color scheme %1 to your current Plasma session"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:94
+#: plasma-apply-colorscheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
 "options: %2"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:101
+#: plasma-apply-colorscheme.cpp:120
 #, kde-format
 msgid ""
 "You have managed to pass an empty color scheme name, which isn't supported "
 "behavior."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:105
+#: plasma-apply-colorscheme.cpp:124
 #, kde-format
 msgid ""
 "The file you attempted to set as your scheme, %1, could not be identified as "
 "a color scheme."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:110
+#: plasma-apply-colorscheme.cpp:147
+#, kde-format
+msgid "Successfully applied the accent color %1"
+msgstr ""
+
+#: plasma-apply-colorscheme.cpp:149
+#, fuzzy, kde-format
+#| msgid "Inactive window"
+msgid "Invalid accent color "
+msgstr "Onaktiewe venster"
+
+#: plasma-apply-colorscheme.cpp:154
 #, kde-format
 msgid "You have the following color schemes on your system:"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:115
+#: plasma-apply-colorscheme.cpp:159
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid " * %1 (current color scheme)"
 msgstr "Stoor Kleur Skema"
+
+#, fuzzy
+#~| msgid "Inactive window"
+#~ msgid "Apply a&ccent color to active window titlebars"
+#~ msgstr "Onaktiewe venster"
+
+#, fuzzy
+#~| msgid "Inactive window"
+#~ msgid "Apply acce&nt color to inactive window titlebars"
+#~ msgstr "Onaktiewe venster"
+
+#, fuzzy
+#~| msgid "Color Scheme"
+#~ msgid "Share the selected scheme on the Internet"
+#~ msgstr "Kleur Skema"
+
+#, fuzzy
+#~| msgid "Color Scheme"
+#~ msgid "Upload Scheme"
+#~ msgstr "Kleur Skema"
+
+#, fuzzy
+#~| msgid "Save Color Scheme"
+#~ msgid "Download New Color Schemes"
+#~ msgstr "Stoor Kleur Skema"
+
+#, fuzzy
+#~| msgid "Color Scheme"
+#~ msgid "Remove the selected scheme"
+#~ msgstr "Kleur Skema"
+
+#, fuzzy
+#~| msgid "Color Scheme"
+#~ msgid "Remove"
+#~ msgstr "Kleur Skema"
+
+#, fuzzy
+#~| msgid "Color Scheme"
+#~ msgid "Import a color scheme from a file"
+#~ msgstr "Kleur Skema"
+
+#, fuzzy
+#~| msgid "Color Scheme"
+#~ msgid "Get new color schemes from the Internet"
+#~ msgstr "Kleur Skema"
+
+#, fuzzy
+#~| msgid "Save Color Scheme"
+#~ msgid "Get &New Color Schemes..."
+#~ msgstr "Stoor Kleur Skema"
+
+#, fuzzy
+#~| msgid "Apply colors to &non-KDE applications"
+#~ msgid "Apply colors to &non-Qt applications"
+#~ msgstr "Wend aan kleure na Nie-kde programme"
+
+#, fuzzy
+#~| msgid "KDE Default"
+#~ msgctxt "Default color scheme"
+#~ msgid "Default"
+#~ msgstr "Kde Verstek"
+
+#, fuzzy
+#~| msgid "Current Scheme"
+#~ msgctxt "Current color scheme"
+#~ msgid "Current"
+#~ msgstr "Huidige Skema"
+
+#, fuzzy
+#~| msgid "Inactive window"
+#~ msgctxt "@title:tab color transformations on inactive elements"
+#~ msgid "Inactive"
+#~ msgstr "Onaktiewe venster"
+
+#, fuzzy
+#~| msgid "Inactive Title Button"
+#~ msgid "Inactive intensity effect type"
+#~ msgstr "Onaktiewe titel Knoppie"
+
+#, fuzzy
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Shade"
+#~ msgstr ""
+#~ "_: Menu item\n"
+#~ "Stoor"
+
+#, fuzzy
+#~| msgid "Inactive Title Button"
+#~ msgid "Inactive intensity effect amount"
+#~ msgstr "Onaktiewe titel Knoppie"
+
+#, fuzzy
+#~| msgid "Inactive window"
+#~ msgid "Inactive color effect type"
+#~ msgstr "Onaktiewe venster"
+
+#, fuzzy
+#~| msgid "Inactive Title Button"
+#~ msgid "Inactive color amount"
+#~ msgstr "Onaktiewe titel Knoppie"
+
+#, fuzzy
+#~| msgid "Inactive Title Button"
+#~ msgid "Inactive contrast effect type"
+#~ msgstr "Onaktiewe titel Knoppie"
+
+#, fuzzy
+#~| msgid "Inactive Title Button"
+#~ msgid "Inactive contrast effect amount"
+#~ msgstr "Onaktiewe titel Knoppie"
+
+#, fuzzy
+#~| msgid "Color Scheme"
+#~ msgid "Import Scheme..."
+#~ msgstr "Kleur Skema"
+
+#, fuzzy
+#~| msgid "&Save Scheme..."
+#~ msgid "&Save..."
+#~ msgstr "Stoor Skema..."
+
+#, fuzzy
+#~| msgid "I&mport Scheme..."
+#~ msgid "I&mport..."
+#~ msgstr "Voer Skema In..."
+
+#, fuzzy
+#~| msgid "Active window"
+#~ msgid "Active Window"
+#~ msgstr "Aktief venster"
+
+#, fuzzy
+#~| msgid "Active Window Frame"
+#~ msgid "Active Window Text"
+#~ msgstr "Aktiewe venster Raam"
+
+#, fuzzy
+#~| msgid "Inactive Window Frame"
+#~ msgid "Inactive Window"
+#~ msgstr "Onaktiewe venster Raam"
+
+#, fuzzy
+#~| msgid "Inactive Title Text"
+#~ msgid "InactiveWindowText"
+#~ msgstr "Onaktiewe titel teks"
+
+#, fuzzy
+#~| msgid ""
+#~| "<h1>Colors</h1> This module allows you to choose the color scheme used "
+#~| "for the KDE desktop. The different elements of the desktop, such as "
+#~| "title bars, menu text, etc., are called \"widgets\". You can choose the "
+#~| "widget whose color you want to change by selecting it from a list, or by "
+#~| "clicking on a graphical representation of the desktop.<p> You can save "
+#~| "color settings as complete color schemes, which can also be modified or "
+#~| "deleted. KDE comes with several predefined color schemes on which you "
+#~| "can base your own.<p> All KDE applications will obey the selected color "
+#~| "scheme. Non-KDE applications may also obey some or all of the color "
+#~| "settings, if this option is enabled."
+#~ msgid ""
+#~ "<p><h1>Colors</h1> This module allows you to choose the color scheme used "
+#~ "for the KDE desktop. The different elements of the desktop, such as title "
+#~ "bars, menu text, etc., are called \"widgets\". You can choose the widget "
+#~ "whose color you want to change by selecting it from a list, or by "
+#~ "clicking on a graphical representation of the desktop.</p><p> You can "
+#~ "save color settings as complete color schemes, which can also be modified "
+#~ "or deleted. KDE comes with several predefined color schemes on which you "
+#~ "can base your own.</p><p> All KDE applications will obey the selected "
+#~ "color scheme. Non-KDE applications may also obey some or all of the color "
+#~ "settings, if this option is enabled.</p>"
+#~ msgstr ""
+#~ "<h1>Kleure</h1> Hierdie module laat jou toe om te kies die kleur skema "
+#~ "wat gebruik word vir die Kde werkskerm. Die verskillende elemente van die "
+#~ "werkskerm, soos titel balke kieslys teks, ens., word genoem \"gui-element"
+#~ "\". Jy kan kies die gui-element wie se kleur jy wil verander deur dit te "
+#~ "kies van 'n lys of deur te kliek op 'n grafiese voorstelling van die "
+#~ "werkskerm. <p> Jy kan stoor kleur instellings as volledige kleur skemas, "
+#~ "wat ook modifiseer of verwyder kan word. Kde kom met 'n klomp vooraf "
+#~ "gedefinieerde kleur skemas waarop jy jou eie kan baseer.<p> Alle Kde "
+#~ "programme sal gehoorsaam die gekose kleur skema. Nie-kde programme dalk "
+#~ "mag ook gehoorsaam wees aan sommige of alle van die kleur instellings, "
+#~ "indien hierdie opsie geaktiveer is."
+
+#~ msgid ""
+#~ "This is a preview of the color settings which will be applied if you "
+#~ "click \"Apply\" or \"OK\". You can click on different parts of this "
+#~ "preview image. The widget name in the \"Widget color\" box will change to "
+#~ "reflect the part of the preview image you clicked."
+#~ msgstr ""
+#~ "Hierdie is 'n voorskou van die kleur instellings wat sal wees aangewend "
+#~ "as jy kliek \"Wend aan\" van \"Goed\". jy kan kliek op ander dele van "
+#~ "Hierdie voorskou beeld. die gui-element naam in die \"gui-element kleur\" "
+#~ "boks sal verander na reflekteer die deel van die voorskou beeld jy "
+#~ "gekliek het."
+
+#, fuzzy
+#~| msgid ""
+#~| "This is a list of predefined color schemes, including any that you may "
+#~| "have created. You can preview an existing color scheme by selecting it "
+#~| "from the list. The current scheme will be replaced by the selected color "
+#~| "scheme.<p> Warning: if you have not yet applied any changes you may have "
+#~| "made to the current scheme, those changes will be lost if you select "
+#~| "another color scheme."
+#~ msgid ""
+#~ "<p>This is a list of predefined color schemes, including any that you may "
+#~ "have created. You can preview an existing color scheme by selecting it "
+#~ "from the list. The current scheme will be replaced by the selected color "
+#~ "scheme.</p><p> Warning: if you have not yet applied any changes you may "
+#~ "have made to the current scheme, those changes will be lost if you select "
+#~ "another color scheme.</p>"
+#~ msgstr ""
+#~ "Hierdie is 'n lys van vooraf gedefinieerde kleur skemas, insluitend enige "
+#~ "wat jy dalk mag het geskep. jy kan voorskou 'n bestaande kleur skema deur "
+#~ "deur te kies dit van die lys. die huidige skema sal wees vervang deur die "
+#~ "gekose kleur skema.<p> Waarskuwing: as jy het nie nog aangewend enige "
+#~ "verander jy dalk mag het gemaak na die huidige skema, daardie verander "
+#~ "sal wees verloor as jy kies nog 'n kleur skema."
+
+#~ msgid ""
+#~ "Press this button if you want to save the current color settings as a "
+#~ "color scheme. You will be prompted for a name."
+#~ msgstr ""
+#~ "Druk hierdie knoppie as jy wil hê na stoor die huidige kleur instellings "
+#~ "as 'n kleur skema. jy sal wees gepor vir 'n naam."
+
+#~ msgid ""
+#~ "Press this button to remove the selected color scheme. Note that this "
+#~ "button is disabled if you do not have permission to delete the color "
+#~ "scheme."
+#~ msgstr ""
+#~ "Druk hierdie knoppie na verwyder die gekose kleur skema. Nota wat hierdie "
+#~ "knoppie is gestremde as jy doen nie het reg na uitvee die kleur skema."
+
+#~ msgid ""
+#~ "Press this button to import a new color scheme. Note that the color "
+#~ "scheme will only be available for the current user."
+#~ msgstr ""
+#~ "Druk hierdie knoppie na in voer 'n nuwe kleur skema. Nota wat die kleur "
+#~ "skema sal slegs wees beskikbaar vir die huidige gebruiker."
+
+#~ msgid "Inactive Title Blend"
+#~ msgstr "Onaktiewe titel Mengsel"
+
+#~ msgid "Active Title Blend"
+#~ msgstr "Aktiewe titel mengsel"
+
+#, fuzzy
+#~ msgid "Standard"
+#~ msgstr "Standaard Teks"
+
+#~ msgid "Active Title Button"
+#~ msgstr "Aktiewe titel Knoppie"
+
+#~ msgid "Active Window Handle"
+#~ msgstr "Aktief Venster handvatsel"
+
+#~ msgid "Inactive Window Handle"
+#~ msgstr "Onaktiewe venster handvatsel"
+
+#~ msgid "Followed Link"
+#~ msgstr "Gevolgde Skakel"
+
+#~ msgid ""
+#~ "Check this box to show the sorted column in a list with a shaded "
+#~ "background"
+#~ msgstr ""
+#~ "Kontroleur hierdie boks om te wys die sorteerde kolom in 'n lys met 'n "
+#~ "skandeerde agtergrond"
+
+#~ msgid ""
+#~ "Use this slider to change the contrast level of the current color scheme. "
+#~ "Contrast does not affect all of the colors, only the edges of 3D objects."
+#~ msgstr ""
+#~ "Gebruik hierdie skuiwer na verander die kontras vlak van die huidige "
+#~ "kleur skema. kontras doen nie affekteer alle van die kleure, slegs die "
+#~ "randte van 3d objekte."
+
+#, fuzzy
+#~ msgctxt "Low Contrast"
+#~ msgid "Low"
+#~ msgstr ""
+#~ "_: Low Contrast\n"
+#~ "Lae"
+
+#, fuzzy
+#~ msgctxt "High Contrast"
+#~ msgid "High"
+#~ msgstr ""
+#~ "_: High Contrast\n"
+#~ "Hoë"
+
+#~ msgid ""
+#~ "Check this box to apply the current color scheme to non-KDE applications."
+#~ msgstr ""
+#~ "Kies hierdie boks om aan te wend die huidige kleure skema na nie-kde "
+#~ "programme"
+
+#~ msgid "(c) 1997-2005 Colors Developers"
+#~ msgstr "(c) 1997-2005 Colors Developers"
+
+#~ msgid ""
+#~ "This color scheme could not be removed.\n"
+#~ "Perhaps you do not have permission to alter the filesystem where the "
+#~ "color scheme is stored."
+#~ msgstr ""
+#~ "Hierdie kleur skema kon nie wees verwyder.\n"
+#~ "Miskien jy doen nie het reg na verander die lêersisteem waar die kleur "
+#~ "skema is gestoor."
+
+#~ msgid "Overwrite"
+#~ msgstr "Oorskryf"
+
+#~ msgid "Import failed."
+#~ msgstr "Invoer het gevaal"
+
+#~ msgid "Untitled Theme"
+#~ msgstr "Ongetiteld Tema"
+
+#~ msgid "Standard text"
+#~ msgstr "Standaard teks"
+
+#~ msgid "followed link"
+#~ msgstr "volg skakel"
+
+#, fuzzy
+#~ msgctxt "Menu item"
+#~ msgid "Open"
+#~ msgstr ""
+#~ "_: Menu item\n"
+#~ "Open"
+
+#~ msgid "&Widget Color"
+#~ msgstr "Gui-element Kleur"
+
+#~ msgid ""
+#~ "Click here to select an element of the KDE desktop whose color you want "
+#~ "to change. You may either choose the \"widget\" here, or click on the "
+#~ "corresponding part of the preview image above."
+#~ msgstr ""
+#~ "Kliek hier om 'n element van die Kde werkskerm wie se kleur jy wil "
+#~ "verander. Jy mag òf die \"gui-element\" hier kies, of Kliek op die "
+#~ "ooreenstemmend deel van die voorskou beeld hierbo."
+
+#~ msgid ""
+#~ "Click here to bring up a dialog box where you can choose a color for the "
+#~ "\"widget\" selected in the above list."
+#~ msgstr ""
+#~ "Kliek hier na bring begin 'n dialoog boks waar jy kan kies 'n kleur vir "
+#~ "die \"gui-element\" gekose in die boonste lys."

@@ -25,12 +25,6 @@
 #include <fixx11h.h>
 #endif
 
-#if HAVE_X11
-#define DISPLAY "DISPLAY"
-#elif defined(Q_WS_QWS)
-#define DISPLAY "QWS_DISPLAY"
-#endif
-
 #include "config-workspace.h"
 
 #ifdef HAVE_UNISTD_H
@@ -81,13 +75,13 @@ void propagateSessionManager()
 {
 #if HAVE_X11
     QByteArray fName = QFile::encodeName(QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation) + "/KSMserver");
-    QString display = QString::fromLocal8Bit(::getenv(DISPLAY));
+    QString display = QString::fromLocal8Bit(::getenv("DISPLAY"));
     // strip the screen number from the display
     display.remove(QRegularExpression(QStringLiteral("\\.\\d+$")));
     int i;
-    while ((i = display.indexOf(':')) >= 0)
+    while ((i = display.indexOf(QLatin1Char(':'))) >= 0)
         display[i] = '_';
-    while ((i = display.indexOf('/')) >= 0)
+    while ((i = display.indexOf(QLatin1Char('/'))) >= 0)
         display[i] = '_';
 
     fName += '_';
@@ -105,11 +99,7 @@ void propagateSessionManager()
             return;
         QFileInfo info(f);
         smModificationTime = QTime(info.lastModified().time());
-        QTextStream t(&f);
-        t.setCodec("ISO 8859-1");
-        QString s = t.readLine();
-        f.close();
-        ::setenv("SESSION_MANAGER", s.toLatin1(), true);
+        ::setenv("SESSION_MANAGER", f.readLine().trimmed(), true);
     }
 #endif
 }

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-20 00:22+0000\n"
+"POT-Creation-Date: 2023-01-02 01:06+0000\n"
 "PO-Revision-Date: 2014-09-22 19:17+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -19,94 +19,122 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: contents/ui/ExpandedRepresentation.qml:230 contents/ui/main.qml:77
+#: package/contents/ui/AlbumArtStackView.qml:181
+#, kde-format
+msgid "No title"
+msgstr ""
+
+#: package/contents/ui/AlbumArtStackView.qml:181
+#: package/contents/ui/main.qml:82
 #, kde-format
 msgid "No media playing"
 msgstr "Ingen medier blir spilt"
 
-#: contents/ui/ExpandedRepresentation.qml:324
-#: contents/ui/ExpandedRepresentation.qml:395
+#: package/contents/ui/ExpandedRepresentation.qml:413
+#: package/contents/ui/ExpandedRepresentation.qml:534
 #, kde-format
 msgctxt "Remaining time for song e.g -5:42"
 msgid "-%1"
 msgstr ""
 
-#: contents/ui/ExpandedRepresentation.qml:421
+#: package/contents/ui/ExpandedRepresentation.qml:563
 #, kde-format
 msgid "Shuffle"
 msgstr ""
 
-#: contents/ui/ExpandedRepresentation.qml:475
-#, kde-format
-msgid "Repeat Track"
-msgstr ""
-
-#: contents/ui/ExpandedRepresentation.qml:475
-#, kde-format
-msgid "Repeat"
-msgstr ""
-
-#: contents/ui/main.qml:91
-#, kde-format
-msgctxt "Open player window or bring it to the front if already open"
-msgid "Open"
-msgstr ""
-
-#: contents/ui/main.qml:95
+#: package/contents/ui/ExpandedRepresentation.qml:589
+#: package/contents/ui/main.qml:94
 #, kde-format
 msgctxt "Play previous track"
 msgid "Previous Track"
 msgstr ""
 
-#: contents/ui/main.qml:103
+#: package/contents/ui/ExpandedRepresentation.qml:611
+#: package/contents/ui/main.qml:100
 #, kde-format
 msgctxt "Pause playback"
 msgid "Pause"
 msgstr ""
 
-#: contents/ui/main.qml:108
+#: package/contents/ui/ExpandedRepresentation.qml:611
+#: package/contents/ui/main.qml:105
 #, kde-format
 msgctxt "Start playback"
 msgid "Play"
 msgstr ""
 
-#: contents/ui/main.qml:114
+#: package/contents/ui/ExpandedRepresentation.qml:629
+#: package/contents/ui/main.qml:110
 #, kde-format
 msgctxt "Play next track"
 msgid "Next Track"
 msgstr ""
 
-#: contents/ui/main.qml:120
+#: package/contents/ui/ExpandedRepresentation.qml:652
+#, kde-format
+msgid "Repeat Track"
+msgstr ""
+
+#: package/contents/ui/ExpandedRepresentation.qml:652
+#, kde-format
+msgid "Repeat"
+msgstr ""
+
+#: package/contents/ui/main.qml:90
+#, kde-format
+msgctxt "Open player window or bring it to the front if already open"
+msgid "Open"
+msgstr ""
+
+#: package/contents/ui/main.qml:116
 #, kde-format
 msgctxt "Stop playback"
 msgid "Stop"
 msgstr ""
 
-#: contents/ui/main.qml:128
+#: package/contents/ui/main.qml:125
 #, kde-format
 msgctxt "Quit player"
 msgid "Quit"
 msgstr ""
 
-#: contents/ui/main.qml:281
+#: package/contents/ui/main.qml:238
 #, kde-format
 msgid "Choose player automatically"
 msgstr ""
 
-#: contents/ui/main.qml:318
+#: package/contents/ui/main.qml:292
 #, kde-format
-msgctxt "by Artist (player name)"
-msgid "by %1 (%2)"
+msgctxt "@info:tooltip %1 is a musical artist and %2 is an app name"
+msgid ""
+"by %1 (%2)\n"
+"Middle-click to pause\n"
+"Scroll to adjust volume"
 msgstr ""
 
-#: contents/ui/main.qml:329
+#: package/contents/ui/main.qml:292
 #, kde-format
-msgctxt "by Artist (paused, player name)"
-msgid "by %1 (paused, %2)"
+msgctxt "@info:tooltip %1 is an app name"
+msgid ""
+"%1\n"
+"Middle-click to pause\n"
+"Scroll to adjust volume"
 msgstr ""
 
-#: contents/ui/main.qml:329
+#: package/contents/ui/main.qml:303
 #, kde-format
-msgctxt "Paused (player name)"
-msgid "Paused (%1)"
+msgctxt "@info:tooltip %1 is a musical artist and %2 is an app name"
+msgid ""
+"by %1 (paused, %2)\n"
+"Middle-click to play\n"
+"Scroll to adjust volume"
+msgstr ""
+
+#: package/contents/ui/main.qml:303
+#, kde-format
+msgctxt "@info:tooltip %1 is an app name"
+msgid ""
+"Paused (%1)\n"
+"Middle-click to play\n"
+"Scroll to adjust volume"
 msgstr ""

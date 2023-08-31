@@ -5,24 +5,24 @@
 
 #include "ActionLabel.h"
 #include <KIconLoader>
-#include <QMatrix>
 #include <QPixmap>
 #include <QTimer>
+#include <QTransform>
 
 namespace KFI
 {
 // Borrowed from kolourpaint...
-static QMatrix matrixWithZeroOrigin(const QMatrix &matrix, int width, int height)
+static QTransform matrixWithZeroOrigin(const QTransform &matrix, int width, int height)
 {
     QRect newRect(matrix.mapRect(QRect(0, 0, width, height)));
 
-    return QMatrix(matrix.m11(), matrix.m12(), matrix.m21(), matrix.m22(), matrix.dx() - newRect.left(), matrix.dy() - newRect.top());
+    return QTransform(matrix.m11(), matrix.m12(), matrix.m21(), matrix.m22(), matrix.dx() - newRect.left(), matrix.dy() - newRect.top());
 }
 
-static QMatrix rotateMatrix(int width, int height, double angle)
+static QTransform rotateMatrix(int width, int height, double angle)
 {
-    QMatrix matrix;
-    matrix.translate(width / 2, height / 2);
+    QTransform matrix;
+    matrix.translate(width / 2.0, height / 2.0);
     matrix.rotate(angle);
 
     return matrixWithZeroOrigin(matrix, width, height);
@@ -51,8 +51,8 @@ CActionLabel::CActionLabel(QWidget *parent)
     }
 
     setPixmap(*theIcons[0]);
-    itsTimer = new QTimer(this);
-    connect(itsTimer, &QTimer::timeout, this, &CActionLabel::rotateIcon);
+    m_timer = new QTimer(this);
+    connect(m_timer, &QTimer::timeout, this, &CActionLabel::rotateIcon);
 }
 
 CActionLabel::~CActionLabel()
@@ -67,25 +67,25 @@ CActionLabel::~CActionLabel()
 
 void CActionLabel::startAnimation()
 {
-    itsCount = 0;
+    m_count = 0;
     setPixmap(*theIcons[0]);
-    itsTimer->start(1000 / constNumIcons);
+    m_timer->start(1000 / constNumIcons);
 }
 
 void CActionLabel::stopAnimation()
 {
-    itsTimer->stop();
-    itsCount = 0;
-    setPixmap(*theIcons[itsCount]);
+    m_timer->stop();
+    m_count = 0;
+    setPixmap(*theIcons[m_count]);
 }
 
 void CActionLabel::rotateIcon()
 {
-    if (++itsCount == constNumIcons) {
-        itsCount = 0;
+    if (++m_count == constNumIcons) {
+        m_count = 0;
     }
 
-    setPixmap(*theIcons[itsCount]);
+    setPixmap(*theIcons[m_count]);
 }
 
 }

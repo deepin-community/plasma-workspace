@@ -10,9 +10,10 @@
 
 #include "colors.h"
 
-#include <QColor>
 #include <QDBusConnection>
 #include <QDBusMessage>
+#include <QDBusPendingCall>
+#include <QDBusReply>
 #include <QFileInfo>
 #include <QGuiApplication>
 #include <QProcess>
@@ -22,7 +23,6 @@
 #include <QStandardItemModel>
 #include <QStandardPaths>
 
-#include <KAboutData>
 #include <KColorScheme>
 #include <KColorUtils>
 #include <KConfigGroup>
@@ -34,38 +34,31 @@
 #include <KIO/FileCopyJob>
 #include <KIO/JobUiDelegate>
 
-#include <KNSCore/EntryWrapper>
-
 #include <algorithm>
 
 #include "krdb.h"
 
 #include "colorsapplicator.h"
 #include "colorsdata.h"
-#include "colorsmodel.h"
-#include "colorssettings.h"
 #include "filterproxymodel.h"
 
 #include "../kcms-common_p.h"
 
 K_PLUGIN_FACTORY_WITH_JSON(KCMColorsFactory, "kcm_colors.json", registerPlugin<KCMColors>(); registerPlugin<ColorsData>();)
 
-KCMColors::KCMColors(QObject *parent, const QVariantList &args)
-    : KQuickAddons::ManagedConfigModule(parent, args)
+KCMColors::KCMColors(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KQuickAddons::ManagedConfigModule(parent, data, args)
     , m_model(new ColorsModel(this))
     , m_filteredModel(new FilterProxyModel(this))
     , m_data(new ColorsData(this))
     , m_config(KSharedConfig::openConfig(QStringLiteral("kdeglobals")))
+    , m_configWatcher(KConfigWatcher::create(m_config))
 {
-    qmlRegisterUncreatableType<KCMColors>("org.kde.private.kcms.colors", 1, 0, "KCM", QStringLiteral("Cannot create instances of KCM"));
-    qmlRegisterType<ColorsModel>();
-    qmlRegisterType<FilterProxyModel>();
-    qmlRegisterType<ColorsSettings>();
-
-    KAboutData *about = new KAboutData(QStringLiteral("kcm_colors"), i18n("Colors"), QStringLiteral("2.0"), QString(), KAboutLicense::GPL);
-
-    about->addAuthor(i18n("Kai Uwe Broulik"), QString(), QStringLiteral("kde@privat.broulik.de"));
-    setAboutData(about);
+    auto uri = "org.kde.private.kcms.colors";
+    qmlRegisterUncreatableType<KCMColors>(uri, 1, 0, "KCM", QStringLiteral("Cannot create instances of KCM"));
+    qmlRegisterAnonymousType<ColorsModel>(uri, 1);
+    qmlRegisterAnonymousType<FilterProxyModel>(uri, 1);
+    qmlRegisterAnonymousType<ColorsSettings>(uri, 1);
 
     connect(m_model, &ColorsModel::pendingDeletionsChanged, this, &KCMColors::settingsChanged);
 
@@ -79,9 +72,18 @@ KCMColors::KCMColors(QObject *parent, const QVariantList &args)
     });
 
     connect(colorsSettings(), &ColorsSettings::accentColorChanged, this, &KCMColors::accentColorChanged);
+    connect(colorsSettings(), &ColorsSettings::accentColorFromWallpaperChanged, this, &KCMColors::accentColorFromWallpaperChanged);
 
     connect(m_model, &ColorsModel::selectedSchemeChanged, m_filteredModel, &FilterProxyModel::setSelectedScheme);
     m_filteredModel->setSourceModel(m_model);
+
+    // Since the accent color can now change from somewhere else, we need to update the view accordingly.
+    connect(m_configWatcher.data(), &KConfigWatcher::configChanged, this, [this](const KConfigGroup &group, const QByteArrayList &names) {
+        if (group.name() == QLatin1String("General") && names.contains(QByteArrayLiteral("AccentColor"))) {
+            colorsSettings()->save(); // We need to first save the local changes, if any.
+            colorsSettings()->load();
+        }
+    });
 }
 
 KCMColors::~KCMColors()
@@ -113,12 +115,53 @@ QColor KCMColors::accentColor() const
     return color;
 }
 
+QColor KCMColors::tinted(const QColor &color, const QColor &accent, bool tints, qreal tintFactor)
+{
+    if (accent == QColor(Qt::transparent) || !tints) {
+        return color;
+    }
+    return tintColor(color, accentColor(), tintFactor);
+}
+
 void KCMColors::setAccentColor(const QColor &accentColor)
 {
     colorsSettings()->setAccentColor(accentColor);
     Q_EMIT settingsChanged();
 }
 
+bool KCMColors::accentColorFromWallpaper() const
+{
+    return colorsSettings()->accentColorFromWallpaper();
+}
+
+void KCMColors::setAccentColorFromWallpaper(bool boolean)
+{
+    if (boolean == colorsSettings()->accentColorFromWallpaper()) {
+        return;
+    }
+    if (boolean) {
+        applyWallpaperAccentColor();
+    }
+    colorsSettings()->setAccentColorFromWallpaper(boolean);
+    Q_EMIT accentColorFromWallpaperChanged();
+    Q_EMIT settingsChanged();
+}
+
+QColor KCMColors::lastUsedCustomAccentColor() const
+{
+    return colorsSettings()->lastUsedCustomAccentColor();
+}
+void KCMColors::setLastUsedCustomAccentColor(const QColor &accentColor)
+{
+    // Don't allow transparent since it will conflict with its usage for indicating default accent color
+    if (accentColor == QColor(Qt::transparent)) {
+        return;
+    }
+
+    colorsSettings()->setLastUsedCustomAccentColor(accentColor);
+    Q_EMIT lastUsedCustomAccentColorChanged();
+    Q_EMIT settingsChanged();
+}
 bool KCMColors::downloadingFile() const
 {
     return m_tempCopyJob;
@@ -165,10 +208,10 @@ void KCMColors::loadSelectedColorScheme()
     // If the scheme named in kdeglobals doesn't exist, show a warning and use default scheme
     if (m_model->indexOfScheme(schemeName) == -1) {
         m_model->setSelectedScheme(colorsSettings()->defaultColorSchemeValue());
-        // These are normally synced but initially the model doesn't emit a change to avoid the
+        // These are normally synced but initially the model doesn't Q_EMIT a change to avoid the
         // Apply button from being enabled without any user interaction. Sync manually here.
         m_filteredModel->setSelectedScheme(colorsSettings()->defaultColorSchemeValue());
-        emit showSchemeNotInstalledWarning(schemeName);
+        Q_EMIT showSchemeNotInstalledWarning(schemeName);
     } else {
         m_model->setSelectedScheme(schemeName);
         m_filteredModel->setSelectedScheme(schemeName);
@@ -189,7 +232,7 @@ void KCMColors::installSchemeFromFile(const QUrl &url)
 
     m_tempInstallFile.reset(new QTemporaryFile());
     if (!m_tempInstallFile->open()) {
-        emit showErrorMessage(i18n("Unable to create a temporary file."));
+        Q_EMIT showErrorMessage(i18n("Unable to create a temporary file."));
         m_tempInstallFile.reset();
         return;
     }
@@ -198,11 +241,11 @@ void KCMColors::installSchemeFromFile(const QUrl &url)
     // (for some reason) we determine the file name from the "Name" inside the file
     m_tempCopyJob = KIO::file_copy(url, QUrl::fromLocalFile(m_tempInstallFile->fileName()), -1, KIO::Overwrite);
     m_tempCopyJob->uiDelegate()->setAutoErrorHandlingEnabled(true);
-    emit downloadingFileChanged();
+    Q_EMIT downloadingFileChanged();
 
     connect(m_tempCopyJob, &KIO::FileCopyJob::result, this, [this, url](KJob *job) {
         if (job->error() != KJob::NoError) {
-            emit showErrorMessage(i18n("Unable to download the color scheme: %1", job->errorText()));
+            Q_EMIT showErrorMessage(i18n("Unable to download the color scheme: %1", job->errorText()));
             return;
         }
 
@@ -220,7 +263,7 @@ void KCMColors::installSchemeFile(const QString &path)
     const QString name = group.readEntry("Name");
 
     if (name.isEmpty()) {
-        emit showErrorMessage(i18n("This file is not a color scheme file."));
+        Q_EMIT showErrorMessage(i18n("This file is not a color scheme file."));
         return;
     }
 
@@ -239,14 +282,14 @@ void KCMColors::installSchemeFile(const QString &path)
     QString newPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/color-schemes/");
 
     if (!QDir().mkpath(newPath)) {
-        emit showErrorMessage(i18n("Failed to create 'color-scheme' data folder."));
+        Q_EMIT showErrorMessage(i18n("Failed to create 'color-scheme' data folder."));
         return;
     }
 
     newPath += newName + QLatin1String(".colors");
 
     if (!QFile::copy(path, newPath)) {
-        emit showErrorMessage(i18n("Failed to copy color scheme into 'color-scheme' data folder."));
+        Q_EMIT showErrorMessage(i18n("Failed to copy color scheme into 'color-scheme' data folder."));
         return;
     }
 
@@ -263,7 +306,7 @@ void KCMColors::installSchemeFile(const QString &path)
         m_model->setSelectedScheme(newName);
     }
 
-    emit showSuccessMessage(i18n("Color scheme installed successfully."));
+    Q_EMIT showSuccessMessage(i18n("Color scheme installed successfully."));
 }
 
 void KCMColors::editScheme(const QString &schemeName, QQuickItem *ctx)
@@ -275,7 +318,7 @@ void KCMColors::editScheme(const QString &schemeName, QQuickItem *ctx)
     QModelIndex idx = m_model->index(m_model->indexOfScheme(schemeName), 0);
 
     m_editDialogProcess = new QProcess(this);
-    connect(m_editDialogProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this](int exitCode, QProcess::ExitStatus exitStatus) {
+    connect(m_editDialogProcess, &QProcess::finished, this, [this](int exitCode, QProcess::ExitStatus exitStatus) {
         Q_UNUSED(exitCode);
         Q_UNUSED(exitStatus);
 
@@ -334,12 +377,8 @@ void KCMColors::load()
 
     loadSelectedColorScheme();
 
-    {
-        KConfig cfg(QStringLiteral("kcmdisplayrc"), KConfig::NoGlobals);
-        KConfigGroup group(m_config, "General");
-        group = KConfigGroup(&cfg, "X11");
-        m_applyToAlien = group.readEntry("exportKDEColors", true);
-    }
+    Q_EMIT accentColorFromWallpaperChanged();
+    Q_EMIT accentColorChanged();
 
     // If need save is true at the end of load() function, it will stay disabled forever.
     // setSelectedScheme() call due to unexisting scheme name in kdeglobals will trigger a need to save.
@@ -349,12 +388,22 @@ void KCMColors::load()
 
 void KCMColors::save()
 {
+    auto msg = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin"),
+                                              QStringLiteral("/org/kde/KWin/BlendChanges"),
+                                              QStringLiteral("org.kde.KWin.BlendChanges"),
+                                              QStringLiteral("start"));
+    msg << 300;
+    // This is deliberately blocking so that we ensure Kwin has processed the
+    // animation start event before we potentially trigger client side changes
+    QDBusConnection::sessionBus().call(msg);
+
     // We need to save the colors change first, to avoid a situation,
     // when we announced that the color scheme has changed, but
     // the colors themselves in the color scheme have not yet
     if (m_selectedSchemeDirty || m_activeSchemeEdited || colorsSettings()->isSaveNeeded()) {
         saveColors();
     }
+
     ManagedConfigModule::save();
     notifyKcmChange(GlobalChangeType::PaletteChanged);
     m_activeSchemeEdited = false;
@@ -365,30 +414,39 @@ void KCMColors::save()
 void KCMColors::saveColors()
 {
     const QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("color-schemes/%1.colors").arg(m_model->selectedScheme()));
-    // hard to figure out why mutating from the colours settings
-    // doesn't affect the applicator's view on config, but operating on the
-    // globalConfig directly works.
-    // code already a mess, so might as well just do what works.
-    KSharedConfigPtr globalConfig = KSharedConfig::openConfig(QStringLiteral("kdeglobals"));
 
-    auto setGlobals = [=]() {
-        globalConfig->group("General").writeEntry("AccentColor", QColor());
-        if (accentColor() != QColor(Qt::transparent)) {
-            globalConfig->group("General").writeEntry("AccentColor", accentColor(), KConfig::Notify);
-        } else {
-            globalConfig->group("General").deleteEntry("AccentColor", KConfig::Notify);
-        }
-    };
-
-    setGlobals();
-    applyScheme(path, colorsSettings()->config());
+    // Can't use KConfig readEntry because the config is not saved yet
+    applyScheme(path, colorsSettings()->config(), KConfig::Normal, accentColor());
     m_selectedSchemeDirty = false;
-    setGlobals();
 }
 
-QColor KCMColors::accentBackground(const QColor& accent, const QColor& background)
+QColor KCMColors::accentBackground(const QColor &accent, const QColor &background)
 {
     return ::accentBackground(accent, background);
+}
+
+QColor KCMColors::accentForeground(const QColor &accent, const bool &isActive)
+{
+    return ::accentForeground(accent, isActive);
+}
+
+void KCMColors::applyWallpaperAccentColor()
+{
+    QDBusMessage accentColor = QDBusMessage::createMethodCall("org.kde.plasmashell", "/PlasmaShell", "org.kde.PlasmaShell", "color");
+    auto const connection = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "accentColorBus");
+    QDBusPendingCall async = connection.asyncCall(accentColor);
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(async, this);
+
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, &KCMColors::wallpaperAccentColorArrivedSlot);
+}
+
+void KCMColors::wallpaperAccentColorArrivedSlot(QDBusPendingCallWatcher *call)
+{
+    QDBusPendingReply<uint> reply = *call;
+    if (!reply.isError()) {
+        setAccentColor(QColor::fromRgba(reply.value()));
+    }
+    call->deleteLater();
 }
 
 void KCMColors::processPendingDeletions()
@@ -409,3 +467,4 @@ void KCMColors::processPendingDeletions()
 }
 
 #include "colors.moc"
+#include "moc_colors.cpp"

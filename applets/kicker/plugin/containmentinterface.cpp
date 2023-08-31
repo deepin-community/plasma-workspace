@@ -10,15 +10,16 @@
 #include <Plasma/Containment>
 #include <Plasma/Corona>
 
-#include <QQuickItem>
-
 #include <KActionCollection>
 
 // FIXME HACK TODO: Unfortunately we have no choice but to hard-code a list of
 // applets we know to expose the correct interface right now -- this is slated
 // for replacement with some form of generic service.
-QStringList ContainmentInterface::m_knownTaskManagers = QStringList()
-    << QLatin1String("org.kde.plasma.taskmanager") << QLatin1String("org.kde.plasma.icontasks") << QLatin1String("org.kde.plasma.expandingiconstaskmanager");
+QStringList ContainmentInterface::m_knownTaskManagers{
+    QLatin1String("org.kde.plasma.taskmanager"),
+    QLatin1String("org.kde.plasma.icontasks"),
+    QLatin1String("org.kde.plasma.expandingiconstaskmanager"),
+};
 
 ContainmentInterface::ContainmentInterface(QObject *parent)
     : QObject(parent)
@@ -50,7 +51,7 @@ bool ContainmentInterface::mayAddLauncher(QObject *appletInterface, ContainmentI
 
     switch (target) {
     case Desktop: {
-        containment = corona->containmentForScreen(containment->screen());
+        containment = corona->containmentForScreen(containment->screen(), QString(), QString());
 
         if (containment) {
             return (containment->immutability() == Plasma::Types::Mutable);
@@ -67,31 +68,21 @@ bool ContainmentInterface::mayAddLauncher(QObject *appletInterface, ContainmentI
     }
     case TaskManager: {
         if (!entryPath.isEmpty() && containment->pluginMetaData().pluginId() == QLatin1String("org.kde.panel")) {
-            const Plasma::Applet *taskManager = nullptr;
+            const Plasma::Applet *taskManager = findTaskManagerApplet(containment);
 
-            foreach (const Plasma::Applet *applet, containment->applets()) {
-                if (m_knownTaskManagers.contains(applet->pluginMetaData().pluginId())) {
-                    taskManager = applet;
-
-                    break;
-                }
+            if (!taskManager) {
+                return false;
             }
 
-            if (taskManager) {
-                QQuickItem *gObj = qobject_cast<QQuickItem *>(taskManager->property("_plasma_graphicObject").value<QObject *>());
+            QQuickItem *rootItem = firstPlasmaGraphicObjectChild(taskManager);
 
-                if (!gObj || !gObj->childItems().count()) {
-                    return false;
-                }
-
-                QQuickItem *rootItem = gObj->childItems().first();
-
-                QVariant ret;
-
-                QMetaObject::invokeMethod(rootItem, "hasLauncher", Q_RETURN_ARG(QVariant, ret), Q_ARG(QVariant, QUrl::fromLocalFile(entryPath)));
-
-                return !ret.toBool();
+            if (!rootItem) {
+                return false;
             }
+
+            QVariant ret;
+            QMetaObject::invokeMethod(rootItem, "hasLauncher", Q_RETURN_ARG(QVariant, ret), Q_ARG(QVariant, QUrl::fromLocalFile(entryPath)));
+            return !ret.toBool();
         }
 
         break;
@@ -122,34 +113,24 @@ void ContainmentInterface::addLauncher(QObject *appletInterface, ContainmentInte
 
     switch (target) {
     case Desktop: {
-        containment = corona->containmentForScreen(containment->screen());
+        containment = corona->containmentForScreen(containment->screen(), QString(), QString());
 
         if (!containment) {
             return;
         }
 
-        const QStringList &containmentProvides = KPluginMetaData::readStringList(containment->pluginMetaData().rawData(), QStringLiteral("X-Plasma-Provides"));
+        const QStringList &containmentProvides = containment->pluginMetaData().value(QStringLiteral("X-Plasma-Provides"), QStringList());
 
         if (containmentProvides.contains(QLatin1String("org.kde.plasma.filemanagement"))) {
-            QQuickItem *gObj = qobject_cast<QQuickItem *>(containment->property("_plasma_graphicObject").value<QObject *>());
+            QQuickItem *rootItem = findPlasmaGraphicObjectChildIf(containment, [](QQuickItem *item) {
+                return item->objectName() == QLatin1String("folder");
+            });
 
-            if (!gObj || !gObj->childItems().count()) {
+            if (!rootItem) {
                 return;
             }
 
-            QQuickItem *rootItem = nullptr;
-
-            foreach (QQuickItem *item, gObj->childItems()) {
-                if (item->objectName() == QLatin1String("folder")) {
-                    rootItem = item;
-
-                    break;
-                }
-            }
-
-            if (rootItem) {
-                QMetaObject::invokeMethod(rootItem, "addLauncher", Q_ARG(QVariant, QUrl::fromLocalFile(entryPath)));
-            }
+            QMetaObject::invokeMethod(rootItem, "addLauncher", Q_ARG(QVariant, QUrl::fromLocalFile(entryPath)));
         } else {
             containment->createApplet(QStringLiteral("org.kde.plasma.icon"), QVariantList() << entryPath);
         }
@@ -165,27 +146,19 @@ void ContainmentInterface::addLauncher(QObject *appletInterface, ContainmentInte
     }
     case TaskManager: {
         if (containment->pluginMetaData().pluginId() == QLatin1String("org.kde.panel")) {
-            const Plasma::Applet *taskManager = nullptr;
+            const Plasma::Applet *taskManager = findTaskManagerApplet(containment);
 
-            foreach (const Plasma::Applet *applet, containment->applets()) {
-                if (m_knownTaskManagers.contains(applet->pluginMetaData().pluginId())) {
-                    taskManager = applet;
-
-                    break;
-                }
+            if (!taskManager) {
+                return;
             }
 
-            if (taskManager) {
-                QQuickItem *gObj = qobject_cast<QQuickItem *>(taskManager->property("_plasma_graphicObject").value<QObject *>());
+            QQuickItem *rootItem = firstPlasmaGraphicObjectChild(taskManager);
 
-                if (!gObj || !gObj->childItems().count()) {
-                    return;
-                }
-
-                QQuickItem *rootItem = gObj->childItems().first();
-
-                QMetaObject::invokeMethod(rootItem, "addLauncher", Q_ARG(QVariant, QUrl::fromLocalFile(entryPath)));
+            if (!rootItem) {
+                return;
             }
+
+            QMetaObject::invokeMethod(rootItem, "addLauncher", Q_ARG(QVariant, QUrl::fromLocalFile(entryPath)));
         }
 
         break;
@@ -212,7 +185,7 @@ QObject *ContainmentInterface::screenContainment(QObject *appletInterface)
         return nullptr;
     }
 
-    return corona->containmentForScreen(containment->screen());
+    return corona->containmentForScreen(containment->screen(), QString(), QString());
 }
 
 bool ContainmentInterface::screenContainmentMutable(QObject *appletInterface)
@@ -231,4 +204,34 @@ void ContainmentInterface::ensureMutable(Plasma::Containment *containment)
     if (containment && containment->immutability() != Plasma::Types::Mutable) {
         containment->actions()->action(QStringLiteral("lock widgets"))->trigger();
     }
+}
+
+template<class UnaryPredicate>
+QQuickItem *ContainmentInterface::findPlasmaGraphicObjectChildIf(const Plasma::Applet *applet, UnaryPredicate predicate)
+{
+    QQuickItem *gObj = qobject_cast<QQuickItem *>(applet->property("_plasma_graphicObject").value<QObject *>());
+
+    if (!gObj) {
+        return nullptr;
+    }
+
+    const QList<QQuickItem *> children = gObj->childItems();
+    const auto found = std::find_if(children.cbegin(), children.cend(), predicate);
+    return found != children.cend() ? *found : nullptr;
+}
+
+QQuickItem *ContainmentInterface::firstPlasmaGraphicObjectChild(const Plasma::Applet *applet)
+{
+    return findPlasmaGraphicObjectChildIf(applet, [](QQuickItem *) {
+        return true;
+    });
+}
+
+Plasma::Applet *ContainmentInterface::findTaskManagerApplet(Plasma::Containment *containment)
+{
+    const QList<Plasma::Applet *> applets = containment->applets();
+    const auto found = std::find_if(applets.cbegin(), applets.cend(), [](const Plasma::Applet *applet) {
+        return m_knownTaskManagers.contains(applet->pluginMetaData().pluginId());
+    });
+    return found != applets.cend() ? *found : nullptr;
 }

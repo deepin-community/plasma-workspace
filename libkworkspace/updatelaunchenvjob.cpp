@@ -5,6 +5,7 @@
 */
 
 #include "updatelaunchenvjob.h"
+#include "libkworkspace_debug.h"
 
 #include <klauncher_interface.h>
 #include <startup_interface.h>
@@ -70,12 +71,12 @@ void UpdateLaunchEnvJob::start()
 
     for (const auto &varName : d->environment.keys()) {
         if (!Private::isPosixName(varName)) {
-            qWarning() << "Skipping syncing of environment variable " << varName << "as name contains unsupported characters";
+            qCWarning(LIBKWORKSPACE_DEBUG) << "Skipping syncing of environment variable " << varName << "as name contains unsupported characters";
             continue;
         }
         const QString value = d->environment.value(varName);
 
-        // KLauncher; remove this in KF6 (by then KInit will be gone)
+        // KLauncher (for backward compatibility with KF5 only, can be removed in Plasma 7)
         org::kde::KLauncher klauncher(QStringLiteral("org.kde.klauncher5"), QStringLiteral("/KLauncher"), QDBusConnection::sessionBus());
         auto klauncherReply = klauncher.setLaunchEnv(varName, value);
         d->monitorReply(klauncherReply);
@@ -93,7 +94,7 @@ void UpdateLaunchEnvJob::start()
         // https://github.com/systemd/systemd/issues/16704
         // validate here
         if (!Private::isSystemdApprovedValue(value)) {
-            qWarning() << "Skipping syncing of environment variable " << varName << "as value contains unsupported characters";
+            qCWarning(LIBKWORKSPACE_DEBUG) << "Skipping syncing of environment variable " << varName << "as value contains unsupported characters";
             continue;
         }
         const QString updateString = varName + QStringLiteral("=") + value;
@@ -129,11 +130,11 @@ bool UpdateLaunchEnvJob::Private::isPosixName(const QString &name)
     // Ensure systemd compat by only allowing alphanumerics and _ in names.
     bool first = true;
     for (const QChar c : name) {
-        if (first && !c.isLetter() && c != QChar('_')) {
+        if (first && !c.isLetter() && c != QLatin1Char('_')) {
             return false;
         } else if (first) {
             first = false;
-        } else if (!c.isLetterOrNumber() && c != QChar('_')) {
+        } else if (!c.isLetterOrNumber() && c != QLatin1Char('_')) {
             return false;
         }
     }

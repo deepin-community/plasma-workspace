@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_calculatorrunner\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-20 00:52+0000\n"
 "PO-Revision-Date: 2010-06-08 14:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros.info>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: calculatorrunner.cpp:40
+#: calculatorrunner.cpp:33
 #, fuzzy, kde-format
 #| msgid ""
 #| "Calculates the value of :q: when :q: is made up of numbers and "
@@ -30,20 +30,19 @@ msgstr ""
 "គណនា​តម្លៃ​របស់ :q: ពេល​ដែល :q: ត្រូវ​បានបង្កើត​លេខ និង​និមិត្តសញ្ញា​គណិតវិទ្យា ដូចជា +, -, /, * "
 "និង ^ ។"
 
-#: calculatorrunner.cpp:46
+#: calculatorrunner.cpp:39
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr ""
 
-#: calculatorrunner.cpp:273
+#: calculatorrunner.cpp:133
 #, kde-format
 msgctxt "The result of the calculation is only an approximation"
 msgid "Approximation"
 msgstr ""
 
-#: qalculate_engine.cpp:61
-#, kde-format
-msgid ""
-"The exchange rates could not be updated. The following error has been "
-"reported: %1"
-msgstr "អត្រាប្ដូរ​ប្រាក់​មិនអាច​ត្រូវ​បាន​ធ្វើ​បច្ចុប្បន្នភាព​​ទេ ។ កំហុស​ដូច​ខាងក្រោម​​ត្រូវ​បាន​រាយការណ៍ ៖ %1"
+#~ msgid ""
+#~ "The exchange rates could not be updated. The following error has been "
+#~ "reported: %1"
+#~ msgstr ""
+#~ "អត្រាប្ដូរ​ប្រាក់​មិនអាច​ត្រូវ​បាន​ធ្វើ​បច្ចុប្បន្នភាព​​ទេ ។ កំហុស​ដូច​ខាងក្រោម​​ត្រូវ​បាន​រាយការណ៍ ៖ %1"

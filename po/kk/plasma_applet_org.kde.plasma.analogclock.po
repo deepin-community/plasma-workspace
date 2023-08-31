@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2013-09-30 00:40+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -26,6 +26,12 @@ msgstr ""
 msgid "Appearance"
 msgstr "Көрінісі"
 
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
+
 #: contents/ui/configGeneral.qml:23
 #, kde-format
 msgid "Show seconds hand"
@@ -41,3 +47,21 @@ msgstr "Жалпы"
 #, kde-format
 msgid "Show time zone"
 msgstr "Белдеуі жазылсын"
+
+#~ msgid "Show the seconds"
+#~ msgstr "Секундтар көрсетілсін"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "Секундтары көрсетілсін десеңіз белгісін қойыңыз."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "&Секундтар тілі көрсетілсін"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "Белдеу мәтінмен жазылсын"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr "Белдеу мәтінмен жазылсын десеңіз белісін қойыңыз."
+
+#~ msgid "Show &time zone"
+#~ msgstr "Белдеуі &жазылсын"

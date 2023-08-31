@@ -5,6 +5,9 @@ set(kcm_desktoptheme_SRCS
   kcm.cpp
   themesmodel.cpp
   filterproxymodel.cpp
+  kcm.h
+  themesmodel.h
+  filterproxymodel.h
 )
 
 kcmutils_generate_module_data(
@@ -17,7 +20,7 @@ kcmutils_generate_module_data(
 
 kconfig_add_kcfg_files(kcm_desktoptheme_SRCS desktopthemesettings.kcfgc GENERATE_MOC)
 
-kcoreaddons_add_plugin(kcm_desktoptheme SOURCES ${kcm_desktoptheme_SRCS} INSTALL_NAMESPACE "kcms")
+kcoreaddons_add_plugin(kcm_desktoptheme SOURCES ${kcm_desktoptheme_SRCS} INSTALL_NAMESPACE "plasma/kcms/systemsettings")
 
 target_link_libraries(kcm_desktoptheme
   KF5::CoreAddons
@@ -29,8 +32,6 @@ target_link_libraries(kcm_desktoptheme
   KF5::Declarative
   KF5::QuickAddons
 )
-
-kcoreaddons_desktop_to_json(kcm_desktoptheme "kcm_desktoptheme.desktop" SERVICE_TYPES kcmodule.desktop)
 
 set(plasma-apply-desktoptheme_SRCS
     plasma-apply-desktoptheme.cpp
@@ -47,7 +48,6 @@ target_link_libraries(plasma-apply-desktoptheme
 )
 
 #this desktop file is installed only for retrocompatibility with sycoca
-install(FILES kcm_desktoptheme.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 install(FILES plasma-themes.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR})
 install(TARGETS plasma-apply-desktoptheme DESTINATION ${KDE_INSTALL_BINDIR})
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-20 01:43+0000\n"
+"POT-Creation-Date: 2022-10-17 00:48+0000\n"
 "PO-Revision-Date: 2011-02-21 22:46+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -76,15 +76,33 @@ msgid ""
 "(%2%)."
 msgstr ""
 
-#: module.cpp:46
+#: module.cpp:45
 #, kde-format
 msgid ""
 "Your Root partition is running out of disk space, you have %1 MiB remaining "
 "(%2%)."
 msgstr ""
 
-#: module.cpp:63
+#: module.cpp:62
 #, kde-format
 msgctxt "The settings dialog main page name, as in 'general settings'"
 msgid "General"
 msgstr "Opće"
+
+#~ msgctxt ""
+#~ "Warns the user that the system is running low on space on his home "
+#~ "folder, indicating the percentage and absolute MiB size remaining, and "
+#~ "asks if the user wants to do something about it"
+#~ msgid ""
+#~ "You are running low on disk space on your home folder (currently %2%, %1 "
+#~ "MiB free).\n"
+#~ "Would you like to run a file manager to free some disk space?"
+#~ msgstr ""
+#~ "Nestaje Vam diskovnog prostora u Vašoj osobnoj mapi (trenutno %2%, %1 MiB "
+#~ "slobodno).\n"
+#~ "Želite li pokrenuti upravitelja datoteka kako bi oslobodili diskovni "
+#~ "prostor?"
+
+#~ msgctxt "Closes the notification"
+#~ msgid "Do Nothing"
+#~ msgstr "Ništa ne poduzimaj"

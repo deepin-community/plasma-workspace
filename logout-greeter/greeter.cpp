@@ -15,15 +15,15 @@
 
 #include "shutdowndlg.h"
 
-#include "ksmserveriface.h"
 #include "logoutpromptadaptor.h"
 
 #include <KQuickAddons/QtQuickSettings>
 #include <KWindowSystem>
 #include <LayerShellQt/Shell>
 
-Greeter::Greeter()
+Greeter::Greeter(const KPackage::Package &package)
     : QObject()
+    , m_package(package)
 {
     new LogoutPromptAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/LogoutPrompt"), this);
@@ -37,7 +37,7 @@ Greeter::~Greeter()
 
 void Greeter::setupWaylandIntegration()
 {
-    if (!KWindowSystem::isPlatformWayland()) {
+    if (!KWindowSystem::isPlatformWayland() || m_windowed) {
         return;
     }
     LayerShellQt::Shell::useLayerShell();
@@ -54,13 +54,20 @@ void Greeter::init()
     m_running = true;
 }
 
+void Greeter::enableWindowed()
+{
+    m_windowed = true;
+    promptLogout();
+}
+
 void Greeter::adoptScreen(QScreen *screen)
 {
     if (screen->geometry().isNull()) {
         return;
     }
     // TODO: last argument is the theme, maybe add command line option for it?
-    KSMShutdownDlg *w = new KSMShutdownDlg(nullptr, m_shutdownType);
+    KSMShutdownDlg *w = new KSMShutdownDlg(nullptr, m_shutdownType, screen);
+    w->setWindowed(m_windowed);
     w->installEventFilter(this);
     m_dialogs << w;
 
@@ -69,12 +76,13 @@ void Greeter::adoptScreen(QScreen *screen)
         w->deleteLater();
     });
     connect(w, &KSMShutdownDlg::rejected, this, &Greeter::rejected);
+
     connect(w, &KSMShutdownDlg::accepted, this, []() {
         QApplication::exit(1);
     });
-    w->setScreen(screen);
+
     w->setGeometry(screen->geometry());
-    w->init();
+    w->init(m_package);
 }
 
 void Greeter::rejected()

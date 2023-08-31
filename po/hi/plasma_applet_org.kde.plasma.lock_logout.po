@@ -3,20 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Rajesh Ranjan <rajesh672@gmail.com>, 2010.
-# Raghavendra Kamath <raghu@raghukamath.com>, 2021.
+# Raghavendra Kamath <raghu@raghukamath.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_lockout\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-07-02 18:44+0530\n"
+"PO-Revision-Date: 2022-02-26 11:47+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
-"Language-Team: kde-hindi\n"
+"Language-Team: Hindi <kde-l10n-hi@kde.org>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.04.2\n"
+"X-Generator: Lokalize 21.12.2\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "\n"
 "\n"
@@ -97,7 +97,7 @@ msgstr "कंप्यूटर बंद करें"
 #: contents/ui/data.js:25
 #, kde-format
 msgid "Restart…"
-msgstr "फिर से प्रारंभ करें…"
+msgstr "पुनः प्रारंभ करें…"
 
 #: contents/ui/data.js:26
 #, kde-format
@@ -123,3 +123,37 @@ msgstr "स्लीप (रैम में सस्पेंड करें)
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "सुप्तावस्था (डिस्क में सस्पेंड करें)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "क्या तुम डिस्क में स्थगित करना चाहते हो (hibernate)?"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "क्या तुम रैम में स्थगित करना चाहते हो (sleep)?"
+
+#, fuzzy
+#~| msgid "Leave..."
+#~ msgid "Leave"
+#~ msgstr "छोड़ें..."
+
+#~ msgid "Leave..."
+#~ msgstr "छोड़ें..."
+
+#~ msgid "Suspend"
+#~ msgstr "स्थगित"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "तालाबंद/ लॉगआउट कॉन्फ़िगर करें"
+
+#, fuzzy
+#~| msgid "Show sleep button"
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "स्लीप बटन दिखाएँ"
+
+#~ msgid "Show logout button"
+#~ msgstr "लॉगआउट बटन दिखाएँ"
+
+#~ msgid "Show hibernate button"
+#~ msgstr "हाइबरनेट बटन दिखाएँ "
+
+#~ msgid "Show sleep button"
+#~ msgstr "स्लीप बटन दिखाएँ"

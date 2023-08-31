@@ -2,7 +2,8 @@ add_definitions(-DTRANSLATION_DOMAIN=\"plasma_runner_baloosearch5\")
 
 
 set(baloosearchrunner_SRCS
-    baloosearchrunner.cpp)
+    baloosearchrunner.cpp
+    baloosearchrunner.h)
 
 qt_add_dbus_adaptor(baloosearchrunner_SRCS "org.kde.krunner1.xml" baloosearchrunner.h SearchRunner)
 add_executable(baloorunner ${baloosearchrunner_SRCS})
@@ -32,4 +33,4 @@ ecm_generate_dbus_service_file(NAME org.kde.runners.baloo
                                                            DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR})
 
 ecm_install_configured_files(INPUT plasma-baloorunner.service.in @ONLY DESTINATION
-        ${SYSTEMD_USER_UNIT_INSTALL_DIR})
+        ${KDE_INSTALL_SYSTEMDUSERUNITDIR})

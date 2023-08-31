@@ -10,7 +10,6 @@
 
 #include "kcm.h"
 
-#include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
 
@@ -20,6 +19,8 @@
 #include <Plasma/Svg>
 #include <Plasma/Theme>
 
+#include <QDBusConnection>
+#include <QDBusMessage>
 #include <QDebug>
 #include <QProcess>
 #include <QQuickItem>
@@ -29,28 +30,27 @@
 #include <QTemporaryFile>
 
 #include "desktopthemedata.h"
-#include "desktopthemesettings.h"
 #include "filterproxymodel.h"
-#include "themesmodel.h"
 
 Q_LOGGING_CATEGORY(KCM_DESKTOP_THEME, "kcm_desktoptheme")
 
 K_PLUGIN_FACTORY_WITH_JSON(KCMDesktopThemeFactory, "kcm_desktoptheme.json", registerPlugin<KCMDesktopTheme>(); registerPlugin<DesktopThemeData>();)
 
-KCMDesktopTheme::KCMDesktopTheme(QObject *parent, const QVariantList &args)
-    : KQuickAddons::ManagedConfigModule(parent, args)
+KCMDesktopTheme::KCMDesktopTheme(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : KQuickAddons::ManagedConfigModule(parent, data, args)
     , m_data(new DesktopThemeData(this))
     , m_model(new ThemesModel(this))
     , m_filteredModel(new FilterProxyModel(this))
     , m_haveThemeExplorerInstalled(false)
 {
-    qmlRegisterType<DesktopThemeSettings>();
-    qmlRegisterUncreatableType<ThemesModel>("org.kde.private.kcms.desktoptheme", 1, 0, "ThemesModel", "Cannot create ThemesModel");
-    qmlRegisterUncreatableType<FilterProxyModel>("org.kde.private.kcms.desktoptheme", 1, 0, "FilterProxyModel", "Cannot create FilterProxyModel");
+    qmlRegisterAnonymousType<DesktopThemeSettings>("org.kde.private.kcms.desktoptheme", 1);
+    qmlRegisterUncreatableType<ThemesModel>("org.kde.private.kcms.desktoptheme", 1, 0, "ThemesModel", QStringLiteral("Cannot create ThemesModel"));
+    qmlRegisterUncreatableType<FilterProxyModel>("org.kde.private.kcms.desktoptheme",
+                                                 1,
+                                                 0,
+                                                 "FilterProxyModel",
+                                                 QStringLiteral("Cannot create FilterProxyModel"));
 
-    KAboutData *about = new KAboutData(QStringLiteral("kcm_desktoptheme"), i18n("Plasma Style"), QStringLiteral("0.1"), QString(), KAboutLicense::LGPL);
-    about->addAuthor(i18n("David Rosca"), QString(), QStringLiteral("nowrep@gmail.com"));
-    setAboutData(about);
     setButtons(Apply | Default | Help);
 
     m_haveThemeExplorerInstalled = !QStandardPaths::findExecutable(QStringLiteral("plasmathemeexplorer")).isEmpty();
@@ -107,18 +107,18 @@ void KCMDesktopTheme::installThemeFromFile(const QUrl &url)
 
     m_tempInstallFile.reset(new QTemporaryFile());
     if (!m_tempInstallFile->open()) {
-        emit showErrorMessage(i18n("Unable to create a temporary file."));
+        Q_EMIT showErrorMessage(i18n("Unable to create a temporary file."));
         m_tempInstallFile.reset();
         return;
     }
 
     m_tempCopyJob = KIO::file_copy(url, QUrl::fromLocalFile(m_tempInstallFile->fileName()), -1, KIO::Overwrite);
     m_tempCopyJob->uiDelegate()->setAutoErrorHandlingEnabled(true);
-    emit downloadingFileChanged();
+    Q_EMIT downloadingFileChanged();
 
     connect(m_tempCopyJob, &KIO::FileCopyJob::result, this, [this, url](KJob *job) {
         if (job->error() != KJob::NoError) {
-            emit showErrorMessage(i18n("Unable to download the theme: %1", job->errorText()));
+            Q_EMIT showErrorMessage(i18n("Unable to download the theme: %1", job->errorText()));
             return;
         }
 
@@ -143,7 +143,7 @@ void KCMDesktopTheme::installTheme(const QString &path)
             [this](int exitCode, QProcess::ExitStatus exitStatus) {
                 Q_UNUSED(exitStatus)
                 if (exitCode == 0) {
-                    emit showSuccessMessage(i18n("Theme installed successfully."));
+                    Q_EMIT showSuccessMessage(i18n("Theme installed successfully."));
                     load();
                 } else {
                     Q_EMIT showErrorMessage(i18n("Theme installation failed."));
@@ -185,6 +185,16 @@ void KCMDesktopTheme::load()
 
 void KCMDesktopTheme::save()
 {
+    auto msg = QDBusMessage::createMethodCall(QStringLiteral("org.kde.KWin"),
+                                              QStringLiteral("/org/kde/KWin/BlendChanges"),
+                                              QStringLiteral("org.kde.KWin.BlendChanges"),
+                                              QStringLiteral("start"));
+    // Plasma theme changes are known to be slow, so make the blend take a while
+    msg << 1000;
+    // This is deliberately blocking so that we ensure Kwin has processed the
+    // animation start event before we potentially trigger client side changes
+    QDBusConnection::sessionBus().call(msg);
+
     ManagedConfigModule::save();
     Plasma::Theme().setThemeName(desktopThemeSettings()->name());
     processPendingDeletions();
@@ -244,7 +254,7 @@ void KCMDesktopTheme::processPendingDeletions()
                     if (exitCode == 0) {
                         m_model->removeRow(idx.row());
                     } else {
-                        emit showErrorMessage(i18n("Removing theme failed: %1", QString::fromLocal8Bit(process->readAllStandardOutput().trimmed())));
+                        Q_EMIT showErrorMessage(i18n("Removing theme failed: %1", QString::fromLocal8Bit(process->readAllStandardOutput().trimmed())));
                         m_model->setData(idx, false, ThemesModel::PendingDeletionRole);
                     }
                     process->deleteLater();

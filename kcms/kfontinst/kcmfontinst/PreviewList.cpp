@@ -14,7 +14,11 @@
 #include <QPixmapCache>
 #include <QStyledItemDelegate>
 #include <QTextStream>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 
 namespace KFI
 {
@@ -52,7 +56,7 @@ Qt::ItemFlags CPreviewList::flags(const QModelIndex &) const
 QModelIndex CPreviewList::index(int row, int column, const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
-        CPreviewListItem *item = itsItems.value(row);
+        CPreviewListItem *item = m_items.value(row);
 
         if (item) {
             return createIndex(row, column, item);
@@ -69,27 +73,27 @@ QModelIndex CPreviewList::parent(const QModelIndex &) const
 
 void CPreviewList::clear()
 {
-    emit layoutAboutToBeChanged();
-    qDeleteAll(itsItems);
-    itsItems.clear();
-    emit layoutChanged();
+    Q_EMIT layoutAboutToBeChanged();
+    qDeleteAll(m_items);
+    m_items.clear();
+    Q_EMIT layoutChanged();
 }
 
 void CPreviewList::showFonts(const QModelIndexList &fonts)
 {
     clear();
-    emit layoutAboutToBeChanged();
+    Q_EMIT layoutAboutToBeChanged();
     QModelIndex index;
     foreach (index, fonts) {
         CFontModelItem *mi = static_cast<CFontModelItem *>(index.internalPointer());
         CFontItem *font = mi->parent() ? static_cast<CFontItem *>(mi) : (static_cast<CFamilyItem *>(mi))->regularFont();
 
         if (font) {
-            itsItems.append(new CPreviewListItem(font->family(), font->styleInfo(), font->isEnabled() ? QString() : font->fileName(), font->index()));
+            m_items.append(new CPreviewListItem(font->family(), font->styleInfo(), font->isEnabled() ? QString() : font->fileName(), font->index()));
         }
     }
 
-    emit layoutChanged();
+    Q_EMIT layoutChanged();
 }
 
 class CPreviewListViewDelegate : public QStyledItemDelegate
@@ -97,7 +101,7 @@ class CPreviewListViewDelegate : public QStyledItemDelegate
 public:
     CPreviewListViewDelegate(QObject *p, int previewSize)
         : QStyledItemDelegate(p)
-        , itsPreviewSize(previewSize)
+        , m_previewSize(previewSize)
     {
     }
     ~CPreviewListViewDelegate() override
@@ -109,11 +113,11 @@ public:
         CPreviewListItem *item = static_cast<CPreviewListItem *>(idx.internalPointer());
         QStyleOptionViewItem opt(option);
 
-        opt.rect.adjust(1, constBorder - 3, 0, -(1 + itsPreviewSize));
+        opt.rect.adjust(1, constBorder - 3, 0, -(1 + m_previewSize));
 
         QStyledItemDelegate::paint(painter, opt, idx);
 
-        opt.rect.adjust(constBorder, option.rect.height() - (1 + itsPreviewSize), -constBorder, 0);
+        opt.rect.adjust(constBorder, option.rect.height() - (1 + m_previewSize), -constBorder, 0);
         painter->save();
         painter->setPen(QApplication::palette().color(QPalette::Text));
         QRect lineRect(opt.rect.adjusted(-1, 3, 0, 2));
@@ -129,7 +133,7 @@ public:
         // int   pWidth(getPixmap(static_cast<CPreviewListItem *>(idx.internalPointer())).width());
         int pWidth(1536);
 
-        return QSize((constBorder * 2) + pWidth, sz.height() + 1 + constBorder + itsPreviewSize);
+        return QSize((constBorder * 2) + pWidth, sz.height() + 1 + constBorder + m_previewSize);
     }
 
     QPixmap getPixmap(CPreviewListItem *item) const
@@ -146,14 +150,14 @@ public:
             bgnd.setAlpha(0);
             // TODO: Ideally, for this preview we want the fonts to be of a set point size
             pix = QPixmap::fromImage(
-                theFcEngine->drawPreview(item->file().isEmpty() ? item->name() : item->file(), item->style(), item->index(), text, bgnd, itsPreviewSize));
+                theFcEngine->drawPreview(item->file().isEmpty() ? item->name() : item->file(), item->style(), item->index(), text, bgnd, m_previewSize));
             QPixmapCache::insert(key, pix);
         }
 
         return pix;
     }
 
-    int itsPreviewSize;
+    int m_previewSize;
     static const int constBorder = 4;
 };
 
@@ -165,8 +169,8 @@ CPreviewListView::CPreviewListView(CFcEngine *eng, QWidget *parent)
     QFont font;
     int pixelSize((int)(((font.pointSizeF() * QX11Info::appDpiY()) / 72.0) + 0.5));
 
-    itsModel = new CPreviewList(this);
-    setModel(itsModel);
+    m_model = new CPreviewList(this);
+    setModel(m_model);
     setItemDelegate(new CPreviewListViewDelegate(this, (pixelSize + 12) * 3));
     setSelectionMode(NoSelection);
     setVerticalScrollMode(ScrollPerPixel);
@@ -188,13 +192,13 @@ void CPreviewListView::refreshPreviews()
 
 void CPreviewListView::showFonts(const QModelIndexList &fonts)
 {
-    itsModel->showFonts(fonts);
+    m_model->showFonts(fonts);
     resizeColumnToContents(0);
 }
 
 void CPreviewListView::contextMenuEvent(QContextMenuEvent *ev)
 {
-    emit showMenu(ev->pos());
+    Q_EMIT showMenu(ev->pos());
 }
 
 }

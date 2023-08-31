@@ -6,8 +6,6 @@
 
 #include "kdisplaymanager.h"
 
-#if HAVE_X11
-
 #include <kuser.h>
 
 #include <KLocalizedString>
@@ -19,10 +17,18 @@
 #include <QDBusMetaType>
 #include <QDBusObjectPath>
 #include <QDBusReply>
+
+#include "config-X11.h"
+#if HAVE_X11
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 
 #include <X11/Xauth.h>
 #include <X11/Xlib.h>
+#endif // HAVE_X11
 
 #include <errno.h>
 #include <fcntl.h>
@@ -238,7 +244,7 @@ public:
             se.display = tty;
             se.tty = true;
         }
-        se.vt = tty.midRef(strlen("/dev/tty")).toInt();
+        se.vt = QStringView(tty).mid(strlen("/dev/tty")).toInt();
     }
 };
 
@@ -465,9 +471,9 @@ static QList<QDBusObjectPath> getSessionsForSeat(const QDBusObjectPath &path)
     if (path.path().startsWith(SYSTEMD_BASE_PATH)) { // systemd path incoming
         SystemdSeat seat(path);
         if (seat.isValid()) {
-            QList<NamedDBusObjectPath> r = seat.getSessions();
+            const QList<NamedDBusObjectPath> r = seat.getSessions();
             QList<QDBusObjectPath> result;
-            foreach (const NamedDBusObjectPath &namedPath, r)
+            for (const NamedDBusObjectPath &namedPath : r)
                 result.append(namedPath.path);
             // This pretty much can't contain any other than local sessions as the seat is retrieved from the current session
             return result;
@@ -674,7 +680,8 @@ bool KDisplayManager::localSessions(SessList &list)
             // we'll divide the code in two branches to reduce the overhead of calls to non-existent services
             // systemd part // preferred
             if (QDBusConnection::systemBus().interface()->isServiceRegistered(SYSTEMD_SERVICE)) {
-                foreach (const QDBusObjectPath &sp, getSessionsForSeat(currentSeat)) {
+                const auto sessionsForSeat = getSessionsForSeat(currentSeat);
+                for (const QDBusObjectPath &sp : sessionsForSeat) {
                     SystemdSession lsess(sp);
                     if (lsess.isValid()) {
                         SessEnt se;
@@ -702,7 +709,8 @@ bool KDisplayManager::localSessions(SessList &list)
             }
             // ConsoleKit part
             else if (QDBusConnection::systemBus().interface()->isServiceRegistered(QStringLiteral("org.freedesktop.ConsoleKit"))) {
-                foreach (const QDBusObjectPath &sp, getSessionsForSeat(currentSeat)) {
+                const auto sessionsForSeat = getSessionsForSeat(currentSeat);
+                for (const QDBusObjectPath &sp : sessionsForSeat) {
                     CKSession lsess(sp);
                     if (lsess.isValid()) {
                         SessEnt se;
@@ -752,7 +760,7 @@ bool KDisplayManager::localSessions(SessList &list)
             QStringList ts = (*it).split(QChar(','));
             SessEnt se;
             se.display = ts[0];
-            se.vt = ts[1].midRef(2).toInt();
+            se.vt = QStringView(ts[1]).mid(2).toInt();
             se.user = ts[2];
             se.session = ts[3];
             se.self = (ts[4].indexOf('*') >= 0);
@@ -773,7 +781,7 @@ void KDisplayManager::sess2Str2(const SessEnt &se, QString &user, QString &loc)
         user = se.user.isEmpty() ? se.session.isEmpty()
                                  ? i18nc("… location (TTY or X display)", "Unused") : se.session == QLatin1String("<remote>")
                                  ? i18n("X login on remote host")                     : i18nc("… host", "X login on %1", se.session)
-                                                                                      : se.session == QLatin1String("<unknown>") 
+                                                                                      : se.session == QLatin1String("<unknown>")
                                  ? se.user                                            : i18nc("user: session type", "%1: %2", se.user, se.session);
         // clang-format on
         loc = se.vt ? QStringLiteral("%1, vt%2").arg(se.display).arg(se.vt) : se.display;
@@ -795,7 +803,8 @@ bool KDisplayManager::switchVT(int vt)
         if (getCurrentSeat(nullptr, &currentSeat)) {
             // systemd part // preferred
             if (QDBusConnection::systemBus().interface()->isServiceRegistered(SYSTEMD_SERVICE)) {
-                foreach (const QDBusObjectPath &sp, getSessionsForSeat(currentSeat)) {
+                const auto sessionsForSeat = getSessionsForSeat(currentSeat);
+                for (const QDBusObjectPath &sp : sessionsForSeat) {
                     SystemdSession lsess(sp);
                     if (lsess.isValid()) {
                         SessEnt se;
@@ -809,7 +818,8 @@ bool KDisplayManager::switchVT(int vt)
             }
             // ConsoleKit part
             else if (QDBusConnection::systemBus().interface()->isServiceRegistered(QStringLiteral("org.freedesktop.ConsoleKit"))) {
-                foreach (const QDBusObjectPath &sp, getSessionsForSeat(currentSeat)) {
+                const auto sessionsForSeat = getSessionsForSeat(currentSeat);
+                for (const QDBusObjectPath &sp : sessionsForSeat) {
                     CKSession lsess(sp);
                     if (lsess.isValid()) {
                         SessEnt se;
@@ -844,6 +854,7 @@ void KDisplayManager::lockSwitchVT(int vt)
 
 void KDisplayManager::GDMAuthenticate()
 {
+#if HAVE_X11
     FILE *fp;
     const char *dpy, *dnum, *dne;
     int dnl;
@@ -879,6 +890,5 @@ void KDisplayManager::GDMAuthenticate()
     }
 
     fclose(fp);
-}
-
 #endif // HAVE_X11
+}

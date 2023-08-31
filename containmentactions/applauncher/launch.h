@@ -15,7 +15,6 @@
 #include "ui_config.h"
 
 class QAction;
-class QMenu;
 
 class AppLauncher : public Plasma::ContainmentActions
 {
@@ -35,7 +34,7 @@ public:
     void save(KConfigGroup &config) override;
 
 protected:
-    void makeMenu(QMenu *menu, const KServiceGroup::Ptr group);
+    void makeMenu(QMenu *menu, const KServiceGroup::Ptr &group);
 
 private:
     KServiceGroup::Ptr m_group;

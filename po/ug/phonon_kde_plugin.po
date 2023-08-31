@@ -26,3 +26,15 @@ msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt><b>%1</b> كۆپ ۋاسىتە ئارقا ئۇچ:<br/>%2 نى ئىشلىتەلمەيدۇ</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "كۆپ ۋاسىتە ئارقا ئۇچ تاپالمىدى"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "ئىلتىماس قىلغان كۆپ ۋاسىتە ئارقا ئۇچنى تاپالمىدى"
+
+#~ msgid "create method returned 0"
+#~ msgstr "فۇنكسىيە create نەتىجىسى 0 بولدى"

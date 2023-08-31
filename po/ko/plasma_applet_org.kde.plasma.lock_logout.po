@@ -119,3 +119,43 @@ msgstr "대기 모드(RAM 절전)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "최대 절전 모드(디스크 절전)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "컴퓨터 끄기..."
+
+#~ msgid "Logout..."
+#~ msgstr "로그아웃..."
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "최대 절전 모드로 들어가시겠습니까?"
+
+#~ msgid "Yes"
+#~ msgstr "예"
+
+#~ msgid "No"
+#~ msgstr "아니요"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "절전 모드로 들어가시겠습니까?"
+
+#~ msgid "Leave"
+#~ msgstr "떠나기"
+
+#~ msgid "Leave..."
+#~ msgstr "떠나기..."
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "동작"
+
+#~ msgid "Suspend"
+#~ msgstr "대기 모드"
+
+#~ msgid "Lock/Logout Settings"
+#~ msgstr "잠금/로그아웃 설정"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "잠금/로그아웃 설정"
+
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "아래 항목 중 하나 이상을 선택하십시오."

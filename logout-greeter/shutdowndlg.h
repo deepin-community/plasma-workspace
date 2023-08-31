@@ -8,9 +8,14 @@
 
 #pragma once
 
+#include <QScreen>
+
 #include <kquickaddons/quickviewsharedengine.h>
 #include <kworkspace.h>
 #include <sessionmanagement.h>
+
+#include <KPackage/Package>
+#include <KPackage/PackageLoader>
 
 // The confirmation dialog
 class KSMShutdownDlg : public KQuickAddons::QuickViewSharedEngine
@@ -18,9 +23,13 @@ class KSMShutdownDlg : public KQuickAddons::QuickViewSharedEngine
     Q_OBJECT
 
 public:
-    KSMShutdownDlg(QWindow *parent, KWorkSpace::ShutdownType sdtype);
+    KSMShutdownDlg(QWindow *parent, KWorkSpace::ShutdownType sdtype, QScreen *screen);
 
-    void init();
+    void setWindowed(bool windowed)
+    {
+        m_windowed = windowed;
+    }
+    void init(const KPackage::Package &package);
     bool result() const;
 
 public Q_SLOTS:
@@ -41,6 +50,7 @@ protected:
     void resizeEvent(QResizeEvent *e) override;
 
 private:
+    bool m_windowed = false;
     QString m_bootOption;
     QStringList rebootOptions;
     bool m_result : 1;

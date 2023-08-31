@@ -1,14 +1,9 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-#
-# Weng Xuetian <wengxt@gmail.com>, 2014.
-# Xuetian Weng <xweng@cs.stonybrook.edu>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"POT-Creation-Date: 2022-03-10 00:46+0000\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -23,62 +18,50 @@ msgstr ""
 "pot\n"
 "X-Crowdin-File-ID: 2835\n"
 
-#: timesource.cpp:45
-#, kde-format
+#: timesource.cpp:46
 msgid "Local"
 msgstr "本地"
 
-#: timesource.cpp:60
-#, kde-format
+#: timesource.cpp:61
 msgid "Timezone"
 msgstr "时区"
 
-#: timesource.cpp:65 timesource.cpp:68 timesource.cpp:72
-#, kde-format
+#: timesource.cpp:66 timesource.cpp:69 timesource.cpp:73
 msgid "Timezone City"
 msgstr "时区城市"
 
-#: timesource.cpp:67 timesource.cpp:70
-#, kde-format
+#: timesource.cpp:68 timesource.cpp:71
 msgid "Timezone Continent"
 msgstr "时区大陆"
 
-#: timesource.cpp:71
-#, kde-format
+#: timesource.cpp:72
 msgid "Timezone Country"
 msgstr "时区国家"
 
-#: timesource.cpp:96
-#, kde-format
+#: timesource.cpp:97
 msgid "Offset"
 msgstr "偏移"
 
-#: timesource.cpp:99
-#, kde-format
+#: timesource.cpp:100
 msgid "Timezone Abbreviation"
 msgstr "时区缩写"
 
-#: timesource.cpp:130 timesource.cpp:149 timesource.cpp:170
-#, kde-format
+#: timesource.cpp:131 timesource.cpp:150 timesource.cpp:171
 msgid "DateTime"
 msgstr "日期时间"
 
-#: timesource.cpp:145
-#, kde-format
+#: timesource.cpp:146
 msgid "Latitude"
 msgstr "纬度"
 
-#: timesource.cpp:146
-#, kde-format
+#: timesource.cpp:147
 msgid "Longitude"
 msgstr "经度"
 
-#: timesource.cpp:147
-#, kde-format
-msgid "Solar"
-msgstr "太阳"
-
 #: timesource.cpp:148
-#, kde-format
+msgid "Solar"
+msgstr "日历"
+
+#: timesource.cpp:149
 msgid "Moon"
-msgstr "月球"
+msgstr "月历"

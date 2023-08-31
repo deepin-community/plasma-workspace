@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcminit\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-26 00:47+0000\n"
 "PO-Revision-Date: 2009-08-17 11:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -29,27 +29,25 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "zarko.pintar@gmail.com"
 
-#: main.cpp:151
-#, kde-format
-msgid "Module %1 not found"
-msgstr "Ne mogu pronaći modul %1"
-
-#: main.cpp:214
+#: main.cpp:170
 #, kde-format
 msgid "KCMInit"
 msgstr "KCMInit"
 
-#: main.cpp:216
+#: main.cpp:172
 #, kde-format
 msgid "KCMInit - runs startup initialization for Control Modules."
 msgstr "KCMInit – pokreće početnu inicijalizaciju za Control Modules."
 
-#: main.cpp:222
+#: main.cpp:178
 #, kde-format
 msgid "List modules that are run at startup"
 msgstr "Lista modula koji se pokreću prilikom starta"
 
-#: main.cpp:223
+#: main.cpp:179
 #, kde-format
 msgid "Configuration module to run"
 msgstr "Konfiguriranje pokretanja modula"
+
+#~ msgid "Module %1 not found"
+#~ msgstr "Ne mogu pronaći modul %1"

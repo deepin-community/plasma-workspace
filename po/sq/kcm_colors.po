@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdebase-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
+"POT-Creation-Date: 2023-02-22 02:35+0000\n"
 "PO-Revision-Date: 2009-12-18 21:44+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -29,42 +29,32 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-shqip@yahoogroups.com,vilsongjeci@gmail.com"
 
-#: colors.cpp:65 editor/scmeditordialog.cpp:66
-#, kde-format
-msgid "Colors"
-msgstr "Ngjyrat"
-
-#: colors.cpp:67
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr ""
-
-#: colors.cpp:192
+#: colors.cpp:235
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr ""
 
-#: colors.cpp:205
+#: colors.cpp:248
 #, kde-format
 msgid "Unable to download the color scheme: %1"
 msgstr ""
 
-#: colors.cpp:223
+#: colors.cpp:266
 #, kde-format
 msgid "This file is not a color scheme file."
 msgstr ""
 
-#: colors.cpp:242
+#: colors.cpp:285
 #, kde-format
 msgid "Failed to create 'color-scheme' data folder."
 msgstr ""
 
-#: colors.cpp:249
+#: colors.cpp:292
 #, kde-format
 msgid "Failed to copy color scheme into 'color-scheme' data folder."
 msgstr ""
 
-#: colors.cpp:266
+#: colors.cpp:309
 #, kde-format
 msgid "Color scheme installed successfully."
 msgstr ""
@@ -83,60 +73,74 @@ msgstr "&Skema"
 msgid "Accent color"
 msgstr "Teksti jo aktiv"
 
-#: editor/kcolorschemeeditor.cpp:23
+#. i18n: ectx: label, entry (lastUsedCustomAccentColor), group (General)
+#: colorssettings.kcfg:17
 #, kde-format
-msgid "KColorSchemeEditor"
+msgid ""
+"The last used custom accent color before user switched to wallpaper "
+"generated color or default color"
+msgstr ""
+
+#. i18n: ectx: label, entry (accentColorFromWallpaper), group (General)
+#: colorssettings.kcfg:21
+#, kde-format
+msgid "Whether accent color from wallpaper should be applied"
 msgstr ""
 
 #: editor/kcolorschemeeditor.cpp:25
 #, kde-format
+msgid "KColorSchemeEditor"
+msgstr ""
+
+#: editor/kcolorschemeeditor.cpp:27
+#, kde-format
 msgid "Utility to edit and create color schemes"
-msgstr ""
-
-#: editor/kcolorschemeeditor.cpp:27
-#, kde-format
-msgid "Olivier Churlaud"
-msgstr ""
-
-#: editor/kcolorschemeeditor.cpp:27
-#, kde-format
-msgid "Utility creation"
-msgstr ""
-
-#: editor/kcolorschemeeditor.cpp:28
-#, kde-format
-msgid "Jeremy Whiting"
-msgstr "Jeremy Whiting"
-
-#: editor/kcolorschemeeditor.cpp:28 editor/kcolorschemeeditor.cpp:29
-#, kde-format
-msgid "KCM code (reused in here)"
 msgstr ""
 
 #: editor/kcolorschemeeditor.cpp:29
 #, kde-format
+msgid "Olivier Churlaud"
+msgstr ""
+
+#: editor/kcolorschemeeditor.cpp:29
+#, kde-format
+msgid "Utility creation"
+msgstr ""
+
+#: editor/kcolorschemeeditor.cpp:30
+#, kde-format
+msgid "Jeremy Whiting"
+msgstr "Jeremy Whiting"
+
+#: editor/kcolorschemeeditor.cpp:30 editor/kcolorschemeeditor.cpp:31
+#, kde-format
+msgid "KCM code (reused in here)"
+msgstr ""
+
+#: editor/kcolorschemeeditor.cpp:31
+#, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: editor/kcolorschemeeditor.cpp:33
+#: editor/kcolorschemeeditor.cpp:35
 #, kde-format
 msgid "Scheme to edit or to use as a base."
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:35
+#: editor/kcolorschemeeditor.cpp:37
 #, kde-format
 msgid ""
 "Show 'Apply' button that saves changes without asking (unlike 'Save As' "
 "button)"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:39
+#: editor/kcolorschemeeditor.cpp:41
 #, kde-format
 msgid ""
 "Makes the dialog transient for another application window specified by handle"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:55
+#: editor/kcolorschemeeditor.cpp:57
 #, kde-format
 msgid "Scheme not found, falling back to current one.\n"
 msgstr ""
@@ -674,81 +678,63 @@ msgstr "Teksti jo aktiv"
 msgid "Inactive Titlebar Secondary"
 msgstr "Teksti jo aktiv"
 
-#: editor/scmeditordialog.cpp:65
+#: editor/scmeditordialog.cpp:60
 #, kde-format
 msgid "Options"
 msgstr "Opsionet"
 
-#: editor/scmeditordialog.cpp:67
+#: editor/scmeditordialog.cpp:61
+#, kde-format
+msgid "Colors"
+msgstr "Ngjyrat"
+
+#: editor/scmeditordialog.cpp:62
 #, kde-format
 msgid "Disabled"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "This colour scheme was not saved. Continue?"
-msgstr ""
-
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "Do you really want to upload?"
-msgstr ""
-
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:94
 #, kde-format
 msgid "You have unsaved changes. Do you really want to quit?"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:95
 #, kde-format
 msgid "Unsaved changes"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:133 editor/scmeditordialog.cpp:158
+#: editor/scmeditordialog.cpp:115 editor/scmeditordialog.cpp:140
 #, kde-format
 msgid "Save Color Scheme"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:133
+#: editor/scmeditordialog.cpp:115
 #, kde-format
 msgid "&Enter a name for the color scheme:"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:157
+#: editor/scmeditordialog.cpp:139
 #, kde-format
 msgid ""
 "A color scheme with that name already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "You do not have permission to overwrite that scheme"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "Error"
 msgstr "Gabim"
 
-#: editor/scmeditordialog.cpp:209
+#: editor/scmeditordialog.cpp:191
 #, fuzzy, kde-format
 #| msgid "Inactive Text"
 msgid "Inactive"
 msgstr "Teksti jo aktiv"
-
-#. i18n: ectx: property (toolTip), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:42
-#, kde-format
-msgid "Share the selected scheme on the Internet"
-msgstr ""
-
-#. i18n: ectx: property (text), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:45
-#, fuzzy, kde-format
-#| msgid "&Scheme"
-msgid "Upload Scheme"
-msgstr "&Skema"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: editor/scmeditoreffects.ui:17
@@ -917,33 +903,52 @@ msgstr ""
 msgid "Shade sorted column &in lists"
 msgstr ""
 
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (text), widget (QCheckBox, tintColors)
 #: editor/scmeditoroptions.ui:38
+#, fuzzy, kde-format
+#| msgid "Inactive Text"
+msgid "Tint all colors with accent color"
+msgstr "Teksti jo aktiv"
+
+#. i18n: ectx: property (text), widget (QCheckBox, accentTitlebar)
+#: editor/scmeditoroptions.ui:45
+#, kde-format
+msgid "Make window titlebars a&ccent-colored"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: editor/scmeditoroptions.ui:52
+#, kde-format
+msgid "Tint strength:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#: editor/scmeditoroptions.ui:69
 #, kde-format
 msgid "Shading of frames and lighting (\"3D\") effects"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:41
+#: editor/scmeditoroptions.ui:72
 #, fuzzy, kde-format
 #| msgid "Shade"
 msgid "Shading"
 msgstr "Hija"
 
-#. i18n: ectx: property (text), widget (QLabel, label_9)
-#: editor/scmeditoroptions.ui:53
-#, kde-format
-msgid "Minimum"
-msgstr ""
-
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: editor/scmeditoroptions.ui:73
+#: editor/scmeditoroptions.ui:97
 #, kde-format
 msgid "Maximum"
 msgstr ""
 
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: editor/scmeditoroptions.ui:117
+#, kde-format
+msgid "Minimum"
+msgstr ""
+
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: editor/scmeditoroptions.ui:80
+#: editor/scmeditoroptions.ui:124
 #, kde-format
 msgid "Contrast"
 msgstr "Kontrasti"
@@ -1227,94 +1232,106 @@ msgid "From current color scheme"
 msgstr "&Skema"
 
 #: package/contents/ui/main.qml:157
+#, fuzzy, kde-format
+#| msgid "&Scheme"
+msgctxt "@option:radio wallpaper accent color option"
+msgid "From current wallpaper"
+msgstr "&Skema"
+
+#: package/contents/ui/main.qml:266
 #, kde-format
 msgid "Custom:"
 msgstr ""
 
-#: package/contents/ui/main.qml:268
+#: package/contents/ui/main.qml:273
+#, kde-format
+msgid "Choose custom accent color"
+msgstr ""
+
+#: package/contents/ui/main.qml:361
 #, fuzzy, kde-format
 #| msgid "Window Text"
 msgid "Window Title"
 msgstr "Teksti i Dritares"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:383
 #, fuzzy, kde-format
 #| msgid "Window Text"
 msgid "Window text"
 msgstr "Teksti i Dritares"
 
-#: package/contents/ui/main.qml:297
+#: package/contents/ui/main.qml:390
 #, fuzzy, kde-format
 #| msgid "Active Text"
 msgid "Button"
 msgstr "Teksti Aktiv"
 
-#: package/contents/ui/main.qml:331
+#: package/contents/ui/main.qml:427
 #, kde-format
 msgctxt "Hyperlink"
 msgid "link"
 msgstr ""
 
-#: package/contents/ui/main.qml:333
+#: package/contents/ui/main.qml:429
 #, kde-format
 msgctxt "Visited hyperlink"
 msgid "visited"
 msgstr ""
 
-#: package/contents/ui/main.qml:340
+#: package/contents/ui/main.qml:436
 #, fuzzy, kde-format
 #| msgid "Normal Text"
 msgid "Normal text"
 msgstr "Teksti Normal"
 
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:444
 #, fuzzy, kde-format
 #| msgid "Active Text"
 msgid "Highlighted text"
 msgstr "Teksti Aktiv"
 
-#: package/contents/ui/main.qml:355
+#: package/contents/ui/main.qml:451
 #, fuzzy, kde-format
 #| msgid "Active Text"
 msgid "Disabled text"
 msgstr "Teksti Aktiv"
 
-#: package/contents/ui/main.qml:373
+#: package/contents/ui/main.qml:469
 #, fuzzy, kde-format
 #| msgid "&Scheme"
 msgid "Edit Color Scheme…"
 msgstr "&Skema"
 
-#: package/contents/ui/main.qml:379
+#: package/contents/ui/main.qml:475
 #, fuzzy, kde-format
 #| msgid "&Scheme"
 msgid "Remove Color Scheme"
 msgstr "&Skema"
 
-#: package/contents/ui/main.qml:386
+#: package/contents/ui/main.qml:482
 #, fuzzy, kde-format
 #| msgid "&Scheme"
 msgid "Restore Color Scheme"
 msgstr "&Skema"
 
-#: package/contents/ui/main.qml:430
+#: package/contents/ui/main.qml:526
 #, kde-format
 msgid "Install from File…"
 msgstr ""
 
-#: package/contents/ui/main.qml:435
+#: package/contents/ui/main.qml:531
 #, fuzzy, kde-format
 #| msgid "&Scheme"
 msgid "Get New Color Schemes…"
 msgstr "&Skema"
 
-#: package/contents/ui/main.qml:486
+#: package/contents/ui/main.qml:549
 #, fuzzy, kde-format
 #| msgid "&Scheme"
 msgid "Open Color Scheme"
 msgstr "&Skema"
 
-#: package/contents/ui/main.qml:488
+#: package/contents/ui/main.qml:551
 #, kde-format
 msgid "Color Scheme Files (*.colors)"
 msgstr ""
@@ -1334,53 +1351,173 @@ msgid ""
 "(passing a full path will only use the last part of the path)"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:45
+#: plasma-apply-colorscheme.cpp:46
 #, kde-format
 msgid ""
 "Show all the color schemes available on the system (and which is the current "
 "theme)"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:69
+#: plasma-apply-colorscheme.cpp:51
+#, kde-format
+msgid ""
+"The name of the accent color you want to set. SVG color names (https://www."
+"w3.org/TR/SVG11/types.html#ColorKeywords) and hex color codes are supported. "
+"Quote the hex code if there is possibility of shell expansion"
+msgstr ""
+
+#: plasma-apply-colorscheme.cpp:78
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
 "Plasma session."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:92
+#: plasma-apply-colorscheme.cpp:111
 #, kde-format
 msgid "Successfully applied the color scheme %1 to your current Plasma session"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:94
+#: plasma-apply-colorscheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
 "options: %2"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:101
+#: plasma-apply-colorscheme.cpp:120
 #, kde-format
 msgid ""
 "You have managed to pass an empty color scheme name, which isn't supported "
 "behavior."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:105
+#: plasma-apply-colorscheme.cpp:124
 #, kde-format
 msgid ""
 "The file you attempted to set as your scheme, %1, could not be identified as "
 "a color scheme."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:110
+#: plasma-apply-colorscheme.cpp:147
+#, kde-format
+msgid "Successfully applied the accent color %1"
+msgstr ""
+
+#: plasma-apply-colorscheme.cpp:149
+#, fuzzy, kde-format
+#| msgid "Inactive Text"
+msgid "Invalid accent color "
+msgstr "Teksti jo aktiv"
+
+#: plasma-apply-colorscheme.cpp:154
 #, kde-format
 msgid "You have the following color schemes on your system:"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:115
+#: plasma-apply-colorscheme.cpp:159
 #, fuzzy, kde-format
 #| msgid "&Scheme"
 msgid " * %1 (current color scheme)"
 msgstr "&Skema"
+
+#, fuzzy
+#~| msgid "&Scheme"
+#~ msgid "Upload Scheme"
+#~ msgstr "&Skema"
+
+#, fuzzy
+#~| msgid "&Scheme"
+#~ msgid "Download New Color Schemes"
+#~ msgstr "&Skema"
+
+#, fuzzy
+#~| msgid "&Scheme"
+#~ msgid "Remove the selected scheme"
+#~ msgstr "&Skema"
+
+#, fuzzy
+#~| msgid "&Scheme"
+#~ msgid "Remove"
+#~ msgstr "&Skema"
+
+#, fuzzy
+#~| msgid "&Scheme"
+#~ msgid "Get &New Color Schemes..."
+#~ msgstr "&Skema"
+
+#~ msgid "(c) 2007 Matthew Woehlke"
+#~ msgstr "(c) 2007 Matthew Woehlke"
+
+#~ msgctxt "Default color scheme"
+#~ msgid "Default"
+#~ msgstr "I Parazgjedhur"
+
+#~ msgctxt "Current color scheme"
+#~ msgid "Current"
+#~ msgstr "Aktual"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Jeni i sigurt?"
+
+#, fuzzy
+#~| msgid "Inactive Text"
+#~ msgctxt "@title:tab color transformations on inactive elements"
+#~ msgid "Inactive"
+#~ msgstr "Teksti jo aktiv"
+
+#, fuzzy
+#~| msgid "Shade"
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Shade"
+#~ msgstr "Hija"
+
+#, fuzzy
+#~| msgid "Darken"
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Darken"
+#~ msgstr "Errësim"
+
+#, fuzzy
+#~| msgid "Lighten"
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Lighten"
+#~ msgstr "Ndriçim"
+
+#, fuzzy
+#~| msgid "Desaturate"
+#~ msgctxt "inactive color effect"
+#~ msgid "Desaturate"
+#~ msgstr "Hiq ngjyrat"
+
+#, fuzzy
+#~| msgid "Fade"
+#~ msgctxt "inactive color effect"
+#~ msgid "Fade"
+#~ msgstr "Zbehje"
+
+#, fuzzy
+#~| msgid "Tint"
+#~ msgctxt "inactive color effect"
+#~ msgid "Tint"
+#~ msgstr "Lyerje"
+
+#, fuzzy
+#~| msgid "Inactive Text"
+#~ msgid "Inactive color amount"
+#~ msgstr "Teksti jo aktiv"
+
+#, fuzzy
+#~| msgid "Fade"
+#~ msgctxt "inactive contrast effect"
+#~ msgid "Fade"
+#~ msgstr "Zbehje"
+
+#, fuzzy
+#~| msgid "Tint"
+#~ msgctxt "inactive contrast effect"
+#~ msgid "Tint"
+#~ msgstr "Lyerje"
+
+#~ msgid "Preview"
+#~ msgstr "Parapamje"

@@ -39,6 +39,8 @@ class AppletsLayout : public QQuickItem
     // from the screen size and plasma starts on an "unexpected" size
     Q_PROPERTY(QString fallbackConfigKey READ fallbackConfigKey WRITE setFallbackConfigKey NOTIFY fallbackConfigKeyChanged)
 
+    Q_PROPERTY(bool relayoutLock READ relayoutLock WRITE setRelayoutLock NOTIFY relayoutLockChanged)
+
     Q_PROPERTY(PlasmaQuick::AppletQuickItem *containment READ containment WRITE setContainment NOTIFY containmentChanged)
 
     Q_PROPERTY(QJSValue acceptsAppletCallback READ acceptsAppletCallback WRITE setAcceptsAppletCallback NOTIFY acceptsAppletCallbackChanged)
@@ -103,6 +105,9 @@ public:
     QString fallbackConfigKey() const;
     void setFallbackConfigKey(const QString &key);
 
+    bool relayoutLock() const;
+    void setRelayoutLock(bool lock);
+
     PlasmaQuick::AppletQuickItem *containment() const;
     void setContainment(PlasmaQuick::AppletQuickItem *containment);
 
@@ -162,6 +167,7 @@ Q_SIGNALS:
 
     void configKeyChanged();
     void fallbackConfigKeyChanged();
+    void relayoutLockChanged();
     void containmentChanged();
     void minimumItemWidthChanged();
     void minimumItemHeightChanged();
@@ -179,7 +185,11 @@ Q_SIGNALS:
 protected:
     bool childMouseEventFilter(QQuickItem *item, QEvent *event) override;
     void updatePolish() override;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#else
+    void geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#endif
 
     // void classBegin() override;
     void componentComplete() override;
@@ -226,7 +236,7 @@ private:
     QPointF m_mouseDownPosition = QPoint(-1, -1);
     bool m_mouseDownWasEditMode = false;
     bool m_editMode = false;
-    bool m_sizeSpecificLayouts = false;
+    bool m_relayoutLock = false;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(AppletsLayout::LayoutChanges)

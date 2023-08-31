@@ -28,3 +28,36 @@ msgstr "പ്രസാദ് എസ്.ആര്‍"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "saysprasad@gmail.com"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt><b>%1</b> എന്ന മള്‍ട്ടിമീഡിയ ബാക്കെന്റ് ഉപയോഗിയ്ക്കാന്‍ സാധിച്ചില്ല:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "മള്‍ട്ടിമീഡിയ ബാക്കെന്റ് കണ്ടുപിടിയ്ക്കാന്‍ സാധിച്ചില്ല"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "ആവശ്യപ്പെട്ട മള്‍ട്ടിമീഡിയ ബാക്കെന്റ് കണ്ടുപിടിയ്ക്കാന്‍ സാധിച്ചില്ല"
+
+#~ msgid "create method returned 0"
+#~ msgstr "സൃഷ്ടിയ്ക്കുന്നതിനുള്ള സമീപന രീതി പുജ്യം തിരിച്ചു് തന്നു"
+
+#~ msgid "%1 (OSS)"
+#~ msgstr "%1 (OSS)"
+
+#~ msgid "%1 (ALSA)"
+#~ msgstr "%1 (ALSA)"
+
+#~ msgid ""
+#~ "<html>This device is currently not available (either it is unplugged or "
+#~ "the driver is not loaded).</html>"
+#~ msgstr ""
+#~ "<html>ഈ ഉപകരണം ഇപ്പോള്‍ ലഭ്യമല്ല (ഒന്നുകില്‍ അതു വേര്‍പ്പെടുത്തിയിരിയ്ക്കുന്നു അല്ലെങ്കില്‍ പ്രവര്‍"
+#~ "ത്തകം ചേര്‍ത്തിട്ടില്ല).</html>"
+
+#~ msgid ""
+#~ "<html>This will try the following devices and use the first that works: "
+#~ "<ol><li>%1</li></ol></html>"
+#~ msgstr ""
+#~ "<html>ഇതു താഴെ ഉള്ള ഉപകരണങ്ങളില്‍ നിന്നു് പ്രവര്‍ത്തന സജ്ജമായ ആദ്യത്തേതു് ഉപയോഗിയ്ക്കും:"
+#~ "<ol><li>%1</li></ol></html>"

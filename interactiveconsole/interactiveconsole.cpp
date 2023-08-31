@@ -8,6 +8,7 @@
 #include "interactiveconsole.h"
 
 #include <QAction>
+#include <QActionGroup>
 #include <QApplication>
 #include <QDBusConnection>
 #include <QDBusMessage>
@@ -36,7 +37,7 @@
 #include <KTextEditor/Document>
 #include <KTextEditor/View>
 #include <KToolBar>
-#include <KWindowSystem>
+#include <KX11Extras>
 #include <klocalizedstring.h>
 
 #include <KPackage/Package>
@@ -119,8 +120,9 @@ InteractiveConsole::InteractiveConsole(ConsoleMode mode, QWidget *parent)
     editorLayout->addWidget(toolBar);
 
     auto tryLoadingKatePart = [=]() -> KTextEditor::Document * {
-        const auto loadResult = KPluginFactory::instantiatePlugin<KTextEditor::Document>(KPluginMetaData(QStringLiteral("kf5/parts/katepart")), this);
-
+        const auto loadResult =
+            KPluginFactory::instantiatePlugin<KTextEditor::Document>(KPluginMetaData(QStringLiteral("kf" QT_STRINGIFY(QT_VERSION_MAJOR) "/parts/katepart")),
+                                                                     this);
         if (!loadResult) {
             qWarning() << "Error loading katepart plugin:" << loadResult.errorString;
             return nullptr;
@@ -218,7 +220,7 @@ void InteractiveConsole::modeSelectionChanged()
         m_mode = KWinConsole;
     }
 
-    emit modeChanged();
+    Q_EMIT modeChanged();
 }
 
 QString InteractiveConsole::mode() const
@@ -240,7 +242,7 @@ void InteractiveConsole::setScriptInterface(QObject *obj)
         m_scriptEngine = obj;
         connect(m_scriptEngine, SIGNAL(print(QString)), this, SLOT(print(QString)));
         connect(m_scriptEngine, SIGNAL(printError(QString)), this, SLOT(print(QString)));
-        emit scriptEngineChanged();
+        Q_EMIT scriptEngineChanged();
     }
 }
 
@@ -276,8 +278,8 @@ void InteractiveConsole::showEvent(QShowEvent *)
         m_editor->setFocus();
     }
 
-    KWindowSystem::setOnDesktop(winId(), KWindowSystem::currentDesktop());
-    emit visibleChanged(true);
+    KX11Extras::setOnDesktop(winId(), KX11Extras::currentDesktop());
+    Q_EMIT visibleChanged(true);
 }
 
 void InteractiveConsole::closeEvent(QCloseEvent *event)
@@ -287,7 +289,7 @@ void InteractiveConsole::closeEvent(QCloseEvent *event)
     m_closeWhenCompleted = true;
     saveScript(QUrl::fromLocalFile(path));
     QDialog::closeEvent(event);
-    emit visibleChanged(false);
+    Q_EMIT visibleChanged(false);
 }
 
 void InteractiveConsole::reject()
@@ -433,7 +435,7 @@ void InteractiveConsole::saveScript()
     m_fileDialog->setWindowTitle(i18n("Save Script File"));
 
     QStringList mimetypes;
-    mimetypes << QStringLiteral("application/javascript");
+    mimetypes << QStringLiteral("application/javascript") << QStringLiteral("text/javascript");
     m_fileDialog->setMimeTypeFilters(mimetypes);
 
     connect(m_fileDialog, &QDialog::finished, this, &InteractiveConsole::saveScriptUrlSelected);

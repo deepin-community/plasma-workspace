@@ -1,7 +1,6 @@
-kcoreaddons_add_plugin(plasma_applet_appmenu SOURCES appmenuapplet.cpp INSTALL_NAMESPACE "plasma/applets")
-kcoreaddons_desktop_to_json(plasma_applet_appmenu ../package/metadata.desktop)
+kcoreaddons_add_plugin(org.kde.plasma.appmenu SOURCES appmenuapplet.cpp INSTALL_NAMESPACE "plasma/applets")
 
-target_link_libraries(plasma_applet_appmenu
+target_link_libraries(org.kde.plasma.appmenu
                       Qt::Widgets
                       Qt::Quick
                       Qt::DBus

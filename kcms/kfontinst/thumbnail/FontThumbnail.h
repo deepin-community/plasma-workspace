@@ -5,25 +5,18 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#include <KIO/ThumbCreator>
+#include <KIO/ThumbnailCreator>
 
 #include "FcEngine.h"
 
-namespace KFI
-{
-class CFontThumbnail : public ThumbCreator
+class CFontThumbnail : public KIO::ThumbnailCreator
 {
 public:
-    CFontThumbnail();
-    ~CFontThumbnail() override
-    {
-    }
+    CFontThumbnail(QObject *parent, const QVariantList &args);
+    ~CFontThumbnail() override;
 
-    bool create(const QString &path, int width, int height, QImage &img) override;
-    Flags flags() const override;
+    KIO::ThumbnailResult create(const KIO::ThumbnailRequest &request) override;
 
 private:
-    CFcEngine itsEngine;
+    KFI::CFcEngine m_engine;
 };
-
-}

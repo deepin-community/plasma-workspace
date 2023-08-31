@@ -141,7 +141,7 @@
 >Imprimeix</guilabel
 >, <ulink url="help:/kfontviewer/index.html"
 ><guilabel
->Obre al visor de tipus de lletra</guilabel
+>Obre al visualitzador de tipus de lletra</guilabel
 ></ulink
 > i <guilabel
 >Actualitza</guilabel
@@ -238,7 +238,7 @@
 >) i canviar el text per a la vista prèvia.</para>
 
 <para
->Llanceu l'aplicació &kfontview; si necessiteu previsualitzar tipus de lletra addicionals per als blocs unicode. </para>
+>Llanceu l'aplicació &kfontview; si necessiteu previsualitzar tipus de lletra addicionals per als blocs Unicode. </para>
 </sect2>
 </sect1>
 </article>

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmcolors\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
+"POT-Creation-Date: 2023-02-22 02:35+0000\n"
 "PO-Revision-Date: 2013-01-03 06:19+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -32,44 +32,34 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sairan@computer.org"
 
-#: colors.cpp:65 editor/scmeditordialog.cpp:66
-#, kde-format
-msgid "Colors"
-msgstr "Түстер"
-
-#: colors.cpp:67
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr ""
-
-#: colors.cpp:192
+#: colors.cpp:235
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr ""
 
-#: colors.cpp:205
+#: colors.cpp:248
 #, fuzzy, kde-format
 #| msgid "&Enter a name for the color scheme:"
 msgid "Unable to download the color scheme: %1"
 msgstr "&Түстер сұлбасының атауы:"
 
-#: colors.cpp:223
+#: colors.cpp:266
 #, fuzzy, kde-format
 #| msgid "Import a color scheme from a file"
 msgid "This file is not a color scheme file."
 msgstr "Түстер сұлбасын файлдан импорттау"
 
-#: colors.cpp:242
+#: colors.cpp:285
 #, kde-format
 msgid "Failed to create 'color-scheme' data folder."
 msgstr ""
 
-#: colors.cpp:249
+#: colors.cpp:292
 #, kde-format
 msgid "Failed to copy color scheme into 'color-scheme' data folder."
 msgstr ""
 
-#: colors.cpp:266
+#: colors.cpp:309
 #, kde-format
 msgid "Color scheme installed successfully."
 msgstr ""
@@ -88,62 +78,76 @@ msgstr "Түстер сұлбаны сақтау"
 msgid "Accent color"
 msgstr "Белсенді емес түсі"
 
-#: editor/kcolorschemeeditor.cpp:23
+#. i18n: ectx: label, entry (lastUsedCustomAccentColor), group (General)
+#: colorssettings.kcfg:17
+#, kde-format
+msgid ""
+"The last used custom accent color before user switched to wallpaper "
+"generated color or default color"
+msgstr ""
+
+#. i18n: ectx: label, entry (accentColorFromWallpaper), group (General)
+#: colorssettings.kcfg:21
+#, kde-format
+msgid "Whether accent color from wallpaper should be applied"
+msgstr ""
+
+#: editor/kcolorschemeeditor.cpp:25
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "KColorSchemeEditor"
 msgstr "Түстер сұлбаны сақтау"
 
-#: editor/kcolorschemeeditor.cpp:25
+#: editor/kcolorschemeeditor.cpp:27
 #, fuzzy, kde-format
 #| msgid "Save the current color scheme"
 msgid "Utility to edit and create color schemes"
 msgstr "Қолданыстағы түстер сұлбасын сақтау"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Olivier Churlaud"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Utility creation"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:28
+#: editor/kcolorschemeeditor.cpp:30
 #, kde-format
 msgid "Jeremy Whiting"
 msgstr "Jeremy Whiting"
 
-#: editor/kcolorschemeeditor.cpp:28 editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:30 editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "KCM code (reused in here)"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: editor/kcolorschemeeditor.cpp:33
+#: editor/kcolorschemeeditor.cpp:35
 #, kde-format
 msgid "Scheme to edit or to use as a base."
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:35
+#: editor/kcolorschemeeditor.cpp:37
 #, kde-format
 msgid ""
 "Show 'Apply' button that saves changes without asking (unlike 'Save As' "
 "button)"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:39
+#: editor/kcolorschemeeditor.cpp:41
 #, kde-format
 msgid ""
 "Makes the dialog transient for another application window specified by handle"
 msgstr ""
 
-#: editor/kcolorschemeeditor.cpp:55
+#: editor/kcolorschemeeditor.cpp:57
 #, kde-format
 msgid "Scheme not found, falling back to current one.\n"
 msgstr ""
@@ -652,49 +656,44 @@ msgstr "Назардан тыстын айдарының мәтіні"
 msgid "Inactive Titlebar Secondary"
 msgstr "Назардан тыстын айдарының мәтіні, екіншісі"
 
-#: editor/scmeditordialog.cpp:65
+#: editor/scmeditordialog.cpp:60
 #, kde-format
 msgid "Options"
 msgstr "Параметрлер"
 
-#: editor/scmeditordialog.cpp:67
+#: editor/scmeditordialog.cpp:61
+#, kde-format
+msgid "Colors"
+msgstr "Түстер"
+
+#: editor/scmeditordialog.cpp:62
 #, fuzzy, kde-format
 #| msgctxt "@title:tab color transformations on disabled elements"
 #| msgid "Disabled"
 msgid "Disabled"
 msgstr "Рұқсат етілмеген"
 
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "This colour scheme was not saved. Continue?"
-msgstr ""
-
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "Do you really want to upload?"
-msgstr ""
-
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:94
 #, kde-format
 msgid "You have unsaved changes. Do you really want to quit?"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:95
 #, kde-format
 msgid "Unsaved changes"
 msgstr ""
 
-#: editor/scmeditordialog.cpp:133 editor/scmeditordialog.cpp:158
+#: editor/scmeditordialog.cpp:115 editor/scmeditordialog.cpp:140
 #, kde-format
 msgid "Save Color Scheme"
 msgstr "Түстер сұлбаны сақтау"
 
-#: editor/scmeditordialog.cpp:133
+#: editor/scmeditordialog.cpp:115
 #, kde-format
 msgid "&Enter a name for the color scheme:"
 msgstr "&Түстер сұлбасының атауы:"
 
-#: editor/scmeditordialog.cpp:157
+#: editor/scmeditordialog.cpp:139
 #, kde-format
 msgid ""
 "A color scheme with that name already exists.\n"
@@ -703,35 +702,22 @@ msgstr ""
 "Осылай аталған түстер сұлбасы бар екен.\n"
 "Үстінен жаза берейік пе?"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "You do not have permission to overwrite that scheme"
 msgstr "Бұл сұлбаны ауыстыруға рұқсатыңыз жоқ"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "Error"
 msgstr "Қате"
 
-#: editor/scmeditordialog.cpp:209
+#: editor/scmeditordialog.cpp:191
 #, fuzzy, kde-format
 #| msgctxt "@title:tab color transformations on inactive elements"
 #| msgid "Inactive"
 msgid "Inactive"
 msgstr "Назардан тыс"
-
-#. i18n: ectx: property (toolTip), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:42
-#, kde-format
-msgid "Share the selected scheme on the Internet"
-msgstr "Таңдалған түстер сұлбаны Интернет арқылы ортақтастыру"
-
-#. i18n: ectx: property (text), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:45
-#, fuzzy, kde-format
-#| msgid "&Upload Scheme..."
-msgid "Upload Scheme"
-msgstr "&Сұлбаны жүктеп беру"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: editor/scmeditoreffects.ui:17
@@ -889,32 +875,51 @@ msgstr ""
 msgid "Shade sorted column &in lists"
 msgstr "Тізімдегі реттелген баған &көлеңкеленсін"
 
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (text), widget (QCheckBox, tintColors)
 #: editor/scmeditoroptions.ui:38
+#, fuzzy, kde-format
+#| msgid "Inactive color"
+msgid "Tint all colors with accent color"
+msgstr "Белсенді емес түсі"
+
+#. i18n: ectx: property (text), widget (QCheckBox, accentTitlebar)
+#: editor/scmeditoroptions.ui:45
+#, kde-format
+msgid "Make window titlebars a&ccent-colored"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: editor/scmeditoroptions.ui:52
+#, kde-format
+msgid "Tint strength:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
+#: editor/scmeditoroptions.ui:69
 #, kde-format
 msgid "Shading of frames and lighting (\"3D\") effects"
 msgstr "Қоршаулардың көлеңкесі мен жарық түсіру (\"3D\") эффектері"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:41
+#: editor/scmeditoroptions.ui:72
 #, kde-format
 msgid "Shading"
 msgstr "Көлеңке"
 
-#. i18n: ectx: property (text), widget (QLabel, label_9)
-#: editor/scmeditoroptions.ui:53
-#, kde-format
-msgid "Minimum"
-msgstr "Минимум"
-
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: editor/scmeditoroptions.ui:73
+#: editor/scmeditoroptions.ui:97
 #, kde-format
 msgid "Maximum"
 msgstr "Максимум"
 
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: editor/scmeditoroptions.ui:117
+#, kde-format
+msgid "Minimum"
+msgstr "Минимум"
+
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: editor/scmeditoroptions.ui:80
+#: editor/scmeditoroptions.ui:124
 #, kde-format
 msgid "Contrast"
 msgstr "Контрастық"
@@ -1195,31 +1200,43 @@ msgid "From current color scheme"
 msgstr "Қолданыстағы түстер сұлбасын сақтау"
 
 #: package/contents/ui/main.qml:157
+#, fuzzy, kde-format
+#| msgid "Save the current color scheme"
+msgctxt "@option:radio wallpaper accent color option"
+msgid "From current wallpaper"
+msgstr "Қолданыстағы түстер сұлбасын сақтау"
+
+#: package/contents/ui/main.qml:266
 #, kde-format
 msgid "Custom:"
 msgstr ""
 
-#: package/contents/ui/main.qml:268
+#: package/contents/ui/main.qml:273
+#, kde-format
+msgid "Choose custom accent color"
+msgstr ""
+
+#: package/contents/ui/main.qml:361
 #, fuzzy, kde-format
 #| msgid "Window Text"
 msgid "Window Title"
 msgstr "Терезедегі мәтін"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:383
 #, fuzzy, kde-format
 #| msgctxt "color-kcm-preview"
 #| msgid "Window text"
 msgid "Window text"
 msgstr "Терезедегі мәтін"
 
-#: package/contents/ui/main.qml:297
+#: package/contents/ui/main.qml:390
 #, fuzzy, kde-format
 #| msgctxt "color-sets"
 #| msgid "Button"
 msgid "Button"
 msgstr "Батырма"
 
-#: package/contents/ui/main.qml:331
+#: package/contents/ui/main.qml:427
 #, fuzzy, kde-format
 #| msgctxt "color-kcm-preview"
 #| msgid "link"
@@ -1227,7 +1244,7 @@ msgctxt "Hyperlink"
 msgid "link"
 msgstr "сілтеме"
 
-#: package/contents/ui/main.qml:333
+#: package/contents/ui/main.qml:429
 #, fuzzy, kde-format
 #| msgctxt "color-kcm-preview"
 #| msgid "visited"
@@ -1235,62 +1252,62 @@ msgctxt "Visited hyperlink"
 msgid "visited"
 msgstr "жолыққан"
 
-#: package/contents/ui/main.qml:340
+#: package/contents/ui/main.qml:436
 #, fuzzy, kde-format
 #| msgctxt "color-kcm-preview"
 #| msgid "Normal text"
 msgid "Normal text"
 msgstr "Кәдімгі мәтін"
 
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:444
 #, fuzzy, kde-format
 #| msgid "Visited Text"
 msgid "Highlighted text"
 msgstr "Жолыққанның мәтіні"
 
-#: package/contents/ui/main.qml:355
+#: package/contents/ui/main.qml:451
 #, fuzzy, kde-format
 #| msgctxt "@title:tab color transformations on disabled elements"
 #| msgid "Disabled"
 msgid "Disabled text"
 msgstr "Рұқсат етілмеген"
 
-#: package/contents/ui/main.qml:373
+#: package/contents/ui/main.qml:469
 #, fuzzy, kde-format
 #| msgid "&Upload Scheme..."
 msgid "Edit Color Scheme…"
 msgstr "&Сұлбаны жүктеп беру"
 
-#: package/contents/ui/main.qml:379
+#: package/contents/ui/main.qml:475
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Remove Color Scheme"
 msgstr "Түстер сұлбаны сақтау"
 
-#: package/contents/ui/main.qml:386
+#: package/contents/ui/main.qml:482
 #, fuzzy, kde-format
 #| msgid "Import Color Scheme"
 msgid "Restore Color Scheme"
 msgstr "Түстер сұлбаны импорттау"
 
-#: package/contents/ui/main.qml:430
+#: package/contents/ui/main.qml:526
 #, kde-format
 msgid "Install from File…"
 msgstr ""
 
-#: package/contents/ui/main.qml:435
+#: package/contents/ui/main.qml:531
 #, fuzzy, kde-format
 #| msgid "Get &New Schemes..."
 msgid "Get New Color Schemes…"
 msgstr "&Жаңа сұлбаны алу..."
 
-#: package/contents/ui/main.qml:486
+#: package/contents/ui/main.qml:549
 #, fuzzy, kde-format
 #| msgid "Save Color Scheme"
 msgid "Open Color Scheme"
 msgstr "Түстер сұлбаны сақтау"
 
-#: package/contents/ui/main.qml:488
+#: package/contents/ui/main.qml:551
 #, kde-format
 msgid "Color Scheme Files (*.colors)"
 msgstr ""
@@ -1310,53 +1327,244 @@ msgid ""
 "(passing a full path will only use the last part of the path)"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:45
+#: plasma-apply-colorscheme.cpp:46
 #, kde-format
 msgid ""
 "Show all the color schemes available on the system (and which is the current "
 "theme)"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:69
+#: plasma-apply-colorscheme.cpp:51
+#, kde-format
+msgid ""
+"The name of the accent color you want to set. SVG color names (https://www."
+"w3.org/TR/SVG11/types.html#ColorKeywords) and hex color codes are supported. "
+"Quote the hex code if there is possibility of shell expansion"
+msgstr ""
+
+#: plasma-apply-colorscheme.cpp:78
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
 "Plasma session."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:92
+#: plasma-apply-colorscheme.cpp:111
 #, kde-format
 msgid "Successfully applied the color scheme %1 to your current Plasma session"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:94
+#: plasma-apply-colorscheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
 "options: %2"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:101
+#: plasma-apply-colorscheme.cpp:120
 #, kde-format
 msgid ""
 "You have managed to pass an empty color scheme name, which isn't supported "
 "behavior."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:105
+#: plasma-apply-colorscheme.cpp:124
 #, kde-format
 msgid ""
 "The file you attempted to set as your scheme, %1, could not be identified as "
 "a color scheme."
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:110
+#: plasma-apply-colorscheme.cpp:147
+#, kde-format
+msgid "Successfully applied the accent color %1"
+msgstr ""
+
+#: plasma-apply-colorscheme.cpp:149
+#, fuzzy, kde-format
+#| msgid "Inactive color"
+msgid "Invalid accent color "
+msgstr "Белсенді емес түсі"
+
+#: plasma-apply-colorscheme.cpp:154
 #, kde-format
 msgid "You have the following color schemes on your system:"
 msgstr ""
 
-#: plasma-apply-colorscheme.cpp:115
+#: plasma-apply-colorscheme.cpp:159
 #, fuzzy, kde-format
 #| msgid "Save the current color scheme"
 msgid " * %1 (current color scheme)"
 msgstr "Қолданыстағы түстер сұлбасын сақтау"
+
+#, fuzzy
+#~| msgid "Apply inactive window color &effects"
+#~ msgid "Apply a&ccent color to active window titlebars"
+#~ msgstr "Белсенді емес терезе э&ффекті қолданылсын"
+
+#, fuzzy
+#~| msgid "Apply inactive window color &effects"
+#~ msgid "Apply acce&nt color to inactive window titlebars"
+#~ msgstr "Белсенді емес терезе э&ффекті қолданылсын"
+
+#~ msgid "Share the selected scheme on the Internet"
+#~ msgstr "Таңдалған түстер сұлбаны Интернет арқылы ортақтастыру"
+
+#, fuzzy
+#~| msgid "&Upload Scheme..."
+#~ msgid "Upload Scheme"
+#~ msgstr "&Сұлбаны жүктеп беру"
+
+#, fuzzy
+#~| msgid "Get &New Schemes..."
+#~ msgid "Download New Color Schemes"
+#~ msgstr "&Жаңа сұлбаны алу..."
+
+#~ msgid "Remove the selected scheme"
+#~ msgstr "Таңдалған сұлбаны өшіру"
+
+#, fuzzy
+#~| msgid "Remove Scheme"
+#~ msgid "Remove"
+#~ msgstr "Сұлбаны өшіру"
+
+#, fuzzy
+#~| msgid "Get new color schemes from the Internet"
+#~ msgid "Import a color scheme from a file"
+#~ msgstr "Жаңа түстер сұлбасын Интернеттен алу"
+
+#~ msgid "Get new color schemes from the Internet"
+#~ msgstr "Жаңа түстер сұлбасын Интернеттен алу"
+
+#, fuzzy
+#~| msgid "Get &New Schemes..."
+#~ msgid "Get &New Color Schemes..."
+#~ msgstr "&Жаңа сұлбаны алу..."
+
+#, fuzzy
+#~| msgid "Apply colors to &non-KDE4 applications"
+#~ msgid "Apply colors to &non-Qt applications"
+#~ msgstr "Сұлбаға KDE-ге тиесілі &емес қолданбалар да бағынсын"
+
+#~ msgid "(c) 2007 Matthew Woehlke"
+#~ msgstr "(c) 2007 Matthew Woehlke"
+
+#~ msgctxt "Default color scheme"
+#~ msgid "Default"
+#~ msgstr "Әдетті"
+
+#~ msgctxt "Current color scheme"
+#~ msgid "Current"
+#~ msgstr "Қолданыстағы"
+
+#~ msgid "You do not have permission to delete that scheme"
+#~ msgstr "Бұл сұлбаны өшіруге рұқсатыңыз жоқ"
+
+#~ msgid "Notice"
+#~ msgstr "Пайымдама"
+
+#~ msgid "In&active selection changes color"
+#~ msgstr "Белсенді емес терезе э&фекті қолданылсын"
+
+#~ msgid "Selecting another scheme will discard any changes you have made"
+#~ msgstr "Басқа сұлбаны таңдау барлық жасаған өзгерістерді ысырып тастайды"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Бола берсін бе?"
+
+#~ msgid ""
+#~ "The scheme you have selected appears to be a KDE3 scheme.\n"
+#~ "\n"
+#~ "KDE will attempt to import this scheme, however many color roles have "
+#~ "been added since KDE3. Some manual work will likely be required.\n"
+#~ "\n"
+#~ "This scheme will not be saved automatically."
+#~ msgstr ""
+#~ "Таңдалған сұлба KDE3 сұлбасы сияқты.\n"
+#~ "\n"
+#~ "KDE бұл сұлбаны импорттап көреді, алайда, KDE3 заманынан кейін көп\n"
+#~ "түбірлі өзгерістер енгізілді. Сондықтан, сосын біршама қол жұмысы қажет\n"
+#~ "болар.\n"
+#~ "\n"
+#~ "Бұл сұлба автоматты түрде сақталмайды."
+
+#~ msgid "Please save the color scheme before uploading it."
+#~ msgstr "Жүктеп беруінің алдында түстер сұлбасын сақтаңыз."
+
+#~ msgid "Please save"
+#~ msgstr "Сақтап қойыңыз"
+
+#~ msgctxt "@title:tab color transformations on inactive elements"
+#~ msgid "Inactive"
+#~ msgstr "Назардан тыс"
+
+#~ msgid "Inactive intensity effect type"
+#~ msgstr "Белсендік емес қанықтытының эффект түрі"
+
+#~ msgctxt "no inactive intensity effect"
+#~ msgid "None"
+#~ msgstr "Жоқ"
+
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Shade"
+#~ msgstr "Көлеңкелеу"
+
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Darken"
+#~ msgstr "Қоюлау"
+
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Lighten"
+#~ msgstr "Ашықтау"
+
+#~ msgid "Inactive intensity effect amount"
+#~ msgstr "Белсенді емес қанықтытының эффект мөлшері"
+
+#~ msgid "Inactive color effect type"
+#~ msgstr "Белсенді емес түстін эффект түрі"
+
+#~ msgctxt "no inactive color effect"
+#~ msgid "None"
+#~ msgstr "Жоқ"
+
+#~ msgctxt "inactive color effect"
+#~ msgid "Desaturate"
+#~ msgstr "Қанығын кетіру"
+
+#~ msgctxt "inactive color effect"
+#~ msgid "Fade"
+#~ msgstr "Біртіндеп сөну"
+
+#~ msgctxt "inactive color effect"
+#~ msgid "Tint"
+#~ msgstr "Реңкін кетіру"
+
+#~ msgid "Inactive color amount"
+#~ msgstr "Белсенді еместін түсінің шамасы"
+
+#~ msgid "Inactive contrast effect type"
+#~ msgstr "Белсенді еместін контрастығының эффектінің түрі"
+
+#~ msgctxt "no inactive contrast effect"
+#~ msgid "None"
+#~ msgstr "Жоқ"
+
+#~ msgctxt "inactive contrast effect"
+#~ msgid "Fade"
+#~ msgstr "Біртіндеп сөну"
+
+#~ msgctxt "inactive contrast effect"
+#~ msgid "Tint"
+#~ msgstr "Реңкін кетіру"
+
+#~ msgid "Inactive contrast effect amount"
+#~ msgstr "Белсенді еместін контрастығының эффектінің шамасы"
+
+#~ msgid "Preview"
+#~ msgstr "Қарап шығу"
+
+#~ msgid "Import Scheme..."
+#~ msgstr "Сұлбаны импорттау..."
+
+#~ msgid "Contrast used for 3D objects"
+#~ msgstr "Үш өлшемді нысандарға контрастық қолданылсын"

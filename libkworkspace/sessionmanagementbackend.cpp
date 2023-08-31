@@ -32,7 +32,10 @@ SessionBackend *SessionBackend::self()
     if (s_backend) {
         return s_backend;
     }
-    if (LogindSessionBackend::exists()) {
+
+    if (qEnvironmentVariableIntValue("PLASMA_SESSION_GUI_TEST")) {
+        s_backend = new TestSessionBackend();
+    } else if (LogindSessionBackend::exists()) {
         s_backend = new LogindSessionBackend();
     } else if (ConsoleKitSessionBackend::exists()) {
         s_backend = new ConsoleKitSessionBackend();
@@ -44,8 +47,8 @@ SessionBackend *SessionBackend::self()
 }
 
 SessionBackend::SessionBackend()
+    : m_kserverConfig(KConfigWatcher::create(KSharedConfig::openConfig(QStringLiteral("ksmserverrc"))))
 {
-    m_kserverConfig = KConfigWatcher::create(KSharedConfig::openConfig("ksmserverrc"));
 }
 
 bool SessionBackend::confirmLogout() const
@@ -61,6 +64,36 @@ bool SessionBackend::canSwitchUser() const
 DummySessionBackend::DummySessionBackend()
 {
     qCritical() << "Could not load a session backend. Session management operations such as shutdown will not be operational. This is a setup issue.";
+}
+
+TestSessionBackend::TestSessionBackend()
+{
+    qWarning() << "This backend is intended for gui autotesting only, it will not be operational";
+}
+
+void TestSessionBackend::shutdown()
+{
+    qWarning() << "shutdown";
+}
+
+void TestSessionBackend::reboot()
+{
+    qWarning() << "reboot";
+}
+
+void TestSessionBackend::suspend()
+{
+    qWarning() << "suspend";
+}
+
+void TestSessionBackend::hybridSuspend()
+{
+    qWarning() << "hybridSuspend";
+}
+
+void TestSessionBackend::hibernate()
+{
+    qWarning() << "hibernate";
 }
 
 /*********************************************************************************/
@@ -89,11 +122,11 @@ LogindSessionBackend::LogindSessionBackend()
 
         if (m_pendingJobs == 0) {
             m_state = SessionManagement::State::Ready;
-            emit stateChanged();
-            emit canShutdownChanged();
-            emit canRebootChanged();
-            emit canSuspendChanged();
-            emit canHibernateChanged();
+            Q_EMIT stateChanged();
+            Q_EMIT canShutdownChanged();
+            Q_EMIT canRebootChanged();
+            Q_EMIT canSuspendChanged();
+            Q_EMIT canHibernateChanged();
         }
     };
 
@@ -121,9 +154,9 @@ LogindSessionBackend::LogindSessionBackend()
 
     connect(m_login1, &OrgFreedesktopLogin1ManagerInterface::PrepareForSleep, this, [this](bool sleeping) {
         if (sleeping) {
-            emit aboutToSuspend();
+            Q_EMIT aboutToSuspend();
         } else {
-            emit resumingFromSuspend();
+            Q_EMIT resumingFromSuspend();
         }
     });
 }
@@ -137,7 +170,6 @@ void LogindSessionBackend::shutdown()
 {
     // logind will confirm credentials with the caller, if the app quits after sending this
     // this may fail
-    // its not really needed for suspend tasks where the calling app won't be closing
     m_login1->PowerOff(true).waitForFinished();
 }
 
@@ -148,17 +180,19 @@ void LogindSessionBackend::reboot()
 
 void LogindSessionBackend::suspend()
 {
-    m_login1->Suspend(true);
+    // these need to be synchronous as well - ksmserver-logout-greeter specifically calls these
+    // and will quit immediately after
+    m_login1->Suspend(true).waitForFinished();
 }
 
 void LogindSessionBackend::hybridSuspend()
 {
-    m_login1->HybridSleep(true);
+    m_login1->HybridSleep(true).waitForFinished();
 }
 
 void LogindSessionBackend::hibernate()
 {
-    m_login1->Hibernate(true);
+    m_login1->Hibernate(true).waitForFinished();
 }
 
 bool LogindSessionBackend::canShutdown() const
@@ -215,7 +249,7 @@ ConsoleKitSessionBackend::ConsoleKitSessionBackend()
     m_canSuspend = m_upower->canSuspend();
     m_canHibernate = m_upower->canHibernate();
 
-    connect(m_upower, &OrgFreedesktopUPowerInterface::AboutToSleep, this, &SessionBackend::aboutToSuspend);
+    connect(m_upower, &OrgFreedesktopUPowerInterface::NotifySleep, this, &SessionBackend::aboutToSuspend);
     connect(m_upower, &OrgFreedesktopUPowerInterface::Resuming, this, &SessionBackend::resumingFromSuspend);
 
     m_state = SessionManagement::State::Ready;

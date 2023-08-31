@@ -4,6 +4,9 @@ set(time_engine_SRCS
     timeengine.cpp
     timesource.cpp
     solarsystem.cpp
+    timeengine.h
+    timesource.h
+    solarsystem.h
 )
 
 ecm_qt_declare_logging_category(time_engine_SRCS HEADER debug.h
@@ -20,5 +23,3 @@ target_link_libraries(plasma_engine_time
     KF5::I18n
     KF5::Service
 )
-
-kcoreaddons_desktop_to_json(plasma_engine_time plasma-dataengine-time.desktop)

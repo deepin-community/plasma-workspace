@@ -1,12 +1,12 @@
-find_package(Qt5QuickTest ${REQUIRED_QT_VERSION} CONFIG QUIET)
+find_package(Qt${QT_MAJOR_VERSION}QuickTest ${REQUIRED_QT_VERSION} CONFIG QUIET)
 
-if(NOT Qt5QuickTest_FOUND)
+if(NOT TARGET Qt::QuickTest)
     message(STATUS "Qt5QuickTest not found, autotests will not be built.")
     return()
 endif()
 
 add_executable(qmltest qmltest.cpp)
-target_link_libraries(qmltest Qt5::QuickTest)
+target_link_libraries(qmltest Qt::QuickTest)
 
 macro(qtquick_add_tests)
     if (WIN32)
@@ -26,4 +26,11 @@ endmacro()
 
 qtquick_add_tests(
     tst_triangleFilter
+)
+
+include(ECMAddTests)
+
+ecm_add_test(
+    testrunnermodel.cpp
+    LINK_LIBRARIES kickerplugin Qt::Test
 )

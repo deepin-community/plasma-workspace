@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_clock\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-25 00:47+0000\n"
 "PO-Revision-Date: 2013-11-07 15:18+0200\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -24,6 +24,12 @@ msgstr ""
 #, kde-format
 msgid "Appearance"
 msgstr "Εμφάνιση"
+
+#: contents/ui/analogclock.qml:76
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Current time is %1; Current date is %2"
+msgstr ""
 
 #: contents/ui/configGeneral.qml:23
 #, kde-format
@@ -40,3 +46,41 @@ msgstr "Γενικά"
 #, kde-format
 msgid "Show time zone"
 msgstr "Εμφάνιση ωρολογιακής ζώνης"
+
+#~ msgid "Show the seconds"
+#~ msgstr "Εμφάνιση των δευτερολέπτων"
+
+#~ msgid "Check this if you want to show the seconds."
+#~ msgstr "Ενεργοποιήστε αυτήν την επιλογή για την εμφάνιση των δευτερολέπτων."
+
+#~ msgid "Show &seconds hand"
+#~ msgstr "Εμφάνιση δείκτη &δευτερολέπτων"
+
+#~ msgid "Show the Timezone in text"
+#~ msgstr "Εμφάνιση της ωρολογιακής ζώνης στο κείμενο"
+
+#~ msgid "Check this if you want to display Timezone in text."
+#~ msgstr ""
+#~ "Ενεργοποιήστε αυτήν την επιλογή για την εμφάνιση της ωρολογιακής ζώνης "
+#~ "στο κείμενο."
+
+#~ msgid "Show &time zone"
+#~ msgstr "Εμφάνιση &ωρολογιακής ζώνης"
+
+#~ msgid "Also show the Timezone as text"
+#~ msgstr "Εμφάνιση επίσης της ωρολογιακής ζώνης ως κείμενο"
+
+#~ msgid "Timezones"
+#~ msgstr "Ζώνες ώρας"
+
+#~ msgid "Use &local timezone"
+#~ msgstr "Χρήση &τοπικής ζώνης ώρας"
+
+#~ msgid "Area"
+#~ msgstr "Τοποθεσία"
+
+#~ msgid "Region"
+#~ msgstr "Περιοχή"
+
+#~ msgid "Comment"
+#~ msgstr "Σχόλιο"

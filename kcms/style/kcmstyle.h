@@ -41,7 +41,7 @@ class KCMStyle : public KQuickAddons::ManagedConfigModule
     Q_PROPERTY(bool gtkConfigKdedModuleLoaded READ gtkConfigKdedModuleLoaded NOTIFY gtkConfigKdedModuleLoadedChanged)
 
 public:
-    KCMStyle(QObject *parent, const QVariantList &args);
+    KCMStyle(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
     ~KCMStyle() override;
 
     enum ToolBarStyle {
@@ -52,7 +52,7 @@ public:
     };
     Q_ENUM(ToolBarStyle)
 
-    GtkPage *gtkPage();
+    GtkPage *gtkPage() const;
 
     StylesModel *model() const;
 
@@ -74,6 +74,9 @@ public:
     void load() override;
     void save() override;
     void defaults() override;
+
+    bool isDefaults() const override;
+    bool isSaveNeeded() const override;
 
 Q_SIGNALS:
     void showErrorMessage(const QString &message);

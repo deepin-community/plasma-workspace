@@ -9,6 +9,7 @@
 #include "tasktools.h"
 
 #include <QSet>
+#include <QTime>
 
 namespace TaskManager
 {
@@ -239,13 +240,9 @@ void TaskGroupingProxyModel::Private::adjustMap(int anchor, int delta)
 {
     for (int i = 0; i < rowMap.count(); ++i) {
         QVector<int> *sourceRows = rowMap.at(i);
-        QMutableVectorIterator<int> it(*sourceRows);
-
-        while (it.hasNext()) {
-            it.next();
-
-            if (it.value() >= anchor) {
-                it.setValue(it.value() + delta);
+        for (auto it = sourceRows->begin(); it != sourceRows->end(); ++it) {
+            if ((*it) >= anchor) {
+                *it += delta;
             }
         }
     }
@@ -625,7 +622,7 @@ QVariant TaskGroupingProxyModel::data(const QModelIndex &proxyIndex, int role) c
     }
 
     const QModelIndex &parent = proxyIndex.parent();
-    const bool isGroup = (!parent.isValid() && d->isGroup(proxyIndex.row()));
+    const bool isWindowGroup = (!parent.isValid() && d->isGroup(proxyIndex.row()));
 
     // For group parent items, this will map to the first child task.
     const QModelIndex &sourceIndex = mapToSource(proxyIndex);
@@ -638,7 +635,7 @@ QVariant TaskGroupingProxyModel::data(const QModelIndex &proxyIndex, int role) c
         return !d->isBlacklisted(sourceIndex);
     }
 
-    if (isGroup) {
+    if (isWindowGroup) {
         // For group parent items, DisplayRole is mapped to AppName of the first child.
         if (role == Qt::DisplayRole) {
             const QString &appName = sourceIndex.data(AbstractTasksModel::AppName).toString();
@@ -727,6 +724,20 @@ QVariant TaskGroupingProxyModel::data(const QModelIndex &proxyIndex, int role) c
             return d->any(proxyIndex, AbstractTasksModel::IsDemandingAttention);
         } else if (role == AbstractTasksModel::SkipTaskbar) {
             return d->all(proxyIndex, AbstractTasksModel::SkipTaskbar);
+        } else if (role == AbstractTasksModel::LastActivated) {
+            // Find the last activated task in the single group
+            const int groupSize = d->rowMap.at(proxyIndex.row())->size();
+            QTime lastActivated = mapToSource(index(0, 0, proxyIndex)).data(AbstractTasksModel::LastActivated).toTime();
+
+            for (int i = 1; i < groupSize; i++) {
+                const QTime activated = mapToSource(index(i, 0, proxyIndex)).data(AbstractTasksModel::LastActivated).toTime();
+
+                if (lastActivated < activated) {
+                    lastActivated = activated;
+                }
+            }
+
+            return lastActivated;
         }
     }
 
@@ -785,7 +796,7 @@ void TaskGroupingProxyModel::setGroupMode(TasksModel::GroupMode mode)
 
         d->checkGrouping();
 
-        emit groupModeChanged();
+        Q_EMIT groupModeChanged();
     }
 }
 
@@ -801,7 +812,7 @@ void TaskGroupingProxyModel::setGroupDemandingAttention(bool group)
 
         d->checkGrouping();
 
-        emit groupDemandingAttentionChanged();
+        Q_EMIT groupDemandingAttentionChanged();
     }
 }
 
@@ -817,7 +828,7 @@ void TaskGroupingProxyModel::setWindowTasksThreshold(int threshold)
 
         d->checkGrouping();
 
-        emit windowTasksThresholdChanged();
+        Q_EMIT windowTasksThresholdChanged();
     }
 }
 
@@ -848,7 +859,7 @@ void TaskGroupingProxyModel::setBlacklistedAppIds(const QStringList &list)
             }
         }
 
-        emit blacklistedAppIdsChanged();
+        Q_EMIT blacklistedAppIdsChanged();
     }
 }
 
@@ -873,7 +884,7 @@ void TaskGroupingProxyModel::setBlacklistedLauncherUrls(const QStringList &list)
             if (d->isGroup(i)) {
                 const QModelIndex &groupRep = index(i, 0);
                 const QUrl &launcherUrl = groupRep.data(AbstractTasksModel::LauncherUrlWithoutIcon).toUrl();
-                const QString &launcherUrlString = launcherUrl.toString(QUrl::RemoveQuery | QUrl::RemoveQuery);
+                const QString &launcherUrlString = launcherUrl.toString(QUrl::RemoveQuery);
 
                 if (set.contains(launcherUrlString)) {
                     d->breakGroupFor(groupRep); // Safe since we're iterating backwards.
@@ -881,7 +892,7 @@ void TaskGroupingProxyModel::setBlacklistedLauncherUrls(const QStringList &list)
             }
         }
 
-        emit blacklistedLauncherUrlsChanged();
+        Q_EMIT blacklistedLauncherUrlsChanged();
     }
 }
 
@@ -1186,7 +1197,7 @@ void TaskGroupingProxyModel::requestToggleGrouping(const QModelIndex &index)
 {
     const QString &appId = index.data(AbstractTasksModel::AppId).toString();
     const QUrl &launcherUrl = index.data(AbstractTasksModel::LauncherUrlWithoutIcon).toUrl();
-    const QString &launcherUrlString = launcherUrl.toString(QUrl::RemoveQuery | QUrl::RemoveQuery);
+    const QString &launcherUrlString = launcherUrl.toString(QUrl::RemoveQuery);
 
     if (d->blacklistedAppIds.contains(appId) || d->blacklistedLauncherUrls.contains(launcherUrlString)) {
         d->blacklistedAppIds.remove(appId);
@@ -1218,8 +1229,8 @@ void TaskGroupingProxyModel::requestToggleGrouping(const QModelIndex &index)
         }
     }
 
-    emit blacklistedAppIdsChanged();
-    emit blacklistedLauncherUrlsChanged();
+    Q_EMIT blacklistedAppIdsChanged();
+    Q_EMIT blacklistedLauncherUrlsChanged();
 }
 
 }

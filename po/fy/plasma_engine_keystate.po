@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_keystate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-03-10 00:46+0000\n"
 "PO-Revision-Date: 2009-07-15 20:58+0200\n"
 "Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -19,92 +19,82 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: keystate.cpp:15
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Shift"
 msgstr "Shift"
 
 #: keystate.cpp:16
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Ctrl"
 msgstr "Ctrl"
 
 #: keystate.cpp:17
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Alt"
 msgstr "Alt"
 
 #: keystate.cpp:18
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Meta"
 msgstr "Meta"
 
 #: keystate.cpp:19
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Super"
 msgstr "Super"
 
 #: keystate.cpp:20
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Hyper"
 msgstr "Hyper"
 
 #: keystate.cpp:21
-#, fuzzy, kde-format
+#, fuzzy
 msgid "AltGr"
 msgstr "AltGr"
 
 #: keystate.cpp:22
-#, kde-format
 msgid "Num Lock"
 msgstr ""
 
 #: keystate.cpp:23
-#, kde-format
 msgid "Caps Lock"
 msgstr ""
 
 #: keystate.cpp:24
-#, kde-format
 msgid "Scroll Lock"
 msgstr ""
 
 #: keystate.cpp:26
-#, kde-format
 msgid "Left Button"
 msgstr ""
 
 #: keystate.cpp:27
-#, kde-format
 msgid "Right Button"
 msgstr ""
 
 #: keystate.cpp:28
-#, kde-format
 msgid "Middle Button"
 msgstr ""
 
 #: keystate.cpp:29
-#, kde-format
 msgid "First X Button"
 msgstr ""
 
 #: keystate.cpp:30
-#, kde-format
 msgid "Second X Button"
 msgstr ""
 
-#: keystate.cpp:45 keystate.cpp:56 keystate.cpp:84 keystate.cpp:105
-#: keystate.cpp:113
-#, kde-format
+#: keystate.cpp:44 keystate.cpp:54 keystate.cpp:81 keystate.cpp:102
+#: keystate.cpp:110
 msgid "Pressed"
 msgstr ""
 
-#: keystate.cpp:46 keystate.cpp:91 keystate.cpp:114
-#, kde-format
+#: keystate.cpp:45 keystate.cpp:88 keystate.cpp:111
 msgid "Latched"
 msgstr ""
 
-#: keystate.cpp:47 keystate.cpp:98 keystate.cpp:115
-#, fuzzy, kde-format
+#: keystate.cpp:46 keystate.cpp:95 keystate.cpp:112
+#, fuzzy
 msgid "Locked"
 msgstr "Ferskoattele"

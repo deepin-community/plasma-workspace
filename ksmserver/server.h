@@ -13,9 +13,6 @@
 #include <X11/Xlib.h>
 #include <X11/Xmd.h>
 extern "C" {
-#include <X11/ICE/ICEmsg.h>
-#include <X11/ICE/ICEproto.h>
-#include <X11/ICE/ICEutil.h>
 #include <X11/SM/SM.h>
 #include <X11/SM/SMlib.h>
 }
@@ -98,7 +95,7 @@ public:
     // public API
     void performLogout();
     void restoreSession();
-    void restoreSession(const QString &sessionName);
+    void setRestoreSession(const QString &sessionName);
     void startDefaultSession();
     void shutdown(KWorkSpace::ShutdownConfirm confirm, KWorkSpace::ShutdownType sdtype, KWorkSpace::ShutdownMode sdmode);
 
@@ -189,7 +186,6 @@ private:
 
     enum State {
         Idle,
-        RestoringWMSession,
         Restoring,
         Shutdown,
         Checkpoint,

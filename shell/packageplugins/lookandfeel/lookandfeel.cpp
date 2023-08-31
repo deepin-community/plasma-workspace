@@ -19,6 +19,7 @@ void LookAndFeelPackage::initPackage(KPackage::Package *package)
 
     // Defaults
     package->addFileDefinition("defaults", QStringLiteral("defaults"), i18n("Default settings for theme, etc."));
+    package->addFileDefinition("layoutdefaults", QStringLiteral("layouts/defaults"), i18n("Default layout-related settings for titlebars, etc."));
     package->addDirectoryDefinition("plasmoidsetupscripts", QStringLiteral("plasmoidsetupscripts"), i18n("Script to tweak default configs of plasmoids"));
     // Colors
     package->addFileDefinition("colors", QStringLiteral("colors"), i18n("Color scheme to use for applications."));
@@ -69,6 +70,9 @@ void LookAndFeelPackage::initPackage(KPackage::Package *package)
 
     package->addDirectoryDefinition("windowswitcher", QStringLiteral("windowswitcher"), i18n("Window Switcher"));
     package->addFileDefinition("windowswitchermainscript", QStringLiteral("windowswitcher/WindowSwitcher.qml"), i18n("Main Script for Window Switcher"));
+
+    package->addDirectoryDefinition("systemdialog", QStringLiteral("systemdialog"), i18n("System Dialog"));
+    package->addFileDefinition("systemdialogscript", QStringLiteral("systemdialog/SystemDialog.qml"), i18n("The system dialog"));
 
     package->addDirectoryDefinition("layouts", QStringLiteral("layouts"), i18n("Default layout scripts"));
 

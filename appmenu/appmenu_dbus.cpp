@@ -28,7 +28,7 @@ AppmenuDBus::~AppmenuDBus()
 bool AppmenuDBus::connectToBus(const QString &service, const QString &path)
 {
     m_service = service.isEmpty() ? DBUS_SERVICE : service;
-    QString newPath = path.isEmpty() ? DBUS_OBJECT_PATH : path;
+    const QString newPath = path.isEmpty() ? DBUS_OBJECT_PATH : path;
 
     if (!QDBusConnection::sessionBus().registerService(m_service)) {
         return false;
@@ -41,10 +41,10 @@ bool AppmenuDBus::connectToBus(const QString &service, const QString &path)
 
 void AppmenuDBus::showMenu(int x, int y, const QString &serviceName, const QDBusObjectPath &menuObjectPath, int actionId)
 {
-    emit appShowMenu(x, y, serviceName, menuObjectPath, actionId);
+    Q_EMIT appShowMenu(x, y, serviceName, menuObjectPath, actionId);
 }
 
 void AppmenuDBus::reconfigure()
 {
-    emit reconfigured();
+    Q_EMIT reconfigured();
 }

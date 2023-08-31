@@ -4,11 +4,12 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Josep M. Ferrer <txemaq@gmail.com>, 2010, 2014, 2020, 2021.
+# Empar Montoro Martín <montoro_mde@gva.es>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-20 01:43+0000\n"
+"POT-Creation-Date: 2022-10-17 00:48+0000\n"
 "PO-Revision-Date: 2021-05-26 11:05+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -74,7 +75,7 @@ msgstr ""
 "La vostra carpeta personal està exhaurint l'espai lliure, només resten %1 "
 "MiB (%2%)."
 
-#: module.cpp:46
+#: module.cpp:45
 #, kde-format
 msgid ""
 "Your Root partition is running out of disk space, you have %1 MiB remaining "
@@ -82,7 +83,7 @@ msgid ""
 msgstr ""
 "La partició arrel està exhaurint l'espai lliure, només resten %1 MiB (%2%)."
 
-#: module.cpp:63
+#: module.cpp:62
 #, kde-format
 msgctxt "The settings dialog main page name, as in 'general settings'"
 msgid "General"

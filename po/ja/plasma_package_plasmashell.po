@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_package_plasmashell\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-01-22 00:46+0000\n"
 "PO-Revision-Date: 2014-09-01 01:33-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -78,10 +78,15 @@ msgstr ""
 
 #: shellpackage.cpp:63
 #, kde-format
+msgid "QML component for the configuration dialog of containments"
+msgstr ""
+
+#: shellpackage.cpp:66
+#, kde-format
 msgid "Widgets explorer UI"
 msgstr ""
 
-#: shellpackage.cpp:67
+#: shellpackage.cpp:70
 #, kde-format
 msgid ""
 "A UI for writing, loading and running desktop scripts in the current live "

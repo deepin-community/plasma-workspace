@@ -27,3 +27,16 @@ msgstr "Sharuzzaman Ahmat Raslan"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sharuzzaman@myrealbox.com"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Tidak dapat menggunakan <b>%1</b> Backend Multimedia:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Tidak dapat mencari Backend Multimedia"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Tidak dapat mencari Backend Multimedia yang diminta"
+
+#~ msgid "create method returned 0"
+#~ msgstr "kaedah cipta memulangkan 0"

@@ -65,6 +65,10 @@ public:
     void setSelectedTimeZones(const QStringList &selectedTimeZones);
 
     Q_INVOKABLE void selectLocalTimeZone();
+    Q_INVOKABLE QString localTimeZoneCity();
+
+public Q_SLOTS:
+    void slotUpdate();
 
 Q_SIGNALS:
     void selectedTimeZonesChanged();

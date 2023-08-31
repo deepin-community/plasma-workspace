@@ -3,21 +3,21 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2016, 2017, 2018, 2019, 2020.
+# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2016, 2017, 2018, 2019, 2020, 2021.
 # Ivan Petrouchtchak <fr.ivan@ukrainian-orthodox.org>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_weather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2020-05-01 08:49+0300\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
+"PO-Revision-Date: 2021-12-09 10:18+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.07.70\n"
+"X-Generator: Lokalize 20.12.0\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
@@ -2696,75 +2696,88 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr "Вітряно"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr "Велика Британія"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr "США"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr "Сьогодні"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, kde-format
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "Ввечері"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, kde-format
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "Сб"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, kde-format
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "Нд"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, kde-format
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "Пн"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, kde-format
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "Вт"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, kde-format
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "Ср"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, kde-format
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "Чт"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, kde-format
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "Пт"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
 msgstr "Дані від BBC Weather"
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
+msgstr "Джерело: Deutscher Wetterdienst"
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
 #: ions/envcan/ion_envcan.cpp:1403 ions/envcan/ion_envcan.cpp:1544
@@ -4871,3 +4884,165 @@ msgstr "Прояснення"
 msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr "Переважно безхмарно"
+
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "стан погоди"
+
+#~ msgctxt "weather condition"
+#~ msgid "thunder storm"
+#~ msgstr "громова буря"
+
+#~ msgctxt "weather forecast"
+#~ msgid "thunder storm"
+#~ msgstr "громова буря"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "Пн"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNE"
+#~ msgstr "Пн-Пн-С"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "ПвС"
+
+#~ msgctxt "wind direction"
+#~ msgid "ENE"
+#~ msgstr "С-Пв-С"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "С"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSE"
+#~ msgstr "Пд-Пд-С"
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "ПдС"
+
+#~ msgctxt "wind direction"
+#~ msgid "ESE"
+#~ msgstr "С-Пд-С"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "Пд"
+
+#~ msgctxt "wind direction"
+#~ msgid "NNW"
+#~ msgstr "Пн-Пн-З"
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "ПнЗ"
+
+#~ msgctxt "wind direction"
+#~ msgid "WNW"
+#~ msgstr "З-Пн-З"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "З"
+
+#~ msgctxt "wind direction"
+#~ msgid "SSW"
+#~ msgstr "Пд-Пд-З"
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "ПдЗ"
+
+#~ msgctxt "wind direction"
+#~ msgid "WSW"
+#~ msgstr "З-Пд-З"
+
+#~ msgctxt "wind direction"
+#~ msgid "VR"
+#~ msgstr "Зм."
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "піднімається"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "падає"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "без змін"
+
+#~ msgctxt "wind speed"
+#~ msgid "Calm"
+#~ msgstr "Спокійно"
+
+#~ msgctxt "wind speed"
+#~ msgid "N/A"
+#~ msgstr "н/п"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "steady"
+#~ msgstr "незмінний"
+
+#~ msgctxt "wind direction - wind speed is too low to measure"
+#~ msgid "VR"
+#~ msgstr "Зм."
+
+#~ msgid "N"
+#~ msgstr "Пн"
+
+#~ msgid "NNE"
+#~ msgstr "Пн-Пн-Сх"
+
+#~ msgid "NE"
+#~ msgstr "ПнС"
+
+#~ msgid "ENE"
+#~ msgstr "С-Пн-С"
+
+#~ msgid "E"
+#~ msgstr "С"
+
+#~ msgid "SSE"
+#~ msgstr "Пд-Пд-С"
+
+#~ msgid "SE"
+#~ msgstr "ПдС"
+
+#~ msgid "ESE"
+#~ msgstr "С-Пд-С"
+
+#~ msgid "S"
+#~ msgstr "Пд"
+
+#~ msgid "NNW"
+#~ msgstr "Пн-Пн-З"
+
+#~ msgid "NW"
+#~ msgstr "ПнЗ"
+
+#~ msgid "WNW"
+#~ msgstr "З-Пн-З"
+
+#~ msgid "W"
+#~ msgstr "З"
+
+#~ msgid "SSW"
+#~ msgstr "Пд-Пд-З"
+
+#~ msgid "SW"
+#~ msgstr "ПдЗ"
+
+#~ msgid "WSW"
+#~ msgstr "З-Пд-З"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "Метеорологічні дані надаються Environment Canada"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr "Засновано на даних, отриманих з штаб-квартири UK MET"

@@ -6,7 +6,11 @@
 
 #include "cursornotificationhandler.h"
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
+#endif
 
 #include <X11/extensions/Xfixes.h>
 
@@ -84,7 +88,7 @@ bool CursorNotificationHandler::x11Event(XEvent *event)
     XFixesCursorNotifyEvent *xfe = reinterpret_cast<XFixesCursorNotifyEvent *>(event);
     currentName = xfe->cursor_name;
 
-    emit cursorNameChanged(cursorName(currentName));
+    Q_EMIT cursorNameChanged(cursorName(currentName));
 
     return false;
 }

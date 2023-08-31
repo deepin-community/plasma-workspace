@@ -27,3 +27,19 @@ msgstr "ನಿಮ್ಮ ಹೆಸರುಗಳು"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adarsh@cadl.iisc.ernet.in"
+
+#, fuzzy
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<b>%1</b> ಬಹುಮಾಧ್ಯಮ ಹಿನ್ನೆಲೆಯನ್ನು ಬಳಸಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "ಯಾವುದ ಬಹುಮಾಧ್ಯಮ ಹಿನ್ನೆಲೆಯನ್ನು ಹಡಕಲ ುಸಧಾಧ್ಯವಾಗಲಿಲ್ಲ.ವಾಗುತ್ತಿಲ್ಲ"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "ಕೋರಿಕೆಯ ಬಹುಮಾಧ್ಯಮ ಹಿನ್ನೆಲೆಯನ್ನು ಹುಡುಕಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ"
+
+#~ msgid "create method returned 0"
+#~ msgstr "ಸೃಷ್ಠಿ ವಿಧಾನ ೦ ಯನ್ನು ಹಿಂದಿರುಗಿಸಿತು."
+
+#~ msgid "Unable to use the <b>%1</b> Multimedia Backend:"
+#~ msgstr "<b>%1</b> ಬಹುಮಾಧ್ಯಮ ಹಿನ್ನೆಲೆಯನ್ನು ಬಳಸಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ"

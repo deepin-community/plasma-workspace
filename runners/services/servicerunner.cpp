@@ -2,6 +2,7 @@
     SPDX-FileCopyrightText: 2006 Aaron Seigo <aseigo@kde.org>
     SPDX-FileCopyrightText: 2014 Vishesh Handa <vhanda@kde.org>
     SPDX-FileCopyrightText: 2016-2020 Harald Sitter <sitter@kde.org>
+    SPDX-FileCopyrightText: 2022 Alexander Lohnau <alexander.lohnau@gmx.de>
 
     SPDX-License-Identifier: LGPL-2.0-only
 */
@@ -20,10 +21,11 @@
 #include <QUrlQuery>
 
 #include <KActivities/ResourceInstance>
+#include <KApplicationTrader>
 #include <KLocalizedString>
 #include <KNotificationJobUiDelegate>
 #include <KServiceAction>
-#include <KServiceTypeTrader>
+#include <KShell>
 #include <KStringHandler>
 #include <KSycoca>
 
@@ -39,6 +41,22 @@ int weightedLength(const QString &query)
     return KStringHandler::logicalLength(query);
 }
 
+inline bool contains(const QString &result, const QStringList &queryList)
+{
+    return std::all_of(queryList.cbegin(), queryList.cend(), [&result](const QString &query) {
+        return result.contains(query, Qt::CaseInsensitive);
+    });
+}
+
+inline bool contains(const QStringList &results, const QStringList &queryList)
+{
+    return std::all_of(queryList.cbegin(), queryList.cend(), [&results](const QString &query) {
+        return std::any_of(results.cbegin(), results.cend(), [&query](const QString &result) {
+            return result.contains(query, Qt::CaseInsensitive);
+        });
+    });
+}
+
 } // namespace
 
 /**
@@ -47,23 +65,19 @@ int weightedLength(const QString &query)
 class ServiceFinder
 {
 public:
-    ServiceFinder(ServiceRunner *runner)
+    ServiceFinder(ServiceRunner *runner, const QList<KService::Ptr> &list)
         : m_runner(runner)
+        , m_services(list)
     {
     }
 
     void match(Plasma::RunnerContext &context)
     {
-        if (!context.isValid()) {
-            return;
-        }
-
-        KSycoca::disableAutoRebuild();
-
         term = context.query();
+        // Splitting the query term to match using subsequences
+        queryList = term.split(QLatin1Char(' '));
         weightedTermLength = weightedLength(term);
 
-        matchExectuables();
         matchNameKeywordAndGenericName();
         matchCategories();
         matchJumpListActions();
@@ -101,7 +115,7 @@ private:
         return ret;
     }
 
-    qreal increaseMatchRelavance(const KService::Ptr &service, const QVector<QStringRef> &strList, const QString &category)
+    qreal increaseMatchRelavance(const KService::Ptr &service, const QStringList &strList, const QString &category)
     {
         // Increment the relevance based on all the words (other than the first) of the query list
         qreal relevanceIncrement = 0;
@@ -130,33 +144,6 @@ private:
         return relevanceIncrement;
     }
 
-    QString generateQuery(const QVector<QStringRef> &strList)
-    {
-        QString keywordTemplate = QStringLiteral("exist Keywords");
-        QString genericNameTemplate = QStringLiteral("exist GenericName");
-        QString nameTemplate = QStringLiteral("exist Name");
-        QString commentTemplate = QStringLiteral("exist Comment");
-
-        // Search for applications which are executable and the term case-insensitive matches any of
-        // * a substring of one of the keywords
-        // * a substring of the GenericName field
-        // * a substring of the Name field
-        // Note that before asking for the content of e.g. Keywords and GenericName we need to ask if
-        // they exist to prevent a tree evaluation error if they are not defined.
-        for (const QStringRef &str : strList) {
-            keywordTemplate += QStringLiteral(" and '%1' ~subin Keywords").arg(str.toString());
-            genericNameTemplate += QStringLiteral(" and '%1' ~~ GenericName").arg(str.toString());
-            nameTemplate += QStringLiteral(" and '%1' ~~ Name").arg(str.toString());
-            commentTemplate += QStringLiteral(" and '%1' ~~ Comment").arg(str.toString());
-        }
-
-        QString finalQuery = QStringLiteral("exist Exec and ( (%1) or (%2) or (%3) or ('%4' ~~ Exec) or (%5) )")
-                                 .arg(keywordTemplate, genericNameTemplate, nameTemplate, strList[0].toString(), commentTemplate);
-
-        qCDebug(RUNNER_SERVICES) << "Final query : " << finalQuery;
-        return finalQuery;
-    }
-
     void setupMatch(const KService::Ptr &service, Plasma::QueryMatch &match)
     {
         const QString name = service->name();
@@ -166,13 +153,45 @@ private:
         QUrl url(service->storageId());
         url.setScheme(QStringLiteral("applications"));
         match.setData(url);
-        QString exec = service->exec();
-        // We have a snap, remove the ENV variable
-        if (exec.contains(QLatin1String("BAMF_DESKTOP_FILE_HINT"))) {
-            const static QRegularExpression snapCleanupRegex(QStringLiteral("env BAMF_DESKTOP_FILE_HINT=.+ "));
-            exec.remove(snapCleanupRegex);
+
+        QString path = service->entryPath();
+        if (!QDir::isAbsolutePath(path)) {
+            path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kservices5/") + path);
         }
-        const QStringList resultingArgs = KIO::DesktopExecParser(KService(QString(), exec, QString()), {}).resultingArguments();
+
+        match.setUrls({QUrl::fromLocalFile(path)});
+
+        QString exec = service->exec();
+
+        QStringList resultingArgs = KIO::DesktopExecParser(KService(QString(), exec, QString()), {}).resultingArguments();
+
+        // Remove any environment variables.
+        if (KIO::DesktopExecParser::executableName(exec) == QLatin1String("env")) {
+            resultingArgs.removeFirst(); // remove "env".
+
+            while (!resultingArgs.isEmpty() && resultingArgs.first().contains(QLatin1Char('='))) {
+                resultingArgs.removeFirst();
+            }
+
+            // Now parse it again to resolve the path.
+            resultingArgs = KIO::DesktopExecParser(KService(QString(), KShell::joinArgs(resultingArgs), QString()), {}).resultingArguments();
+        }
+
+        // Remove special arguments that have no real impact on the application.
+        static const auto specialArgs = {QStringLiteral("-qwindowtitle"), QStringLiteral("-qwindowicon"), QStringLiteral("--started-from-file")};
+
+        for (const auto &specialArg : specialArgs) {
+            int index = resultingArgs.indexOf(specialArg);
+            if (index > -1) {
+                if (resultingArgs.count() > index) {
+                    resultingArgs.removeAt(index);
+                }
+                if (resultingArgs.count() > index) {
+                    resultingArgs.removeAt(index); // remove value, too, if any.
+                }
+            }
+        }
+
         match.setId(QStringLiteral("exec://") + resultingArgs.join(QLatin1Char(' ')));
         if (!service->genericName().isEmpty() && service->genericName() != name) {
             match.setSubtext(service->genericName());
@@ -185,58 +204,40 @@ private:
         }
     }
 
-    void matchExectuables()
-    {
-        if (weightedTermLength < 2) {
-            return;
-        }
-
-        // Search for applications which are executable and case-insensitively match the search term
-        // See https://techbase.kde.org/Development/Tutorials/Services/Traders#The_KTrader_Query_Language
-        // if the following is unclear to you.
-        query = QStringLiteral("exist Exec and ('%1' =~ Name)").arg(term);
-        const KService::List services = KServiceTypeTrader::self()->query(QStringLiteral("Application"), query);
-
-        if (services.isEmpty()) {
-            return;
-        }
-
-        for (const KService::Ptr &service : services) {
-            qCDebug(RUNNER_SERVICES) << service->name() << "is an exact match!" << service->storageId() << service->exec();
-            if (disqualify(service)) {
-                continue;
-            }
-            Plasma::QueryMatch match(m_runner);
-            match.setType(Plasma::QueryMatch::ExactMatch);
-            setupMatch(service, match);
-            match.setRelevance(1);
-            matches << match;
-        }
-    }
-
     void matchNameKeywordAndGenericName()
     {
-        // Splitting the query term to match using subsequences
-        QVector<QStringRef> queryList = term.splitRef(QLatin1Char(' '));
+        const auto nameKeywordAndGenericNameFilter = [this](const KService::Ptr &service) {
+            // Name
+            if (contains(service->name(), queryList)) {
+                return true;
+            }
+            // If the term length is < 3, no real point searching the Keywords and GenericName
+            if (weightedTermLength < 3) {
+                return false;
+            }
+            // Keywords
+            if (contains(service->keywords(), queryList)) {
+                return true;
+            }
+            // GenericName
+            if (contains(service->genericName(), queryList) || contains(service->untranslatedGenericName(), queryList)) {
+                return true;
+            }
+            // Comment
+            if (contains(service->comment(), queryList)) {
+                return true;
+            }
 
-        // If the term length is < 3, no real point searching the Keywords and GenericName
-        if (weightedTermLength < 3) {
-            query = QStringLiteral("exist Exec and ( (exist Name and '%1' ~~ Name) or ('%1' ~~ Exec) )").arg(term);
-        } else {
-            // Match using subsequences (Bug: 262837)
-            query = generateQuery(queryList);
-        }
+            return false;
+        };
 
-        const KService::List services = KServiceTypeTrader::self()->query(QStringLiteral("Application"), query);
-
-        qCDebug(RUNNER_SERVICES) << "got " << services.count() << " services from " << query;
-        for (const KService::Ptr &service : services) {
-            if (disqualify(service)) {
+        for (const KService::Ptr &service : m_services) {
+            if (!nameKeywordAndGenericNameFilter(service) || disqualify(service)) {
                 continue;
             }
 
             const QString id = service->storageId();
-            const QString name = service->desktopEntryName();
+            const QString name = service->name();
             const QString exec = service->exec();
 
             Plasma::QueryMatch match(m_runner);
@@ -252,11 +253,14 @@ private:
                 } else {
                     continue;
                 }
-            } else if (service->name().contains(queryList[0], Qt::CaseInsensitive)) {
+            } else if (name.compare(term, Qt::CaseInsensitive) == 0) {
+                relevance = 1;
+                match.setType(Plasma::QueryMatch::ExactMatch);
+            } else if (name.contains(queryList[0], Qt::CaseInsensitive)) {
                 relevance = 0.8;
                 relevance += increaseMatchRelavance(service, queryList, QStringLiteral("Name"));
 
-                if (service->name().startsWith(queryList[0], Qt::CaseInsensitive)) {
+                if (name.startsWith(queryList[0], Qt::CaseInsensitive)) {
                     relevance += 0.1;
                 }
             } else if (service->genericName().contains(queryList[0], Qt::CaseInsensitive)) {
@@ -264,13 +268,6 @@ private:
                 relevance += increaseMatchRelavance(service, queryList, QStringLiteral("GenericName"));
 
                 if (service->genericName().startsWith(queryList[0], Qt::CaseInsensitive)) {
-                    relevance += 0.05;
-                }
-            } else if (service->exec().contains(queryList[0], Qt::CaseInsensitive)) {
-                relevance = 0.7;
-                relevance += increaseMatchRelavance(service, queryList, QStringLiteral("Exec"));
-
-                if (service->exec().startsWith(queryList[0], Qt::CaseInsensitive)) {
                     relevance += 0.05;
                 }
             } else if (service->comment().contains(queryList[0], Qt::CaseInsensitive)) {
@@ -287,7 +284,7 @@ private:
                 relevance += .09;
             }
 
-            qCDebug(RUNNER_SERVICES) << service->name() << "is this relevant:" << relevance;
+            qCDebug(RUNNER_SERVICES) << name << "is this relevant:" << relevance;
             match.setRelevance(relevance);
 
             matches << match;
@@ -296,22 +293,27 @@ private:
 
     void matchCategories()
     {
-        // search for applications whose categories contains the query
-        query = QStringLiteral("exist Exec and (exist Categories and '%1' ~subin Categories)").arg(term);
-        const auto services = KServiceTypeTrader::self()->query(QStringLiteral("Application"), query);
+        const auto categoriesFilter = [this](const KService::Ptr &service) {
+            return contains(service->categories(), queryList);
+        };
 
-        for (const KService::Ptr &service : services) {
-            qCDebug(RUNNER_SERVICES) << service->name() << "is an exact match!" << service->storageId() << service->exec();
-            if (disqualify(service)) {
+        for (const KService::Ptr &service : m_services) {
+            if (!categoriesFilter(service) || disqualify(service)) {
                 continue;
             }
+            qCDebug(RUNNER_SERVICES) << service->name() << "is an exact match!" << service->storageId() << service->exec();
 
             Plasma::QueryMatch match(m_runner);
             match.setType(Plasma::QueryMatch::PossibleMatch);
             setupMatch(service, match);
 
-            qreal relevance = 0.6;
-            if (service->categories().contains(QLatin1String("X-KDE-More")) || !service->showInCurrentDesktop()) {
+            qreal relevance = 0.4;
+            const QStringList categories = service->categories();
+            if (std::any_of(categories.begin(), categories.end(), [this](const QString &category) {
+                    return category.compare(term, Qt::CaseInsensitive) == 0;
+                })) {
+                relevance = 0.6;
+            } else if (service->categories().contains(QLatin1String("X-KDE-More")) || !service->showInCurrentDesktop()) {
                 relevance = 0.5;
             }
 
@@ -330,11 +332,11 @@ private:
             return;
         }
 
-        query = QStringLiteral("exist Actions"); // doesn't work
-        const auto services = KServiceTypeTrader::self()->query(QStringLiteral("Application")); //, query);
-
-        for (const KService::Ptr &service : services) {
-            if (service->noDisplay()) {
+        const auto hasActionsFilter = [](const KService::Ptr &service) {
+            return !service->actions().isEmpty();
+        };
+        for (const KService::Ptr &service : m_services) {
+            if (!hasActionsFilter(service) || service->noDisplay()) {
                 continue;
             }
 
@@ -377,7 +379,10 @@ private:
                 match.setData(url);
 
                 qreal relevance = 0.5;
-                if (matchIndex == 0) {
+                if (action.text().compare(term, Qt::CaseInsensitive) == 0) {
+                    relevance = 0.65;
+                    match.setType(Plasma::QueryMatch::HelperMatch); // Give it a higer match type to ensure it is shown, BUG: 455436
+                } else if (matchIndex == 0) {
                     relevance += 0.05;
                 }
 
@@ -390,10 +395,12 @@ private:
 
     ServiceRunner *m_runner;
     QSet<QString> m_seen;
+    const QList<KService::Ptr> m_services;
 
     QList<Plasma::QueryMatch> matches;
     QString query;
     QString term;
+    QStringList queryList;
     int weightedTermLength = -1;
 };
 
@@ -410,9 +417,10 @@ ServiceRunner::~ServiceRunner() = default;
 
 void ServiceRunner::match(Plasma::RunnerContext &context)
 {
-    // This helper class aids in keeping state across numerous
-    // different queries that together form the matches set.
-    ServiceFinder finder(this);
+    KSycoca::disableAutoRebuild();
+    ServiceFinder finder(this, KApplicationTrader::query([](const KService::Ptr &) {
+                             return true;
+                         }));
     finder.match(context);
 }
 
@@ -448,32 +456,4 @@ void ServiceRunner::run(const Plasma::RunnerContext &context, const Plasma::Quer
     delegate->setAutoErrorHandlingEnabled(true);
     job->setUiDelegate(delegate);
     job->start();
-}
-
-QMimeData *ServiceRunner::mimeDataForMatch(const Plasma::QueryMatch &match)
-{
-    const QUrl dataUrl = match.data().toUrl();
-
-    const QString actionName = QUrlQuery(dataUrl).queryItemValue(QStringLiteral("action"));
-    if (!actionName.isEmpty()) {
-        return nullptr;
-    }
-
-    KService::Ptr service = KService::serviceByStorageId(dataUrl.path());
-    if (!service) {
-        return nullptr;
-    }
-
-    QString path = service->entryPath();
-    if (!QDir::isAbsolutePath(path)) {
-        path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kservices5/") + path);
-    }
-
-    if (path.isEmpty()) {
-        return nullptr;
-    }
-
-    auto *data = new QMimeData();
-    data->setUrls(QList<QUrl>{QUrl::fromLocalFile(path)});
-    return data;
 }

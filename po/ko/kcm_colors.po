@@ -2,15 +2,15 @@
 # Copyright (C) 2001, 2002, 2007 Free Software Foundation, Inc.
 # Yu-Chan, Park <super@susekorea.net>, 2001.
 # KIM KyungHeon <tody@teoal.net>, 2002.
-# Shinjo Park <kde@peremen.name>, 2007, 2008, 2009, 2010, 2011, 2012, 2015, 2016, 2017, 2019, 2020, 2021.
+# Shinjo Park <kde@peremen.name>, 2007, 2008, 2009, 2010, 2011, 2012, 2015, 2016, 2017, 2019, 2020, 2021, 2022, 2023.
 # JungHee Lee <daemul72@gmail.com>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmcolors\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-19 01:43+0000\n"
-"PO-Revision-Date: 2021-05-28 02:35+0200\n"
+"POT-Creation-Date: 2023-02-22 02:35+0000\n"
+"PO-Revision-Date: 2023-02-28 23:29+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 20.12.3\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,100 +30,105 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: colors.cpp:65 editor/scmeditordialog.cpp:66
-#, kde-format
-msgid "Colors"
-msgstr "색상"
-
-#: colors.cpp:67
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "Kai Uwe Broulik"
-
-#: colors.cpp:192
+#: colors.cpp:235
 #, kde-format
 msgid "Unable to create a temporary file."
 msgstr "임시 파일을 만들 수 없습니다."
 
-#: colors.cpp:205
+#: colors.cpp:248
 #, kde-format
 msgid "Unable to download the color scheme: %1"
-msgstr "색 배열을 다운로드할 수 없음: %1"
+msgstr "색 구성표를 다운로드할 수 없음: %1"
 
-#: colors.cpp:223
+#: colors.cpp:266
 #, kde-format
 msgid "This file is not a color scheme file."
-msgstr "이 파일은 색 배열 파일이 아닙니다."
+msgstr "이 파일은 색 구성표 파일이 아닙니다."
 
-#: colors.cpp:242
+#: colors.cpp:285
 #, kde-format
 msgid "Failed to create 'color-scheme' data folder."
 msgstr "'color-scheme' 데이터 폴더를 만들 수 없습니다."
 
-#: colors.cpp:249
+#: colors.cpp:292
 #, kde-format
 msgid "Failed to copy color scheme into 'color-scheme' data folder."
-msgstr "색 배열을 'color-scheme' 데이터 폴더로 복사할 수 없습니다."
+msgstr "색 구성표를 'color-scheme' 데이터 폴더로 복사할 수 없습니다."
 
-#: colors.cpp:266
+#: colors.cpp:309
 #, kde-format
 msgid "Color scheme installed successfully."
-msgstr "색 배열을 설치했습니다."
+msgstr "색 구성표를 설치했습니다."
 
 #. i18n: ectx: label, entry (colorScheme), group (General)
 #: colorssettings.kcfg:9
 #, kde-format
 msgid "Color scheme name"
-msgstr "색 배열 이름"
+msgstr "색 구성표 이름"
 
 #. i18n: ectx: label, entry (accentColor), group (General)
 #: colorssettings.kcfg:13
-#, fuzzy, kde-format
-#| msgid "Inactive color"
+#, kde-format
 msgid "Accent color"
-msgstr "비활성 항목 색"
+msgstr "강조 색상"
 
-#: editor/kcolorschemeeditor.cpp:23
+#. i18n: ectx: label, entry (lastUsedCustomAccentColor), group (General)
+#: colorssettings.kcfg:17
+#, kde-format
+msgid ""
+"The last used custom accent color before user switched to wallpaper "
+"generated color or default color"
+msgstr ""
+"배경 그림에서 생성했거나 기본 색상으로 전환하기 전에 마지막으로 사용한 사용"
+"자 정의 강조색"
+
+#. i18n: ectx: label, entry (accentColorFromWallpaper), group (General)
+#: colorssettings.kcfg:21
+#, kde-format
+msgid "Whether accent color from wallpaper should be applied"
+msgstr "배경 그림의 강조색을 적용할지 여부"
+
+#: editor/kcolorschemeeditor.cpp:25
 #, kde-format
 msgid "KColorSchemeEditor"
 msgstr "KColorSchemeEditor"
 
-#: editor/kcolorschemeeditor.cpp:25
+#: editor/kcolorschemeeditor.cpp:27
 #, kde-format
 msgid "Utility to edit and create color schemes"
-msgstr "색 배열을 만들고 편집하는 도구"
+msgstr "색 구성표를 만들고 편집하는 도구"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Olivier Churlaud"
 msgstr "Olivier Churlaud"
 
-#: editor/kcolorschemeeditor.cpp:27
+#: editor/kcolorschemeeditor.cpp:29
 #, kde-format
 msgid "Utility creation"
 msgstr "유틸리티 제작"
 
-#: editor/kcolorschemeeditor.cpp:28
+#: editor/kcolorschemeeditor.cpp:30
 #, kde-format
 msgid "Jeremy Whiting"
 msgstr "Jeremy Whiting"
 
-#: editor/kcolorschemeeditor.cpp:28 editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:30 editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "KCM code (reused in here)"
 msgstr "KCM 코드(재사용)"
 
-#: editor/kcolorschemeeditor.cpp:29
+#: editor/kcolorschemeeditor.cpp:31
 #, kde-format
 msgid "Matthew Woehlke"
 msgstr "Matthew Woehlke"
 
-#: editor/kcolorschemeeditor.cpp:33
+#: editor/kcolorschemeeditor.cpp:35
 #, kde-format
 msgid "Scheme to edit or to use as a base."
-msgstr "편집하거나 기반으로 사용할 색 배열입니다."
+msgstr "편집하거나 기반으로 사용할 색 구성표입니다."
 
-#: editor/kcolorschemeeditor.cpp:35
+#: editor/kcolorschemeeditor.cpp:37
 #, kde-format
 msgid ""
 "Show 'Apply' button that saves changes without asking (unlike 'Save As' "
@@ -132,16 +137,16 @@ msgstr ""
 "요청하지 않고 변경 사항을 저장하는 '적용' 단추 표시('다른 이름으로 저장' 단추"
 "와 다름)"
 
-#: editor/kcolorschemeeditor.cpp:39
+#: editor/kcolorschemeeditor.cpp:41
 #, kde-format
 msgid ""
 "Makes the dialog transient for another application window specified by handle"
 msgstr "대화 상자를 지정한 창 핸들을 사용하는 프로그램에 연결하기"
 
-#: editor/kcolorschemeeditor.cpp:55
+#: editor/kcolorschemeeditor.cpp:57
 #, kde-format
 msgid "Scheme not found, falling back to current one.\n"
-msgstr "색 배열을 찾을 수 없어서 현재 사용 중인 배열을 사용합니다.\n"
+msgstr "색 구성표를 찾을 수 없어서 현재 사용 중인 구성표를 사용합니다.\n"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
 #: editor/preview.ui:29
@@ -431,7 +436,7 @@ msgstr "호버 장식"
 #: editor/scmeditorcolors.ui:23
 #, kde-format
 msgid "Color set:"
-msgstr "색 배열:"
+msgstr "색 구성표:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, colorSet)
 #: editor/scmeditorcolors.ui:36
@@ -635,81 +640,64 @@ msgstr "비활성 제목 표시줄 텍스트"
 msgid "Inactive Titlebar Secondary"
 msgstr "비활성 제목 표시줄 2차"
 
-#: editor/scmeditordialog.cpp:65
+#: editor/scmeditordialog.cpp:60
 #, kde-format
 msgid "Options"
 msgstr "설정"
 
-#: editor/scmeditordialog.cpp:67
+#: editor/scmeditordialog.cpp:61
+#, kde-format
+msgid "Colors"
+msgstr "색상"
+
+#: editor/scmeditordialog.cpp:62
 #, kde-format
 msgid "Disabled"
 msgstr "비활성화됨"
 
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "This colour scheme was not saved. Continue?"
-msgstr "이 색 배열을 저장하지 않았습니다. 계속 진행하시겠습니까?"
-
-#: editor/scmeditordialog.cpp:89
-#, kde-format
-msgid "Do you really want to upload?"
-msgstr "업로드하시겠습니까?"
-
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:94
 #, kde-format
 msgid "You have unsaved changes. Do you really want to quit?"
 msgstr "저장하지 않은 변경 사항이 있습니다. 종료하시겠습니까?"
 
-#: editor/scmeditordialog.cpp:115
+#: editor/scmeditordialog.cpp:95
 #, kde-format
 msgid "Unsaved changes"
 msgstr "저장하지 않은 변경 사항"
 
-#: editor/scmeditordialog.cpp:133 editor/scmeditordialog.cpp:158
+#: editor/scmeditordialog.cpp:115 editor/scmeditordialog.cpp:140
 #, kde-format
 msgid "Save Color Scheme"
-msgstr "색 배열 저장하기"
+msgstr "색 구성표 저장하기"
 
-#: editor/scmeditordialog.cpp:133
+#: editor/scmeditordialog.cpp:115
 #, kde-format
 msgid "&Enter a name for the color scheme:"
-msgstr "색 배열의 이름을 입력하십시오(&E):"
+msgstr "색 구성표의 이름을 입력하십시오(&E):"
 
-#: editor/scmeditordialog.cpp:157
+#: editor/scmeditordialog.cpp:139
 #, kde-format
 msgid ""
 "A color scheme with that name already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
-"같은 이름을 가진 색 배열이 존재합니다.\n"
+"같은 이름을 가진 색 구성표가 존재합니다.\n"
 "덮어쓰시겠습니까?"
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "You do not have permission to overwrite that scheme"
-msgstr "색 배열을 덮어쓸 권한이 없습니다."
+msgstr "색 구성표를 덮어쓸 권한이 없습니다."
 
-#: editor/scmeditordialog.cpp:194
+#: editor/scmeditordialog.cpp:176
 #, kde-format
 msgid "Error"
 msgstr "오류"
 
-#: editor/scmeditordialog.cpp:209
+#: editor/scmeditordialog.cpp:191
 #, kde-format
 msgid "Inactive"
 msgstr "비활성"
-
-#. i18n: ectx: property (toolTip), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:42
-#, kde-format
-msgid "Share the selected scheme on the Internet"
-msgstr "선택한 색 배열을 인터넷으로 공유하기"
-
-#. i18n: ectx: property (text), widget (QPushButton, schemeKnsUploadButton)
-#: editor/scmeditordialog.ui:45
-#, kde-format
-msgid "Upload Scheme"
-msgstr "색 배열 업로드"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: editor/scmeditoreffects.ui:17
@@ -721,7 +709,7 @@ msgstr "색:"
 #: editor/scmeditoreffects.ui:27
 #, kde-format
 msgid "Intensity:"
-msgstr "강조:"
+msgstr "강도:"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, colorBox)
 #: editor/scmeditoreffects.ui:37
@@ -761,7 +749,7 @@ msgstr "섞기"
 #: editor/scmeditoreffects.ui:64
 #, kde-format
 msgid "Disabled intensity effect type"
-msgstr "사용하지 않는 항목 강조 효과 종류"
+msgstr "사용하지 않는 항목 강도 효과 종류"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, intensityBox)
 #: editor/scmeditoreffects.ui:68
@@ -807,7 +795,7 @@ msgstr "사용하지 않는 항목 색상 효과 정도"
 #: editor/scmeditoreffects.ui:139
 #, kde-format
 msgid "Disabled intensity effect amount"
-msgstr "사용하지 않는 항목 강조 효과 정도"
+msgstr "사용하지 않는 항목 강도 효과 정도"
 
 #. i18n: ectx: property (toolTip), widget (KColorButton, colorButton)
 #: editor/scmeditoreffects.ui:158
@@ -864,34 +852,52 @@ msgstr "비활성 선택에 다른 색 사용하기(&A)"
 #: editor/scmeditoroptions.ui:31
 #, kde-format
 msgid "Shade sorted column &in lists"
-msgstr "목록에서 정렬된 열 그림자로 강조하기(&I)"
+msgstr "목록에서 정렬된 열에 그림자 표시(&I)"
+
+#. i18n: ectx: property (text), widget (QCheckBox, tintColors)
+#: editor/scmeditoroptions.ui:38
+#, kde-format
+msgid "Tint all colors with accent color"
+msgstr "모든 색상을 강조 색상과 섞기"
+
+#. i18n: ectx: property (text), widget (QCheckBox, accentTitlebar)
+#: editor/scmeditoroptions.ui:45
+#, kde-format
+msgid "Make window titlebars a&ccent-colored"
+msgstr "창 제목 표시줄에 강조색 적용(&C)"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: editor/scmeditoroptions.ui:52
+#, kde-format
+msgid "Tint strength:"
+msgstr "섞기 강도:"
 
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:38
+#: editor/scmeditoroptions.ui:69
 #, kde-format
 msgid "Shading of frames and lighting (\"3D\") effects"
 msgstr "프레임 그림자와 반짝이는(\"3D\") 효과"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: editor/scmeditoroptions.ui:41
+#: editor/scmeditoroptions.ui:72
 #, kde-format
 msgid "Shading"
 msgstr "그림자"
 
-#. i18n: ectx: property (text), widget (QLabel, label_9)
-#: editor/scmeditoroptions.ui:53
-#, kde-format
-msgid "Minimum"
-msgstr "최소"
-
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#: editor/scmeditoroptions.ui:73
+#: editor/scmeditoroptions.ui:97
 #, kde-format
 msgid "Maximum"
 msgstr "최대"
 
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: editor/scmeditoroptions.ui:117
+#, kde-format
+msgid "Minimum"
+msgstr "최소"
+
 #. i18n: ectx: property (text), widget (QLabel, label_8)
-#: editor/scmeditoroptions.ui:80
+#: editor/scmeditoroptions.ui:124
 #, kde-format
 msgid "Contrast"
 msgstr "명암"
@@ -1134,121 +1140,131 @@ msgstr "초점"
 #: package/contents/ui/main.qml:23
 #, kde-format
 msgid "This module lets you choose the color scheme."
-msgstr "이 모듈에서 색 배열을 선택할 수 있습니다."
+msgstr "이 모듈에서 색 구성표를 선택할 수 있습니다."
 
 #: package/contents/ui/main.qml:90
 #, kde-format
 msgid ""
 "The color scheme '%1' is not installed. Selecting the default theme instead."
-msgstr "색 배열 '%1'이(가) 설치되어 있지 않습니다. 기본 테마를 사용합니다."
+msgstr "색 구성표 '%1'이(가) 설치되어 있지 않습니다. 기본 테마를 사용합니다."
 
 #: package/contents/ui/main.qml:108
 #, kde-format
 msgid "All Schemes"
-msgstr "모든 색 배열"
+msgstr "모든 색 구성표"
 
 #: package/contents/ui/main.qml:109
 #, kde-format
 msgid "Light Schemes"
-msgstr "밝은 색 배열"
+msgstr "밝은 색 구성표"
 
 #: package/contents/ui/main.qml:110
 #, kde-format
 msgid "Dark Schemes"
-msgstr "어두운 색 배열"
+msgstr "어두운 색 구성표"
 
 #: package/contents/ui/main.qml:143
 #, kde-format
 msgid "Use accent color:"
-msgstr ""
+msgstr "강조 색상 사용:"
 
 #: package/contents/ui/main.qml:144
-#, fuzzy, kde-format
-#| msgid " * %1 (current color scheme)"
+#, kde-format
 msgid "From current color scheme"
-msgstr " * %1(현재 색 배열)"
+msgstr "현재 색 구성표에서"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
-msgid "Custom:"
-msgstr ""
+msgctxt "@option:radio wallpaper accent color option"
+msgid "From current wallpaper"
+msgstr "현재 배경 그림에서"
 
-#: package/contents/ui/main.qml:268
+#: package/contents/ui/main.qml:266
+#, kde-format
+msgid "Custom:"
+msgstr "사용자 정의:"
+
+#: package/contents/ui/main.qml:273
+#, kde-format
+msgid "Choose custom accent color"
+msgstr "사용자 정의 강조 색상 선택"
+
+#: package/contents/ui/main.qml:361
 #, kde-format
 msgid "Window Title"
 msgstr "창 제목"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:383
 #, kde-format
 msgid "Window text"
 msgstr "창 텍스트"
 
-#: package/contents/ui/main.qml:297
+#: package/contents/ui/main.qml:390
 #, kde-format
 msgid "Button"
 msgstr "단추"
 
-#: package/contents/ui/main.qml:331
+#: package/contents/ui/main.qml:427
 #, kde-format
 msgctxt "Hyperlink"
 msgid "link"
 msgstr "링크"
 
-#: package/contents/ui/main.qml:333
+#: package/contents/ui/main.qml:429
 #, kde-format
 msgctxt "Visited hyperlink"
 msgid "visited"
 msgstr "방문함"
 
-#: package/contents/ui/main.qml:340
+#: package/contents/ui/main.qml:436
 #, kde-format
 msgid "Normal text"
 msgstr "일반 텍스트"
 
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:444
 #, kde-format
 msgid "Highlighted text"
 msgstr "방문한 링크 텍스트"
 
-#: package/contents/ui/main.qml:355
+#: package/contents/ui/main.qml:451
 #, kde-format
 msgid "Disabled text"
 msgstr "비활성화된 텍스트"
 
-#: package/contents/ui/main.qml:373
+#: package/contents/ui/main.qml:469
 #, kde-format
 msgid "Edit Color Scheme…"
-msgstr "색 배열 편집…"
+msgstr "색 구성표 편집…"
 
-#: package/contents/ui/main.qml:379
+#: package/contents/ui/main.qml:475
 #, kde-format
 msgid "Remove Color Scheme"
-msgstr "색 배열 삭제"
+msgstr "색 구성표 삭제"
 
-#: package/contents/ui/main.qml:386
+#: package/contents/ui/main.qml:482
 #, kde-format
 msgid "Restore Color Scheme"
-msgstr "색 배열 복원"
+msgstr "색 구성표 복원"
 
-#: package/contents/ui/main.qml:430
+#: package/contents/ui/main.qml:526
 #, kde-format
 msgid "Install from File…"
 msgstr "파일에서 설치…"
 
-#: package/contents/ui/main.qml:435
+#: package/contents/ui/main.qml:531
 #, kde-format
 msgid "Get New Color Schemes…"
-msgstr "새 색 배열 가져오기…"
+msgstr "새 색 구성표 가져오기…"
 
-#: package/contents/ui/main.qml:486
+#: package/contents/ui/main.qml:549
 #, kde-format
 msgid "Open Color Scheme"
-msgstr "색 배열 열기"
+msgstr "색 구성표 열기"
 
-#: package/contents/ui/main.qml:488
+#: package/contents/ui/main.qml:551
 #, kde-format
 msgid "Color Scheme Files (*.colors)"
-msgstr "색 배열 파일 (*.colors)"
+msgstr "색 구성표 파일 (*.colors)"
 
 #: plasma-apply-colorscheme.cpp:39
 #, kde-format
@@ -1257,8 +1273,9 @@ msgid ""
 "without accidentally setting it to one that is either not available, or "
 "which is already set."
 msgstr ""
-"이 도구를 사용하여 사용할 수 없는 색 배열을 실수로 선택하거나 이미 선택된 색 "
-"배열을 다시 선택하지 않고 현재 Plasma 세션의 색 배열을 설정할 수 있습니다."
+"이 도구를 사용하여 사용할 수 없는 색 구성표를 실수로 선택하거나 이미 선택된 "
+"색 구성표를 다시 선택하지 않고 현재 Plasma 세션의 색 구성표를 설정할 수 있습"
+"니다."
 
 #: plasma-apply-colorscheme.cpp:43
 #, kde-format
@@ -1266,54 +1283,263 @@ msgid ""
 "The name of the color scheme you wish to set for your current Plasma session "
 "(passing a full path will only use the last part of the path)"
 msgstr ""
-"현재 Plasma 세션에 적용할 색 배열(전체 경로를 지정하면 마지막 부분만 사용)"
+"현재 Plasma 세션에 적용할 색 구성표(전체 경로를 지정하면 마지막 부분만 사용)"
 
-#: plasma-apply-colorscheme.cpp:45
+#: plasma-apply-colorscheme.cpp:46
 #, kde-format
 msgid ""
 "Show all the color schemes available on the system (and which is the current "
 "theme)"
-msgstr "시스템에 있는 모든 색 배열 표시(현재 테마 포함)"
+msgstr "시스템에 있는 모든 색 구성표 표시(현재 테마 포함)"
 
-#: plasma-apply-colorscheme.cpp:69
+#: plasma-apply-colorscheme.cpp:51
+#, kde-format
+msgid ""
+"The name of the accent color you want to set. SVG color names (https://www."
+"w3.org/TR/SVG11/types.html#ColorKeywords) and hex color codes are supported. "
+"Quote the hex code if there is possibility of shell expansion"
+msgstr ""
+"설정할 강조색의 이름입니다. SVG 색상 이름(https://www.w3.org/TR/SVG11/types."
+"html#ColorKeywords)과 16진 색상 코드를 사용할 수 있습니다. 셸 확장이 될 가능"
+"성이 있으면 16진 색상 코드를 따옴표로 둘러싸십시오"
+
+#: plasma-apply-colorscheme.cpp:78
 #, kde-format
 msgid ""
 "The requested theme \"%1\" is already set as the theme for the current "
 "Plasma session."
 msgstr "요청한 \"%1\" 테마는 현재 Plasma 세션의 테마로 설정되어 있습니다."
 
-#: plasma-apply-colorscheme.cpp:92
+#: plasma-apply-colorscheme.cpp:111
 #, kde-format
 msgid "Successfully applied the color scheme %1 to your current Plasma session"
-msgstr "현재 Plasma 세션 색 배열을 %1(으)로 설정함"
+msgstr "현재 Plasma 세션 색 구성표를 %1(으)로 설정함"
 
-#: plasma-apply-colorscheme.cpp:94
+#: plasma-apply-colorscheme.cpp:113
 #, kde-format
 msgid ""
 "Could not find theme \"%1\". The theme should be one of the following "
 "options: %2"
 msgstr "테마 \"%1\"을(를) 찾을 수 없습니다. 다음 중 하나여야 합니다: %2"
 
-#: plasma-apply-colorscheme.cpp:101
+#: plasma-apply-colorscheme.cpp:120
 #, kde-format
 msgid ""
 "You have managed to pass an empty color scheme name, which isn't supported "
 "behavior."
-msgstr "빈 색 배열 이름을 전달했습니다. 지원하지 않는 동작입니다."
+msgstr "빈 색 구성표 이름을 전달했습니다. 지원하지 않는 동작입니다."
 
-#: plasma-apply-colorscheme.cpp:105
+#: plasma-apply-colorscheme.cpp:124
 #, kde-format
 msgid ""
 "The file you attempted to set as your scheme, %1, could not be identified as "
 "a color scheme."
-msgstr "색 배열로 지정하려고 했단 파일 %1이(가) 올바른 색 배열이 아닙니다."
+msgstr "색 구성표로 지정하려고 했단 파일 %1이(가) 올바른 색 구성표가 아닙니다."
 
-#: plasma-apply-colorscheme.cpp:110
+#: plasma-apply-colorscheme.cpp:147
+#, kde-format
+msgid "Successfully applied the accent color %1"
+msgstr "강조 색상 %1을(를) 적용함"
+
+#: plasma-apply-colorscheme.cpp:149
+#, kde-format
+msgid "Invalid accent color "
+msgstr "잘못된 강조 색상"
+
+#: plasma-apply-colorscheme.cpp:154
 #, kde-format
 msgid "You have the following color schemes on your system:"
-msgstr "시스템에 다음 색 배열이 설치되어 있습니다:"
+msgstr "시스템에 다음 색 구성표가 설치되어 있습니다:"
 
-#: plasma-apply-colorscheme.cpp:115
+#: plasma-apply-colorscheme.cpp:159
 #, kde-format
 msgid " * %1 (current color scheme)"
-msgstr " * %1(현재 색 배열)"
+msgstr " * %1(현재 색 구성표)"
+
+#~ msgid "Apply a&ccent color to active window titlebars"
+#~ msgstr "활성 창 제목 표시줄에 강조 색상 사용(&C)"
+
+#~ msgid "Apply acce&nt color to inactive window titlebars"
+#~ msgstr "비활성 창 제목 표시줄에 강조 색상 사용(&N)"
+
+#~ msgid "Kai Uwe Broulik"
+#~ msgstr "Kai Uwe Broulik"
+
+#~ msgid "This colour scheme was not saved. Continue?"
+#~ msgstr "이 색 배열을 저장하지 않았습니다. 계속 진행하시겠습니까?"
+
+#~ msgid "Do you really want to upload?"
+#~ msgstr "업로드하시겠습니까?"
+
+#~ msgid "Share the selected scheme on the Internet"
+#~ msgstr "선택한 색 배열을 인터넷으로 공유하기"
+
+#~ msgid "Upload Scheme"
+#~ msgstr "색 배열 업로드"
+
+#~ msgid "Search..."
+#~ msgstr "찾기..."
+
+#~ msgid "Download New Color Schemes"
+#~ msgstr "새 색 배열 다운로드"
+
+#~ msgid "Edit..."
+#~ msgstr "편집..."
+
+#~ msgid "Remove the selected scheme"
+#~ msgstr "선택한 색 배열 삭제하기"
+
+#~ msgid "Remove"
+#~ msgstr "삭제"
+
+#~ msgid "Import a color scheme from a file"
+#~ msgstr "파일에서 색 배열 가져오기"
+
+#~ msgid "&Install from File..."
+#~ msgstr "파일에서 설치(&I)..."
+
+#~ msgid "Get new color schemes from the Internet"
+#~ msgstr "인터넷에서 색 배열 가져오기"
+
+#~ msgid "Get &New Color Schemes..."
+#~ msgstr "새 색 배열 가져오기(&N)..."
+
+#~ msgid "Apply colors to &non-Qt applications"
+#~ msgstr "비 Qt 프로그램에도 색 적용하기(&N)"
+
+#~ msgid "Overwrite edited theme when saving"
+#~ msgstr "저장할 때 편집한 테마 덮어쓰기"
+
+#~ msgid "(c) 2007 Matthew Woehlke"
+#~ msgstr "(c) 2007 Matthew Woehlke"
+
+#~ msgctxt "Default color scheme"
+#~ msgid "Default"
+#~ msgstr "기본값"
+
+#~ msgctxt "Current color scheme"
+#~ msgid "Current"
+#~ msgstr "현재 설정"
+
+#~ msgid "You do not have permission to delete that scheme"
+#~ msgstr "색 배열을 삭제할 권한이 없습니다."
+
+#~ msgid ""
+#~ "The scheme you have selected appears to be a KDE3 scheme.\n"
+#~ "\n"
+#~ "This is not supported anymore."
+#~ msgstr ""
+#~ "선택한 색 배열은 KDE3 색 배열입니다.\n"
+#~ "\n"
+#~ "더 이상 지원하지 않습니다."
+
+#~ msgid "Notice"
+#~ msgstr "알림"
+
+#~ msgid "In&active selection changes color"
+#~ msgstr "비활성 선택의 색 바꾸기(&A)"
+
+#~ msgid "This scheme was not found."
+#~ msgstr "이 색 배열을 찾을 수 없습니다."
+
+#~ msgid "File not found"
+#~ msgstr "파일을 찾을 수 없음"
+
+#~ msgid "Selecting another scheme will discard any changes you have made"
+#~ msgstr "다른 색 배열을 선택하면 만든 변경 사항을 모두 잃어버립니다"
+
+#~ msgid "Are you sure?"
+#~ msgstr "계속 진행하시겠습니까?"
+
+#~ msgid ""
+#~ "The scheme you have selected appears to be a KDE3 scheme.\n"
+#~ "\n"
+#~ "KDE will attempt to import this scheme, however many color roles have "
+#~ "been added since KDE3. Some manual work will likely be required.\n"
+#~ "\n"
+#~ "This scheme will not be saved automatically."
+#~ msgstr ""
+#~ "선택한 색 배열은 KDE3 색 배열 같습니다.\n"
+#~ "\n"
+#~ "이 색 배열을 불러오려고 시도할 수도 있으나, KDE3 이후로 더 많은 상황에 따"
+#~ "른 색이 추가되었습니다. 일부 수작업이 필요할 수도 있습니다.\n"
+#~ "\n"
+#~ "이 색 배열은 자동으로 저장되지 않습니다."
+
+#~ msgid "Please save the color scheme before uploading it."
+#~ msgstr "업로드하기 전에 색 배열을 저장하십시오."
+
+#~ msgid "Please save"
+#~ msgstr "저장하십시오"
+
+#~ msgctxt "@title:tab color transformations on inactive elements"
+#~ msgid "Inactive"
+#~ msgstr "비활성"
+
+#~ msgid "Inactive intensity effect type"
+#~ msgstr "비활성 항목 강조 종류"
+
+#~ msgctxt "no inactive intensity effect"
+#~ msgid "None"
+#~ msgstr "없음"
+
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Shade"
+#~ msgstr "명암"
+
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Darken"
+#~ msgstr "어둡게"
+
+#~ msgctxt "inactive intensity effect"
+#~ msgid "Lighten"
+#~ msgstr "밝게"
+
+#~ msgid "Inactive intensity effect amount"
+#~ msgstr "비활성 강조 효과 정도"
+
+#~ msgid "Inactive color effect type"
+#~ msgstr "비활성 항목 색 효과 종류"
+
+#~ msgctxt "no inactive color effect"
+#~ msgid "None"
+#~ msgstr "없음"
+
+#~ msgctxt "inactive color effect"
+#~ msgid "Desaturate"
+#~ msgstr "무채색으로"
+
+#~ msgctxt "inactive color effect"
+#~ msgid "Fade"
+#~ msgstr "페이드"
+
+#~ msgctxt "inactive color effect"
+#~ msgid "Tint"
+#~ msgstr "섞기"
+
+#~ msgid "Inactive color amount"
+#~ msgstr "비활성 항목 색상 정도"
+
+#~ msgid "Inactive contrast effect type"
+#~ msgstr "비활성 항목 명암 효과 종류"
+
+#~ msgctxt "no inactive contrast effect"
+#~ msgid "None"
+#~ msgstr "없음"
+
+#~ msgctxt "inactive contrast effect"
+#~ msgid "Fade"
+#~ msgstr "페이드"
+
+#~ msgctxt "inactive contrast effect"
+#~ msgid "Tint"
+#~ msgstr "섞기"
+
+#~ msgid "Inactive contrast effect amount"
+#~ msgstr "비활성 항목 명암 효과 정도"
+
+#~ msgid "Preview"
+#~ msgstr "미리 보기"
+
+#~ msgid "Import Scheme..."
+#~ msgstr "색 배열 가져오기..."

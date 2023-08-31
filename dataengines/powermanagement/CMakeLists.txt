@@ -4,6 +4,9 @@ set(powermanagement_engine_SRCS
     powermanagementengine.cpp
     powermanagementjob.cpp
     powermanagementservice.cpp
+    powermanagementengine.h
+    powermanagementjob.h
+    powermanagementservice.h
 )
 
 set(krunner_xml ${plasma-workspace_SOURCE_DIR}/krunner/dbus/org.kde.krunner.App.xml)
@@ -21,7 +24,5 @@ target_link_libraries(plasma_engine_powermanagement
     Qt::DBus
     PW::KWorkspace
 )
-
-kcoreaddons_desktop_to_json(plasma_engine_powermanagement plasma-dataengine-powermanagement.desktop)
 
 install(FILES powermanagementservice.operations DESTINATION ${PLASMA_DATA_INSTALL_DIR}/services)

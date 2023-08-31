@@ -78,11 +78,12 @@ target_link_libraries(notificationmanager
         Qt::Gui
         Qt::Quick
         KF5::ConfigCore
-        KF5::ItemModels
     PRIVATE
         Qt::DBus
         KF5::ConfigGui
         KF5::I18n
+        KF5::WindowSystem
+        KF5::ItemModels # KDescendantsProxyModel
         KF5::KIOFileWidgets
         KF5::Plasma
         KF5::Screen
@@ -114,7 +115,7 @@ install(FILES
 
 write_basic_config_version_file(${CMAKE_CURRENT_BINARY_DIR}/LibNotificationManagerConfigVersion.cmake VERSION "${PROJECT_VERSION}" COMPATIBILITY AnyNewerVersion)
 
-set(CMAKECONFIG_INSTALL_DIR ${KDE_INSTALL_LIBDIR}/cmake/LibNotificationManager)
+set(CMAKECONFIG_INSTALL_DIR ${KDE_INSTALL_CMAKEPACKAGEDIR}/LibNotificationManager)
 
 configure_package_config_file(LibNotificationManagerConfig.cmake.in
     "${CMAKE_CURRENT_BINARY_DIR}/LibNotificationManagerConfig.cmake"

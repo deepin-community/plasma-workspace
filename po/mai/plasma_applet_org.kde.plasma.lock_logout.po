@@ -124,3 +124,14 @@ msgstr ""
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Leave..."
+#~ msgid "Leave"
+#~ msgstr "छोड़ू..."
+
+#~ msgid "Leave..."
+#~ msgstr "छोड़ू..."
+
+#~ msgid "Suspend"
+#~ msgstr "सस्पेंड करू"

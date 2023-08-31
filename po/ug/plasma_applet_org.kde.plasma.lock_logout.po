@@ -122,3 +122,33 @@ msgstr "ئۇخلا(RAM غا توڭلىتىدۇ)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "ئۈچەك (دىسكىغا توڭلىتىدۇ)"
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "سىز سىستېمىنى دىسكىغا توڭلىتامسىز(ئۈچەك)؟"
+
+#~ msgid "Yes"
+#~ msgstr "ھەئە"
+
+#~ msgid "No"
+#~ msgstr "ياق"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "سىز سىستېمىنى ئەسلەككە توڭلىتامسىز(ئۇخلات)؟"
+
+#~ msgid "Leave"
+#~ msgstr "ئايرىل"
+
+#~ msgid "Leave..."
+#~ msgstr "ئايرىل…"
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "مەشغۇلاتلار"
+
+#~ msgid "Suspend"
+#~ msgstr "توڭلات"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "قۇلۇپلاش/چىقىشنى سەپلە"

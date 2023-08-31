@@ -11,17 +11,17 @@
 #include "tasksmodel.h"
 #include "virtualdesktopinfo.h"
 
-#ifdef WITH_PIPEWIRE
-#include "pipewiresourceitem.h"
+#ifdef WITH_KPIPEWIRE
+#include <pipewiresourceitem.h>
+#endif
 #include "screencasting.h"
 #include "screencastingrequest.h"
-#endif
 
 namespace TaskManager
 {
 void TaskManagerPlugin::registerTypes(const char *uri)
 {
-    Q_ASSERT(uri == QLatin1String("org.kde.taskmanager"));
+    Q_ASSERT(uri == QByteArrayLiteral("org.kde.taskmanager"));
 
     // Expose the AbstractTasksModel::AdditionalRoles enum to Qt Quick
     // for use with the TasksModel::data invokable. TasksModel inherits
@@ -33,11 +33,11 @@ void TaskManagerPlugin::registerTypes(const char *uri)
     qmlRegisterType<TasksModel>(uri, 0, 1, "TasksModel");
     qmlRegisterType<ActivityInfo>(uri, 0, 1, "ActivityInfo");
     qmlRegisterType<VirtualDesktopInfo>(uri, 0, 1, "VirtualDesktopInfo");
-#ifdef WITH_PIPEWIRE
+#ifdef WITH_KPIPEWIRE
     qmlRegisterType<PipeWireSourceItem>(uri, 0, 1, "PipeWireSourceItem");
+#endif
     qmlRegisterType<ScreencastingRequest>(uri, 0, 1, "ScreencastingRequest");
     qmlRegisterUncreatableType<Screencasting>(uri, 0, 1, "Screencasting", "Use ScreencastingItem");
-#endif
 }
 
 }

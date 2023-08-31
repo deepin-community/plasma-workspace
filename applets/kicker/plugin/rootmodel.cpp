@@ -143,7 +143,7 @@ void RootModel::setShowAllApps(bool show)
 
         refresh();
 
-        emit showAllAppsChanged();
+        Q_EMIT showAllAppsChanged();
     }
 }
 
@@ -159,7 +159,7 @@ void RootModel::setShowAllAppsCategorized(bool showCategorized)
 
         refresh();
 
-        emit showAllAppsCategorizedChanged();
+        Q_EMIT showAllAppsCategorizedChanged();
     }
 }
 
@@ -175,7 +175,7 @@ void RootModel::setShowRecentApps(bool show)
 
         refresh();
 
-        emit showRecentAppsChanged();
+        Q_EMIT showRecentAppsChanged();
     }
 }
 
@@ -191,7 +191,7 @@ void RootModel::setShowRecentDocs(bool show)
 
         refresh();
 
-        emit showRecentDocsChanged();
+        Q_EMIT showRecentDocsChanged();
     }
 }
 
@@ -207,7 +207,7 @@ void RootModel::setShowRecentContacts(bool show)
 
         refresh();
 
-        emit showRecentContactsChanged();
+        Q_EMIT showRecentContactsChanged();
     }
 }
 
@@ -223,7 +223,7 @@ void RootModel::setRecentOrdering(int ordering)
 
         refresh();
 
-        emit recentOrderingChanged();
+        Q_EMIT recentOrderingChanged();
     }
 }
 
@@ -239,7 +239,7 @@ void RootModel::setShowPowerSession(bool show)
 
         refresh();
 
-        emit showPowerSessionChanged();
+        Q_EMIT showPowerSessionChanged();
     }
 }
 
@@ -255,7 +255,7 @@ void RootModel::setShowFavoritesPlaceholder(bool show)
 
         refresh();
 
-        emit showFavoritesPlaceholderChanged();
+        Q_EMIT showFavoritesPlaceholderChanged();
     }
 }
 
@@ -314,21 +314,13 @@ void RootModel::refresh()
         }
 
         QList<AbstractEntry *> apps(appsHash.values());
-        QCollator c;
-
-        std::sort(apps.begin(), apps.end(), [&c](AbstractEntry *a, AbstractEntry *b) {
-            if (a->type() != b->type()) {
-                return a->type() > b->type();
-            } else {
-                return c.compare(a->name(), b->name()) < 0;
-            }
-        });
+        sortEntries(apps);
 
         if (!m_showAllAppsCategorized && !m_paginate) { // The app list built above goes into a model.
             allModel = new AppsModel(apps, false, this);
         } else if (m_paginate) { // We turn the apps list into a subtree of pages.
             m_favorites = new KAStatsFavoritesModel(this);
-            emit favoritesModelChanged();
+            Q_EMIT favoritesModelChanged();
 
             QList<AbstractEntry *> groups;
 
@@ -336,7 +328,7 @@ void RootModel::refresh()
             QList<AbstractEntry *> page;
             page.reserve(m_pageSize);
 
-            foreach (AbstractEntry *app, apps) {
+            for (AbstractEntry *app : std::as_const(apps)) {
                 page.append(app);
 
                 if (at == (m_pageSize - 1)) {
@@ -361,7 +353,7 @@ void RootModel::refresh()
             QList<AbstractEntry *> groups;
             QHash<QString, QList<AbstractEntry *>> m_categoryHash;
 
-            foreach (const AbstractEntry *groupEntry, m_entryList) {
+            for (const AbstractEntry *groupEntry : std::as_const(m_entryList)) {
                 AbstractModel *model = groupEntry->childModel();
 
                 if (!model)
@@ -370,11 +362,17 @@ void RootModel::refresh()
                 for (int i = 0; i < model->count(); ++i) {
                     AbstractEntry *appEntry = static_cast<AbstractEntry *>(model->index(i, 0).internalPointer());
 
-                    if (appEntry->name().isEmpty()) {
+                    // App entry's group stores a transliterated first character of the name. Prefer to use that.
+                    QString name = appEntry->group();
+                    if (name.isEmpty()) {
+                        name = appEntry->name();
+                    }
+
+                    if (name.isEmpty()) {
                         continue;
                     }
 
-                    const QChar &first = appEntry->name().at(0).toUpper();
+                    const QChar &first = name.at(0).toUpper();
                     m_categoryHash[first.isDigit() ? QStringLiteral("0-9") : first].append(appEntry);
                 }
             }
@@ -449,6 +447,7 @@ void RootModel::refresh()
     }
 
     m_systemModel = new SystemModel(this);
+    QObject::connect(m_systemModel, &SystemModel::sessionManagementStateChanged, this, &RootModel::refresh);
 
     if (m_showPowerSession) {
         m_entryList << new GroupEntry(this, i18n("Power / Session"), QStringLiteral("system-log-out"), m_systemModel);
@@ -458,9 +457,9 @@ void RootModel::refresh()
 
     m_favorites->refresh();
 
-    emit systemFavoritesModelChanged();
-    emit countChanged();
-    emit separatorCountChanged();
+    Q_EMIT systemFavoritesModelChanged();
+    Q_EMIT countChanged();
+    Q_EMIT separatorCountChanged();
 
-    emit refreshed();
+    Q_EMIT refreshed();
 }

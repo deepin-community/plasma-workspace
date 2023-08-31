@@ -1,14 +1,9 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-05 00:20+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"POT-Creation-Date: 2023-05-03 02:55+0000\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -22,184 +17,190 @@ msgstr ""
 "X-Crowdin-File: /kf5-stable/messages/plasma-workspace/kcm_nightcolor.pot\n"
 "X-Crowdin-File-ID: 6849\n"
 
+#: package/contents/ui/LocationsFixedView.qml:39
 #, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "KDE China,Guo Yunhe"
+msgctxt ""
+"@label:chooser Tap should be translated to mean touching using a touchscreen"
+msgid "Tap to choose your location on the map."
+msgstr "点击选择您在地图上的位置。"
 
+#: package/contents/ui/LocationsFixedView.qml:40
 #, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "kde-china@kde.org,i@guoyunhe.me"
+msgctxt ""
+"@label:chooser Click should be translated to mean clicking using a mouse"
+msgid "Click to choose your location on the map."
+msgstr "点击选择您在地图上的位置。"
 
-#: kcm.cpp:20
+#: package/contents/ui/LocationsFixedView.qml:78
+#: package/contents/ui/LocationsFixedView.qml:103
 #, kde-format
-msgid "Night Color"
-msgstr "夜间颜色"
+msgid "Zoom in"
+msgstr "放大"
 
-#: kcm.cpp:21
-#, kde-format
-msgid "Roman Gilg"
-msgstr "Roman Gilg"
+#: package/contents/ui/LocationsFixedView.qml:222
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Modified from <link url='https://commons.wikimedia.org/wiki/File:"
+"World_location_map_(equirectangular_180).svg'>World location map</link> by "
+"TUBS / Wikimedia Commons / <link url='https://creativecommons.org/licenses/"
+"by-sa/3.0'>CC BY-SA 3.0</link>"
+msgstr ""
+"基于 TUBS 制作的<link url='https://commons.wikimedia.org/wiki/File:"
+"World_location_map_(equirectangular_180).svg'>世界位置地图</link> / "
+"Wikimedia Commons / <link url='https://creativecommons.org/licenses/by-"
+"sa/3.0'>CC BY-SA 3.0</link>"
 
-#: package/contents/ui/LocationsFixedView.qml:36
+#: package/contents/ui/LocationsFixedView.qml:235
 #, kde-format
+msgctxt "@label: textbox"
 msgid "Latitude:"
 msgstr "纬度："
 
-#: package/contents/ui/LocationsFixedView.qml:50
+#: package/contents/ui/LocationsFixedView.qml:261
 #, kde-format
+msgctxt "@label: textbox"
 msgid "Longitude:"
 msgstr "经度："
 
-#: package/contents/ui/LocationsFixedView.qml:60
+#: package/contents/ui/main.qml:87
 #, kde-format
-msgid "Detect Location"
-msgstr "检测地理位置"
+msgid "The blue light filter makes the colors on the screen warmer."
+msgstr "蓝光滤镜让屏幕颜色更暖。"
 
-#: package/contents/ui/LocationsFixedView.qml:76
+#: package/contents/ui/main.qml:98
 #, kde-format
+msgid "Switching times:"
+msgstr "切换时间："
+
+#: package/contents/ui/main.qml:100
+#, kde-format
+msgid "Always off"
+msgstr "总是关闭"
+
+#: package/contents/ui/main.qml:101
+#, kde-format
+msgid "Sunset and sunrise at current location"
+msgstr "从当前地理位置的日落到日出"
+
+#: package/contents/ui/main.qml:102
+#, kde-format
+msgid "Sunset and sunrise at manual location"
+msgstr "手动选定的地理位置的日落到日出"
+
+#: package/contents/ui/main.qml:103
+#, kde-format
+msgid "Custom times"
+msgstr "自定义时间"
+
+#: package/contents/ui/main.qml:104
+#, kde-format
+msgid "Always on night color"
+msgstr "总是使用夜间颜色"
+
+#: package/contents/ui/main.qml:156
+#, kde-kuit-format
+msgctxt "@info"
 msgid ""
-"The device's location will be detected using GPS (if available), or by "
-"sending network information to <a href=\"https://location.services.mozilla."
-"com\">Mozilla Location Service</a>."
+"The device's location will be periodically updated using GPS (if available), "
+"or by sending network information to <link url='https://location.services."
+"mozilla.com'>Mozilla Location Service</link>."
 msgstr ""
-"将使用 GPS 对设备进行定位 (如果 GPS 可用)，或者通过发送网络信息到 <a href="
-"\"https://location.services.mozilla.com\">Mozilla 位置服务</a>进行定位。"
+"将使用 GPS 对设备进行持续定位 (如果 GPS 可用)，或者通过发送网络信息到 <link "
+"url='https://location.services.mozilla.com'>Mozilla 位置服务</link>进行持续定"
+"位。"
 
-#: package/contents/ui/main.qml:145
+#: package/contents/ui/main.qml:175
 #, kde-format
-msgid ""
-"Night Color makes the colors on the screen warmer to reduce eye strain at "
-"the time of your choosing."
-msgstr "夜色模式在您选定的时间范围内，让屏幕颜色更暖，以减少视觉疲劳。"
+msgid "Day color temperature:"
+msgstr "日间色温："
 
-#: package/contents/ui/main.qml:163
-#, kde-format
-msgid "Activate Night Color"
-msgstr "激活夜间颜色"
-
-#: package/contents/ui/main.qml:178
-#, kde-format
-msgid "Night Color Temperature:"
-msgstr "夜间色温："
-
-#: package/contents/ui/main.qml:202
+#: package/contents/ui/main.qml:218 package/contents/ui/main.qml:277
 #, kde-format
 msgctxt "Color temperature in Kelvin"
 msgid "%1K"
 msgstr "%1K"
 
-#: package/contents/ui/main.qml:206
+#: package/contents/ui/main.qml:222 package/contents/ui/main.qml:281
 #, kde-format
 msgctxt "Night colour red-ish"
 msgid "Warm"
 msgstr "暖色"
 
-#: package/contents/ui/main.qml:212
+#: package/contents/ui/main.qml:228 package/contents/ui/main.qml:287
+#, kde-format
+msgctxt "No blue light filter activated"
+msgid "Cool (no filter)"
+msgstr "冷色 (无滤镜)"
+
+#: package/contents/ui/main.qml:228 package/contents/ui/main.qml:287
 #, kde-format
 msgctxt "Night colour blue-ish"
 msgid "Cool"
 msgstr "冷色"
 
-#: package/contents/ui/main.qml:225
+#: package/contents/ui/main.qml:234
 #, kde-format
-msgid "Activation time:"
-msgstr "激活时间："
+msgid "Night color temperature:"
+msgstr "夜间色温："
 
-#: package/contents/ui/main.qml:228
-#, kde-format
-msgid "Sunset to sunrise at current location"
-msgstr "从当前自动地理位置的日落到日出"
-
-#: package/contents/ui/main.qml:229
-#, kde-format
-msgid "Sunset to sunrise at manual location"
-msgstr "从手工选定地理位置的日落到日出"
-
-#: package/contents/ui/main.qml:230
-#, kde-format
-msgid "Custom time"
-msgstr "自定义时间"
-
-#: package/contents/ui/main.qml:231
-#, kde-format
-msgid "Always on"
-msgstr "总是开启"
-
-#: package/contents/ui/main.qml:251
-#, kde-format
-msgid ""
-"The device's location will be periodically updated using GPS (if available), "
-"or by sending network information to <a href=\"https://location.services."
-"mozilla.com\">Mozilla Location Service</a>."
-msgstr ""
-"将使用 GPS 对设备进行持续定位 (如果 GPS 可用)，或者通过发送网络信息到 <a "
-"href=\"https://location.services.mozilla.com\">Mozilla 位置服务</a>进行持续定"
-"位。"
-
-#: package/contents/ui/main.qml:264
+#: package/contents/ui/main.qml:298
 #, kde-format
 msgid "Latitude: %1°   Longitude: %2°"
-msgstr "维度：%1°   经度：%2°"
+msgstr "纬度：%1°   经度：%2°"
 
-#: package/contents/ui/main.qml:273
+#: package/contents/ui/main.qml:308
 #, kde-format
-msgid "Turn on at:"
-msgstr "开启时间："
+msgid "Begin night color at:"
+msgstr "开始夜间颜色："
 
-#: package/contents/ui/main.qml:281 package/contents/ui/main.qml:298
+#: package/contents/ui/main.qml:321 package/contents/ui/main.qml:344
 #, kde-format
 msgid "Input format: HH:MM"
 msgstr "输入格式：HH:MM"
 
-#: package/contents/ui/main.qml:290
+#: package/contents/ui/main.qml:331
 #, kde-format
-msgid "Turn off at:"
-msgstr "关闭时间："
+msgid "Begin day color at:"
+msgstr "开始日间颜色："
 
-#: package/contents/ui/main.qml:307
+#: package/contents/ui/main.qml:353
 #, kde-format
 msgid "Transition duration:"
 msgstr "过渡时长："
 
-#: package/contents/ui/main.qml:317
+#: package/contents/ui/main.qml:362
 #, kde-format
 msgid "%1 minute"
 msgid_plural "%1 minutes"
 msgstr[0] "%1 分钟"
 
-#: package/contents/ui/main.qml:324
+#: package/contents/ui/main.qml:375
 #, kde-format
 msgid "Input minutes - min. 1, max. 600"
 msgstr "输入分钟，最小为 1，最大为 600"
 
-#: package/contents/ui/main.qml:332
-#, kde-format
-msgid "Error: Morning is before evening."
-msgstr "错误：早晨的时刻应早于晚上的时刻。"
-
-#: package/contents/ui/main.qml:348
+#: package/contents/ui/main.qml:393
 #, kde-format
 msgid "Error: Transition time overlaps."
 msgstr "错误：过渡时间重叠。"
 
-#: package/contents/ui/TimingsView.qml:35
+#: package/contents/ui/main.qml:415
 #, kde-format
-msgid "Night Color begins at %1"
-msgstr "夜间颜色开始于 %1"
+msgctxt "@info:placeholder"
+msgid "Locating…"
+msgstr "正在定位…"
+
+#: package/contents/ui/TimingsView.qml:32
+#, kde-format
+msgid ""
+"Color temperature begins changing to night time at %1 and is fully changed "
+"by %2"
+msgstr "从 %1 开始切换为夜间色温，到 %2 切换完成"
 
 #: package/contents/ui/TimingsView.qml:39
 #, kde-format
-msgid "Color fully changed at %1"
-msgstr "颜色完全改变于 %1"
-
-#: package/contents/ui/TimingsView.qml:48
-#, kde-format
-msgid "Night Color begins changing back at %1"
-msgstr "夜间颜色于 %1 开始退去"
-
-#: package/contents/ui/TimingsView.qml:52
-#, kde-format
-msgid "Normal coloration restored by %1"
-msgstr "正常颜色恢复于 %1"
+msgid ""
+"Color temperature begins changing to day time at %1 and is fully changed by "
+"%2"
+msgstr "从 %1 开始切换为日间色温，到 %2 切换完成"

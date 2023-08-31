@@ -12,6 +12,7 @@
 #include <QDebug>
 
 #include <KJob>
+#include <KLocalizedString>
 
 #include <Plasma/DataEngine>
 #include <Plasma/DataEngineConsumer>
@@ -46,7 +47,7 @@ JobsModel::JobsModel()
     connect(d, &JobsModelPrivate::jobViewChanged, this, [this](int row, Job *job, const QVector<int> &roles) {
         Q_UNUSED(job);
         const QModelIndex idx = index(row, 0);
-        emit dataChanged(idx, idx, roles);
+        Q_EMIT dataChanged(idx, idx, roles);
     });
 
     connect(d, &JobsModelPrivate::serviceOwnershipLost, this, &JobsModel::serviceOwnershipLost);
@@ -104,6 +105,8 @@ QVariant JobsModel::data(const QModelIndex &index, int role) const
         return job->summary();
     case Notifications::BodyRole:
         return job->text();
+    case Qt::AccessibleDescriptionRole:
+        return i18nc("@info %1 notification body %2 job name", "%1 from %2", job->text(), job->applicationName());
     case Notifications::DesktopEntryRole:
         return job->desktopEntry();
     case Notifications::ApplicationNameRole:

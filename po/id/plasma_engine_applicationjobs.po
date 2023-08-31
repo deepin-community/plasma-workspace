@@ -17,7 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 19.12.1\n"
 
 #: jobaction.cpp:18
 #, kde-format
@@ -30,3 +29,6 @@ msgstr "Tampilan tugas untuk %1 tak dapat ditemukan"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/d"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Tugas dibatalkan oleh pengguna."

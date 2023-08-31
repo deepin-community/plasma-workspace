@@ -4,8 +4,11 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#include "systemtray.h"
+#include <optional>
+
+#include "config-X11.h"
 #include "debug.h"
+#include "systemtray.h"
 
 #include "plasmoidregistry.h"
 #include "sortedsystemtraymodel.h"
@@ -13,10 +16,13 @@
 #include "systemtraysettings.h"
 
 #include <QMenu>
+#include <QMetaMethod>
+#include <QMetaObject>
 #include <QQuickItem>
 #include <QQuickWindow>
 #include <QScreen>
 #include <QTimer>
+#include <qpa/qplatformscreen.h>
 
 #include <Plasma/Applet>
 #include <Plasma/PluginLoader>
@@ -24,14 +30,73 @@
 
 #include <KAcceleratorManager>
 #include <KActionCollection>
+#include <KSharedConfig>
+#include <KWindowSystem>
 
-SystemTray::SystemTray(QObject *parent, const QVariantList &args)
-    : Plasma::Containment(parent, args)
-    , m_plasmoidModel(nullptr)
-    , m_statusNotifierModel(nullptr)
-    , m_systemTrayModel(nullptr)
-    , m_sortedSystemTrayModel(nullptr)
-    , m_configSystemTrayModel(nullptr)
+#if HAVE_WaylandProtocols
+#include "qwayland-fractional-scale-v1.h"
+#include <QtWaylandClient/qwaylandclientextension.h>
+#include <qpa/qplatformnativeinterface.h>
+#endif
+
+#if HAVE_WaylandProtocols // TODO Qt6: check window()->devicePixelRatio() is usable
+class FractionalScaleManagerV1 : public QWaylandClientExtensionTemplate<FractionalScaleManagerV1>, public QtWayland::wp_fractional_scale_manager_v1
+{
+public:
+    FractionalScaleManagerV1()
+        : QWaylandClientExtensionTemplate<FractionalScaleManagerV1>(1)
+        , QtWayland::wp_fractional_scale_manager_v1()
+    {
+    }
+
+    ~FractionalScaleManagerV1() override
+    {
+        QtWayland::wp_fractional_scale_manager_v1::destroy();
+    }
+};
+
+class FractionalScaleV1 : public QtWayland::wp_fractional_scale_v1
+{
+public:
+    FractionalScaleV1(struct ::wp_fractional_scale_v1 *object)
+        : QtWayland::wp_fractional_scale_v1(object)
+    {
+    }
+
+    ~FractionalScaleV1() override
+    {
+        QtWayland::wp_fractional_scale_v1::destroy();
+    }
+
+    double devicePixelRatio()
+    {
+        return m_preferredScale.value_or(120) / 120.0;
+    }
+
+    void ensureReady()
+    {
+        if (m_preferredScale.has_value()) {
+            return;
+        }
+
+        QPlatformNativeInterface *const native = qGuiApp->platformNativeInterface();
+        const auto display = static_cast<struct wl_display *>(native->nativeResourceForIntegration("wl_display"));
+        wl_display_roundtrip(display);
+    }
+
+protected:
+    void wp_fractional_scale_v1_preferred_scale(uint32_t scale) override
+    {
+        m_preferredScale = scale;
+    }
+
+private:
+    std::optional<unsigned> m_preferredScale;
+};
+#endif
+
+SystemTray::SystemTray(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : Plasma::Containment(parent, data, args)
 {
     setHasConfigurationInterface(true);
     setContainmentType(Plasma::Types::CustomEmbeddedContainment);
@@ -40,6 +105,8 @@ SystemTray::SystemTray(QObject *parent, const QVariantList &args)
 
 SystemTray::~SystemTray()
 {
+    // When the applet is about to be deleted, delete now to avoid calling loadConfig()
+    delete m_settings;
 }
 
 void SystemTray::init()
@@ -58,6 +125,23 @@ void SystemTray::init()
     connect(this, &Containment::appletAdded, this, [this](Plasma::Applet *applet) {
         disconnect(applet, &Applet::activated, this, &Applet::activated);
     });
+
+#if HAVE_WaylandProtocols
+    if (KWindowSystem::isPlatformWayland()) {
+        m_fractionalScaleManagerV1.reset(new FractionalScaleManagerV1);
+
+        auto config = KSharedConfig::openConfig(QStringLiteral("kdeglobals"), KConfig::NoGlobals);
+        KConfigGroup kscreenGroup = config->group("KScreen");
+        m_xwaylandClientsScale = kscreenGroup.readEntry("XwaylandClientsScale", true);
+
+        m_configWatcher = KConfigWatcher::create(config);
+        connect(m_configWatcher.data(), &KConfigWatcher::configChanged, this, [this](const KConfigGroup &group, const QByteArrayList &names) {
+            if (group.name() == QStringLiteral("KScreen") && names.contains(QByteArrayLiteral("XwaylandClientsScale"))) {
+                m_xwaylandClientsScale = group.readEntry("XwaylandClientsScale", true);
+            }
+        });
+    }
+#endif
 }
 
 void SystemTray::restoreContents(KConfigGroup &group)
@@ -123,7 +207,7 @@ void SystemTray::showPlasmoidMenu(QQuickItem *appletInterface, int x, int y)
     QTimer::singleShot(0, appletInterface, ungrabMouseHack);
     // end workaround
 
-    emit applet->contextualActionsAboutToShow();
+    Q_EMIT applet->contextualActionsAboutToShow();
     const auto contextActions = applet->contextualActions();
     for (QAction *action : contextActions) {
         if (action) {
@@ -220,6 +304,10 @@ void SystemTray::showStatusNotifierContextMenu(KJob *job, QQuickItem *statusNoti
         menu->winId();
         menu->windowHandle()->setTransientParent(statusNotifierIcon->window());
         menu->popup(QPoint(x, y));
+        // Workaround for QTBUG-59044
+        if (auto item = statusNotifierIcon->window()->mouseGrabberItem()) {
+            item->ungrabMouse();
+        }
     }
 }
 
@@ -231,12 +319,60 @@ QPointF SystemTray::popupPosition(QQuickItem *visualParent, int x, int y)
 
     QPointF pos = visualParent->mapToScene(QPointF(x, y));
 
-    if (visualParent->window() && visualParent->window()->screen()) {
-        pos = visualParent->window()->mapToGlobal(pos.toPoint());
-    } else {
-        return QPoint();
+    QQuickWindow *const window = visualParent->window();
+    if (window && window->screen()) {
+        pos = window->mapToGlobal(pos.toPoint());
+#if HAVE_X11
+        if (KWindowSystem::isPlatformX11()) {
+            const auto devicePixelRatio = window->screen()->devicePixelRatio();
+            if (QGuiApplication::screens().size() == 1) {
+                return pos * devicePixelRatio;
+            }
+
+            const QRect geometry = window->screen()->geometry();
+            const QRect nativeGeometry = window->screen()->handle()->geometry();
+            const QPointF nativeGlobalPosOnCurrentScreen = (pos - geometry.topLeft()) * devicePixelRatio;
+
+            return nativeGeometry.topLeft() + nativeGlobalPosOnCurrentScreen;
+        }
+#endif
+
+        if (KWindowSystem::isPlatformWayland()) {
+            if (!m_xwaylandClientsScale) {
+                return pos;
+            }
+
+            qreal devicePixelRatio = 1.0;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+            devicePixelRatio = window->devicePixelRatio();
+#elif HAVE_WaylandProtocols
+            if (m_fractionalScaleManagerV1->isActive()) {
+                QPlatformNativeInterface *const native = qGuiApp->platformNativeInterface();
+                Q_ASSERT(native);
+                const auto surface = reinterpret_cast<struct wl_surface *>(native->nativeResourceForWindow(QByteArrayLiteral("surface"), window));
+                if (surface) {
+                    const auto scale = std::make_unique<FractionalScaleV1>(m_fractionalScaleManagerV1->get_fractional_scale(surface));
+                    if (scale->isInitialized()) {
+                        scale->ensureReady();
+                        devicePixelRatio = scale->devicePixelRatio();
+                    }
+                }
+            }
+#endif
+
+            if (QGuiApplication::screens().size() == 1) {
+                return pos * devicePixelRatio;
+            }
+
+            const QRect geometry = window->screen()->geometry();
+            const QRect nativeGeometry = window->screen()->handle()->geometry();
+            const QPointF nativeGlobalPosOnCurrentScreen = (pos - geometry.topLeft()) * devicePixelRatio;
+
+            return nativeGeometry.topLeft() + nativeGlobalPosOnCurrentScreen;
+        }
     }
-    return pos;
+
+    return QPoint();
 }
 
 bool SystemTray::isSystemTrayApplet(const QString &appletId)
@@ -245,6 +381,29 @@ bool SystemTray::isSystemTrayApplet(const QString &appletId)
         return m_plasmoidRegistry->isSystemTrayApplet(appletId);
     }
     return false;
+}
+
+void SystemTray::emitPressed(QQuickItem *mouseArea, QObject *mouseEvent)
+{
+    if (!mouseArea || !mouseEvent) {
+        return;
+    }
+
+    // QQuickMouseEvent is also private, so we cannot use QMetaObject::invokeMethod with Q_ARG
+    const QMetaObject *mo = mouseArea->metaObject();
+
+    const int pressedIdx = mo->indexOfSignal("pressed(QQuickMouseEvent*)");
+    if (pressedIdx < 0) {
+        qCWarning(SYSTEM_TRAY) << "Failed to find onPressed signal on" << mouseArea;
+        return;
+    }
+
+    QMetaMethod pressedMethod = mo->method(pressedIdx);
+
+    if (!pressedMethod.invoke(mouseArea, Q_ARG(QObject *, mouseEvent))) {
+        qCWarning(SYSTEM_TRAY) << "Failed to invoke onPressed signal on" << mouseArea << "with" << mouseEvent;
+        return;
+    }
 }
 
 SystemTrayModel *SystemTray::systemTrayModel()
@@ -335,7 +494,7 @@ void SystemTray::startApplet(const QString &pluginId)
         // this should never happen unless explicitly wrong config is hand-written or
         //(more likely) a previously added applet is uninstalled
         if (!applet) {
-            qWarning() << "Unable to find applet" << pluginId;
+            qCWarning(SYSTEM_TRAY) << "Unable to find applet" << pluginId;
             return;
         }
         applet->setProperty("org.kde.plasma:force-create", true);
@@ -361,11 +520,27 @@ void SystemTray::stopApplet(const QString &pluginId)
             // HACK: we need to remove the applet from Containment::applets() as soon as possible
             // otherwise we may have disappearing applets for restarting dbus services
             // this may be removed when we depend from a frameworks version in which appletDeleted is emitted as soon as deleteLater() is called
-            emit appletDeleted(applet);
+            Q_EMIT appletDeleted(applet);
         }
     }
 }
 
-K_PLUGIN_CLASS_WITH_JSON(SystemTray, "metadata.json")
+void SystemTray::stackItemBefore(QQuickItem *newItem, QQuickItem *beforeItem)
+{
+    if (!newItem || !beforeItem) {
+        return;
+    }
+    newItem->stackBefore(beforeItem);
+}
+
+void SystemTray::stackItemAfter(QQuickItem *newItem, QQuickItem *afterItem)
+{
+    if (!newItem || !afterItem) {
+        return;
+    }
+    newItem->stackAfter(afterItem);
+}
+
+K_PLUGIN_CLASS(SystemTray)
 
 #include "systemtray.moc"

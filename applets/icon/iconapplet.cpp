@@ -8,7 +8,6 @@
 
 #include <QAction>
 #include <QApplication>
-#include <QDesktopWidget>
 #include <QDir>
 #include <QDropEvent>
 #include <QFileInfo>
@@ -41,8 +40,8 @@
 #include <abstracttasksmodel.h>
 #include <startuptasksmodel.h>
 
-IconApplet::IconApplet(QObject *parent, const QVariantList &data)
-    : Plasma::Applet(parent, data)
+IconApplet::IconApplet(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : Plasma::Applet(parent, data, args)
 {
 }
 
@@ -128,7 +127,7 @@ void IconApplet::populate()
                 // if this restriction is set, KIO won't allow running desktop files from outside
                 // registered services, applications, and so on, in this case we'll use the original
                 // .desktop file and lose the ability to customize it
-                if (!KAuthorized::authorize(QStringLiteral("run_desktop_files"))) {
+                if (!KAuthorized::authorize(KAuthorized::RUN_DESKTOP_FILES)) {
                     populateFromDesktopFile(localUrlString);
                     // we don't call setLocalPath here as we don't want to store localPath to be a system-location
                     // so that the fact that we cannot edit is re-evaluated every time
@@ -230,7 +229,7 @@ void IconApplet::populate()
                     KDesktopFile(backingDesktopFile).desktopGroup().writeEntry(QStringLiteral("Icon"), job->iconFile());
 
                     m_iconName = job->iconFile();
-                    emit iconNameChanged(m_iconName);
+                    Q_EMIT iconNameChanged(m_iconName);
                 }
             });
         }
@@ -250,13 +249,13 @@ void IconApplet::populateFromDesktopFile(const QString &path)
     const QString &name = desktopFile.readName();
     if (m_name != name) {
         m_name = name;
-        emit nameChanged(name);
+        Q_EMIT nameChanged(name);
     }
 
     const QString &genericName = desktopFile.readGenericName();
     if (m_genericName != genericName) {
         m_genericName = genericName;
-        emit genericNameChanged(genericName);
+        Q_EMIT genericNameChanged(genericName);
     }
 
     setIconName(desktopFile.readIcon());
@@ -266,7 +265,7 @@ void IconApplet::populateFromDesktopFile(const QString &path)
     m_openWithActions.clear();
     m_jumpListActions.clear();
 
-    m_localPath = path;
+    setLocalPath(path);
 
     setBusy(false);
 }
@@ -293,7 +292,7 @@ void IconApplet::setIconName(const QString &iconName)
     const QString newIconName = (!iconName.isEmpty() ? iconName : QStringLiteral("unknown"));
     if (m_iconName != newIconName) {
         m_iconName = newIconName;
-        emit iconNameChanged(newIconName);
+        Q_EMIT iconNameChanged(newIconName);
     }
 }
 
@@ -310,6 +309,11 @@ QString IconApplet::iconName() const
 QString IconApplet::genericName() const
 {
     return m_genericName;
+}
+
+bool IconApplet::isValid() const
+{
+    return !m_localPath.isEmpty();
 }
 
 QList<QAction *> IconApplet::contextualActions()
@@ -371,7 +375,7 @@ QList<QAction *> IconApplet::contextualActions()
                     m_openWithMenu.reset(new QMenu());
                 }
                 m_openWithMenu->clear();
-                m_fileItemActions->insertOpenWithActionsTo(nullptr, m_openWithMenu.data(), QStringList());
+                m_fileItemActions->insertOpenWithActionsTo(nullptr, m_openWithMenu.get(), QStringList());
 
                 m_openWithActions = m_openWithMenu->actions();
             }
@@ -426,7 +430,8 @@ void IconApplet::run()
 void IconApplet::processDrop(QObject *dropEvent)
 {
     Q_ASSERT(dropEvent);
-    Q_ASSERT(isAcceptableDrag(dropEvent));
+    const bool isAcceptable = isAcceptableDrag(dropEvent);
+    Q_ASSERT(isAcceptable);
 
     const auto &urls = urlsFromDrop(dropEvent);
 
@@ -467,8 +472,7 @@ void IconApplet::processDrop(QObject *dropEvent)
                       static_cast<Qt::MouseButtons>(dropEvent->property("buttons").toInt()),
                       static_cast<Qt::KeyboardModifiers>(dropEvent->property("modifiers").toInt()));
 
-        KIO::DropJob *dropJob = KIO::drop(&de, m_url);
-        KJobWidgets::setWindow(dropJob, QApplication::desktop());
+        KIO::drop(&de, m_url);
         return;
     }
 }
@@ -491,7 +495,7 @@ bool IconApplet::isAcceptableDrag(QObject *dropEvent)
     QMimeDatabase db;
     const QMimeType mimeType = db.mimeTypeForUrl(m_url);
 
-    if (KAuthorized::authorize(QStringLiteral("shell_access")) && isExecutable(mimeType)) {
+    if (KAuthorized::authorize(KAuthorized::SHELL_ACCESS) && isExecutable(mimeType)) {
         return true;
     }
 
@@ -571,10 +575,14 @@ QString IconApplet::localPath() const
 
 void IconApplet::setLocalPath(const QString &localPath)
 {
+    const bool oldValid = isValid();
     m_localPath = localPath;
     config().writeEntry(QStringLiteral("localPath"), localPath);
+    if (oldValid != isValid()) {
+        Q_EMIT isValidChanged();
+    }
 }
 
-K_PLUGIN_CLASS_WITH_JSON(IconApplet, "metadata.json")
+K_PLUGIN_CLASS(IconApplet)
 
 #include "iconapplet.moc"

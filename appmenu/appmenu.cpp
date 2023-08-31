@@ -6,10 +6,10 @@
     SPDX-License-Identifier: MIT
 */
 
-#include <config-X11.h>
-
 #include "appmenu.h"
+#include "../c_ptr.h"
 #include "appmenu_dbus.h"
+#include "appmenu_debug.h"
 #include "appmenuadaptor.h"
 #include "kdbusimporter.h"
 #include "menuimporteradaptor.h"
@@ -27,11 +27,13 @@
 #include <KWayland/Client/registry.h>
 #include <KWayland/Client/surface.h>
 #include <kpluginfactory.h>
-#include <kpluginloader.h>
 
 #if HAVE_X11
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
-#include <xcb/xcb.h>
+#endif
 #endif
 
 static const QByteArray s_x11AppMenuServiceNamePropertyName = QByteArrayLiteral("_KDE_NET_WM_APPMENU_SERVICE_NAME");
@@ -133,8 +135,8 @@ void AppMenuModule::slotWindowRegistered(WId id, const QString &serviceName, con
         auto setWindowProperty = [c](WId id, xcb_atom_t &atom, const QByteArray &name, const QByteArray &value) {
             if (atom == XCB_ATOM_NONE) {
                 const xcb_intern_atom_cookie_t cookie = xcb_intern_atom(c, false, name.length(), name.constData());
-                QScopedPointer<xcb_intern_atom_reply_t, QScopedPointerPodDeleter> reply(xcb_intern_atom_reply(c, cookie, nullptr));
-                if (reply.isNull()) {
+                UniqueCPointer<xcb_intern_atom_reply_t> reply{xcb_intern_atom_reply(c, cookie, nullptr)};
+                if (!reply) {
                     return;
                 }
                 atom = reply->atom;
@@ -146,7 +148,7 @@ void AppMenuModule::slotWindowRegistered(WId id, const QString &serviceName, con
             auto cookie = xcb_change_property_checked(c, XCB_PROP_MODE_REPLACE, id, atom, XCB_ATOM_STRING, 8, value.length(), value.constData());
             xcb_generic_error_t *error;
             if ((error = xcb_request_check(c, cookie))) {
-                qWarning() << "Got an error";
+                qCWarning(APPMENU_DEBUG) << "Got an error";
                 free(error);
                 return;
             }
@@ -175,7 +177,7 @@ void AppMenuModule::slotShowMenu(int x, int y, const QString &serviceName, const
     // dbus call by user (for khotkey shortcut)
     if (x == -1 || y == -1) {
         // We do not know kwin button position, so tell kwin to show menu
-        emit showRequest(serviceName, menuObjectPath, actionId);
+        Q_EMIT showRequest(serviceName, menuObjectPath, actionId);
         return;
     }
 
@@ -207,7 +209,7 @@ void AppMenuModule::slotShowMenu(int x, int y, const QString &serviceName, const
 
         QAction *actiontoActivate = importer->actionForId(actionId);
 
-        emit menuShown(serviceName, menuObjectPath);
+        Q_EMIT menuShown(serviceName, menuObjectPath);
 
         if (actiontoActivate) {
             m_menu.data()->setActiveAction(actiontoActivate);
@@ -218,14 +220,14 @@ void AppMenuModule::slotShowMenu(int x, int y, const QString &serviceName, const
 void AppMenuModule::hideMenu()
 {
     if (m_menu) {
-        emit menuHidden(m_menu.data()->serviceName(), m_menu->menuObjectPath());
+        Q_EMIT menuHidden(m_menu.data()->serviceName(), m_menu->menuObjectPath());
     }
 }
 
 void AppMenuModule::itemActivationRequested(int actionId, uint timeStamp)
 {
     Q_UNUSED(timeStamp);
-    emit showRequest(message().service(), QDBusObjectPath(message().path()), actionId);
+    Q_EMIT showRequest(message().service(), QDBusObjectPath(message().path()), actionId);
 }
 
 // this method is not really used anymore but has to be kept for DBus compatibility

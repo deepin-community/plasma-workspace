@@ -1,11 +1,9 @@
-# Funda Wang <fundawang@linux.net.cn>, 2006
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-11-08 12:07\n"
+"POT-Creation-Date: 2022-02-17 00:47+0000\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -19,7 +17,7 @@ msgstr ""
 "X-Crowdin-File: /kf5-stable/messages/plasma-workspace/soliduiserver5.pot\n"
 "X-Crowdin-File-ID: 6160\n"
 
-#: soliduiserver.cpp:61
+#: soliduiserver.cpp:62
 #, kde-format
 msgid "'%1' needs a password to be accessed. Please enter a password."
 msgstr "“%1”需要密码才能访问。请输入密码。"

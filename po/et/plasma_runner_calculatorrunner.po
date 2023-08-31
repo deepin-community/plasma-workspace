@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_calculatorrunner\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-10-20 00:52+0000\n"
 "PO-Revision-Date: 2019-10-30 21:01+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Lokalize 19.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: calculatorrunner.cpp:40
+#: calculatorrunner.cpp:33
 #, fuzzy, kde-format
 #| msgid ""
 #| "Calculates the value of :q: when :q: is made up of numbers and "
@@ -30,20 +30,18 @@ msgstr ""
 ":q: väärtuse arvutamine, kus :q: koosneb arvudest ja matemaatilistest "
 "sümbolitest, näiteks +, -, /, * ja ^."
 
-#: calculatorrunner.cpp:46
+#: calculatorrunner.cpp:39
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Kopeeri lõikepuhvrisse"
 
-#: calculatorrunner.cpp:273
+#: calculatorrunner.cpp:133
 #, kde-format
 msgctxt "The result of the calculation is only an approximation"
 msgid "Approximation"
 msgstr "Ligikaudne"
 
-#: qalculate_engine.cpp:61
-#, kde-format
-msgid ""
-"The exchange rates could not be updated. The following error has been "
-"reported: %1"
-msgstr "Vahetuskursi uuendamine nurjus. Teatati järgmisest veast: %1"
+#~ msgid ""
+#~ "The exchange rates could not be updated. The following error has been "
+#~ "reported: %1"
+#~ msgstr "Vahetuskursi uuendamine nurjus. Teatati järgmisest veast: %1"

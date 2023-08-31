@@ -35,9 +35,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2021-04-17</date>
+>2022-05-05</date>
 <releaseinfo
->Plasma 5.20</releaseinfo>
+>Plasma 5.25</releaseinfo>
 
 <abstract>
 <para
@@ -147,13 +147,13 @@
 >Als u geen handeling wilt uitvoeren aan de hand van de inhoud van het klembord, selecteert u <guimenuitem
 >Deze dialoog deactiveren</guimenuitem
 > uit het menu. Als u het menu verlaat, zal het menu verdwijnen zodat u verder kunt gaan met waar u mee bezig was. De tijd dat het menu zal verschijnen, kunt u wijzigen in de instellingendialoog met de optie <guilabel
->Tijdslimiet voor actiecontextmenu's</guilabel
-> bij de pagina <guilabel
+>actie-pop-up-menu</guilabel
+> in de pagina <guilabel
 >Algemeen</guilabel
 >. U kunt separaat het bestandspaddeel met de optie <guilabel
->Op MIME gebaseerde acties inschakelen</guilabel
+>MIME-acties meenemen</guilabel
 > onder de pagina <guilabel
->Acties</guilabel
+>Menu Acties</guilabel
 >.</para>
 
 <para
@@ -223,18 +223,18 @@
 > uit het contextmenu van &klipper; dat verschijnt door op het pictogram in het paneel te klikken. Kijk vervolgens naar de pagina <guilabel
 >Algemeen</guilabel
 >. U kunt hier <guilabel
->Inhoud van het klembord en de selectie synchroniseren</guilabel
-> uitschakelen. Dan werkt het zoals hierboven beschreven is. Bij inschakelen zal de optie <guilabel
->Selectie negeren</guilabel
-> voorkomen dat &klipper; de geselecteerde tekst in de klembordgeschiedenis opneemt. Overigens zullen gedefinieerde acties nu ook niet meer werken op selecties. Door te kiezen voor <guilabel
->Inhoud van het klembord en de selectie synchroniseren</guilabel
-> zorgt er voor dat de twee buffers zoals hierboven beschreven altijd gelijk aan elkaar zullen zijn. Geselecteerde tekst kan dan ook geplakt worden met zowel de <mousebutton
+>Selectie en klembord</guilabel
+> uitschakelen. Het maakt dat de functie klembord en selectie als volledig gescheiden buffers werken zoals boven beschreven. Bij inschakelen zal de optie <guilabel
+>Negeren</guilabel
+> voorkomen dat &klipper; de geselecteerde tekst in de klembordgeschiedenis opneemt. Selecteren van <guilabel
+>Selectie en klembord</guilabel
+> zorgt er voor dat de twee buffers altijd aan elkaar gelijk zullen zijn, wat betekent dat geselecteerde tekst geplakt kan worden met zowel de <mousebutton
 >middelste</mousebutton
 > muisknop alsook met de toetscombinatie <keycombo
 >&Ctrl;<keycap
 >V</keycap
 ></keycombo
->. Dit geldt ook voor tekst die geplaatst is op het klembord. </para>
+> en evenzo voor tekst in de klembordbuffer. </para>
 
  <!-- The
 <guilabel
@@ -261,97 +261,46 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 
 <variablelist>
 
-<varlistentry>
-<term
+<varlistentry
+><term
 ><guilabel
->Klembordinhoud opslaan bij afsluiten</guilabel
-></term
-> <listitem
-><para
->Indien geactiveerd zal de klembordgeschiedenis opgeslagen worden wanneer &klipper; beëindigd wordt. De volgende keer dat &klipper; gestart wordt, wordt de inhoud weer ingelezen.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Leeg klembord voorkomen</guilabel
+>Selectie en klembord</guilabel
 ></term>
 <listitem
 ><para
->Indien geselecteerd zal het klembord nooit leeg is. &klipper; plaatst de meest recente ingang van het klembord in de buffer als het buffer leeggemaakt wordt.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Afbeeldingen negeren</guilabel
-></term>
-<listitem
+>Wanneer tekst of een gebied op het scherm is geaccentueerd met muis of toetsenbord, dan is dat de <emphasis
+>selectie</emphasis
+>. Het kan worden geplakt met de middelste muisknop</para
 ><para
->Als een gebied op het scherm is geselecteerd met muis of toetsenbord, dan wordt dat de <quote
->selectie</quote
-> genoemd. Als deze optie is geselecteerd, dan worden alleen tekst selecties opgeslagen in de geschiedenis, terwijl met afbeeldingen en andere selecties dat niet wordt gedaan. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Selectie negeren</guilabel
-></term>
-<listitem
+>Als de selectie expliciet is gekopieerd met een actie <guimenuitem
+>Kopiëren</guimenuitem
+> of <guimenuitem
+>Knippen</guimenuitem
+>, dan wordt het opgeslagen in het <emphasis
+>klembord</emphasis
+>. Het kan geplakt worden met een actie <guimenuitem
+>Plakken</guimenuitem
+>.</para
 ><para
->Stelt de klembord modus in. Deze optie zal voorkomen dat &klipper; de inhoud van de selectie in zijn klembordgeschiedenis invoegt en van het uitvoeren van acties op de inhoud van de selectie. Zie <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Alleen geselecteerde tekst</guilabel
-></term>
-<listitem
-><para
->Als een gebied op het scherm is geselecteerd met muis of toetsenbord, dan wordt dat de <quote
->selectie</quote
-> genoemd. Als deze optie is geselecteerd, dan worden alleen tekst selecties opgeslagen in de geschiedenis, terwijl met afbeeldingen en andere selecties dat niet wordt gedaan."/>. Zie <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Inhoud van het l;embord en de selectie synchroniseren</guilabel
-></term>
-<listitem
-><para
->Als een gebied van het scherm is geselecteerd met de muis of toetsenbord, dan wordt dat de <quote
->selectie</quote
-> genoemd. Als deze optie is geselecteerd dan worden de selectie en het klembord gelijk gehouden, zodat alles in de selectie onmiddellijk beschikbaar is voor elders plakken met gebruik van elke methode, inclusief de traditionele middelste muisknop. Anders wordt de selectie opgeslagen in de klembordgeschiedenis, maar de selectie kan alleen geplakt worden met de middelste muisknop. Zie ook de optie 'Selectie negeren'. Zie <xref linkend="clipboard-modes"/>. </para>
-</listitem>
-</varlistentry
-> 
-
-<varlistentry>
-<term
-><guilabel
->Tijdslimiet voor actie-pop-ups</guilabel
-></term>
-<listitem
-><para
->Stelt de tijd in die het actievenster in beeld blijft als u er niets mee wilt doen.</para
+>Wanneer deze optie is aangezet dan worden de selectie- en de klembordbuffer hetzelfde gehouden, zodat elke selectie onmiddellijk beschikbaar is om op elke manier te worden geplakt. Als het is uitgezet kan de selectie nog steeds worden opgeslagen in de klembordgeschiedenis (onderworpen aan de onderstaande opties), maar deze kan alleen geplakt worden met de middelste muisknop.</para
 ></listitem>
 </varlistentry>
 
 <varlistentry
 ><term
 ><guilabel
->Grootte van klembordgeschiedenis</guilabel
+>Klembordgeschiedenis</guilabel
+></term>
+<listitem
+><para
+>Schakelt klembordgeschiedenis om.</para
+></listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Aantal items</guilabel
 ></term>
 <listitem
 ><para
@@ -359,15 +308,67 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 ></listitem>
 </varlistentry>
 
+<varlistentry>
+<term
+><guilabel
+>Tekstselectie</guilabel
+></term>
+<listitem
+><para
+>Wanneer een gebied van het scherm is geselecteerd met muis of toetsenbord, dan wordt dat de <quote
+>selectie</quote
+> genoemd. Deze optie bepaalt of tekstselecties opgeslagen worden in de klembordgeschiedenis. Het is mogelijk om te kiezen tussen <guilabel
+>Altijd opslaan in geschiedenis</guilabel
+> en <guilabel
+>Alleen wanneer expliciet gekopieerd</guilabel
+>. De optie <guilabel
+>Altijd opslaan in geschiedenis</guilabel
+> is niet beschikbaar als synchronisatie van selectie/klembord is uitgeschakeld &dash; in dat geval wordt de selectie nooit automatisch opgeslagen in de klembordgeschiedenis. Zie <xref linkend="clipboard-modes"/>. </para>
+</listitem>
+</varlistentry
+> 
+
+<varlistentry>
+<term
+><guilabel
+>Niet-tekstselectie</guilabel
+></term>
+<listitem
+><para
+>Deze optie bepaalt of niet-tekstselecties (zoals afbeeldingen) opgeslagen worden in de klembordgeschiedenis. Het is mogelijk te kiezen tussen <guilabel
+>Altijd in geschiedenis opslaan</guilabel
+>, <guilabel
+>Alleen wanneer expliciet gekopieerd</guilabel
+> en <guilabel
+>Nooit opslaan in geschiedenis</guilabel
+>. De optie <guilabel
+>Altijd in geschiedenis opslaan</guilabel
+> is niet beschikbaar als synchronisatie van selectie/klembord is uitgezet &dash; in dat geval wordt de selectie nooit automatisch opgeslagen in de klembordgeschiedenis. Zie <xref linkend="clipboard-modes"/>. </para>
+</listitem>
+</varlistentry
+> 
+
 </variablelist>
 
 </sect1>
 
-<sect1 id="actions-page">
+<sect1 id="action-menu-page">
 <title
->Actie-instellingen</title>
+>Menu Actie</title>
 
 <variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Actie-pop-up-menu tonen</guilabel
+></term>
+<listitem
+><para
+>Stelt de tijd in die het actievenster in beeld blijft als u er niets mee wilt doen.</para
+></listitem>
+</varlistentry>
+
 <varlistentry>
 <term
 ><guilabel
@@ -376,6 +377,48 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 <listitem
 ><para
 >Indien geselecteerd zal wanner er een ingang uit de geschiedenis van &klipper; geselecteerd wordt, nogmaals het actie-venster getoond worden, indien van toepassing.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guibutton
+>Vensters uitsluiten</guibutton
+></term>
+<listitem
+><para
+>Het venster <guilabel
+>Acties deactiveren voor vensters van het type WM_CLASS</guilabel
+> verschijnt.</para>
+<para
+>Sommige programma's, zoals &konqueror;, gebruiken het klembord ook intern. Indien u ongewenste &klipper;-vensters krijgt wanneer u een bepaalde toepassing gebruikt, kunt u het volgende doen:</para>
+
+<orderedlist>
+<listitem
+><para
+>Open de toepassing.</para
+></listitem>
+<listitem
+><para
+>Vanuit een terminal, start u <userinput
+><command
+>xprop</command
+> | <command
+>grep</command
+> <parameter
+>WM_CLASS</parameter
+></userinput
+> en vervolgens klikt u op het venster van de toepassing.</para
+></listitem
+> 
+<listitem
+><para
+>De eerste tekst na het '=' teken is de tekst die u dient in te voeren.</para
+></listitem>
+</orderedlist>
+
+<para
+>Wanneer de WM_CLASS is toegevoegd, zullen er geen acties meer veroorzaakt worden door vensters van die toepassing.</para>
 </listitem>
 </varlistentry>
 
@@ -393,14 +436,21 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 <varlistentry>
 <term
 ><guilabel
->Op MIME gebaseerde acties inschakelen</guilabel
+>MIME-acties meenemen</guilabel
 ></term>
 <listitem
 ><para
->Indien geselecteerd, zal een lijst met toepassingen voor de gedetecteerde MIME-types in het pop-upmenu verschijnen, naast de door u gedefinieerde acties.</para>
+>Indien geselecteerd, neem toepassingen mee in het pop-up-menu, die zijn &MIME;-type van een bestandsnaam of URL kan accepteren.</para>
 </listitem>
 </varlistentry>
+</variablelist>
+</sect1>
 
+<sect1 id="actions-configuration-page">
+<title
+>Acties instellen</title>
+
+<variablelist>
 <varlistentry>
 <term
 >Actielijst</term>
@@ -469,49 +519,18 @@ selected, the clipboard functions in the &UNIX; mode; if not, the
 >%s</token
 > te 'escapen', gebruik dan dus <userinput
 >\%s</userinput
->.</para
-></listitem>
-</varlistentry>
+>.</para>
 
-<varlistentry
-><term
-><guibutton
->Geavanceerd</guibutton
-></term>
-<listitem
-><para
->Het venster <guilabel
->Acties deactiveren voor vensters van het type WM_CLASS</guilabel
-> verschijnt.</para>
 <para
->Sommige programma's, zoals &konqueror;, gebruiken het klembord ook intern. Indien u ongewenste &klipper;-vensters krijgt wanneer u een bepaalde toepassing gebruikt, kunt u het volgende doen:</para>
-
-<orderedlist>
-<listitem
-><para
->Open de toepassing.</para
-></listitem>
-<listitem
-><para
->Vanuit een terminal, start u <userinput
-><command
->xprop</command
-> | <command
->grep</command
-> <parameter
->WM_CLASS</parameter
+>Items <userinput
+><token
+>%0</token
 ></userinput
-> en vervolgens klikt u op het venster van de toepassing.</para
-></listitem
-> 
-<listitem
-><para
->De eerste tekst na het '=' teken is de tekst die u dient in te voeren.</para
-></listitem>
-</orderedlist>
-
-<para
->Wanneer de WM_CLASS is toegevoegd, zullen er geen acties meer veroorzaakt worden door vensters van die toepassing.</para>
+> tot <userinput
+><token
+>%9</token
+></userinput
+> zullen vervagen worden door de overeenkomstige gevangen teksten uit het overeenkomstpatroon. </para>
 </listitem>
 </varlistentry>
 </variablelist>

@@ -49,3 +49,12 @@ msgstr "मास के दिन दिखाएँ"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "सप्ताह की क्रमसंख्या दिखाएँ"
+
+#~ msgid "Working Day"
+#~ msgstr "कार्य दिवस"
+
+#~ msgid "Starts at 9"
+#~ msgstr "9 बजे प्रारंभ होगा"
+
+#~ msgid "Ends at 5"
+#~ msgstr "5 बजे समाप्त होगा"

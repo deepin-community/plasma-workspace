@@ -124,3 +124,52 @@ msgstr "Egin lo (eseki RAMera)"
 #, kde-format
 msgid "Hibernate (suspend to disk)"
 msgstr "Hibernatu (eseki diskora)"
+
+#~ msgid "Shutdown..."
+#~ msgstr "Itzali..."
+
+#~ msgid "Logout..."
+#~ msgstr "Saio-itxi..."
+
+#~ msgid "Do you want to suspend to disk (hibernate)?"
+#~ msgstr "Diskoan egonean utzi nahi duzu (hibernatu)?"
+
+#~ msgid "Yes"
+#~ msgstr "Bai"
+
+#~ msgid "No"
+#~ msgstr "Ez"
+
+#~ msgid "Do you want to suspend to RAM (sleep)?"
+#~ msgstr "RAMean egonean utzi nahi duzu (egin lo)?"
+
+#~ msgid "Leave"
+#~ msgstr "Irten"
+
+#~ msgid "Leave..."
+#~ msgstr "Irten..."
+
+#~ msgctxt "Heading for list of actions (leave, lock, shutdown, ...)"
+#~ msgid "Actions"
+#~ msgstr "Ekintzak"
+
+#~ msgid "Suspend"
+#~ msgstr "Egonean utzi"
+
+#~ msgid "Configure Lock/Logout"
+#~ msgstr "Konfiguratu giltzatu/amaitu saioa"
+
+#~ msgid "Please select one or more items on the list below."
+#~ msgstr "Hautatu beheko zerrendako elementu bat edo gehiago."
+
+#~ msgid "Show \"switch user\" button"
+#~ msgstr "Erakutsi \"Aldatu erabiltzailea\" botoia"
+
+#~ msgid "Show logout button"
+#~ msgstr "Erakutsi saio amaitzeko botoia"
+
+#~ msgid "Show hibernate button"
+#~ msgstr "Erakutsi hibernatzeko botoia"
+
+#~ msgid "Show sleep button"
+#~ msgstr "Erakutsi lotarazteko botoia"

@@ -1,13 +1,13 @@
 # translation of plasma_applet_org.kde.image.po to Slovak
 # Roman Paholik <wizzardsk@gmail.com>, 2014, 2015, 2017.
 # Mthw <jari_45@hotmail.com>, 2018, 2019.
-# Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2020, 2021.
+# Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.image\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-31 00:22+0000\n"
-"PO-Revision-Date: 2021-08-11 19:54+0200\n"
+"POT-Creation-Date: 2022-12-02 00:48+0000\n"
+"PO-Revision-Date: 2023-01-10 11:45+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -15,189 +15,85 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.07.90\n"
+"X-Generator: Lokalize 22.12.1\n"
 
-#: image.cpp:253
 #, kde-format
-msgid "Recommended wallpaper file"
-msgstr "Odporúčaný súbor tapety"
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
 
-#: image.cpp:414
 #, kde-format
-msgid "Directory with the wallpaper to show slides from"
-msgstr "Adresár s tapetou na zobrazenie snímok"
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
 
-#: image.cpp:716
-#, kde-format
-msgid "Open Image"
-msgstr "Otvoriť obrázok"
-
-#: image.cpp:716
-#, kde-format
-msgid "Image Files"
-msgstr "Súbory obrázkov"
-
-#: imagepackage/contents/ui/config.qml:98
+#: imagepackage/contents/ui/config.qml:94
 #, kde-format
 msgid "Positioning:"
 msgstr "Umiestnenie:"
 
-#: imagepackage/contents/ui/config.qml:101
+#: imagepackage/contents/ui/config.qml:97
 #, kde-format
 msgid "Scaled and Cropped"
 msgstr "Zväčšený a orezaný"
 
-#: imagepackage/contents/ui/config.qml:105
+#: imagepackage/contents/ui/config.qml:101
 #, kde-format
 msgid "Scaled"
 msgstr "Zväčšený"
 
-#: imagepackage/contents/ui/config.qml:109
+#: imagepackage/contents/ui/config.qml:105
 #, kde-format
 msgid "Scaled, Keep Proportions"
 msgstr "Zväčšený, zachovať proporcie"
 
-#: imagepackage/contents/ui/config.qml:113
+#: imagepackage/contents/ui/config.qml:109
 #, kde-format
 msgid "Centered"
 msgstr "Na stred"
 
-#: imagepackage/contents/ui/config.qml:117
+#: imagepackage/contents/ui/config.qml:113
 #, kde-format
 msgid "Tiled"
 msgstr "Vydláždiť"
 
-#: imagepackage/contents/ui/config.qml:146
+#: imagepackage/contents/ui/config.qml:141
 #, kde-format
 msgid "Background:"
 msgstr "Farba pozadia:"
 
-#: imagepackage/contents/ui/config.qml:147
+#: imagepackage/contents/ui/config.qml:142
 #, kde-format
 msgid "Blur"
 msgstr "Rozmazanie"
 
-#: imagepackage/contents/ui/config.qml:156
+#: imagepackage/contents/ui/config.qml:151
 #, kde-format
 msgid "Solid color"
 msgstr "Plná farba"
 
-#: imagepackage/contents/ui/config.qml:166
+#: imagepackage/contents/ui/config.qml:161
 #, kde-format
 msgid "Select Background Color"
 msgstr "Výber farby pozadia"
 
-#: imagepackage/contents/ui/config.qml:190
-#, kde-format
-msgid "Order:"
-msgstr "Poradie:"
-
-#: imagepackage/contents/ui/config.qml:197
-#, kde-format
-msgid "Random"
-msgstr "Náhodné"
-
-#: imagepackage/contents/ui/config.qml:201
-#, kde-format
-msgid "A to Z"
-msgstr "A po Z"
-
-#: imagepackage/contents/ui/config.qml:205
-#, kde-format
-msgid "Z to A"
-msgstr "Z po A"
-
-#: imagepackage/contents/ui/config.qml:209
-#, kde-format
-msgid "Date modified (newest first)"
-msgstr "Dátum zmeny (najnovšie ako prvé)"
-
-#: imagepackage/contents/ui/config.qml:213
-#, kde-format
-msgid "Date modified (oldest first)"
-msgstr "Dátum zmeny (nastaršie ako prvé)"
-
-#: imagepackage/contents/ui/config.qml:237
-#, kde-format
-msgid "Group by folders"
-msgstr "Zoskupiť podľa priečinkov"
-
-#: imagepackage/contents/ui/config.qml:249
-#, kde-format
-msgid "Change every:"
-msgstr "Zmeniť každých:"
-
-#: imagepackage/contents/ui/config.qml:259
-#, kde-format
-msgid "%1 hour"
-msgid_plural "%1 hours"
-msgstr[0] "%1 hodina"
-msgstr[1] "%1 hodiny"
-msgstr[2] "%1 hodín"
-
-#: imagepackage/contents/ui/config.qml:278
-#, kde-format
-msgid "%1 minute"
-msgid_plural "%1 minutes"
-msgstr[0] "%1 minúta"
-msgstr[1] "%1 minúty"
-msgstr[2] "%1 minút"
-
-#: imagepackage/contents/ui/config.qml:297
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 sekunda"
-msgstr[1] "%1 sekundy"
-msgstr[2] "%1 sekúnd"
-
-#: imagepackage/contents/ui/config.qml:310
-#, kde-format
-msgid "Folders"
-msgstr "Priečinky"
-
-#: imagepackage/contents/ui/config.qml:358
-#, kde-format
-msgid "Remove Folder"
-msgstr "Odstrániť priečinok"
-
-#: imagepackage/contents/ui/config.qml:363
-#, kde-format
-msgid "Open Folder"
-msgstr "Otvoriť priečinok"
-
-#: imagepackage/contents/ui/config.qml:373
-#, kde-format
-msgid "There are no wallpaper locations configured"
-msgstr "Nie sú nastavené žiadne umiestnenia tapiet"
-
-#: imagepackage/contents/ui/config.qml:386
-#, kde-format
-msgid "Add Folder…"
-msgstr "Pridať priečinok..."
-
-#: imagepackage/contents/ui/config.qml:392
-#: imagepackage/contents/ui/config.qml:486
-#, kde-format
-msgid "Get New Wallpapers…"
-msgstr "Získať nové tapety..."
-
-#: imagepackage/contents/ui/config.qml:435
-#, kde-format
-msgid "There are no wallpapers in this slideshow"
-msgstr "V tejto prezentácií nie sú žiadne pozadia"
-
-#: imagepackage/contents/ui/config.qml:480
+#: imagepackage/contents/ui/config.qml:207
 #, kde-format
 msgid "Add Image…"
 msgstr "Pridať obrázok..."
 
-#: imagepackage/contents/ui/main.qml:55
+#: imagepackage/contents/ui/config.qml:213
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:257
+#, kde-format
+msgid "Get New Wallpapers…"
+msgstr "Získať nové tapety..."
+
+#: imagepackage/contents/ui/main.qml:66
 #, kde-format
 msgid "Open Wallpaper Image"
 msgstr "Otvoriť obrázok tapety"
 
-#: imagepackage/contents/ui/main.qml:56
+#: imagepackage/contents/ui/main.qml:67
 #, kde-format
 msgid "Next Wallpaper Image"
 msgstr "Nasledujúci obrázok tapety"
@@ -205,7 +101,7 @@ msgstr "Nasledujúci obrázok tapety"
 #: imagepackage/contents/ui/WallpaperDelegate.qml:34
 #, kde-format
 msgid "Open Containing Folder"
-msgstr "Otvoriť obsahujúci priečinok"
+msgstr "Otvoriť priečinok s obsahom"
 
 #: imagepackage/contents/ui/WallpaperDelegate.qml:40
 #, kde-format
@@ -243,23 +139,23 @@ msgstr ""
 "kontaktujte prosím autora tapety, aby to napravil, alebo súbor premenujte "
 "sami: %1"
 
-#: plasma-apply-wallpaperimage.cpp:82
+#: plasma-apply-wallpaperimage.cpp:85
 #, kde-format
 msgid "An error occurred while attempting to set the Plasma wallpaper:\n"
 msgstr "Pri pokuse o nastavenie Plasma tapety sa vyskytla chyba:\n"
 
-#: plasma-apply-wallpaperimage.cpp:86
+#: plasma-apply-wallpaperimage.cpp:89
 #, kde-format
 msgid ""
 "Successfully set the wallpaper for all desktops to the KPackage based %1"
 msgstr "Úspešne nastavená tapeta pre všetky plochy na KPackage na základe %1"
 
-#: plasma-apply-wallpaperimage.cpp:88
+#: plasma-apply-wallpaperimage.cpp:91
 #, kde-format
 msgid "Successfully set the wallpaper for all desktops to the image %1"
 msgstr "Úspešne nastavená tapeta pre všetky desktopy na obrázok %1"
 
-#: plasma-apply-wallpaperimage.cpp:94
+#: plasma-apply-wallpaperimage.cpp:97
 #, kde-format
 msgid ""
 "The file passed to be set as wallpaper does not exist, or we cannot identify "
@@ -267,3 +163,158 @@ msgid ""
 msgstr ""
 "Súbor odovzdaný na nastavenie ako tapety neexistuje, alebo ho nemôžeme "
 "identifikovať ako tapetu: %1"
+
+#: plugin/finder/packagefinder.cpp:148
+#, kde-format
+msgid "Recommended wallpaper file"
+msgstr "Odporúčaný súbor tapety"
+
+#: plugin/imagebackend.cpp:243
+#, kde-format
+msgid "Directory with the wallpaper to show slides from"
+msgstr "Adresár s tapetou na zobrazenie snímok"
+
+#: plugin/imagebackend.cpp:353
+#, kde-format
+msgid "Open Image"
+msgstr "Otvoriť obrázok"
+
+#: plugin/imagebackend.cpp:353
+#, kde-format
+msgid "Image Files"
+msgstr "Súbory obrázkov"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:38
+#, kde-format
+msgid "Order:"
+msgstr "Poradie:"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:45
+#, kde-format
+msgid "Random"
+msgstr "Náhodné"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:49
+#, kde-format
+msgid "A to Z"
+msgstr "A po Z"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:53
+#, kde-format
+msgid "Z to A"
+msgstr "Z po A"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:57
+#, kde-format
+msgid "Date modified (newest first)"
+msgstr "Dátum zmeny (najnovšie ako prvé)"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:61
+#, kde-format
+msgid "Date modified (oldest first)"
+msgstr "Dátum zmeny (nastaršie ako prvé)"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:86
+#, kde-format
+msgid "Group by folders"
+msgstr "Zoskupiť podľa priečinkov"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:98
+#, kde-format
+msgid "Change every:"
+msgstr "Zmeniť každých:"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:108
+#, kde-format
+msgid "%1 hour"
+msgid_plural "%1 hours"
+msgstr[0] "%1 hodina"
+msgstr[1] "%1 hodiny"
+msgstr[2] "%1 hodín"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:128
+#, kde-format
+msgid "%1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "%1 minúta"
+msgstr[1] "%1 minúty"
+msgstr[2] "%1 minút"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:148
+#, kde-format
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 sekunda"
+msgstr[1] "%1 sekundy"
+msgstr[2] "%1 sekúnd"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:162
+#, kde-format
+msgid "Folders"
+msgstr "Priečinky"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:220
+#, kde-format
+msgid "Remove Folder"
+msgstr "Odstrániť priečinok"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:225
+#, kde-format
+msgid "Open Folder"
+msgstr "Otvoriť priečinok"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:235
+#, kde-format
+msgid "There are no wallpaper locations configured"
+msgstr "Nie sú nastavené žiadne umiestnenia tapiet"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:250
+#, kde-format
+msgid "Add Folder…"
+msgstr "Pridať priečinok..."
+
+#~ msgid "There are no wallpapers in this slideshow"
+#~ msgstr "V tejto prezentácií nie sú žiadne pozadia"
+
+#~ msgid "Add Custom Wallpaper"
+#~ msgstr "Pridať vlastnú tapetu"
+
+#~ msgid "Remove wallpaper"
+#~ msgstr "Odstrániť tapetu"
+
+#~ msgid "%1 by %2"
+#~ msgstr "%1 od %2"
+
+#, fuzzy
+#~| msgid "Remove Wallpaper"
+#~ msgid "Wallpapers"
+#~ msgstr "Odstrániť tapetu"
+
+#~ msgctxt "<image> by <author>"
+#~ msgid "By %1"
+#~ msgstr "Od %1"
+
+#~ msgid "Download Wallpapers"
+#~ msgstr "Stiahnuť tapety"
+
+#~ msgid "Hours"
+#~ msgstr "Hodiny"
+
+#~ msgid "Use blur background filling"
+#~ msgstr "Použiť rozmazanú výplň pozadia"
+
+#~ msgid "Open..."
+#~ msgstr "Otvoriť..."
+
+#~ msgctxt "Unknown Author"
+#~ msgid "Unknown"
+#~ msgstr "Neznáme"
+
+#~ msgid "Image Files (*.png *.jpg *.jpeg *.bmp *.svg *.svgz *.xcf)"
+#~ msgstr "Súbory obrázkov (*.png *.jpg *.jpeg *.bmp *.svg *.svgz *.xcf)"
+
+#~ msgid "Screenshot"
+#~ msgstr "Snímka obrazovky"
+
+#~ msgid "Preview"
+#~ msgstr "Náhľad"

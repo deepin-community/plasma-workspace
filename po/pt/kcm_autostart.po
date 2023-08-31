@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_autostart\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-06-07 15:32+0100\n"
+"POT-Creation-Date: 2023-01-29 02:56+0000\n"
+"PO-Revision-Date: 2022-07-04 13:17+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -16,139 +16,113 @@ msgstr ""
 "X-POFile-IgnoreConsistency: Status\n"
 "X-POFile-IgnoreConsistency: Name\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "José Nuno Pires"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "zepires@gmail.com"
-
-#: autostart.cpp:24
-#, kde-format
-msgid "Autostart"
-msgstr "Arranque"
-
-#: autostart.cpp:26
-#, kde-format
-msgid "Session Autostart Manager Control Panel Module"
-msgstr "Módulo do Painel de Controlo para o Gestor de Arranque da Sessão"
-
-#: autostart.cpp:28
-#, kde-format
-msgid "Copyright © 2006–2020 Autostart Manager team"
-msgstr "'Copyright' (c) 2006-2020 a equipa do Gestor de Arranque"
-
-#: autostart.cpp:29
-#, kde-format
-msgid "Stephen Leaf"
-msgstr "Stephen Leaf"
-
-#: autostart.cpp:30
-#, kde-format
-msgid "Montel Laurent"
-msgstr "Montel Laurent"
-
-#: autostart.cpp:30
-#, kde-format
-msgid "Maintainer"
-msgstr "Manutenção"
-
-#: autostart.cpp:31
-#, kde-format
-msgid "Nicolas Fella"
-msgstr "Nicolas Fella"
-
-#: autostartmodel.cpp:288
+#: autostartmodel.cpp:322
 #, kde-format
 msgid "\"%1\" is not an absolute url."
 msgstr "O \"%1\" não é um URL absoluto."
 
-#: autostartmodel.cpp:291
+#: autostartmodel.cpp:325
 #, kde-format
 msgid "\"%1\" does not exist."
 msgstr "O \"%1\" não existe."
 
-#: autostartmodel.cpp:294
+#: autostartmodel.cpp:328
 #, kde-format
 msgid "\"%1\" is not a file."
 msgstr "O \"%1\" não é um ficheiro."
 
-#: autostartmodel.cpp:297
+#: autostartmodel.cpp:331
 #, kde-format
 msgid "\"%1\" is not readable."
 msgstr "O \"%1\" não é legível."
 
-#: package/contents/ui/main.qml:62
+#: package/contents/ui/main.qml:40
+#, kde-format
+msgid "Make Executable"
+msgstr "Tornar Executável"
+
+#: package/contents/ui/main.qml:54
+#, kde-format
+msgid "The file '%1' must be executable to run at logout."
+msgstr ""
+"O ficheiro '%1' deverá ser executável para poder ser corrido no fim da "
+"sessão."
+
+#: package/contents/ui/main.qml:56
+#, kde-format
+msgid "The file '%1' must be executable to run at login."
+msgstr ""
+"O ficheiro '%1' deverá ser executável para poder ser corrido no início da "
+"sessão."
+
+#: package/contents/ui/main.qml:94
 #, kde-format
 msgid "Properties"
 msgstr "Propriedades"
 
-#: package/contents/ui/main.qml:68
+#: package/contents/ui/main.qml:100
 #, kde-format
 msgid "Remove"
 msgstr "Remover"
 
-#: package/contents/ui/main.qml:79
+#: package/contents/ui/main.qml:111
 #, kde-format
 msgid "Applications"
 msgstr "Aplicações"
 
-#: package/contents/ui/main.qml:82
+#: package/contents/ui/main.qml:114
 #, kde-format
 msgid "Login Scripts"
 msgstr "Programas de Arranque"
 
-#: package/contents/ui/main.qml:85
+#: package/contents/ui/main.qml:117
 #, kde-format
 msgid "Pre-startup Scripts"
 msgstr "Programas de Pré-Arranque"
 
-#: package/contents/ui/main.qml:88
+#: package/contents/ui/main.qml:120
 #, kde-format
 msgid "Logout Scripts"
 msgstr "Programas de Encerramento"
 
-#: package/contents/ui/main.qml:97
+#: package/contents/ui/main.qml:129
 #, kde-format
 msgid "No user-specified autostart items"
 msgstr "Nenhuns itens do arranque definidos pelo utilizador"
 
-#: package/contents/ui/main.qml:98
+#: package/contents/ui/main.qml:130
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add…</interface> button below to add some"
 msgstr ""
 "Carregue no botão <interface>Adicionar…</interface> para adicionar alguns"
 
-#: package/contents/ui/main.qml:112
+#: package/contents/ui/main.qml:144
 #, kde-format
 msgid "Choose Login Script"
 msgstr "Escolher o Programa de Autenticação"
 
-#: package/contents/ui/main.qml:133
+#: package/contents/ui/main.qml:165
 #, kde-format
 msgid "Choose Logout Script"
 msgstr "Escolher o Programa de Encerramento"
 
-#: package/contents/ui/main.qml:151
+#: package/contents/ui/main.qml:183
 #, kde-format
 msgid "Add…"
 msgstr "Adicionar…"
 
-#: package/contents/ui/main.qml:177
+#: package/contents/ui/main.qml:198
 #, kde-format
 msgid "Add Application…"
 msgstr "Adicionar uma Aplicação…"
 
-#: package/contents/ui/main.qml:183
+#: package/contents/ui/main.qml:204
 #, kde-format
 msgid "Add Login Script…"
 msgstr "Adicionar um Programa de Arranque…"
 
-#: package/contents/ui/main.qml:189
+#: package/contents/ui/main.qml:210
 #, kde-format
 msgid "Add Logout Script…"
 msgstr "Adicionar um Programa de Encerramento…"

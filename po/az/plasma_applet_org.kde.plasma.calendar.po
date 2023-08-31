@@ -49,3 +49,12 @@ msgstr "Ayın gününü göstərmək"
 msgctxt "Show the week number (eg. 50) in the icon"
 msgid "Show week number"
 msgstr "Həftənin gününü göstərmək"
+
+#~ msgid "Working Day"
+#~ msgstr "İş Günü"
+
+#~ msgid "Starts at 9"
+#~ msgstr "9-da başlayır"
+
+#~ msgid "Ends at 5"
+#~ msgstr "5-də qurtarır"

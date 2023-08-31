@@ -1,21 +1,21 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Vincenzo Reale <smart2128vr@gmail.com>, 2014.
+# Vincenzo Reale <smart2128vr@gmail.com>, 2014, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2014-12-10 20:36+0100\n"
-"Last-Translator: Vincenzo Reale <smart2128@baslug.org>\n"
+"POT-Creation-Date: 2022-01-22 00:46+0000\n"
+"PO-Revision-Date: 2022-01-23 21:41+0100\n"
+"Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 21.12.1\n"
 
 #: shellpackage.cpp:26 shellpackage.cpp:27
 #, kde-format
@@ -84,10 +84,15 @@ msgstr "Componente QML per scegliere un'applet alternativa"
 
 #: shellpackage.cpp:63
 #, kde-format
+msgid "QML component for the configuration dialog of containments"
+msgstr "Componente QML per la finestra di configurazione dei contenitori"
+
+#: shellpackage.cpp:66
+#, kde-format
 msgid "Widgets explorer UI"
 msgstr "Interfaccia dell'esploratore di oggetti"
 
-#: shellpackage.cpp:67
+#: shellpackage.cpp:70
 #, kde-format
 msgid ""
 "A UI for writing, loading and running desktop scripts in the current live "

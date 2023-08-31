@@ -70,8 +70,10 @@ Q_SIGNALS:
     void appletInterfaceChanged() const;
     void runnersChanged() const;
     void queryChanged() const;
+    void queryFinished();
     void mergeResultsChanged() const;
     void deleteWhenEmptyChanged();
+    void requestUpdateQuery(const QString &query);
 
 private Q_SLOTS:
     void startQuery();
@@ -81,9 +83,9 @@ private:
     void createManager();
     void clear();
 
-    AbstractModel *m_favoritesModel;
-    QObject *m_appletInterface;
-    Plasma::RunnerManager *m_runnerManager;
+    AbstractModel *m_favoritesModel = nullptr;
+    QObject *m_appletInterface = nullptr;
+    Plasma::RunnerManager *m_runnerManager = nullptr;
     QStringList m_runners;
     QList<RunnerMatchesModel *> m_models;
     QString m_query;

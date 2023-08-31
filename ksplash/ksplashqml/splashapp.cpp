@@ -8,17 +8,21 @@
 #include "splashapp.h"
 #include "splashwindow.h"
 
+#include <QLoggingCategory>
 #include <QCommandLineParser>
 #include <QCursor>
 #include <QDBusConnection>
-#include <QDate>
-#include <QDebug>
 #include <QPixmap>
 #include <qscreen.h>
 
-#include <KQuickAddons/QtQuickSettings>
 #include <KWindowSystem>
+
+#include <KConfigGroup>
+#include <KSharedConfig>
+
 #include <LayerShellQt/Shell>
+
+Q_LOGGING_CATEGORY(ksplashqml, "org.kde.plasma.ksplashqml", QtWarningMsg)
 
 #define TEST_STEP_INTERVAL 2000
 
@@ -39,8 +43,6 @@ SplashApp::SplashApp(int &argc, char **argv)
     , m_testing(false)
     , m_window(false)
 {
-    KQuickAddons::QtQuickSettings::init();
-
     QCommandLineParser parser;
     parser.addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Run in test mode")));
     parser.addOption(QCommandLineOption(QStringLiteral("window"), QStringLiteral("Run in windowed mode")));
@@ -53,6 +55,12 @@ SplashApp::SplashApp(int &argc, char **argv)
     m_testing = parser.isSet(QStringLiteral("test"));
     m_window = parser.isSet(QStringLiteral("window"));
     m_theme = parser.positionalArguments().value(0);
+    if (m_theme.isEmpty()) {
+        KConfigGroup ksplashCfg = KSharedConfig::openConfig()->group("KSplash");
+        if (ksplashCfg.readEntry("Engine", QStringLiteral("KSplashQML")) == QLatin1String("KSplashQML")) {
+            m_theme = ksplashCfg.readEntry("Theme", QStringLiteral("Breeze"));
+        }
+    }
 
     QDBusConnection dbus = QDBusConnection::sessionBus();
     dbus.registerObject(QStringLiteral("/KSplash"), this, QDBusConnection::ExportScriptableSlots);
@@ -68,10 +76,6 @@ SplashApp::SplashApp(int &argc, char **argv)
     if (KWindowSystem::isPlatformWayland()) {
         setStage(QStringLiteral("wm"));
     }
-
-    QPixmap cursor(32, 32);
-    cursor.fill(Qt::transparent);
-    setOverrideCursor(QCursor(cursor));
 
     if (m_testing) {
         m_timer.start(TEST_STEP_INTERVAL, this);
@@ -98,6 +102,8 @@ void SplashApp::timerEvent(QTimerEvent *event)
 
 void SplashApp::setStage(const QString &stage)
 {
+    qCDebug(ksplashqml) << "Loading stage " << stage << ", current count " << m_stages.count();
+
     if (m_stages.contains(stage)) {
         return;
     }
@@ -121,9 +127,8 @@ void SplashApp::adoptScreen(QScreen *screen)
     if (screen->geometry().isNull()) {
         return;
     }
-    SplashWindow *w = new SplashWindow(m_testing, m_window, m_theme);
+    SplashWindow *w = new SplashWindow(m_testing, m_window, m_theme, screen);
     w->setGeometry(screen->geometry());
-    w->setScreen(screen);
     w->setStage(m_stage);
     w->setVisible(true);
     m_windows << w;

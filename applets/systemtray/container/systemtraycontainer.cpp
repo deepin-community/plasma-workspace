@@ -7,22 +7,17 @@
 #include "systemtraycontainer.h"
 #include "debug.h"
 
-#include <QQuickItem>
-
 #include <Plasma/Corona>
 #include <QAction>
 #include <kactioncollection.h>
 
-SystemTrayContainer::SystemTrayContainer(QObject *parent, const QVariantList &args)
-    : Plasma::Applet(parent, args)
+SystemTrayContainer::SystemTrayContainer(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+    : Plasma::Applet(parent, data, args)
 {
 }
 
 SystemTrayContainer::~SystemTrayContainer()
 {
-    if (destroyed()) {
-        m_innerContainment->destroy();
-    }
 }
 
 void SystemTrayContainer::init()
@@ -83,16 +78,14 @@ void SystemTrayContainer::ensureSystrayExists()
         m_innerContainment->setFormFactor(Plasma::Types::Horizontal);
     }
 
-    if (m_innerContainment) {
-        m_innerContainment->setLocation(location());
-    }
+    m_innerContainment->setLocation(location());
 
     m_internalSystray = m_innerContainment->property("_plasma_graphicObject").value<QQuickItem *>();
-    emit internalSystrayChanged();
+    Q_EMIT internalSystrayChanged();
 
     actions()->addAction("configure", m_innerContainment->actions()->action("configure"));
     connect(m_innerContainment.data(), &Plasma::Containment::configureRequested, this, [this](Plasma::Applet *applet) {
-        emit containment()->configureRequested(applet);
+        Q_EMIT containment()->configureRequested(applet);
     });
 
     if (m_internalSystray) {
@@ -140,6 +133,6 @@ QQuickItem *SystemTrayContainer::internalSystray()
     return m_internalSystray;
 }
 
-K_PLUGIN_CLASS_WITH_JSON(SystemTrayContainer, "metadata.json")
+K_PLUGIN_CLASS(SystemTrayContainer)
 
 #include "systemtraycontainer.moc"

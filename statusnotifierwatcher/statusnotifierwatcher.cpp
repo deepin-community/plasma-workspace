@@ -61,7 +61,7 @@ void StatusNotifierWatcher::RegisterStatusNotifierItem(const QString &serviceOrP
         if (trayclient.isValid()) {
             qDebug() << "Registering" << notifierItemId << "to system tray";
             m_registeredServices.append(notifierItemId);
-            emit StatusNotifierItemRegistered(notifierItemId);
+            Q_EMIT StatusNotifierItemRegistered(notifierItemId);
         } else {
             m_serviceWatcher->removeWatchedService(service);
         }
@@ -80,39 +80,26 @@ void StatusNotifierWatcher::serviceUnregistered(const QString &name)
     qDebug() << "Service " << name << "unregistered";
     m_serviceWatcher->removeWatchedService(name);
 
-    QString match = name + QLatin1Char('/');
+    const QString match = name + QLatin1Char('/');
     QStringList::Iterator it = m_registeredServices.begin();
     while (it != m_registeredServices.end()) {
         if (it->startsWith(match)) {
             QString name = *it;
             it = m_registeredServices.erase(it);
-            emit StatusNotifierItemUnregistered(name);
+            Q_EMIT StatusNotifierItemUnregistered(name);
         } else {
             ++it;
         }
-    }
-
-    if (m_statusNotifierHostServices.contains(name)) {
-        m_statusNotifierHostServices.remove(name);
-        emit StatusNotifierHostUnregistered();
     }
 }
 
 void StatusNotifierWatcher::RegisterStatusNotifierHost(const QString &service)
 {
-    if (service.contains(QLatin1String("org.kde.StatusNotifierHost-")) && QDBusConnection::sessionBus().interface()->isServiceRegistered(service).value()
-        && !m_statusNotifierHostServices.contains(service)) {
-        qDebug() << "Registering" << service << "as system tray";
-
-        m_statusNotifierHostServices.insert(service);
-        m_serviceWatcher->addWatchedService(service);
-        emit StatusNotifierHostRegistered();
-    }
 }
 
 bool StatusNotifierWatcher::IsStatusNotifierHostRegistered() const
 {
-    return !m_statusNotifierHostServices.isEmpty();
+    return true;
 }
 
 int StatusNotifierWatcher::ProtocolVersion() const

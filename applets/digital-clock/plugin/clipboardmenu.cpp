@@ -28,7 +28,7 @@ void ClipboardMenu::setCurrentDate(const QDateTime &currentDate)
 {
     if (m_currentDate != currentDate) {
         m_currentDate = currentDate;
-        emit currentDateChanged();
+        Q_EMIT currentDateChanged();
     }
 }
 
@@ -37,11 +37,11 @@ bool ClipboardMenu::secondsIncluded() const
     return m_secondsIncluded;
 }
 
-void ClipboardMenu::setSecondsIncluded(const bool &secondsIncluded)
+void ClipboardMenu::setSecondsIncluded(bool secondsIncluded)
 {
     if (m_secondsIncluded != secondsIncluded) {
         m_secondsIncluded = secondsIncluded;
-        emit secondsIncludedChanged();
+        Q_EMIT secondsIncludedChanged();
     }
 }
 
@@ -61,63 +61,49 @@ void ClipboardMenu::setupMenu(QAction *action)
 
         const QDate date = m_currentDate.date();
         const QTime time = m_currentDate.time();
-        const QRegularExpression rx("[^0-9:]");
-        const QChar ws = QLatin1Char(' ');
-        QString s;
-        QAction *a;
+        const QRegularExpression rx(QStringLiteral("[^0-9:]"));
+        const QChar spaceCharacter = QLatin1Char(' ');
+        QString timeString;
+        QAction *menuOption;
 
-        s = date.toString(Qt::SystemLocaleShortDate);
-        a = menu->addAction(s);
-        a->setData(s);
-        s = date.toString(Qt::ISODate);
-        a = menu->addAction(s);
-        a->setData(s);
-        s = date.toString(Qt::SystemLocaleLongDate);
-        a = menu->addAction(s);
-        a->setData(s);
+        // e.g 12:30 PM or 12:30:01 PM
+        timeString = m_secondsIncluded ? QLocale::system().toString(time, QLocale::LongFormat) : QLocale::system().toString(time, QLocale::ShortFormat);
+        menuOption = menu->addAction(timeString);
+        menuOption->setData(timeString);
 
-        menu->addSeparator();
+        // the same as the option above but shows the opposite of the "show seconds" setting
+        // e.g if "show seconds" is enabled it will show the time without seconds and vice-versa
+        timeString = m_secondsIncluded ? QLocale::system().toString(time, QLocale::ShortFormat) : QLocale::system().toString(time, QLocale::LongFormat);
+        menuOption = menu->addAction(timeString);
+        menuOption->setData(timeString);
 
-        s = time.toString(Qt::SystemLocaleShortDate);
-        a = menu->addAction(s);
-        a->setData(s);
-        if (m_secondsIncluded) {
-            s = time.toString(Qt::SystemLocaleLongDate);
-            s.remove(rx);
-            a = menu->addAction(s);
-            a->setData(s);
-            s = time.toString(Qt::SystemLocaleLongDate);
-            a = menu->addAction(s);
-            a->setData(s);
-        }
+        // e.g 4/28/22
+        timeString = QLocale::system().toString(date, QLocale::ShortFormat);
+        menuOption = menu->addAction(timeString);
+        menuOption->setData(timeString);
 
-        menu->addSeparator();
+        // e.g Thursday, April 28, 2022
+        timeString = QLocale::system().toString(date, QLocale::LongFormat);
+        menuOption = menu->addAction(timeString);
+        menuOption->setData(timeString);
 
-        s = date.toString(Qt::SystemLocaleShortDate) + ws + time.toString(Qt::SystemLocaleShortDate);
-        a = menu->addAction(s);
-        a->setData(s);
-        if (m_secondsIncluded) {
-            s = date.toString(Qt::SystemLocaleShortDate) + ws + time.toString(Qt::SystemLocaleLongDate).remove(rx);
-            a = menu->addAction(s);
-            a->setData(s);
-            s = date.toString(Qt::SystemLocaleShortDate) + ws + time.toString(Qt::SystemLocaleLongDate);
-            a = menu->addAction(s);
-            a->setData(s);
-        }
-        s = date.toString(Qt::ISODate) + ws + time.toString(Qt::SystemLocaleShortDate);
-        a = menu->addAction(s);
-        a->setData(s);
-        if (m_secondsIncluded) {
-            s = date.toString(Qt::ISODate) + ws + time.toString(Qt::SystemLocaleLongDate).remove(rx);
-            a = menu->addAction(s);
-            a->setData(s);
-            s = date.toString(Qt::ISODate) + ws + time.toString(Qt::SystemLocaleLongDate);
-            a = menu->addAction(s);
-            a->setData(s);
-        }
-        s = date.toString(Qt::SystemLocaleLongDate) + ws + time.toString(Qt::SystemLocaleShortDate);
-        a = menu->addAction(s);
-        a->setData(s);
+        // e.g Thursday, April 28, 2022 12:30 PM or Thursday, April 28, 2022 12:30:01 PM -03
+        timeString = m_secondsIncluded
+            ? QLocale::system().toString(date, QLocale::LongFormat) + spaceCharacter + QLocale::system().toString(time, QLocale::LongFormat)
+            : QLocale::system().toString(date, QLocale::LongFormat) + spaceCharacter + QLocale::system().toString(time, QLocale::ShortFormat);
+        menuOption = menu->addAction(timeString);
+        menuOption->setData(timeString);
+
+        // e.g 2022-04-28
+        timeString = date.toString(Qt::ISODate);
+        menuOption = menu->addAction(timeString);
+        menuOption->setData(timeString);
+
+        // e.g 2022-04-28 12:30 PM or 2022-04-28 12:30:01 PM -03
+        timeString = m_secondsIncluded ? date.toString(Qt::ISODate) + spaceCharacter + QLocale::system().toString(time, QLocale::LongFormat)
+                                       : date.toString(Qt::ISODate) + spaceCharacter + QLocale::system().toString(time, QLocale::ShortFormat);
+        menuOption = menu->addAction(timeString);
+        menuOption->setData(timeString);
 
         menu->addSeparator();
 
@@ -128,12 +114,12 @@ void ClipboardMenu::setupMenu(QAction *action)
 
                 otherCalendarsMenu->addSeparator();
         */
-        s = QString::number(m_currentDate.toMSecsSinceEpoch() / 1000);
-        a = otherCalendarsMenu->addAction(i18nc("unix timestamp (seconds since 1.1.1970)", "%1 (UNIX Time)", s));
-        a->setData(s);
-        s = QString::number(qreal(2440587.5) + qreal(m_currentDate.toMSecsSinceEpoch()) / qreal(86400000), 'f', 5);
-        a = otherCalendarsMenu->addAction(i18nc("for astronomers (days and decimals since ~7000 years ago)", "%1 (Julian Date)", s));
-        a->setData(s);
+        timeString = QString::number(m_currentDate.toMSecsSinceEpoch() / 1000);
+        menuOption = otherCalendarsMenu->addAction(i18nc("unix timestamp (seconds since 1.1.1970)", "%1 (UNIX Time)", timeString));
+        menuOption->setData(timeString);
+        timeString = QString::number(qreal(2440587.5) + qreal(m_currentDate.toMSecsSinceEpoch()) / qreal(86400000), 'f', 5);
+        menuOption = otherCalendarsMenu->addAction(i18nc("for astronomers (days and decimals since ~7000 years ago)", "%1 (Julian Date)", timeString));
+        menuOption->setData(timeString);
     });
 
     connect(menu, &QMenu::triggered, menu, [](QAction *action) {

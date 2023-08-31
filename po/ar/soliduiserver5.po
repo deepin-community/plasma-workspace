@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: soliduiserver\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-02-17 00:47+0000\n"
 "PO-Revision-Date: 2008-12-17 11:59+0400\n"
 "Last-Translator: zayed <zayed.alsaidi@gmail.com>\n"
 "Language-Team: Arabic <linuxac-kde-arabic-team@googlegroups.com>\n"
@@ -21,7 +21,20 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Translate Toolkit 1.10.0\n"
 
-#: soliduiserver.cpp:61
+#: soliduiserver.cpp:62
 #, kde-format
 msgid "'%1' needs a password to be accessed. Please enter a password."
 msgstr "'%1' تحتاج كلمة سر للوصول إليه/إليها. من فضلك أدخل كلمة السر."
+
+#~ msgid "A new device has been detected.<br><b>What do you want to do?</b>"
+#~ msgstr "تم اكتشاف جهاز جديد.<br><b>ماذا تريد أن تفعل؟</b>"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "Do nothing"
+#~ msgstr "لا تفعل شيء"
+
+#~ msgctxt "A default name for an action without proper label"
+#~ msgid "Unknown"
+#~ msgstr "مجهول"

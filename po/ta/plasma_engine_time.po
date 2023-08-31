@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-08-12 21:52+0530\n"
+"POT-Creation-Date: 2022-03-10 00:46+0000\n"
+"PO-Revision-Date: 2021-12-16 21:52+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,64 +15,52 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.07.90\n"
+"X-Generator: Lokalize 21.12.0\n"
 
-#: timesource.cpp:45
-#, kde-format
+#: timesource.cpp:46
 msgid "Local"
 msgstr "வட்டாரம்"
 
-#: timesource.cpp:60
-#, kde-format
+#: timesource.cpp:61
 msgid "Timezone"
 msgstr "கால மண்டலம்"
 
-#: timesource.cpp:65 timesource.cpp:68 timesource.cpp:72
-#, kde-format
+#: timesource.cpp:66 timesource.cpp:69 timesource.cpp:73
 msgid "Timezone City"
 msgstr "கால மண்டலத்திற்கான ஊர்"
 
-#: timesource.cpp:67 timesource.cpp:70
-#, kde-format
+#: timesource.cpp:68 timesource.cpp:71
 msgid "Timezone Continent"
 msgstr "கால மண்டலத்திற்கான கண்டம்"
 
-#: timesource.cpp:71
-#, kde-format
+#: timesource.cpp:72
 msgid "Timezone Country"
 msgstr "கால மண்டலத்திற்கான நாடு"
 
-#: timesource.cpp:96
-#, kde-format
+#: timesource.cpp:97
 msgid "Offset"
-msgstr ""
+msgstr "UTC வித்தியாசம்"
 
-#: timesource.cpp:99
-#, kde-format
+#: timesource.cpp:100
 msgid "Timezone Abbreviation"
 msgstr "கால மண்டலத்திற்கான சுருக்கம்"
 
-#: timesource.cpp:130 timesource.cpp:149 timesource.cpp:170
-#, kde-format
+#: timesource.cpp:131 timesource.cpp:150 timesource.cpp:171
 msgid "DateTime"
 msgstr ""
 
-#: timesource.cpp:145
-#, kde-format
+#: timesource.cpp:146
 msgid "Latitude"
 msgstr "அட்சரேகை"
 
-#: timesource.cpp:146
-#, kde-format
+#: timesource.cpp:147
 msgid "Longitude"
 msgstr "தீர்க்கரேகை"
 
-#: timesource.cpp:147
-#, kde-format
+#: timesource.cpp:148
 msgid "Solar"
 msgstr "சூரியனை பொறுத்து"
 
-#: timesource.cpp:148
-#, kde-format
+#: timesource.cpp:149
 msgid "Moon"
 msgstr "நிலவை பொறுத்து"

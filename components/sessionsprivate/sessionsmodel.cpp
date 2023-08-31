@@ -6,6 +6,8 @@
 
 #include "sessionsmodel.h"
 
+#include <utility>
+
 #include <KAuthorized>
 #include <KLocalizedString>
 #include <KUser>
@@ -26,10 +28,10 @@ SessionsModel::SessionsModel(QObject *parent)
         if (active) {
             if (m_pendingVt) {
                 m_displayManager.switchVT(m_pendingVt);
-                emit switchedUser(m_pendingVt);
+                Q_EMIT switchedUser(m_pendingVt);
             } else if (m_pendingReserve) {
                 m_displayManager.startReserve();
-                emit startedNewSession();
+                Q_EMIT startedNewSession();
             }
 
             m_pendingVt = 0;
@@ -40,12 +42,12 @@ SessionsModel::SessionsModel(QObject *parent)
 
 bool SessionsModel::canSwitchUser() const
 {
-    return const_cast<SessionsModel *>(this)->m_displayManager.isSwitchable() && KAuthorized::authorizeAction(QLatin1String("switch_user"));
+    return const_cast<SessionsModel *>(this)->m_displayManager.isSwitchable() && KAuthorized::authorizeAction(QStringLiteral("switch_user"));
 }
 
 bool SessionsModel::canStartNewSession() const
 {
-    return const_cast<SessionsModel *>(this)->m_displayManager.numReserve() > 0 && KAuthorized::authorizeAction(QLatin1String("start_new_session"));
+    return const_cast<SessionsModel *>(this)->m_displayManager.numReserve() > 0 && KAuthorized::authorizeAction(QStringLiteral("start_new_session"));
 }
 
 bool SessionsModel::shouldLock() const
@@ -65,7 +67,7 @@ void SessionsModel::setIncludeUnusedSessions(bool includeUnusedSessions)
 
         reload();
 
-        emit includeUnusedSessionsChanged();
+        Q_EMIT includeUnusedSessionsChanged();
     }
 }
 
@@ -82,7 +84,7 @@ void SessionsModel::switchUser(int vt, bool shouldLock)
 
     if (!shouldLock) {
         m_displayManager.switchVT(vt);
-        emit switchedUser(vt);
+        Q_EMIT switchedUser(vt);
         return;
     }
 
@@ -90,12 +92,12 @@ void SessionsModel::switchUser(int vt, bool shouldLock)
         if (locked) {
             // already locked, switch right away
             m_displayManager.switchVT(vt);
-            emit switchedUser(vt);
+            Q_EMIT switchedUser(vt);
         } else {
             m_pendingReserve = false;
             m_pendingVt = vt;
 
-            emit aboutToLockScreen();
+            Q_EMIT aboutToLockScreen();
             m_screensaverInterface->Lock();
         }
     });
@@ -109,7 +111,7 @@ void SessionsModel::startNewSession(bool shouldLock)
 
     if (!shouldLock) {
         m_displayManager.startReserve();
-        emit startedNewSession();
+        Q_EMIT startedNewSession();
         return;
     }
 
@@ -117,12 +119,12 @@ void SessionsModel::startNewSession(bool shouldLock)
         if (locked) {
             // already locked, switch right away
             m_displayManager.startReserve();
-            emit startedNewSession();
+            Q_EMIT startedNewSession();
         } else {
             m_pendingReserve = true;
             m_pendingVt = 0;
 
-            emit aboutToLockScreen();
+            Q_EMIT aboutToLockScreen();
             m_screensaverInterface->Lock();
         }
     });
@@ -135,7 +137,7 @@ void SessionsModel::reload()
     const bool oldShouldLock = m_shouldLock;
     m_shouldLock = KAuthorized::authorizeAction(QStringLiteral("lock_screen")) && KScreenSaverSettings::autolock();
     if (m_shouldLock != oldShouldLock) {
-        emit shouldLockChanged();
+        Q_EMIT shouldLockChanged();
     }
 
     SessList sessions;
@@ -148,7 +150,7 @@ void SessionsModel::reload()
     m_data.clear();
     m_data.reserve(sessions.count());
 
-    foreach (const SessEnt &session, sessions) {
+    for (const SessEnt &session : std::as_const(sessions)) {
         if (!session.vt || session.self) {
             continue;
         }
@@ -181,7 +183,7 @@ void SessionsModel::reload()
     endResetModel();
 
     if (oldCount != m_data.count()) {
-        emit countChanged();
+        Q_EMIT countChanged();
     }
 }
 
@@ -218,7 +220,7 @@ void SessionsModel::setShowNewSessionEntry(bool showNewSessionEntry)
         m_showNewSessionEntry = showNewSessionEntry;
         endRemoveRows();
     }
-    emit countChanged();
+    Q_EMIT countChanged();
 }
 
 QVariant SessionsModel::data(const QModelIndex &index, int role) const
@@ -228,20 +230,20 @@ QVariant SessionsModel::data(const QModelIndex &index, int role) const
     }
 
     if (index.row() == m_data.count()) {
-        switch (static_cast<Role>(role)) {
-        case Role::RealName:
+        switch (role) {
+        case RealNameRole:
             return i18n("New Session");
-        case Role::IconName:
+        case IconNameRole:
             return QStringLiteral("system-switch-user");
-        case Role::Name:
+        case NameRole:
             return i18n("New Session");
-        case Role::DisplayNumber:
+        case DisplayNumberRole:
             return 0; // NA
-        case Role::VtNumber:
+        case VtNumberRole:
             return -1; // an invalid VtNumber - which we'll use to indicate it's to start a new session
-        case Role::Session:
+        case SessionRole:
             return 0; // NA
-        case Role::IsTty:
+        case IsTtyRole:
             return false; // NA
         default:
             return QVariant();
@@ -250,20 +252,20 @@ QVariant SessionsModel::data(const QModelIndex &index, int role) const
 
     const SessionEntry &item = m_data.at(index.row());
 
-    switch (static_cast<Role>(role)) {
-    case Role::RealName:
+    switch (role) {
+    case RealNameRole:
         return item.realName;
-    case Role::Icon:
+    case IconRole:
         return item.icon;
-    case Role::Name:
+    case NameRole:
         return item.name;
-    case Role::DisplayNumber:
+    case DisplayNumberRole:
         return item.displayNumber;
-    case Role::VtNumber:
+    case VtNumberRole:
         return item.vtNumber;
-    case Role::Session:
+    case SessionRole:
         return item.session;
-    case Role::IsTty:
+    case IsTtyRole:
         return item.isTty;
     default:
         return QVariant();
@@ -278,14 +280,16 @@ int SessionsModel::rowCount(const QModelIndex &parent) const
 
 QHash<int, QByteArray> SessionsModel::roleNames() const
 {
-    return {
-        {static_cast<int>(Role::Name), QByteArrayLiteral("name")},
-        {static_cast<int>(Role::RealName), QByteArrayLiteral("realName")},
-        {static_cast<int>(Role::Icon), QByteArrayLiteral("icon")},
-        {static_cast<int>(Role::IconName), QByteArrayLiteral("iconName")},
-        {static_cast<int>(Role::DisplayNumber), QByteArrayLiteral("displayNumber")},
-        {static_cast<int>(Role::VtNumber), QByteArrayLiteral("vtNumber")},
-        {static_cast<int>(Role::Session), QByteArrayLiteral("session")},
-        {static_cast<int>(Role::IsTty), QByteArrayLiteral("isTty")},
-    };
+    QHash<int, QByteArray> roleNames;
+
+    roleNames[NameRole] = QByteArrayLiteral("name");
+    roleNames[RealNameRole] = QByteArrayLiteral("realName");
+    roleNames[IconRole] = QByteArrayLiteral("icon");
+    roleNames[IconNameRole] = QByteArrayLiteral("iconName");
+    roleNames[DisplayNumberRole] = QByteArrayLiteral("displayNumber");
+    roleNames[VtNumberRole] = QByteArrayLiteral("vtNumber");
+    roleNames[SessionRole] = QByteArrayLiteral("session");
+    roleNames[IsTtyRole] = QByteArrayLiteral("isTty");
+
+    return roleNames;
 }

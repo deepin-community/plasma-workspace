@@ -10,6 +10,8 @@
 #include <PlasmaQuick/ContainmentView>
 #include <QPointer>
 
+#include <KConfigWatcher>
+
 namespace KWayland
 {
 namespace Client
@@ -28,6 +30,17 @@ class DesktopView : public PlasmaQuick::ContainmentView
     Q_PROPERTY(SessionType sessionType READ sessionType CONSTANT)
 
     Q_PROPERTY(QVariantMap candidateContainments READ candidateContainmentsGraphicItems NOTIFY candidateContainmentsChanged)
+
+    /**
+     * Whether the desktop is used in accent color extraction
+     *
+     * @note When usedInAccentColor becomes @c true, \Kirigami.ImageColors
+     * will be loaded and update the accent color, and \setAccentColor will
+     * be called
+     */
+    Q_PROPERTY(bool usedInAccentColor READ usedInAccentColor NOTIFY usedInAccentColorChanged)
+
+    Q_PROPERTY(QColor accentColor READ accentColor WRITE setAccentColor NOTIFY accentColorChanged)
 
 public:
     enum WindowType {
@@ -56,6 +69,11 @@ public:
     void adaptToScreen();
     void showEvent(QShowEvent *) override;
 
+    bool usedInAccentColor() const;
+
+    QColor accentColor() const;
+    void setAccentColor(const QColor &);
+
     WindowType windowType() const;
     void setWindowType(WindowType type);
 
@@ -76,6 +94,8 @@ protected Q_SLOTS:
     void showConfigurationInterface(Plasma::Applet *applet) override;
 
 private Q_SLOTS:
+    void slotContainmentChanged();
+    void slotScreenChanged(int newId);
     void screenGeometryChanged();
 
 Q_SIGNALS:
@@ -83,17 +103,28 @@ Q_SIGNALS:
     void windowTypeChanged();
     void candidateContainmentsChanged();
     void geometryChanged();
+    void usedInAccentColorChanged();
+    void accentColorChanged(const QColor &accentColor);
 
 private:
     void coronaPackageChanged(const KPackage::Package &package);
     void ensureWindowType();
     void setupWaylandIntegration();
+    void setAccentColorFromWallpaper(const QColor &accentColor);
     bool handleKRunnerTextInput(QKeyEvent *e);
 
+    QColor m_accentColor;
     QPointer<PlasmaQuick::ConfigView> m_configView;
-    QPointer<QScreen> m_oldScreen;
     QPointer<QScreen> m_screenToFollow;
     WindowType m_windowType;
     KWayland::Client::PlasmaShellSurface *m_shellSurface;
     QString m_krunnerText;
+
+    // KRunner config
+    KConfigWatcher::Ptr m_configWatcher;
+    bool m_activateKRunnerWhenTypingOnDesktop;
+
+    // Accent color config
+    Plasma::Containment *m_containment = nullptr;
+    int m_containmentScreenId = -1;
 };

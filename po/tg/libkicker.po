@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2023-02-11 02:38+0000\n"
 "PO-Revision-Date: 2020-09-21 13:33+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -17,48 +17,48 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 20.04.2\n"
 
-#: plugin/actionlist.cpp:83
+#: plugin/actionlist.cpp:86
 #, kde-format
 msgid "Open with:"
 msgstr "Кушодан ба воситаи:"
 
-#: plugin/actionlist.cpp:96
+#: plugin/actionlist.cpp:99
 #, kde-format
 msgid "Properties"
 msgstr "Хусусиятҳо"
 
-#: plugin/actionlist.cpp:143
+#: plugin/actionlist.cpp:146
 #, kde-format
 msgid "Add to Desktop"
 msgstr "Илова кардан ба мизи корӣ"
 
-#: plugin/actionlist.cpp:148
+#: plugin/actionlist.cpp:151
 #, kde-format
 msgid "Add to Panel (Widget)"
 msgstr "Илова кардан ба лавҳа (Виҷет)"
 
-#: plugin/actionlist.cpp:153
+#: plugin/actionlist.cpp:156
 #, kde-format
 msgid "Pin to Task Manager"
 msgstr "Васл кардан ба мудири вазифаҳо"
 
-#: plugin/actionlist.cpp:304 plugin/rootmodel.cpp:431
+#: plugin/actionlist.cpp:307 plugin/rootmodel.cpp:429
 #, kde-format
 msgid "Recent Files"
 msgstr "Файлҳои охирин"
 
-#: plugin/actionlist.cpp:314
+#: plugin/actionlist.cpp:317
 #, kde-format
 msgid "Forget Recent Files"
 msgstr "Пок кардани рӯйхати файлҳои охирин"
 
-#: plugin/actionlist.cpp:393
+#: plugin/actionlist.cpp:395
 #, fuzzy, kde-format
 #| msgid "Edit Application..."
 msgid "Edit Application…"
 msgstr "Таҳрир кардани барнома..."
 
-#: plugin/actionlist.cpp:437
+#: plugin/actionlist.cpp:429
 #, fuzzy, kde-format
 #| msgctxt "@action opens a software center with the application"
 #| msgid "Uninstall or Manage Add-Ons..."
@@ -66,36 +66,36 @@ msgctxt "@action opens a software center with the application"
 msgid "Uninstall or Manage Add-Ons…"
 msgstr "Идора ё лағв кардани насби ҷузъҳои иловагӣ..."
 
-#: plugin/appentry.cpp:185
+#: plugin/appentry.cpp:308
 #, kde-format
 msgid "Hide Application"
 msgstr "Пинҳон кардани барнома"
 
-#: plugin/appentry.cpp:249
+#: plugin/appentry.cpp:367
 #, kde-format
 msgctxt "App name (Generic name)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: plugin/appentry.cpp:251
+#: plugin/appentry.cpp:369
 #, kde-format
 msgctxt "Generic name (App name)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: plugin/appsmodel.cpp:31 plugin/appsmodel.cpp:55 plugin/computermodel.cpp:98
-#: plugin/computermodel.cpp:226 plugin/recentusagemodel.cpp:156
-#: plugin/recentusagemodel.cpp:218
+#: plugin/appsmodel.cpp:34 plugin/appsmodel.cpp:58 plugin/computermodel.cpp:98
+#: plugin/computermodel.cpp:226 plugin/recentusagemodel.cpp:153
+#: plugin/recentusagemodel.cpp:216
 #, kde-format
 msgid "Applications"
 msgstr "Барномаҳо"
 
-#: plugin/appsmodel.cpp:150
+#: plugin/appsmodel.cpp:151
 #, kde-format
 msgid "Unhide Applications in this Submenu"
 msgstr "Намоён кардани барномаҳо дар зерфеҳрист"
 
-#: plugin/appsmodel.cpp:159
+#: plugin/appsmodel.cpp:160
 #, kde-format
 msgid "Unhide Applications in '%1'"
 msgstr "Намоён кардани барномаҳо дар '%1'"
@@ -115,14 +115,14 @@ msgstr "Ҷустуҷӯ кунед, ҳисоб намоед ва фармонер
 msgid "Computer"
 msgstr "Компютер"
 
-#: plugin/contactentry.cpp:107 plugin/recentcontactsmodel.cpp:82
+#: plugin/contactentry.cpp:106 plugin/recentcontactsmodel.cpp:82
 #, fuzzy, kde-format
 #| msgid "Show Contact Information..."
 msgid "Show Contact Information…"
 msgstr "Нишон додани маълумоти тамос..."
 
 #. i18n.
-#: plugin/kastatsfavoritesmodel.cpp:467 plugin/rootmodel.cpp:418
+#: plugin/kastatsfavoritesmodel.cpp:548 plugin/rootmodel.cpp:416
 #: plugin/simplefavoritesmodel.cpp:31
 #, kde-format
 msgid "Favorites"
@@ -143,42 +143,42 @@ msgstr "Пок кардани тамос"
 msgid "Forget All Contacts"
 msgstr "Пок кардани ҳамаи тамосҳо"
 
-#: plugin/recentusagemodel.cpp:154
+#: plugin/recentusagemodel.cpp:151
 #, kde-format
 msgid "Recently Used"
 msgstr "Истифодашудаи охирин"
 
-#: plugin/recentusagemodel.cpp:159 plugin/recentusagemodel.cpp:292
+#: plugin/recentusagemodel.cpp:156 plugin/recentusagemodel.cpp:298
 #, kde-format
 msgid "Files"
 msgstr "Файлҳо"
 
-#: plugin/recentusagemodel.cpp:236
+#: plugin/recentusagemodel.cpp:238
 #, kde-format
 msgid "Forget Application"
 msgstr "Пок кардани барнома"
 
-#: plugin/recentusagemodel.cpp:326
+#: plugin/recentusagemodel.cpp:332
 #, kde-format
 msgid "Open Containing Folder"
 msgstr "Кушодани ҷузвадони марбут"
 
-#: plugin/recentusagemodel.cpp:329
+#: plugin/recentusagemodel.cpp:335
 #, kde-format
 msgid "Forget File"
 msgstr "Пок кардани файл"
 
-#: plugin/recentusagemodel.cpp:475
+#: plugin/recentusagemodel.cpp:472
 #, kde-format
 msgid "Forget All"
 msgstr "Ҳамаро пок кардан"
 
-#: plugin/recentusagemodel.cpp:477
+#: plugin/recentusagemodel.cpp:474
 #, kde-format
 msgid "Forget All Applications"
 msgstr "Пок кардани ҳамаи барномаҳо"
 
-#: plugin/recentusagemodel.cpp:480
+#: plugin/recentusagemodel.cpp:477
 #, kde-format
 msgid "Forget All Files"
 msgstr "Пок кардани ҳамаи файлҳо"
@@ -188,130 +188,130 @@ msgstr "Пок кардани ҳамаи файлҳо"
 msgid "Hide %1"
 msgstr "Пинҳон кардани %1"
 
-#: plugin/rootmodel.cpp:400
+#: plugin/rootmodel.cpp:398
 #, kde-format
 msgid "All Applications"
 msgstr "Ҳамаи барномаҳо"
 
-#: plugin/rootmodel.cpp:412
+#: plugin/rootmodel.cpp:410
 #, kde-format
 msgid "This shouldn't be visible! Use KICKER_FAVORITES_MODEL"
 msgstr ""
 
-#: plugin/rootmodel.cpp:424
+#: plugin/rootmodel.cpp:422
 #, kde-format
 msgid "Recent Contacts"
 msgstr "Тамосҳои охирин"
 
-#: plugin/rootmodel.cpp:431
+#: plugin/rootmodel.cpp:429
 #, kde-format
 msgid "Often Used Files"
 msgstr "Файлҳои бисёр маротиба истифодашуда"
 
-#: plugin/rootmodel.cpp:440
+#: plugin/rootmodel.cpp:438
 #, kde-format
 msgid "Recent Applications"
 msgstr "Барномаҳои охирин"
 
-#: plugin/rootmodel.cpp:440
+#: plugin/rootmodel.cpp:438
 #, kde-format
 msgid "Often Used Applications"
 msgstr "Барномаҳои бисёр маротиба истифодашуда"
 
-#: plugin/rootmodel.cpp:454
+#: plugin/rootmodel.cpp:453
 #, kde-format
 msgid "Power / Session"
 msgstr "Барқ / Ҷаласа"
 
-#: plugin/runnermodel.cpp:226
+#: plugin/runnermodel.cpp:231
 #, kde-format
 msgid "Search results"
 msgstr "Натиҷаҳои ҷустуҷӯ"
 
-#: plugin/systementry.cpp:194
+#: plugin/systementry.cpp:195
 #, kde-format
 msgid "Lock"
 msgstr "Қулф кардан"
 
-#: plugin/systementry.cpp:197
+#: plugin/systementry.cpp:198
 #, kde-format
 msgid "Log Out"
 msgstr "Баромадан"
 
-#: plugin/systementry.cpp:200 plugin/systementry.cpp:268
+#: plugin/systementry.cpp:201 plugin/systementry.cpp:269
 #, kde-format
 msgid "Save Session"
 msgstr "Нигоҳ доштани ҷаласа"
 
-#: plugin/systementry.cpp:203
+#: plugin/systementry.cpp:204
 #, kde-format
 msgid "Switch User"
 msgstr "Иваз кардани корбар"
 
-#: plugin/systementry.cpp:206
+#: plugin/systementry.cpp:207
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "Ба хоб равондан"
 
-#: plugin/systementry.cpp:209
+#: plugin/systementry.cpp:210
 #, kde-format
 msgid "Hibernate"
 msgstr "Нигоҳ доштан дар ҳолати ҷорӣ"
 
-#: plugin/systementry.cpp:212
+#: plugin/systementry.cpp:213
 #, kde-format
 msgid "Restart"
 msgstr "Аз нав оғоз кардани низом"
 
-#: plugin/systementry.cpp:215
+#: plugin/systementry.cpp:216
 #, kde-format
 msgid "Shut Down"
 msgstr "Хомӯш кардани низом"
 
-#: plugin/systementry.cpp:228 plugin/systementry.cpp:231
-#: plugin/systementry.cpp:234 plugin/systementry.cpp:237
+#: plugin/systementry.cpp:229 plugin/systementry.cpp:232
+#: plugin/systementry.cpp:235 plugin/systementry.cpp:238
 #, kde-format
 msgid "Session"
 msgstr "Ҷаласа"
 
-#: plugin/systementry.cpp:240 plugin/systementry.cpp:243
-#: plugin/systementry.cpp:246 plugin/systementry.cpp:249
+#: plugin/systementry.cpp:241 plugin/systementry.cpp:244
+#: plugin/systementry.cpp:247 plugin/systementry.cpp:250
 #, kde-format
 msgid "System"
 msgstr "Низом"
 
-#: plugin/systementry.cpp:262
+#: plugin/systementry.cpp:263
 #, kde-format
 msgid "Lock screen"
 msgstr "Экранро қулф мекунад"
 
-#: plugin/systementry.cpp:265
+#: plugin/systementry.cpp:266
 #, kde-format
 msgid "End session"
 msgstr "Анҷом додани ҷаласа"
 
-#: plugin/systementry.cpp:271
+#: plugin/systementry.cpp:272
 #, kde-format
 msgid "Start a parallel session as a different user"
 msgstr "Ҷаласаи мувозиро аз ҷониби корбари дигар оғоз мекунад"
 
-#: plugin/systementry.cpp:274
+#: plugin/systementry.cpp:275
 #, kde-format
 msgid "Suspend to RAM"
 msgstr "Низомро дар RAM таваққуф мекунад"
 
-#: plugin/systementry.cpp:277
+#: plugin/systementry.cpp:278
 #, kde-format
 msgid "Suspend to disk"
 msgstr "Ҳолати ҷорӣ дар диск таваққуф карда мешавад"
 
-#: plugin/systementry.cpp:280
+#: plugin/systementry.cpp:281
 #, kde-format
 msgid "Restart computer"
 msgstr "Компютерро аз нав оғоз мекунад"
 
-#: plugin/systementry.cpp:283
+#: plugin/systementry.cpp:284
 #, kde-format
 msgid "Turn off computer"
 msgstr "Компютерро хомӯш мекунад"

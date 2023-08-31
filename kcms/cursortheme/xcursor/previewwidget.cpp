@@ -79,23 +79,26 @@ public:
     {
         return pixmap();
     }
+    const std::vector<CursorTheme::CursorImage> &images() const
+    {
+        return m_images;
+    }
 
 private:
     int m_boundingSize;
     QPixmap m_pixmap;
+    std::vector<CursorTheme::CursorImage> m_images;
     QPoint m_pos;
 };
 
 PreviewCursor::PreviewCursor(const CursorTheme *theme, const QString &name, int size)
     : m_boundingSize(size > 0 ? size : theme->defaultCursorSize())
+    , m_images(theme->loadImages(name, size))
 {
-    // Create the preview pixmap
-    QImage image = theme->loadImage(name, size);
-
-    if (image.isNull())
+    if (m_images.empty())
         return;
 
-    m_pixmap = QPixmap::fromImage(image);
+    m_pixmap = QPixmap::fromImage(m_images.front().image);
 }
 
 QRect PreviewCursor::rect() const
@@ -112,6 +115,12 @@ PreviewWidget::PreviewWidget(QQuickItem *parent)
 {
     setAcceptHoverEvents(true);
     current = nullptr;
+    connect(&m_animationTimer, &QTimer::timeout, this, [this] {
+        Q_ASSERT(current);
+        setCursor(QCursor(QPixmap::fromImage(current->images().at(nextAnimationFrame).image)));
+        m_animationTimer.setInterval(current->images().at(nextAnimationFrame).delay);
+        nextAnimationFrame = (nextAnimationFrame + 1) % current->images().size();
+    });
 }
 
 PreviewWidget::~PreviewWidget()
@@ -127,7 +136,7 @@ void PreviewWidget::setThemeModel(SortProxyModel *themeModel)
     }
 
     m_themeModel = themeModel;
-    emit themeModelChanged();
+    Q_EMIT themeModelChanged();
 }
 
 SortProxyModel *PreviewWidget::themeModel()
@@ -142,7 +151,7 @@ void PreviewWidget::setCurrentIndex(int idx)
     }
 
     m_currentIndex = idx;
-    emit currentIndexChanged();
+    Q_EMIT currentIndexChanged();
 
     if (!m_themeModel) {
         return;
@@ -163,7 +172,7 @@ void PreviewWidget::setCurrentSize(int size)
     }
 
     m_currentSize = size;
-    emit currentSizeChanged();
+    Q_EMIT currentSizeChanged();
 
     if (!m_themeModel) {
         return;
@@ -192,7 +201,7 @@ void PreviewWidget::updateImplicitSize()
     qreal totalWidth = 0;
     qreal maxHeight = 0;
 
-    foreach (const PreviewCursor *c, list) {
+    for (const auto *c : std::as_const(list)) {
         totalWidth += c->width();
         maxHeight = qMax(c->height(), (int)maxHeight);
     }
@@ -211,7 +220,7 @@ void PreviewWidget::layoutItems()
         int nextX = spacing;
         int nextY = spacing;
 
-        foreach (PreviewCursor *c, list) {
+        for (auto *c : std::as_const(list)) {
             c->setPosition(nextX, nextY);
             nextX += c->boundingSize() + spacing;
             if (nextX + c->boundingSize() > width()) {
@@ -238,6 +247,7 @@ void PreviewWidget::setTheme(const CursorTheme *theme, const int size)
     }
 
     current = nullptr;
+    m_animationTimer.stop();
     update();
 }
 
@@ -246,7 +256,7 @@ void PreviewWidget::paint(QPainter *painter)
     if (needLayout)
         layoutItems();
 
-    foreach (const PreviewCursor *c, list) {
+    for (const auto *c : std::as_const(list)) {
         if (c->pixmap().isNull())
             continue;
 
@@ -259,27 +269,43 @@ void PreviewWidget::hoverMoveEvent(QHoverEvent *e)
     if (needLayout)
         layoutItems();
 
-    for (const PreviewCursor *c : qAsConst(list)) {
-        if (c->rect().contains(e->pos())) {
-            if (c != current) {
-                setCursor(c->pixmap());
-                current = c;
-            }
-            return;
-        }
+    auto it = std::find_if(list.cbegin(), list.cend(), [e](const PreviewCursor *c) {
+        return c->rect().contains(e->pos());
+    });
+    const PreviewCursor *cursor = it != list.cend() ? *it : nullptr;
+
+    if (cursor == std::exchange(current, cursor)) {
+        return;
+    }
+    m_animationTimer.stop();
+
+    if (current == nullptr) {
+        setCursor(Qt::ArrowCursor);
+        return;
     }
 
-    setCursor(Qt::ArrowCursor);
-    current = nullptr;
+    if (current->images().size() <= 1) {
+        setCursor(QCursor(current->pixmap()));
+        return;
+    }
+
+    nextAnimationFrame = 0;
+    m_animationTimer.setInterval(0);
+    m_animationTimer.start();
 }
 
 void PreviewWidget::hoverLeaveEvent(QHoverEvent *e)
 {
     Q_UNUSED(e);
+    m_animationTimer.stop();
     unsetCursor();
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void PreviewWidget::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
+#else
+void PreviewWidget::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry)
+#endif
 {
     Q_UNUSED(newGeometry)
     Q_UNUSED(oldGeometry)

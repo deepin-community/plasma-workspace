@@ -19,6 +19,7 @@
 
 #include <KAuthorized>
 #include <KIdleTime>
+#include <KService>
 #include <klocalizedstring.h>
 
 #include <QDebug>
@@ -29,6 +30,7 @@
 #include <QDBusMetaType>
 #include <QDBusPendingCallWatcher>
 #include <QDBusReply>
+#include <QIcon>
 
 #include "powermanagementservice.h"
 #include <Plasma/DataContainer>
@@ -37,6 +39,29 @@ static const char SOLID_POWERMANAGEMENT_SERVICE[] = "org.kde.Solid.PowerManageme
 
 Q_DECLARE_METATYPE(QList<InhibitionInfo>)
 Q_DECLARE_METATYPE(InhibitionInfo)
+
+namespace
+{
+template<typename ReplyType>
+void createAsyncDBusMethodCallAndCallback(QObject *parent,
+                                          const QString &path,
+                                          const QString &interface,
+                                          const QString &method,
+                                          std::function<void(ReplyType)> &&callback)
+{
+    QDBusMessage msg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE, path, interface, method);
+    QDBusPendingReply<ReplyType> reply = QDBusConnection::sessionBus().asyncCall(msg);
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, parent);
+    parent->connect(watcher, &QDBusPendingCallWatcher::finished, parent, [callback](QDBusPendingCallWatcher *watcher) {
+        QDBusPendingReply<ReplyType> reply = *watcher;
+        if (!reply.isError()) {
+            callback(reply.value());
+        }
+        watcher->deleteLater();
+    });
+}
+
+}
 
 PowermanagementEngine::PowermanagementEngine(QObject *parent, const QVariantList &args)
     : Plasma::DataEngine(parent, args)
@@ -127,6 +152,15 @@ void PowermanagementEngine::init()
         if (!QDBusConnection::sessionBus().connect(SOLID_POWERMANAGEMENT_SERVICE,
                                                    QStringLiteral("/org/kde/Solid/PowerManagement"),
                                                    SOLID_POWERMANAGEMENT_SERVICE,
+                                                   QStringLiteral("smoothedBatteryRemainingTimeChanged"),
+                                                   this,
+                                                   SLOT(smoothedBatteryRemainingTimeChanged(qulonglong)))) {
+            qDebug() << "error connecting to smoothed remaining time changes";
+        }
+
+        if (!QDBusConnection::sessionBus().connect(SOLID_POWERMANAGEMENT_SERVICE,
+                                                   QStringLiteral("/org/kde/Solid/PowerManagement"),
+                                                   SOLID_POWERMANAGEMENT_SERVICE,
                                                    QStringLiteral("chargeStopThresholdChanged"),
                                                    this,
                                                    SLOT(chargeStopThresholdChanged(int)))) {
@@ -208,7 +242,7 @@ bool PowermanagementEngine::sourceRequestEvent(const QString &name)
         uint index = 0;
         QStringList batterySources;
 
-        foreach (const Solid::Device &deviceBattery, listBattery) {
+        for (const Solid::Device &deviceBattery : listBattery) {
             const Solid::Battery *battery = deviceBattery.as<Solid::Battery>();
 
             const QString source = QStringLiteral("Battery%1").arg(index++);
@@ -231,43 +265,25 @@ bool PowermanagementEngine::sourceRequestEvent(const QString &name)
             setData(source, QStringLiteral("Vendor"), deviceBattery.vendor());
             setData(source, QStringLiteral("Product"), deviceBattery.product());
             setData(source, QStringLiteral("Capacity"), battery->capacity());
-            setData(source, QStringLiteral("Type"), batteryType(battery));
+            setData(source, QStringLiteral("Type"), batteryTypeToString(battery));
         }
 
         updateBatteryNames();
         updateOverallBattery();
 
+        setData(QStringLiteral("Battery"), QStringLiteral("Sources"), batterySources);
         setData(QStringLiteral("Battery"), QStringLiteral("Has Battery"), !batterySources.isEmpty());
         if (!batterySources.isEmpty()) {
-            setData(QStringLiteral("Battery"), QStringLiteral("Sources"), batterySources);
-            QDBusMessage msg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                              QStringLiteral("/org/kde/Solid/PowerManagement"),
-                                                              SOLID_POWERMANAGEMENT_SERVICE,
-                                                              QStringLiteral("batteryRemainingTime"));
-            QDBusPendingReply<qulonglong> reply = QDBusConnection::sessionBus().asyncCall(msg);
-            QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, this);
-            QObject::connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-                QDBusPendingReply<qulonglong> reply = *watcher;
-                if (!reply.isError()) {
-                    batteryRemainingTimeChanged(reply.value());
-                }
-                watcher->deleteLater();
-            });
+            createPowerManagementDBusMethodCallAndNotifyChanged<qulonglong>(
+                QStringLiteral("batteryRemainingTime"),
+                std::bind(&PowermanagementEngine::batteryRemainingTimeChanged, this, std::placeholders::_1));
+            createPowerManagementDBusMethodCallAndNotifyChanged<qulonglong>(
+                QStringLiteral("smoothedBatteryRemainingTime"),
+                std::bind(&PowermanagementEngine::smoothedBatteryRemainingTimeChanged, this, std::placeholders::_1));
         }
 
-        QDBusMessage msg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                          QStringLiteral("/org/kde/Solid/PowerManagement"),
-                                                          SOLID_POWERMANAGEMENT_SERVICE,
-                                                          QStringLiteral("chargeStopThreshold"));
-        QDBusPendingReply<int> reply = QDBusConnection::sessionBus().asyncCall(msg);
-        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, this);
-        QObject::connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<int> reply = *watcher;
-            if (!reply.isError()) {
-                chargeStopThresholdChanged(reply.value());
-            }
-            watcher->deleteLater();
-        });
+        createPowerManagementDBusMethodCallAndNotifyChanged<int>(QStringLiteral("chargeStopThreshold"),
+                                                                 std::bind(&PowermanagementEngine::chargeStopThresholdChanged, this, std::placeholders::_1));
 
         m_sources = basicSourceNames() + batterySources;
     } else if (name == QLatin1String("AC Adapter")) {
@@ -292,223 +308,99 @@ bool PowermanagementEngine::sourceRequestEvent(const QString &name)
         setData(QStringLiteral("Sleep States"), QStringLiteral("LockScreen"), m_session->canLock());
         setData(QStringLiteral("Sleep States"), QStringLiteral("Logout"), m_session->canLogout());
     } else if (name == QLatin1String("PowerDevil")) {
-        QDBusMessage screenMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                                QStringLiteral("/org/kde/Solid/PowerManagement/Actions/BrightnessControl"),
-                                                                QStringLiteral("org.kde.Solid.PowerManagement.Actions.BrightnessControl"),
-                                                                QStringLiteral("brightness"));
-        QDBusPendingReply<int> screenReply = QDBusConnection::sessionBus().asyncCall(screenMsg);
-        QDBusPendingCallWatcher *screenWatcher = new QDBusPendingCallWatcher(screenReply, this);
-        QObject::connect(screenWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<int> reply = *watcher;
-            if (!reply.isError()) {
-                screenBrightnessChanged(reply.value());
-            }
-            watcher->deleteLater();
+        createAsyncDBusMethodCallAndCallback<int>(this,
+                                                  QStringLiteral("/org/kde/Solid/PowerManagement/Actions/BrightnessControl"),
+                                                  QStringLiteral("org.kde.Solid.PowerManagement.Actions.BrightnessControl"),
+                                                  QStringLiteral("brightness"),
+                                                  std::bind(&PowermanagementEngine::screenBrightnessChanged, this, std::placeholders::_1));
+
+        createAsyncDBusMethodCallAndCallback<int>(this,
+                                                  QStringLiteral("/org/kde/Solid/PowerManagement/Actions/BrightnessControl"),
+                                                  QStringLiteral("org.kde.Solid.PowerManagement.Actions.BrightnessControl"),
+                                                  QStringLiteral("brightnessMax"),
+                                                  std::bind(&PowermanagementEngine::maximumScreenBrightnessChanged, this, std::placeholders::_1));
+
+        createAsyncDBusMethodCallAndCallback<int>(this,
+                                                  QStringLiteral("/org/kde/Solid/PowerManagement/Actions/KeyboardBrightnessControl"),
+                                                  QStringLiteral("org.kde.Solid.PowerManagement.Actions.KeyboardBrightnessControl"),
+                                                  QStringLiteral("keyboardBrightness"),
+                                                  std::bind(&PowermanagementEngine::keyboardBrightnessChanged, this, std::placeholders::_1));
+
+        createAsyncDBusMethodCallAndCallback<int>(this,
+                                                  QStringLiteral("/org/kde/Solid/PowerManagement/Actions/KeyboardBrightnessControl"),
+                                                  QStringLiteral("org.kde.Solid.PowerManagement.Actions.KeyboardBrightnessControl"),
+                                                  QStringLiteral("keyboardBrightnessMax"),
+                                                  std::bind(&PowermanagementEngine::maximumKeyboardBrightnessChanged, this, std::placeholders::_1));
+
+        createPowerManagementDBusMethodCallAndNotifyChanged<bool>(QStringLiteral("isLidPresent"), [this](bool replyValue) {
+            setData(QStringLiteral("PowerDevil"), QStringLiteral("Is Lid Present"), replyValue);
         });
 
-        QDBusMessage maxScreenMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                                   QStringLiteral("/org/kde/Solid/PowerManagement/Actions/BrightnessControl"),
-                                                                   QStringLiteral("org.kde.Solid.PowerManagement.Actions.BrightnessControl"),
-                                                                   QStringLiteral("brightnessMax"));
-        QDBusPendingReply<int> maxScreenReply = QDBusConnection::sessionBus().asyncCall(maxScreenMsg);
-        QDBusPendingCallWatcher *maxScreenWatcher = new QDBusPendingCallWatcher(maxScreenReply, this);
-        QObject::connect(maxScreenWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<int> reply = *watcher;
-            if (!reply.isError()) {
-                maximumScreenBrightnessChanged(reply.value());
-            }
-            watcher->deleteLater();
-        });
-
-        QDBusMessage keyboardMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                                  QStringLiteral("/org/kde/Solid/PowerManagement/Actions/KeyboardBrightnessControl"),
-                                                                  QStringLiteral("org.kde.Solid.PowerManagement.Actions.KeyboardBrightnessControl"),
-                                                                  QStringLiteral("keyboardBrightness"));
-        QDBusPendingReply<int> keyboardReply = QDBusConnection::sessionBus().asyncCall(keyboardMsg);
-        QDBusPendingCallWatcher *keyboardWatcher = new QDBusPendingCallWatcher(keyboardReply, this);
-        QObject::connect(keyboardWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<int> reply = *watcher;
-            if (!reply.isError()) {
-                keyboardBrightnessChanged(reply.value());
-            }
-            watcher->deleteLater();
-        });
-
-        QDBusMessage maxKeyboardMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                                     QStringLiteral("/org/kde/Solid/PowerManagement/Actions/KeyboardBrightnessControl"),
-                                                                     QStringLiteral("org.kde.Solid.PowerManagement.Actions.KeyboardBrightnessControl"),
-                                                                     QStringLiteral("keyboardBrightnessMax"));
-        QDBusPendingReply<int> maxKeyboardReply = QDBusConnection::sessionBus().asyncCall(maxKeyboardMsg);
-        QDBusPendingCallWatcher *maxKeyboardWatcher = new QDBusPendingCallWatcher(maxKeyboardReply, this);
-        QObject::connect(maxKeyboardWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<int> reply = *watcher;
-            if (!reply.isError()) {
-                maximumKeyboardBrightnessChanged(reply.value());
-            }
-            watcher->deleteLater();
-        });
-
-        QDBusMessage lidIsPresentMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                                      QStringLiteral("/org/kde/Solid/PowerManagement"),
-                                                                      SOLID_POWERMANAGEMENT_SERVICE,
-                                                                      QStringLiteral("isLidPresent"));
-        QDBusPendingReply<bool> lidIsPresentReply = QDBusConnection::sessionBus().asyncCall(lidIsPresentMsg);
-        QDBusPendingCallWatcher *lidIsPresentWatcher = new QDBusPendingCallWatcher(lidIsPresentReply, this);
-        QObject::connect(lidIsPresentWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<bool> reply = *watcher;
-            if (!reply.isError()) {
-                setData(QStringLiteral("PowerDevil"), QStringLiteral("Is Lid Present"), reply.value());
-            }
-            watcher->deleteLater();
-        });
-
-        QDBusMessage triggersLidActionMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                                           QStringLiteral("/org/kde/Solid/PowerManagement/Actions/HandleButtonEvents"),
-                                                                           QStringLiteral("org.kde.Solid.PowerManagement.Actions.HandleButtonEvents"),
-                                                                           QStringLiteral("triggersLidAction"));
-        QDBusPendingReply<bool> triggersLidActionReply = QDBusConnection::sessionBus().asyncCall(triggersLidActionMsg);
-        QDBusPendingCallWatcher *triggersLidActionWatcher = new QDBusPendingCallWatcher(triggersLidActionReply, this);
-        QObject::connect(triggersLidActionWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<bool> reply = *watcher;
-            if (!reply.isError()) {
-                triggersLidActionChanged(reply.value());
-            }
-            watcher->deleteLater();
-        });
+        createAsyncDBusMethodCallAndCallback<bool>(this,
+                                                   QStringLiteral("/org/kde/Solid/PowerManagement/Actions/HandleButtonEvents"),
+                                                   QStringLiteral("org.kde.Solid.PowerManagement.Actions.HandleButtonEvents"),
+                                                   QStringLiteral("triggersLidAction"),
+                                                   std::bind(&PowermanagementEngine::triggersLidActionChanged, this, std::placeholders::_1));
 
     } else if (name == QLatin1String("Inhibitions")) {
-        QDBusMessage inhibitionsMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                                     QStringLiteral("/org/kde/Solid/PowerManagement/PolicyAgent"),
-                                                                     QStringLiteral("org.kde.Solid.PowerManagement.PolicyAgent"),
-                                                                     QStringLiteral("ListInhibitions"));
-        QDBusPendingReply<QList<InhibitionInfo>> inhibitionsReply = QDBusConnection::sessionBus().asyncCall(inhibitionsMsg);
-        QDBusPendingCallWatcher *inhibitionsWatcher = new QDBusPendingCallWatcher(inhibitionsReply, this);
-        QObject::connect(inhibitionsWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<QList<InhibitionInfo>> reply = *watcher;
-            watcher->deleteLater();
-
-            if (!reply.isError()) {
-                removeAllData(QStringLiteral("Inhibitions"));
-
-                inhibitionsChanged(reply.value(), QStringList());
-            }
-        });
-
+        createAsyncDBusMethodCallAndCallback<QList<InhibitionInfo>>(this,
+                                                                    QStringLiteral("/org/kde/Solid/PowerManagement/PolicyAgent"),
+                                                                    QStringLiteral("org.kde.Solid.PowerManagement.PolicyAgent"),
+                                                                    QStringLiteral("ListInhibitions"),
+                                                                    [this](const QList<InhibitionInfo> &replyValue) {
+                                                                        removeAllData(QStringLiteral("Inhibitions"));
+                                                                        inhibitionsChanged(replyValue, QStringList());
+                                                                    });
         // any info concerning lock screen/screensaver goes here
     } else if (name == QLatin1String("UserActivity")) {
         setData(QStringLiteral("UserActivity"), QStringLiteral("IdleTime"), KIdleTime::instance()->idleTime());
     } else if (name == QLatin1String("Power Profiles")) {
-        auto profileMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                         QStringLiteral("/org/kde/Solid/PowerManagement/Actions/PowerProfile"),
-                                                         QStringLiteral("org.kde.Solid.PowerManagement.Actions.PowerProfile"),
-                                                         QStringLiteral("currentProfile"));
-        auto profileWatcher = new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(profileMsg));
-        connect(profileWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            watcher->deleteLater();
-            QDBusPendingReply<QString> reply = *watcher;
-            if (reply.isError()) {
-                return;
-            }
-            updatePowerProfileCurrentProfile(reply.value());
-        });
-
-        auto choicesMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                         QStringLiteral("/org/kde/Solid/PowerManagement/Actions/PowerProfile"),
-                                                         QStringLiteral("org.kde.Solid.PowerManagement.Actions.PowerProfile"),
-                                                         QStringLiteral("profileChoices"));
-        auto choicesWatcher = new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(choicesMsg));
-        connect(choicesWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            watcher->deleteLater();
-            QDBusPendingReply<QStringList> reply = *watcher;
-            if (reply.isError()) {
-                return;
-            }
-            updatePowerProfileChoices(reply.value());
-        });
-
-        auto inhibitedMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                           QStringLiteral("/org/kde/Solid/PowerManagement/Actions/PowerProfile"),
-                                                           QStringLiteral("org.kde.Solid.PowerManagement.Actions.PowerProfile"),
-                                                           QStringLiteral("performanceInhibitedReason"));
-        auto inhibitedWatcher = new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(inhibitedMsg));
-        connect(inhibitedWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            watcher->deleteLater();
-            QDBusPendingReply<QString> reply = *watcher;
-            if (reply.isError()) {
-                return;
-            }
-            updatePowerProfilePerformanceInhibitedReason(reply.value());
-        });
-
-        auto degradedMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                          QStringLiteral("/org/kde/Solid/PowerManagement/Actions/PowerProfile"),
-                                                          QStringLiteral("org.kde.Solid.PowerManagement.Actions.PowerProfile"),
-                                                          QStringLiteral("performanceDegradedReason"));
-        auto degradedWatcher = new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(degradedMsg));
-        connect(degradedWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            watcher->deleteLater();
-            QDBusPendingReply<QString> reply = *watcher;
-            if (reply.isError()) {
-                return;
-            };
-            updatePowerProfilePerformanceDegradedReason(reply.value());
-        });
-
-        auto holdsMsg = QDBusMessage::createMethodCall(SOLID_POWERMANAGEMENT_SERVICE,
-                                                       QStringLiteral("/org/kde/Solid/PowerManagement/Actions/PowerProfile"),
-                                                       QStringLiteral("org.kde.Solid.PowerManagement.Actions.PowerProfile"),
-                                                       QStringLiteral("profileHolds"));
-        auto holdsWatcher = new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(holdsMsg));
-        connect(holdsWatcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            watcher->deleteLater();
-            QDBusPendingReply<QList<QVariantMap>> reply = *watcher;
-            if (reply.isError()) {
-                return;
-            };
-            updatePowerProfileHolds(reply.value());
-        });
+        createPowerProfileDBusMethodCallAndNotifyChanged<QString>(
+            QStringLiteral("currentProfile"),
+            std::bind(&PowermanagementEngine::updatePowerProfileCurrentProfile, this, std::placeholders::_1));
+        createPowerProfileDBusMethodCallAndNotifyChanged<QStringList>(
+            QStringLiteral("profileChoices"),
+            std::bind(&PowermanagementEngine::updatePowerProfileChoices, this, std::placeholders::_1));
+        createPowerProfileDBusMethodCallAndNotifyChanged<QString>(
+            QStringLiteral("performanceInhibitedReason"),
+            std::bind(&PowermanagementEngine::updatePowerProfilePerformanceInhibitedReason, this, std::placeholders::_1));
+        createPowerProfileDBusMethodCallAndNotifyChanged<QString>(
+            QStringLiteral("performanceDegradedReason"),
+            std::bind(&PowermanagementEngine::updatePowerProfilePerformanceDegradedReason, this, std::placeholders::_1));
+        createPowerProfileDBusMethodCallAndNotifyChanged<QList<QVariantMap>>(
+            QStringLiteral("profileHolds"),
+            std::bind(&PowermanagementEngine::updatePowerProfileHolds, this, std::placeholders::_1));
     } else {
-        qDebug() << "Data for '" << name << "' not found";
+        qDebug() << "Data for" << name << "not found";
         return false;
     }
     return true;
 }
 
-QString PowermanagementEngine::batteryType(const Solid::Battery *battery) const
+QString PowermanagementEngine::batteryTypeToString(const Solid::Battery *battery) const
 {
     switch (battery->type()) {
     case Solid::Battery::PrimaryBattery:
         return QStringLiteral("Battery");
-        break;
     case Solid::Battery::UpsBattery:
         return QStringLiteral("Ups");
-        break;
     case Solid::Battery::MonitorBattery:
         return QStringLiteral("Monitor");
-        break;
     case Solid::Battery::MouseBattery:
         return QStringLiteral("Mouse");
-        break;
     case Solid::Battery::KeyboardBattery:
         return QStringLiteral("Keyboard");
-        break;
     case Solid::Battery::PdaBattery:
         return QStringLiteral("Pda");
-        break;
     case Solid::Battery::PhoneBattery:
         return QStringLiteral("Phone");
-        break;
     case Solid::Battery::GamingInputBattery:
         return QStringLiteral("GamingInput");
-        break;
     case Solid::Battery::BluetoothBattery:
         return QStringLiteral("Bluetooth");
-        break;
     default:
         return QStringLiteral("Unknown");
     }
-
-    return QStringLiteral("Unknown");
 }
 
 bool PowermanagementEngine::updateSourceEvent(const QString &source)
@@ -580,7 +472,7 @@ void PowermanagementEngine::updateBatteryPowerSupplyState(bool newState, const Q
 void PowermanagementEngine::updateBatteryNames()
 {
     uint unnamedBatteries = 0;
-    foreach (QString source, m_batterySources) {
+    for (const QString &source : std::as_const(m_batterySources)) {
         DataContainer *batteryDataContainer = containerForSource(source);
         if (batteryDataContainer) {
             const QString batteryVendor = batteryDataContainer->data()[QStringLiteral("Vendor")].toString();
@@ -621,7 +513,7 @@ void PowermanagementEngine::updateOverallBattery()
     double totalPercentage = 0;
     int count = 0;
 
-    foreach (const Solid::Device &deviceBattery, listBattery) {
+    for (const Solid::Device &deviceBattery : listBattery) {
         const Solid::Battery *battery = deviceBattery.as<Solid::Battery>();
 
         if (battery && battery->isPowerSupply()) {
@@ -641,13 +533,13 @@ void PowermanagementEngine::updateOverallBattery()
         // Energy is sometimes way off causing us to show rubbish; this is a UPower issue
         // but anyway having just one battery and the tooltip showing strange readings
         // compared to the popup doesn't look polished.
-        setData(QStringLiteral("Battery"), QStringLiteral("Percent"), totalPercentage);
+        setData(QStringLiteral("Battery"), QStringLiteral("Percent"), qRound(totalPercentage));
     } else if (totalEnergy > 0) {
         setData(QStringLiteral("Battery"), QStringLiteral("Percent"), qRound(energy / totalEnergy * 100));
     } else if (count > 0) { // UPS don't have energy, see Bug 348588
         setData(QStringLiteral("Battery"), QStringLiteral("Percent"), qRound(totalPercentage / static_cast<qreal>(count)));
     } else {
-        setData(QStringLiteral("Battery"), QStringLiteral("Percent"), 0);
+        setData(QStringLiteral("Battery"), QStringLiteral("Percent"), int(0));
     }
 
     if (hasCumulative) {
@@ -763,7 +655,7 @@ void PowermanagementEngine::deviceAdded(const QString &udi)
             setData(source, QStringLiteral("Vendor"), device.vendor());
             setData(source, QStringLiteral("Product"), device.product());
             setData(source, QStringLiteral("Capacity"), battery->capacity());
-            setData(source, QStringLiteral("Type"), batteryType(battery));
+            setData(source, QStringLiteral("Type"), batteryTypeToString(battery));
 
             setData(QStringLiteral("Battery"), QStringLiteral("Sources"), sourceNames);
             setData(QStringLiteral("Battery"), QStringLiteral("Has Battery"), !sourceNames.isEmpty());
@@ -778,6 +670,11 @@ void PowermanagementEngine::batteryRemainingTimeChanged(qulonglong time)
 {
     // qDebug() << "Remaining time 2:" << time;
     setData(QStringLiteral("Battery"), QStringLiteral("Remaining msec"), time);
+}
+
+void PowermanagementEngine::smoothedBatteryRemainingTimeChanged(qulonglong time)
+{
+    setData(QStringLiteral("Battery"), QStringLiteral("Smoothed Remaining msec"), time);
 }
 
 void PowermanagementEngine::screenBrightnessChanged(int brightness)
@@ -827,6 +724,26 @@ void PowermanagementEngine::inhibitionsChanged(const QList<InhibitionInfo> &adde
     }
 }
 
+template<typename ReplyType>
+inline void PowermanagementEngine::createPowerManagementDBusMethodCallAndNotifyChanged(const QString &method, std::function<void(ReplyType)> &&callback)
+{
+    createAsyncDBusMethodCallAndCallback<ReplyType>(this,
+                                                    QStringLiteral("/org/kde/Solid/PowerManagement"),
+                                                    SOLID_POWERMANAGEMENT_SERVICE,
+                                                    method,
+                                                    std::move(callback));
+}
+
+template<typename ReplyType>
+inline void PowermanagementEngine::createPowerProfileDBusMethodCallAndNotifyChanged(const QString &method, std::function<void(ReplyType)> &&callback)
+{
+    createAsyncDBusMethodCallAndCallback<ReplyType>(this,
+                                                    QStringLiteral("/org/kde/Solid/PowerManagement/Actions/PowerProfile"),
+                                                    QStringLiteral("org.kde.Solid.PowerManagement.Actions.PowerProfile"),
+                                                    method,
+                                                    std::move(callback));
+}
+
 void PowermanagementEngine::populateApplicationData(const QString &name, QString *prettyName, QString *icon)
 {
     if (m_applicationInfo.contains(name)) {
@@ -836,13 +753,16 @@ void PowermanagementEngine::populateApplicationData(const QString &name, QString
     } else {
         KService::Ptr service = KService::serviceByStorageId(name + ".desktop");
         if (service) {
-            *prettyName = service->property(QStringLiteral("Name"), QVariant::Invalid).toString(); // cannot be null
+            *prettyName = service->name(); // cannot be null
             *icon = service->icon();
 
             m_applicationInfo.insert(name, qMakePair(*prettyName, *icon));
         } else {
             *prettyName = name;
             *icon = name.section(QLatin1Char('/'), -1).toLower();
+            if (!QIcon::hasThemeIcon(*icon)) {
+                icon->clear();
+            }
         }
     }
 }

@@ -25,6 +25,9 @@ public:
 
     Q_INVOKABLE bool trigger(int row, const QString &actionId, const QVariant &argument) override;
 
+Q_SIGNALS:
+    void sessionManagementStateChanged();
+
 protected Q_SLOTS:
     void refresh() override;
 
@@ -32,4 +35,5 @@ private:
     void populate();
 
     QVector<SystemEntry *> m_entries;
+    decltype(m_entries) m_invalidEntries;
 };

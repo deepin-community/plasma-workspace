@@ -28,3 +28,6 @@ msgstr "%1 ਜਾਬ-ਵਿਊ ਲੱਭੀ ਨਹੀਂ ਜਾ ਸਕਦੀ "
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "ਵਰਤੋਂਕਾਰ ਨੇ ਕਾਰਵਾਈ ਰੱਦ ਕੀਤੀ।"

@@ -5,7 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.0
+import QtQuick 2.15
 import QtQuick.Controls.Private 1.0
 import QtQuick.Controls 2.3 as QtControls2
 import QtGraphicalEffects 1.0
@@ -20,8 +20,8 @@ KCM.GridDelegate {
     id: wallpaperDelegate
 
     property alias color: backgroundRect.color
-    readonly property bool selected: (GridView.currentIndex === index)
     opacity: model.pendingDeletion ? 0.5 : 1
+    scale: index, 1 // Workaround for https://bugreports.qt.io/browse/QTBUG-107458
 
     text: model.display
     subtitle: model.author
@@ -38,17 +38,20 @@ KCM.GridDelegate {
             icon.name: "edit-undo"
             visible: model.pendingDeletion
             tooltip: i18nd("plasma_wallpaper_org.kde.image", "Restore wallpaper")
-            onTriggered: imageModel.setPendingDeletion(index, !model.pendingDeletion)
+            onTriggered: model.pendingDeletion = false
         },
         Kirigami.Action {
             icon.name: "edit-delete"
             tooltip: i18nd("plasma_wallpaper_org.kde.image", "Remove Wallpaper")
             visible: model.removable && !model.pendingDeletion && configDialog.currentWallpaper == "org.kde.image"
             onTriggered: {
-                imageModel.setPendingDeletion(index, true);
-                if (wallpapersGrid.currentIndex === index) {
-                    wallpapersGrid.currentIndex = (index + 1) % wallpapersGrid.rowCount();
+                model.pendingDeletion = true;
+
+                if (wallpapersGrid.view.currentIndex === index) {
+                    const newIndex = (index + 1) % (imageModel.count - 1);
+                    wallpapersGrid.view.itemAtIndex(newIndex).clicked();
                 }
+                root.configurationChanged(); // BUG 438585
             }
         }
     ]
@@ -58,11 +61,11 @@ KCM.GridDelegate {
         color: cfg_Color
         anchors.fill: parent
 
-        QIconItem {
+        Kirigami.Icon {
             anchors.centerIn: parent
             width: PlasmaCore.Units.iconSizes.large
             height: width
-            icon: "view-preview"
+            source: "view-preview"
             visible: !walliePreview.visible
         }
 
@@ -110,13 +113,28 @@ KCM.GridDelegate {
             anchors.right: parent.right
             anchors.top: parent.top
             checked: visible ? model.checked : false
-            onToggled: imageWallpaper.toggleSlide(model.path, checked)
+            onToggled: model.checked = checked
+        }
+
+        Behavior on color {
+            ColorAnimation {
+                duration: Kirigami.Units.longDuration
+                easing.type: Easing.InOutQuad
+            }
+        }
+    }
+
+    Behavior on opacity {
+        OpacityAnimator {
+            duration: PlasmaCore.Units.longDuration
+            easing.type: Easing.InOutQuad
         }
     }
 
     onClicked: {
         if (configDialog.currentWallpaper == "org.kde.image") {
             cfg_Image = model.packageName || model.path;
+            wallpaper.configuration.PreviewImage = cfg_Image;
         }
         GridView.currentIndex = index;
     }

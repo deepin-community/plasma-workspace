@@ -6,20 +6,23 @@
 #pragma once
 
 #include <QAbstractListModel>
-#include <QMutex>
+#include <QRecursiveMutex>
 
 class HistoryItem;
-
-enum class HistoryItemType {
-    Text,
-    Image,
-    Url,
-};
 
 class HistoryModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
+    enum RoleType {
+        HistoryItemConstPtrRole = Qt::UserRole,
+        UuidRole,
+        TypeRole,
+        Base64UuidRole,
+        TypeIntRole,
+    };
+    Q_ENUM(RoleType)
+
     explicit HistoryModel(QObject *parent = nullptr);
     ~HistoryModel() override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
@@ -43,8 +46,9 @@ public:
     QModelIndex indexOf(const HistoryItem *item) const;
 
     void insert(QSharedPointer<HistoryItem> item);
+    void clearAndBatchInsert(const QVector<QSharedPointer<HistoryItem>> &items);
 
-    QMutex *mutex()
+    QRecursiveMutex *mutex()
     {
         return &m_mutex;
     }
@@ -54,7 +58,7 @@ private:
     QList<QSharedPointer<HistoryItem>> m_items;
     int m_maxSize;
     bool m_displayImages;
-    QMutex m_mutex;
+    QRecursiveMutex m_mutex;
 };
 
 inline int HistoryModel::maxSize() const
@@ -71,5 +75,3 @@ inline void HistoryModel::setDisplayImages(bool show)
 {
     m_displayImages = show;
 }
-
-Q_DECLARE_METATYPE(HistoryItemType)

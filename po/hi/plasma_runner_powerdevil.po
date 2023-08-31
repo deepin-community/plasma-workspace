@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_runner_powerdevil\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-01-27 00:45+0000\n"
 "PO-Revision-Date: 2021-07-01 18:29+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -21,37 +21,37 @@ msgstr ""
 "\n"
 "\n"
 
-#: PowerDevilRunner.cpp:33
+#: PowerDevilRunner.cpp:32
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "suspend"
 msgstr "निलंबित"
 
-#: PowerDevilRunner.cpp:35
+#: PowerDevilRunner.cpp:34
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "to ram"
 msgstr "रैम में"
 
-#: PowerDevilRunner.cpp:37
+#: PowerDevilRunner.cpp:36
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "sleep"
 msgstr "स्लीप"
 
-#: PowerDevilRunner.cpp:39
+#: PowerDevilRunner.cpp:38
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "hibernate"
 msgstr "हाइबरनेट"
 
-#: PowerDevilRunner.cpp:41
+#: PowerDevilRunner.cpp:40
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "to disk"
 msgstr "डिस्क में"
 
-#: PowerDevilRunner.cpp:43 PowerDevilRunner.cpp:45 PowerDevilRunner.cpp:68
+#: PowerDevilRunner.cpp:42 PowerDevilRunner.cpp:44 PowerDevilRunner.cpp:69
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
 msgid "dim screen"
@@ -76,66 +76,142 @@ msgstr "सिस्टम को रैम में स्थगित कर�
 msgid "Suspends the system to disk"
 msgstr "सिस्टम को डिस्क में स्थगित करें"
 
-#: PowerDevilRunner.cpp:64
-#, kde-format
-msgctxt "Note this is a KRunner keyword"
-msgid "screen brightness"
-msgstr "स्क्रीन चमकीलापन"
+#: PowerDevilRunner.cpp:65
+#, fuzzy, kde-format
+#| msgctxt "Note this is a KRunner keyword, it should end with a space"
+#| msgid "screen brightness "
+msgctxt ""
+"Note this is a KRunner keyword, <> is a placeholder and should be at the end"
+msgid "screen brightness <percent value>"
+msgstr "स्क्रीन चमकीलापन "
 
-#: PowerDevilRunner.cpp:66
-#, no-c-format, kde-format
+#: PowerDevilRunner.cpp:67
+#, fuzzy, no-c-format, kde-format
+#| msgid ""
+#| "Lists screen brightness options or sets it to the brightness defined by :"
+#| "q:; e.g. screen brightness 50 would dim the screen to 50% maximum "
+#| "brightness"
 msgid ""
-"Lists screen brightness options or sets it to the brightness defined by :q:; "
-"e.g. screen brightness 50 would dim the screen to 50% maximum brightness"
+"Lists screen brightness options or sets it to the brightness defined by the "
+"search term; e.g. screen brightness 50 would dim the screen to 50% maximum "
+"brightness"
 msgstr ""
 "स्क्रीन के चमकीलेपन विकल्पों को सूचीबद्ध करता है या इसे :q: द्वारा परिभाषित चमकीलेपन पर "
 "सेट करता है। जैसे स्क्रीन चमकीलापन ५० स्क्रीन को ५०% अधिकतम चमक तक कम कर देगी।"
 
-#: PowerDevilRunner.cpp:94
+#: PowerDevilRunner.cpp:95
 #, kde-format
 msgid "Set Brightness to %1%"
 msgstr "चमकीलेपन को %1 पर सेट करें"
 
-#: PowerDevilRunner.cpp:103
+#: PowerDevilRunner.cpp:104
 #, kde-format
 msgid "Dim screen totally"
 msgstr "पूरी तरह से धुंधला स्क्रीन"
 
-#: PowerDevilRunner.cpp:111
+#: PowerDevilRunner.cpp:112
 #, kde-format
 msgid "Dim screen by half"
 msgstr "आधा धुंधला स्क्रीन"
 
-#: PowerDevilRunner.cpp:141
+#: PowerDevilRunner.cpp:142
 #, kde-format
 msgctxt "Suspend to RAM"
 msgid "Sleep"
 msgstr "निद्रा"
 
-#: PowerDevilRunner.cpp:142
+#: PowerDevilRunner.cpp:143
 #, kde-format
 msgid "Suspend to RAM"
 msgstr "स्थगित को"
 
-#: PowerDevilRunner.cpp:147
+#: PowerDevilRunner.cpp:148
 #, kde-format
 msgctxt "Suspend to disk"
 msgid "Hibernate"
 msgstr "सुप्तावस्था"
 
-#: PowerDevilRunner.cpp:148
+#: PowerDevilRunner.cpp:149
 #, kde-format
 msgid "Suspend to disk"
 msgstr "डिस्क पर निलंबित"
 
-#: PowerDevilRunner.cpp:217
+#: PowerDevilRunner.cpp:218
 #, kde-format
 msgctxt "Note this is a KRunner keyword, it should end with a space"
 msgid "screen brightness "
 msgstr "स्क्रीन चमकीलापन "
 
-#: PowerDevilRunner.cpp:219
+#: PowerDevilRunner.cpp:220
 #, kde-format
 msgctxt "Note this is a KRunner keyword, it should end with a space"
 msgid "dim screen "
 msgstr "स्क्रीन धुंधला करें "
+
+#~ msgctxt "Note this is a KRunner keyword"
+#~ msgid "screen brightness"
+#~ msgstr "स्क्रीन चमकीलापन"
+
+#~ msgctxt "Note this is a KRunner keyword; %1 is a parameter"
+#~ msgid "screen brightness %1"
+#~ msgstr "स्क्रीन चमकीलापन %1"
+
+#~ msgctxt "Note this is a KRunner keyword; %1 is a parameter"
+#~ msgid "dim screen %1"
+#~ msgstr "धुंधला स्क्रीन %1"
+
+#, fuzzy
+#~| msgctxt "Note this is a KRunner keyword"
+#~| msgid "suspend"
+#~ msgid "Suspend"
+#~ msgstr "सस्पेंड"
+
+#~ msgctxt "Note this is a KRunner keyword"
+#~ msgid "power profile"
+#~ msgstr "पावर प्रोफाइल"
+
+#~ msgctxt "Note this is a KRunner keyword; %1 is a parameter"
+#~ msgid "power profile %1"
+#~ msgstr "पावर प्रोफाइल %1"
+
+#~ msgid "Set Profile to '%1'"
+#~ msgstr "प्रोफाइल को सेट करें '%1' में"
+
+#~ msgid "Turn off screen"
+#~ msgstr "स्क्रीन बंद करें"
+
+#~ msgctxt "Note this is a KRunner keyword"
+#~ msgid "cpu policy"
+#~ msgstr "cpu नीति"
+
+#~ msgctxt "Note this is a KRunner keyword"
+#~ msgid "power governor"
+#~ msgstr "पावर गवर्नर"
+
+#, fuzzy
+#~ msgid ""
+#~ "Lists all CPU frequency scaling policies and allows them to be activated"
+#~ msgstr "सूची सभी CPU नीति और को"
+
+#~ msgctxt "Note this is a KRunner keyword; %1 is a parameter"
+#~ msgid "cpu policy %1"
+#~ msgstr "cpu नीति %1"
+
+#~ msgctxt "Note this is a KRunner keyword; %1 is a parameter"
+#~ msgid "power governor %1"
+#~ msgstr "पावर गवर्नर %1"
+
+#, fuzzy
+#~ msgid "Set CPU frequency scaling policy to '%1'"
+#~ msgstr "सेट CPU को"
+
+#~ msgctxt "Note this is a KRunner keyword; %1 is a parameter"
+#~ msgid "power scheme %1"
+#~ msgstr "पावर योजना %1"
+
+#~ msgctxt "Note this is a KRunner keyword"
+#~ msgid "power scheme"
+#~ msgstr "पावर योजना"
+
+#~ msgid "Set Powersaving Scheme to '%1'"
+#~ msgstr "पावर सेविंग योजना को '%1' में सेट करें"

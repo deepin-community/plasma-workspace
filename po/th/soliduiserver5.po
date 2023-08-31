@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: soliduiserver\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-02-17 00:47+0000\n"
 "PO-Revision-Date: 2008-11-24 23:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -19,7 +19,41 @@ msgstr ""
 "X-Generator: Lokalize 0.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: soliduiserver.cpp:61
+#: soliduiserver.cpp:62
 #, kde-format
 msgid "'%1' needs a password to be accessed. Please enter a password."
 msgstr "'%1' ต้องการรหัสผ่านสำหรับเข้าถึง โปรดใส่รหัสผ่าน"
+
+#~ msgid "A new device has been detected.<br><b>What do you want to do?</b>"
+#~ msgstr "ตรวจพบอุปกรณ์ใหม่ <br><b>คุณต้องการทำอะไร ?</b>"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "Do nothing"
+#~ msgstr "ไม่ต้องทำอะไร"
+
+#~ msgctxt "A default name for an action without proper label"
+#~ msgid "Unknown"
+#~ msgstr "ไม่ทราบ"
+
+#~ msgid ""
+#~ "An autorun file as been found on your '%1'. Do you want to execute it?\n"
+#~ "Note that executing a file on a medium may compromise your system's "
+#~ "security"
+#~ msgstr ""
+#~ "พบแฟ้มสั่งทำงานอัตโนมัติบน '%1' ของคุณ คุณต้องการสั่งให้ทำงานหรือไม่?\n"
+#~ "โปรดสังเกตว่า การสั่งให้แฟ้มทำงานบนสื่อบันทึกอาจจะทำให้ความปลอดภัยของระบบอ่อนลง"
+
+#~ msgid "Autorun - %1"
+#~ msgstr "สั่งทำงานอัตโนมัติ - %1"
+
+#~ msgid ""
+#~ "An autoopen file as been found on your '%1'. Do you want to open '%2'?\n"
+#~ "Note that opening a file on a medium may compromise your system's security"
+#~ msgstr ""
+#~ "พบแฟ้มเปิดอัตโนมัติบน '%1' ของคุณ คุณต้องการที่จะเปิด '%2' หรือไม่?\n"
+#~ "โปรดสังเกตว่าการเปิดแฟ้มบนสื่อบันทึก อาจทำให้ความปลอดภัยของระบบอ่อนลง"
+
+#~ msgid "Autoopen - %1"
+#~ msgstr "เปิดอัตโนมัติ - %1"

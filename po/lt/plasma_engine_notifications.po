@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_notifications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-05-24 00:46+0000\n"
 "PO-Revision-Date: 2019-06-06 13:15+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -28,7 +28,7 @@ msgstr "Nenustatytas pranešimų dataEngine."
 msgid "Invalid destination: %1"
 msgstr "Neteisinga paskirtis: %1"
 
-#: notificationsengine.cpp:87
+#: notificationsengine.cpp:88
 #, kde-format
 msgid "Unknown Application"
 msgstr "Nežinoma programa"

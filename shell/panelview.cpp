@@ -6,6 +6,8 @@
 
 #include <config-plasma.h>
 
+#include "../c_ptr.h"
+#include "debug.h"
 #include "panelconfigview.h"
 #include "panelshadows_p.h"
 #include "panelview.h"
@@ -21,6 +23,7 @@
 #include <QRegularExpression>
 #include <QScreen>
 
+#include <KX11Extras>
 #include <kactioncollection.h>
 #include <kwindoweffects.h>
 #include <kwindowsystem.h>
@@ -33,11 +36,18 @@
 
 #if HAVE_X11
 #include <NETWM>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#include <qpa/qplatformwindow_p.h>
+#else
 #include <QX11Info>
 #include <QtPlatformHeaders/QXcbWindowFunctions>
+#endif
 #include <xcb/xcb.h>
 #endif
+#include <chrono>
 
+using namespace std::chrono_literals;
 static const int MINSIZE = 10;
 
 PanelView::PanelView(ShellCorona *corona, QScreen *targetScreen, QWindow *parent)
@@ -48,7 +58,10 @@ PanelView::PanelView(ShellCorona *corona, QScreen *targetScreen, QWindow *parent
     , m_contentLength(0)
     , m_distance(0)
     , m_thickness(30)
+    , m_minDrawingWidth(0)
+    , m_minDrawingHeight(0)
     , m_initCompleted(false)
+    , m_floating(false)
     , m_alignment(Qt::AlignLeft)
     , m_corona(corona)
     , m_visibilityMode(NormalPanel)
@@ -62,7 +75,6 @@ PanelView::PanelView(ShellCorona *corona, QScreen *targetScreen, QWindow *parent
         setScreen(targetScreen);
     }
     setResizeMode(QuickViewSharedEngine::SizeRootObjectToView);
-    setClearBeforeRendering(true);
     setColor(QColor(Qt::transparent));
     setFlags(Qt::FramelessWindowHint | Qt::WindowDoesNotAcceptFocus);
     updateAdaptiveOpacityEnabled();
@@ -75,29 +87,37 @@ PanelView::PanelView(ShellCorona *corona, QScreen *targetScreen, QWindow *parent
     // so we exactly know when rootobject is available
     connect(this, &QuickViewSharedEngine::statusChanged, this, &PanelView::handleQmlStatusChange);
 
-    m_positionPaneltimer.setSingleShot(true);
-    m_positionPaneltimer.setInterval(150);
-    connect(&m_positionPaneltimer, &QTimer::timeout, this, &PanelView::restore);
-
     m_unhideTimer.setSingleShot(true);
-    m_unhideTimer.setInterval(500);
+    m_unhideTimer.setInterval(500ms);
     connect(&m_unhideTimer, &QTimer::timeout, this, &PanelView::restoreAutoHide);
 
     m_lastScreen = targetScreen;
-    connect(this, &PanelView::locationChanged, &m_positionPaneltimer, qOverload<>(&QTimer::start));
+    connect(this, &PanelView::locationChanged, this, &PanelView::restore);
     connect(this, &PanelView::containmentChanged, this, &PanelView::refreshContainment);
 
+    // FEATURE 352476: cancel focus on the panel when clicking outside
+    connect(this, &PanelView::activeFocusItemChanged, this, [this] {
+        if (containment()->status() == Plasma::Types::AcceptingInputStatus && !activeFocusItem()) {
+            // BUG 454729: avoid switching to PassiveStatus in keyboard navigation
+            containment()->setStatus(Plasma::Types::ActiveStatus);
+        }
+    });
+
     if (!m_corona->kPackage().isValid()) {
-        qWarning() << "Invalid home screen package";
+        qCWarning(PLASMASHELL) << "Invalid home screen package";
     }
 
     m_strutsTimer.setSingleShot(true);
     connect(&m_strutsTimer, &QTimer::timeout, this, &PanelView::updateStruts);
 
+    // Register enums
+    qmlRegisterUncreatableMetaObject(PanelView::staticMetaObject, "org.kde.plasma.shell.panel", 0, 1, "Global", QStringLiteral("Error: only enums"));
+
     qmlRegisterAnonymousType<QScreen>("", 1);
     rootContext()->setContextProperty(QStringLiteral("panel"), this);
     setSource(m_corona->kPackage().fileUrl("views", QStringLiteral("Panel.qml")));
     updatePadding();
+    updateFloating();
 }
 
 PanelView::~PanelView()
@@ -183,7 +203,7 @@ void PanelView::setAlignment(Qt::Alignment alignment)
     m_alignment = alignment;
     // alignment is not resolution dependent, doesn't save to Defaults
     config().parent().writeEntry("alignment", (int)m_alignment);
-    emit alignmentChanged();
+    Q_EMIT alignmentChanged();
     positionPanel();
 }
 
@@ -212,9 +232,9 @@ void PanelView::setOffset(int offset)
     config().writeEntry("offset", m_offset);
     configDefaults().writeEntry("offset", m_offset);
     positionPanel();
-    emit offsetChanged();
+    Q_EMIT offsetChanged();
     m_corona->requestApplicationConfigSync();
-    emit m_corona->availableScreenRegionChanged();
+    Q_EMIT m_corona->availableScreenRegionChanged();
 }
 
 int PanelView::thickness() const
@@ -222,16 +242,35 @@ int PanelView::thickness() const
     return m_thickness;
 }
 
+int PanelView::totalThickness() const
+{
+    switch (containment()->location()) {
+    case Plasma::Types::TopEdge:
+        return thickness() + m_topFloatingPadding + m_bottomFloatingPadding;
+    case Plasma::Types::LeftEdge:
+        return thickness() + m_leftFloatingPadding + m_rightFloatingPadding;
+    case Plasma::Types::RightEdge:
+        return thickness() + m_rightFloatingPadding + m_leftFloatingPadding;
+    case Plasma::Types::BottomEdge:
+        return thickness() + m_bottomFloatingPadding + m_topFloatingPadding;
+    default:
+        return thickness();
+    }
+}
+
 void PanelView::setThickness(int value)
 {
+    if (value < minThickness()) {
+        value = minThickness();
+    }
     if (value == thickness()) {
         return;
     }
 
     m_thickness = value;
-    emit thicknessChanged();
+    Q_EMIT thicknessChanged();
 
-    config().writeEntry("thickness", value);
+    // For thickness, always use the default thickness value for horizontal/vertical panel
     configDefaults().writeEntry("thickness", value);
     m_corona->requestApplicationConfigSync();
     resizePanel();
@@ -271,7 +310,7 @@ void PanelView::setMaximumLength(int length)
     config().writeEntry("maxLength", length);
     configDefaults().writeEntry("maxLength", length);
     m_maxLength = length;
-    emit maximumLengthChanged();
+    Q_EMIT maximumLengthChanged();
     m_corona->requestApplicationConfigSync();
 
     resizePanel();
@@ -295,7 +334,7 @@ void PanelView::setMinimumLength(int length)
     config().writeEntry("minLength", length);
     configDefaults().writeEntry("minLength", length);
     m_minLength = length;
-    emit minimumLengthChanged();
+    Q_EMIT minimumLengthChanged();
     m_corona->requestApplicationConfigSync();
 
     resizePanel();
@@ -313,8 +352,41 @@ void PanelView::setDistance(int dist)
     }
 
     m_distance = dist;
-    emit distanceChanged();
+    Q_EMIT distanceChanged();
     positionPanel();
+}
+
+bool PanelView::floating() const
+{
+    return m_floating;
+}
+
+void PanelView::setFloating(bool floating)
+{
+    if (m_floating == floating) {
+        return;
+    }
+
+    m_floating = floating;
+    if (config().isValid() && config().parent().isValid()) {
+        config().parent().writeEntry("floating", (int)floating);
+        m_corona->requestApplicationConfigSync();
+    }
+    Q_EMIT floatingChanged();
+
+    updateFloating();
+    updateEnabledBorders();
+    updateMask();
+}
+
+int PanelView::minThickness() const
+{
+    if (formFactor() == Plasma::Types::Vertical) {
+        return m_minDrawingWidth;
+    } else if (formFactor() == Plasma::Types::Horizontal) {
+        return m_minDrawingHeight;
+    }
+    return 0;
 }
 
 Plasma::Types::BackgroundHints PanelView::backgroundHints() const
@@ -330,7 +402,7 @@ void PanelView::setBackgroundHints(Plasma::Types::BackgroundHints hint)
 
     m_backgroundHints = hint;
 
-    emit backgroundHintsChanged();
+    Q_EMIT backgroundHintsChanged();
 }
 
 Plasma::FrameSvg::EnabledBorders PanelView::enabledBorders() const
@@ -360,7 +432,7 @@ void PanelView::setVisibilityMode(PanelView::VisibilityMode mode)
     visibilityModeToWayland();
     updateStruts();
 
-    emit visibilityModeChanged();
+    Q_EMIT visibilityModeChanged();
 
     restoreAutoHide();
 }
@@ -417,14 +489,14 @@ void PanelView::setOpacityMode(PanelView::OpacityMode mode)
             config().parent().writeEntry("panelOpacity", (int)mode);
             m_corona->requestApplicationConfigSync();
         }
-        emit opacityModeChanged();
+        Q_EMIT opacityModeChanged();
     }
 }
 
 void PanelView::updateAdaptiveOpacityEnabled()
 {
-    emit opacityModeChanged();
-    emit adaptiveOpacityEnabledChanged();
+    Q_EMIT opacityModeChanged();
+    Q_EMIT adaptiveOpacityEnabledChanged();
 }
 
 void PanelView::positionPanel()
@@ -473,79 +545,70 @@ void PanelView::positionPanel()
 
 QRect PanelView::geometryByDistance(int distance) const
 {
+    if (!containment() || !m_screenToFollow) {
+        return QRect();
+    }
+
     QScreen *s = m_screenToFollow;
-    QPoint position;
     const QRect screenGeometry = s->geometry();
+    QRect r(QPoint(0, 0), formFactor() == Plasma::Types::Vertical ? QSize(totalThickness(), height()) : QSize(width(), totalThickness()));
+
+    if (formFactor() == Plasma::Types::Horizontal) {
+        switch (m_alignment) {
+        case Qt::AlignCenter:
+            r.moveCenter(screenGeometry.center() + QPoint(m_offset, 0));
+            break;
+        case Qt::AlignRight:
+            r.moveRight(screenGeometry.right() - m_offset);
+            break;
+        case Qt::AlignLeft:
+        default:
+            r.moveLeft(screenGeometry.left() + m_offset);
+        }
+    } else {
+        switch (m_alignment) {
+        case Qt::AlignCenter:
+            r.moveCenter(screenGeometry.center() + QPoint(0, m_offset));
+            break;
+        case Qt::AlignRight:
+            r.moveBottom(screenGeometry.bottom() - m_offset);
+            break;
+        case Qt::AlignLeft:
+        default:
+            r.moveTop(screenGeometry.top() + m_offset);
+        }
+    }
 
     switch (containment()->location()) {
     case Plasma::Types::TopEdge:
-        switch (m_alignment) {
-        case Qt::AlignCenter:
-            position = QPoint(QPoint(screenGeometry.center().x(), screenGeometry.top()) + QPoint(m_offset - width() / 2, distance));
-            break;
-        case Qt::AlignRight:
-            position = QPoint(QPoint(screenGeometry.x() + screenGeometry.width(), screenGeometry.y()) - QPoint(m_offset + width(), distance));
-            break;
-        case Qt::AlignLeft:
-        default:
-            position = QPoint(screenGeometry.topLeft() + QPoint(m_offset, distance));
-        }
+        r.moveTop(screenGeometry.top() + distance);
         break;
 
     case Plasma::Types::LeftEdge:
-        switch (m_alignment) {
-        case Qt::AlignCenter:
-            position = QPoint(QPoint(screenGeometry.left(), screenGeometry.center().y()) + QPoint(distance, m_offset - height() / 2));
-            break;
-        case Qt::AlignRight:
-            position = QPoint(QPoint(screenGeometry.left(), screenGeometry.y() + screenGeometry.height()) - QPoint(distance, m_offset + height()));
-            break;
-        case Qt::AlignLeft:
-        default:
-            position = QPoint(screenGeometry.topLeft() + QPoint(distance, m_offset));
-        }
+        r.moveLeft(screenGeometry.left() + distance);
         break;
 
     case Plasma::Types::RightEdge:
-        switch (m_alignment) {
-        case Qt::AlignCenter:
-            // Never use rect.right(); for historical reasons it returns left() + width() - 1; see https://doc.qt.io/qt-5/qrect.html#right
-            position = QPoint(QPoint(screenGeometry.x() + screenGeometry.width(), screenGeometry.center().y()) - QPoint(thickness() + distance, 0)
-                              + QPoint(0, m_offset - height() / 2));
-            break;
-        case Qt::AlignRight:
-            position = QPoint(QPoint(screenGeometry.x() + screenGeometry.width(), screenGeometry.y() + screenGeometry.height())
-                              - QPoint(thickness() + distance, 0) - QPoint(0, m_offset + height()));
-            break;
-        case Qt::AlignLeft:
-        default:
-            position =
-                QPoint(QPoint(screenGeometry.x() + screenGeometry.width(), screenGeometry.y()) - QPoint(thickness() + distance, 0) + QPoint(0, m_offset));
-        }
+        r.moveRight(screenGeometry.right() - distance);
         break;
 
     case Plasma::Types::BottomEdge:
     default:
-        switch (m_alignment) {
-        case Qt::AlignCenter:
-            position = QPoint(QPoint(screenGeometry.center().x(), screenGeometry.bottom() - thickness() - distance) + QPoint(m_offset - width() / 2, 1));
-            break;
-        case Qt::AlignRight:
-            position = QPoint(screenGeometry.bottomRight() - QPoint(0, thickness() + distance) - QPoint(m_offset + width(), -1));
-            break;
-        case Qt::AlignLeft:
-        default:
-            position = QPoint(screenGeometry.bottomLeft() - QPoint(0, thickness() + distance) + QPoint(m_offset, 1));
-        }
+        r.moveBottom(screenGeometry.bottom() - distance);
     }
-    QRect ret = formFactor() == Plasma::Types::Vertical ? QRect(position, QSize(thickness(), height())) : QRect(position, QSize(width(), thickness()));
-    ret = ret.intersected(screenGeometry);
-    return ret;
+    return r.intersected(screenGeometry);
 }
 
 void PanelView::resizePanel()
 {
     if (!m_initCompleted) {
+        return;
+    }
+
+    // On Wayland when a screen is disconnected and the panel is migrating to a newscreen
+    // it can happen a moment where the qscreen gets destroyed before it gets reassigned
+    // to the new screen
+    if (!m_screenToFollow) {
         return;
     }
 
@@ -555,16 +618,18 @@ void PanelView::resizePanel()
 
     if (formFactor() == Plasma::Types::Vertical) {
         const int minSize = qMax(MINSIZE, m_minLength);
-        const int maxSize = qMin(m_maxLength, m_screenToFollow->size().height() - m_offset);
-        targetMinSize = QSize(thickness(), minSize);
-        targetMaxSize = QSize(thickness(), maxSize);
-        targetSize = QSize(thickness(), qBound(minSize, m_contentLength, maxSize));
+        int maxSize = qMin(m_maxLength, m_screenToFollow->size().height() - m_offset);
+        maxSize = qMax(minSize, maxSize);
+        targetMinSize = QSize(totalThickness(), minSize);
+        targetMaxSize = QSize(totalThickness(), maxSize);
+        targetSize = QSize(totalThickness(), std::clamp(m_contentLength + m_topFloatingPadding + m_bottomFloatingPadding, minSize, maxSize));
     } else {
         const int minSize = qMax(MINSIZE, m_minLength);
-        const int maxSize = qMin(m_maxLength, m_screenToFollow->size().width() - m_offset);
-        targetMinSize = QSize(minSize, thickness());
-        targetMaxSize = QSize(maxSize, thickness());
-        targetSize = QSize(qBound(minSize, m_contentLength, maxSize), thickness());
+        int maxSize = qMin(m_maxLength, m_screenToFollow->size().width() - m_offset);
+        maxSize = qMax(minSize, maxSize);
+        targetMinSize = QSize(minSize, totalThickness());
+        targetMaxSize = QSize(maxSize, totalThickness());
+        targetSize = QSize(std::clamp(m_contentLength + m_leftFloatingPadding + m_rightFloatingPadding, minSize, maxSize), totalThickness());
     }
     if (minimumSize() != targetMinSize) {
         setMinimumSize(targetMinSize);
@@ -604,12 +669,16 @@ void PanelView::restore()
         m_offset = qMax(0, m_offset);
     }
 
-    setThickness(readConfigValueWithFallBack("thickness", m_thickness));
+    setFloating((bool)config().parent().readEntry<int>("floating", configDefaults().parent().readEntry<int>("floating", false)));
+    setThickness(configDefaults().readEntry("thickness", m_thickness));
 
     const QSize screenSize = m_screenToFollow->size();
     setMinimumSize(QSize(-1, -1));
     // FIXME: an invalid size doesn't work with QWindows
     setMaximumSize(screenSize);
+
+    m_initCompleted = true;
+    positionPanel();
 
     const int side = containment()->formFactor() == Plasma::Types::Vertical ? screenSize.height() : screenSize.width();
     const int maxSize = side - m_offset;
@@ -623,18 +692,12 @@ void PanelView::restore()
     setVisibilityMode((VisibilityMode)panelConfig.parent().readEntry<int>("panelVisibility", panelConfig.readEntry<int>("panelVisibility", (int)NormalPanel)));
     setOpacityMode((OpacityMode)config().parent().readEntry<int>("panelOpacity",
                                                                  configDefaults().parent().readEntry<int>("panelOpacity", PanelView::OpacityMode::Adaptive)));
-    m_initCompleted = true;
     resizePanel();
-    positionPanel();
 
-    emit maximumLengthChanged();
-    emit minimumLengthChanged();
-    emit offsetChanged();
-    emit alignmentChanged();
-
-    //::restore might have been called directly before the timer fires
-    // at which point we don't still need the timer
-    m_positionPaneltimer.stop();
+    Q_EMIT maximumLengthChanged();
+    Q_EMIT minimumLengthChanged();
+    Q_EMIT offsetChanged();
+    Q_EMIT alignmentChanged();
 }
 
 void PanelView::showConfigurationInterface(Plasma::Applet *applet)
@@ -717,7 +780,7 @@ void PanelView::setAutoHideEnabled(bool enabled)
         const QByteArray effectName = QByteArrayLiteral("_KDE_NET_WM_SCREEN_EDGE_SHOW");
         xcb_intern_atom_cookie_t atomCookie = xcb_intern_atom_unchecked(c, false, effectName.length(), effectName.constData());
 
-        QScopedPointer<xcb_intern_atom_reply_t, QScopedPointerPodDeleter> atom(xcb_intern_atom_reply(c, atomCookie, nullptr));
+        UniqueCPointer<xcb_intern_atom_reply_t> atom(xcb_intern_atom_reply(c, atomCookie, nullptr));
 
         if (!atom) {
             return;
@@ -778,13 +841,16 @@ void PanelView::resizeEvent(QResizeEvent *ev)
 {
     updateEnabledBorders();
     // don't setGeometry() to make really sure we aren't doing a resize loop
-    const QPoint pos = geometryByDistance(m_distance).topLeft();
-    setPosition(pos);
-    if (m_shellSurface) {
-        m_shellSurface->setPosition(pos);
+    if (m_screenToFollow) {
+        const QPoint pos = geometryByDistance(m_distance).topLeft();
+        setPosition(pos);
+        if (m_shellSurface) {
+            m_shellSurface->setPosition(pos);
+        }
+
+        m_strutsTimer.start(STRUTSTIMERDELAY);
+        Q_EMIT m_corona->availableScreenRegionChanged();
     }
-    m_strutsTimer.start(STRUTSTIMERDELAY);
-    emit m_corona->availableScreenRegionChanged();
 
     PlasmaQuick::ContainmentView::resizeEvent(ev);
 }
@@ -794,15 +860,54 @@ void PanelView::moveEvent(QMoveEvent *ev)
     updateEnabledBorders();
     m_strutsTimer.start(STRUTSTIMERDELAY);
     PlasmaQuick::ContainmentView::moveEvent(ev);
+    if (m_screenToFollow && !m_screenToFollow->geometry().contains(geometry())) {
+        positionPanel();
+    }
+}
+
+void PanelView::keyPressEvent(QKeyEvent *event)
+{
+    // Press escape key to cancel focus on the panel
+    if (event->key() == Qt::Key_Escape) {
+        if (containment()->status() == Plasma::Types::AcceptingInputStatus) {
+            containment()->setStatus(Plasma::Types::PassiveStatus);
+        }
+        // No return for Wayland
+    }
+
+    PlasmaQuick::ContainmentView::keyPressEvent(event);
+    if (event->isAccepted()) {
+        return;
+    }
+
+    // Catch arrows keyPress to have same behavior as tab/backtab
+    if ((event->key() == Qt::Key_Right && qApp->layoutDirection() == Qt::LeftToRight)
+        || (event->key() == Qt::Key_Left && qApp->layoutDirection() != Qt::LeftToRight) || event->key() == Qt::Key_Down) {
+        event->accept();
+        QKeyEvent tabEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
+        qApp->sendEvent((QObject *)this, (QEvent *)&tabEvent);
+        return;
+    } else if ((event->key() == Qt::Key_Right && qApp->layoutDirection() != Qt::LeftToRight)
+               || (event->key() == Qt::Key_Left && qApp->layoutDirection() == Qt::LeftToRight) || event->key() == Qt::Key_Up) {
+        event->accept();
+        QKeyEvent backtabEvent(QEvent::KeyPress, Qt::Key_Backtab, Qt::NoModifier);
+        qApp->sendEvent((QObject *)this, (QEvent *)&backtabEvent);
+        return;
+    }
 }
 
 void PanelView::integrateScreen()
 {
     updateMask();
-    KWindowSystem::setOnAllDesktops(winId(), true);
+    KX11Extras::setOnAllDesktops(winId(), true);
     KWindowSystem::setType(winId(), NET::Dock);
 #if HAVE_X11
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QXcbWindowFunctions::setWmWindowType(this, QXcbWindowFunctions::Dock);
+#else
+    // QXcbWindow isn't installed and thus inaccessible to us, but it does read this magic property...
+    setProperty("_q_xcb_wm_window_type", QNativeInterface::Private::QXcbWindow::Dock);
+#endif
 #endif
     if (m_shellSurface) {
         m_shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::Panel);
@@ -849,6 +954,7 @@ void PanelView::setScreenToFollow(QScreen *screen)
     });*/
 
     m_screenToFollow = screen;
+
     setScreen(screen);
     adaptToScreen();
 }
@@ -860,7 +966,7 @@ QScreen *PanelView::screenToFollow() const
 
 void PanelView::adaptToScreen()
 {
-    emit screenToFollowChanged(m_screenToFollow);
+    Q_EMIT screenToFollowChanged(m_screenToFollow);
     m_lastScreen = m_screenToFollow;
 
     if (!m_screenToFollow) {
@@ -869,7 +975,7 @@ void PanelView::adaptToScreen()
 
     integrateScreen();
     showTemporarily();
-    m_positionPaneltimer.start();
+    restore();
 }
 
 bool PanelView::event(QEvent *e)
@@ -1007,6 +1113,7 @@ bool PanelView::event(QEvent *e)
         case QPlatformSurfaceEvent::SurfaceCreated:
             setupWaylandIntegration();
             PanelShadows::self()->addWindow(this, enabledBorders());
+            updateEnabledBorders();
             break;
         case QPlatformSurfaceEvent::SurfaceAboutToBeDestroyed:
             delete m_shellSurface;
@@ -1066,9 +1173,9 @@ void PanelView::updateMask()
             const QVariant maskProperty = rootObject->property("panelMask");
             if (static_cast<QMetaType::Type>(maskProperty.type()) == QMetaType::QRegion) {
                 mask = maskProperty.value<QRegion>();
+                mask.translate(rootObject->property("maskOffsetX").toInt(), rootObject->property("maskOffsetY").toInt());
             }
         }
-
         KWindowEffects::enableBlurBehind(this, m_theme.blurBehindEnabled(), mask);
         KWindowEffects::enableBackgroundContrast(this,
                                                  m_theme.backgroundContrastEnabled(),
@@ -1077,7 +1184,7 @@ void PanelView::updateMask()
                                                  m_theme.backgroundSaturation(),
                                                  mask);
 
-        if (KWindowSystem::compositingActive()) {
+        if (KX11Extras::compositingActive()) {
             setMask(QRegion());
         } else {
             setMask(mask);
@@ -1163,7 +1270,7 @@ void PanelView::updateStruts()
         const QRect wholeScreen = QRect(QPoint(0, 0), m_screenToFollow->virtualSize());
 
         if (!canSetStrut()) {
-            KWindowSystem::setExtendedStrut(winId(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            KX11Extras::setExtendedStrut(winId(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             return;
         }
         // extended struts are to the combined screen geoms, not the single screen
@@ -1175,28 +1282,28 @@ void PanelView::updateStruts()
 
         switch (location()) {
         case Plasma::Types::TopEdge:
-            strut.top_width = thickness() + topOffset;
+            strut.top_width = totalThickness() + topOffset;
             strut.top_start = x();
             strut.top_end = x() + width() - 1;
             //                 qDebug() << "setting top edge to" << strut.top_width << strut.top_start << strut.top_end;
             break;
 
         case Plasma::Types::BottomEdge:
-            strut.bottom_width = thickness() + bottomOffset;
+            strut.bottom_width = totalThickness() + bottomOffset;
             strut.bottom_start = x();
             strut.bottom_end = x() + width() - 1;
             //                 qDebug() << "setting bottom edge to" << strut.bottom_width << strut.bottom_start << strut.bottom_end;
             break;
 
         case Plasma::Types::RightEdge:
-            strut.right_width = thickness() + rightOffset;
+            strut.right_width = totalThickness() + rightOffset;
             strut.right_start = y();
             strut.right_end = y() + height() - 1;
             //                 qDebug() << "setting right edge to" << strut.right_width << strut.right_start << strut.right_end;
             break;
 
         case Plasma::Types::LeftEdge:
-            strut.left_width = thickness() + leftOffset;
+            strut.left_width = totalThickness() + leftOffset;
             strut.left_start = y();
             strut.left_end = y() + height() - 1;
             //                 qDebug() << "setting left edge to" << strut.left_width << strut.left_start << strut.left_end;
@@ -1208,19 +1315,19 @@ void PanelView::updateStruts()
         }
     }
 
-    KWindowSystem::setExtendedStrut(winId(),
-                                    strut.left_width,
-                                    strut.left_start,
-                                    strut.left_end,
-                                    strut.right_width,
-                                    strut.right_start,
-                                    strut.right_end,
-                                    strut.top_width,
-                                    strut.top_start,
-                                    strut.top_end,
-                                    strut.bottom_width,
-                                    strut.bottom_start,
-                                    strut.bottom_end);
+    KX11Extras::setExtendedStrut(winId(),
+                                 strut.left_width,
+                                 strut.left_start,
+                                 strut.left_end,
+                                 strut.right_width,
+                                 strut.right_start,
+                                 strut.right_end,
+                                 strut.top_width,
+                                 strut.top_start,
+                                 strut.top_end,
+                                 strut.bottom_width,
+                                 strut.bottom_start,
+                                 strut.bottom_end);
 }
 
 void PanelView::refreshContainment()
@@ -1263,12 +1370,25 @@ void PanelView::handleQmlStatusChange(QQmlComponent::Status status)
         disconnect(this, &QuickViewSharedEngine::statusChanged, this, &PanelView::handleQmlStatusChange);
 
         updatePadding();
-        int paddingSignal = rootObject->metaObject()->indexOfSignal(SIGNAL(bottomPaddingChanged()));
+        updateFloating();
+        int paddingSignal = rootObject->metaObject()->indexOfSignal("bottomPaddingChanged()");
         if (paddingSignal >= 0) {
             connect(rootObject, SIGNAL(bottomPaddingChanged()), this, SLOT(updatePadding()));
             connect(rootObject, SIGNAL(topPaddingChanged()), this, SLOT(updatePadding()));
             connect(rootObject, SIGNAL(rightPaddingChanged()), this, SLOT(updatePadding()));
             connect(rootObject, SIGNAL(leftPaddingChanged()), this, SLOT(updatePadding()));
+            connect(rootObject, SIGNAL(minPanelHeightChanged()), this, SLOT(updatePadding()));
+            connect(rootObject, SIGNAL(minPanelWidthChanged()), this, SLOT(updatePadding()));
+        }
+        const int floatingSignal = rootObject->metaObject()->indexOfSignal("bottomFloatingPaddingChanged()");
+        if (floatingSignal >= 0) {
+            connect(rootObject, SIGNAL(bottomFloatingPaddingChanged()), this, SLOT(updateFloating()));
+            connect(rootObject, SIGNAL(topFloatingPaddingChanged()), this, SLOT(updateFloating()));
+            connect(rootObject, SIGNAL(rightFloatingPaddingChanged()), this, SLOT(updateFloating()));
+            connect(rootObject, SIGNAL(leftFloatingPaddingChanged()), this, SLOT(updateFloating()));
+            connect(rootObject, SIGNAL(hasShadowsChanged()), this, SLOT(updateShadows()));
+            connect(rootObject, SIGNAL(maskOffsetXChanged()), this, SLOT(updateMask()));
+            connect(rootObject, SIGNAL(maskOffsetYChanged()), this, SLOT(updateMask()));
         }
 
         const QVariant maskProperty = rootObject->property("panelMask");
@@ -1284,12 +1404,27 @@ void PanelView::refreshStatus(Plasma::Types::ItemStatus status)
     if (status == Plasma::Types::NeedsAttentionStatus) {
         showTemporarily();
         setFlags(flags() | Qt::WindowDoesNotAcceptFocus);
+        if (m_shellSurface) {
+            m_shellSurface->setPanelTakesFocus(false);
+        }
     } else if (status == Plasma::Types::AcceptingInputStatus) {
         setFlags(flags() & ~Qt::WindowDoesNotAcceptFocus);
-        KWindowSystem::forceActiveWindow(winId());
+#ifdef HAVE_X11
+        KX11Extras::forceActiveWindow(winId());
+#endif
+        if (m_shellSurface) {
+            m_shellSurface->setPanelTakesFocus(true);
+        }
     } else {
+        if (status == Plasma::Types::PassiveStatus) {
+            m_corona->restorePreviousWindow();
+        }
+
         restoreAutoHide();
         setFlags(flags() | Qt::WindowDoesNotAcceptFocus);
+        if (m_shellSurface) {
+            m_shellSurface->setPanelTakesFocus(false);
+        }
     }
 }
 
@@ -1299,7 +1434,7 @@ void PanelView::showTemporarily()
 
     QTimer *t = new QTimer(this);
     t->setSingleShot(true);
-    t->setInterval(3000);
+    t->setInterval(3s);
     connect(t, &QTimer::timeout, this, &PanelView::restoreAutoHide);
     connect(t, &QTimer::timeout, t, &QObject::deleteLater);
     t->start();
@@ -1343,7 +1478,6 @@ bool PanelView::edgeActivated() const
 void PanelView::updateEnabledBorders()
 {
     Plasma::FrameSvg::EnabledBorders borders = Plasma::FrameSvg::AllBorders;
-
     if (m_backgroundHints == Plasma::Types::NoBackground) {
         borders = Plasma::FrameSvg::NoBorder;
     } else {
@@ -1364,24 +1498,26 @@ void PanelView::updateEnabledBorders()
             break;
         }
 
-        if (x() <= m_screenToFollow->geometry().x()) {
-            borders &= ~Plasma::FrameSvg::LeftBorder;
-        }
-        if (x() + width() >= m_screenToFollow->geometry().x() + m_screenToFollow->geometry().width()) {
-            borders &= ~Plasma::FrameSvg::RightBorder;
-        }
-        if (y() <= m_screenToFollow->geometry().y()) {
-            borders &= ~Plasma::FrameSvg::TopBorder;
-        }
-        if (y() + height() >= m_screenToFollow->geometry().y() + m_screenToFollow->geometry().height()) {
-            borders &= ~Plasma::FrameSvg::BottomBorder;
+        if (m_screenToFollow) {
+            if (x() <= m_screenToFollow->geometry().x()) {
+                borders &= ~Plasma::FrameSvg::LeftBorder;
+            }
+            if (x() + width() >= m_screenToFollow->geometry().x() + m_screenToFollow->geometry().width()) {
+                borders &= ~Plasma::FrameSvg::RightBorder;
+            }
+            if (y() <= m_screenToFollow->geometry().y()) {
+                borders &= ~Plasma::FrameSvg::TopBorder;
+            }
+            if (y() + height() >= m_screenToFollow->geometry().y() + m_screenToFollow->geometry().height()) {
+                borders &= ~Plasma::FrameSvg::BottomBorder;
+            }
         }
     }
 
     if (m_enabledBorders != borders) {
         PanelShadows::self()->setEnabledBorders(this, borders);
         m_enabledBorders = borders;
-        emit enabledBordersChanged();
+        Q_EMIT enabledBordersChanged();
     }
 }
 
@@ -1393,6 +1529,38 @@ void PanelView::updatePadding()
     m_rightPadding = rootObject()->property("rightPadding").toInt();
     m_topPadding = rootObject()->property("topPadding").toInt();
     m_bottomPadding = rootObject()->property("bottomPadding").toInt();
+    m_minDrawingHeight = rootObject()->property("minPanelHeight").toInt();
+    m_minDrawingWidth = rootObject()->property("minPanelWidth").toInt();
+    Q_EMIT minThicknessChanged();
+    setThickness(m_thickness);
+}
+
+void PanelView::updateShadows()
+{
+    if (!rootObject()) {
+        return;
+    }
+    bool hasShadows = rootObject()->property("hasShadows").toBool();
+    if (hasShadows) {
+        PanelShadows::self()->addWindow(this, enabledBorders());
+    } else {
+        PanelShadows::self()->removeWindow(this);
+    }
+}
+
+void PanelView::updateFloating()
+{
+    if (!rootObject()) {
+        return;
+    }
+    m_leftFloatingPadding = rootObject()->property("leftFloatingPadding").toInt();
+    m_rightFloatingPadding = rootObject()->property("rightFloatingPadding").toInt();
+    m_topFloatingPadding = rootObject()->property("topFloatingPadding").toInt();
+    m_bottomFloatingPadding = rootObject()->property("bottomFloatingPadding").toInt();
+
+    positionPanel();
+    resizePanel();
+    updateMask();
 }
 
 #include "moc_panelview.cpp"

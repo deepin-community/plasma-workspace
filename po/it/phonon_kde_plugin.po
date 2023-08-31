@@ -27,3 +27,36 @@ msgstr "Marcello Anni"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "marcello.anni@alice.it"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr ""
+#~ "<qt>Impossibile usare il <b>%1</b> backend multimediale:<br/>%2</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Impossibile trovare un backend multimediale"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Impossibile trovare il backend multimediale richiesto"
+
+#~ msgid "create method returned 0"
+#~ msgstr "il metodo di creazione ha ritornato 0 come risultato"
+
+#~ msgid "%1 (OSS)"
+#~ msgstr "%1 (OSS)"
+
+#~ msgid "%1 (ALSA)"
+#~ msgstr "%1 (ALSA)"
+
+#~ msgid ""
+#~ "<html>This device is currently not available (either it is unplugged or "
+#~ "the driver is not loaded).</html>"
+#~ msgstr ""
+#~ "<html>Il dispositivo non è disponibile al momento (o è scollegato o il "
+#~ "driver non è caricato).</html>"
+
+#~ msgid ""
+#~ "<html>This will try the following devices and use the first that works: "
+#~ "<ol><li>%1</li></ol></html>"
+#~ msgstr ""
+#~ "<html>Proverà i seguenti ed userà il primo disponibile: <ol><li>%1</li></"
+#~ "ol></html>"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-20 00:22+0000\n"
+"POT-Creation-Date: 2023-01-02 01:06+0000\n"
 "PO-Revision-Date: 2020-11-16 11:31+0100\n"
 "Last-Translator: Kristóf Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -17,94 +17,144 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 21.03.70\n"
 
-#: contents/ui/ExpandedRepresentation.qml:230 contents/ui/main.qml:77
+#: package/contents/ui/AlbumArtStackView.qml:181
+#, kde-format
+msgid "No title"
+msgstr ""
+
+#: package/contents/ui/AlbumArtStackView.qml:181
+#: package/contents/ui/main.qml:82
 #, kde-format
 msgid "No media playing"
 msgstr "Nincs médialejátszás"
 
-#: contents/ui/ExpandedRepresentation.qml:324
-#: contents/ui/ExpandedRepresentation.qml:395
+#: package/contents/ui/ExpandedRepresentation.qml:413
+#: package/contents/ui/ExpandedRepresentation.qml:534
 #, kde-format
 msgctxt "Remaining time for song e.g -5:42"
 msgid "-%1"
 msgstr "-%1"
 
-#: contents/ui/ExpandedRepresentation.qml:421
+#: package/contents/ui/ExpandedRepresentation.qml:563
 #, kde-format
 msgid "Shuffle"
 msgstr "Véletlen sorrend"
 
-#: contents/ui/ExpandedRepresentation.qml:475
-#, kde-format
-msgid "Repeat Track"
-msgstr "Szám ismétlése"
-
-#: contents/ui/ExpandedRepresentation.qml:475
-#, kde-format
-msgid "Repeat"
-msgstr "Ismétlés"
-
-#: contents/ui/main.qml:91
-#, kde-format
-msgctxt "Open player window or bring it to the front if already open"
-msgid "Open"
-msgstr "Megnyitás"
-
-#: contents/ui/main.qml:95
+#: package/contents/ui/ExpandedRepresentation.qml:589
+#: package/contents/ui/main.qml:94
 #, kde-format
 msgctxt "Play previous track"
 msgid "Previous Track"
 msgstr "Előző szám"
 
-#: contents/ui/main.qml:103
+#: package/contents/ui/ExpandedRepresentation.qml:611
+#: package/contents/ui/main.qml:100
 #, kde-format
 msgctxt "Pause playback"
 msgid "Pause"
 msgstr "Szünet"
 
-#: contents/ui/main.qml:108
+#: package/contents/ui/ExpandedRepresentation.qml:611
+#: package/contents/ui/main.qml:105
 #, kde-format
 msgctxt "Start playback"
 msgid "Play"
 msgstr "Lejátszás"
 
-#: contents/ui/main.qml:114
+#: package/contents/ui/ExpandedRepresentation.qml:629
+#: package/contents/ui/main.qml:110
 #, kde-format
 msgctxt "Play next track"
 msgid "Next Track"
 msgstr "Következő szám"
 
-#: contents/ui/main.qml:120
+#: package/contents/ui/ExpandedRepresentation.qml:652
+#, kde-format
+msgid "Repeat Track"
+msgstr "Szám ismétlése"
+
+#: package/contents/ui/ExpandedRepresentation.qml:652
+#, kde-format
+msgid "Repeat"
+msgstr "Ismétlés"
+
+#: package/contents/ui/main.qml:90
+#, kde-format
+msgctxt "Open player window or bring it to the front if already open"
+msgid "Open"
+msgstr "Megnyitás"
+
+#: package/contents/ui/main.qml:116
 #, kde-format
 msgctxt "Stop playback"
 msgid "Stop"
 msgstr "Leállítás"
 
-#: contents/ui/main.qml:128
+#: package/contents/ui/main.qml:125
 #, kde-format
 msgctxt "Quit player"
 msgid "Quit"
 msgstr "Kilépés"
 
-#: contents/ui/main.qml:281
+#: package/contents/ui/main.qml:238
 #, kde-format
 msgid "Choose player automatically"
 msgstr "Lejátszó automatikus kiválasztása"
 
-#: contents/ui/main.qml:318
-#, kde-format
-msgctxt "by Artist (player name)"
-msgid "by %1 (%2)"
-msgstr "előadó: %1 (%2)"
-
-#: contents/ui/main.qml:329
-#, kde-format
-msgctxt "by Artist (paused, player name)"
-msgid "by %1 (paused, %2)"
+#: package/contents/ui/main.qml:292
+#, fuzzy, kde-format
+#| msgctxt "by Artist (paused, player name)"
+#| msgid "by %1 (paused, %2)"
+msgctxt "@info:tooltip %1 is a musical artist and %2 is an app name"
+msgid ""
+"by %1 (%2)\n"
+"Middle-click to pause\n"
+"Scroll to adjust volume"
 msgstr "előadó: %1 (szüneteltetve, %2)"
 
-#: contents/ui/main.qml:329
+#: package/contents/ui/main.qml:292
 #, kde-format
-msgctxt "Paused (player name)"
-msgid "Paused (%1)"
-msgstr "Szüneteltetve (%1)"
+msgctxt "@info:tooltip %1 is an app name"
+msgid ""
+"%1\n"
+"Middle-click to pause\n"
+"Scroll to adjust volume"
+msgstr ""
+
+#: package/contents/ui/main.qml:303
+#, fuzzy, kde-format
+#| msgctxt "by Artist (paused, player name)"
+#| msgid "by %1 (paused, %2)"
+msgctxt "@info:tooltip %1 is a musical artist and %2 is an app name"
+msgid ""
+"by %1 (paused, %2)\n"
+"Middle-click to play\n"
+"Scroll to adjust volume"
+msgstr "előadó: %1 (szüneteltetve, %2)"
+
+#: package/contents/ui/main.qml:303
+#, fuzzy, kde-format
+#| msgctxt "by Artist (paused, player name)"
+#| msgid "by %1 (paused, %2)"
+msgctxt "@info:tooltip %1 is an app name"
+msgid ""
+"Paused (%1)\n"
+"Middle-click to play\n"
+"Scroll to adjust volume"
+msgstr "előadó: %1 (szüneteltetve, %2)"
+
+#~ msgctxt "by Artist (player name)"
+#~ msgid "by %1 (%2)"
+#~ msgstr "előadó: %1 (%2)"
+
+#~ msgctxt "Paused (player name)"
+#~ msgid "Paused (%1)"
+#~ msgstr "Szüneteltetve (%1)"
+
+#~ msgctxt "artist – track"
+#~ msgid "%1 – %2"
+#~ msgstr "%1 – %2"
+
+#~ msgctxt "Artist of the song"
+#~ msgid "by %1"
+#~ msgstr "előadó: %1"

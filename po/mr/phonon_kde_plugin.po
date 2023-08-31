@@ -32,3 +32,15 @@ msgid "Your emails"
 msgstr ""
 "sandeep.shedmake@gmail.com, \n"
 "chetan@kompkin.com"
+
+#~ msgid "<qt>Unable to use the <b>%1</b> Multimedia Backend:<br/>%2</qt>"
+#~ msgstr "<qt><b>%1</b> मल्टिमीडिया बॅकएन्ड:<br/>%2 वापरू शकत नाही</qt>"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "मल्टिमीडिया बॅकएन्ड आढळले नाही"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "विनंतीकृत मल्टिमीडिया बॅकएन्ड आढळले नाही"
+
+#~ msgid "create method returned 0"
+#~ msgstr "create कार्यपद्धतीने 0 पुरविले"

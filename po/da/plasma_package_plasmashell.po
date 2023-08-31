@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-01-22 00:46+0000\n"
 "PO-Revision-Date: 2016-12-15 20:37+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -82,11 +82,17 @@ msgid "QML component for choosing an alternate applet"
 msgstr "QML-komponent til at vælge en anden applet"
 
 #: shellpackage.cpp:63
+#, fuzzy, kde-format
+#| msgid "QML component for the configuration dialog for containments"
+msgid "QML component for the configuration dialog of containments"
+msgstr "QML-komponent til konfigurationsdialogen for beholdere"
+
+#: shellpackage.cpp:66
 #, kde-format
 msgid "Widgets explorer UI"
 msgstr "Brugerflade til widget-udforsker"
 
-#: shellpackage.cpp:67
+#: shellpackage.cpp:70
 #, kde-format
 msgid ""
 "A UI for writing, loading and running desktop scripts in the current live "

@@ -5,6 +5,7 @@
 */
 
 #include "scriptengine.h"
+#include "debug.h"
 #include "scriptengine_v1.h"
 
 #include <QDir>
@@ -19,7 +20,6 @@
 #include <QDebug>
 #include <klocalizedstring.h>
 #include <kmimetypetrader.h>
-#include <kservicetypetrader.h>
 #include <kshell.h>
 
 #include <KPackage/Package>
@@ -247,8 +247,8 @@ bool ScriptEngine::evaluateScript(const QString &script, const QString &path)
                              result.toString(),
                              result.property("lineNumber").toInt(),
                              result.property("stack").toVariant().value<QStringList>().join(QLatin1String("\n  ")));
-        emit printError(error);
-        emit exception(result);
+        Q_EMIT printError(error);
+        Q_EMIT exception(result);
         m_errorString = error;
         return false;
     }
@@ -258,13 +258,13 @@ bool ScriptEngine::evaluateScript(const QString &script, const QString &path)
 
 void ScriptEngine::exception(const QJSValue &value)
 {
-    emit printError(value.toVariant().toString());
+    Q_EMIT printError(value.toVariant().toString());
 }
 
 QStringList ScriptEngine::pendingUpdateScripts(Plasma::Corona *corona)
 {
     if (!corona->kPackage().isValid()) {
-        qWarning() << "Warning: corona package invalid";
+        qCWarning(PLASMASHELL) << "Warning: corona package invalid";
         return QStringList();
     }
 
@@ -396,9 +396,6 @@ Plasma::Containment *ScriptEngine::createContainment(const QString &type, const 
 
     if (c) {
         if (type == QLatin1String("Panel")) {
-            // some defaults
-            c->setFormFactor(Plasma::Types::Horizontal);
-            c->setLocation(Plasma::Types::TopEdge);
             // we have to force lastScreen of the newly created containment,
             // or it won't have a screen yet at that point, breaking JS code
             // that relies on it

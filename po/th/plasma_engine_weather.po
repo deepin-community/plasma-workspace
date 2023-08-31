@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-08-09 00:47+0000\n"
 "PO-Revision-Date: 2010-10-25 16:19+0700\n"
 "Last-Translator: Phuwanat Sakornsakolpat <narachai@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -2737,82 +2737,95 @@ msgctxt "weather forecast"
 msgid "Windy"
 msgstr ""
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:517
+#: ions/bbcukmet/ion_bbcukmet.cpp:563
 #, kde-format
 msgid "UK"
 msgstr ""
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:518
+#: ions/bbcukmet/ion_bbcukmet.cpp:564
 #, kde-format
 msgid "USA"
 msgstr ""
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:963
+#: ions/bbcukmet/ion_bbcukmet.cpp:1009 ions/dwd/ion_dwd.cpp:664
 #, kde-format
 msgctxt "Short for Today"
 msgid "Today"
 msgstr ""
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:964
+#: ions/bbcukmet/ion_bbcukmet.cpp:1010
 #, fuzzy, kde-format
 #| msgid "Night"
 msgctxt "Short for Tonight"
 msgid "Tonight"
 msgstr "กลางคืน"
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:966 ions/envcan/ion_envcan.cpp:1551
+#: ions/bbcukmet/ion_bbcukmet.cpp:1012 ions/dwd/ion_dwd.cpp:646
+#: ions/envcan/ion_envcan.cpp:1551
 #, fuzzy, kde-format
 #| msgid "Sat"
 msgctxt "Short for Saturday"
 msgid "Sat"
 msgstr "ส."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:967 ions/envcan/ion_envcan.cpp:1552
+#: ions/bbcukmet/ion_bbcukmet.cpp:1013 ions/dwd/ion_dwd.cpp:647
+#: ions/envcan/ion_envcan.cpp:1552
 #, fuzzy, kde-format
 #| msgid "Sun"
 msgctxt "Short for Sunday"
 msgid "Sun"
 msgstr "อา."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:968 ions/envcan/ion_envcan.cpp:1553
+#: ions/bbcukmet/ion_bbcukmet.cpp:1014 ions/dwd/ion_dwd.cpp:648
+#: ions/envcan/ion_envcan.cpp:1553
 #, fuzzy, kde-format
 #| msgid "Mon"
 msgctxt "Short for Monday"
 msgid "Mon"
 msgstr "จ."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:969 ions/envcan/ion_envcan.cpp:1554
+#: ions/bbcukmet/ion_bbcukmet.cpp:1015 ions/dwd/ion_dwd.cpp:649
+#: ions/envcan/ion_envcan.cpp:1554
 #, fuzzy, kde-format
 #| msgid "Tue"
 msgctxt "Short for Tuesday"
 msgid "Tue"
 msgstr "อ."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:970 ions/envcan/ion_envcan.cpp:1555
+#: ions/bbcukmet/ion_bbcukmet.cpp:1016 ions/dwd/ion_dwd.cpp:650
+#: ions/envcan/ion_envcan.cpp:1555
 #, fuzzy, kde-format
 #| msgid "Wed"
 msgctxt "Short for Wednesday"
 msgid "Wed"
 msgstr "พ."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:971 ions/envcan/ion_envcan.cpp:1556
+#: ions/bbcukmet/ion_bbcukmet.cpp:1017 ions/dwd/ion_dwd.cpp:651
+#: ions/envcan/ion_envcan.cpp:1556
 #, fuzzy, kde-format
 #| msgid "Thu"
 msgctxt "Short for Thursday"
 msgid "Thu"
 msgstr "พฤ."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:972 ions/envcan/ion_envcan.cpp:1557
+#: ions/bbcukmet/ion_bbcukmet.cpp:1018 ions/dwd/ion_dwd.cpp:652
+#: ions/envcan/ion_envcan.cpp:1557
 #, fuzzy, kde-format
 #| msgid "Fri"
 msgctxt "Short for Friday"
 msgid "Fri"
 msgstr "ศ."
 
-#: ions/bbcukmet/ion_bbcukmet.cpp:985
+#: ions/bbcukmet/ion_bbcukmet.cpp:1031
 #, kde-format
 msgctxt "credit line, keep string short"
 msgid "Data from BBC Weather"
+msgstr ""
+
+#: ions/dwd/ion_dwd.cpp:686
+#, kde-format
+msgctxt "credit line, don't change name!"
+msgid "Source: Deutscher Wetterdienst"
 msgstr ""
 
 #: ions/envcan/ion_envcan.cpp:901 ions/envcan/ion_envcan.cpp:903
@@ -4949,3 +4962,86 @@ msgstr "กำลังจะมีแดด"
 msgctxt "weather forecast"
 msgid "Mostly Clear"
 msgstr "โปร่งเป็นส่วนมาก"
+
+#~ msgctxt "weather condition"
+#~ msgid "weather condition"
+#~ msgstr "สภาพอากาศ"
+
+#~ msgctxt "weather condition"
+#~ msgid "thunder storm"
+#~ msgstr "พายุฝนฟ้าคะนอง"
+
+#~ msgctxt "weather forecast"
+#~ msgid "thunder storm"
+#~ msgstr "พายุฝนฟ้าคะนอง"
+
+#~ msgctxt "wind direction"
+#~ msgid "N"
+#~ msgstr "เหนือ"
+
+#~ msgctxt "wind direction"
+#~ msgid "NE"
+#~ msgstr "ตะวันออกเฉียงเหนือ"
+
+#~ msgctxt "wind direction"
+#~ msgid "E"
+#~ msgstr "ตะวันออก"
+
+#~ msgctxt "wind direction"
+#~ msgid "SE"
+#~ msgstr "ตะวันออกเฉียงใต้"
+
+#~ msgctxt "wind direction"
+#~ msgid "S"
+#~ msgstr "ใต้"
+
+#~ msgctxt "wind direction"
+#~ msgid "NW"
+#~ msgstr "ตะวันตกเฉียงเหนือ"
+
+#~ msgctxt "wind direction"
+#~ msgid "W"
+#~ msgstr "ตะวันตก"
+
+#~ msgctxt "wind direction"
+#~ msgid "SW"
+#~ msgstr "ตะวันตกเฉียงใต้"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "rising"
+#~ msgstr "กำลังขึ้น"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "falling"
+#~ msgstr "กำลังตก"
+
+#~ msgctxt "pressure tendency"
+#~ msgid "no change"
+#~ msgstr "ไม่เปลี่ยนแปลง"
+
+#~ msgid "N"
+#~ msgstr "เหนือ"
+
+#~ msgid "NE"
+#~ msgstr "ตะวันออกเฉียงเหนือ"
+
+#~ msgid "E"
+#~ msgstr "ตะวันออก"
+
+#~ msgid "SE"
+#~ msgstr "ตะวันออกเฉียงใต้"
+
+#~ msgid "S"
+#~ msgstr "ใต้"
+
+#~ msgid "W"
+#~ msgstr "ตะวันตก"
+
+#~ msgid "SW"
+#~ msgstr "ตะวันตกเฉียงใต้"
+
+#~ msgid "Meteorological data is provided by Environment Canada"
+#~ msgstr "ข้อมูลทางอุตุนิยมวิทยาโดย Environment Canada"
+
+#~ msgid "Supported by backstage.bbc.co.uk / Data from UK MET Office"
+#~ msgstr "สนับสนุนโดย backstage.bbc.co.uk / ข้อมูลจากสำนักงาน UK MET"

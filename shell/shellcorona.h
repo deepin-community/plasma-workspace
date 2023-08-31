@@ -9,14 +9,15 @@
 
 #pragma once
 
+#include "config-X11.h"
 #include "plasma/corona.h"
 
 #include <QDBusContext>
 #include <QDBusVariant>
-#include <QScopedPointer>
 #include <QSet>
 #include <QTimer>
 
+#include <KConfigWatcher>
 #include <KPackage/Package>
 
 class DesktopView;
@@ -25,6 +26,7 @@ class QMenu;
 class QScreen;
 class ScreenPool;
 class StrutManager;
+class ShellContainmentConfig;
 
 namespace KActivities
 {
@@ -51,6 +53,9 @@ namespace KWayland
 namespace Client
 {
 class PlasmaShell;
+class PlasmaShellSurface;
+class PlasmaWindow;
+class PlasmaWindowManagement;
 }
 }
 
@@ -85,6 +90,7 @@ public:
     Q_INVOKABLE QStringList availableActivities() const;
 
     PanelView *panelView(Plasma::Containment *containment) const;
+    void restorePreviousWindow();
 
     // This one is a bit of an hack but are just for desktop scripting
     void insertActivity(const QString &id, const QString &plugin);
@@ -108,14 +114,46 @@ public:
 
     static QString defaultShell();
 
+    // Set all Desktop containments (for all activities) associated to a given screen to this new screen.
+    // swapping ones that had newScreen to oldScreen if existing. Panels are ignored
+    void swapDesktopScreens(int oldScreen, int newScreen);
+
+    // Set a single containment to a new screen.
+    // If it is a Desktop contaiment, swap it with the other containment that was associated with same screen and activity if existent
+    void setScreenForContainment(Plasma::Containment *containment, int screen);
+
+    // Grab a screenshot of the contaiment if it has a view in an async fashion
+    // containmentPreviewReady will be emitted when done
+    // If there is no view, this will have no effect
+    void grabContainmentPreview(Plasma::Containment *containment);
+
+    // If a containment preview has been grabbed, for this containment, return its path
+    QString containmentPreviewPath(Plasma::Containment *containment) const;
+
+    /**
+     * Whether "accent color from wallpaper" option is enabled in global settings
+     */
+    bool accentColorFromWallpaperEnabled() const;
+
 Q_SIGNALS:
     void glInitializationFailed();
+    // A preview for this containment has been rendered and saved to disk
+    void containmentPreviewReady(Plasma::Containment *containment, const QString &path);
+    void accentColorFromWallpaperEnabledChanged();
+    void colorChanged(const QColor &color);
+    // This API is used only by autotests, do we need something else?
+    void screenOrderChanged(QList<QScreen *> screens);
 
 public Q_SLOTS:
     /**
      * Request saving applicationConfig on disk, it's event compressed, not immediate
      */
     void requestApplicationConfigSync();
+
+    /**
+     * Cycle through all panels
+     */
+    void slotCyclePanelFocus();
 
     /**
      * Sets the shell that the corona should display
@@ -134,6 +172,7 @@ public Q_SLOTS:
     void toggleWidgetExplorer();
     QString evaluateScript(const QString &string);
     void activateLauncherMenu();
+    QRgb color() const;
 
     QByteArray dumpCurrentLayoutJS() const;
 
@@ -201,55 +240,72 @@ private Q_SLOTS:
     void populateAddPanelsMenu();
 
     void addOutput(QScreen *screen);
-    void primaryOutputChanged();
 
     void panelContainmentDestroyed(QObject *cont);
     void handleScreenRemoved(QScreen *screen);
+    void handleScreenOrderChanged(QList<QScreen *> screens);
 
     void activateTaskManagerEntry(int index);
 
 private:
+    void sanitizeScreenLayout(const QString &configFileName);
     void updateStruts();
     void configurationChanged(const QString &path);
-    bool isOutputRedundant(QScreen *screen) const;
-    void reconsiderOutputs();
-    QList<PanelView *> panelsForScreen(QScreen *screen) const;
     DesktopView *desktopForScreen(QScreen *screen) const;
     void setupWaylandIntegration();
     void executeSetupPlasmoidScript(Plasma::Containment *containment, Plasma::Applet *applet);
     void checkAllDesktopsUiReady(bool ready);
+    void activateLauncherMenu(const QString &screenName);
+    void handleColorRequestedFromDBus(const QDBusMessage &msg);
 
 #ifndef NDEBUG
     void screenInvariants() const;
 #endif
 
-    void insertContainment(const QString &activity, int screenNum, Plasma::Containment *containment);
-
     KSharedConfig::Ptr m_config;
     QString m_configPath;
+
+    // Accent color setting
+    KConfigWatcher::Ptr m_accentColorConfigWatcher;
+    bool m_accentColorFromWallpaperEnabled = false;
+    QMetaObject::Connection m_fakeColorRequestConn;
 
     ScreenPool *m_screenPool;
     QString m_shell;
     KActivities::Controller *m_activityController;
-    // map from screen number to desktop view, qmap as order is important
-    QMap<int, DesktopView *> m_desktopViewforId;
-    QHash<const Plasma::Containment *, PanelView *> m_panelViews;
+    QMap<const Plasma::Containment *, PanelView *> m_panelViews;
+    // map from QScreen to desktop view
+    QHash<int, DesktopView *> m_desktopViewForScreen;
+    QHash<const Plasma::Containment *, int> m_pendingScreenChanges;
     KConfigGroup m_desktopDefaultsConfig;
     KConfigGroup m_lnfDefaultsConfig;
     QList<Plasma::Containment *> m_waitingPanels;
     QHash<QString, QString> m_activityContainmentPlugins;
     QAction *m_addPanelAction;
-    QScopedPointer<QMenu> m_addPanelsMenu;
+    std::unique_ptr<QMenu> m_addPanelsMenu;
     KPackage::Package m_lookAndFeelPackage;
-    QSet<QScreen *> m_redundantOutputs;
+
+    // Used to restore the previous activated window after the panel loses focus
+    KWayland::Client::PlasmaShellSurface *m_shellSurface = nullptr;
+#if HAVE_X11
+    WId m_previousWId = 0;
+#endif
+    bool m_blockRestorePreviousWindow = false;
 
     QTimer m_waitingPanelsTimer;
     QTimer m_appConfigSyncTimer;
-    QTimer m_reconsiderOutputsTimer;
-
+#ifndef NDEBUG
+    QTimer m_invariantsTimer;
+#endif
     KWayland::Client::PlasmaShell *m_waylandPlasmaShell;
+    // For getting the active window on Wayland
+    KWayland::Client::PlasmaWindowManagement *m_waylandWindowManagement = nullptr;
+    KWayland::Client::PlasmaWindow *m_previousPlasmaWindow = nullptr;
     bool m_closingDown : 1;
+    bool m_screenReorderInProgress = false;
     QString m_testModeLayout;
 
     StrutManager *m_strutManager;
+    QPointer<ShellContainmentConfig> m_shellContainmentConfig;
+    friend class ShellTest;
 };

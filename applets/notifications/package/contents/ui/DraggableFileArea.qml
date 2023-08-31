@@ -6,6 +6,9 @@
 
 import QtQuick 2.8
 
+import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.private.notifications 2.0 as Notifications
+
 MouseArea {
     id: area
 
@@ -15,8 +18,9 @@ MouseArea {
     property Item dragParent
     property url dragUrl
     property var dragPixmap
+    property int dragPixmapSize: PlasmaCore.Units.iconSizes.large
 
-    readonly property bool dragging: plasmoid.nativeInterface.dragActive
+    readonly property bool dragging: Notifications.DragHelper.dragActive
 
     property int _pressX: -1
     property int _pressY: -1
@@ -39,8 +43,9 @@ MouseArea {
         }
     }
     onPositionChanged: {
-        if (_pressX !== -1 && _pressY !== -1 && plasmoid.nativeInterface.isDrag(_pressX, _pressY, mouse.x, mouse.y)) {
-            plasmoid.nativeInterface.startDrag(area.dragParent, area.dragUrl, area.dragPixmap);
+        if (_pressX !== -1 && _pressY !== -1 && Notifications.DragHelper.isDrag(_pressX, _pressY, mouse.x, mouse.y)) {
+            Notifications.DragHelper.dragPixmapSize = area.dragPixmapSize;
+            Notifications.DragHelper.startDrag(area.dragParent, area.dragUrl, area.dragPixmap);
             _pressX = -1;
             _pressY = -1;
         }

@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2014, 2016, 2017, 2018, 2020.
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2014, 2016, 2017, 2018, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-20 00:22+0000\n"
-"PO-Revision-Date: 2020-11-16 07:49+0100\n"
+"POT-Creation-Date: 2023-01-02 01:06+0000\n"
+"PO-Revision-Date: 2022-06-11 17:03+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,96 +15,155 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.04.3\n"
+"X-Generator: Lokalize 20.08.1\n"
 
-#: contents/ui/ExpandedRepresentation.qml:230 contents/ui/main.qml:77
+#: package/contents/ui/AlbumArtStackView.qml:181
+#, kde-format
+msgid "No title"
+msgstr ""
+
+#: package/contents/ui/AlbumArtStackView.qml:181
+#: package/contents/ui/main.qml:82
 #, kde-format
 msgid "No media playing"
 msgstr "Inga media spelar"
 
-#: contents/ui/ExpandedRepresentation.qml:324
-#: contents/ui/ExpandedRepresentation.qml:395
+#: package/contents/ui/ExpandedRepresentation.qml:413
+#: package/contents/ui/ExpandedRepresentation.qml:534
 #, kde-format
 msgctxt "Remaining time for song e.g -5:42"
 msgid "-%1"
 msgstr "-%1"
 
-#: contents/ui/ExpandedRepresentation.qml:421
+#: package/contents/ui/ExpandedRepresentation.qml:563
 #, kde-format
 msgid "Shuffle"
 msgstr "Blanda"
 
-#: contents/ui/ExpandedRepresentation.qml:475
-#, kde-format
-msgid "Repeat Track"
-msgstr "Upprepa spår"
-
-#: contents/ui/ExpandedRepresentation.qml:475
-#, kde-format
-msgid "Repeat"
-msgstr "Upprepa"
-
-#: contents/ui/main.qml:91
-#, kde-format
-msgctxt "Open player window or bring it to the front if already open"
-msgid "Open"
-msgstr "Öppna"
-
-#: contents/ui/main.qml:95
+#: package/contents/ui/ExpandedRepresentation.qml:589
+#: package/contents/ui/main.qml:94
 #, kde-format
 msgctxt "Play previous track"
 msgid "Previous Track"
 msgstr "Föregående spår"
 
-#: contents/ui/main.qml:103
+#: package/contents/ui/ExpandedRepresentation.qml:611
+#: package/contents/ui/main.qml:100
 #, kde-format
 msgctxt "Pause playback"
 msgid "Pause"
 msgstr "Paus"
 
-#: contents/ui/main.qml:108
+#: package/contents/ui/ExpandedRepresentation.qml:611
+#: package/contents/ui/main.qml:105
 #, kde-format
 msgctxt "Start playback"
 msgid "Play"
 msgstr "Spela"
 
-#: contents/ui/main.qml:114
+#: package/contents/ui/ExpandedRepresentation.qml:629
+#: package/contents/ui/main.qml:110
 #, kde-format
 msgctxt "Play next track"
 msgid "Next Track"
 msgstr "Nästa spår"
 
-#: contents/ui/main.qml:120
+#: package/contents/ui/ExpandedRepresentation.qml:652
+#, kde-format
+msgid "Repeat Track"
+msgstr "Upprepa spår"
+
+#: package/contents/ui/ExpandedRepresentation.qml:652
+#, kde-format
+msgid "Repeat"
+msgstr "Upprepa"
+
+#: package/contents/ui/main.qml:90
+#, kde-format
+msgctxt "Open player window or bring it to the front if already open"
+msgid "Open"
+msgstr "Öppna"
+
+#: package/contents/ui/main.qml:116
 #, kde-format
 msgctxt "Stop playback"
 msgid "Stop"
 msgstr "Stoppa"
 
-#: contents/ui/main.qml:128
+#: package/contents/ui/main.qml:125
 #, kde-format
 msgctxt "Quit player"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: contents/ui/main.qml:281
+#: package/contents/ui/main.qml:238
 #, kde-format
 msgid "Choose player automatically"
 msgstr "Välj automatiskt spelare"
 
-#: contents/ui/main.qml:318
-#, kde-format
-msgctxt "by Artist (player name)"
-msgid "by %1 (%2)"
-msgstr "av %1 (%2)"
-
-#: contents/ui/main.qml:329
-#, kde-format
-msgctxt "by Artist (paused, player name)"
-msgid "by %1 (paused, %2)"
+#: package/contents/ui/main.qml:292
+#, fuzzy, kde-format
+#| msgctxt "by Artist (paused, player name)"
+#| msgid "by %1 (paused, %2)"
+msgctxt "@info:tooltip %1 is a musical artist and %2 is an app name"
+msgid ""
+"by %1 (%2)\n"
+"Middle-click to pause\n"
+"Scroll to adjust volume"
 msgstr "av %1 (paus, %2)"
 
-#: contents/ui/main.qml:329
+#: package/contents/ui/main.qml:292
 #, kde-format
-msgctxt "Paused (player name)"
-msgid "Paused (%1)"
-msgstr "Paus (%1)"
+msgctxt "@info:tooltip %1 is an app name"
+msgid ""
+"%1\n"
+"Middle-click to pause\n"
+"Scroll to adjust volume"
+msgstr ""
+
+#: package/contents/ui/main.qml:303
+#, fuzzy, kde-format
+#| msgctxt "by Artist (paused, player name)"
+#| msgid "by %1 (paused, %2)"
+msgctxt "@info:tooltip %1 is a musical artist and %2 is an app name"
+msgid ""
+"by %1 (paused, %2)\n"
+"Middle-click to play\n"
+"Scroll to adjust volume"
+msgstr "av %1 (paus, %2)"
+
+#: package/contents/ui/main.qml:303
+#, fuzzy, kde-format
+#| msgctxt "by Artist (paused, player name)"
+#| msgid "by %1 (paused, %2)"
+msgctxt "@info:tooltip %1 is an app name"
+msgid ""
+"Paused (%1)\n"
+"Middle-click to play\n"
+"Scroll to adjust volume"
+msgstr "av %1 (paus, %2)"
+
+#~ msgid "General"
+#~ msgstr "Allmänt"
+
+#~ msgid "Volume step:"
+#~ msgstr "Volymsteg:"
+
+#~ msgctxt "by Artist (player name)"
+#~ msgid "by %1 (%2)"
+#~ msgstr "av %1 (%2)"
+
+#~ msgctxt "Paused (player name)"
+#~ msgid "Paused (%1)"
+#~ msgstr "Paus (%1)"
+
+#~ msgctxt "artist – track"
+#~ msgid "%1 – %2"
+#~ msgstr "%1 – %2"
+
+#~ msgctxt "Artist of the song"
+#~ msgid "by %1"
+#~ msgstr "av %1"
+
+#~ msgid "Pause playback when screen is locked"
+#~ msgstr "Pausa uppspelning när skärmen är låst"

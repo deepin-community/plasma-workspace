@@ -5,6 +5,7 @@
 */
 
 #include "waylandstartuptasksmodel.h"
+#include "libtaskmanager_debug.h"
 #include "tasktools.h"
 
 #include <KConfigGroup>
@@ -53,8 +54,8 @@ WaylandStartupTasksModel::Private::Private(WaylandStartupTasksModel *q)
 
 void WaylandStartupTasksModel::Private::init()
 {
-    configWatcher = KConfigWatcher::create(KSharedConfig::openConfig(QStringLiteral("klaunchrc")));
-    QObject::connect(configWatcher.data(), &KConfigWatcher::configChanged, q, [this]() {
+    configWatcher = KConfigWatcher::create(KSharedConfig::openConfig(QStringLiteral("klaunchrc"), KConfig::NoGlobals));
+    QObject::connect(configWatcher.data(), &KConfigWatcher::configChanged, q, [this] {
         loadConfig();
     });
 
@@ -116,7 +117,7 @@ void WaylandStartupTasksModel::Private::addActivation(KWayland::Client::PlasmaAc
         const QString desktopFileName = appId + QLatin1String(".desktop");
         const QString desktopFilePath = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, desktopFileName);
         if (desktopFilePath.isEmpty()) {
-            qWarning() << "Got invalid activation app_id:" << appId;
+            qCWarning(TASKMANAGER_DEBUG) << "Got invalid activation app_id:" << appId;
             return;
         }
 
@@ -194,6 +195,8 @@ QVariant WaylandStartupTasksModel::data(const QModelIndex &index, int role) cons
         return data.launcherUrl;
     } else if (role == IsStartup) {
         return true;
+    } else if (role == CanLaunchNewInstance) {
+        return false;
     }
 
     return QVariant();

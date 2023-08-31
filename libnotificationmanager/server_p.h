@@ -8,7 +8,9 @@
 
 #include <QDBusContext>
 #include <QObject>
+#include <QSet>
 #include <QStringList>
+#include <memory>
 
 #include "notification.h"
 
@@ -66,6 +68,7 @@ Q_SIGNALS:
     // DBus
     void NotificationClosed(uint id, uint reason);
     void ActionInvoked(uint id, const QString &actionKey);
+    void ActivationToken(uint id, const QString &xdgActivationToken);
     // non-standard
     // This is manually emitted as targeted signal in sendReplyText()
     void NotificationReplied(uint id, const QString &text);
@@ -87,7 +90,7 @@ public: // stuff used by public class
 
     bool init();
     uint add(const Notification &notification);
-    void sendReplyText(const QString &dbusService, uint notificationId, const QString &text);
+    void sendReplyText(const QString &dbusService, uint notificationId, const QString &text, Notifications::InvokeBehavior behavior);
 
     ServerInfo *currentOwner() const;
 
@@ -102,17 +105,18 @@ public: // stuff used by public class
     bool m_valid = false;
     uint m_highestNotificationId = 1;
 
-private slots:
+private Q_SLOTS:
     void onBroadcastNotification(const QMap<QString, QVariant> &properties);
 
 private:
+    friend class Server;
     void onServiceOwnershipLost(const QString &serviceName);
     void onInhibitionServiceUnregistered(const QString &serviceName);
-    void onInhibitedChanged(); // emit DBus change signal
+    void onInhibitedChanged(); // Q_EMIT DBus change signal
 
     bool m_dbusObjectValid = false;
 
-    mutable QScopedPointer<ServerInfo> m_currentOwner;
+    mutable std::unique_ptr<ServerInfo> m_currentOwner;
 
     QDBusServiceWatcher *m_inhibitionWatcher = nullptr;
     QDBusServiceWatcher *m_notificationWatchers = nullptr;

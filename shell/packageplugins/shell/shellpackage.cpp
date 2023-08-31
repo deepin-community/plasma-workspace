@@ -36,7 +36,7 @@ void ShellPackage::initPackage(KPackage::Package *package)
     // Default layout
     package->addFileDefinition("defaultlayout", QStringLiteral("layout.js"), i18n("Default layout file"));
     package->addFileDefinition("defaults", QStringLiteral("defaults"), i18n("Default plugins for containments, containmentActions, etc."));
-    package->setMimeTypes("defaultlayout", QStringList() << QStringLiteral("application/javascript"));
+    package->setMimeTypes("defaultlayout", QStringList() << QStringLiteral("application/javascript") << QStringLiteral("text/javascript"));
     package->setMimeTypes("defaults", QStringList() << QStringLiteral("text/plain"));
 
     // Applet furniture
@@ -58,6 +58,9 @@ void ShellPackage::initPackage(KPackage::Package *package)
     package->addFileDefinition("appletalternativesui",
                                QStringLiteral("explorer/AppletAlternatives.qml"),
                                i18n("QML component for choosing an alternate applet"));
+    package->addFileDefinition("containmentmanagementui",
+                               QStringLiteral("configuration/ShellContainmentConfiguration.qml"),
+                               i18n("QML component for the configuration dialog of containments"));
 
     // Widget explorer
     package->addFileDefinition("widgetexplorer", QStringLiteral("explorer/WidgetExplorer.qml"), i18n("Widgets explorer UI"));

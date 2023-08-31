@@ -7,9 +7,9 @@
 
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import QtQuick.Controls 2.15 as QQC2 // For StackView
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents // For PageStack
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 
@@ -17,6 +17,7 @@ Item {
     id: main
 
     property bool isClipboardEmpty: clipboardSource.data["clipboard"]["empty"]
+    property bool editing: false
 
     signal clearSearchField
 
@@ -41,8 +42,8 @@ Item {
         if (isClipboardEmpty) {
             // We need to hide the applet before changing its status to passive
             // because only the active applet can hide itself
-            if (plasmoid.hideOnWindowDeactivate)
-                plasmoid.expanded = false;
+            if (Plasmoid.hideOnWindowDeactivate)
+                Plasmoid.expanded = false;
             Plasmoid.status = PlasmaCore.Types.PassiveStatus;
         } else {
             Plasmoid.status = PlasmaCore.Types.ActiveStatus
@@ -51,12 +52,12 @@ Item {
 
 
     Component.onCompleted: {
-        plasmoid.removeAction("configure");
-        plasmoid.setAction("configure", i18n("Configure Clipboard…"), "configure", "alt+d, s");
+        Plasmoid.removeAction("configure");
+        Plasmoid.setAction("configure", i18n("Configure Clipboard…"), "configure", "alt+d, s");
 
-        plasmoid.setAction("clearHistory", i18n("Clear History"), "edit-clear-history");
-        plasmoid.action("clearHistory").visible = Qt.binding(() => {
-            return !main.isClipboardEmpty;
+        Plasmoid.setAction("clearHistory", i18n("Clear History"), "edit-clear-history");
+        Plasmoid.action("clearHistory").visible = Qt.binding(() => {
+            return !main.isClipboardEmpty && !main.editing;
         });
     }
 
@@ -70,25 +71,32 @@ Item {
             var operation = service.operationDescription(op);
             return service.startOperationCall(operation);
         }
-        function edit(uuid) {
+        function edit(uuid, text) {
             clipboardSource.editing = true;
-            var job = clipboardSource.service(uuid, "edit");
+            const service = clipboardSource.serviceForSource(uuid);
+            const operation = service.operationDescription("edit");
+            operation.text = text;
+            const job = service.startOperationCall(operation);
             job.finished.connect(function() {
                 clipboardSource.editing = false;
             });
         }
     }
 
-    Plasmoid.fullRepresentation: PlasmaComponents3.Page {
+    Plasmoid.fullRepresentation: PlasmaExtras.Representation {
         id: dialogItem
-        Layout.minimumWidth: PlasmaCore.Units.gridUnit * 5
-        Layout.minimumHeight: PlasmaCore.Units.gridUnit * 5
+        Layout.minimumWidth: PlasmaCore.Units.gridUnit * 24
+        Layout.minimumHeight: PlasmaCore.Units.gridUnit * 24
+        Layout.maximumWidth: PlasmaCore.Units.gridUnit * 80
+        Layout.maximumHeight: PlasmaCore.Units.gridUnit * 40
+        collapseMarginsHint: true
 
         focus: true
 
-        header: stack.currentPage.header
+        header: stack.currentItem.header
 
         property alias listMargins: listItemSvg.margins
+        readonly property var appletInterface: Plasmoid.self
 
         PlasmaCore.FrameSvgItem {
             id : listItemSvg
@@ -97,20 +105,12 @@ Item {
             visible: false
         }
 
-        Keys.forwardTo: [stack.currentPage]
+        Keys.forwardTo: [stack.currentItem]
 
-        PlasmaComponents.PageStack {
+        QQC2.StackView {
             id: stack
             anchors.fill: parent
-            initialPage: ClipboardPage {
-                anchors.fill: parent
-            }
-        }
-        Component {
-            id: barcodePage
-            BarcodePage {
-                anchors.fill: parent
-            }
+            initialItem: ClipboardPage {}
         }
     }
 }

@@ -26,3 +26,6 @@ msgstr "Prehliadač úloh pre %1 nenájdený"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1/s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Úloha bola zrušená užívateľom."

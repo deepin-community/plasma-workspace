@@ -2,10 +2,10 @@ add_definitions(-DTRANSLATION_DOMAIN=\"plasma_runner_locations\")
 
 set(krunner_locations_SRCS
     locationrunner.cpp
+    locationrunner.h
 )
 
-kcoreaddons_add_plugin(locations SOURCES ${krunner_locations_SRCS} INSTALL_NAMESPACE "kf5/krunner")
-kcoreaddons_desktop_to_json(locations plasma-runner-locations.desktop)
+kcoreaddons_add_plugin(locations SOURCES ${krunner_locations_SRCS} INSTALL_NAMESPACE "kf${QT_MAJOR_VERSION}/krunner")
 target_link_libraries(locations
     KF5::KIOCore
     KF5::KIOWidgets

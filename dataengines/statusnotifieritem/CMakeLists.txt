@@ -7,6 +7,11 @@ set(statusnotifieritem_engine_SRCS
     statusnotifieritemservice.cpp
     statusnotifieritemjob.cpp
     systemtraytypes.cpp
+    statusnotifieritem_engine.h
+    statusnotifieritemsource.h
+    statusnotifieritemservice.h
+    statusnotifieritemjob.h
+    systemtraytypes.h
 )
 
 set(statusnotifierwatcher_xml ${KNOTIFICATIONS_DBUS_INTERFACES_DIR}/kf5_org.kde.StatusNotifierWatcher.xml)
@@ -36,8 +41,6 @@ target_link_libraries(plasma_engine_statusnotifieritem
     KF5::WindowSystem
     dbusmenuqt
 )
-
-kcoreaddons_desktop_to_json(plasma_engine_statusnotifieritem plasma-dataengine-statusnotifieritem.desktop)
 
 install(FILES statusnotifieritem.operations DESTINATION ${PLASMA_DATA_INSTALL_DIR}/services)
 

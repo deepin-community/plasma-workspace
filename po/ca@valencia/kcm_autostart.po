@@ -1,169 +1,130 @@
 # Translation of kcm_autostart.po to Catalan (Valencian)
-# Copyright (C) 2008-2019 This_file_is_part_of_KDE
+# Copyright (C) 2008-2022 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
-# or the same license as the source of its messages in English.
 #
-# Josep Ma. Ferrer <txemaq@gmail.com>, 2008, 2010, 2012, 2015, 2016, 2017.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2015, 2016, 2017.
-# Alfredo vicente <alviboi@gmail.com>, 2019.
+# Josep M. Ferrer <txemaq@gmail.com>, 2008, 2010, 2012, 2015, 2016, 2017, 2020, 2021, 2022.
+# Antoni Bella Pérez <antonibella5@yahoo.com>, 2015, 2016, 2017, 2020.
+# Alfredo Vicente <alviboi@gmail.com>, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: plasma-desktop\n"
+"Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2019-07-05 11:43+0200\n"
-"Last-Translator: Alfredo vicente <alviboi@gmail.com>\n"
+"POT-Creation-Date: 2023-01-29 02:56+0000\n"
+"PO-Revision-Date: 2022-07-02 10:55+0200\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.04.2\n"
+"X-Generator: Lokalize 20.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
+#: autostartmodel.cpp:322
 #, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Josep Ma. Ferrer"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "txemaq@gmail.com"
-
-#: autostart.cpp:24
-#, kde-format
-msgid "Autostart"
-msgstr ""
-
-#: autostart.cpp:26
-#, kde-format
-msgid "Session Autostart Manager Control Panel Module"
-msgstr ""
-"Mòdul del plafó de control pel gestor de l'inici automàtic de la sessió"
-
-#: autostart.cpp:28
-#, fuzzy, kde-format
-#| msgid "Copyright © 2006–2010 Autostart Manager team"
-msgid "Copyright © 2006–2020 Autostart Manager team"
-msgstr "Copyright © 2006–2010 Autostart Manager team"
-
-#: autostart.cpp:29
-#, kde-format
-msgid "Stephen Leaf"
-msgstr "Stephen Leaf"
-
-#: autostart.cpp:30
-#, kde-format
-msgid "Montel Laurent"
-msgstr "Montel Laurent"
-
-#: autostart.cpp:30
-#, kde-format
-msgid "Maintainer"
-msgstr "Mantenidor"
-
-#: autostart.cpp:31
-#, kde-format
-msgid "Nicolas Fella"
-msgstr ""
-
-#: autostartmodel.cpp:288
-#, fuzzy, kde-format
-#| msgid "\"%1\" is not an absolute path."
 msgid "\"%1\" is not an absolute url."
-msgstr "«%1» no és cap camí absolut."
+msgstr "«%1» no és cap URL absolut."
 
-#: autostartmodel.cpp:291
+#: autostartmodel.cpp:325
 #, kde-format
 msgid "\"%1\" does not exist."
-msgstr "«%1» no existeix."
+msgstr "«%1» no existix."
 
-#: autostartmodel.cpp:294
+#: autostartmodel.cpp:328
 #, kde-format
 msgid "\"%1\" is not a file."
 msgstr "«%1» no és cap fitxer."
 
-#: autostartmodel.cpp:297
+#: autostartmodel.cpp:331
 #, kde-format
 msgid "\"%1\" is not readable."
 msgstr "«%1» no es pot llegir."
 
-#: package/contents/ui/main.qml:62
-#, fuzzy, kde-format
-#| msgid "&Properties..."
+#: package/contents/ui/main.qml:40
+#, kde-format
+msgid "Make Executable"
+msgstr "Fes que siga executable"
+
+#: package/contents/ui/main.qml:54
+#, kde-format
+msgid "The file '%1' must be executable to run at logout."
+msgstr "El fitxer «%1» ha de ser executable per a executar-se en eixir."
+
+#: package/contents/ui/main.qml:56
+#, kde-format
+msgid "The file '%1' must be executable to run at login."
+msgstr "El fitxer «%1» ha de ser executable per a executar-se en entrar."
+
+#: package/contents/ui/main.qml:94
+#, kde-format
 msgid "Properties"
-msgstr "&Propietats..."
+msgstr "Propietats"
 
-#: package/contents/ui/main.qml:68
-#, fuzzy, kde-format
-#| msgid "&Remove"
+#: package/contents/ui/main.qml:100
+#, kde-format
 msgid "Remove"
-msgstr "&Elimina"
+msgstr "Elimina"
 
-#: package/contents/ui/main.qml:79
+#: package/contents/ui/main.qml:111
 #, kde-format
 msgid "Applications"
-msgstr ""
+msgstr "Aplicacions"
 
-#: package/contents/ui/main.qml:82
+#: package/contents/ui/main.qml:114
 #, kde-format
 msgid "Login Scripts"
-msgstr ""
+msgstr "Scripts d'inici de sessió"
 
-#: package/contents/ui/main.qml:85
+#: package/contents/ui/main.qml:117
 #, kde-format
 msgid "Pre-startup Scripts"
-msgstr ""
+msgstr "Scripts previs a l'inici"
 
-#: package/contents/ui/main.qml:88
-#, fuzzy, kde-format
-#| msgid "Logout"
+#: package/contents/ui/main.qml:120
+#, kde-format
 msgid "Logout Scripts"
-msgstr "Eixida"
+msgstr "Scripts d'eixida de sessió"
 
-#: package/contents/ui/main.qml:97
+#: package/contents/ui/main.qml:129
 #, kde-format
 msgid "No user-specified autostart items"
-msgstr ""
+msgstr "No hi ha cap element d'inici automàtic especificat per l'usuari"
 
-#: package/contents/ui/main.qml:98
+#: package/contents/ui/main.qml:130
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add…</interface> button below to add some"
 msgstr ""
+"Feu clic en el botó <interface>Afig…</interface> de davall per a afegir-ne"
 
-#: package/contents/ui/main.qml:112
-#, fuzzy, kde-format
-#| msgid "Add Script..."
+#: package/contents/ui/main.qml:144
+#, kde-format
 msgid "Choose Login Script"
-msgstr "Afig un script..."
+msgstr "Seleccioneu l'script d'inici de sessió"
 
-#: package/contents/ui/main.qml:133
+#: package/contents/ui/main.qml:165
 #, kde-format
 msgid "Choose Logout Script"
-msgstr ""
-
-#: package/contents/ui/main.qml:151
-#, kde-format
-msgid "Add…"
-msgstr ""
-
-#: package/contents/ui/main.qml:177
-#, kde-format
-msgid "Add Application…"
-msgstr ""
+msgstr "Seleccioneu l'script d'eixida"
 
 #: package/contents/ui/main.qml:183
-#, fuzzy, kde-format
-#| msgid "Add Script..."
-msgid "Add Login Script…"
-msgstr "Afig un script..."
+#, kde-format
+msgid "Add…"
+msgstr "Afig…"
 
-#: package/contents/ui/main.qml:189
-#, fuzzy, kde-format
-#| msgid "Add Script..."
+#: package/contents/ui/main.qml:198
+#, kde-format
+msgid "Add Application…"
+msgstr "Afig una aplicació…"
+
+#: package/contents/ui/main.qml:204
+#, kde-format
+msgid "Add Login Script…"
+msgstr "Afig un script d'inici…"
+
+#: package/contents/ui/main.qml:210
+#, kde-format
 msgid "Add Logout Script…"
-msgstr "Afig un script..."
+msgstr "Afig un script d'eixida…"

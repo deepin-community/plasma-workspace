@@ -26,3 +26,9 @@ msgstr "Victor Ibragimov"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "victor.ibragimov@gmail.com"
+
+#~ msgid "Unable to find a Multimedia Backend"
+#~ msgstr "Захирагоҳи мултимедиа ёфт нашуд"
+
+#~ msgid "Unable to find the requested Multimedia Backend"
+#~ msgstr "Захирагоҳи мултимедиаи дархостшуда ёфт нашуд"

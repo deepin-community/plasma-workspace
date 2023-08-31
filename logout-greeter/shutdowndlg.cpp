@@ -21,13 +21,13 @@
 #include <QQmlPropertyMap>
 #include <QQuickItem>
 #include <QQuickView>
-#include <QScreen>
 #include <QStandardPaths>
 #include <QTimer>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <private/qtx11extras_p.h>
+#else
 #include <QX11Info>
-
-#include <KPackage/Package>
-#include <KPackage/PackageLoader>
+#endif
 
 #include <KAuthorized>
 #include <KConfigGroup>
@@ -36,6 +36,7 @@
 #include <KUser>
 #include <KWindowEffects>
 #include <KWindowSystem>
+#include <KX11Extras>
 #include <LayerShellQt/Window>
 
 #include <netwm.h>
@@ -54,15 +55,24 @@ static const QString s_dbusPropertiesInterface = QStringLiteral("org.freedesktop
 static const QString s_login1ManagerInterface = QStringLiteral("org.freedesktop.login1.Manager");
 static const QString s_login1RebootToFirmwareSetup = QStringLiteral("RebootToFirmwareSetup");
 
-KSMShutdownDlg::KSMShutdownDlg(QWindow *parent, KWorkSpace::ShutdownType sdtype)
+KSMShutdownDlg::KSMShutdownDlg(QWindow *parent, KWorkSpace::ShutdownType sdtype, QScreen *screen)
     : QuickViewSharedEngine(parent)
     , m_result(false)
 // this is a WType_Popup on purpose. Do not change that! Not
 // having a popup here has severe side effects.
 {
     // window stuff
-    setClearBeforeRendering(true);
     setColor(QColor(Qt::transparent));
+    setScreen(screen);
+
+    if (KWindowSystem::isPlatformWayland() && !m_windowed) {
+        if (auto w = LayerShellQt::Window::get(this)) {
+            w->setKeyboardInteractivity(LayerShellQt::Window::KeyboardInteractivityExclusive);
+            w->setExclusiveZone(-1);
+            w->setLayer(LayerShellQt::Window::LayerOverlay);
+            w->setDesiredOutput(screen);
+        }
+    }
 
     setResizeMode(KQuickAddons::QuickViewSharedEngine::SizeRootObjectToView);
 
@@ -79,8 +89,8 @@ KSMShutdownDlg::KSMShutdownDlg(QWindow *parent, KWorkSpace::ShutdownType sdtype)
                         strlen("logoutdialog"));
 
         XClassHint classHint;
-        classHint.res_name = const_cast<char *>("ksmserver");
-        classHint.res_class = const_cast<char *>("ksmserver");
+        classHint.res_name = const_cast<char *>("ksmserver-logout-greeter");
+        classHint.res_class = const_cast<char *>("ksmserver-logout-greeter");
         XSetClassHint(QX11Info::display(), winId(), &classHint);
     }
 
@@ -139,19 +149,11 @@ KSMShutdownDlg::KSMShutdownDlg(QWindow *parent, KWorkSpace::ShutdownType sdtype)
     engine()->rootContext()->setContextObject(new KLocalizedContext(engine()));
 }
 
-void KSMShutdownDlg::init()
+void KSMShutdownDlg::init(const KPackage::Package &package)
 {
     rootContext()->setContextProperty(QStringLiteral("screenGeometry"), screen()->geometry());
 
-    QString fileName;
-    KPackage::Package package = KPackage::PackageLoader::self()->loadPackage(QStringLiteral("Plasma/LookAndFeel"));
-    KConfigGroup cg(KSharedConfig::openConfig(QStringLiteral("kdeglobals")), "KDE");
-    const QString packageName = cg.readEntry("LookAndFeelPackage", QString());
-    if (!packageName.isEmpty()) {
-        package.setPath(packageName);
-    }
-
-    fileName = package.filePath("logoutmainscript");
+    const QString fileName = package.filePath("logoutmainscript");
 
     if (QFile::exists(fileName)) {
         setSource(package.fileUrl("logoutmainscript"));
@@ -181,28 +183,25 @@ void KSMShutdownDlg::init()
     // is too early and we don't have the root object yet
     const QColor backgroundColor = rootObject() ? rootObject()->property("backgroundColor").value<QColor>() : QColor();
     KWindowEffects::enableBackgroundContrast(this, true, 0.4, (backgroundColor.value() > 128 ? 1.6 : 0.3), 1.7);
-    KQuickAddons::QuickViewSharedEngine::showFullScreen();
-    setFlag(Qt::FramelessWindowHint);
+    if (m_windowed) {
+        show();
+    } else {
+        showFullScreen();
+        setFlag(Qt::FramelessWindowHint);
+    }
     requestActivate();
 
     KWindowSystem::setState(winId(), NET::SkipTaskbar | NET::SkipPager);
 
     setKeyboardGrabEnabled(true);
     KWindowEffects::enableBlurBehind(this, true);
-    if (KWindowSystem::isPlatformWayland()) {
-        if (auto w = LayerShellQt::Window::get(this)) {
-            w->setKeyboardInteractivity(LayerShellQt::Window::KeyboardInteractivityExclusive);
-            w->setExclusiveZone(-1);
-            w->setLayer(LayerShellQt::Window::LayerOverlay);
-        }
-    }
 }
 
 void KSMShutdownDlg::resizeEvent(QResizeEvent *e)
 {
     KQuickAddons::QuickViewSharedEngine::resizeEvent(e);
 
-    if (KWindowSystem::compositingActive()) {
+    if (KX11Extras::compositingActive()) {
         // TODO: reenable window mask when we are without composite?
         //        clearMask();
     } else {
@@ -263,10 +262,10 @@ void KSMShutdownDlg::slotSuspend(int spdMethod)
 
 void KSMShutdownDlg::accept()
 {
-    emit accepted();
+    Q_EMIT accepted();
 }
 
 void KSMShutdownDlg::reject()
 {
-    emit rejected();
+    Q_EMIT rejected();
 }

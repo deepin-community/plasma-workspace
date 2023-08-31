@@ -6,96 +6,86 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-10-26 01:42+0000\n"
-"PO-Revision-Date: 2021-05-26 14:59+0200\n"
+"POT-Creation-Date: 2023-01-02 01:06+0000\n"
+"PO-Revision-Date: 2021-10-29 16:13+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.04.1\n"
+"X-Generator: Lokalize 21.08.2\n"
 
-#: contents/ui/BarcodePage.qml:28
+#: contents/ui/BarcodePage.qml:36
 #, kde-format
 msgid "Return to Clipboard"
 msgstr "Terug naar klembord"
 
-#: contents/ui/BarcodePage.qml:49
+#: contents/ui/BarcodePage.qml:57
 #, kde-format
 msgid "QR Code"
 msgstr "QR-code"
 
-#: contents/ui/BarcodePage.qml:50
+#: contents/ui/BarcodePage.qml:58
 #, kde-format
 msgid "Data Matrix"
 msgstr "Gegevensmatrix"
 
-#: contents/ui/BarcodePage.qml:51
+#: contents/ui/BarcodePage.qml:59
 #, kde-format
 msgctxt "Aztec barcode"
 msgid "Aztec"
 msgstr "Aztec"
 
-#: contents/ui/BarcodePage.qml:52
+#: contents/ui/BarcodePage.qml:60
 #, kde-format
 msgid "Code 39"
 msgstr "Code 39"
 
-#: contents/ui/BarcodePage.qml:53
+#: contents/ui/BarcodePage.qml:61
 #, kde-format
 msgid "Code 93"
 msgstr "Code 93"
 
-#: contents/ui/BarcodePage.qml:54
+#: contents/ui/BarcodePage.qml:62
 #, kde-format
 msgid "Code 128"
 msgstr "Code 128"
 
-#: contents/ui/BarcodePage.qml:77
+#: contents/ui/BarcodePage.qml:85
 #, kde-format
-msgid "Change the barcode type"
-msgstr "Wijzig het type barcode"
+msgid "Change the QR code type"
+msgstr "Het type QR-code wijzigen"
 
-#: contents/ui/BarcodePage.qml:101
+#: contents/ui/BarcodePage.qml:114
 #, kde-format
-msgid "Creating barcode failed"
-msgstr "Aanmaken van barcode is mislukt"
+msgid "Creating QR code failed"
+msgstr "Aanmaken van QR-code is mislukt"
 
-#: contents/ui/BarcodePage.qml:110
+#: contents/ui/BarcodePage.qml:123
 #, kde-format
-msgid "The barcode is too large to be displayed"
-msgstr "De barcode is te groot om te worden getoond"
+msgid "The QR code is too large to be displayed"
+msgstr "De QR-code is te groot om te worden getoond"
 
-#: contents/ui/clipboard.qml:26
+#: contents/ui/clipboard.qml:27
 #, kde-format
 msgid "Clipboard Contents"
 msgstr "Klembordinhoud"
 
-#: contents/ui/clipboard.qml:27 contents/ui/Menu.qml:58
+#: contents/ui/clipboard.qml:28 contents/ui/Menu.qml:126
 #, kde-format
 msgid "Clipboard is empty"
 msgstr "Klembordgeschiedenis is leeg"
 
-#: contents/ui/clipboard.qml:55
+#: contents/ui/clipboard.qml:56
 #, kde-format
 msgid "Configure Clipboard…"
 msgstr "Klembord configureren…"
 
-#: contents/ui/clipboard.qml:57
+#: contents/ui/clipboard.qml:58
 #, kde-format
 msgid "Clear History"
-msgstr "Geschiedenis wissen"
-
-#: contents/ui/ClipboardPage.qml:76
-#, kde-format
-msgid "Search…"
-msgstr "Zoeken…"
-
-#: contents/ui/ClipboardPage.qml:112
-#, kde-format
-msgid "Clear history"
 msgstr "Geschiedenis wissen"
 
 #: contents/ui/DelegateToolButtons.qml:23
@@ -103,22 +93,34 @@ msgstr "Geschiedenis wissen"
 msgid "Invoke action"
 msgstr "Actie aanroepen"
 
-#: contents/ui/DelegateToolButtons.qml:33
+#: contents/ui/DelegateToolButtons.qml:38
 #, kde-format
-msgid "Show barcode"
-msgstr "Barcode tonen"
+msgid "Show QR code"
+msgstr "QR-code tonen"
 
-#: contents/ui/DelegateToolButtons.qml:43
+#: contents/ui/DelegateToolButtons.qml:54
 #, kde-format
 msgid "Edit contents"
 msgstr "Inhoud bewerken"
 
-#: contents/ui/DelegateToolButtons.qml:51
+#: contents/ui/DelegateToolButtons.qml:68
 #, kde-format
 msgid "Remove from history"
 msgstr "Uit geschiedenis verwijderen"
 
-#: contents/ui/Menu.qml:58
+#: contents/ui/EditPage.qml:86
+#, kde-format
+msgctxt "@action:button"
+msgid "Save"
+msgstr "Opslaan"
+
+#: contents/ui/EditPage.qml:94
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: contents/ui/Menu.qml:126
 #, kde-format
 msgid "No matches"
 msgstr "Geen overeenkomsten"
@@ -129,3 +131,15 @@ msgctxt ""
 "Indicator that there are more urls in the clipboard than previews shown"
 msgid "+%1"
 msgstr "+%1"
+
+#~ msgid "Clear history"
+#~ msgstr "Geschiedenis wissen"
+
+#~ msgid "Search…"
+#~ msgstr "Zoeken…"
+
+#~ msgid "Clipboard history is empty."
+#~ msgstr "Klembordgeschiedenis is leeg."
+
+#~ msgid "Configure"
+#~ msgstr "Instellen"

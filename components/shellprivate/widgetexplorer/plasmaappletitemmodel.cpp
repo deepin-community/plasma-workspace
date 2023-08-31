@@ -13,10 +13,10 @@
 #include "config-workspace.h"
 #include <KAboutData>
 #include <KConfig>
-#include <KDeclarative/KDeclarative>
+#include <KJsonUtils>
 #include <KLocalizedString>
 #include <KPackage/PackageLoader>
-#include <KSycoca>
+#include <KRuntimePlatform>
 
 PlasmaAppletItem::PlasmaAppletItem(const KPluginMetaData &info)
     : AbstractItem()
@@ -120,18 +120,49 @@ void PlasmaAppletItem::setRunning(int count)
     emitDataChanged();
 }
 
+static bool matchesKeywords(QStringView keywords, const QString &pattern)
+{
+    const auto l = keywords.split(QLatin1Char(';'), Qt::SkipEmptyParts);
+    for (const auto &keyword : l) {
+        if (keyword.startsWith(pattern, Qt::CaseInsensitive)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 bool PlasmaAppletItem::matches(const QString &pattern) const
 {
-    const QString keywordsList = KPluginMetaData::readTranslatedString(m_info.rawData(), QStringLiteral("Keywords"));
-    const auto keywords = keywordsList.splitRef(QLatin1Char(';'), Qt::SkipEmptyParts);
+    const QJsonObject rawData = m_info.rawData();
+    if (matchesKeywords(KJsonUtils::readTranslatedString(rawData, QStringLiteral("Keywords")), pattern)) {
+        return true;
+    }
 
-    for (const auto &keyword : keywords) {
-        if (keyword.startsWith(pattern, Qt::CaseInsensitive)) {
+    // Add English name and keywords so users in other languages won't have to switch IME when searching.
+    if (!QLocale().name().startsWith(QLatin1String("en_"))) {
+        const QString name(rawData[QStringLiteral("KPlugin")][QStringLiteral("Name")].toString());
+        const QString keywords(rawData[QStringLiteral("KPlugin")][QStringLiteral("Name")].toString());
+        if (name.startsWith(pattern, Qt::CaseInsensitive) || matchesKeywords(keywords, pattern)) {
             return true;
         }
     }
 
     return AbstractItem::matches(pattern);
+}
+
+QStringList PlasmaAppletItem::keywords() const
+{
+    const static QString keywordsJsonKey = QStringLiteral("X-KDE-Keywords");
+    constexpr QLatin1Char separator(',');
+
+    const QJsonObject rawData = m_info.rawData();
+    if (rawData.contains(keywordsJsonKey)) {
+        QStringList keywords = m_info.value(keywordsJsonKey).split(separator);
+        keywords << KJsonUtils::readTranslatedString(rawData, keywordsJsonKey).split(separator);
+        keywords.removeDuplicates();
+        return keywords;
+    }
+    return {};
 }
 
 bool PlasmaAppletItem::isLocal() const
@@ -217,8 +248,6 @@ PlasmaAppletItemModel::PlasmaAppletItemModel(QObject *parent)
     : QStandardItemModel(parent)
     , m_startupCompleted(false)
 {
-    connect(KSycoca::self(), QOverload<>::of(&KSycoca::databaseChanged), this, &PlasmaAppletItemModel::populateModel);
-
     setSortRole(Qt::DisplayRole);
 }
 
@@ -245,7 +274,7 @@ void PlasmaAppletItemModel::populateModel()
     clear();
 
     auto filter = [this](const KPluginMetaData &plugin) -> bool {
-        const QStringList provides = KPluginMetaData::readStringList(plugin.rawData(), QStringLiteral("X-Plasma-Provides"));
+        const QStringList provides = plugin.value(QStringLiteral("X-Plasma-Provides"), QStringList());
 
         if (!m_provides.isEmpty()) {
             const bool providesFulfilled = std::any_of(m_provides.cbegin(), m_provides.cend(), [&provides](const QString &p) {
@@ -262,7 +291,7 @@ void PlasmaAppletItemModel::populateModel()
             return false;
         }
 
-        static const auto formFactors = KDeclarative::KDeclarative::runtimePlatform();
+        static const auto formFactors = KRuntimePlatform::runtimePlatform();
         // If runtimePlatformis not defined, accept everything
         bool inFormFactor = formFactors.isEmpty();
 
@@ -287,7 +316,7 @@ void PlasmaAppletItemModel::populateModel()
         appendRow(new PlasmaAppletItem(plugin));
     }
 
-    emit modelPopulated();
+    Q_EMIT modelPopulated();
 }
 
 void PlasmaAppletItemModel::setRunningApplets(const QHash<QString, int> &apps)
@@ -409,4 +438,4 @@ QString &PlasmaAppletItemModel::Application()
     return m_application;
 }
 
-//#include <plasmaappletitemmodel_p.moc>
+// #include <plasmaappletitemmodel_p.moc>

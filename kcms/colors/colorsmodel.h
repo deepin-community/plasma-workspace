@@ -21,7 +21,10 @@ struct ColorsModelData {
     QColor activeTitleBarBackground;
     QColor activeTitleBarForeground;
     bool removable;
+    bool accentActiveTitlebar;
     bool pendingDeletion;
+    bool tints;
+    qreal tintFactor;
 };
 Q_DECLARE_TYPEINFO(ColorsModelData, Q_MOVABLE_TYPE);
 
@@ -42,8 +45,12 @@ public:
         // Colors which aren't in QPalette
         ActiveTitleBarBackgroundRole,
         ActiveTitleBarForegroundRole,
+        DisabledText,
         RemovableRole,
+        AccentActiveTitlebarRole,
         PendingDeletionRole,
+        Tints,
+        TintFactor,
     };
 
     int rowCount(const QModelIndex &parent) const override;

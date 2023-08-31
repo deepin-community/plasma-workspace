@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2014.
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2014, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2014-08-30 18:46+0200\n"
+"POT-Creation-Date: 2022-01-22 00:46+0000\n"
+"PO-Revision-Date: 2022-01-22 11:51+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 20.08.1\n"
 
 #: shellpackage.cpp:26 shellpackage.cpp:27
 #, kde-format
@@ -84,10 +84,15 @@ msgstr "QML-komponent för att välja ett alternativt miniprogram"
 
 #: shellpackage.cpp:63
 #, kde-format
+msgid "QML component for the configuration dialog of containments"
+msgstr "QML-komponent för omgivningars inställningsdialogrutor"
+
+#: shellpackage.cpp:66
+#, kde-format
 msgid "Widgets explorer UI"
 msgstr "Användargränssnitt för utforskare av grafiska komponenter"
 
-#: shellpackage.cpp:67
+#: shellpackage.cpp:70
 #, kde-format
 msgid ""
 "A UI for writing, loading and running desktop scripts in the current live "

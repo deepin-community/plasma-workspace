@@ -35,3 +35,6 @@ msgstr "Impossible de trouver la vue de tâche pour %1"
 msgctxt "Bytes per second"
 msgid "%1/s"
 msgstr "%1 / s"
+
+#~ msgid "Job canceled by user."
+#~ msgstr "Tâche annulée par l'utilisateur."

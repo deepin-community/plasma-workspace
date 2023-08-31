@@ -9,6 +9,7 @@
 #include "historymodel.h"
 
 #include <QCryptographicHash>
+#include <QIODevice>
 #include <QIcon>
 #include <QMimeData>
 
@@ -16,17 +17,14 @@
 
 namespace
 {
-QByteArray compute_uuid(const QPixmap &data)
+QByteArray compute_uuid(const QImage &data)
 {
-    QByteArray buffer;
-    QDataStream out(&buffer, QIODevice::WriteOnly);
-    out << data;
-    return QCryptographicHash::hash(buffer, QCryptographicHash::Sha1);
+    return QCryptographicHash::hash(QByteArray::fromRawData(reinterpret_cast<const char *>(data.constBits()), data.sizeInBytes()), QCryptographicHash::Sha1);
 }
 
 }
 
-HistoryImageItem::HistoryImageItem(const QPixmap &data)
+HistoryImageItem::HistoryImageItem(const QImage &data)
     : HistoryItem(compute_uuid(data))
     , m_data(data)
 {
@@ -49,14 +47,14 @@ void HistoryImageItem::write(QDataStream &stream) const
 QMimeData *HistoryImageItem::mimeData() const
 {
     QMimeData *data = new QMimeData();
-    data->setImageData(m_data.toImage());
+    data->setImageData(m_data);
     return data;
 }
 
-const QPixmap &HistoryImageItem::image() const
+QPixmap HistoryImageItem::image() const
 {
     if (m_model->displayImages()) {
-        return m_data;
+        return QPixmap::fromImage(m_data);
     }
     static QPixmap imageIcon(QIcon::fromTheme(QStringLiteral("view-preview")).pixmap(QSize(48, 48)));
     return imageIcon;

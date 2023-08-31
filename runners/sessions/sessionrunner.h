@@ -31,13 +31,20 @@ public:
         ShutdownAction,
         RestartAction,
         LockAction,
+        SaveAction,
     };
 
 private:
     void matchCommands(QList<Plasma::QueryMatch> &matches, const QString &term);
 
-    QString m_triggerWord;
+    QStringList m_logoutKeywords;
+    QStringList m_shutdownKeywords;
+    QStringList m_restartKeywords;
+    QStringList m_lockKeywords;
+    QStringList m_saveKeywords;
+    QStringList m_usersKeywords;
+    QString m_sessionsKeyword;
+    QString m_switchKeyword;
     KDisplayManager dm;
     SessionManagement m_session;
-    bool m_canLogout;
 };

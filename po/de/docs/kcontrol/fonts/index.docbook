@@ -33,9 +33,9 @@
 </authorgroup>
 
 <date
->2018-12-10</date>
+>2021-04-09</date>
 <releaseinfo
->Plasma 5.14</releaseinfo>
+>Plasma 5.20</releaseinfo>
 
 <keywordset>
 <keyword
@@ -135,11 +135,16 @@
 </itemizedlist>
 
 <para
->Each font has a corresponding <guibutton
->Choose...</guibutton
-> button. By clicking on this button, a dialog box appears. You can use this dialog box to choose a new font, a font style and size. Then press <guibutton
->Ok</guibutton
+>Jede Schrift hat einen zugehörigen Knopf <guibutton
+>Auswählen ...</guibutton
+> Wenn Sie auf diesen Knopf klicken, erscheint ein Dialog-Fenster. In diesem Dialog können Sie zwischen Schriftart, Schriftstil und -größe wählen. Anschließend drücken Sie auf <guibutton
+>OK</guibutton
 >.</para>
+
+<para
+>Aktivieren Sie <guilabel
+>Nur nichtproportionale Schriften anzeigen</guilabel
+>, um alle nicht proportionalen Schriften in der Liste auszufiltern.</para>
 
 <para
 >Ein Beispiel der von Ihnen ausgesuchten Schrift erscheint zwischen dem Namen der Schriftgruppe und dem Knopf <guibutton
@@ -161,6 +166,11 @@
 > oder <guilabel
 >Größe</guilabel
 > unabhängig voneinander ermöglichen. Man kann eine beliebige Kombination dieser Felder markieren und die betreffenden Einstellungen werden auf alle Schriftartgruppen angewandt.</para>
+
+<para
+>Aktivieren Sie <guilabel
+>Nur nichtproportionale Schriften anzeigen</guilabel
+>, um alle nicht proportionalen Schriften in der Liste auszufiltern.</para>
 
 <para>
 <screenshot>
@@ -186,32 +196,27 @@
 >Kantenglättung für Schriften</title>
 
 <para
->Default anti-aliasing settings are those used system wide by your distribution and labelled <guilabel
->Vendor Default</guilabel
->. You can disable all anti-aliasing by choosing <guilabel
->Disabled</guilabel
-> in the drop down box.</para>
+>Um Einstellungen für Kantenglättung zu verwenden, wählen Sie <guilabel
+>Aktiviert</guilabel
+> und passen dann die Werte an.</para>
 
 <para
->To use different anti-aliasing setting, simply choose <guilabel
->Enabled</guilabel
-> from the box on the right of <guilabel
->Use anti-aliasing:</guilabel
-> and enable the custom settings.</para>
+>Wenn Sie das Ankreuzfeld <guilabel
+>Bereich von Kantenglättung ausschließen</guilabel
+> aktivieren, dann können Sie angeben, in welchem Bereich die Schriftarten <emphasis
+>nicht</emphasis
+> geglättet werden sollen. Dieser Bereich wird in den beiden Drehfeldern darunter eingestellt.</para>
 
 <para
->Placing a mark in the <guilabel
->Exclude range:</guilabel
-> checkbox will allow you to specify which range of fonts will <emphasis
->not</emphasis
-> be anti-aliased. This range is specified with the two combo boxes below.</para>
-
-<para
->You can also choose the method used to create an anti-alias look to your fonts, and how strongly it should be applied changing the <ulink url="https://en.wikipedia.org/wiki/Subpixel_rendering"
-> Sub-pixel rendering</ulink
-> and <ulink url="https://en.wikipedia.org/wiki/Font_hinting"
-> font hinting</ulink
->. If you are not familiar with the individual methods, you should leave this option alone.</para>
+>Sie können auch die Methode festlegen, die zur Kantenglättung verwendet wird, indem Sie <ulink url="https://de.wikipedia.org/wiki/Subpixel-Rendering"
+> Subpixel-Render-Typ</ulink
+> und <ulink url="https://de.wikipedia.org/wiki/Hint"
+> Hinting-Stil</ulink
+> ändern. Sie können auch <guilabel
+>DPI für Schriften erzwingen</guilabel
+> für die <ulink url="https://de.wikipedia.org/wiki/Punktdichte"
+> Bildschirmwiedergabe</ulink
+> einstellen. Wenn Sie die verschiedenen Methoden nicht kennen, sollten Sie diese Einstellung unverändert lassen.</para>
 
 <note
 ><para

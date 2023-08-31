@@ -1,69 +1,34 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-workspace package.
 #
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2020, 2021.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-18 00:19+0000\n"
-"PO-Revision-Date: 2021-08-15 09:10+0200\n"
+"POT-Creation-Date: 2023-04-24 03:15+0000\n"
+"PO-Revision-Date: 2023-04-24 11:02+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: \n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.04.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Freek de Kruijf - 2020 t/m 2021"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "freekdekruijf@kde.nl"
-
-#: gtkpage.cpp:65
+#: gtkpage.cpp:59
 #, kde-format
 msgid "%1 is not a valid GTK Theme archive."
 msgstr "%1 is geen geldig GTK-thema-archief."
 
-#: kcmstyle.cpp:79
-#, kde-format
-msgid "Application Style"
-msgstr "Stijl van toepassing"
-
-#: kcmstyle.cpp:83
-#, kde-format
-msgid "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik "
-msgstr "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik "
-
-#: kcmstyle.cpp:85
-#, kde-format
-msgid "Karol Szwed"
-msgstr "Karol Szwed"
-
-#: kcmstyle.cpp:86
-#, kde-format
-msgid "Daniel Molkentin"
-msgstr "Daniel Molkentin"
-
-#: kcmstyle.cpp:87
-#, kde-format
-msgid "Kai Uwe Broulik"
-msgstr "Kai Uwe Broulik"
-
-#: kcmstyle.cpp:176 kcmstyle.cpp:183
+#: kcmstyle.cpp:161 kcmstyle.cpp:168
 #, kde-format
 msgid "There was an error loading the configuration dialog for this style."
 msgstr ""
 "Er ging iets fout bij het laden van de configuratiedialoog van deze stijl."
 
-#: kcmstyle.cpp:296
+#: kcmstyle.cpp:274
 #, kde-format
 msgid "Failed to apply selected style '%1'."
 msgstr "Toepassen van geselecteerde stijl '%1' is mislukt."
@@ -123,27 +88,27 @@ msgstr "Stijl van GNOME/GTK-toepassingen"
 msgid "GTK theme:"
 msgstr "GTK-thema:"
 
-#: package/contents/ui/GtkStylePage.qml:76
+#: package/contents/ui/GtkStylePage.qml:69
 #, kde-format
 msgid "Preview…"
 msgstr "Voorbeeld…"
 
-#: package/contents/ui/GtkStylePage.qml:95
+#: package/contents/ui/GtkStylePage.qml:88
 #, kde-format
 msgid "Install from File…"
 msgstr "Uit bestand installeren…"
 
-#: package/contents/ui/GtkStylePage.qml:100
+#: package/contents/ui/GtkStylePage.qml:93
 #, kde-format
 msgid "Get New GNOME/GTK Application Styles…"
 msgstr "Stijlen van GNOME/GTK-toepassingen ophalen…"
 
-#: package/contents/ui/GtkStylePage.qml:149
+#: package/contents/ui/GtkStylePage.qml:109
 #, kde-format
 msgid "Select GTK Theme Archive"
 msgstr "GTK-thema-archief selecteren"
 
-#: package/contents/ui/GtkStylePage.qml:151
+#: package/contents/ui/GtkStylePage.qml:111
 #, kde-format
 msgid "GTK Theme Archive (*.tar.xz *.tar.gz *.tar.bz2)"
 msgstr "GTK-thema-archief (*.tar.xz *.tar.gz *.tar.bz2)"
@@ -208,8 +173,14 @@ msgstr "Keuzevakje"
 msgid "Radio button"
 msgstr "Keuzerondje"
 
+#. i18n: ectx: property (format), widget (QProgressBar, progressBar)
+#: stylepreview.ui:128
+#, no-c-format, kde-format
+msgid "%p%"
+msgstr "%p%"
+
 #. i18n: ectx: attribute (title), widget (QWidget, tab_2)
-#: stylepreview.ui:133
+#: stylepreview.ui:136
 #, kde-format
 msgid "Tab 2"
 msgstr "Tab 2"
@@ -243,3 +214,26 @@ msgstr "Label van hoofdwerkbalk"
 #, kde-format
 msgid "Secondary toolbar label"
 msgstr "Label van secondaire werkbalk"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Freek de Kruijf - 2020 t/m 2021"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "freekdekruijf@kde.nl"
+
+#~ msgid "Application Style"
+#~ msgstr "Stijl van toepassing"
+
+#~ msgid "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik "
+#~ msgstr "(c) 2002 Karol Szwed, Daniel Molkentin, (c) 2019 Kai Uwe Broulik "
+
+#~ msgid "Karol Szwed"
+#~ msgstr "Karol Szwed"
+
+#~ msgid "Daniel Molkentin"
+#~ msgstr "Daniel Molkentin"
+
+#~ msgid "Kai Uwe Broulik"
+#~ msgstr "Kai Uwe Broulik"

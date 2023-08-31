@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_engine_time\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-03-10 00:46+0000\n"
 "PO-Revision-Date: 2014-07-06 00:28-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -14,62 +14,50 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: timesource.cpp:45
-#, kde-format
+#: timesource.cpp:46
 msgid "Local"
 msgstr ""
 
-#: timesource.cpp:60
-#, kde-format
+#: timesource.cpp:61
 msgid "Timezone"
 msgstr ""
 
-#: timesource.cpp:65 timesource.cpp:68 timesource.cpp:72
-#, kde-format
+#: timesource.cpp:66 timesource.cpp:69 timesource.cpp:73
 msgid "Timezone City"
 msgstr ""
 
-#: timesource.cpp:67 timesource.cpp:70
-#, kde-format
+#: timesource.cpp:68 timesource.cpp:71
 msgid "Timezone Continent"
 msgstr ""
 
-#: timesource.cpp:71
-#, kde-format
+#: timesource.cpp:72
 msgid "Timezone Country"
 msgstr ""
 
-#: timesource.cpp:96
-#, kde-format
+#: timesource.cpp:97
 msgid "Offset"
 msgstr ""
 
-#: timesource.cpp:99
-#, kde-format
+#: timesource.cpp:100
 msgid "Timezone Abbreviation"
 msgstr ""
 
-#: timesource.cpp:130 timesource.cpp:149 timesource.cpp:170
-#, kde-format
+#: timesource.cpp:131 timesource.cpp:150 timesource.cpp:171
 msgid "DateTime"
 msgstr ""
 
-#: timesource.cpp:145
-#, kde-format
+#: timesource.cpp:146
 msgid "Latitude"
 msgstr ""
 
-#: timesource.cpp:146
-#, kde-format
+#: timesource.cpp:147
 msgid "Longitude"
 msgstr ""
 
-#: timesource.cpp:147
-#, kde-format
+#: timesource.cpp:148
 msgid "Solar"
 msgstr ""
 
-#: timesource.cpp:148
-#, kde-format
+#: timesource.cpp:149
 msgid "Moon"
 msgstr ""

@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the plasma-workspace package.
 #
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2014, 2015, 2019, 2020.
-# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2017, 2018, 2019, 2020, 2021.
+# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2017, 2018, 2019, 2020, 2021, 2022.
 # Thiago Masato Costa Sueto <herzenschein@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-31 00:22+0000\n"
-"PO-Revision-Date: 2021-08-18 10:29-0300\n"
+"POT-Creation-Date: 2022-12-02 00:48+0000\n"
+"PO-Revision-Date: 2022-06-22 16:27-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -18,186 +18,85 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
-#: image.cpp:253
 #, kde-format
-msgid "Recommended wallpaper file"
-msgstr "Arquivo de papel de parede recomendado"
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Luiz Fernando Ranghetti"
 
-#: image.cpp:414
 #, kde-format
-msgid "Directory with the wallpaper to show slides from"
-msgstr "Pasta com o papel de parede a mostrar como slide"
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "elchevive@opensuse.org"
 
-#: image.cpp:716
-#, kde-format
-msgid "Open Image"
-msgstr "Abrir imagem"
-
-#: image.cpp:716
-#, kde-format
-msgid "Image Files"
-msgstr "Arquivos de imagem"
-
-#: imagepackage/contents/ui/config.qml:98
+#: imagepackage/contents/ui/config.qml:94
 #, kde-format
 msgid "Positioning:"
 msgstr "Posicionamento:"
 
-#: imagepackage/contents/ui/config.qml:101
+#: imagepackage/contents/ui/config.qml:97
 #, kde-format
 msgid "Scaled and Cropped"
 msgstr "Escalonado e recortado"
 
-#: imagepackage/contents/ui/config.qml:105
+#: imagepackage/contents/ui/config.qml:101
 #, kde-format
 msgid "Scaled"
 msgstr "Escalonado"
 
-#: imagepackage/contents/ui/config.qml:109
+#: imagepackage/contents/ui/config.qml:105
 #, kde-format
 msgid "Scaled, Keep Proportions"
 msgstr "Escalonado, manter proporções"
 
-#: imagepackage/contents/ui/config.qml:113
+#: imagepackage/contents/ui/config.qml:109
 #, kde-format
 msgid "Centered"
 msgstr "Centralizado"
 
-#: imagepackage/contents/ui/config.qml:117
+#: imagepackage/contents/ui/config.qml:113
 #, kde-format
 msgid "Tiled"
 msgstr "Ladrilhado"
 
-#: imagepackage/contents/ui/config.qml:146
+#: imagepackage/contents/ui/config.qml:141
 #, kde-format
 msgid "Background:"
 msgstr "Plano de fundo:"
 
-#: imagepackage/contents/ui/config.qml:147
+#: imagepackage/contents/ui/config.qml:142
 #, kde-format
 msgid "Blur"
 msgstr "Borrado"
 
-#: imagepackage/contents/ui/config.qml:156
+#: imagepackage/contents/ui/config.qml:151
 #, kde-format
 msgid "Solid color"
 msgstr "Cor sólida"
 
-#: imagepackage/contents/ui/config.qml:166
+#: imagepackage/contents/ui/config.qml:161
 #, kde-format
 msgid "Select Background Color"
 msgstr "Selecionar cor de fundo"
 
-#: imagepackage/contents/ui/config.qml:190
-#, kde-format
-msgid "Order:"
-msgstr "Ordem:"
-
-#: imagepackage/contents/ui/config.qml:197
-#, kde-format
-msgid "Random"
-msgstr "Aleatório"
-
-#: imagepackage/contents/ui/config.qml:201
-#, kde-format
-msgid "A to Z"
-msgstr "De A para Z"
-
-#: imagepackage/contents/ui/config.qml:205
-#, kde-format
-msgid "Z to A"
-msgstr "De Z para A"
-
-#: imagepackage/contents/ui/config.qml:209
-#, kde-format
-msgid "Date modified (newest first)"
-msgstr "Data de modificação (recentes primeiro)"
-
-#: imagepackage/contents/ui/config.qml:213
-#, kde-format
-msgid "Date modified (oldest first)"
-msgstr "Data de modificação (antigos primeiro)"
-
-#: imagepackage/contents/ui/config.qml:237
-#, kde-format
-msgid "Group by folders"
-msgstr "Agrupar por pastas"
-
-#: imagepackage/contents/ui/config.qml:249
-#, kde-format
-msgid "Change every:"
-msgstr "Alterar a cada:"
-
-#: imagepackage/contents/ui/config.qml:259
-#, kde-format
-msgid "%1 hour"
-msgid_plural "%1 hours"
-msgstr[0] "%1 hora"
-msgstr[1] "%1 horas"
-
-#: imagepackage/contents/ui/config.qml:278
-#, kde-format
-msgid "%1 minute"
-msgid_plural "%1 minutes"
-msgstr[0] "%1 minuto"
-msgstr[1] "%1 minutos"
-
-#: imagepackage/contents/ui/config.qml:297
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 segundo"
-msgstr[1] "%1 segundos"
-
-#: imagepackage/contents/ui/config.qml:310
-#, kde-format
-msgid "Folders"
-msgstr "Pastas"
-
-#: imagepackage/contents/ui/config.qml:358
-#, kde-format
-msgid "Remove Folder"
-msgstr "Remover pasta"
-
-#: imagepackage/contents/ui/config.qml:363
-#, kde-format
-msgid "Open Folder"
-msgstr "Abrir pasta"
-
-#: imagepackage/contents/ui/config.qml:373
-#, kde-format
-msgid "There are no wallpaper locations configured"
-msgstr "Nenhum local de papel de parede está configurado"
-
-#: imagepackage/contents/ui/config.qml:386
-#, kde-format
-msgid "Add Folder…"
-msgstr "Adicionar pasta..."
-
-#: imagepackage/contents/ui/config.qml:392
-#: imagepackage/contents/ui/config.qml:486
-#, kde-format
-msgid "Get New Wallpapers…"
-msgstr "Baixar novos papéis de parede..."
-
-#: imagepackage/contents/ui/config.qml:435
-#, kde-format
-msgid "There are no wallpapers in this slideshow"
-msgstr "Não há nenhum papel de parede nesta apresentação"
-
-#: imagepackage/contents/ui/config.qml:480
+#: imagepackage/contents/ui/config.qml:207
 #, kde-format
 msgid "Add Image…"
 msgstr "Adicionar imagem..."
 
-#: imagepackage/contents/ui/main.qml:55
+#: imagepackage/contents/ui/config.qml:213
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:257
+#, kde-format
+msgid "Get New Wallpapers…"
+msgstr "Baixar novos papéis de parede..."
+
+#: imagepackage/contents/ui/main.qml:66
 #, kde-format
 msgid "Open Wallpaper Image"
 msgstr "Abrir imagem de papel de parede"
 
-#: imagepackage/contents/ui/main.qml:56
+#: imagepackage/contents/ui/main.qml:67
 #, kde-format
 msgid "Next Wallpaper Image"
 msgstr "Próxima imagem de papel de parede"
@@ -245,12 +144,12 @@ msgstr ""
 "('), contate o autor do papel de parede para consertar isso ou renomeie o "
 "arquivo você mesmo: %1"
 
-#: plasma-apply-wallpaperimage.cpp:82
+#: plasma-apply-wallpaperimage.cpp:85
 #, kde-format
 msgid "An error occurred while attempting to set the Plasma wallpaper:\n"
 msgstr "Um erro ocorreu ao tentar definir o papel de parede do Plasma:\n"
 
-#: plasma-apply-wallpaperimage.cpp:86
+#: plasma-apply-wallpaperimage.cpp:89
 #, kde-format
 msgid ""
 "Successfully set the wallpaper for all desktops to the KPackage based %1"
@@ -258,14 +157,14 @@ msgstr ""
 "A definição de um papel de parede para todas as áreas de trabalho do %1 "
 "baseado no KPackage foi realizada com sucesso."
 
-#: plasma-apply-wallpaperimage.cpp:88
+#: plasma-apply-wallpaperimage.cpp:91
 #, kde-format
 msgid "Successfully set the wallpaper for all desktops to the image %1"
 msgstr ""
 "A definição de um papel de parede para todas as áreas de trabalho da imagem "
 "%1 foi realizada com sucesso."
 
-#: plasma-apply-wallpaperimage.cpp:94
+#: plasma-apply-wallpaperimage.cpp:97
 #, kde-format
 msgid ""
 "The file passed to be set as wallpaper does not exist, or we cannot identify "
@@ -273,3 +172,121 @@ msgid ""
 msgstr ""
 "O arquivo passado para ser definido como papel de parede não existe ou não "
 "pôde ser identificado como papel de parede: %1"
+
+#: plugin/finder/packagefinder.cpp:148
+#, kde-format
+msgid "Recommended wallpaper file"
+msgstr "Arquivo de papel de parede recomendado"
+
+#: plugin/imagebackend.cpp:243
+#, kde-format
+msgid "Directory with the wallpaper to show slides from"
+msgstr "Pasta com o papel de parede a mostrar como slide"
+
+#: plugin/imagebackend.cpp:353
+#, kde-format
+msgid "Open Image"
+msgstr "Abrir imagem"
+
+#: plugin/imagebackend.cpp:353
+#, kde-format
+msgid "Image Files"
+msgstr "Arquivos de imagem"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:38
+#, kde-format
+msgid "Order:"
+msgstr "Ordem:"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:45
+#, kde-format
+msgid "Random"
+msgstr "Aleatório"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:49
+#, kde-format
+msgid "A to Z"
+msgstr "De A para Z"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:53
+#, kde-format
+msgid "Z to A"
+msgstr "De Z para A"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:57
+#, kde-format
+msgid "Date modified (newest first)"
+msgstr "Data de modificação (recentes primeiro)"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:61
+#, kde-format
+msgid "Date modified (oldest first)"
+msgstr "Data de modificação (antigos primeiro)"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:86
+#, kde-format
+msgid "Group by folders"
+msgstr "Agrupar por pastas"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:98
+#, kde-format
+msgid "Change every:"
+msgstr "Alterar a cada:"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:108
+#, kde-format
+msgid "%1 hour"
+msgid_plural "%1 hours"
+msgstr[0] "%1 hora"
+msgstr[1] "%1 horas"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:128
+#, kde-format
+msgid "%1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "%1 minuto"
+msgstr[1] "%1 minutos"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:148
+#, kde-format
+msgid "%1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 segundo"
+msgstr[1] "%1 segundos"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:162
+#, kde-format
+msgid "Folders"
+msgstr "Pastas"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:220
+#, kde-format
+msgid "Remove Folder"
+msgstr "Remover pasta"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:225
+#, kde-format
+msgid "Open Folder"
+msgstr "Abrir pasta"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:235
+#, kde-format
+msgid "There are no wallpaper locations configured"
+msgstr "Nenhum local de papel de parede está configurado"
+
+#: slideshowpackage/contents/ui/SlideshowComponent.qml:250
+#, kde-format
+msgid "Add Folder…"
+msgstr "Adicionar pasta..."
+
+#~ msgid "There are no wallpapers in this slideshow"
+#~ msgstr "Não há nenhum papel de parede nesta apresentação"
+
+#~ msgid "Add Custom Wallpaper"
+#~ msgstr "Adicionar papel de parede personalizado"
+
+#~ msgid "Remove wallpaper"
+#~ msgstr "Remover papel de parede"
+
+#~ msgid "%1 by %2"
+#~ msgstr "%1 por %2"

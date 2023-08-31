@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-workspace package.
-# Sergiu Bivol <sergiu@cip.md>, 2020, 2021.
+# Sergiu Bivol <sergiu@cip.md>, 2020, 2021, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-workspace\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
-"PO-Revision-Date: 2021-07-25 14:00+0100\n"
+"POT-Creation-Date: 2022-02-11 00:46+0000\n"
+"PO-Revision-Date: 2022-02-06 20:17+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
@@ -16,14 +16,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 21.12.2\n"
 
-#: appstreamrunner.cpp:32
+#: appstreamrunner.cpp:34
 #, kde-format
 msgid "Looks for non-installed components according to :q:"
-msgstr "Caută componente neinstalate ce corespund :1:"
+msgstr "Caută componente neinstalate ce corespund :q:"
 
-#: appstreamrunner.cpp:126
+#: appstreamrunner.cpp:133
 #, kde-format
 msgid "Get %1…"
 msgstr "Obține %1…"

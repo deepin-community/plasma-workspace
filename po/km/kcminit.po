@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcminit\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-08-15 00:20+0000\n"
+"POT-Creation-Date: 2022-07-26 00:47+0000\n"
 "PO-Revision-Date: 2008-12-19 09:13+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros.info>\n"
@@ -30,27 +30,25 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "khoemsokhem@khmeros.info,​​​evannak@khmeros.info,piseth_dv@khmeros.info"
 
-#: main.cpp:151
-#, kde-format
-msgid "Module %1 not found"
-msgstr "រកមិនឃើញ​ម៉ូឌុល %1"
-
-#: main.cpp:214
+#: main.cpp:170
 #, kde-format
 msgid "KCMInit"
 msgstr "KCMInit"
 
-#: main.cpp:216
+#: main.cpp:172
 #, kde-format
 msgid "KCMInit - runs startup initialization for Control Modules."
 msgstr "KCMInit - រត់​ការ​ចាប់ផ្ដើម​សម្រាប់​ម៉ូឌុល​ត្រួតពិនិត្យ ។"
 
-#: main.cpp:222
+#: main.cpp:178
 #, kde-format
 msgid "List modules that are run at startup"
 msgstr "រាយ​ម៉ូឌុល​ដែល​រត់​នៅពេល​ចាប់ផ្ដើម"
 
-#: main.cpp:223
+#: main.cpp:179
 #, kde-format
 msgid "Configuration module to run"
 msgstr "ម៉ូឌុល​ការ​កំណត់​រចនា​សម្ព័ន្ធ​ដែលត្រូវ​រត់"
+
+#~ msgid "Module %1 not found"
+#~ msgstr "រកមិនឃើញ​ម៉ូឌុល %1"
